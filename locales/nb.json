@@ -51,7 +51,8 @@
     "slider": {
       "of": "av",
       "next_slide": "Bla til høyre",
-      "previous_slide": "Bla til venstre"
+      "previous_slide": "Bla til venstre",
+      "name": "Glidefelt"
     }
   },
   "newsletter": {
@@ -74,7 +75,8 @@
     "skip_to_product_info": "Hopp til produktinformasjon",
     "total_reviews": "totale omtaler",
     "star_reviews_info": "{{ rating_value }} av {{ rating_max }} stjerner",
-    "collapsible_content_title": "Sammenleggbart innhold"
+    "collapsible_content_title": "Sammenleggbart innhold",
+    "complementary_products": "Komplimentære produkter"
   },
   "blogs": {
     "article": {
@@ -146,7 +148,11 @@
       },
       "view_full_details": "Vis alle detaljer",
       "include_taxes": "Avgift inkludert.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Frakt</a> beregnes ved kassen."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Frakt</a> beregnes ved kassen.",
+      "choose_options": "Velg alternativer",
+      "choose_product_options": "Velg alternativer for {{ product_name }}",
+      "value_unavailable": "{{ option_value }} [Utilgjengelig]",
+      "variant_sold_out_or_unavailable": "Varianten er utsolgt eller utilgjengelig"
     },
     "modal": {
       "label": "Mediegalleri"
@@ -176,7 +182,10 @@
       "sort_button": "Sorter",
       "sort_by_label": "Sorter etter:",
       "to": "Til",
-      "clear_filter": "Fjern filter"
+      "clear_filter": "Fjern filter",
+      "filter_selected_accessibility": "{{ type }} ({{ count }} filtre valgt)",
+      "show_more": "Vis mer",
+      "show_less": "Vis færre"
     }
   },
   "templates": {
@@ -206,7 +215,8 @@
         "comment": "Kommentar",
         "send": "Send",
         "post_success": "Takk for at du kontaktet oss. Vi vil svare deg så snart som mulig.",
-        "error_heading": "Juster følgende:"
+        "error_heading": "Juster følgende:",
+        "title": "Kontaktskjema"
       }
     },
     "404": {
@@ -242,7 +252,8 @@
         "product": "Produkt",
         "price": "Pris",
         "total": "Totalt",
-        "quantity": "Antall"
+        "quantity": "Antall",
+        "image": "Produktbilde"
       },
       "update": "Oppdater",
       "login": {
@@ -268,7 +279,7 @@
     "collection_template": {
       "title": "Samling",
       "empty": "Ingen produkter funnet",
-      "use_fewer_filters_html": "Bruk færre filtre eller <a class=\"{{ class }}\" href=\"{{ link }}\">tøm alle</a>"
+      "use_fewer_filters_html": "Bruk færre filtre eller <a class=\"{{ class }}\" href=\"{{ link }}\">fjern alle</a>"
     },
     "video": {
       "load_video": "Last inn video: {{ description }}"
@@ -395,7 +406,7 @@
     },
     "reset_password": {
       "title": "Tilbakestill kontopassord",
-      "subtext": "Skriv inn et nytt passord for {{ email }}",
+      "subtext": "Angi et nytt passord",
       "password": "Passord",
       "password_confirm": "Bekreft passord",
       "submit": "Tilbakestill passord"

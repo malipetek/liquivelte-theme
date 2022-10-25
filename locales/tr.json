@@ -51,7 +51,8 @@
     "slider": {
       "of": "/",
       "next_slide": "Sağa kaydır",
-      "previous_slide": "Sola kaydır"
+      "previous_slide": "Sola kaydır",
+      "name": "Kaydırıcı"
     }
   },
   "newsletter": {
@@ -74,7 +75,8 @@
     "skip_to_product_info": "Ürün bilgisine atla",
     "total_reviews": "toplam değerlendirme",
     "star_reviews_info": "{{ rating_value }}/{{ rating_max }} yıldız",
-    "collapsible_content_title": "Daraltılabilir içerik"
+    "collapsible_content_title": "Daraltılabilir içerik",
+    "complementary_products": "Tamamlayıcı ürünler"
   },
   "blogs": {
     "article": {
@@ -146,7 +148,11 @@
       },
       "view_full_details": "Tüm ayrıntıları görüntüle",
       "include_taxes": "Vergi dahildir.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Kargo</a>, ödeme sayfasında hesaplanır."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Kargo</a>, ödeme sayfasında hesaplanır.",
+      "choose_options": "Seçenekleri belirle",
+      "choose_product_options": "{{ product_name }} için seçenekleri belirle",
+      "value_unavailable": "{{ option_value }} [Kullanılamıyor]",
+      "variant_sold_out_or_unavailable": "Varyasyon tükendi veya kullanılamıyor"
     },
     "modal": {
       "label": "Medya galerisi"
@@ -154,7 +160,7 @@
     "facets": {
       "apply": "Uygula",
       "clear": "Temizle",
-      "clear_all": "Tümünü temizle",
+      "clear_all": "Tümünü kaldır",
       "from": "En düşük",
       "filter_and_sort": "Filtrele ve sırala",
       "filter_by_label": "Filtre:",
@@ -176,7 +182,10 @@
       "sort_button": "Sırala",
       "sort_by_label": "Sıralama ölçütü:",
       "to": "En yüksek",
-      "clear_filter": "Filtreyi temizle"
+      "clear_filter": "Filtreyi kaldır",
+      "filter_selected_accessibility": "{{ type }} ({{ count }} filtre seçildi)",
+      "show_more": "Daha fazla göster",
+      "show_less": "Daha az göster"
     }
   },
   "templates": {
@@ -206,7 +215,8 @@
         "comment": "Yorum",
         "send": "Gönder",
         "post_success": "Bizimle iletişime geçtiğiniz için teşekkür ederiz. Mümkün olan en kısa sürede size dönüş yapacağız.",
-        "error_heading": "Lütfen aşağıdakileri düzenleyin:"
+        "error_heading": "Lütfen aşağıdakileri düzenleyin:",
+        "title": "İletişim formu"
       }
     },
     "404": {
@@ -242,7 +252,8 @@
         "product": "Ürün",
         "price": "Fiyat",
         "total": "Toplam",
-        "quantity": "Adet"
+        "quantity": "Adet",
+        "image": "Ürün görseli"
       },
       "update": "Güncelle",
       "login": {
@@ -268,7 +279,7 @@
     "collection_template": {
       "title": "Koleksiyon",
       "empty": "Ürün bulunamadı",
-      "use_fewer_filters_html": "Daha az filtre kullan veya <a class=\"{{ class }}\" href=\"{{ link }}\">tümünü temizle</a>"
+      "use_fewer_filters_html": "Daha az filtre kullan veya <a class=\"{{ class }}\" href=\"{{ link }}\">tümünü kaldır</a>"
     },
     "video": {
       "load_video": "Videoyu yükle: {{ description }}"
@@ -370,7 +381,7 @@
     },
     "reset_password": {
       "title": "Hesap parolasını sıfırlayın",
-      "subtext": "{{ email }} için yeni bir parola girin",
+      "subtext": "Yeni bir parola girin",
       "password": "Parola",
       "password_confirm": "Parolayı doğrula",
       "submit": "Parolayı sıfırla"

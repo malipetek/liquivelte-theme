@@ -7,7 +7,7 @@
       "login_form_password_placeholder": "您的密码",
       "login_form_error": "密码错误！",
       "login_form_submit": "输入",
-      "admin_link_html": "您是否是店主？<a href=\"/admin\" class=\"link underlined-link\">在此处登录</a>",
+      "admin_link_html": "您是否为店主？<a href=\"/admin\" class=\"link underlined-link\">在此处登录</a>",
       "powered_by_shopify_html": "此商店由 {{ shopify }} 提供支持"
     },
     "social": {
@@ -51,7 +51,8 @@
     "slider": {
       "of": "/",
       "next_slide": "向右滑动",
-      "previous_slide": "向左滑动"
+      "previous_slide": "向左滑动",
+      "name": "滑块"
     }
   },
   "newsletter": {
@@ -74,7 +75,8 @@
     "skip_to_product_info": "跳至产品信息",
     "total_reviews": "总评论数",
     "star_reviews_info": "{{ rating_value }}/{{ rating_max }} 星",
-    "collapsible_content_title": "可折叠内容"
+    "collapsible_content_title": "可折叠内容",
+    "complementary_products": "互补产品"
   },
   "blogs": {
     "article": {
@@ -146,7 +148,11 @@
       },
       "view_full_details": "查看完整详细信息",
       "include_taxes": "含税费。",
-      "shipping_policy_html": "结账时计算的<a href=\"{{ link }}\">运费</a>。"
+      "shipping_policy_html": "结账时计算的<a href=\"{{ link }}\">运费</a>。",
+      "choose_options": "选择选项",
+      "choose_product_options": "选择用于 {{ product_name }} 的选项",
+      "value_unavailable": "{{ option_value }} [不可用]",
+      "variant_sold_out_or_unavailable": "多属性已售罄或不可用"
     },
     "modal": {
       "label": "媒体图库"
@@ -154,7 +160,7 @@
     "facets": {
       "apply": "应用",
       "clear": "清除",
-      "clear_all": "清除所有内容",
+      "clear_all": "全部删除",
       "from": "从",
       "filter_and_sort": "筛选和排序",
       "filter_by_label": "筛选条件：",
@@ -176,7 +182,10 @@
       "sort_button": "排序",
       "sort_by_label": "排序依据：",
       "to": "到",
-      "clear_filter": "清除筛选条件"
+      "clear_filter": "删除筛选条件",
+      "filter_selected_accessibility": "{{ type }}（已选择 {{ count }} 个筛选条件）",
+      "show_more": "显示更多内容",
+      "show_less": "隐藏部分内容"
     }
   },
   "templates": {
@@ -206,7 +215,8 @@
         "comment": "评论",
         "send": "发送",
         "post_success": "感谢您联系我们。我们会尽快回复您。",
-        "error_heading": "请调整以下内容："
+        "error_heading": "请调整以下内容：",
+        "title": "联系表"
       }
     },
     "404": {
@@ -242,7 +252,8 @@
         "product": "产品",
         "price": "价格",
         "total": "总计",
-        "quantity": "数量"
+        "quantity": "数量",
+        "image": "产品图片"
       },
       "update": "更新",
       "login": {
@@ -268,7 +279,7 @@
     "collection_template": {
       "title": "收藏",
       "empty": "未找到产品",
-      "use_fewer_filters_html": "减少使用的筛选条件数量或<a class=\"{{ class }}\" href=\"{{ link }}\">清除所有内容</a>"
+      "use_fewer_filters_html": "减少使用的筛选条件数量或<a class=\"{{ class }}\" href=\"{{ link }}\">删除所有筛选条件</a>"
     },
     "video": {
       "load_video": "加载视频：{{ description }}"
@@ -370,7 +381,7 @@
     },
     "reset_password": {
       "title": "重置账户密码",
-      "subtext": "输入 {{ email }} 的新密码",
+      "subtext": "输入新密码",
       "password": "密码",
       "password_confirm": "确认密码",
       "submit": "重置密码"

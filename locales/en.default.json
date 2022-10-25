@@ -51,7 +51,8 @@
     "slider": {
       "of": "of",
       "next_slide": "Slide right",
-      "previous_slide": "Slide left"
+      "previous_slide": "Slide left",
+      "name": "Slider"
     }
   },
   "newsletter": {
@@ -74,7 +75,8 @@
     "loading": "Loading...",
     "total_reviews": "total reviews",
     "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
-    "collapsible_content_title": "Collapsible content"
+    "collapsible_content_title": "Collapsible content",
+    "complementary_products": "Complementary products"
   },
   "blogs": {
     "article": {
@@ -103,6 +105,8 @@
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
+      "choose_options": "Choose options",
+      "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
       "on_sale": "Sale",
       "product_variants": "Product variants",
@@ -141,6 +145,8 @@
       "sold_out": "Sold out",
       "unavailable": "Unavailable",
       "vendor": "Vendor",
+      "value_unavailable": "{{ option_value }} [Unavailable]",
+      "variant_sold_out_or_unavailable": "Variant sold out or unavailable",
       "video_exit_message": "{{ title }} opens full screen video in same window.",
       "view_full_details": "View full details",
       "xr_button": "View in your space",
@@ -154,7 +160,7 @@
     "facets": {
       "apply": "Apply",
       "clear": "Clear",
-      "clear_all": "Clear all",
+      "clear_all": "Remove all",
       "from": "From",
       "filter_and_sort": "Filter and sort",
       "filter_by_label": "Filter:",
@@ -163,6 +169,9 @@
         "one": "{{ count }} selected",
         "other": "{{ count }} selected"
       },
+      "filter_selected_accessibility": "{{ type }} ({{ count }} filters selected)",
+      "show_more": "Show more",
+      "show_less": "Show less",
       "max_price": "The highest price is {{ price }}",
       "product_count": {
         "one": "{{ product_count }} of {{ count }} product",
@@ -176,7 +185,7 @@
       "sort_button": "Sort",
       "sort_by_label": "Sort by:",
       "to": "To",
-      "clear_filter": "Clear filter"
+      "clear_filter": "Remove filter"
     }
   },
   "templates": {
@@ -200,6 +209,7 @@
     },
     "contact": {
       "form": {
+        "title": "Contact form",
         "name": "Name",
         "email": "Email",
         "phone": "Phone number",
@@ -242,7 +252,8 @@
         "product": "Product",
         "price": "Price",
         "total": "Total",
-        "quantity": "Quantity"
+        "quantity": "Quantity",
+        "image": "Product image"
       },
       "update": "Update",
       "login": {
@@ -268,7 +279,7 @@
     "collection_template": {
       "empty": "No products found",
       "title": "Collection",
-      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">clear all</a>"
+      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">remove all</a>"
     },
     "video": {
       "load_video": "Load video: {{ description }}"
@@ -395,7 +406,7 @@
     },
     "reset_password": {
       "title": "Reset account password",
-      "subtext": "Enter a new password for {{ email }}",
+      "subtext": "Enter a new password",
       "password": "Password",
       "password_confirm": "Confirm password",
       "submit": "Reset password"

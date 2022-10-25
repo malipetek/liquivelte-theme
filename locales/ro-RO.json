@@ -51,7 +51,8 @@
     "slider": {
       "of": "din",
       "next_slide": "Glisare la dreapta",
-      "previous_slide": "Glisare la stânga"
+      "previous_slide": "Glisare la stânga",
+      "name": "Glisor"
     }
   },
   "newsletter": {
@@ -74,7 +75,8 @@
     "skip_to_product_info": "Salt la informațiile despre produs",
     "total_reviews": "total recenzii",
     "star_reviews_info": "{{ rating_value }} din {{ rating_max }} stele",
-    "collapsible_content_title": "Conținut care poate fi restrâns"
+    "collapsible_content_title": "Conținut care poate fi restrâns",
+    "complementary_products": "Produse complementare"
   },
   "blogs": {
     "article": {
@@ -147,7 +149,11 @@
       },
       "view_full_details": "Vedeți detaliile complete",
       "include_taxes": "Taxe incluse.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Taxele de expediere</a> sunt calculate la finalizarea comenzii."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Taxele de expediere</a> sunt calculate la finalizarea comenzii.",
+      "choose_options": "Alege opțiunile",
+      "choose_product_options": "Alege opțiunile pentru {{ product_name }}",
+      "value_unavailable": "{{ option_value }} [indisponibil]",
+      "variant_sold_out_or_unavailable": "Varianta are stocul epuizat sau este indisponibilă"
     },
     "modal": {
       "label": "Galerie media"
@@ -155,7 +161,7 @@
     "facets": {
       "apply": "Aplică",
       "clear": "Golește",
-      "clear_all": "Golește tot",
+      "clear_all": "Elimină tot",
       "from": "De la",
       "filter_and_sort": "Filtrează și sortează",
       "filter_by_label": "Filtrează:",
@@ -180,7 +186,10 @@
         "other": "{{ count }} produse",
         "few": "{{ count }} produse"
       },
-      "clear_filter": "Elimină filtrul"
+      "clear_filter": "Elimină filtrul",
+      "filter_selected_accessibility": "{{ type }} ({{ count }} filtre selectate)",
+      "show_more": "Afișează mai mult",
+      "show_less": "Afișează mai puțin"
     }
   },
   "templates": {
@@ -212,7 +221,8 @@
         "comment": "Comentariu",
         "send": "Trimiteți",
         "post_success": "Vă mulțumim că ne-ați contactat. Vom lua legătura cu dvs. cât mai curând posibil.",
-        "error_heading": "Vă rugăm să ajustați următoarele:"
+        "error_heading": "Vă rugăm să ajustați următoarele:",
+        "title": "Formular de contact"
       }
     },
     "404": {
@@ -250,7 +260,8 @@
         "product": "Produs",
         "price": "Preț",
         "total": "Total",
-        "quantity": "Cantitate"
+        "quantity": "Cantitate",
+        "image": "Imagine produs"
       },
       "login": {
         "title": "Ai un cont?",
@@ -275,7 +286,7 @@
     "collection_template": {
       "title": "Colecție",
       "empty": "Nu s-au găsit produse",
-      "use_fewer_filters_html": "Utilizați mai puține filtre sau <a class=\"{{ class }}\" href=\"{{ link }}\">goliți tot</a>"
+      "use_fewer_filters_html": "Folosește mai puține filtre sau <a class=\"{{ class }}\" href=\"{{ link }}\">elimină-le pe toate</a>"
     },
     "video": {
       "load_video": "Încarcă clipul video: {{ description }}"
@@ -377,7 +388,7 @@
     },
     "reset_password": {
       "title": "Resetați parola contului",
-      "subtext": "Introduceți o nouă parolă pentru {{ email }}",
+      "subtext": "Introdu o parolă nouă",
       "password": "Parolă",
       "password_confirm": "Confirmați parola",
       "submit": "Resetați parola"
