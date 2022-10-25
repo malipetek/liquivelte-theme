@@ -77,12 +77,6 @@
       "name": "アイコン",
       "settings": {
         "accent_icons": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
           "options__3": {
             "label": "アウトラインボタン"
           },
@@ -238,24 +232,6 @@
             "label": "右"
           },
           "label": "テキストアラインメント"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          },
-          "label": "配色"
         }
       }
     },
@@ -372,24 +348,6 @@
           "settings": {
             "text": {
               "label": "テキスト"
-            },
-            "color_scheme": {
-              "label": "配色",
-              "options__1": {
-                "label": "背景1"
-              },
-              "options__2": {
-                "label": "背景2"
-              },
-              "options__3": {
-                "label": "反転"
-              },
-              "options__4": {
-                "label": "アクセント1"
-              },
-              "options__5": {
-                "label": "アクセント2"
-              }
             },
             "link": {
               "label": "リンク"
@@ -604,10 +562,7 @@
           "label": "表示する最大の商品"
         },
         "show_view_all": {
-          "label": "コレクションに表示されているよりも多くの商品がある場合、「すべてを表示」ボタンを有効にします"
-        },
-        "swipe_on_mobile": {
-          "label": "モバイルでスワイプを有効にする"
+          "label": "コレクションに表示されているよりも多くの商品がある場合、「すべてを表示」を有効にします"
         },
         "header": {
           "content": "商品カード"
@@ -637,6 +592,42 @@
         "columns_desktop": {
           "label": "デスクトップの列数"
         },
+        "description": {
+          "label": "説明"
+        },
+        "show_description": {
+          "label": "管理画面からコレクションの説明を表示する"
+        },
+        "description_style": {
+          "label": "説明のスタイル",
+          "options__1": {
+            "label": "本文"
+          },
+          "options__2": {
+            "label": "サブタイトル"
+          },
+          "options__3": {
+            "label": "大文字"
+          }
+        },
+        "view_all_style": {
+          "options__1": {
+            "label": "リンク"
+          },
+          "options__2": {
+            "label": "アウトラインボタン"
+          },
+          "options__3": {
+            "label": "ソリッドカラーのボタン"
+          },
+          "label": "「すべてを表示」のスタイル"
+        },
+        "enable_desktop_slider": {
+          "label": "デスクトップでカルーセルを有効にする"
+        },
+        "full_width": {
+          "label": "商品を全幅にする"
+        },
         "header_mobile": {
           "content": "モバイルのレイアウト"
         },
@@ -648,6 +639,9 @@
           "options__2": {
             "label": "2列"
           }
+        },
+        "enable_mobile_slider": {
+          "label": "モバイルでスワイプを有効にする"
         }
       },
       "presets": {
@@ -683,24 +677,6 @@
         }
       },
       "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          },
-          "label": "配色"
-        },
         "newsletter_enable": {
           "label": "メール登録を表示する"
         },
@@ -780,26 +756,18 @@
           "label": "常時表示のヘッダーを有効にする",
           "info": "お客様が上にスクロールするとヘッダーが画面に表示されます。"
         },
-        "color_scheme": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          },
-          "label": "配色"
-        },
         "margin_bottom": {
           "label": "下マージン"
+        },
+        "menu_type_desktop": {
+          "label": "デスクトップのメニュータイプ",
+          "info": "メニュータイプはモバイル用に自動で最適化されます。",
+          "options__1": {
+            "label": "ドロップダウン"
+          },
+          "options__2": {
+            "label": "メガメニュー"
+          }
         }
       }
     },
@@ -813,22 +781,6 @@
           "label": "2番目の画像"
         },
         "color_scheme": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          },
-          "label": "配色",
           "info": "コンテナが表示された時に表示。"
         },
         "stack_images_on_mobile": {
@@ -994,24 +946,6 @@
             "label": "大"
           },
           "label": "画像の高さ"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "背景1"
-          },
-          "options__2": {
-            "label": "背景2"
-          },
-          "options__3": {
-            "label": "反転"
-          },
-          "options__4": {
-            "label": "アクセント1"
-          },
-          "options__5": {
-            "label": "アクセント2"
-          },
-          "label": "配色"
         },
         "layout": {
           "options__1": {
@@ -1397,6 +1331,21 @@
             "label": "正方形"
           },
           "info": "コレクションを編集して画像を追加します。[詳しくはこちら](https://help.shopify.com/en/manual/products/collections)"
+        },
+        "columns_desktop": {
+          "label": "デスクトップでの列数"
+        },
+        "header_mobile": {
+          "content": "モバイルのレイアウト"
+        },
+        "columns_mobile": {
+          "label": "モバイルでの列数",
+          "options__1": {
+            "label": "1列"
+          },
+          "options__2": {
+            "label": "2列"
+          }
         }
       }
     },
@@ -1404,27 +1353,7 @@
       "name": "ページ"
     },
     "main-password-footer": {
-      "name": "パスワードフッター",
-      "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          },
-          "label": "配色"
-        }
-      }
+      "name": "パスワードフッター"
     },
     "main-password-header": {
       "name": "パスワードヘッダー",
@@ -1435,24 +1364,6 @@
         "logo_max_width": {
           "label": "ロゴの幅をカスタマイズする",
           "unit": "ピクセル"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          },
-          "label": "配色"
         }
       }
     },
@@ -1919,24 +1830,6 @@
     "newsletter": {
       "name": "メール登録",
       "settings": {
-        "color_scheme": {
-          "label": "配色",
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          }
-        },
         "full_width": {
           "label": "セクションを全幅にする"
         },
@@ -2037,24 +1930,6 @@
     "rich-text": {
       "name": "リッチテキスト",
       "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          },
-          "label": "配色"
-        },
         "full_width": {
           "label": "セクションを全幅にする"
         }
@@ -2266,23 +2141,7 @@
           "label": "画像のオーバーレイ不透明率"
         },
         "color_scheme": {
-          "options__1": {
-            "label": "アクセント1"
-          },
-          "options__2": {
-            "label": "アクセント2"
-          },
-          "options__3": {
-            "label": "背景1"
-          },
-          "options__4": {
-            "label": "背景2"
-          },
-          "options__5": {
-            "label": "反転"
-          },
-          "label": "配色",
-          "info": "コンテナが表示された時に表示"
+          "info": "コンテナが表示されたタイミングで表示されます。"
         },
         "show_text_below": {
           "label": "モバイルで画像の下にコンテンツを表示",
@@ -2526,23 +2385,7 @@
               "label": "画像のオーバーレイ不透明率"
             },
             "color_scheme": {
-              "label": "配色",
-              "info": "コンテナが表示された時に表示。",
-              "options__1": {
-                "label": "アクセント1"
-              },
-              "options__2": {
-                "label": "アクセント2"
-              },
-              "options__3": {
-                "label": "背景1"
-              },
-              "options__4": {
-                "label": "背景2"
-              },
-              "options__5": {
-                "label": "反転"
-              }
+              "info": "コンテナが表示された時に表示。"
             },
             "text_alignment_mobile": {
               "label": "モバイルのコンテンツ配置",
@@ -2596,24 +2439,6 @@
             "label": "セクションのコンテナー"
           }
         },
-        "color_scheme": {
-          "label": "配色",
-          "options__1": {
-            "label": "背景1"
-          },
-          "options__2": {
-            "label": "背景2"
-          },
-          "options__3": {
-            "label": "反転"
-          },
-          "options__4": {
-            "label": "アクセント1"
-          },
-          "options__5": {
-            "label": "アクセント2"
-          }
-        },
         "open_first_collapsible_row": {
           "label": "最初の折りたたみ可能な行を開く"
         },
@@ -2647,21 +2472,6 @@
         },
         "container_color_scheme": {
           "label": "コンテナの配色",
-          "options__1": {
-            "label": "背景1"
-          },
-          "options__2": {
-            "label": "背景2"
-          },
-          "options__3": {
-            "label": "反転"
-          },
-          "options__4": {
-            "label": "アクセント1"
-          },
-          "options__5": {
-            "label": "アクセント2"
-          },
           "info": "レイアウトが行またはセクションのコンテナーに設定されている場合に表示されます。"
         }
       },

@@ -29,9 +29,34 @@
 
     {% render 'meta-tags' %}
 
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 <!-- liquivelte includes -->
-<!-- liquivelte includes end -->
+    {% assign templatesWithLiquivelte = 'index,product.alt,product' | split: ',' %}
+    {% assign template_with_suffix_and_directory = template %}
+    {% if template.directory %}
+      {% assign template_with_suffix_and_directory = template.directory | append: '-' | append: template_with_suffix_and_directory %}
+      {% endif %}
+      {% if template.suffix != blank %}
+      {% assign template_with_suffix_and_directory = template_with_suffix_and_directory | append: '.' | template.suffix %}
+    {% endif %}
+    {% if templatesWithLiquivelte contains template_with_suffix_and_directory %}
+      {% assign liquivelte_js_source = template_with_suffix_and_directory | append: '.liquivelte.js' %}
+      {% assign liquivelte_nm_js_source = template_with_suffix_and_directory | append: '.nm.liquivelte.js' %}
+      {% assign liquivelte_css_source = template_with_suffix_and_directory | append: '.liquivelte.css' %}
+      <script type="module" src="{{ liquivelte_js_source | asset_url }}" defer="defer"></script>
+      <link rel="stylesheet" rel="preload" as="style" href="{{ liquivelte_css_source | asset_url }}" />
+      {% endif %}
+      {% include 'liquivelte-criticals' with template: template_with_suffix_and_directory %}
+      
+      <script type="module" src="{{ 'theme.liquivelte.js' | asset_url }}" defer="defer"></script>
+      <link rel="stylesheet" rel="preload" as="style" href="{{ 'theme.liquivelte.css' | asset_url }}" />
+    
+    <script type="module" src="{{ 'liquivelte-sections-loader.js' | asset_url }}" defer="defer"></script>
+    <!-- liquivelte includes end -->
 
+    <script>
+      console.log('template_with_suffix_and_directory ', '{{ template_with_suffix_and_directory }}');
+    </script>
     {{ content_for_header }}
 
     {%- liquid
@@ -166,17 +191,15 @@
 
       html {
         box-sizing: border-box;
-        font-size: calc(var(--font-body-scale) * 62.5%);
+        /* font-size: calc(var(--font-body-scale) * 62.5%); */
+        font-size: 12px;
         height: 100%;
       }
 
       body {
-        display: grid;
-        grid-template-rows: auto auto 1fr auto;
-        grid-template-columns: 100%;
         min-height: 100%;
         margin: 0;
-        font-size: 1.5rem;
+        /* font-size: 1.5rem; */
         letter-spacing: 0.06rem;
         line-height: calc(1 + 0.8 / var(--font-body-scale));
         font-family: var(--font-body-family);
@@ -189,14 +212,32 @@
           font-size: 1.6rem;
         }
       }
+
+      .shopify-section {
+        height: max-content;
+      }
+
+      body.prevent-scrolling {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+      }
     {% endstyle %}
+
+    <link rel="stylesheet" rel="preload" as="style" href="{{ 'base.css' | asset_url }}" onload="this.onload=null;this.rel='stylesheet'">
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-    {%- endunless -%}
+      {%- endunless -%}
+      
+      {%- if settings.predictive_search_enabled -%}
+      <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
+      {%- endif -%}
+      
+      <link rel="preload" as="font" href="{{ 'Anton-Regular.ttf' | font_url }}" type="font/ttf" crossorigin>
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     if (Shopify.designMode) {
@@ -206,12 +247,15 @@
   </head>
 
   <body class="gradient">
+
+    {{ template }}
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
-    {% section 'announcement-bar' %}
     {% section 'header' %}
+
+    {% comment %} {% section 'announcement-bar' %} {% endcomment %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>

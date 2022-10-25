@@ -1,0 +1,106 @@
+
+  let liquivelteSections = new Map;
+    
+        liquivelteSections.set('collection-section', {
+          js: "{{ 'collection-section.liquivelte.js' | asset_url }}",
+          css: "{{ 'collection-section.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('exploding-gallery', {
+          js: "{{ 'exploding-gallery.liquivelte.js' | asset_url }}",
+          css: "{{ 'exploding-gallery.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('header', {
+          js: "{{ 'header.liquivelte.js' | asset_url }}",
+          css: "{{ 'header.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('liquivelte-product', {
+          js: "{{ 'liquivelte-product.liquivelte.js' | asset_url }}",
+          css: "{{ 'liquivelte-product.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('main-cart', {
+          js: "{{ 'main-cart.liquivelte.js' | asset_url }}",
+          css: "{{ 'main-cart.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('main-product', {
+          js: "{{ 'main-product.liquivelte.js' | asset_url }}",
+          css: "{{ 'main-product.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('product-comparison', {
+          js: "{{ 'product-comparison.liquivelte.js' | asset_url }}",
+          css: "{{ 'product-comparison.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('scroll-animation', {
+          js: "{{ 'scroll-animation.liquivelte.js' | asset_url }}",
+          css: "{{ 'scroll-animation.liquivelte.css' | asset_url }}"
+        });
+        
+    window.liquivelteSections = liquivelteSections;
+    
+    window.loadLiquivelteSection = async (sectionName, wrapper) => {
+      if(liquivelteSections.has(sectionName)) {
+        const entry = liquivelteSections.get(sectionName);
+        const liquivelteComponent = await import(entry.js);
+        
+        let svelteProps = wrapper.svelteProps;
+        let rawIncludes = wrapper.rawIncludes;
+        let liquid_expression_cache = wrapper.liquid_expression_cache;
+
+        const cssFile = document.createElement('link');
+        cssFile.rel = 'stylesheet';
+        cssFile.href = entry.css;
+        document.head.appendChild(cssFile); 
+        
+        wrapper.svelteComponent = new liquivelteComponent.default({
+          target: wrapper,
+          hydrate: true,
+          props: {
+              ...svelteProps,
+              ...rawIncludes,
+              lec: liquid_expression_cache
+          }
+        });
+        
+      }
+    }
+
+    document.addEventListener('shopify:section:load', e => {
+      let liquivelteWrapper = e.srcElement.querySelector('.liquivelte-component');
+      if(liquivelteWrapper) {
+
+        [...liquivelteWrapper.querySelectorAll('script[liquivelte-keep]')].forEach(sc => {
+          eval(sc.textContent);
+        });
+        let sectionName = liquivelteWrapper.getAttribute('data-liquivelte-component-name');
+        [...liquivelteWrapper.querySelectorAll('script.liquivelte-prop-script')].forEach(propScript => {
+          window.propScriptForDesignMode = propScript;
+          eval(window.propScriptForDesignMode.innerText);
+        });
+        window.loadLiquivelteSection(sectionName, liquivelteWrapper);
+      }
+    });
+    document.addEventListener('shopify:section:unload', e => {
+      console.log('section unload', e);
+      let liquivelteWrapper = e.srcElement.querySelector('.liquivelte-component');
+      if(liquivelteWrapper && liquivelteWrapper.svelteComponent && liquivelteWrapper.svelteComponent.$destroy) {
+        liquivelteWrapper.svelteComponent.$destroy();
+      }
+    });
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        [...document.querySelectorAll('.liquivelte-component')].filter(el => !el.module_loaded).forEach(liquivelteWrapper => {
+          if(liquivelteWrapper) {
+            let sectionName = liquivelteWrapper.getAttribute('data-liquivelte-component-name');
+            console.log('liquivelte section "' + sectionName + '" is loaded but is not bundled, run build process with up to date json template data on your local.');
+            window.loadLiquivelteSection(sectionName, liquivelteWrapper);
+          }
+        });
+      }, 1000);
+    });

@@ -1,0 +1,115 @@
+
+	{%- liquid
+	assign props_arr = props | split: '-prsp-'
+	for prop in props_arr
+	assign propName = prop | split: '-kvsp-' | first
+	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
+	if propValue contains '{' and propValue contains '}'
+	assign propValue = propValue | remove: '{' | remove: '}'
+	assign propValueArr = propValue | split: ','
+	for entry in propValueArr
+	assign key = entry | split: ':' | first | strip | remove: '"'
+	assign value = entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = propName | append: '_' | append: key
+	
+	endfor
+	endif
+	endfor
+	-%}
+	{%- unless sub_include -%} 
+	<div class="liquivelte-component reviews" data-liquivelte-component-name="reviews.liquivelte">
+	{%- endunless -%}
+	{% liquid 
+  assign review_stars = '12345' | split: ''
+  assign score = 3
+  assign reviews_count = 113
+%}
+
+<!-- Reviews -->
+ <div class="mt-6">
+  <h3 class="sr-only">Reviews</h3>
+  <div class="flex items-center">
+    <div class="flex items-center">
+      <!--
+        Heroicon name: solid/star
+
+        Active: "text-gray-900", Default: "text-gray-200"
+      -->
+      {% for star in review_stars %}
+    {% assign index = forloop.index0 %}
+        {% if score < forloop.index %}
+        <!-- Heroicon name: solid/star -->
+        <svg class="text-gray-200 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+        {% else %}
+        <svg class="text-gray-900 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <p class="sr-only">4 out of 5 stars</p>
+    <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">{{ reviews_count }} reviews</a> 
+  </div>
+</div> 
+
+
+	
+						
+						
+	<script type="text/noscript" class="instance-data">{
+	"review_stars" : {{ review_stars | json }} , "score" : {{ score | json }} , "reviews_count" : {{ reviews_count | json }} 
+	
+	
+
+	}</script>
+	
+	<script class="liquivelte-prop-script">(() => {
+	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
+	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
+	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}
+	function htmlDecode(input) {
+	var doc = new DOMParser().parseFromString(input, "text/html");
+	return doc.documentElement.textContent;
+	}
+	function componentWrapper(el) {
+	if(el.classList.contains('liquivelte-component')) {
+	return el;
+	} else {
+	return componentWrapper(el.parentElement);
+	}
+	}
+	var wrapper = componentWrapper(propScript.parentElement);
+	// console.log('wrapper', wrapper);
+	// console.log('parsing props for svelte component');
+	try{
+	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+	} catch (e) {
+	const err = 'There was an error';
+	console.error('there was an error parsing props json', e);
+	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
+	}
+	
+	
+
+	// liquid expression cache
+	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
+	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
+	args = args.split(', ');
+	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
+	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
+	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);
+	});
+
+	if(propScript){
+	propScript.remove();
+	}
+	if(propScript.previousElementSibling) {
+	propScript.previousElementSibling.remove();
+	}
+	})();</script>
+	{%- unless sub_include -%} 
+	</div>
+	{%- endunless -%}
+	

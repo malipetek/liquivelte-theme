@@ -77,12 +77,6 @@
       "name": "Ikony",
       "settings": {
         "accent_icons": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
           "options__3": {
             "label": "Tlačítko s obrysem"
           },
@@ -238,24 +232,6 @@
             "label": "Doprava"
           },
           "label": "Zarovnání textu"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverze"
-          },
-          "label": "Barevné schéma"
         }
       }
     },
@@ -373,24 +349,6 @@
           "settings": {
             "text": {
               "label": "Text"
-            },
-            "color_scheme": {
-              "label": "Barevné schéma",
-              "options__1": {
-                "label": "Pozadí 1"
-              },
-              "options__2": {
-                "label": "Pozadí 2"
-              },
-              "options__3": {
-                "label": "Inverze"
-              },
-              "options__4": {
-                "label": "Zvýraznění 1"
-              },
-              "options__5": {
-                "label": "Zvýraznění 2"
-              }
             },
             "link": {
               "label": "Odkaz"
@@ -604,10 +562,7 @@
           "label": "Maximální počet zobrazovaných produktů"
         },
         "show_view_all": {
-          "label": "Povolit tlačítko Zobrazit vše v případě, že kolekce obsahuje více produktů, než kolik se zobrazuje"
-        },
-        "swipe_on_mobile": {
-          "label": "Povolit potažení prstem na mobilním zařízení"
+          "label": "Povolit možnost Zobrazit vše v případě, že kolekce obsahuje více produktů, než kolik se jich zobrazuje"
         },
         "header": {
           "content": "Karta produktu"
@@ -637,6 +592,42 @@
         "columns_desktop": {
           "label": "Počet sloupců na počítači"
         },
+        "description": {
+          "label": "Popis"
+        },
+        "show_description": {
+          "label": "Zobrazit popis kolekce z administrátorského rozhraní"
+        },
+        "description_style": {
+          "label": "Styl popisu",
+          "options__1": {
+            "label": "Hlavní část"
+          },
+          "options__2": {
+            "label": "Podtitul"
+          },
+          "options__3": {
+            "label": "Velká písmena"
+          }
+        },
+        "view_all_style": {
+          "label": "Zobrazit vše – styl",
+          "options__1": {
+            "label": "Odkaz"
+          },
+          "options__2": {
+            "label": "Tlačítko s obrysem"
+          },
+          "options__3": {
+            "label": "Tlačítko v jednolité barvě"
+          }
+        },
+        "enable_desktop_slider": {
+          "label": "Povolit karusel na desktopovém zařízení"
+        },
+        "full_width": {
+          "label": "Nastavit plnou šířku produktů"
+        },
         "header_mobile": {
           "content": "Mobilní rozvržení"
         },
@@ -648,6 +639,9 @@
           "options__2": {
             "label": "2 sloupce"
           }
+        },
+        "enable_mobile_slider": {
+          "label": "Povolit potažení prstem na mobilním zařízení"
         }
       },
       "presets": {
@@ -683,24 +677,6 @@
         }
       },
       "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverze"
-          },
-          "label": "Barevné schéma"
-        },
         "newsletter_enable": {
           "label": "Zobrazit přihlášení k odběru e-mailů"
         },
@@ -780,26 +756,18 @@
           "label": "Zobrazit plovoucí záhlaví",
           "info": "Záhlaví zůstane zobrazené na obrazovce, přestože zákazníci skrolují dál."
         },
-        "color_scheme": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverze"
-          },
-          "label": "Barevné schéma"
-        },
         "margin_bottom": {
           "label": "Dolní okraj"
+        },
+        "menu_type_desktop": {
+          "label": "Typ desktopové nabídky",
+          "info": "Typ nabídky se automaticky optimalizuje pro mobilní prostředí.",
+          "options__1": {
+            "label": "Rozevírací nabídka"
+          },
+          "options__2": {
+            "label": "Mega nabídka"
+          }
         }
       }
     },
@@ -813,22 +781,6 @@
           "label": "Druhý obrázek"
         },
         "color_scheme": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverze"
-          },
-          "label": "Barevné schéma",
           "info": "Zobrazuje se v případě, že se zobrazuje kontejner."
         },
         "stack_images_on_mobile": {
@@ -994,24 +946,6 @@
             "label": "Velká"
           },
           "label": "Výška obrázku"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Pozadí 1"
-          },
-          "options__2": {
-            "label": "Pozadí 2"
-          },
-          "options__3": {
-            "label": "Inverze"
-          },
-          "options__4": {
-            "label": "Zvýraznění 1"
-          },
-          "options__5": {
-            "label": "Zvýraznění 2"
-          },
-          "label": "Barevné schéma"
         },
         "layout": {
           "options__1": {
@@ -1397,6 +1331,21 @@
           "options__3": {
             "label": "Čtverec"
           }
+        },
+        "columns_desktop": {
+          "label": "Počet sloupců v počítači"
+        },
+        "header_mobile": {
+          "content": "Mobilní rozvržení"
+        },
+        "columns_mobile": {
+          "label": "Počet sloupců v mobilním zařízení",
+          "options__1": {
+            "label": "1 sloupec"
+          },
+          "options__2": {
+            "label": "2 sloupce"
+          }
         }
       }
     },
@@ -1404,27 +1353,7 @@
       "name": "Stránka"
     },
     "main-password-footer": {
-      "name": "Zápatí hesla",
-      "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverze"
-          },
-          "label": "Barevné schéma"
-        }
-      }
+      "name": "Zápatí hesla"
     },
     "main-password-header": {
       "name": "Záhlaví hesla",
@@ -1435,24 +1364,6 @@
         "logo_max_width": {
           "label": "Šířka vlastního loga",
           "unit": "px"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverze"
-          },
-          "label": "Barevné schéma"
         }
       }
     },
@@ -1919,24 +1830,6 @@
     "newsletter": {
       "name": "Přihlášení k odběru e-mailů",
       "settings": {
-        "color_scheme": {
-          "label": "Barevné schéma",
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverze"
-          }
-        },
         "full_width": {
           "label": "Nastavit plnou šířku sekce"
         },
@@ -2037,24 +1930,6 @@
     "rich-text": {
       "name": "Formát RTF",
       "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverze"
-          },
-          "label": "Barevné schéma"
-        },
         "full_width": {
           "label": "Nastavit plnou šířku sekce"
         }
@@ -2266,22 +2141,6 @@
           "label": "Neprůhlednost překryvu obrázku"
         },
         "color_scheme": {
-          "options__1": {
-            "label": "Zvýraznění 1"
-          },
-          "options__2": {
-            "label": "Zvýraznění 2"
-          },
-          "options__3": {
-            "label": "Pozadí 1"
-          },
-          "options__4": {
-            "label": "Pozadí 2"
-          },
-          "options__5": {
-            "label": "Inverzní"
-          },
-          "label": "Barevné schéma",
           "info": "Zobrazuje se v případě, že se zobrazuje kontejner."
         },
         "show_text_below": {
@@ -2526,23 +2385,7 @@
               "label": "Neprůhlednost překryvu obrázku"
             },
             "color_scheme": {
-              "info": "Zobrazuje se v případě, že se zobrazuje kontejner.",
-              "options__1": {
-                "label": "Zvýraznění 1"
-              },
-              "options__2": {
-                "label": "Zvýraznění 2"
-              },
-              "options__3": {
-                "label": "Pozadí 1"
-              },
-              "options__4": {
-                "label": "Pozadí 2"
-              },
-              "options__5": {
-                "label": "Inverze"
-              },
-              "label": "Barevné schéma"
+              "info": "Zobrazuje se v případě, že se zobrazuje kontejner."
             },
             "text_alignment_mobile": {
               "label": "Zarovnání obsahu v mobilním prostředí",
@@ -2596,24 +2439,6 @@
             "label": "Kontejner sekcí"
           }
         },
-        "color_scheme": {
-          "label": "Barevné schéma",
-          "options__1": {
-            "label": "Pozadí 1"
-          },
-          "options__2": {
-            "label": "Pozadí 2"
-          },
-          "options__3": {
-            "label": "Inverze"
-          },
-          "options__4": {
-            "label": "Zvýraznění 1"
-          },
-          "options__5": {
-            "label": "Zvýraznění 2"
-          }
-        },
         "open_first_collapsible_row": {
           "label": "Otevřít první sbalitelný řádek"
         },
@@ -2647,21 +2472,6 @@
         },
         "container_color_scheme": {
           "label": "Barevné schéma kontejneru",
-          "options__1": {
-            "label": "Pozadí 1"
-          },
-          "options__2": {
-            "label": "Pozadí 2"
-          },
-          "options__3": {
-            "label": "Inverze"
-          },
-          "options__4": {
-            "label": "Zvýraznění 1"
-          },
-          "options__5": {
-            "label": "Zvýraznění 2"
-          },
           "info": "Zobrazí se v případě, že je rozvržení nastaveno na kontejner řádků nebo sekcí."
         }
       },

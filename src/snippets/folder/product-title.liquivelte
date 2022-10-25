@@ -1,0 +1,13 @@
+<script> 
+let product = {};
+import product.title from 'theme';
+import H1Comp from './H1Comp.liquivelte';
+
+export let title;
+</script>
+<H1Comp> </H1Comp>
+<h1> {% if title %} {{- title -}} 
+  {% else %}
+  {{- product.title -}}
+  {% endif %}
+ </h1>

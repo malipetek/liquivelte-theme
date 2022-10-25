@@ -1,0 +1,313 @@
+
+	{%- liquid
+	assign props_arr = props | split: '-prsp-'
+	for prop in props_arr
+	assign propName = prop | split: '-kvsp-' | first
+	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
+	if propValue contains '{' and propValue contains '}'
+	assign propValue = propValue | remove: '{' | remove: '}'
+	assign propValueArr = propValue | split: ','
+	for entry in propValueArr
+	assign key = entry | split: ':' | first | strip | remove: '"'
+	assign value = entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = propName | append: '_' | append: key
+	
+	endfor
+	endif
+	endfor
+	-%}
+	{%- unless sub_include -%} 
+	<div  class="liquivelte-component main-cart svelte-12bz6n7" data-liquivelte-component-name="main-cart.liquivelte">
+	{%- endunless -%}
+	{% liquid 
+  assign cart_action = 'Open'
+
+	assign min_amounts = '{'
+	for item in cart.items
+		assign min_amount = item.product.metafields.custom['min-amount'] | default: 0
+		assign min_amounts = min_amounts | append: '"' | append: item.id | append: '":' | append: min_amount
+		unless forloop.last
+			assign min_amounts = min_amounts | append: ','
+		endunless
+	endfor
+	assign min_amounts = min_amounts | append: '}'
+
+	assign loading = false
+%}
+
+
+<button on:click="{toggleCart}"> {{ cart_action }} Cart </button>
+
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if cartOpen != true
+	assign dynamic_classes = dynamic_classes | append: ' hidden'
+	endif
+	-%}
+	<div cart-drawer-backdrop  class="w-full h-full inset-0 fixed z-9{{ dynamic_classes }} svelte-12bz6n7"
+ 
+	on:click="{closeCart}"></div>
+ 
+
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if cartOpen
+	assign dynamic_classes = dynamic_classes | append: ' right-0'
+	endif
+	-%}
+	<div id="cart-drawer" 
+		 class="block fixed top-0 bg-white p-16 h-full z-10 -right-full transition-all duration-300 max-w-full{{ dynamic_classes }} svelte-12bz6n7"
+		use:swipe 
+		on:swipe="{handleSwipe}"
+		on:swipeStart="{handleSwipeStart}"
+		on:swipeEnd="{handleSwipeEnd}"
+		style="transform: translateX({$swipeLeft}px)"
+		transition:fly="{ { x: 440 } }" 
+		bind:this="{drawerNode}"
+		bind:clientWidth="{drawerWidth}">	
+	<!-- <div  class="right-0 svelte-12bz6n7"> </div> -->
+	
+	<input type="text" hidden name="checkout" value="Checkout" />
+	<div  class="cart-drawer-inner svelte-12bz6n7">
+	<div  class="cart-drawer-inner-up svelte-12bz6n7"> 
+		<div  class="cart-drawer-title text-gray f-14 uppercase svelte-12bz6n7"> 
+			<span> Shopping Cart </span>
+			<span  class="float-right close pointer svelte-12bz6n7" on:click="{closeCart}"> </span>
+		</div>
+		<div  class="spacer svelte-12bz6n7"></div> 
+			<div  class="cart-drawer-items svelte-12bz6n7"> 
+				{% for item in cart.items %}
+    {% assign index = forloop.index0 %}
+					<div data-id="{{ item.id }}"  class="cart-item w-full flex mb-10 svelte-12bz6n7" transition:scale="{ { duration: 300, easing: quintInOut } }">
+						<img src="{{ item.image | img_url: '120x' }}" liquivelte-value-cache="img_url§{{item.image}}, {{'120x'}}§{{item.image| img_url: '120x'  }}" alt="cart item product image"  class="flex-grow-0 mr-2 w-32 svelte-12bz6n7" />
+						<div  class="cart-item-content svelte-12bz6n7">
+							<div  class="cart-item-content__up svelte-12bz6n7"> 
+								<span  class="cart-item-title text-lg svelte-12bz6n7"> {{ item.product_title }} </span>
+								<div  class="cart-item-options svelte-12bz6n7">
+									{% for option in item.variant_options %}
+    {% assign index = forloop.index0 %}
+									<span  class="text-gray-500 text-base line-item-option svelte-12bz6n7"> {{ option }} </span> <br>
+									{% endfor %}
+								</div>
+							</div>
+							
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}bind:loading-kvsp-{% endcapture %}
+
+{% capture slot_content_Loadable %} 
+								
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props %}minimum-kvsp-{min_amounts_data[item.id]}-prsp-quantity-kvsp-{item.quantity}-prsp-on:qtychange-kvsp-{quantityChange.bind(item)}{% endcapture %}
+{% include 'liquivelte', module: 'quantity-box', props: props, sub_include: true %}
+{% assign props = '' %} 
+							{% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_Loadable %}
+
+{% include 'liquivelte', module: 'loadable', props: props, sub_include: true %}
+{% assign props = '' %}
+						</div>
+						<div  class="cart-item-right svelte-12bz6n7">
+							
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}bind:loading-kvsp-{% endcapture %}
+
+{% capture slot_content_Loadable %} 
+								<div  class="pointer svelte-12bz6n7" on:click="{() _afeq__afct_ updateLineItem(item.id, 0) }"> 
+    {%- capture rawinclude -%}{% include 'icon-garbage' with color: '#a6a6a6' %}{%- endcapture -%}
+  <script liquivelte-keep liquivelte-eval>
+  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
+  window.liquivelte_rawincludes['rawinclude_2753db78'] = [...(window.liquivelte_rawincludes['rawinclude_2753db78'] || []),`{{ rawinclude | escape | strip_newlines }}`];
+  if(document.currentScript){
+    document.currentScript.remove();
+  }</script>
+  {%- assign rawinclude = '' -%} </div>
+							{% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_Loadable %}
+
+{% include 'liquivelte', module: 'loadable', props: props, sub_include: true %}
+{% assign props = '' %}
+							<div  class="cart-item-price text-black text-xl svelte-12bz6n7"> {{ item.price | money }} </div>
+						</div> 
+					</div>
+				{% endfor %}
+			</div>
+				<div  class="cart-drawer-bottom svelte-12bz6n7">
+					<div  class="cart-drawer-subtotal svelte-12bz6n7">
+						<span  class="text-gray text-base float-left svelte-12bz6n7" data-t="{{ 'general.cart.subtotal' | t }}" liquivelte-value-cache="t§{{'general.cart.subtotal'}}§{{'general.cart.subtotal'| t  }}"> {{ 'general.cart.subtotal' | t }} </span> 
+						<span cart-drawer-subtotal-text  class="float-right text-black text-lg  svelte-12bz6n7">{{ cart.items_subtotal_price | money }}</span>
+					</div>
+					<div  class="cart-drawer-taxes-notice text-base text-black float-left svelte-12bz6n7"> Taxes and shipping calculated at checkout </div>
+					<button on:click="{() _afeq__afct_ submit() }"  class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-12bz6n7">
+						 Checkout 
+					</button>
+					<a  class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-12bz6n7" href="/cart"> View Cart </a>
+				</div>
+				<div>
+					Loading {{ loading }}
+						<button  class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-12bz6n7" type="button" on:click="{() _afeq__afct_ loading = !loading}"> Toggle </button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+{% schema %}{
+  "name": "main-cart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "titlee",
+      "label": "Title",
+      "default": "Collections"
+    }
+  ]
+}{% endschema %}
+	
+	{%- liquid 
+  assign cart_json = '{'
+  assign cart_json = cart_json | append: '"attributes":'
+  assign cart_attributes_json = cart.attributes | json
+  assign cart_json = cart_json | append: cart_attributes_json
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"cart_level_discount_applications":'
+  assign cart_level_discount_applications_json = cart.cart_level_discount_applications | json
+  assign cart_json = cart_json | append: cart_level_discount_applications_json
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"currency":'
+  assign cart_json = cart_json | append: '"' | append: cart.currency | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"item_count":'
+  assign cart_json = cart_json | append: '"' | append: cart.item_count | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"items_subtotal_price":'
+  assign cart_json = cart_json | append: '"' | append: cart.items_subtotal_price | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"note":'
+  assign cart_json = cart_json | append: '"' | append: cart.note | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"original_total_price":'
+  assign cart_json = cart_json | append: '"' | append: cart.original_total_price | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"requires_shipping":'
+  assign cart_json = cart_json | append: '"' | append: cart.requires_shipping | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"total_discount":'
+  assign cart_json = cart_json | append: '"' | append: cart.total_discount | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"total_price":'
+  assign cart_json = cart_json | append: '"' | append: cart.total_price | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"total_weight":'
+  assign cart_json = cart_json | append: '"' | append: cart.total_weight | append: '"'
+  assign cart_json = cart_json | append: ','
+  assign cart_json = cart_json | append: '"items": ['
+  for item in cart.items
+    assign item_json = item | json
+    assign item_json = item_json | remove_last: '}'
+    assign item_json = item_json | append: ',"product":'
+    assign product_json = item.product | json
+    assign item_json = item_json | append: product_json
+    assign item_json = item_json | append: '}'
+
+    assign cart_json = cart_json | append: item_json
+    unless forloop.last
+      assign cart_json = cart_json | append: ','
+    endunless
+  endfor
+  assign cart_json = cart_json | append: ']'
+
+  assign cart_json = cart_json | append: '}' 
+-%}					
+						
+	<script type="text/noscript"  class="instance-data svelte-12bz6n7">{
+	"inputWidth" : {{ inputWidth | json }} , "cart": {{ cart_json }}, "min_amounts" : {{ min_amounts | json }} 
+	
+	
+
+	}</script>
+	
+	<script  class="liquivelte-prop-script svelte-12bz6n7">(() => {
+	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
+	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
+	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}
+	function htmlDecode(input) {
+	var doc = new DOMParser().parseFromString(input, "text/html");
+	return doc.documentElement.textContent;
+	}
+	function componentWrapper(el) {
+	if(el.classList.contains('liquivelte-component')) {
+	return el;
+	} else {
+	return componentWrapper(el.parentElement);
+	}
+	}
+	var wrapper = componentWrapper(propScript.parentElement);
+	// console.log('wrapper', wrapper);
+	// console.log('parsing props for svelte component');
+	try{
+	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+	} catch (e) {
+	const err = 'There was an error';
+	console.error('there was an error parsing props json', e);
+	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
+	}
+	
+	
+	try{
+	wrapper.svelteProps["rawinclude_dff1c036"] = [...(wrapper.svelteProps["rawinclude_dff1c036"] || []), ...window.liquivelte_rawincludes['rawinclude_dff1c036'].map(e => htmlDecode(e)) ];
+	} catch (e) {
+	const err = 'Could not grab liquid include, because it is not present in the liquid context please check for rawinclude_dff1c036 in the main-cart.liquivelte file.';
+	console.error(err);
+	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
+	}
+
+	;
+	try{
+	wrapper.svelteProps["rawinclude_2753db78"] = [...(wrapper.svelteProps["rawinclude_2753db78"] || []), ...window.liquivelte_rawincludes['rawinclude_2753db78'].map(e => htmlDecode(e)) ];
+	} catch (e) {
+	const err = 'Could not grab liquid include, because it is not present in the liquid context please check for rawinclude_2753db78 in the main-cart.liquivelte file.';
+	console.error(err);
+	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
+	}
+
+	
+
+	// liquid expression cache
+	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
+	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
+	args = args.split(', ');
+	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
+	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
+	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);
+	});
+
+	if(propScript){
+	propScript.remove();
+	}
+	if(propScript.previousElementSibling) {
+	propScript.previousElementSibling.remove();
+	}
+	})();</script>
+	{%- unless sub_include -%} 
+	</div>
+	{%- endunless -%}
+	

@@ -1,0 +1,64 @@
+
+  <script type="text/noscript"  class="instance-data 1h7o8xo">{
+    
+    
+    "product$title": {{ product.title | json }} , "product$id": {{ product.id | json }} , "template$prefix": {{ template.prefix | json }} 
+}</script>
+<div type="test"></div>
+{% liquid 
+  assign props_arr = props | split: '-prsp-'
+  for prop in props_arr
+    assign propName = prop | split: '-kvsp-' | first
+    assign propValue = prop | split: '-kvsp-' | last | remove: '"'
+    if propValue contains '{' and propValue contains '}'
+      assign propValue = propValue | remove: '{' | remove: '}'
+      assign propValueArr = propValue | split: ','
+      for entry in propValueArr
+        assign key = entry | split: ':' | first | strip | remove: '"'
+        assign value = entry | split: ':' | last | strip | remove: '"'
+        assign composite_key = propName | append: '_' | append: key
+      
+        
+        if composite_key == 'stats_showBadge'
+          assign stats_showBadge = value
+        endif  
+        
+        if composite_key == 'stats_a'
+          assign stats_a = value
+        endif  
+        
+        if composite_key == 'stats_b'
+          assign stats_b = value
+        endif  
+        
+        if composite_key == 'stats_c'
+          assign stats_c = value
+        endif  
+        
+      
+      endfor
+    endif
+    
+    if propName == 'showBadge'
+      assign showBadge = propValue
+    endif
+    if propName == 'text'
+      assign text = propValue
+    endif
+  endfor
+%}
+
+
+{% if showBadge %}
+  <div  class="badge 1h7o8xo"> {{- text -}} </div>
+{% endif %}
+
+{% if stats.showBadge %}
+  <div  class="badge 1h7o8xo">
+    props.shopbadge
+  </div>
+{% endif %}
+
+{% if children != blank %}
+  {{ children }}
+{% endif %}

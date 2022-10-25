@@ -1,0 +1,8 @@
+{% layout none %}
+{% liquid 
+  if customer
+    echo '{ "id": ' | append: customer.id | append: '}'
+  else 
+    echo '{ "logged": false }'
+  endif
+%}

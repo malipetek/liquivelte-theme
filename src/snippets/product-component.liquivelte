@@ -1,0 +1,29 @@
+<script lang="ts">
+  import product from 'theme/product';
+  import theme from 'theme';
+  import collection from 'theme';
+  import cart from 'theme/cart';
+  import MainProduct from './main-product.liquivelte'; 
+  
+</script>
+  {% if product.available %}
+    <div> asd </div>
+  {% endif %}
+  <div class:open="{1}" class="product-container">
+    <MainProduct visibility={ { title_visible: 'yes' } } >
+    </MainProduct>
+    <img class:responseive="{1}" src="{{- product.featured_image -}}" />
+    {{- product.title -}}
+    <div class="blue"> Blue </div>
+  </div>
+<style lang="scss">
+  .product-container {
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    
+    .blue {
+      color: blue;
+    }
+  }
+</style>

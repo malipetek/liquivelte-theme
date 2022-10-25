@@ -77,12 +77,6 @@
       "name": "Symbole",
       "settings": {
         "accent_icons": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
           "options__3": {
             "label": "Umriss-Schaltfläche"
           },
@@ -238,24 +232,6 @@
             "label": "Rechts"
           },
           "label": "Textausrichtung"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          },
-          "label": "Farbschema"
         }
       }
     },
@@ -373,24 +349,6 @@
           "settings": {
             "text": {
               "label": "Text"
-            },
-            "color_scheme": {
-              "label": "Farbschema",
-              "options__1": {
-                "label": "Hintergrund 1"
-              },
-              "options__2": {
-                "label": "Hintergrund 2"
-              },
-              "options__3": {
-                "label": "Invertiert"
-              },
-              "options__4": {
-                "label": "Akzent 1"
-              },
-              "options__5": {
-                "label": "Akzent 2"
-              }
             },
             "link": {
               "label": "Link"
@@ -604,10 +562,7 @@
           "label": "Maximal anzuzeigende Produkte"
         },
         "show_view_all": {
-          "label": "Aktiviere die Schaltfläche \"Alle anzeigen\", wenn die Kategorie mehr Produkte enthält, als angezeigt werden"
-        },
-        "swipe_on_mobile": {
-          "label": "Wischen auf Mobilgeräten aktivieren"
+          "label": "\"Alles anzeigen\" aktivieren, wenn die Kategorie mehr Produkte enthält, als angezeigt werden"
         },
         "header": {
           "content": "Produktkarte"
@@ -637,6 +592,42 @@
         "columns_desktop": {
           "label": "Anzahl der Spalten auf dem Desktop"
         },
+        "description": {
+          "label": "Beschreibung"
+        },
+        "show_description": {
+          "label": "Kategoriebeschreibung im Adminbereich anzeigen"
+        },
+        "description_style": {
+          "label": "Beschreibungsstil",
+          "options__1": {
+            "label": "Nachricht"
+          },
+          "options__2": {
+            "label": "Untertitel"
+          },
+          "options__3": {
+            "label": "Großbuchstaben"
+          }
+        },
+        "view_all_style": {
+          "options__1": {
+            "label": "Link"
+          },
+          "options__2": {
+            "label": "Umriss-Schaltfläche"
+          },
+          "options__3": {
+            "label": "Durchgehende Schaltfläche"
+          },
+          "label": "Stil \"Alles anzeigen\""
+        },
+        "enable_desktop_slider": {
+          "label": "Karussell auf Desktop aktivieren"
+        },
+        "full_width": {
+          "label": "Produkte auf gesamte Breite auslegen"
+        },
         "header_mobile": {
           "content": "Mobiles Layout"
         },
@@ -648,6 +639,9 @@
           "options__2": {
             "label": "2 Spalten"
           }
+        },
+        "enable_mobile_slider": {
+          "label": "Wischen auf Mobilgeräten aktivieren"
         }
       },
       "presets": {
@@ -683,24 +677,6 @@
         }
       },
       "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          },
-          "label": "Farbschema"
-        },
         "newsletter_enable": {
           "label": "E-Mail-Anmeldung anzeigen"
         },
@@ -780,26 +756,18 @@
           "label": "Fixierten Header aktivieren",
           "info": "Der Header wird auf dem Bildschirm angezeigt, wenn der Kunde nach oben scrollt."
         },
-        "color_scheme": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          },
-          "label": "Farbschema"
-        },
         "margin_bottom": {
           "label": "Unterer Rand"
+        },
+        "menu_type_desktop": {
+          "label": "Desktop-Menütyp",
+          "info": "Der Menütyp wird automatisch für die mobile Nutzung optimiert.",
+          "options__1": {
+            "label": "Dropdown"
+          },
+          "options__2": {
+            "label": "Mega-Menü"
+          }
         }
       }
     },
@@ -813,22 +781,6 @@
           "label": "Zweites Bild"
         },
         "color_scheme": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          },
-          "label": "Farbschema",
           "info": "Sichtbar, wenn Container angezeigt wird."
         },
         "stack_images_on_mobile": {
@@ -994,24 +946,6 @@
             "label": "Groß"
           },
           "label": "Bildhöhe"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Hintergrund 1"
-          },
-          "options__2": {
-            "label": "Hintergrund 2"
-          },
-          "options__3": {
-            "label": "Invertiert"
-          },
-          "options__4": {
-            "label": "Akzent 1"
-          },
-          "options__5": {
-            "label": "Akzent 2"
-          },
-          "label": "Farbschema"
         },
         "layout": {
           "options__1": {
@@ -1397,6 +1331,21 @@
             "label": "Quadratisch"
           },
           "info": "Bearbeite deine Kategorien, um Bilder hinzuzufügen. [Mehr Informationen](https://help.shopify.com/en/manual/products/collections)"
+        },
+        "columns_desktop": {
+          "label": "Anzahl der Spalten auf dem Desktop"
+        },
+        "header_mobile": {
+          "content": "Mobiles Layout"
+        },
+        "columns_mobile": {
+          "label": "Anzahl der Spalten auf mobilem Gerät",
+          "options__1": {
+            "label": "1 Spalte"
+          },
+          "options__2": {
+            "label": "2 Spalten"
+          }
         }
       }
     },
@@ -1404,27 +1353,7 @@
       "name": "Seite"
     },
     "main-password-footer": {
-      "name": "Passwort-Fußzeile",
-      "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          },
-          "label": "Farbschema"
-        }
-      }
+      "name": "Passwort-Fußzeile"
     },
     "main-password-header": {
       "name": "Passwort-Header",
@@ -1435,24 +1364,6 @@
         "logo_max_width": {
           "label": "Breite des benutzerdefinierten Logos",
           "unit": "Pixel"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          },
-          "label": "Farbschema"
         }
       }
     },
@@ -1919,24 +1830,6 @@
     "newsletter": {
       "name": "E-Mail-Anmeldung",
       "settings": {
-        "color_scheme": {
-          "label": "Farbschema",
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          }
-        },
         "full_width": {
           "label": "Abschnitt über die gesamte Breite"
         },
@@ -2037,24 +1930,6 @@
     "rich-text": {
       "name": "Rich Text",
       "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          },
-          "label": "Farbschema"
-        },
         "full_width": {
           "label": "Abschnitt über die gesamte Breite"
         }
@@ -2266,23 +2141,7 @@
           "label": "Deckkraft der Bildüberlagerung"
         },
         "color_scheme": {
-          "options__1": {
-            "label": "Akzent 1"
-          },
-          "options__2": {
-            "label": "Akzent 2"
-          },
-          "options__3": {
-            "label": "Hintergrund 1"
-          },
-          "options__4": {
-            "label": "Hintergrund 2"
-          },
-          "options__5": {
-            "label": "Invertiert"
-          },
-          "label": "Farbschema",
-          "info": "Sichtbar, wenn Container angezeigt wird"
+          "info": "Sichtbar, wenn Container angezeigt wird."
         },
         "show_text_below": {
           "label": "Auf Mobilgeräten Inhalt unterhalb der Bilder anzeigen",
@@ -2526,23 +2385,7 @@
               "label": "Deckkraft der Bildüberlagerung"
             },
             "color_scheme": {
-              "label": "Farbschema",
-              "info": "Sichtbar, wenn Container angezeigt wird.",
-              "options__1": {
-                "label": "Akzent 1"
-              },
-              "options__2": {
-                "label": "Akzent 2"
-              },
-              "options__3": {
-                "label": "Hintergrund 1"
-              },
-              "options__4": {
-                "label": "Hintergrund 2"
-              },
-              "options__5": {
-                "label": "Invertiert"
-              }
+              "info": "Sichtbar, wenn Container angezeigt wird."
             },
             "text_alignment_mobile": {
               "label": "Mobile Inhaltsausrichtung",
@@ -2596,24 +2439,6 @@
             "label": "Abschnittscontainer"
           }
         },
-        "color_scheme": {
-          "label": "Farbschema",
-          "options__1": {
-            "label": "Hintergrund 1"
-          },
-          "options__2": {
-            "label": "Hintergrund 2"
-          },
-          "options__3": {
-            "label": "Invertiert"
-          },
-          "options__4": {
-            "label": "Akzent 1"
-          },
-          "options__5": {
-            "label": "Akzent 2"
-          }
-        },
         "open_first_collapsible_row": {
           "label": "Erste einklappbare Reihe öffnen"
         },
@@ -2647,21 +2472,6 @@
         },
         "container_color_scheme": {
           "label": "Farbschema für Container",
-          "options__1": {
-            "label": "Hintergrund 1"
-          },
-          "options__2": {
-            "label": "Hintergrund 2"
-          },
-          "options__3": {
-            "label": "Invertiert"
-          },
-          "options__4": {
-            "label": "Akzent 1"
-          },
-          "options__5": {
-            "label": "Akzent 2"
-          },
           "info": "Wird angezeigt, wenn für das Layout Zeilen- oder Abschnitts-Container festgelegt wird."
         }
       },

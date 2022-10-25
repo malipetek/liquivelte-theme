@@ -1,0 +1,75 @@
+<script>
+  export let links;
+
+  console.log('links ', links);
+</script>
+<div class="hidden">
+  {% include 'icon-arrow' %}
+  {% include 'icon-caret' %}
+</div>
+<ul class="menu-drawer__menu has-submenu list-menu" role="list">
+  {% for lnk in links %}
+    <li>
+      {% if lnk.links %}
+      <details id="Details-menu-drawer-menu-item-{{- forloop.index -}}">
+        <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset" class:menu-drawer__menu-item--active="{{- lnk.child_active -}}" >
+          <svelte:self links="{lnk.links}" />  
+        </summary>
+      </details>
+      {% endif %}
+      <a href="{{- lnk.url -}}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset" class:menu-drawer__menu-item--active="{{- lnk.current -}}">
+        {{- lnk.title | escape -}}
+      </a>
+    </li>
+  {% endfor %}
+
+ <!-- <details id="Details-menu-drawer-menu-item-{{- forloop.index -}}">
+          <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset" class:menu-drawer__menu-item--active="{{- lnk.child_active -}}" >
+            {{- link.title | escape -}}
+            {% include 'icon-arrow' %}
+            {% include 'icon-caret' %}
+          </summary>
+          <div id="link-{{- lnk.handle | escape -}}" class="menu-drawer__submenu has-submenu gradient motion-reduce" tabindex="-1">
+            <div class="menu-drawer__inner-submenu">
+              <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                {% include 'icon-arrow' %}
+                {{- lnk.title | escape -}}
+              </button>
+              <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                {% for childlk in link.links %}
+                  <li>
+                    {% if childlink.links %}
+                      <a href="{{- childlink.url -}}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset" class:menu-drawer__menu-item--active="{{- childlink.current -}}" >
+                        {{- childlink.title | escape -}}
+                      </a>
+                    {% else %}
+                      <details id="Details-menu-drawer-submenu-{{- forloop.index -}}">
+                        <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
+                          {{- childlink.title | escape -}}
+                          {% include 'icon-arrow' %}
+                          {% include 'icon-caret' %}
+                        </summary>
+                        <div id="childlink-{{- childlink.handle | escape -}}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
+                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                            {% include 'icon-arrow' %}
+                            {{- childlink.title | escape -}}
+                          </button>
+                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {% for grandchildlink in childlink.links %}
+                              <li>
+                                <a href="{{- grandchildlink.url -}}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset" class:menu-drawer__menu-item--active="{{- grandchildlink.current -}}" >
+                                  {{- grandchildlink.title | escape -}}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </details>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </details> -->
+</ul>

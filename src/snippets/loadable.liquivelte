@@ -1,0 +1,18 @@
+<script>
+export let classes;
+export let loading = false;
+</script>
+
+<div class="relative {{- classes -}}" >  
+  <div 
+      class="w-6 absolute" 
+      class:hidden="{{- loading != true -}}"
+      >
+    {% include 'icon-spinner' %}
+  </div>
+  <div 
+      class:invisible="{{- loading -}}" 
+      >
+    <slot />
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<script>
+import { onMount } from "svelte";
+let container, input, changeEvent;
+
+onMount(() => {
+  input = container.querySelector('input');
+  changeEvent = new Event('change', { bubbles: true })
+});
+
+container.querySelectorAll('button').forEach(
+  (button) => button.addEventListener('click', onButtonClick)
+);
+
+function onButtonClick(event) {
+  event.preventDefault();
+  const previousValue = input.value;
+
+  event.target.name === 'plus' ? input.stepUp() : input.stepDown();
+  if (previousValue !== input.value) input.dispatchEvent(changeEvent);
+}
+</script>
+
+<div bind:this="{container}">
+  <slot />
+</div>

@@ -1,0 +1,72 @@
+<script>
+  import cachedLiquid from 'liquivelte-liquid.js';
+  export let lec;
+  const liquid = cachedLiquid(lec);
+  let index = 0;
+
+import { onMount } from "svelte";
+export let classes = '';
+let container, detailsContainer, summaryToggle;
+
+  onMount(() => {
+
+  detailsContainer = container.querySelector('details');
+  summaryToggle = container.querySelector('summary');
+
+  detailsContainer.addEventListener(
+    'keyup',
+    (event) => event.code.toUpperCase() === 'ESCAPE' && close()
+  );
+  summaryToggle.addEventListener(
+    'click',
+    onSummaryClick.bind(this)
+  );
+  container.querySelector('button[type="button"]').addEventListener(
+    'click',
+    close.bind(this)
+  );
+
+  summaryToggle.setAttribute('role', 'button');
+});
+
+
+  function isOpen() {
+    return detailsContainer.hasAttribute('open');
+  }
+
+  function onSummaryClick(event) {
+    event.preventDefault();
+    event.target.closest('details').hasAttribute('open')
+      ? close()
+      : open(event);
+  }
+
+  function onBodyClick(event) {
+    if (!container.contains(event.target) || event.target.classList.contains('modal-overlay')) close(false);
+  }
+
+  function open(event) {
+    onBodyClickEvent =
+      onBodyClickEvent || onBodyClick.bind(this);
+    event.target.closest('details').setAttribute('open', true);
+    document.body.addEventListener('click', onBodyClickEvent);
+    document.body.classList.add('overflow-hidden');
+
+    trapFocus(
+      detailsContainer.querySelector('[tabindex="-1"]'),
+      detailsContainer.querySelector('input:not([type="hidden"])')
+    );
+  }
+
+  function close(focusToggle = true) {
+    removeTrapFocus(focusToggle ? summaryToggle : null);
+    detailsContainer.removeAttribute('open');
+    document.body.removeEventListener('click', onBodyClickEvent);
+    document.body.classList.remove('overflow-hidden');
+  }
+
+</script>
+
+<div bind:this="{container}" class="{ classes }">
+  <slot />
+</div>

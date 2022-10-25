@@ -77,12 +77,6 @@
       "name": "Ícones",
       "settings": {
         "accent_icons": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
           "options__3": {
             "label": "Botão de contorno"
           },
@@ -238,24 +232,6 @@
             "label": "Direita"
           },
           "label": "Alinhamento do texto"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Invertido"
-          },
-          "label": "Esquema de cores"
         }
       }
     },
@@ -372,24 +348,6 @@
           "settings": {
             "text": {
               "label": "Texto"
-            },
-            "color_scheme": {
-              "label": "Esquema de cores",
-              "options__1": {
-                "label": "Fundo 1"
-              },
-              "options__2": {
-                "label": "Fundo 2"
-              },
-              "options__3": {
-                "label": "Inverter"
-              },
-              "options__4": {
-                "label": "Destaque 1"
-              },
-              "options__5": {
-                "label": "Destaque 2"
-              }
             },
             "link": {
               "label": "Ligação"
@@ -604,10 +562,7 @@
           "label": "Máximo de produtos a apresentar"
         },
         "show_view_all": {
-          "label": "Ative o botão \"Ver tudo\" caso a coleção possua mais produtos do que as apresentadas"
-        },
-        "swipe_on_mobile": {
-          "label": "Ativar leitura magnética no dispositivo móvel"
+          "label": "Ative a opção \"Ver tudo\" se a coleção tiver mais produtos do que os apresentados"
         },
         "header": {
           "content": "Cartão de produtos"
@@ -637,6 +592,42 @@
         "columns_desktop": {
           "label": "Número de colunas no ambiente de trabalho"
         },
+        "description": {
+          "label": "Descrição"
+        },
+        "show_description": {
+          "label": "Mostrar descrição da coleção do administrador"
+        },
+        "description_style": {
+          "label": "Estilo da descrição",
+          "options__1": {
+            "label": "Corpo"
+          },
+          "options__2": {
+            "label": "Legenda"
+          },
+          "options__3": {
+            "label": "Maiúsculas"
+          }
+        },
+        "view_all_style": {
+          "options__1": {
+            "label": "Ligação"
+          },
+          "options__2": {
+            "label": "Botão de contorno"
+          },
+          "options__3": {
+            "label": "Botão sólido"
+          },
+          "label": "Estilo \"ver tudo\""
+        },
+        "enable_desktop_slider": {
+          "label": "Ativar carrossel em computador"
+        },
+        "full_width": {
+          "label": "Tornar os produtos em largura total"
+        },
         "header_mobile": {
           "content": "Esquema para dispositivo móvel"
         },
@@ -648,6 +639,9 @@
           "options__2": {
             "label": "2 colunas"
           }
+        },
+        "enable_mobile_slider": {
+          "label": "Ativar leitura magnética no dispositivo móvel"
         }
       },
       "presets": {
@@ -683,24 +677,6 @@
         }
       },
       "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Inverter"
-          },
-          "label": "Esquema de cores"
-        },
         "newsletter_enable": {
           "label": "Mostrar registo de e-mail"
         },
@@ -780,26 +756,18 @@
           "label": "Ativar cabeçalho fixo",
           "info": "O cabeçalho é apresentado no ecrã enquanto os clientes deslocam para cima."
         },
-        "color_scheme": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Inverter"
-          },
-          "label": "Esquema de cores"
-        },
         "margin_bottom": {
           "label": "Margem inferior"
+        },
+        "menu_type_desktop": {
+          "label": "Tipo de menu do ambiente de trabalho",
+          "info": "O tipo de menu é automaticamente otimizado para dispositivos móveis.",
+          "options__1": {
+            "label": "Menu pendente"
+          },
+          "options__2": {
+            "label": "Mega menu"
+          }
         }
       }
     },
@@ -813,22 +781,6 @@
           "label": "Segunda imagem"
         },
         "color_scheme": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Inverter"
-          },
-          "label": "Esquema de cores",
           "info": "Visível quando o recetor é exibido."
         },
         "stack_images_on_mobile": {
@@ -994,24 +946,6 @@
             "label": "Grande"
           },
           "label": "Altura da imagem"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Fundo 1"
-          },
-          "options__2": {
-            "label": "Fundo 2"
-          },
-          "options__3": {
-            "label": "Inverter"
-          },
-          "options__4": {
-            "label": "Destaque 1"
-          },
-          "options__5": {
-            "label": "Destaque 2"
-          },
-          "label": "Esquema de cores"
         },
         "layout": {
           "options__1": {
@@ -1397,6 +1331,21 @@
             "label": "Quadrado"
           },
           "info": "Adicione imagens ao editar as suas coleções. [Saber mais](https://help.shopify.com/en/manual/products/collections)"
+        },
+        "columns_desktop": {
+          "label": "Número de colunas no ambiente de trabalho"
+        },
+        "header_mobile": {
+          "content": "Esquema para dispositivo móvel"
+        },
+        "columns_mobile": {
+          "label": "Número de colunas em dispositivo móvel",
+          "options__1": {
+            "label": "1 coluna"
+          },
+          "options__2": {
+            "label": "2 colunas"
+          }
         }
       }
     },
@@ -1404,27 +1353,7 @@
       "name": "Página"
     },
     "main-password-footer": {
-      "name": "Rodapé de palavra-passe",
-      "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Inverter"
-          },
-          "label": "Esquema de cores"
-        }
-      }
+      "name": "Rodapé de palavra-passe"
     },
     "main-password-header": {
       "name": "Cabeçalho de palavra-passe",
@@ -1435,24 +1364,6 @@
         "logo_max_width": {
           "label": "Largura de logótipo personalizada",
           "unit": "px"
-        },
-        "color_scheme": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Inverter"
-          },
-          "label": "Esquema de cores"
         }
       }
     },
@@ -1919,24 +1830,6 @@
     "newsletter": {
       "name": "Registo de e-mail",
       "settings": {
-        "color_scheme": {
-          "label": "Esquema de cores",
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Inverter"
-          }
-        },
         "full_width": {
           "label": "Tornar a secção em largura total"
         },
@@ -2037,24 +1930,6 @@
     "rich-text": {
       "name": "Texto formatado",
       "settings": {
-        "color_scheme": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Inverter"
-          },
-          "label": "Esquema de cores"
-        },
         "full_width": {
           "label": "Tornar a secção em largura total"
         }
@@ -2266,23 +2141,7 @@
           "label": "Opacidade da sobreposição da imagem"
         },
         "color_scheme": {
-          "options__1": {
-            "label": "Destaque 1"
-          },
-          "options__2": {
-            "label": "Destaque 2"
-          },
-          "options__3": {
-            "label": "Fundo 1"
-          },
-          "options__4": {
-            "label": "Fundo 2"
-          },
-          "options__5": {
-            "label": "Inverter"
-          },
-          "label": "Esquema de cores",
-          "info": "Visível quando o recetor é exibido"
+          "info": "Visível quando o recetor é exibido."
         },
         "show_text_below": {
           "label": "Mostrar conteúdo por baixo da imagem em dispositivos móveis",
@@ -2526,23 +2385,7 @@
               "label": "Opacidade da sobreposição da imagem"
             },
             "color_scheme": {
-              "info": "Visível quando o recetor é exibido.",
-              "options__1": {
-                "label": "Destaque 1"
-              },
-              "options__2": {
-                "label": "Destaque 2"
-              },
-              "options__3": {
-                "label": "Fundo 1"
-              },
-              "options__4": {
-                "label": "Fundo 2"
-              },
-              "options__5": {
-                "label": "Inverter"
-              },
-              "label": "Esquema de cores"
+              "info": "Visível quando o recetor é exibido."
             },
             "text_alignment_mobile": {
               "label": "Alinhamento do conteúdo em dispositivos móveis",
@@ -2596,42 +2439,9 @@
             "label": "Contentor de secção"
           }
         },
-        "color_scheme": {
-          "label": "Esquema de cores",
-          "options__1": {
-            "label": "Fundo 1"
-          },
-          "options__2": {
-            "label": "Fundo 2"
-          },
-          "options__3": {
-            "label": "Inverter"
-          },
-          "options__4": {
-            "label": "Destaque 1"
-          },
-          "options__5": {
-            "label": "Destaque 2"
-          }
-        },
         "container_color_scheme": {
           "label": "Esquema de cores do contentor",
-          "info": "Visível quando o esquema está definido para contentor de linha ou de secção.",
-          "options__1": {
-            "label": "Fundo 1"
-          },
-          "options__2": {
-            "label": "Fundo 2"
-          },
-          "options__3": {
-            "label": "Invertido"
-          },
-          "options__4": {
-            "label": "Destaque 1"
-          },
-          "options__5": {
-            "label": "Destaque 2"
-          }
+          "info": "Visível quando o esquema está definido para contentor de linha ou de secção."
         },
         "open_first_collapsible_row": {
           "label": "Abrir primeira linha recolhível"

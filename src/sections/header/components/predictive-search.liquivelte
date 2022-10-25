@@ -1,0 +1,223 @@
+<script>
+import { onMount } from "svelte";
+let isOpen = false;
+let cachedResults = {};
+let container, 
+    input,
+    statusElement,
+    predictiveSearchResults,
+    loadingText,
+    resultsMaxHeight;
+
+onMount(() => {
+  input = container.querySelector('input[type="search"]');
+  predictiveSearchResults = container.querySelector('[data-predictive-search]');
+  setupEventListeners();
+  console.log('predictive search enabled');
+});
+
+ function setupEventListeners() {
+    const form = container.querySelector('form.search');
+    form.addEventListener('submit', onFormSubmit);
+
+    input.addEventListener('input', debounce((event) => {
+      onChange(event);
+    }, 300));
+    input.addEventListener('focus', onFocus);
+    container.addEventListener('focusout', onFocusOut);
+    container.addEventListener('keyup', onKeyup);
+    container.addEventListener('keydown', onKeydown);
+  }
+
+  function getQuery() {
+    return input.value.trim();
+  }
+
+  function onChange() {
+    const searchTerm = getQuery();
+
+    if (!searchTerm.length) {
+      close(true);
+      return;
+    }
+
+    getSearchResults(searchTerm);
+  }
+
+  function onFormSubmit(event) {
+    if (!getQuery().length || querySelector('[aria-selected="true"] a')) event.preventDefault();
+  }
+
+  function onFocus() {
+    const searchTerm = getQuery();
+
+    if (!searchTerm.length) return;
+
+    if (container.getAttribute('results') === 'true') {
+      open();
+    } else {
+      getSearchResults(searchTerm);
+    }
+  }
+
+  function onFocusOut() {
+    setTimeout(() => {
+      if (!container.contains(document.activeElement)) close();
+    })
+  }
+
+  function onKeyup(event) {
+    if (!getQuery().length) close(true);
+    event.preventDefault();
+
+    switch (event.code) {
+      case 'ArrowUp':
+        switchOption('up')
+        break;
+      case 'ArrowDown':
+        switchOption('down');
+        break;
+      case 'Enter':
+        selectOption();
+        break;
+    }
+  }
+
+  function onKeydown(event) {
+    // Prevent the cursor from moving in the input when using the up and down arrow keys
+    if (
+      event.code === 'ArrowUp' ||
+      event.code === 'ArrowDown'
+    ) {
+      event.preventDefault();
+    }
+  }
+
+  function switchOption(direction) {
+    if (!container.getAttribute('open')) return;
+
+    const moveUp = direction === 'up';
+    const selectedElement = container.querySelector('[aria-selected="true"]');
+    const allElements = container.querySelectorAll('li');
+    let activeElement = container.querySelector('li');
+
+    if (moveUp && !selectedElement) return;
+
+    statusElement.textContent = '';
+
+    if (!moveUp && selectedElement) {
+      activeElement = selectedElement.nextElementSibling || allElements[0];
+    } else if (moveUp) {
+      activeElement = selectedElement.previousElementSibling || allElements[allElements.length - 1];
+    }
+
+    if (activeElement === selectedElement) return;
+
+    activeElement.setAttribute('aria-selected', true);
+    if (selectedElement) selectedElement.setAttribute('aria-selected', false);
+
+    setLiveRegionText(activeElement.textContent);
+    input.setAttribute('aria-activedescendant', activeElement.id);
+  }
+
+  function selectOption() {
+    const selectedProduct = container.querySelector('[aria-selected="true"] a, [aria-selected="true"] button');
+
+    if (selectedProduct) selectedProduct.click();
+  }
+
+  function getSearchResults(searchTerm) {
+    const queryKey = searchTerm.replace(" ", "-").toLowerCase();
+    setLiveRegionLoadingState();
+
+    if (cachedResults[queryKey]) {
+      renderSearchResults(cachedResults[queryKey]);
+      return;
+    }
+
+    fetch(`${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&${encodeURIComponent('resources[type]')}=product&${encodeURIComponent('resources[limit]')}=4&section_id=predictive-search`)
+      .then((response) => {
+        if (!response.ok) {
+          var error = new Error(response.status);
+          close();
+          throw error;
+        }
+
+        return response.text();
+      })
+      .then((text) => {
+        const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#shopify-section-predictive-search').innerHTML;
+        cachedResults[queryKey] = resultsMarkup;
+        renderSearchResults(resultsMarkup);
+      })
+      .catch((error) => {
+        close();
+        throw error;
+      });
+  }
+
+  function setLiveRegionLoadingState() {
+    statusElement = statusElement || container.querySelector('.predictive-search-status');
+    loadingText = loadingText || container.getAttribute('data-loading-text');
+
+    setLiveRegionText(loadingText);
+    container.setAttribute('loading', true);
+  }
+
+  function setLiveRegionText(statusText) {
+    statusElement.setAttribute('aria-hidden', 'false');
+    statusElement.textContent = statusText;
+
+    setTimeout(() => {
+      statusElement.setAttribute('aria-hidden', 'true');
+    }, 1000);
+  }
+
+  function renderSearchResults(resultsMarkup) {
+    predictiveSearchResults.innerHTML = resultsMarkup;
+    container.setAttribute('results', true);
+
+    setLiveRegionResults();
+    open();
+  }
+
+  function setLiveRegionResults() {
+    container.removeAttribute('loading');
+    setLiveRegionText(container.querySelector('[data-predictive-search-live-region-count-value]').textContent);
+  }
+
+  function getResultsMaxHeight() {
+    resultsMaxHeight = window.innerHeight - document.getElementById('shopify-section-header').getBoundingClientRect().bottom;
+    return resultsMaxHeight;
+  }
+
+  function open() {
+    predictiveSearchResults.style.maxHeight = resultsMaxHeight || `${getResultsMaxHeight()}px`;
+    container.setAttribute('open', true);
+    input.setAttribute('aria-expanded', true);
+    isOpen = true;
+  }
+
+  function close(clearSearchTerm = false) {
+    if (clearSearchTerm) {
+      input.value = '';
+      container.removeAttribute('results');
+    }
+
+    const selected = container.querySelector('[aria-selected="true"]');
+
+    if (selected) selected.setAttribute('aria-selected', false);
+
+    input.setAttribute('aria-activedescendant', '');
+    container.removeAttribute('open');
+    input.setAttribute('aria-expanded', false);
+    resultsMaxHeight = false
+    predictiveSearchResults.removeAttribute('style');
+
+    isOpen = false;
+  }
+</script>
+
+<div class="search-modal__form" bind:this="{container}" data-loading-text="{{- 'accessibility.loading' | t -}}">
+  <slot />
+</div>
