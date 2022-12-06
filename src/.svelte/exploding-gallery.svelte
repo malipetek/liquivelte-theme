@@ -99,6 +99,12 @@ $: animationVariables = animations.map(animation => {
 
 $: widthVariables = itemWidths.map((width, index) => `--item-${index}-width: ${width}px`);
 $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height: ${height}px`);
+
+onMount(() => {
+  document.querySelector('.page-content').addEventListener('scroll', e => {
+    scrollY = e.target.scrollTop
+  });
+});
 </script> 
 
 <div class="exp-gallery-container" bind:this="{container}"           
@@ -132,8 +138,6 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
   </div> 
   <div class="exp-gallery-placeholder" style="height: { stageHeight + keepFor }px">&nbsp;</div>
 </div> 
-
-<svelte:window bind:scrollY ></svelte:window>
 
 <style>
   .exp-gallery-container {

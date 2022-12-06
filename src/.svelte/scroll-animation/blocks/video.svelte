@@ -19,14 +19,14 @@ console.log('block ', block);
 let video, blob_src, duration;
 let seeked = true;
 
-$: if(video && !blob_src) {
-  const src = video.getAttribute('data-src');
-  fetch(src).then(res => res.blob()).then(blob => {
-    blob_src = URL.createObjectURL(blob);
-  });
-}
+// $: if(video && !blob_src) {
+//   const src = video.getAttribute('data-src');
+//   fetch(src).then(res => res.blob()).then(blob => {
+//     blob_src = URL.createObjectURL(blob);
+//   });
+// }
 
-const progressDelta = .7;
+const progressDelta = 0.3;
 let lastProgress = 0;
 onMount(() => {
 
@@ -70,7 +70,7 @@ const seekCb = 1;
   on:seeked="{() => seeked = true}"
   preload="metadata"
   data-src="{ liquid.file_url(block.settings.source) }"
-  src="{blob_src}" 
+  src="{ liquid.file_url(block.settings.source) }" 
   playsinline
   muted
   ></video>
@@ -79,6 +79,7 @@ const seekCb = 1;
   .video {
     top: 0;
     height: 100vh;
+    max-width: unset !important;
   }
 
   .bg-video {

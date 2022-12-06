@@ -19,7 +19,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./main-product-hs2b938c54.liquivelte.js').then(function (n) { return n.index; })).default({
+          wrapper.svelteComponent = new (await import('./main-product-hs65220d11.liquivelte.js').then(function (n) { return n.index; })).default({
             target: wrapper,
             hydrate: true,
             props: {

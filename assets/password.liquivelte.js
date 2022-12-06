@@ -1,0 +1,1 @@
+import'./product-hs7273055a.liquivelte.js';const onIntersect=(e,t)=>{const o=new IntersectionObserver(t,{root:null,rootMargin:'100px',threshold:0});o.observe(e)};document.addEventListener('DOMContentLoaded',(()=>{}));

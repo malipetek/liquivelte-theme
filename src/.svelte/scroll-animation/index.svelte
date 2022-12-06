@@ -26,6 +26,7 @@ import ScrollVideo from './blocks/video.liquivelte';
 import Title from './blocks/title.liquivelte'; 
 import Shape from './blocks/shape.liquivelte'; 
 import './animation.schema.json'; 
+import { onMount } from 'svelte';
 
 let keepFor = 5000;
 
@@ -89,7 +90,11 @@ $: if(container && stage) {
 
 }
 
-
+onMount(() => {
+  document.querySelector('.page-content').addEventListener('scroll', e => {
+    scrollY = e.target.scrollTop
+  });
+});
 // $: if(scrollY && container && seeked) {
 //   seeked = false;
 //   top = container.offsetTop; 
@@ -156,8 +161,6 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
   </div>
   <div class="stage-placeholder" style="height: { stageHeight + keepFor }px">&nbsp;</div>
 </div>
-
-<svelte:window bind:scrollY ></svelte:window>
 
 <style>
   .animation-container {

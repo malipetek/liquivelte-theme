@@ -29,31 +29,41 @@
 
     {% render 'meta-tags' %}
 
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 <!-- liquivelte includes -->
-    {% assign templatesWithLiquivelte = 'index,product.alt,product' | split: ',' %}
-    {% assign template_with_suffix_and_directory = template %}
-    {% if template.directory %}
-      {% assign template_with_suffix_and_directory = template.directory | append: '-' | append: template_with_suffix_and_directory %}
+      {% assign templatesWithLiquivelte = 'index,product.alt,product' | split: ',' %}
+      {% assign template_with_suffix_and_directory = template %}
+      {% if template.directory %}
+        {% assign template_with_suffix_and_directory = template.directory | append: '-' | append: template_with_suffix_and_directory %}
+        {% endif %}
+        {% if template.suffix != blank %}
+        {% assign template_with_suffix_and_directory = template_with_suffix_and_directory | append: '.' | template.suffix %}
       {% endif %}
-      {% if template.suffix != blank %}
-      {% assign template_with_suffix_and_directory = template_with_suffix_and_directory | append: '.' | template.suffix %}
-    {% endif %}
-    {% if templatesWithLiquivelte contains template_with_suffix_and_directory %}
-      {% assign liquivelte_js_source = template_with_suffix_and_directory | append: '.liquivelte.js' %}
-      {% assign liquivelte_nm_js_source = template_with_suffix_and_directory | append: '.nm.liquivelte.js' %}
-      {% assign liquivelte_css_source = template_with_suffix_and_directory | append: '.liquivelte.css' %}
-      <script type="module" src="{{ liquivelte_js_source | asset_url }}" defer="defer"></script>
-      <link rel="stylesheet" rel="preload" as="style" href="{{ liquivelte_css_source | asset_url }}" />
+      {% if templatesWithLiquivelte contains template_with_suffix_and_directory %}
+        {% assign liquivelte_js_source = 'theme.' | append: template_with_suffix_and_directory | append: '.liquivelte.js' %}
+        {% assign liquivelte_nm_js_source = 'theme.' | append: template_with_suffix_and_directory | append: '.nm.liquivelte.js' %}
+        {% assign liquivelte_css_source = 'theme.' | append: template_with_suffix_and_directory | append: '.liquivelte.css' %}
+        <script type="module" src="{{ liquivelte_js_source | asset_url }}" defer="defer"></script>
+        <link rel="stylesheet" rel="preload" as="style" href="{{ liquivelte_css_source | asset_url }}" />
       {% endif %}
+
       {% include 'liquivelte-criticals' with template: template_with_suffix_and_directory %}
       
-      <script type="module" src="{{ 'theme.liquivelte.js' | asset_url }}" defer="defer"></script>
-      <link rel="stylesheet" rel="preload" as="style" href="{{ 'theme.liquivelte.css' | asset_url }}" />
-    
-    <script type="module" src="{{ 'liquivelte-sections-loader.js' | asset_url }}" defer="defer"></script>
-    <!-- liquivelte includes end -->
-
+      {% if request.design_mode %}
+        <script type="module" src="{{ 'liquivelte-sections-loader.js' | asset_url }}" defer="defer"></script>
+      {% endif %}
+      <!-- liquivelte includes end -->
+{% comment %} 
+    <script>
+      const template = "{{ template.name }}";
+      const suffix = "{{ template.suffix }}";
+      /* {% assign template_asset_name = template | append: '.liquivelte.js' %} 
+      */
+      const templateScript = "{{ template_asset_name | asset_url }}";
+      import(templateScript);
+      document.addEventListener('DOMContentLoaded', () => {
+        
+      });      
+    </script> {% endcomment %}
     <script>
       console.log('template_with_suffix_and_directory ', '{{ template_with_suffix_and_directory }}');
     </script>
@@ -222,20 +232,10 @@
         position: fixed;
         width: 100%;
       }
+      .liquivelte-component.app-wrapper {
+        height: 100%;
+      }
     {% endstyle %}
-
-    <link rel="stylesheet" rel="preload" as="style" href="{{ 'base.css' | asset_url }}" onload="this.onload=null;this.rel='stylesheet'">
-
-    {%- unless settings.type_body_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-      {%- endunless -%}
-      
-      {%- if settings.predictive_search_enabled -%}
-      <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
-      {%- endif -%}
       
       <link rel="preload" as="font" href="{{ 'Anton-Regular.ttf' | font_url }}" type="font/ttf" crossorigin>
 
@@ -246,21 +246,20 @@
     </script>
   </head>
 
-  <body class="gradient">
+  <body class="ios">
 
-    {{ template }}
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-      {{ "accessibility.skip_to_text" | t }}
-    </a>
+    {% capture main_content %}
+      {% section 'prompts' %}
+      {% section 'header' %}
 
-    {% section 'header' %}
-
-    {% comment %} {% section 'announcement-bar' %} {% endcomment %}
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
-    </main>
 
-    {% section 'footer' %}
+      {% section 'footer' %}
+    {% endcapture %}
+    
+    {% include 'app-wrapper' with liquivelte: true, children: main_content %}
+
+    {% comment %} {% section 'announcement-bar' %} {% endcomment %}    
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
@@ -294,5 +293,18 @@
       }
     </script>
 
+    <style>
+    .visually-hidden {
+      position: absolute !important;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      clip: rect(0 0 0 0);
+      word-wrap: normal !important;
+    }
+    </style>
   </body>
 </html>

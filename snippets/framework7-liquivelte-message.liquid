@@ -1,0 +1,449 @@
+
+	{%- liquid
+	assign props_arr = props | split: '-prsp-'
+	for prop in props_arr
+	assign propName = prop | split: '-kvsp-' | first
+	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
+	if propValue contains '{' and propValue contains '}'
+	assign propValue = propValue | remove: '{' | remove: '}'
+	assign propValueArr = propValue | split: ','
+	for entry in propValueArr
+	assign key = entry | split: ':' | first | strip | remove: '"'
+	assign value = entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = propName | append: '_' | append: key
+	
+	endfor
+	endif
+	if propName == 'text'
+	assign text = propValue
+	endif
+	if propName == 'htmlText'
+	assign htmlText = propValue
+	endif
+	if propName == 'name'
+	assign name = propValue
+	endif
+	if propName == 'avatar'
+	assign avatar = propValue
+	endif
+	if propName == 'type'
+	assign type = propValue
+	endif
+	if propName == 'image'
+	assign image = propValue
+	endif
+	if propName == 'header'
+	assign header = propValue
+	endif
+	if propName == 'footer'
+	assign footer = propValue
+	endif
+	if propName == 'textHeader'
+	assign textHeader = propValue
+	endif
+	if propName == 'textFooter'
+	assign textFooter = propValue
+	endif
+	if propName == 'first'
+	assign first = propValue
+	endif
+	if propName == 'last'
+	assign last = propValue
+	endif
+	if propName == 'tail'
+	assign tail = propValue
+	endif
+	if propName == 'sameName'
+	assign sameName = propValue
+	endif
+	if propName == 'sameHeader'
+	assign sameHeader = propValue
+	endif
+	if propName == 'sameFooter'
+	assign sameFooter = propValue
+	endif
+	if propName == 'sameAvatar'
+	assign sameAvatar = propValue
+	endif
+	if propName == 'typing'
+	assign typing = propValue
+	endif
+	endfor
+	-%}
+	{%- unless sub_include -%} 
+	<div class="liquivelte-component message" data-liquivelte-component-name="message.liquivelte">
+	{%- endunless -%}
+	
+
+<!-- svelte-ignore a11y-missing-attribute -->
+<div class={classes} on:click={onClick} {...restProps($$restProps)}>
+  {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'start'
+	assign children_start = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_start != blank -%}
+	{{- children_start -}}
+	{%- endif -%}
+	{%- assign children_start = '' -%}
+	
+  {#if avatar || hasAvatarSlots}
+    <div
+      on:click={onAvatarClick}
+      class="message-avatar"
+      style={avatar ? `background-image: url(${avatar})` : undefined}
+    >
+      {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'avatar'
+	assign children_avatar = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_avatar != blank -%}
+	{{- children_avatar -}}
+	{%- endif -%}
+	{%- assign children_avatar = '' -%}
+	
+    </div>
+  {/if}
+  <div class="message-content">
+    {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'content-start'
+	assign children_content-start = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_content-start != blank -%}
+	{{- children_content-start -}}
+	{%- endif -%}
+	{%- assign children_content-start = '' -%}
+	
+    {#if hasNameSlots || name}
+      <div class="message-name" on:click={onNameClick}>
+        {plainText(name)}
+        {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'name'
+	assign children_name = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_name != blank -%}
+	{{- children_name -}}
+	{%- endif -%}
+	{%- assign children_name = '' -%}
+	
+      </div>
+    {/if}
+    {#if hasHeaderSlots || header}
+      <div class="message-header" on:click={onHeaderClick}>
+        {plainText(header)}
+        {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'header'
+	assign children_header = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_header != blank -%}
+	{{- children_header -}}
+	{%- endif -%}
+	{%- assign children_header = '' -%}
+	
+      </div>
+    {/if}
+    <div class="message-bubble" on:click={onBubbleClick}>
+      {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'bubble-start'
+	assign children_bubble-start = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_bubble-start != blank -%}
+	{{- children_bubble-start -}}
+	{%- endif -%}
+	{%- assign children_bubble-start = '' -%}
+	
+      {#if hasImageSlots || image}
+        <div class="message-image">
+          {#if image}
+            <img src={image} />
+          {/if}
+          {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'image'
+	assign children_image = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_image != blank -%}
+	{{- children_image -}}
+	{%- endif -%}
+	{%- assign children_image = '' -%}
+	
+        </div>
+      {/if}
+      {#if hasTextHeaderSlots || textHeader}
+        <div class="message-text-header">
+          {plainText(textHeader)}
+          {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'text-header'
+	assign children_text-header = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_text-header != blank -%}
+	{{- children_text-header -}}
+	{%- endif -%}
+	{%- assign children_text-header = '' -%}
+	
+        </div>
+      {/if}
+      {#if hasTextSlots || text || htmlText || typing}
+        <div class="message-text" on:click={onTextClick}>
+          {plainText(text)}
+          {#if htmlText}{@html htmlText}{/if}
+          {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'text'
+	assign children_text = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_text != blank -%}
+	{{- children_text -}}
+	{%- endif -%}
+	{%- assign children_text = '' -%}
+	
+          {#if typing}
+            <div class="message-typing-indicator">
+              <div />
+              <div />
+              <div />
+            </div>
+          {/if}
+        </div>
+      {/if}
+      {#if hasTextFooterSlots || textFooter}
+        <div class="message-text-footer">
+          {plainText(textFooter)}
+          {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'text-footer'
+	assign children_text-footer = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_text-footer != blank -%}
+	{{- children_text-footer -}}
+	{%- endif -%}
+	{%- assign children_text-footer = '' -%}
+	
+        </div>
+      {/if}
+      {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'bubble-end'
+	assign children_bubble-end = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_bubble-end != blank -%}
+	{{- children_bubble-end -}}
+	{%- endif -%}
+	{%- assign children_bubble-end = '' -%}
+	
+      {%- liquid 
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module = content_and_value | split: '-scvs-' | first
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message'
+	assign children = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children != blank -%}
+	{{- children -}}
+	{%- endif -%}
+	{%- assign children = '' -%}
+	
+    </div>
+    {#if hasFooterSlots || footer}
+      <div class="message-footer" on:click={onFooterClick}>
+        {plainText(footer)}
+        {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'footer'
+	assign children_footer = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_footer != blank -%}
+	{{- children_footer -}}
+	{%- endif -%}
+	{%- assign children_footer = '' -%}
+	
+      </div>
+    {/if}
+    {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'content-end'
+	assign children_content-end = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_content-end != blank -%}
+	{{- children_content-end -}}
+	{%- endif -%}
+	{%- assign children_content-end = '' -%}
+	
+  </div>
+  {%- liquid
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module_and_slotname = content_and_value | split: '-scvs-' | first
+	assign module = module_and_slotname | split: '-smns-' | first
+	assign name = module_and_slotname | split: '-smns-' | last
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'message' and name == 'end'
+	assign children_end = value | strip
+	endif
+	endfor
+	-%}
+	{%- if children_end != blank -%}
+	{{- children_end -}}
+	{%- endif -%}
+	{%- assign children_end = '' -%}
+	
+</div>
+
+	
+						
+						
+	<script type="text/noscript" class="instance-data">{
+	
+	
+	
+
+	}</script>
+	
+	<script class="liquivelte-prop-script">(() => {
+	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
+	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
+	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}
+	function htmlDecode(input) {
+	var doc = new DOMParser().parseFromString(input, "text/html");
+	return doc.documentElement.textContent;
+	}
+	function componentWrapper(el) {
+	if(el.classList.contains('liquivelte-component')) {
+	return el;
+	} else {
+	return componentWrapper(el.parentElement);
+	}
+	}
+	var wrapper = componentWrapper(propScript.parentElement);
+	// console.log('wrapper', wrapper);
+	// console.log('parsing props for svelte component');
+	try{
+	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+	} catch (e) {
+	const err = 'There was an error';
+	console.error('there was an error parsing props json', e);
+	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
+	}
+	
+	
+
+	// liquid expression cache
+	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
+	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
+	args = args.split(', ');
+	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
+	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
+	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);
+	});
+
+	if(propScript){
+	propScript.remove();
+	}
+	if(propScript.previousElementSibling) {
+	propScript.previousElementSibling.remove();
+	}
+	})();</script>
+	{%- unless sub_include -%} 
+	</div>
+	{%- endunless -%}
+	

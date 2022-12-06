@@ -4,8 +4,6 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-import { query_selector_all } from 'svelte/internal';
-
 import MenuDrawer from '../../../snippets/menu-drawer.liquivelte';
 
 export let header, mainDetailsToggle, borderOffset, breakpoint;

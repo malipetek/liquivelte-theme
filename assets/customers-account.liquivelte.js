@@ -9,7 +9,7 @@ const onIntersect = (el, callback) => {
 
   document.addEventListener('DOMContentLoaded', () => {
     
-  Array.from(document.querySelectorAll('.liquivelte-component.badge')).forEach(wrapper => {
+  Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -19,7 +19,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./badge-hs7fee2dc4.liquivelte.js')).default({
+          wrapper.svelteComponent = new (await import('./header-hs0083e71a.liquivelte.js').then(function (n) { return n.index; })).default({
             target: wrapper,
             hydrate: true,
             props: {

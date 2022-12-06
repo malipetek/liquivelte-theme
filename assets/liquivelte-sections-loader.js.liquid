@@ -36,6 +36,11 @@
           css: "{{ 'product-comparison.liquivelte.css' | asset_url }}"
         });
         
+        liquivelteSections.set('prompts', {
+          js: "{{ 'prompts.liquivelte.js' | asset_url }}",
+          css: "{{ 'prompts.liquivelte.css' | asset_url }}"
+        });
+        
         liquivelteSections.set('scroll-animation', {
           js: "{{ 'scroll-animation.liquivelte.js' | asset_url }}",
           css: "{{ 'scroll-animation.liquivelte.css' | asset_url }}"

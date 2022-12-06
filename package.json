@@ -11,7 +11,8 @@
   "dependencies": {
     "@mertasan/tailwindcss-variables": "^2.5.0",
     "@tsconfig/svelte": "^3.0.0",
-    "framework7-svelte": "^6.3.16",
+    "framework7": "^7.0.9",
+    "framework7-liquivelte": "../framework7-liquivelte/packages/liquivelte",
     "scrollmagic": "^2.0.8",
     "svelte": "^3.48.0",
     "swiper": "^8.3.2",

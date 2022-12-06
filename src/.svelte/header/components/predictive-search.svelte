@@ -4,6 +4,10 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
+export let section$settings;
+export let logo_alt;
+export let logo_height;
+export let shop;
 import { onMount } from "svelte";
 let isOpen = false;
 let cachedResults = {};

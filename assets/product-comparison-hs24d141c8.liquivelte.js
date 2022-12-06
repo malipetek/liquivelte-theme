@@ -1,7 +1,7 @@
-import { commonjsGlobal, internal, getDefaultExportFromCjs, handle_promise, empty, insert_hydration, transition_in, transition_out, detach, noop, create_component, claim_component, mount_component, destroy_component, group_outros, check_outros, SvelteComponent, init, safe_not_equal, element, claim_element, children, attr, set_style, add_render_callback, create_bidirectional_transition, fade, cubicInOut, space, text, claim_space, claim_text, src_url_equal, append_hydration, select_option, listen, set_data, destroy_each, select_value } from './liquivelte-svelte-hs6e88e89c.liquivelte.js';
+import { commonjsGlobal, internal, getDefaultExportFromCjs, handle_promise, empty, insert_hydration, transition_in, transition_out, detach, noop, create_component, claim_component, mount_component, destroy_component, group_outros, check_outros, SvelteComponent, init, safe_not_equal, element, claim_element, children, attr, set_style, add_render_callback, create_bidirectional_transition, fade, cubicInOut, space, text, claim_space, claim_text, src_url_equal, append_hydration, select_option, listen, set_data, destroy_each, select_value } from './liquivelte-svelte-hs623f7d73.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs6dbc6cca.liquivelte.js';
 import { cartStore } from './store.js-hs80deeb5c.liquivelte.js';
-import './header-hs0083e71a.liquivelte.js';
+import './header-hs533fc9cb.liquivelte.js';
 
 var outin$1 = {};
 

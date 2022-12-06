@@ -54,7 +54,7 @@ smns stands for "slot module name separator"
 {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'menu-drawer' | append: '-scvs-' | append: slot_content_MenuDrawer %}
 
-{% include 'liquivelte', module: 'menu-drawer', props: props, sub_include: true %}
+{% include 'menu-drawer', liquivelte: true, props: props, sub_include: true %}
 {% assign props = '' %}
 	
 						

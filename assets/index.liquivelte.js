@@ -67,7 +67,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./scroll-animation-hs93304330.liquivelte.js')).default({
+          wrapper.svelteComponent = new (await import('./scroll-animation-hsa13aa672.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
             props: {

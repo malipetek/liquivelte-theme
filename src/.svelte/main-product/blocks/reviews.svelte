@@ -8,6 +8,8 @@
   export let review_stars;
   export let score; 
   export let reviews_count;
+
+  console.log('review_stars ', review_stars);
 </script>
 <!-- Reviews -->
  <div class="mt-6">

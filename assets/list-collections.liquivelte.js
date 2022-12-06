@@ -9,4 +9,28 @@ const onIntersect = (el, callback) => {
 
   document.addEventListener('DOMContentLoaded', () => {
     
+  Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if(entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import('./header-hs0083e71a.liquivelte.js').then(function (n) { return n.index; })).default({
+            target: wrapper,
+            hydrate: true,
+            props: {
+                ...svelteProps,
+                ...rawIncludes,
+                lec: liquid_expression_cache
+            }
+          });
+        }
+      })();
+    });
+  });
+  
   });

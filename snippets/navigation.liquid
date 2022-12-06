@@ -23,26 +23,6 @@
 	<div class="liquivelte-component navigation" data-liquivelte-component-name="navigation.liquivelte">
 	{%- endunless -%}
 	
-<div class="hidden">
-  
-    {%- capture rawinclude -%}{% include 'icon-arrow'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_b7c846d6'] = [...(window.liquivelte_rawincludes['rawinclude_b7c846d6'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
-  
-    {%- capture rawinclude -%}{% include 'icon-caret'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_5513f9e2'] = [...(window.liquivelte_rawincludes['rawinclude_5513f9e2'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
-</div>
 <ul class="menu-drawer__menu has-submenu list-menu" role="list">
   {% for lnk in links %}
     {% assign index = forloop.index0 %}
@@ -74,126 +54,6 @@
     </li>
   {% endfor %}
 
- <!-- <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
-          
-	{%- liquid 
-	assign dynamic_classes = ''
-	  if lnk.child_active
-	assign dynamic_classes = dynamic_classes | append: ' menu-drawer__menu-item--active'
-	endif
-	-%}
-	<summary  class="menu-drawer__menu-item list-menu__item link link--text focus-inset{{ dynamic_classes }}" >
-            {{ link.title | escape }}
-            
-    {%- capture rawinclude -%}{% include 'icon-arrow'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_b7c846d6'] = [...(window.liquivelte_rawincludes['rawinclude_b7c846d6'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
-            
-    {%- capture rawinclude -%}{% include 'icon-caret'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_5513f9e2'] = [...(window.liquivelte_rawincludes['rawinclude_5513f9e2'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
-          </summary>
-          <div id="link-{{ lnk.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce" tabindex="-1">
-            <div class="menu-drawer__inner-submenu">
-              <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                
-    {%- capture rawinclude -%}{% include 'icon-arrow'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_b7c846d6'] = [...(window.liquivelte_rawincludes['rawinclude_b7c846d6'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
-                {{ lnk.title | escape }}
-              </button>
-              <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
-                {% for childlk in link.links %}
-    {% assign index = forloop.index0 %}
-                  <li>
-                    {% if childlink.links %}
-                      
-	{%- liquid 
-	assign dynamic_classes = ''
-	  if childlink.current
-	assign dynamic_classes = dynamic_classes | append: ' menu-drawer__menu-item--active'
-	endif
-	-%}
-	<a  href="{{ childlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{{ dynamic_classes }}" >
-                        {{ childlink.title | escape }}
-                      </a>
-                    {% else %}
-                      <details id="Details-menu-drawer-submenu-{{ forloop.index }}">
-                        <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
-                          {{ childlink.title | escape }}
-                          
-    {%- capture rawinclude -%}{% include 'icon-arrow'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_b7c846d6'] = [...(window.liquivelte_rawincludes['rawinclude_b7c846d6'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
-                          
-    {%- capture rawinclude -%}{% include 'icon-caret'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_5513f9e2'] = [...(window.liquivelte_rawincludes['rawinclude_5513f9e2'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
-                        </summary>
-                        <div id="childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
-                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                            
-    {%- capture rawinclude -%}{% include 'icon-arrow'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_b7c846d6'] = [...(window.liquivelte_rawincludes['rawinclude_b7c846d6'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
-                            {{ childlink.title | escape }}
-                          </button>
-                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
-                            {% for grandchildlink in childlink.links %}
-    {% assign index = forloop.index0 %}
-                              <li>
-                                
-	{%- liquid 
-	assign dynamic_classes = ''
-	  if grandchildlink.current
-	assign dynamic_classes = dynamic_classes | append: ' menu-drawer__menu-item--active'
-	endif
-	-%}
-	<a  href="{{ grandchildlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{{ dynamic_classes }}" >
-                                  {{ grandchildlink.title | escape }}
-                                </a>
-                              </li>
-                            {% endfor %}
-                          </ul>
-                        </div>
-                      </details>
-                    {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </details> -->
 </ul>
 	
 						
@@ -231,24 +91,6 @@
 	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
 	}
 	
-	
-	try{
-	wrapper.svelteProps["rawinclude_b7c846d6"] = [...(wrapper.svelteProps["rawinclude_b7c846d6"] || []), ...window.liquivelte_rawincludes['rawinclude_b7c846d6'].map(e => htmlDecode(e)) ];
-	} catch (e) {
-	const err = 'Could not grab liquid include, because it is not present in the liquid context please check for rawinclude_b7c846d6 in the navigation.liquivelte file.';
-	console.error(err);
-	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
-	}
-
-	;
-	try{
-	wrapper.svelteProps["rawinclude_5513f9e2"] = [...(wrapper.svelteProps["rawinclude_5513f9e2"] || []), ...window.liquivelte_rawincludes['rawinclude_5513f9e2'].map(e => htmlDecode(e)) ];
-	} catch (e) {
-	const err = 'Could not grab liquid include, because it is not present in the liquid context please check for rawinclude_5513f9e2 in the navigation.liquivelte file.';
-	console.error(err);
-	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
-	}
-
 	
 
 	// liquid expression cache

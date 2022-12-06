@@ -41,7 +41,7 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}anim_style-kvsp-{{ block.settings.anim_style }}{% endcapture %}
-{% include 'liquivelte', module: 'title', props: props, sub_include: true %}
+{% include 'title', liquivelte: true, props: props, sub_include: true %}
 {% assign props = '' %}
         {% endif %}
         
@@ -60,7 +60,7 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}block-kvsp-{{ block }}-prsp-keepFor-kvsp-{{ keepFor }}-prsp-bind:keptFor-kvsp--prsp-anim_style-kvsp-{{ block.settings.anim_style }}{% endcapture %}
-{% include 'liquivelte', module: 'video', props: props, sub_include: true %}
+{% include 'video', liquivelte: true, props: props, sub_include: true %}
 {% assign props = '' %}
         {% endif %}
 
@@ -71,7 +71,7 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}block-kvsp-{{ block }}-prsp-anim_style-kvsp-{{ block.settings.anim_style }}{% endcapture %}
-{% include 'liquivelte', module: 'shape', props: props, sub_include: true %}
+{% include 'shape', liquivelte: true, props: props, sub_include: true %}
 {% assign props = '' %} 
         {% endif %}
       
@@ -80,8 +80,6 @@
   </div>
   <div  class="stage-placeholder svelte-strz53" style="height: { stageHeight + keepFor }px">&nbsp;</div>
 </div>
-
-<svelte:window bind:scrollY ></svelte:window>
 
 
 {% schema %}{

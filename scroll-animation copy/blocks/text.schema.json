@@ -1,0 +1,22 @@
+{
+  "settings": [
+    {
+      "type": "number",
+      "id": "font_size",
+      "label": "Font Size (em)",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color",
+      "default": "#fff"
+    },
+    {
+      "type": "checkbox",
+      "id": "bold",
+      "label": "Bold",
+      "default": false
+    }
+  ]
+}

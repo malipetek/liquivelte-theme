@@ -37,12 +37,13 @@
   import Navigation from './components/navigation.liquivelte';
   import PredictiveSearch from './components/predictive-search.liquivelte';
   import HeaderDrawer from './components/header-drawer.liquivelte';
+  import Logo from './components/logo.liquivelte';
   import DetailsModal from '../../snippets/details-modal.liquivelte';
-
-  import settings from 'theme';
+  import { App, Appbar, Panel, Button, Block, View, Page, Content } from 'framework7-liquivelte'; 
+  import settings from 'theme'; 
 
   import logo_html from 'theme';
-  console.log('settings ', settings);
+  console.log('settings ', settings); 
   
   import routes from 'theme';
   import request from 'theme';
@@ -54,7 +55,8 @@
   console.log('section.settings.menu ', section.settings.menu);
 </script>
 
-<style lang="postcss">
+<style global lang="postcss">
+@import "framework7/framework7-bundle.min.css";
 @tailwind base;
 @tailwind utilities;
 
@@ -137,29 +139,8 @@ header-drawer {
   }
   :global(.menu-drawer__navigation svg) {
     width: 40px;
-  }
+  } 
 </style>
-<div class="hidden">
-  {% include 'icon-hamburger' %}
-  {% include 'icon-close' %}
-  {% include 'icon-account' %}
-  {% include 'icon-twitter' %}
-  {% include 'icon-facebook' %}
-  {% include 'icon-pinterest' %}
-  {% include 'icon-tiktok' %}
-  {% include 'icon-instagram' %}
-  {% include 'icon-vimeo' %}
-  {% include 'icon-youtube' %}
-  {% include 'icon-snapchat' %}
-  {% include 'icon-tumblr' %}
-  {% include 'icon-caret' %}
-  {% include 'icon-cart-empty' %}
-  {% include 'icon-cart' %}
-  {% include 'cart-notification', color_scheme: section.settings.color_scheme %}
-  {% include 'application-ld', type: 'shop' %}
-  {% include 'application-ld', type: 'shop2' %}
-</div>
-
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
   <symbol id="icon-search" viewbox="0 0 18 19" fill="none">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M11.03 11.68A5.784 5.784 0 112.85 3.5a5.784 5.784 0 018.18 8.18zm.26 1.12a6.78 6.78 0 11.72-.7l5.4 5.4a.5.5 0 11-.71.7l-5.41-5.4z" fill="currentColor"/>
@@ -169,342 +150,38 @@ header-drawer {
     <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
   </symbol>
 </svg>
-<div class="header-wrapper color-{{- section.settings.color_scheme -}} gradient" class:header-wrapper--border-bottom="{{- section.settings.show_line_separator -}}">
-  <header class="header header--{{- section.settings.logo_position -}} header--mobile-{{- section.settings.mobile_logo_position -}} page-width" class:header--has-menu="{{- section.settings.menu -}}">
-    {% if section.settings.menu != '' %}
-      <HeaderDrawer breakpoint="tablet">
-        <details id="Details-menu-drawer-container" class="menu-drawer-container">
-          <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{- 'sections.header.menu' | t -}}">
-            <span>
-              {% include 'icon-hamburger' %}
-              {% include 'icon-close' %}
-            </span>
-          </summary>
-          <div id="menu-drawer" class="gradient menu-drawer motion-reduce" tabindex="-1">
-            <div class="menu-drawer__inner-container">
-              <div class="menu-drawer__navigation-container">
-                <nav class="menu-drawer__navigation">
-                  <Navigation links="{{- section.settings.menu.links -}}" />
-                </nav>
-                <div class="menu-drawer__utility-links">
-                  {% if shop.customer_accounts_enabled %}
-                    <a href="{{- account_url -}}" class="menu-drawer__account link focus-inset h5">
-                      {% include 'icon-account' %}
-                      {{- account_text -}}
-                    </a>
-                  {% endif %}
-                  <ul class="list list-social list-unstyled" role="list">
-                    {% if settings.social_twitter_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_twitter_link -}}" class="list-social__link link">
-                          {% include 'icon-twitter' %}
-                          <span class="visually-hidden" data-translation="{{- 'general.social.links.twitter' | t -}}">{{- 'general.social.links.twitter' | t -}}</span>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if settings.social_facebook_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_facebook_link -}}" class="list-social__link link">
-                          {% include 'icon-facebook' %}
-                          <span class="visually-hidden" data-translation="{{- 'general.social.links.facebook' | t -}}">{{- 'general.social.links.facebook' | t -}}</span>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if settings.social_pinterest_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_pinterest_link -}}" class="list-social__link link">
-                          {% include 'icon-pinterest' %}
-                          <span class="visually-hidden">{{- 'general.social.links.pinterest' | t -}}</span>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if settings.social_instagram_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_instagram_link -}}" class="list-social__link link">
-                          {% include 'icon-instagram' %}
-                          <span class="visually-hidden">{{- 'general.social.links.instagram' | t -}}</span>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if settings.social_tiktok_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_tiktok_link -}}" class="list-social__link link">
-                          {% include 'icon-tiktok' %}
-                          <span class="visually-hidden">{{- 'general.social.links.tiktok' | t -}}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                    {% if settings.social_tumblr_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_tumblr_link -}}" class="list-social__link link">
-                          {% include 'icon-tumblr' %}
-                          <span class="visually-hidden">{{- 'general.social.links.tumblr' | t -}}</span>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if settings.social_snapchat_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_snapchat_link -}}" class="list-social__link link">
-                          {% include 'icon-snapchat' %}
-                          <span class="visually-hidden">{{- 'general.social.links.snapchat' | t -}}</span>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if settings.social_youtube_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_youtube_link -}}" class="list-social__link link">
-                          {% include 'icon-youtube' %}
-                          <span class="visually-hidden">{{- 'general.social.links.youtube' | t -}}</span>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if settings.social_vimeo_link != '' %}
-                      <li class="list-social__item">
-                        <a href="{{- settings.social_vimeo_link -}}" class="list-social__link link">
-                          {% include 'icon-vimeo' %}
-                          <span class="visually-hidden">{{- 'general.social.links.vimeo' | t -}}</span>
-                        </a>
-                      </li>
-                    {% endif %}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </details>
-      </HeaderDrawer>
-    {% endif %}
 
-    {% if section.settings.logo_position == 'top-center' or section.settings.menu == '' %}
-      <DetailsModal classes="header__search">
-        <details>
-          <summary class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle" aria-haspopup="dialog" aria-label="{{- 'general.search.search' | t -}}">
-            <span>
-              <svg class="modal__toggle-open icon icon-search" aria-hidden="true" focusable="false" role="presentation">
-                <use href="#icon-search">
-              </svg>
-              <svg class="modal__toggle-close icon icon-close" aria-hidden="true" focusable="false" role="presentation">
-                <use href="#icon-close">
-              </svg>
-            </span>
-          </summary>
-          <div class="search-modal modal__content gradient" role="dialog" aria-modal="true" aria-label="{{- 'general.search.search' | t -}}">
-            <div class="modal-overlay"></div>
-            <div class="search-modal__content" class:search-modal__content-top="{{- settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 -}}" class:search-modal__content-bottom="{{- settings.inputs_shadow_vertical_offset == 0 or settings.inputs_shadow_vertical_offset > 0 -}}" tabindex="-1">
-              <PredictiveSearch>
-                <form action="{{- routes.search_url -}}" method="get" role="search" class="search search-modal__form">
-                  <div class="field">
-                    {% if settings.predictive_search_enabled %}
-                    <input class="search__input field__input"
-                      id="Search-In-Modal-1"
-                      type="search"
-                      name="q"
-                      value=""
-                      placeholder="{{- 'general.search.search' | t -}}"
-                        role="combobox"
-                        aria-expanded="false"
-                        aria-owns="predictive-search-results-list"
-                        aria-controls="predictive-search-results-list"
-                        aria-haspopup="listbox"
-                        aria-autocomplete="list"
-                        autocorrect="off"
-                        autocomplete="off"
-                        autocapitalize="off"
-                        spellcheck="false"
-                        >
-                        {% else %}
-                        <input class="search__input field__input"
-                          id="Search-In-Modal-1"
-                          type="search"
-                          name="q"
-                          value=""
-                          placeholder="{{- 'general.search.search' | t -}}"
-                            >
-                        {% endif %}
-                    <label class="field__label" for="Search-In-Modal-1" data-translation="{{- 'general.search.search' | t -}}">{{- 'general.search.search' | t -}}</label>
-                    <input type="hidden" name="options[prefix]" value="last">
-                    <button class="search__button field__button" aria-label="{{- 'general.search.search' | t -}}">
-                      <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
-                        <use href="#icon-search">
-                      </svg>
-                    </button>
-                  </div>
-              
-                  {% if settings.predictive_search_enabled %}
-                    <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
-                      <div class="predictive-search__loading-state">
-                        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                        </svg>
-                      </div>
-                    </div>
-              
-                    <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
-                  {% endif %}
-                </form>
-              </PredictiveSearch>
-              <button type="button" class="modal__close-button link link--text focus-inset" aria-label="{{- 'accessibility.close' | t -}}">
-                <svg class="icon icon-close" aria-hidden="true" focusable="false" role="presentation">
-                  <use href="#icon-close">
-                </svg>
-              </button>
-            </div>
-          </div>
-        </details>
-      </DetailsModal>
-    {% endif %}
-
-    {% if section.settings.logo_position != 'middle-center' %}
-      {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
-          <a href="{{- routes.root_url -}}" class="header__heading-link link link--text focus-inset">
-            {% if section.settings.logo != '' %}
-              {{- logo_html | html -}}
-            {% else %}
-              <span class="h2">{{- shop.name -}}</span>
-            {% endif %}
-          </a>
-        </h1>
-      {% else %}
-        <a href="{{- routes.root_url -}}" class="header__heading-link link link--text focus-inset">
-          {% if section.settings.logo != '' %}
-            {{- logo_html | html -}}
-          {% else %}
-            <span class="h2">{{- shop.name -}}</span>
-          {% endif %}
-        </a>
-      {% endif %}
-    {% endif %}
-
-    {% if section.settings.logo_position == 'middle-center' %}
-      {% if request.page_type == 'index' %}
-        <h1 class="header__heading">
-          <a href="{{- routes.root_url -}}" class="header__heading-link link link--text focus-inset">
-            {% if section.settings.logo != '' %}
-             {{- logo_html | html -}}
-            {% else %}
-              <span class="h2">{{- shop.name -}}</span>
-            {% endif %}
-          </a>
-        </h1>
-      {% else %}
-        <a href="{{- routes.root_url -}}" class="header__heading-link link link--text focus-inset">
-          {% if section.settings.logo != '' %}
-           {{- logo_html | html -}}
-          {% else %}
-            <span class="h2">{{- shop.name -}}</span>
-          {% endif %}
-        </a>
-      {% endif %}
-    {% endif %}
-
-    <div class="header__icons">
-      <DetailsModal classes="header__search">
-        <details>
-          <summary class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle" aria-haspopup="dialog" aria-label="{{- 'general.search.search' | t -}}">
-            <span>
-              <svg class="modal__toggle-open icon icon-search" aria-hidden="true" focusable="false" role="presentation">
-                <use href="#icon-search">
-              </svg>
-              <svg class="modal__toggle-close icon icon-close" aria-hidden="true" focusable="false" role="presentation">
-                <use href="#icon-close">
-              </svg>
-            </span>
-          </summary>
-          <div class="search-modal modal__content gradient" role="dialog" aria-modal="true" aria-label="{{- 'general.search.search' | t -}}">
-            <div class="modal-overlay"></div>
-            <div class="search-modal__content" class:search-modal__content-top="{{- settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 -}}" class:search-modal__content-bottom="{{- settings.inputs_shadow_vertical_offset == 0 or settings.inputs_shadow_vertical_offset > 0 -}}" tabindex="-1">
-                <PredictiveSearch class="search-modal__form" >
-                <form action="{{- routes.search_url -}}" method="get" role="search" class="search search-modal__form">
-                  <div class="field">
-                      {% if settings.predictive_search_enabled %}
-                        <input class="search__input field__input"
-                          id="Search-In-Modal"
-                          type="search"
-                          name="q"
-                          value=""
-                          placeholder="{{- 'general.search.search' | t -}}"
-                          role="combobox"
-                          aria-expanded="false"
-                          aria-owns="predictive-search-results-list"
-                          aria-controls="predictive-search-results-list"
-                          aria-haspopup="listbox"
-                          aria-autocomplete="list"
-                          autocorrect="off"
-                          autocomplete="off"
-                          autocapitalize="off"
-                          spellcheck="false"
-                          >
-                        {% else %}
-                          <input class="search__input field__input"
-                            id="Search-In-Modal"
-                            type="search"
-                            name="q"
-                            value=""
-                            placeholder="{{- 'general.search.search' | t -}}"
-                            >
-                        
-                      {% endif %}
-                    <label class="field__label" for="Search-In-Modal" data-translation="{{- 'general.search.search' | t -}}">{{- 'general.search.search' | t -}}</label>
-                    <input type="hidden" name="options[prefix]" value="last">
-                    <button class="search__button field__button" aria-label="{{- 'general.search.search' | t -}}">
-                      <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
-                        <use href="#icon-search">
-                      </svg>
-                    </button>
-                  </div>
-
-                  {% if settings.predictive_search_enabled %}
-                    <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
-                      <div class="predictive-search__loading-state">
-                        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                        </svg>
-                      </div>
-                    </div>
-
-                    <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
-                  {% endif %}
-                </form>
-              </PredictiveSearch>
-              <button type="button" class="search-modal__close-button modal__close-button link link--text focus-inset" aria-label="{{- 'accessibility.close' | t -}}">
-                <svg class="icon icon-close" aria-hidden="true" focusable="false" role="presentation">
-                  <use href="#icon-close">
-                </svg>
-              </button>
-            </div>
-          </div>
-        </details>
-      </DetailsModal>
-
-      {% if shop.customer_accounts_enabled %}
-        <a href="{{- account_url -}}" class="header__icon header__icon--account link focus-inset" class:small-hide="{{- section.settings.menu != '' -}}">
-          {% include 'icon-account' %}
-          <span class="visually-hidden">
-            {{- account_text -}}
-          </span>
-        </a>
-      {% endif %}
-
-      <a href="{{- routes.cart_url -}}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-          {% if cart.items.size == 0 %}
-            {% include 'icon-cart-empty' %}
-          {% else %}
-            {% include 'icon-cart' %}
-          {% endif %}
-        <span class="visually-hidden" data-translation="{{- 'templates.cart.cart' | t -}}">{{- 'templates.cart.cart' | t -}}</span>
-        {% if cart.items.size > 0 %}
-          <div class="cart-count-bubble">
-            {% if cart.item_count < 100 %}
-              <span aria-hidden="true">{{- cart.item_count -}}</span>
-            {% endif %}
-            <span class="visually-hidden" data-translation="{{- 'sections.header.cart_count' | t -}}">{{- 'sections.header.cart_count' | t -}}</span>
-          </div>
-        {% endif %}
-      </a>
-    </div>
+  <Panel resizable left reveal swipeOnlyClose="{true}"  >
+    <View>
+      <Page>
+        <Block> Left panel content </Block>
+      </Page>
+    </View>
+  </Panel>
+  <Panel resizable right reveal swipeOnlyClose="{true}"  >
+    <View>
+      <Page>
+        <Block> Right panel content </Block>
+      </Page>
+    </View>
+  </Panel>
+  <header>
+    <Appbar>
+      <div class="left">
+        <Button small panelToggle="left" class="display-flex" >
+          {% include 'icon-hamburger', width: 15 %}
+        </Button>
+      </div>
+      <div class="center">
+        <Logo />
+      </div>
+      <div class="left">
+        <Button small panelToggle="right" class="display-flex" >
+          {% include 'icon-cart', width: 40 %}
+        </Button>
+      </div>
+    </Appbar>
   </header>
-</div>
 
 {% if settings.cart_type == "notification" %}
   {% include 'cart-notification', color_scheme: section.settings.color_scheme %}
