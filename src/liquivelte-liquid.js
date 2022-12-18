@@ -76,6 +76,29 @@ export default (liquid_expression_cache) => ({
         }
         return input.replace(/\.([^\.]+)($|\?)/, `_${size}.$1?`);
     },
+    image_url: (input, {width = '', height = ''} = { width: '', height: ''}) => {
+        if (liquid_expression_cache['image_url'] && liquid_expression_cache['image_url'].has(`${input}${width}x${height}`)) {
+            return liquid_expression_cache['image_url'].get(`${input}${width}x${height}`);
+        }
+        // console.log('img url');
+        if (!input) {
+            return input = `//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif`;
+        }
+        while (input.src) {
+            input = input.src;
+        }
+        if (input.image) {
+            input = input.image;
+        }
+        if (input.constructor !== String) {
+            return input = `//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif`;
+        }
+
+        if (!isValidHttpUrl(input)) {
+            input = `https://cdn.shopify.com/s/files/1/0621/4444/6683/${input}`;
+        }
+        return input.replace(/\.([^\.]+)($|\?)/, `_${width}x${height}.$1?`);
+    },
     file_url: (input) => {
         if (liquid_expression_cache['file_url'] && liquid_expression_cache['file_url'].has(`${input}`)) {
             return liquid_expression_cache['file_url'].get(`${input}`);

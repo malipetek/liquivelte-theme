@@ -11,14 +11,32 @@
   export let sectionƒƒsettings; 
 section.settings = sectionƒƒsettings;
   export let products;
-  export let slidesPerView;
- 
+  
+  console.log('products ', products);
+  
+  const slidesPerView = 3;
+  const breakpoints = {
+				"640": {
+					slidesPerView: 2,
+				},
+				"768": {
+					slidesPerView: 3,
+				},
+				"1024": {
+					slidesPerView: 4,
+				},
+				"1280": {
+					slidesPerView: 6,
+				},
+				"1536": {
+					slidesPerView: 8,
+				}
+			}
 </script>
 
-<Block   products={products} slidesPerView={slidesPerView}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >
-<BlockTitle   products={products} slidesPerView={slidesPerView}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >With all controls</BlockTitle>
-<div style="--slides-per-view: { slidesPerView }">
-  <Swiper    products={products} slidesPerView={slidesPerView}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >
+<Block   products={products}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >
+<BlockTitle   products={products}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >With all controls</BlockTitle>
+  <Swiper  breakpoints="{breakpoints}"  products={products}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >
     {#each  products as product, index  }
 {@const forloop = {
   first: index === 0,
@@ -29,18 +47,52 @@ section.settings = sectionƒƒsettings;
   rindex0: ( products).length - index - 1,
   length: ( products).length,
 } }
-    <SwiperSlide   products={products} slidesPerView={slidesPerView}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >
-      <ProductCard  product="{ product }"  products={products} slidesPerView={slidesPerView}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} />
+    <SwiperSlide    products={products}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >
+      <ProductCard  product="{ product }"  products={products}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} />
     </SwiperSlide>
     {/each} 
   </Swiper>
-</div>
 </Block>
 
 
-<style>
- :global(.swiper-slide) {
+<style global lang="scss">
+  @import '../../styles/breakpoints.scss';
+ .swiper-slide {
   border: none;
   background: none;
  }
+
+ :root {
+  --slides-per-view: 1;
+ }
+ @include sm {
+  :root{
+    --slides-per-view: 2;
+  }
+ }
+
+ @include md {
+  :root{
+    --slides-per-view: 3;
+  }
+ }
+
+ @include lg {
+  :root{
+    --slides-per-view: 4;
+  }
+ }
+
+ @include xl {
+  :root{
+    --slides-per-view: 6;
+  }
+ }
+
+ @include xxl {
+  :root{
+    --slides-per-view: 8;
+  }
+ }
+
 </style>

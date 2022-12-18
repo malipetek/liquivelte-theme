@@ -16,6 +16,7 @@
   function increment() {
     clicked = clicked + 1
   }
+  
 </script>
 
 <Card  class="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}"     lec={lec} >
@@ -23,7 +24,9 @@
   class="no-border"
   valign="bottom"
        lec={lec} >
-  <img src="{ liquid.img_url(product.featured_image, '300x') }" />
+  <img src="{ liquid.image_url(product.media[0], {"width":"300"}) }" 
+  width="300"
+  style="aspect-ratio: { product.media[0].aspect_ratio }" />
 </CardHeader>
 <CardContent      lec={lec} >
 <div on:click="{increment}">

@@ -52,7 +52,9 @@ smns stands for "slot module name separator"
 {% endcapture %}
 
 {% capture slot_content_CardHeader %}
-  <img src="{{ product.featured_image | img_url: '300x' }}" liquivelte-value-cache="img_url§{{product.featured_image}}, {{'300x'}}§{{product.featured_image| img_url: '300x'  }}" />
+  <img src="{{ product.media[0] | image_url: width: 300 }}" liquivelte-value-cache="image_url§{{product.media[0]}}, {{width}}, {{300}}§{{product.media[0]| image_url: width: 300  }}" 
+  width="300"
+  style="aspect-ratio: {{ product.media[0].aspect_ratio }}" />
 {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card-header' | append: '-scvs-' | append: slot_content_CardHeader %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card-header' %}

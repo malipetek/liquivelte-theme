@@ -7,7 +7,7 @@
       assign products = products | concat: product_arr
     endunless
   endfor
-  assign slidesPerView = 3
+
 %}
 <script>
   import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
@@ -15,29 +15,81 @@
   const section = {};
   import section.settings from 'theme';
   import products from 'theme';
-  import slidesPerView from 'theme';
- 
+  
+  console.log('products ', products);
+  
+  const slidesPerView = 3;
+  const breakpoints = {
+				"640": {
+					slidesPerView: 2,
+				},
+				"768": {
+					slidesPerView: 3,
+				},
+				"1024": {
+					slidesPerView: 4,
+				},
+				"1280": {
+					slidesPerView: 6,
+				},
+				"1536": {
+					slidesPerView: 8,
+				}
+			}
 </script>
 
 <Block>
 <BlockTitle>With all controls</BlockTitle>
-<div style="--slides-per-view: {{- slidesPerView -}}">
-  <Swiper >
+  <Swiper breakpoints="{breakpoints}">
     {% for product in products %}
-    <SwiperSlide>
+    <SwiperSlide >
       <ProductCard product="{{- product -}}"></ProductCard>
     </SwiperSlide>
     {% endfor %} 
   </Swiper>
-</div>
 </Block>
 
 
-<style>
- :global(.swiper-slide) {
+<style global lang="scss">
+  @import '../../styles/breakpoints.scss';
+ .swiper-slide {
   border: none;
   background: none;
  }
+
+ :root {
+  --slides-per-view: 1;
+ }
+ @include sm {
+  :root{
+    --slides-per-view: 2;
+  }
+ }
+
+ @include md {
+  :root{
+    --slides-per-view: 3;
+  }
+ }
+
+ @include lg {
+  :root{
+    --slides-per-view: 4;
+  }
+ }
+
+ @include xl {
+  :root{
+    --slides-per-view: 6;
+  }
+ }
+
+ @include xxl {
+  :root{
+    --slides-per-view: 8;
+  }
+ }
+
 </style>
 {% schema %}
 {

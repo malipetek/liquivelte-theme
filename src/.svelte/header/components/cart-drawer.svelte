@@ -1,15 +1,20 @@
+
 <script>
   import cachedLiquid from 'liquivelte-liquid.js';
   export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
+export let inputWidth;
   export let cart;  
   import { Button, Block, View, Page } from 'framework7-liquivelte'; 
   import Loadable from '../../../snippets/loadable.liquivelte';
+	import QuantityBox from '../../../snippets/quantity-box.liquivelte';
   import { cartStore, cartOpen } from '../../../scripts/store.module.js';
 
-
+	export let min_amounts;
+	// const min_amounts_data = JSON.parse(min_amounts);
+	console.log('min amounts ', min_amounts);
   let loading = false;
 
 	async function updateLineItem(itemid, quantity) {
@@ -36,9 +41,9 @@
 
   $: console.log('------> cart ', cart);
   </script>
-  <View   cart={cart}    lec={lec} >
-    <Page   cart={cart}    lec={lec} >
-      <Block   cart={cart}    lec={lec} > 
+  <View   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
+    <Page   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
+      <Block   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
 				{#each  cart.items as item, index  }
 {@const forloop = {
   first: index === 0,
@@ -69,17 +74,60 @@
 									{/each}
 								</div>
 							</div>
-							<Loadable  bind:loading   cart={cart}    lec={lec} > 
-								<QuantityBox  minimum={min_amounts_data[item.id]} quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}"   cart={cart}    lec={lec} /> 
+							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
+								<QuantityBox  quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} /> 
 							</Loadable>
 						</div>
 						<div class="cart-item-right">
-							<Loadable  bind:loading   cart={cart}    lec={lec} > 
+							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
 								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > </div>
 							</Loadable>
 							<div class="cart-item-price text-black text-xl"> { liquid.money(item.price) } </div>
 						</div> 
 					</div>
-				{/each}      </Block>
+				{/each}      
+			</Block>
     </Page>
   </View>
+
+	<style>
+
+	.cart-drawer-bottom {
+		align-self: flex-end;
+		width: 100%;
+	}
+.quantity-box {
+		display: inline-flex;
+		align-self: flex-start;
+	}
+
+.cart-drawer-subtotal {
+		margin-bottom: 10px;
+	}
+	.cart-drawer-taxes-notice {
+		margin-bottom: 15px;
+	}
+	.cart-drawer-subtotal-text {
+		float: right;
+	}
+/*================ Spinner Icon ================*/
+.icon-spinner {
+  -moz-animation: spin 500ms infinite linear;
+  -o-animation: spin 500ms infinite linear;
+  -webkit-animation: spin 500ms infinite linear;
+  animation: spin 500ms infinite linear;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+	</style>

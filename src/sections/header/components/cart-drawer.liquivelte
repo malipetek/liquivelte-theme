@@ -1,10 +1,24 @@
+{% liquid 
+	assign min_amounts = '{'
+	for item in cart.items
+		assign min_amount = item.product.metafields.custom['min-amount'] | default: 0
+		assign min_amounts = min_amounts | append: '"' | append: item.id | append: '":' | append: min_amount
+		unless forloop.last
+			assign min_amounts = min_amounts | append: ','
+		endunless
+	endfor
+	assign min_amounts = min_amounts | append: '}'
+%}
 <script>
   import cart from 'theme/cart';  
   import { Button, Block, View, Page } from 'framework7-liquivelte'; 
   import Loadable from '../../../snippets/loadable.liquivelte';
+	import QuantityBox from '../../../snippets/quantity-box.liquivelte';
   import { cartStore, cartOpen } from '../../../scripts/store.module.js';
 
-
+	import min_amounts from 'theme';
+	// const min_amounts_data = JSON.parse(min_amounts);
+	console.log('min amounts ', min_amounts);
   let loading = false;
 
 	async function updateLineItem(itemid, quantity) {
@@ -47,7 +61,7 @@
 								</div>
 							</div>
 							<Loadable bind:loading > 
-								<QuantityBox minimum={min_amounts_data[item.id]} quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}" /> 
+								<QuantityBox quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}" /> 
 							</Loadable>
 						</div>
 						<div class="cart-item-right">
@@ -57,6 +71,49 @@
 							<div class="cart-item-price text-black text-xl"> {{- item.price | money -}} </div>
 						</div> 
 					</div>
-				{% endfor %}      </Block>
+				{% endfor %}      
+			</Block>
     </Page>
   </View>
+
+	<style>
+
+	.cart-drawer-bottom {
+		align-self: flex-end;
+		width: 100%;
+	}
+.quantity-box {
+		display: inline-flex;
+		align-self: flex-start;
+	}
+
+.cart-drawer-subtotal {
+		margin-bottom: 10px;
+	}
+	.cart-drawer-taxes-notice {
+		margin-bottom: 15px;
+	}
+	.cart-drawer-subtotal-text {
+		float: right;
+	}
+/*================ Spinner Icon ================*/
+.icon-spinner {
+  -moz-animation: spin 500ms infinite linear;
+  -o-animation: spin 500ms infinite linear;
+  -webkit-animation: spin 500ms infinite linear;
+  animation: spin 500ms infinite linear;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+	</style>
