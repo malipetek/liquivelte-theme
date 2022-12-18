@@ -3,6 +3,9 @@
     "f55fd9df-34e5-4a6a-ad16-040620edc061": {
       "type": "slider",
       "settings": {
+        "collection": "cheetah",
+        "layout": "regular",
+        "title_size": "normal"
       }
     },
     "product-comparison": {
