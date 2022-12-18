@@ -81,7 +81,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar' and name == 'before-inner'
+	if module == 'framework7-liquivelte-navbar' and name == 'before-inner'
 	assign children_before-inner = value | strip
 	endif
 	endfor
@@ -113,7 +113,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar' and name == 'nav-left'
+	if module == 'framework7-liquivelte-navbar' and name == 'nav-left'
 	assign children_nav-left = value | strip
 	endif
 	endfor
@@ -130,7 +130,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar' and name == 'left'
+	if module == 'framework7-liquivelte-navbar' and name == 'left'
 	assign children_left = value | strip
 	endif
 	endfor
@@ -142,8 +142,8 @@ smns stands for "slot module name separator"
 	
       {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'nav-left' | append: '-scvs-' | append: slot_content_NavLeft %}
-
-{% include 'nav-left', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'nav-left' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
     {/if}
     {#if title || subtitle || hasTitleSlots}
@@ -167,7 +167,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar' and name == 'title'
+	if module == 'framework7-liquivelte-navbar' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -179,8 +179,8 @@ smns stands for "slot module name separator"
 	
       {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'nav-title' | append: '-scvs-' | append: slot_content_NavTitle %}
-
-{% include 'nav-title', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'nav-title' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
     {/if}
     {#if hasRightSlots}
@@ -204,7 +204,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar' and name == 'nav-right'
+	if module == 'framework7-liquivelte-navbar' and name == 'nav-right'
 	assign children_nav-right = value | strip
 	endif
 	endfor
@@ -221,7 +221,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar' and name == 'right'
+	if module == 'framework7-liquivelte-navbar' and name == 'right'
 	assign children_right = value | strip
 	endif
 	endfor
@@ -233,8 +233,8 @@ smns stands for "slot module name separator"
 	
       {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'nav-right' | append: '-scvs-' | append: slot_content_NavRight %}
-
-{% include 'nav-right', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'nav-right' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
     {/if}
     {#if largeTitle || hasTitleLargeSlots}
@@ -248,7 +248,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar' and name == 'title-large'
+	if module == 'framework7-liquivelte-navbar' and name == 'title-large'
 	assign children_title-large = value | strip
 	endif
 	endfor
@@ -266,13 +266,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar'
+	if module == 'framework7-liquivelte-navbar'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -284,7 +291,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'navbar' and name == 'after-inner'
+	if module == 'framework7-liquivelte-navbar' and name == 'after-inner'
 	assign children_after-inner = value | strip
 	endif
 	endfor

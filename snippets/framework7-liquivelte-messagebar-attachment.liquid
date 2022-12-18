@@ -40,13 +40,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'messagebar-attachment'
+	if module == 'framework7-liquivelte-messagebar-attachment'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

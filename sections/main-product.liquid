@@ -38,6 +38,7 @@
 
 <div  class="bg-white svelte-ioqrcr">
   
+    {% include 'breadcrumbs'  %}
     {%- capture rawinclude -%}{% include 'breadcrumbs'  %}{%- endcapture -%}
   <script liquivelte-keep liquivelte-eval>
   window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
@@ -56,7 +57,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}{% endcapture %}
-{% include 'image-gallery', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'image-gallery' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
         <div  class="h-8 md:h-20 svelte-ioqrcr"></div>
         <h1  class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl svelte-ioqrcr">{{ section.settings.product_title }} </h1>
@@ -74,7 +76,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}{% endcapture %}
-{% include 'reviews', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'reviews' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
 
         {% capture form_content %}
@@ -174,7 +177,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}bind:quantity-kvsp-{% endcapture %}
-{% include 'quantity-box', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'quantity-box' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
           <div>
           <button type="submit"  class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-ioqrcr">Add to bag</button>
@@ -273,9 +277,9 @@
 						
 						
 	<script type="text/noscript"  class="instance-data svelte-ioqrcr">{
-	"review_stars" : {{ review_stars | json }} , "score" : {{ score | json }} , "reviews_count" : {{ reviews_count | json }} , "product" : {{ product | json }} , "inputWidth" : {{ inputWidth | json }} , "breadcrumbs" : {{ breadcrumbs | json }} , "breadcrumbs_size" : {{ breadcrumbs_size | json }} , "price_formatted" : {{ price_formatted | json }} 
+	"product" : {{ product | json }} , "review_stars" : {{ review_stars | json }} , "score" : {{ score | json }} , "reviews_count" : {{ reviews_count | json }} , "inputWidth" : {{ inputWidth | json }} , "breadcrumbs" : {{ breadcrumbs | json }} , "breadcrumbs_size" : {{ breadcrumbs_size | json }} , "price_formatted" : {{ price_formatted | json }} 
 	,
-	"product$options_with_values": {{ product.options_with_values | json }} , "section$settings": {{ section.settings | json }} , "product$selected_or_first_available_variant": {{ product.selected_or_first_available_variant | json }} 
+	"productƒƒoptions_with_values": {{ product.options_with_values | json }} , "sectionƒƒsettings": {{ section.settings | json }} , "productƒƒselected_or_first_available_variant": {{ product.selected_or_first_available_variant | json }} 
 
 	}</script>
 	

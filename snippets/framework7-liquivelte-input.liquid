@@ -201,13 +201,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'input'
+	if module == 'framework7-liquivelte-input'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -262,7 +269,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}{checked}-kvsp--prsp-{readonly}-kvsp--prsp-{name}-kvsp--prsp-{value}-kvsp--prsp-{disabled}-kvsp--prsp-id-kvsp-{inputId}-prsp-on:change-kvsp-{onChange}{% endcapture %}
-{% include 'toggle', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'toggle' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
     {:else if type === 'range'}
       
@@ -280,7 +288,8 @@
 -prsp-input-kvsp-{true}
 -prsp-on:rangeChange-kvsp-{onChange}
 {% endcapture %}
-{% include 'range', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'range' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
     {:else if type === 'texteditor'}
       
@@ -296,7 +305,8 @@
 -prsp-onTextEditorInput-kvsp-{onInput}
 -prsp-onTextEditorChange-kvsp-{onChange}
 {% endcapture %}
-{% include 'text-editor', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'text-editor' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
     {:else}
       <input
@@ -353,7 +363,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'input' and name == 'error-message'
+	if module == 'framework7-liquivelte-input' and name == 'error-message'
 	assign children_error-message = value | strip
 	endif
 	endfor
@@ -376,7 +386,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'input' and name == 'info'
+	if module == 'framework7-liquivelte-input' and name == 'info'
 	assign children_info = value | strip
 	endif
 	endfor
@@ -438,13 +448,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'input'
+	if module == 'framework7-liquivelte-input'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -508,7 +525,8 @@
 -prsp-on:change-kvsp-{onChange}
 -prsp-{...restProps($$restProps)}
 -kvsp-{% endcapture %}
-{% include 'toggle', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'toggle' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
 {:else if type === 'range'}
   
@@ -527,7 +545,8 @@
 -prsp-on:rangeChange-kvsp-{onChange}
 -prsp-{...restProps($$restProps)}
 -kvsp-{% endcapture %}
-{% include 'range', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'range' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
 {:else if type === 'texteditor'}
   
@@ -544,7 +563,8 @@
 -prsp-onTextEditorChange-kvsp-{onChange}
 -prsp-{...restProps($$restProps)}
 -kvsp-{% endcapture %}
-{% include 'text-editor', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'text-editor' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
 {:else}
   <input

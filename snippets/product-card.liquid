@@ -1,133 +1,203 @@
+
+	{%- liquid
+	assign props_arr = props | split: '-prsp-'
+	for prop in props_arr
+	assign propName = prop | split: '-kvsp-' | first
+	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
+	if propValue contains '{' and propValue contains '}'
+	assign propValue = propValue | remove: '{' | remove: '}'
+	assign propValueArr = propValue | split: ','
+	for entry in propValueArr
+	assign key = entry | split: ':' | first | strip | remove: '"'
+	assign value = entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = propName | append: '_' | append: key
+	
+	endfor
+	endif
+	if propName == 'product'
+	assign product = propValue
+	endif
+	endfor
+	-%}
+	{%- unless sub_include -%} 
+	<div  class="liquivelte-component product-card svelte-3p59xp" data-liquivelte-component-name="product-card.liquivelte">
+	{%- endunless -%}
+	
+
+
 {% comment %}
-    Renders a product card
-
-    Accepts:
-    - product_card_product: {Object} Product Liquid object (optional)
-    - media_size: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
-    - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
-    - add_image_padding: {Boolean} Enables padding on the image to space out the grid
-    - show_vendor: {Boolean} Show the product vendor. Default: false
-    - show_image_outline: {Boolean} Show card outline. Default: true (optional)
-    - show_rating: {Boolean} Show the product rating. Default: false
-
-    Usage:
-    {% render 'product-card', show_vendor: section.settings.show_vendor %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
 {% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}class-kvsp-card-header-pic-prsp-swipeToClose-kvsp--prsp-hideToolbarOnOpen-kvsp--prsp-hideNavbarOnOpen-kvsp--prsp-bind:expandableOpened-kvsp-{expandableOpened}{% endcapture %}
 
-{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{% capture slot_content_Card %}
+  
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}class-kvsp-no-border"
+-prsp-valign-kvsp-bottom"
+{% endcapture %}
 
-<div class="card-wrapper">
-  <div class="card-information">
-    <div class="card-information__wrapper">
-      {%- if show_vendor -%}
-        <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-        <div class="caption-with-letter-spacing light">{{ product_card_product.vendor }}</div>
-      {%- endif -%}
+{% capture slot_content_CardHeader %}
+  <img src="{{ product.featured_image | img_url: '300x' }}" liquivelte-value-cache="img_url§{{product.featured_image}}, {{'300x'}}§{{product.featured_image| img_url: '300x'  }}" />
+{% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card-header' | append: '-scvs-' | append: slot_content_CardHeader %}
+{% assign modulename = basename | append: 'framework7-liquivelte-card-header' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
 
-      {%- if product_card_product.featured_media -%}
-        <h3 class="card-information__text h5">
-          <a href="{{ product_card_product.url | default: '#' }}" class="full-unstyled-link">
-            {{ product_card_product.title | escape }}
-          </a>
-        </h3>
-      {%- endif -%}
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}undefined-kvsp-{% endcapture %}
 
-      {% comment %} TODO: metafield {% endcomment %}
-      <span class="caption-large light">{{ block.settings.description | escape }}</span>
-      {%- if show_rating and product_card_product.metafields.reviews.rating.value != blank -%}
-        {% liquid
-          assign rating_decimal = 0 
-          assign decimal = product_card_product.metafields.reviews.rating.value.rating | modulo: 1 
-          if decimal >= 0.3 and decimal <= 0.7
-            assign rating_decimal = 0.5
-          elsif decimal > 0.7
-            assign rating_decimal = 1
-          endif 
-        %}
-        <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product_card_product.metafields.reviews.rating.value, rating_max: product_card_product.metafields.reviews.rating.value.scale_max }}">
-          <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ product_card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product_card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
-        </div>
-        <p class="rating-text caption">
-          <span aria-hidden="true">{{ product_card_product.metafields.reviews.rating.value }} / {{ product_card_product.metafields.reviews.rating.value.scale_max }}</span>
-        </p>
-        <p class="rating-count caption">
-          <span aria-hidden="true">({{ product_card_product.metafields.reviews.rating_count }})</span>
-          <span class="visually-hidden">{{ product_card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
-        </p>
-      {%- endif -%}
-      {% render 'price', product: product_card_product, price_class: '' %}
-    </div>
-  </div>
+{% capture slot_content_CardContent %}
+<div on:click="{increment}">
+  <h3>
+    {{ product.title }}
+  </h3>
+  {{ product.price | money }}
+</div> 
+{% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card-content' | append: '-scvs-' | append: slot_content_CardContent %}
+{% assign modulename = basename | append: 'framework7-liquivelte-card-content' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
+    
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}undefined-kvsp-{% endcapture %}
 
-  <div class="card card--product{% if product_card_product.featured_media == nil %} card--text-only card--soft{% endif %}{% if product_card_product.featured_media != nil and show_image_outline %} card--outline{% endif %}" tabindex="-1">
-    <div class="card__inner">
-      {%- if product_card_product.featured_media -%}
-        {%- liquid
-          assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio
+{% capture slot_content_CardFooter %}
+      
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}undefined-kvsp-{% endcapture %}
 
-          if product_card_product.featured_media.aspect_ratio == nil
-            assign featured_media_aspect_ratio = 1
-          endif
-        -%}
+{% capture slot_content_Button %} Add to Card {% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-button' | append: '-scvs-' | append: slot_content_Button %}
+{% assign modulename = basename | append: 'framework7-liquivelte-button' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %} 
+      
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}undefined-kvsp-{% endcapture %}
 
-        <div{% if add_image_padding %} class="card__media-full-spacer"{% endif %}>
-          <div class="media media--transparent media--{{ media_size }} media--hover-effect"
-            {% if media_size == 'adapt' and product_card_product.featured_media %} style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"{% endif %}
-          >
-            <img
-              srcset="{%- if product_card_product.featured_media.width >= 165 -%}{{ product_card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
-                {%- if product_card_product.featured_media.width >= 360 -%}{{ product_card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
-                {%- if product_card_product.featured_media.width >= 533 -%}{{ product_card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
-                {%- if product_card_product.featured_media.width >= 720 -%}{{ product_card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
-                {%- if product_card_product.featured_media.width >= 940 -%}{{ product_card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
-                {%- if product_card_product.featured_media.width >= 1066 -%}{{ product_card_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
-                {{ product_card_product.featured_media | img_url: 'master' }} {{ product_card_product.featured_media.width }}w"
-              src="{{ product_card_product.featured_media | img_url: '533x' }}"
-              sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-              alt="{{ product_card_product.featured_media.alt | escape }}"
-              loading="lazy"
-              class="motion-reduce"
-              width="{{ product_card_product.featured_media.width }}"
-              height="{{ product_card_product.featured_media.height }}"
-            >
+{% capture slot_content_Link %} Add to Wishlist {% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-link' | append: '-scvs-' | append: slot_content_Link %}
+{% assign modulename = basename | append: 'framework7-liquivelte-link' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
+    {% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card-footer' | append: '-scvs-' | append: slot_content_CardFooter %}
+{% assign modulename = basename | append: 'framework7-liquivelte-card-footer' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
+{% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card' | append: '-scvs-' | append: slot_content_Card %}
+{% assign modulename = basename | append: 'framework7-liquivelte-card' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
 
-            {%- if product_card_product.media[1] != nil and show_secondary_image -%}
-              <img
-                srcset="{%- if product_card_product.media[1].width >= 165 -%}{{ product_card_product.media[1] | img_url: '165x' }} 165w,{%- endif -%}
-                  {%- if product_card_product.media[1].width >= 360 -%}{{ product_card_product.media[1] | img_url: '360x' }} 360w,{%- endif -%}
-                  {%- if product_card_product.media[1].width >= 533 -%}{{ product_card_product.media[1] | img_url: '533x' }} 533w,{%- endif -%}
-                  {%- if product_card_product.media[1].width >= 720 -%}{{ product_card_product.media[1] | img_url: '720x' }} 720w,{%- endif -%}
-                  {%- if product_card_product.media[1].width >= 940 -%}{{ product_card_product.media[1] | img_url: '940x' }} 940w,{%- endif -%}
-                  {%- if product_card_product.media[1].width >= 1066 -%}{{ product_card_product.media[1] | img_url: '1066x' }} 1066w,{%- endif -%}
-                  {{ product_card_product.media[1] | img_url: 'master' }} {{ product_card_product.media[1].width }}w"
-                src="{{ product_card_product.media[1] | img_url: '533x' }}"
-                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                alt="{{ product_card_product.media[1].alt | escape }}"
-                loading="lazy"
-                class="motion-reduce"
-              width="{{ product_card_product.media[1].width }}"
-              height="{{ product_card_product.media[1].height }}"
-              >
-            {%- endif -%}
-          </div>
-        </div>
-      {%- else -%}
-        <div class="card__content">
-          <h2 class="card__text h3">
-            <a href="{{ product_card_product.url | default: '#' }}" class="full-unstyled-link">
-              {{ product_card_product.title }}
-            </a>
-          </h2>
-        </div>
-      {%- endif -%}
 
-      <div class="card__badge">
-        {%- if product_card_product.available == false -%}
-          <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
-        {%- elsif product_card_product.compare_at_price > product_card_product.price and product_card_product.available -%}
-          <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
-        {%- endif -%}
-      </div>
-    </div>
-  </div>
-</div>
+
+
+	
+						
+						
+	<script type="text/noscript"  class="instance-data svelte-3p59xp">{
+	
+	
+	
+
+	}</script>
+	
+	<script  class="liquivelte-prop-script svelte-3p59xp">(() => {
+	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
+	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
+	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}
+	function htmlDecode(input) {
+	var doc = new DOMParser().parseFromString(input, "text/html");
+	return doc.documentElement.textContent;
+	}
+	function componentWrapper(el) {
+	if(el.classList.contains('liquivelte-component')) {
+	return el;
+	} else {
+	return componentWrapper(el.parentElement);
+	}
+	}
+	var wrapper = componentWrapper(propScript.parentElement);
+	// console.log('wrapper', wrapper);
+	// console.log('parsing props for svelte component');
+	try{
+	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+	} catch (e) {
+	const err = 'There was an error';
+	console.error('there was an error parsing props json', e);
+	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
+	}
+	
+	
+
+	// liquid expression cache
+	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
+	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
+	args = args.split(', ');
+	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
+	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
+	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);
+	});
+
+	if(propScript){
+	propScript.remove();
+	}
+	if(propScript.previousElementSibling) {
+	propScript.previousElementSibling.remove();
+	}
+	})();</script>
+	{%- unless sub_include -%} 
+	</div>
+	{%- endunless -%}
+	

@@ -6,8 +6,8 @@
   let index = 0;
 
   let block = {};
-  export let block$settings; 
-block.settings = block$settings;
+  export let blockƒƒsettings; 
+block.settings = blockƒƒsettings;
   import "./text.schema.json";
   import "./item.schema.json";
 

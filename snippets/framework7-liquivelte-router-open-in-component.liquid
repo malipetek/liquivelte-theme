@@ -59,12 +59,13 @@ smns stands for "slot module name separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp--prsp-ignoreOpenIn-kvsp-{% endcapture %}
-{% include 'view', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'view' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
   {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'popup' | append: '-scvs-' | append: slot_content_Popup %}
-
-{% include 'popup', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'popup' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 {% endif %}
 {% if openIn === 'loginScreen' %}
@@ -87,12 +88,13 @@ smns stands for "slot module name separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp--prsp-ignoreOpenIn-kvsp-{% endcapture %}
-{% include 'view', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'view' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
   {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'login-screen' | append: '-scvs-' | append: slot_content_LoginScreen %}
-
-{% include 'login-screen', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'login-screen' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 {% endif %}
 {% if openIn === 'sheet' %}
@@ -115,12 +117,13 @@ smns stands for "slot module name separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp--prsp-ignoreOpenIn-kvsp-{% endcapture %}
-{% include 'view', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'view' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
   {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'sheet' | append: '-scvs-' | append: slot_content_Sheet %}
-
-{% include 'sheet', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'sheet' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 {% endif %}
 {% if openIn === 'popover' %}
@@ -143,12 +146,13 @@ smns stands for "slot module name separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp--prsp-ignoreOpenIn-kvsp-{% endcapture %}
-{% include 'view', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'view' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
   {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'popover' | append: '-scvs-' | append: slot_content_Popover %}
-
-{% include 'popover', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'popover' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 {% endif %}
 {% if openIn.indexOf('panel') === 0 %}
@@ -171,12 +175,13 @@ smns stands for "slot module name separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp--prsp-ignoreOpenIn-kvsp-{% endcapture %}
-{% include 'view', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'view' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
   {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'panel' | append: '-scvs-' | append: slot_content_Panel %}
-
-{% include 'panel', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'panel' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 {% endif %}
 

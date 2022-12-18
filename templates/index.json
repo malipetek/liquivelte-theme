@@ -1,5 +1,10 @@
 {
   "sections": {
+    "f55fd9df-34e5-4a6a-ad16-040620edc061": {
+      "type": "slider",
+      "settings": {
+      }
+    },
     "product-comparison": {
       "type": "product-comparison",
       "blocks": {
@@ -64,6 +69,81 @@
         "title": "Compare Bikes",
         "subtitle": "See ours is better in any way",
         "footnote": "<small> Comparison is made by us <\/small>",
+        "newsetting": ""
+      }
+    },
+    "scroll-anim": {
+      "type": "scroll-animation",
+      "blocks": {
+        "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c": {
+          "type": "video",
+          "settings": {
+            "source": "MACPRO.mp4",
+            "trim": 1,
+            "is_bg": true,
+            "id": ""
+          }
+        }
+      },
+      "block_order": [
+        "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c"
+      ],
+      "settings": {
+        "animation_duration": 200
+      }
+    },
+    "exploding-gallery": {
+      "type": "exploding-gallery",
+      "blocks": {
+        "a853409f-e207-4ec2-a40d-4711428bb2c4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Golf_Demos_1_2048x2048_f8d3bff5-1780-4b9c-a509-7bb77ba31645.jpg"
+          }
+        },
+        "de17155e-34ea-43b8-ae37-39d6bd157df8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alfa-lifestyle_2048x2048_885f6940-4cae-4178-8622-5f181b7b4bc8.jpg"
+          }
+        },
+        "91efe66c-a198-4e17-94c7-5416b1be7545": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Unknown.png"
+          }
+        },
+        "1fd0d8f2-2495-42bf-a199-6a30bbdb9019": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Unknown-19.jpg"
+          }
+        },
+        "0eaf3eb1-5472-4a1a-bad4-69dbd1e03c6e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/KAR_20130707-4298_2048x2048_e21c6d05-cab8-471c-abd4-e0844478f0a0.jpg"
+          }
+        },
+        "51618fbc-7934-4a9f-803a-e27ed4ac177d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alfa-lifestyle-lady_2048x2048_c50ad39b-5ddf-413c-8384-ee4eb66e7adb.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "a853409f-e207-4ec2-a40d-4711428bb2c4",
+        "de17155e-34ea-43b8-ae37-39d6bd157df8",
+        "91efe66c-a198-4e17-94c7-5416b1be7545",
+        "1fd0d8f2-2495-42bf-a199-6a30bbdb9019",
+        "0eaf3eb1-5472-4a1a-bad4-69dbd1e03c6e",
+        "51618fbc-7934-4a9f-803a-e27ed4ac177d"
+      ],
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "footnote": "",
         "newsetting": ""
       }
     },
@@ -167,61 +247,6 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "exploding-gallery": {
-      "type": "exploding-gallery",
-      "blocks": {
-        "a853409f-e207-4ec2-a40d-4711428bb2c4": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Golf_Demos_1_2048x2048_f8d3bff5-1780-4b9c-a509-7bb77ba31645.jpg"
-          }
-        },
-        "de17155e-34ea-43b8-ae37-39d6bd157df8": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/alfa-lifestyle_2048x2048_885f6940-4cae-4178-8622-5f181b7b4bc8.jpg"
-          }
-        },
-        "91efe66c-a198-4e17-94c7-5416b1be7545": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Unknown.png"
-          }
-        },
-        "1fd0d8f2-2495-42bf-a199-6a30bbdb9019": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Unknown-19.jpg"
-          }
-        },
-        "0eaf3eb1-5472-4a1a-bad4-69dbd1e03c6e": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/KAR_20130707-4298_2048x2048_e21c6d05-cab8-471c-abd4-e0844478f0a0.jpg"
-          }
-        },
-        "51618fbc-7934-4a9f-803a-e27ed4ac177d": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/alfa-lifestyle-lady_2048x2048_c50ad39b-5ddf-413c-8384-ee4eb66e7adb.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "a853409f-e207-4ec2-a40d-4711428bb2c4",
-        "de17155e-34ea-43b8-ae37-39d6bd157df8",
-        "91efe66c-a198-4e17-94c7-5416b1be7545",
-        "1fd0d8f2-2495-42bf-a199-6a30bbdb9019",
-        "0eaf3eb1-5472-4a1a-bad4-69dbd1e03c6e",
-        "51618fbc-7934-4a9f-803a-e27ed4ac177d"
-      ],
-      "settings": {
-        "title": "",
-        "subtitle": "",
-        "footnote": "",
-        "newsetting": ""
       }
     },
     "collage": {
@@ -329,27 +354,10 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "scroll-anim": {
-      "type": "scroll-animation",
-      "blocks": {
-        "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c": {
-          "type": "video",
-          "settings": {
-            "source": "MACPRO.mp4",
-            "trim": 1
-          }
-        }
-      },
-      "block_order": [
-        "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c"
-      ],
-      "settings": {
-        "animation_duration": 200
-      }
     }
   },
   "order": [
+    "f55fd9df-34e5-4a6a-ad16-040620edc061",
     "product-comparison",
     "scroll-anim",
     "exploding-gallery",

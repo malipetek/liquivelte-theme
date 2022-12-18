@@ -68,42 +68,57 @@
 
 <!-- svelte-ignore a11y-missing-attribute -->
 <a
-  bind:this={el}
-  class={classes}
-  on:click={onClick}
+  bind:this="{el}"
+  class="{{ classes }}"
+  on:click="{onClick}"
   {...attrs}
-  use:useTooltip={{ tooltip, tooltipTrigger }}
-  use:useRouteProps={routeProps}
+  use:useTooltip="{ { tooltip, tooltipTrigger } }"
+  use:useRouteProps="{routeProps}"
 >
-  {#if icon}
+  {% if icon %}
     
 {% comment %}
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props %}{icon}-kvsp-{% endcapture %}
-{% include 'use-icon', liquivelte: true, props: props, sub_include: true %}
+{% capture props %}icon-kvsp-{{ icon }}{% endcapture %}
+{% assign modulename = basename | append: 'use-icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
-  {/if}
+  {% endif %}
   {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'link'
+	if module == 'framework7-liquivelte-link'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
-  {#if typeof text !== 'undefined' || typeof badge !== 'undefined'}
-    <span class:tabbar-label={isTabbarLabel}>
-      {plainText(text)}
-      {#if typeof badge !== 'undefined'}
+  {% if text != blank or badge != blank %}
+    
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if isTabbarLabel
+	assign dynamic_classes = dynamic_classes | append: ' tabbar-label'
+	endif
+	-%}
+	<span class="{{ dynamic_classes }}">
+      {{ text }}
+      {% if badge != blank %}
 {% comment %}
 kvsp stands for "key value separator"
 prsp stands for "props separator"
@@ -113,15 +128,15 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props %}color-kvsp-{badgeColor}{% endcapture %}
+{% capture props %}color-kvsp-{{ badgeColor }}{% endcapture %}
 
-{% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
+{% capture slot_content_Badge %}{{ badge }}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
-{% assign props = '' %}{/if}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
+{% assign props = '' %}{% endif %}
     </span>
-  {/if}
+  {% endif %}
 </a>
 
 	

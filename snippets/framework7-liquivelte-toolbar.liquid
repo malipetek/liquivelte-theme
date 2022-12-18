@@ -83,7 +83,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'toolbar' and name == 'before-inner'
+	if module == 'framework7-liquivelte-toolbar' and name == 'before-inner'
 	assign children_before-inner = value | strip
 	endif
 	endfor
@@ -100,13 +100,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'toolbar'
+	if module == 'framework7-liquivelte-toolbar'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -117,13 +124,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'toolbar'
+	if module == 'framework7-liquivelte-toolbar'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -135,7 +149,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'toolbar' and name == 'after-inner'
+	if module == 'framework7-liquivelte-toolbar' and name == 'after-inner'
 	assign children_after-inner = value | strip
 	endif
 	endfor

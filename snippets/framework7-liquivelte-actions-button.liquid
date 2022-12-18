@@ -27,7 +27,7 @@
 	{%- endunless -%}
 	
 
-<div class="{classes}" on:click="{onClick}" bind:this="{el}" {...restProps($$restProps)}>
+<div class="actions-button {{ classes }}" on:click="{onClick}" bind:this="{el}" {...restProps($$restProps)}>
   {% if hasMediaSlots %}
     <div class="actions-button-media">
       {%- liquid
@@ -37,7 +37,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'actions-button' and name == 'media'
+	if module == 'framework7-liquivelte-actions-button' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -55,13 +55,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'actions-button'
+	if module == 'framework7-liquivelte-actions-button'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

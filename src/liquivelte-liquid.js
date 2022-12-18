@@ -70,12 +70,7 @@ export default (liquid_expression_cache) => ({
         if (input.constructor !== String) {
             return input = `//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif`;
         }
-        /* if (/_(lg|md|sm)_/.test(input)) {
-            return input.replace(/_(lg|mg|sm)_/, `_$1_${size}_`);
-        } else if (/_(lg|md|sm)/.test(input)) {
-            return input.replace(/_(lg|mg|sm)/, `_$1_${size}`);
-        } else {
-        } */
+
         if (!isValidHttpUrl(input)) {
             input = `https://cdn.shopify.com/s/files/1/0621/4444/6683/${input}`;
         }

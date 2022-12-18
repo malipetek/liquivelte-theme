@@ -5,10 +5,10 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-  export let section$settings; 
-section.settings = section$settings;
-  export let section$blocks; 
-section.blocks = section$blocks;
+  export let sectionƒƒsettings; 
+section.settings = sectionƒƒsettings;
+  export let sectionƒƒblocks; 
+section.blocks = sectionƒƒblocks;
   const a = 1;
  
 </script>

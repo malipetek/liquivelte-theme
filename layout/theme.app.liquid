@@ -31,7 +31,7 @@
   
       <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
   <!-- liquivelte includes -->
-      {% assign templatesWithLiquivelte = 'index,product.alt,product' | split: ',' %}
+      {% assign templatesWithLiquivelte = 'index,product' | split: ',' %}
       {% assign template_with_suffix_and_directory = template %}
       {% if template.directory %}
         {% assign template_with_suffix_and_directory = template.directory | append: '-' | append: template_with_suffix_and_directory %}

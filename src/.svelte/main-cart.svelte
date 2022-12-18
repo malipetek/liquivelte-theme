@@ -5,11 +5,10 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-export let rawinclude_dff1c036;
-export let rawinclude_2753db78;
 export let inputWidth;
   import QuantityBox from '../snippets/quantity-box.liquivelte';
   import Loadable from '../snippets/loadable.liquivelte';
+	import Icon from '../snippets/icon.liquivelte';
   import { cartStore, cartOpen } from '../scripts/store.module.js';
   import { disableScrollOnBody, enableScrollOnBody } from '../scripts/utils.js';
 	import { quintInOut } from 'svelte/easing';
@@ -155,13 +154,13 @@ export let inputWidth;
 									{/each}
 								</div>
 							</div>
-							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    rawinclude_dff1c036={rawinclude_dff1c036} rawinclude_2753db78={rawinclude_2753db78} lec={lec} > 
-								<QuantityBox  minimum={min_amounts_data[item.id]} quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    rawinclude_dff1c036={rawinclude_dff1c036} rawinclude_2753db78={rawinclude_2753db78} lec={lec} /> 
+							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
+								<QuantityBox  minimum={min_amounts_data[item.id]} quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} /> 
 							</Loadable>
 						</div>
 						<div class="cart-item-right">
-							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    rawinclude_dff1c036={rawinclude_dff1c036} rawinclude_2753db78={rawinclude_2753db78} lec={lec} > 
-								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > {@html rawinclude_2753db78[index || 0]} </div>
+							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
+								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > <Icon  name="icon-garbage" color="#a6a6a6"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} /> </div>
 							</Loadable>
 							<div class="cart-item-price text-black text-xl"> { liquid.money(item.price) } </div>
 						</div> 

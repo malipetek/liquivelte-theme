@@ -33,23 +33,31 @@
 	{%- endunless -%}
 	
 
-<div class={classes} {style} {id} bind:this={el}>
+<div class="view {{ classes }}" style="{{ style }}" id="{{ id }}" bind:this="{el}">
   {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'view'
+	if module == 'framework7-liquivelte-view'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
-  {#each pages as page (page.id)}
+  {% for page in pages %}
+    {% assign index = forloop.index0 %}
     
 {% comment %}
 kvsp stands for "key value separator"
@@ -63,13 +71,38 @@ smns stands for "slot module name separator"
 {% capture props %}route-kvsp-{page.props.f7route}-prsp-router-kvsp-{page.props.f7router}{% endcapture %}
 
 {% capture slot_content_RouterContextProvider %}
-      <svelte:component this={page.component} {...page.props} />
+      {% if initialized %}
+        <svelte:component this={page.component} {...page.props} />
+      {% else %}
+        {%- liquid 
+	assign slot_contents_and_values = slot_contents | split: '-scs-'
+	for content_and_value in slot_contents_and_values
+	assign module = content_and_value | split: '-scvs-' | first
+	assign value = content_and_value | split: '-scvs-' | last
+	if module == 'framework7-liquivelte-view'
+	assign children = value | strip
+	endif
+	endfor
+	-%}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
+	{%- endif -%}
+	{%- assign children = '' -%}
+	
+      {% endif %}
     {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'router-context-provider' | append: '-scvs-' | append: slot_content_RouterContextProvider %}
-
-{% include 'router-context-provider', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'router-context-provider' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
-  {/each}
+  {% endfor %}
 </div>
 
 	

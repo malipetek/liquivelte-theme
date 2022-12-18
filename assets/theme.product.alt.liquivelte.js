@@ -1,6 +1,25 @@
-import './product.alt-hs7273055a.liquivelte.js';
+import { Framework7, Panel } from './panel-hs778c98ac.liquivelte.js';
+import { Framework7Svelte } from './framework7-liquivelte-hs5d6b599e.liquivelte.js';
+import './liquivelte-svelte-hs48552dfc.liquivelte.js';
+import './product.alt-hs8daa1a0c.liquivelte.js';
+import './htm.js-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-view-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-router-context-provider-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-login-screen-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-sheet-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-popover-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-panel-hs8daa1a0c.liquivelte.js';
 
-const onIntersect = (el, callback) => {
+console.log('custom entry');
+
+  // Init F7-Svelte Plugin
+Framework7.use([
+  Framework7Svelte,
+  Panel
+]);
+  
+  const onIntersect = (el, callback) => {
     const observer = new IntersectionObserver(callback, {
       root: null,   // default is the viewport
       rootMargin: '100px', // default is '0px'
@@ -8,6 +27,7 @@ const onIntersect = (el, callback) => {
     });
     observer.observe(el);
   };
+  
 
   document.addEventListener('DOMContentLoaded', () => {
     
@@ -21,7 +41,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./prompts-hs3b55a5a0.liquivelte.js')).default({
+          wrapper.svelteComponent = new (await import('./prompts-hs8daa1a0c.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
             props: {
@@ -45,7 +65,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./header-hs533fc9cb.liquivelte.js').then(function (n) { return n.index; })).default({
+          wrapper.svelteComponent = new (await import('./header-hs54f955dd.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
             props: {
@@ -69,7 +89,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./app-wrapper-hs5946d6f3.liquivelte.js')).default({
+          wrapper.svelteComponent = new (await import('./app-wrapper-hs8daa1a0c.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
             props: {

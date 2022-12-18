@@ -8,10 +8,11 @@
 let container, stage;
 let scrollY = 0;
 const section = {};
-export let section$settings; 
-section.settings = section$settings;
-export let section$blocks; 
-section.blocks = section$blocks;
+export let sectionƒƒsettings; 
+section.settings = sectionƒƒsettings;
+export let sectionƒƒblocks; 
+section.blocks = sectionƒƒblocks;
+import { onMount } from 'svelte';
 import { tweened } from 'svelte/motion';
 import { cubicOut, linear } from 'svelte/easing';
 

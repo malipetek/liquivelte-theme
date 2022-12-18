@@ -70,14 +70,14 @@
 	
 
 <div
-  class={pageContentClasses}
-  bind:this={pageContentEl}
-  data-ptr-distance={ptrDistance}
-  data-ptr-mousewheel={ptrMousewheel || undefined}
-  data-infinite-distance={infiniteDistance || undefined}
+  class="page-content {{ pageContentClasses }}"
+  bind:this="{pageContentEl}"
+  data-ptr-distance="{ptrDistance}"
+  data-ptr-mousewheel="{ptrMousewheel || undefined}"
+  data-infinite-distance="{infiniteDistance || undefined}"
   {...restProps($$restProps)}
 >
-  {#if ptr && ptrPreloader && !ptrBottom}
+  {% if ptr and ptrPreloader and ptrBottom == blank %}
     <div class="ptr-preloader">
       
 {% comment %}
@@ -85,47 +85,57 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}{% endcapture %}
-{% include 'preloader', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'preloader' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
       <div class="ptr-arrow" />
     </div>
-  {/if}
-  {#if infinite && infiniteTop && infinitePreloader}
+  {% endif %}
+  {% if infinite and infiniteTop and infinitePreloader %}
     
 {% comment %}
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}class-kvsp-infinite-scroll-preloader{% endcapture %}
-{% include 'preloader', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'preloader' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
-  {/if}
+  {% endif %}
   {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'page-content'
+	if module == 'framework7-liquivelte-page-content'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
-  {#if infinite && !infiniteTop && infinitePreloader}
+  {% if infinite and !infiniteTop and infinitePreloader %}
     
 {% comment %}
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}class-kvsp-infinite-scroll-preloader{% endcapture %}
-{% include 'preloader', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'preloader' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
-  {/if}
-  {#if ptr && ptrPreloader && ptrBottom}
+  {% endif %}
+  {% if ptr and ptrPreloader and ptrBottom %}
     <div class="ptr-preloader">
       
 {% comment %}
@@ -133,11 +143,12 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}{% endcapture %}
-{% include 'preloader', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'preloader' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
       <div class="ptr-arrow" />
     </div>
-  {/if}
+  {% endif %}
 </div>
 
 	

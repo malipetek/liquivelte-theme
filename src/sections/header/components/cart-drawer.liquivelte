@@ -1,0 +1,62 @@
+<script>
+  import cart from 'theme/cart';  
+  import { Button, Block, View, Page } from 'framework7-liquivelte'; 
+  import Loadable from '../../../snippets/loadable.liquivelte';
+  import { cartStore, cartOpen } from '../../../scripts/store.module.js';
+
+
+  let loading = false;
+
+	async function updateLineItem(itemid, quantity) {
+		loading = true;
+		await fetch(`/cart/update.js`, {
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+					updates: { [itemid]: quantity }
+			})
+		})
+		const cartResponse = await fetch('/cart?view=json');
+		const newCartData = await cartResponse.json()
+		$cartStore.items = newCartData.items;
+		$cartStore.items_subtotal_price = newCartData.items_subtotal_price;
+
+		loading = false;
+	}
+	function quantityChange(event) {
+		updateLineItem(this.id, event.detail.quantity); 
+	}
+
+  $: console.log('------> cart ', cart);
+  </script>
+  <View>
+    <Page>
+      <Block> 
+				{% for item in cart.items %}
+					<div data-id="{{- item.id -}}" class="cart-item w-full flex mb-10" transition:scale="{ { duration: 300, easing: quintInOut } }" >
+						<img src="{{- item.image | img_url: '120x' -}}" alt="cart item product image" class="flex-grow-0 mr-2 w-32" />
+						<div class="cart-item-content">
+							<div class="cart-item-content__up"> 
+								<span class="cart-item-title text-lg"> {{- item.product_title -}} </span>
+								<div class="cart-item-options">
+									{% for option in item.variant_options %}
+									<span class="text-gray-500 text-base line-item-option"> {{- option -}} </span> <br>
+									{% endfor %}
+								</div>
+							</div>
+							<Loadable bind:loading > 
+								<QuantityBox minimum={min_amounts_data[item.id]} quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}" /> 
+							</Loadable>
+						</div>
+						<div class="cart-item-right">
+							<Loadable bind:loading > 
+								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > </div>
+							</Loadable>
+							<div class="cart-item-price text-black text-xl"> {{- item.price | money -}} </div>
+						</div> 
+					</div>
+				{% endfor %}      </Block>
+    </Page>
+  </View>

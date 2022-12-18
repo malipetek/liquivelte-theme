@@ -34,7 +34,10 @@
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component appbar" data-liquivelte-component-name="appbar.liquivelte">
 	{%- endunless -%}
-	
+	{%- liquid
+    assign inner = true
+-%}
+
 
 <div class="appbar {{ classes }}" {...restProps($$restProps)}>
   {%- liquid
@@ -44,7 +47,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'appbar' and name == 'before-inner'
+	if module == 'framework7-liquivelte-appbar' and name == 'before-inner'
 	assign children_before-inner = value | strip
 	endif
 	endfor
@@ -61,13 +64,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'appbar'
+	if module == 'framework7-liquivelte-appbar'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -78,13 +88,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'appbar'
+	if module == 'framework7-liquivelte-appbar'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -96,7 +113,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'appbar' and name == 'after-inner'
+	if module == 'framework7-liquivelte-appbar' and name == 'after-inner'
 	assign children_after-inner = value | strip
 	endif
 	endfor

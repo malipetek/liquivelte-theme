@@ -6,9 +6,11 @@
   let index = 0;
 
 const section = {};
-export let section$settings; 
-section.settings = section$settings;
-export let shop;
+const shop = {};
+export let sectionƒƒsettings; 
+section.settings = sectionƒƒsettings;
+export let shopƒƒname; 
+shop.name = shopƒƒname;
 export let logo_height;
 export let logo_alt;
 

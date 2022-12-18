@@ -40,14 +40,14 @@
      
       >
     
-    {%- capture rawinclude -%}{% include 'icon-spinner'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_dff1c036'] = [...(window.liquivelte_rawincludes['rawinclude_dff1c036'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props %}name-kvsp-icon-spinner{% endcapture %}
+{% assign modulename = basename | append: 'icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
+{% assign props = '' %}
   </div>
   
 	{%- liquid 
@@ -69,8 +69,15 @@
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -113,15 +120,6 @@
 	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
 	}
 	
-	
-	try{
-	wrapper.svelteProps["rawinclude_dff1c036"] = [...(wrapper.svelteProps["rawinclude_dff1c036"] || []), ...window.liquivelte_rawincludes['rawinclude_dff1c036'].map(e => htmlDecode(e)) ];
-	} catch (e) {
-	const err = 'Could not grab liquid include, because it is not present in the liquid context please check for rawinclude_dff1c036 in the loadable.liquivelte file.';
-	console.error(err);
-	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
-	}
-
 	
 
 	// liquid expression cache

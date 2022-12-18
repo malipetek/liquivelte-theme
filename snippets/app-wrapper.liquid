@@ -21,9 +21,45 @@
 	{%- endunless -%}
 	
 
-<App theme="ios" name="My App" id="com.demoapp.test">
-  <View main>
-    <Page>
+
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}theme-kvsp-ios-prsp-name-kvsp-My App-prsp-id-kvsp-com.demoapp.test{% endcapture %}
+
+{% capture slot_content_App %}
+  
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}main-kvsp-{% endcapture %}
+
+{% capture slot_content_View %}
+    
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props %}undefined-kvsp-{% endcapture %}
+
+{% capture slot_content_Page %}
       <div use:persistingchild="{ ls_cache }" >
         <div class="liveslot" >
           {%- liquid 
@@ -36,21 +72,40 @@
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
         </div>
       </div>
-    </Page>
-  </View>
-</App>
+    {% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-page' | append: '-scvs-' | append: slot_content_Page %}
+{% assign modulename = basename | append: 'framework7-liquivelte-page' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
+  {% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-scvs-' | append: slot_content_View %}
+{% assign modulename = basename | append: 'framework7-liquivelte-view' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
+{% endcapture %}
+{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-app' | append: '-scvs-' | append: slot_content_App %}
+{% assign modulename = basename | append: 'framework7-liquivelte-app' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
 	
 						
 						
 	<script type="text/noscript" class="instance-data">{
-	"children" : {{ children | json }} 
+	
 	
 	
 

@@ -1,0 +1,65 @@
+{% liquid 
+  assign collection = collections[section.settings.collection]
+  assign products = '' | split: ''
+  for product in collection.products
+    unless forloop.index > 10
+      assign product_arr = collection.products | where: 'handle', product.handle
+      assign products = products | concat: product_arr
+    endunless
+  endfor
+  assign slidesPerView = 3
+%}
+<script>
+  import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
+  import ProductCard from '../../snippets/product-card.liquivelte';
+  const section = {};
+  import section.settings from 'theme';
+  import products from 'theme';
+  import slidesPerView from 'theme';
+ 
+</script>
+
+<Block>
+<BlockTitle>With all controls</BlockTitle>
+<div style="--slides-per-view: {{- slidesPerView -}}">
+  <Swiper >
+    {% for product in products %}
+    <SwiperSlide>
+      <ProductCard product="{{- product -}}"></ProductCard>
+    </SwiperSlide>
+    {% endfor %} 
+  </Swiper>
+</div>
+</Block>
+
+
+<style>
+ :global(.swiper-slide) {
+  border: none;
+  background: none;
+ }
+</style>
+{% schema %}
+{
+  "name": "Slider",
+  "tag": "section",
+  "class": "product-section spaced-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Swiper"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider",
+      "category": "Gallery"
+    }
+  ]
+}
+{% endschema %}

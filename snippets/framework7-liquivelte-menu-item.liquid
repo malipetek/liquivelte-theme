@@ -68,7 +68,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}{icon}-kvsp-{% endcapture %}
-{% include 'use-icon', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'use-icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
         {% endif %}
         {%- liquid
@@ -78,7 +79,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'menu-item' and name == 'text'
+	if module == 'framework7-liquivelte-menu-item' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -95,13 +96,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'menu-item'
+	if module == 'framework7-liquivelte-menu-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -125,7 +133,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}{icon}-kvsp-{% endcapture %}
-{% include 'use-icon', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'use-icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
         {% endif %}
         {%- liquid
@@ -135,7 +144,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'menu-item' and name == 'text'
+	if module == 'framework7-liquivelte-menu-item' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -152,13 +161,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'menu-item'
+	if module == 'framework7-liquivelte-menu-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

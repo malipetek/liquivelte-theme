@@ -1,4 +1,4 @@
-import './product-hs7273055a.liquivelte.js';
+import './product-hs8daa1a0c.liquivelte.js';
 
 const onIntersect = (el, callback) => {
     const observer = new IntersectionObserver(callback, {
@@ -8,6 +8,7 @@ const onIntersect = (el, callback) => {
     });
     observer.observe(el);
   };
+  
 
   document.addEventListener('DOMContentLoaded', () => {
     
@@ -21,7 +22,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./header-hs533fc9cb.liquivelte.js').then(function (n) { return n.index; })).default({
+          wrapper.svelteComponent = new (await import('./header-hs08094d04.liquivelte.js').then(function (n) { return n.index; })).default({
             target: wrapper,
             hydrate: true,
             props: {

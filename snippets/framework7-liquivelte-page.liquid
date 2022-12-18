@@ -96,7 +96,7 @@
 	{%- endunless -%}
 	
 
-<div bind:this={el} class={classes} data-name={name} {...restProps($$restProps)}>
+<div bind:this="{el}" class="page {{ classes }}" data-name="{name}" {...restProps($$restProps)}>
   {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -104,7 +104,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'page' and name == 'fixed'
+	if module == 'framework7-liquivelte-page' and name == 'fixed'
 	assign children_fixed = value | strip
 	endif
 	endfor
@@ -114,7 +114,7 @@
 	{%- endif -%}
 	{%- assign children_fixed = '' -%}
 	
-  {#if pageContent}
+  {% if pageContent %}
     
 {% comment %}
 kvsp stands for "key value separator"
@@ -125,27 +125,27 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props %}{ptr}
--kvsp--prsp-{ptrDistance}
--kvsp--prsp-{ptrPreloader}
--kvsp--prsp-{ptrBottom}
--kvsp--prsp-{ptrMousewheel}
--kvsp--prsp-{infinite}
--kvsp--prsp-{infiniteTop}
--kvsp--prsp-{infiniteDistance}
--kvsp--prsp-{infinitePreloader}
--kvsp--prsp-{hideBarsOnScroll}
--kvsp--prsp-{hideNavbarOnScroll}
--kvsp--prsp-{hideToolbarOnScroll}
--kvsp--prsp-{messagesContent}
--kvsp--prsp-{loginScreen}
--kvsp--prsp-{onPtrPullStart}
--kvsp--prsp-{onPtrPullMove}
--kvsp--prsp-{onPtrPullEnd}
--kvsp--prsp-{onPtrRefresh}
--kvsp--prsp-{onPtrDone}
--kvsp--prsp-{onInfinite}
--kvsp-{% endcapture %}
+{% capture props %}ptr-kvsp-{ptr}"
+-prsp-ptrDistance-kvsp-{ptrDistance}"
+-prsp-ptrPreloader-kvsp-{ptrPreloader}"
+-prsp-ptrBottom-kvsp-{ptrBottom}"
+-prsp-ptrMousewheel-kvsp-{ptrMousewheel}"
+-prsp-infinite-kvsp-{infinite}"
+-prsp-infiniteTop-kvsp-{infiniteTop}"
+-prsp-infiniteDistance-kvsp-{infiniteDistance}"
+-prsp-infinitePreloader-kvsp-{infinitePreloader}"
+-prsp-hideBarsOnScroll-kvsp-{hideBarsOnScroll}"
+-prsp-hideNavbarOnScroll-kvsp-{hideNavbarOnScroll}"
+-prsp-hideToolbarOnScroll-kvsp-{hideToolbarOnScroll}"
+-prsp-messagesContent-kvsp-{messagesContent}"
+-prsp-loginScreen-kvsp-{loginScreen}"
+-prsp-onPtrPullStart-kvsp-{onPtrPullStart}"
+-prsp-onPtrPullMove-kvsp-{onPtrPullMove}"
+-prsp-onPtrPullEnd-kvsp-{onPtrPullEnd}"
+-prsp-onPtrRefresh-kvsp-{onPtrRefresh}"
+-prsp-onPtrDone-kvsp-{onPtrDone}"
+-prsp-onInfinite-kvsp-{onInfinite}"
+{% endcapture %}
 
 {% capture slot_content_PageContent %}
       {%- liquid
@@ -155,7 +155,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'page' and name == 'static'
+	if module == 'framework7-liquivelte-page' and name == 'static'
 	assign children_static = value | strip
 	endif
 	endfor
@@ -170,22 +170,29 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'page'
+	if module == 'framework7-liquivelte-page'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
     {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'page-content' | append: '-scvs-' | append: slot_content_PageContent %}
-
-{% include 'page-content', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'page-content' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
-  {:else}
+  {% else %}
     {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -193,7 +200,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'page' and name == 'static'
+	if module == 'framework7-liquivelte-page' and name == 'static'
 	assign children_static = value | strip
 	endif
 	endfor
@@ -208,17 +215,24 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'page'
+	if module == 'framework7-liquivelte-page'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
-  {/if}
+  {% endif %}
 </div>
 
 	

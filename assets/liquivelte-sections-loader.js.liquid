@@ -46,6 +46,11 @@
           css: "{{ 'scroll-animation.liquivelte.css' | asset_url }}"
         });
         
+        liquivelteSections.set('slider', {
+          js: "{{ 'slider.liquivelte.js' | asset_url }}",
+          css: "{{ 'slider.liquivelte.css' | asset_url }}"
+        });
+        
     window.liquivelteSections = liquivelteSections;
     
     window.loadLiquivelteSection = async (sectionName, wrapper) => {

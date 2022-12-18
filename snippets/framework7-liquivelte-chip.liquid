@@ -55,7 +55,7 @@
   use:useTooltip="{ { tooltip, tooltipTrigger } }"
 >
   {% if media or hasMediaSlots or icon %}
-    <div class="{mediaClasses}">
+    <div class="chip-media {{ mediaClasses }}">
       {% if icon %}
         
 {% comment %}
@@ -63,10 +63,11 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}{icon}-kvsp-{% endcapture %}
-{% include 'use-icon', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'use-icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
       {% endif %}
-      {plainText(media)}
+      {{ media }}
       {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -74,7 +75,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'chip' and name == 'media'
+	if module == 'framework7-liquivelte-chip' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -88,7 +89,7 @@
   {% endif %}
   {% if text or hasTextSlots or hasDefaultSlots %}
     <div class="chip-label">
-      {plainText(text)}
+      {{ text }}
       {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -96,7 +97,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'chip' and name == 'text'
+	if module == 'framework7-liquivelte-chip' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -111,13 +112,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'chip'
+	if module == 'framework7-liquivelte-chip'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

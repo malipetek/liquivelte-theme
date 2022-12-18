@@ -177,13 +177,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -203,7 +210,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'root-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'root-start'
 	assign children_root-start = value | strip
 	endif
 	endfor
@@ -232,7 +239,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -257,7 +264,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'media'
+	if module == 'framework7-liquivelte-list-item' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -277,7 +284,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-start'
 	assign children_inner-start = value | strip
 	endif
 	endfor
@@ -298,7 +305,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -318,7 +325,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -338,7 +345,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -357,7 +364,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -376,7 +383,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -404,8 +411,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                         {/if}
                         {%- liquid
@@ -415,7 +422,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -432,7 +439,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -455,7 +462,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'subtitle'
+	if module == 'framework7-liquivelte-list-item' and name == 'subtitle'
 	assign children_subtitle = value | strip
 	endif
 	endfor
@@ -477,7 +484,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'text'
+	if module == 'framework7-liquivelte-list-item' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -496,7 +503,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -512,13 +519,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -533,7 +547,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -553,7 +567,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -575,7 +589,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -595,7 +609,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -615,7 +629,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -636,7 +650,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -655,7 +669,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -683,8 +697,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                       {/if}
                       {%- liquid
@@ -694,7 +708,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -711,7 +725,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -730,7 +744,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -746,13 +760,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -765,7 +786,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-end'
 	assign children_inner-end = value | strip
 	endif
 	endfor
@@ -783,7 +804,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content'
+	if module == 'framework7-liquivelte-list-item' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -800,7 +821,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor
@@ -824,7 +845,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -861,7 +882,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'media'
+	if module == 'framework7-liquivelte-list-item' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -881,7 +902,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-start'
 	assign children_inner-start = value | strip
 	endif
 	endfor
@@ -902,7 +923,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -922,7 +943,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -942,7 +963,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -961,7 +982,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -980,7 +1001,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -1008,8 +1029,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                         {/if}
                         {%- liquid
@@ -1019,7 +1040,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -1036,7 +1057,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -1059,7 +1080,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'subtitle'
+	if module == 'framework7-liquivelte-list-item' and name == 'subtitle'
 	assign children_subtitle = value | strip
 	endif
 	endfor
@@ -1081,7 +1102,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'text'
+	if module == 'framework7-liquivelte-list-item' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -1100,7 +1121,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -1116,13 +1137,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -1137,7 +1165,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -1157,7 +1185,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -1179,7 +1207,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -1199,7 +1227,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -1219,7 +1247,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -1240,7 +1268,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -1259,7 +1287,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -1287,8 +1315,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                       {/if}
                       {%- liquid
@@ -1298,7 +1326,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -1315,7 +1343,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -1334,7 +1362,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -1350,13 +1378,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -1369,7 +1404,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-end'
 	assign children_inner-end = value | strip
 	endif
 	endfor
@@ -1387,7 +1422,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content'
+	if module == 'framework7-liquivelte-list-item' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -1404,7 +1439,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor
@@ -1424,7 +1459,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -1449,7 +1484,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'media'
+	if module == 'framework7-liquivelte-list-item' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -1469,7 +1504,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-start'
 	assign children_inner-start = value | strip
 	endif
 	endfor
@@ -1490,7 +1525,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -1510,7 +1545,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -1530,7 +1565,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -1549,7 +1584,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -1568,7 +1603,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -1596,8 +1631,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                         {/if}
                         {%- liquid
@@ -1607,7 +1642,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -1624,7 +1659,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -1647,7 +1682,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'subtitle'
+	if module == 'framework7-liquivelte-list-item' and name == 'subtitle'
 	assign children_subtitle = value | strip
 	endif
 	endfor
@@ -1669,7 +1704,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'text'
+	if module == 'framework7-liquivelte-list-item' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -1688,7 +1723,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -1704,13 +1739,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -1725,7 +1767,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -1745,7 +1787,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -1767,7 +1809,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -1787,7 +1829,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -1807,7 +1849,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -1828,7 +1870,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -1847,7 +1889,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -1875,8 +1917,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                       {/if}
                       {%- liquid
@@ -1886,7 +1928,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -1903,7 +1945,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -1922,7 +1964,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -1938,13 +1980,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -1957,7 +2006,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-end'
 	assign children_inner-end = value | strip
 	endif
 	endfor
@@ -1975,7 +2024,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content'
+	if module == 'framework7-liquivelte-list-item' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -1992,7 +2041,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor
@@ -2024,7 +2073,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -2049,7 +2098,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'media'
+	if module == 'framework7-liquivelte-list-item' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -2069,7 +2118,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-start'
 	assign children_inner-start = value | strip
 	endif
 	endfor
@@ -2090,7 +2139,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -2110,7 +2159,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -2130,7 +2179,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -2149,7 +2198,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -2168,7 +2217,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -2196,8 +2245,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                     {/if}
                     {%- liquid
@@ -2207,7 +2256,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -2224,7 +2273,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -2247,7 +2296,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'subtitle'
+	if module == 'framework7-liquivelte-list-item' and name == 'subtitle'
 	assign children_subtitle = value | strip
 	endif
 	endfor
@@ -2269,7 +2318,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'text'
+	if module == 'framework7-liquivelte-list-item' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -2288,7 +2337,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -2304,13 +2353,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -2325,7 +2381,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -2345,7 +2401,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -2367,7 +2423,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -2387,7 +2443,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -2407,7 +2463,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -2428,7 +2484,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -2447,7 +2503,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -2475,8 +2531,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                   {/if}
                   {%- liquid
@@ -2486,7 +2542,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -2503,7 +2559,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -2522,7 +2578,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -2538,13 +2594,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -2557,7 +2620,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-end'
 	assign children_inner-end = value | strip
 	endif
 	endfor
@@ -2575,7 +2638,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content'
+	if module == 'framework7-liquivelte-list-item' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -2592,7 +2655,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor
@@ -2616,7 +2679,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -2653,7 +2716,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'media'
+	if module == 'framework7-liquivelte-list-item' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -2673,7 +2736,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-start'
 	assign children_inner-start = value | strip
 	endif
 	endfor
@@ -2694,7 +2757,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -2714,7 +2777,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -2734,7 +2797,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -2753,7 +2816,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -2772,7 +2835,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -2800,8 +2863,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                     {/if}
                     {%- liquid
@@ -2811,7 +2874,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -2828,7 +2891,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -2851,7 +2914,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'subtitle'
+	if module == 'framework7-liquivelte-list-item' and name == 'subtitle'
 	assign children_subtitle = value | strip
 	endif
 	endfor
@@ -2873,7 +2936,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'text'
+	if module == 'framework7-liquivelte-list-item' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -2892,7 +2955,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -2908,13 +2971,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -2929,7 +2999,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -2949,7 +3019,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -2971,7 +3041,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -2991,7 +3061,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -3011,7 +3081,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -3032,7 +3102,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -3051,7 +3121,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -3079,8 +3149,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                   {/if}
                   {%- liquid
@@ -3090,7 +3160,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -3107,7 +3177,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -3126,7 +3196,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -3142,13 +3212,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -3161,7 +3238,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-end'
 	assign children_inner-end = value | strip
 	endif
 	endfor
@@ -3179,7 +3256,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content'
+	if module == 'framework7-liquivelte-list-item' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -3196,7 +3273,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor
@@ -3216,7 +3293,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -3241,7 +3318,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'media'
+	if module == 'framework7-liquivelte-list-item' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -3261,7 +3338,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-start'
 	assign children_inner-start = value | strip
 	endif
 	endfor
@@ -3282,7 +3359,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -3302,7 +3379,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -3322,7 +3399,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -3341,7 +3418,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -3360,7 +3437,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -3388,8 +3465,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                     {/if}
                     {%- liquid
@@ -3399,7 +3476,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -3416,7 +3493,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -3439,7 +3516,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'subtitle'
+	if module == 'framework7-liquivelte-list-item' and name == 'subtitle'
 	assign children_subtitle = value | strip
 	endif
 	endfor
@@ -3461,7 +3538,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'text'
+	if module == 'framework7-liquivelte-list-item' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -3480,7 +3557,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -3496,13 +3573,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -3517,7 +3601,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -3537,7 +3621,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'before-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'before-title'
 	assign children_before-title = value | strip
 	endif
 	endfor
@@ -3559,7 +3643,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'header'
+	if module == 'framework7-liquivelte-list-item' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -3579,7 +3663,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'title'
+	if module == 'framework7-liquivelte-list-item' and name == 'title'
 	assign children_title = value | strip
 	endif
 	endfor
@@ -3599,7 +3683,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'footer'
+	if module == 'framework7-liquivelte-list-item' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -3620,7 +3704,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-title'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-title'
 	assign children_after-title = value | strip
 	endif
 	endfor
@@ -3639,7 +3723,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-start'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-start'
 	assign children_after-start = value | strip
 	endif
 	endfor
@@ -3667,8 +3751,8 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{plainText(badge)}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
                   {/if}
                   {%- liquid
@@ -3678,7 +3762,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after'
+	if module == 'framework7-liquivelte-list-item' and name == 'after'
 	assign children_after = value | strip
 	endif
 	endfor
@@ -3695,7 +3779,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'after-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'after-end'
 	assign children_after-end = value | strip
 	endif
 	endfor
@@ -3714,7 +3798,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -3730,13 +3814,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -3749,7 +3840,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'inner-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'inner-end'
 	assign children_inner-end = value | strip
 	endif
 	endfor
@@ -3767,7 +3858,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content'
+	if module == 'framework7-liquivelte-list-item' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -3784,7 +3875,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'content-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor
@@ -3807,13 +3898,20 @@ smns stands for "slot module name separator"
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item'
+	if module == 'framework7-liquivelte-list-item'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -3825,7 +3923,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'root'
+	if module == 'framework7-liquivelte-list-item' and name == 'root'
 	assign children_root = value | strip
 	endif
 	endfor
@@ -3842,7 +3940,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-item' and name == 'root-end'
+	if module == 'framework7-liquivelte-list-item' and name == 'root-end'
 	assign children_root-end = value | strip
 	endif
 	endfor

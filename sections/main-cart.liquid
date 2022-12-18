@@ -109,12 +109,13 @@ smns stands for "slot module name separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}minimum-kvsp-{min_amounts_data[item.id]}-prsp-quantity-kvsp-{item.quantity}-prsp-on:qtychange-kvsp-{quantityChange.bind(item)}{% endcapture %}
-{% include 'quantity-box', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'quantity-box' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %} 
 							{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_Loadable %}
-
-{% include 'loadable', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'loadable' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 						</div>
 						<div  class="cart-item-right svelte-1lgtzd3">
@@ -132,18 +133,18 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Loadable %} 
 								<div  class="pointer svelte-1lgtzd3" on:click="{() _afeq__afct_ updateLineItem(item.id, 0) }"> 
-    {%- capture rawinclude -%}{% include 'icon-garbage' with color: '#a6a6a6' %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_2753db78'] = [...(window.liquivelte_rawincludes['rawinclude_2753db78'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%} </div>
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props %}name-kvsp-icon-garbage-prsp-color-kvsp-#a6a6a6{% endcapture %}
+{% assign modulename = basename | append: 'icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
+{% assign props = '' %} </div>
 							{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_Loadable %}
-
-{% include 'loadable', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'loadable' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 							<div  class="cart-item-price text-black text-xl svelte-1lgtzd3"> {{ item.price | money }} </div>
 						</div> 
@@ -271,24 +272,6 @@ smns stands for "slot module name separator"
 	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
 	}
 	
-	
-	try{
-	wrapper.svelteProps["rawinclude_dff1c036"] = [...(wrapper.svelteProps["rawinclude_dff1c036"] || []), ...window.liquivelte_rawincludes['rawinclude_dff1c036'].map(e => htmlDecode(e)) ];
-	} catch (e) {
-	const err = 'Could not grab liquid include, because it is not present in the liquid context please check for rawinclude_dff1c036 in the main-cart.liquivelte file.';
-	console.error(err);
-	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
-	}
-
-	;
-	try{
-	wrapper.svelteProps["rawinclude_2753db78"] = [...(wrapper.svelteProps["rawinclude_2753db78"] || []), ...window.liquivelte_rawincludes['rawinclude_2753db78'].map(e => htmlDecode(e)) ];
-	} catch (e) {
-	const err = 'Could not grab liquid include, because it is not present in the liquid context please check for rawinclude_2753db78 in the main-cart.liquivelte file.';
-	console.error(err);
-	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
-	}
-
 	
 
 	// liquid expression cache

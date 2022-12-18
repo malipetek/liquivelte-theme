@@ -39,16 +39,16 @@
 	{%- endunless -%}
 	
 
-<label class={classes} {...restProps($$restProps)}>
+<label class="{{ classes }}" {...restProps($$restProps)}>
   <input
-    bind:this={inputEl}
+    bind:this="{inputEl}"
     type="checkbox"
-    {name}
-    value={typeof value === 'undefined' ? '' : value}
-    {disabled}
-    {readonly}
-    {checked}
-    on:change={onChange}
+    value="{{ value }}"
+    name="{{ name }}"
+    disabled="{{ disabled }}"
+    readonly="{{ readonly }}"
+    checked="{{ checked }}"
+    on:change="{onChange}"
   />
   <i class="icon-checkbox" />
   {%- liquid 
@@ -56,13 +56,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'checkbox'
+	if module == 'framework7-liquivelte-checkbox'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

@@ -182,7 +182,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'root-start'
+	if module == 'framework7-liquivelte-list-input' and name == 'root-start'
 	assign children_root-start = value | strip
 	endif
 	endfor
@@ -200,7 +200,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'content-start'
+	if module == 'framework7-liquivelte-list-input' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -224,7 +224,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'media'
+	if module == 'framework7-liquivelte-list-input' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -244,7 +244,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'inner-start'
+	if module == 'framework7-liquivelte-list-input' and name == 'inner-start'
 	assign children_inner-start = value | strip
 	endif
 	endfor
@@ -264,7 +264,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'label'
+	if module == 'framework7-liquivelte-list-input' and name == 'label'
 	assign children_label = value | strip
 	endif
 	endfor
@@ -327,13 +327,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input'
+	if module == 'framework7-liquivelte-list-input'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -397,7 +404,8 @@
 -prsp-onTextEditorInput-kvsp-{onInput}
 -prsp-onTextEditorChange-kvsp-{onChange}
 {% endcapture %}
-{% include 'text-editor', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'text-editor' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
             {:else}
               <input
@@ -456,7 +464,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'input'
+	if module == 'framework7-liquivelte-list-input' and name == 'input'
 	assign children_input = value | strip
 	endif
 	endfor
@@ -476,7 +484,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'error-message'
+	if module == 'framework7-liquivelte-list-input' and name == 'error-message'
 	assign children_error-message = value | strip
 	endif
 	endfor
@@ -499,7 +507,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'info'
+	if module == 'framework7-liquivelte-list-input' and name == 'info'
 	assign children_info = value | strip
 	endif
 	endfor
@@ -519,7 +527,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'inner'
+	if module == 'framework7-liquivelte-list-input' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -536,7 +544,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'inner-end'
+	if module == 'framework7-liquivelte-list-input' and name == 'inner-end'
 	assign children_inner-end = value | strip
 	endif
 	endfor
@@ -554,7 +562,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'content'
+	if module == 'framework7-liquivelte-list-input' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -571,7 +579,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'content-end'
+	if module == 'framework7-liquivelte-list-input' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor
@@ -592,7 +600,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'root'
+	if module == 'framework7-liquivelte-list-input' and name == 'root'
 	assign children_root = value | strip
 	endif
 	endfor
@@ -609,7 +617,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'root-end'
+	if module == 'framework7-liquivelte-list-input' and name == 'root-end'
 	assign children_root-end = value | strip
 	endif
 	endfor
@@ -629,7 +637,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'content-start'
+	if module == 'framework7-liquivelte-list-input' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -653,7 +661,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'media'
+	if module == 'framework7-liquivelte-list-input' and name == 'media'
 	assign children_media = value | strip
 	endif
 	endfor
@@ -673,7 +681,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'inner-start'
+	if module == 'framework7-liquivelte-list-input' and name == 'inner-start'
 	assign children_inner-start = value | strip
 	endif
 	endfor
@@ -693,7 +701,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'label'
+	if module == 'framework7-liquivelte-list-input' and name == 'label'
 	assign children_label = value | strip
 	endif
 	endfor
@@ -756,13 +764,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input'
+	if module == 'framework7-liquivelte-list-input'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -826,7 +841,8 @@
 -prsp-onTextEditorInput-kvsp-{onInput}
 -prsp-onTextEditorChange-kvsp-{onChange}
 {% endcapture %}
-{% include 'text-editor', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'text-editor' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
           {:else}
             <input
@@ -885,7 +901,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'input'
+	if module == 'framework7-liquivelte-list-input' and name == 'input'
 	assign children_input = value | strip
 	endif
 	endfor
@@ -905,7 +921,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'error-message'
+	if module == 'framework7-liquivelte-list-input' and name == 'error-message'
 	assign children_error-message = value | strip
 	endif
 	endfor
@@ -928,7 +944,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'info'
+	if module == 'framework7-liquivelte-list-input' and name == 'info'
 	assign children_info = value | strip
 	endif
 	endfor
@@ -948,7 +964,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'inner'
+	if module == 'framework7-liquivelte-list-input' and name == 'inner'
 	assign children_inner = value | strip
 	endif
 	endfor
@@ -965,7 +981,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'inner-end'
+	if module == 'framework7-liquivelte-list-input' and name == 'inner-end'
 	assign children_inner-end = value | strip
 	endif
 	endfor
@@ -983,7 +999,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'content'
+	if module == 'framework7-liquivelte-list-input' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -1000,7 +1016,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'list-input' and name == 'content-end'
+	if module == 'framework7-liquivelte-list-input' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor

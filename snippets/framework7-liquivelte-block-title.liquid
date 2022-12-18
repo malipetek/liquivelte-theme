@@ -27,19 +27,41 @@
 	{%- endunless -%}
 	
 
-<div class="{classes}" {...restProps($$restProps)}>
+
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if large
+	assign dynamic_classes = dynamic_classes | append: ' block-title-large'
+	endif
+	  if medium
+	assign dynamic_classes = dynamic_classes | append: ' block-title-medium'
+	endif
+	-%}
+	<div 
+  class="'block-title' {{ classes }}{{ dynamic_classes }}"
+ 
+ 
+  {...restProps($$restProps)}
+  >
   {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'block-title'
+	if module == 'framework7-liquivelte-block-title'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

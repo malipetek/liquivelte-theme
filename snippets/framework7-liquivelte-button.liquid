@@ -155,7 +155,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}size-kvsp-{{ preloaderSize }}-prsp-color-kvsp-{{ preloaderColor }}{% endcapture %}
-{% include 'preloader', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'preloader' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
       <span>
         {% if icon %}
@@ -165,24 +166,32 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}icon-kvsp-{{ icon }}{% endcapture %}
-{% include 'use-icon', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'use-icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
         {% endif %}
         {% if text != blank %}
-          <span>{plainText(text)}</span>
+          <span>{{ text }}</span>
         {% endif %}
         {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'button'
+	if module == 'framework7-liquivelte-button'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -195,24 +204,32 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}icon-kvsp-{{ icon }}{% endcapture %}
-{% include 'use-icon', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'use-icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
       {% endif %}
       {% if text != blank %}
-        <span>{plainText(text)}</span>
+        <span>{{ text }}</span>
       {% endif %}
       {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'button'
+	if module == 'framework7-liquivelte-button'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -234,7 +251,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}size-kvsp-{{ preloaderSize }}-prsp-color-kvsp-{{ preloaderColor }}{% endcapture %}
-{% include 'preloader', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'preloader' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
       <span>
         {% if icon %}
@@ -244,24 +262,32 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}icon-kvsp-{{ icon }}{% endcapture %}
-{% include 'use-icon', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'use-icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
         {% endif %}
         {% if text != blank %}
-          <span>{plainText(text)}</span>
+          <span>{{ text }}</span>
         {% endif %}
         {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'button'
+	if module == 'framework7-liquivelte-button'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -274,24 +300,32 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}icon-kvsp-{{ icon }}{% endcapture %}
-{% include 'use-icon', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'use-icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
       {% endif %}
       {% if text != blank %}
-        <span>{plainText(text)}</span>
+        <span>{{ text }}</span>
       {% endif %}
       {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'button'
+	if module == 'framework7-liquivelte-button'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

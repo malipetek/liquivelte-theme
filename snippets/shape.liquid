@@ -65,8 +65,8 @@ smns stands for "slot module name separator"
   {% endif %}
 {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'positionable' | append: '-scvs-' | append: slot_content_Positionable %}
-
-{% include 'positionable', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'positionable' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 
 	

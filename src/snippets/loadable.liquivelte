@@ -1,6 +1,7 @@
 <script>
-export let classes;
-export let loading = false;
+  import Icon from './icon.liquivelte';
+  export let classes;
+  export let loading = false;
 </script>
 
 <div class="relative {{- classes -}}" >  
@@ -8,7 +9,7 @@ export let loading = false;
       class="w-6 absolute" 
       class:hidden="{{- loading != true -}}"
       >
-    {% include 'icon-spinner' %}
+    <Icon name="icon-spinner" />
   </div>
   <div 
       class:invisible="{{- loading -}}" 

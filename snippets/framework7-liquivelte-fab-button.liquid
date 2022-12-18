@@ -38,31 +38,37 @@
 
 <!-- svelte-ignore a11y-missing-attribute -->
 <a
-  bind:this={el}
-  {target}
-  class={classes}
-  on:click={onClick}
-  {...restProps($$restProps)}
-  use:useTooltip={{ tooltip, tooltipTrigger }}
+  bind:this="{el}"
+  target="{target}"
+  class="{classes}"
+  on:click="{onClick}"
+  use:useTooltip="{ { tooltip, tooltipTrigger } }"
 >
   {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'fab-button'
+	if module == 'framework7-liquivelte-fab-button'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
-  {#if typeof label !== 'undefined'}
-    <span class="fab-label">{plainText(label)}</span>
-  {/if}
+  {% if label != blank %}
+    <span class="fab-label">{{ label }}</span>
+  {% endif %}
 </a>
 
 	

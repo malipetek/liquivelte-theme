@@ -84,7 +84,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'start'
+	if module == 'framework7-liquivelte-message' and name == 'start'
 	assign children_start = value | strip
 	endif
 	endfor
@@ -107,7 +107,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'avatar'
+	if module == 'framework7-liquivelte-message' and name == 'avatar'
 	assign children_avatar = value | strip
 	endif
 	endfor
@@ -127,7 +127,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'content-start'
+	if module == 'framework7-liquivelte-message' and name == 'content-start'
 	assign children_content-start = value | strip
 	endif
 	endfor
@@ -147,7 +147,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'name'
+	if module == 'framework7-liquivelte-message' and name == 'name'
 	assign children_name = value | strip
 	endif
 	endfor
@@ -169,7 +169,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'header'
+	if module == 'framework7-liquivelte-message' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -189,7 +189,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'bubble-start'
+	if module == 'framework7-liquivelte-message' and name == 'bubble-start'
 	assign children_bubble-start = value | strip
 	endif
 	endfor
@@ -211,7 +211,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'image'
+	if module == 'framework7-liquivelte-message' and name == 'image'
 	assign children_image = value | strip
 	endif
 	endfor
@@ -233,7 +233,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'text-header'
+	if module == 'framework7-liquivelte-message' and name == 'text-header'
 	assign children_text-header = value | strip
 	endif
 	endfor
@@ -256,7 +256,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'text'
+	if module == 'framework7-liquivelte-message' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -285,7 +285,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'text-footer'
+	if module == 'framework7-liquivelte-message' and name == 'text-footer'
 	assign children_text-footer = value | strip
 	endif
 	endfor
@@ -304,7 +304,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'bubble-end'
+	if module == 'framework7-liquivelte-message' and name == 'bubble-end'
 	assign children_bubble-end = value | strip
 	endif
 	endfor
@@ -319,13 +319,20 @@
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message'
+	if module == 'framework7-liquivelte-message'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
@@ -340,7 +347,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'footer'
+	if module == 'framework7-liquivelte-message' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -359,7 +366,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'content-end'
+	if module == 'framework7-liquivelte-message' and name == 'content-end'
 	assign children_content-end = value | strip
 	endif
 	endfor
@@ -377,7 +384,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'message' and name == 'end'
+	if module == 'framework7-liquivelte-message' and name == 'end'
 	assign children_end = value | strip
 	endif
 	endfor

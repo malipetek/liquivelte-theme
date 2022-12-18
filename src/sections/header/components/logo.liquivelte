@@ -4,8 +4,9 @@
 %}
 <script>
 const section = {};
+const shop = {};
 import section.settings from 'theme';
-import shop from 'theme';
+import shop.name from 'theme';
 import logo_height from 'theme';
 import logo_alt from 'theme';
 

@@ -52,14 +52,14 @@ smns stands for "slot module name separator"
 
 {% capture slot_content_Badge %}{icon.badge.content}{% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_Badge %}
-
-{% include 'badge', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'badge' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
   {/if}
 {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'icon' | append: '-scvs-' | append: slot_content_Icon %}
-
-{% include 'icon', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'icon' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
 
 	

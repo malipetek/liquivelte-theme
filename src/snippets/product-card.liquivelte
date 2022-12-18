@@ -1,0 +1,99 @@
+<script>
+  import { Card, CardHeader, CardContent, CardFooter, Link, Button } from 'framework7-liquivelte';
+  export let product;
+  let expandableOpened = false;
+  $: console.log('expandableOpened ', expandableOpened);
+  function expandedToggle() {
+    expandableOpened = !expandableOpened;
+  }
+
+  let clicked = 0;
+  function increment() {
+    clicked = clicked + 1
+  }
+</script>
+
+<Card class="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}">
+  <CardHeader
+  class="no-border"
+  valign="bottom"
+  >
+  <img src="{{- product.featured_image | img_url: '300x' -}}" />
+</CardHeader>
+<CardContent>
+<div on:click="{increment}">
+  <h3>
+    {{- product.title -}}
+  </h3>
+  {{- product.price | money -}}
+</div> 
+</CardContent>
+    <CardFooter>
+      <Button> Add to Card </Button> 
+      <Link> Add to Wishlist </Link>
+    </CardFooter>
+</Card>
+
+<style>
+   .card-header-pic .card-header {
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Card",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Card Settings"
+    },
+    {
+      "id": "layout",
+      "label": "Layout Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "Regular",
+          "value": "regular"
+        },
+        {
+          "label": "Compact",
+          "value": "compact"
+        },
+        {
+          "label": "Horizontal",
+          "value": "horizontal"
+        }
+      ],
+      "default": "regular"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title Size",
+      "default": "normal",
+      "options": [
+        {
+          "label": "Normal",
+          "value": "normal"
+        },
+        {
+          "label": "Small",
+          "value": "small"
+        },
+        {
+          "label": "large",
+          "value": "Large"
+        },
+        {
+          "label": "X Large",
+          "value": "xlarge"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

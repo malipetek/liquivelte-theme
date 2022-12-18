@@ -54,45 +54,143 @@
 	{%- endunless -%}
 	
 
-{#if tag === 'div'}
-  <div class={classes} bind:this={el} on:click={onClick} {...restProps($$restProps)}>
+{% if tag == 'div' %}
+  
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if width != 'auto'
+	assign dynamic_classes = dynamic_classes | append: ' col-width'
+	endif
+	  if xsmall
+	assign dynamic_classes = dynamic_classes | append: ' xsmall'
+	endif
+	  if small
+	assign dynamic_classes = dynamic_classes | append: ' small'
+	endif
+	  if medium
+	assign dynamic_classes = dynamic_classes | append: ' medium'
+	endif
+	  if large
+	assign dynamic_classes = dynamic_classes | append: ' large'
+	endif
+	  if xlarge
+	assign dynamic_classes = dynamic_classes | append: ' xlarge'
+	endif
+	  if resizable
+	assign dynamic_classes = dynamic_classes | append: ' resizable'
+	endif
+	  if resizableFixed
+	assign dynamic_classes = dynamic_classes | append: ' resizable-fixed'
+	endif
+	  if resizableAbsolute
+	assign dynamic_classes = dynamic_classes | append: ' resizable-absolute'
+	endif
+	-%}
+	<div class="{{ dynamic_classes }}"
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    class={classes}
+    bind:this="{el}" on:click="{onClick}" {...restProps($$restProps)}>
     {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'col'
+	if module == 'framework7-liquivelte-col'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
-    {#if resizable && resizableHandler}<span class="resize-handler" />{/if}
+    {% if resizable && resizableHandler %}<span class="resize-handler" />{% endif %}
   </div>
-{:else if tag === 'span'}
-  <span class={classes} bind:this={el} on:click={onClick} {...restProps($$restProps)}>
+{% elsif tag == 'span' %}
+  
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if width != 'auto'
+	assign dynamic_classes = dynamic_classes | append: ' col-width'
+	endif
+	  if xsmall
+	assign dynamic_classes = dynamic_classes | append: ' xsmall'
+	endif
+	  if small
+	assign dynamic_classes = dynamic_classes | append: ' small'
+	endif
+	  if medium
+	assign dynamic_classes = dynamic_classes | append: ' medium'
+	endif
+	  if large
+	assign dynamic_classes = dynamic_classes | append: ' large'
+	endif
+	  if xlarge
+	assign dynamic_classes = dynamic_classes | append: ' xlarge'
+	endif
+	  if resizeable
+	assign dynamic_classes = dynamic_classes | append: ' resizable'
+	endif
+	  if resizableFixed
+	assign dynamic_classes = dynamic_classes | append: ' resizable-fixed'
+	endif
+	  if resizableAbsolute
+	assign dynamic_classes = dynamic_classes | append: ' resizable-absolute'
+	endif
+	-%}
+	<span class="{{ dynamic_classes }}"
+ 
+ 
+ 
+ 
+ 
+ 
+ ,
+ 
+ 
+  class={classes}
+  bind:this="{el}" on:click="{onClick}" {...restProps($$restProps)}>
     {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'col'
+	if module == 'framework7-liquivelte-col'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
-    {#if resizable && resizableHandler}<span class="resize-handler" />{/if}
+    {% if resizable && resizableHandler %} <span class="resize-handler" /> {% endif %}
   </span>
-{/if}
+{% endif %}
 
 	
 						

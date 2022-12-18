@@ -30,7 +30,7 @@
     {% render 'meta-tags' %}
 
 <!-- liquivelte includes -->
-      {% assign templatesWithLiquivelte = 'index,product.alt,product' | split: ',' %}
+      {% assign templatesWithLiquivelte = 'index,product' | split: ',' %}
       {% assign template_with_suffix_and_directory = template %}
       {% if template.directory %}
         {% assign template_with_suffix_and_directory = template.directory | append: '-' | append: template_with_suffix_and_directory %}
@@ -232,8 +232,12 @@
         position: fixed;
         width: 100%;
       }
-      .liquivelte-component.app-wrapper {
+      .liquivelte-component.app-wrapper,
+      .liquivelte-component.app-wrapper > div {
         height: 100%;
+      }
+      panel[right], panel[left] {
+        display: none;
       }
     {% endstyle %}
       
@@ -257,7 +261,7 @@
       {% section 'footer' %}
     {% endcapture %}
     
-    {% include 'app-wrapper' with liquivelte: true, children: main_content %}
+    {% include 'app-wrapper' with liquivelte: true, main_content: main_content %}
 
     {% comment %} {% section 'announcement-bar' %} {% endcomment %}    
 

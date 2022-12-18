@@ -41,7 +41,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}anim_style-kvsp-{{ block.settings.anim_style }}{% endcapture %}
-{% include 'title', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'title' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
         {% endif %}
         
@@ -60,7 +61,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}block-kvsp-{{ block }}-prsp-keepFor-kvsp-{{ keepFor }}-prsp-bind:keptFor-kvsp--prsp-anim_style-kvsp-{{ block.settings.anim_style }}{% endcapture %}
-{% include 'video', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'video' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %}
         {% endif %}
 
@@ -71,7 +73,8 @@
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props %}block-kvsp-{{ block }}-prsp-anim_style-kvsp-{{ block.settings.anim_style }}{% endcapture %}
-{% include 'shape', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'shape' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
 {% assign props = '' %} 
         {% endif %}
       
@@ -393,7 +396,7 @@
 	<script type="text/noscript"  class="instance-data svelte-strz53">{
 	"left" : {{ left | json }} , "title_top" : {{ title_top | json }} , "font_size" : {{ font_size | json }} , "color" : {{ color | json }} , "bold" : {{ bold | json }} , "animations" : {{ animations | json }} 
 	,
-	"block$settings": {{ block.settings | json }} , "section$blocks": {{ section_blocks_json }}
+	"blockƒƒsettings": {{ block.settings | json }} , "sectionƒƒblocks": {{ section_blocks_json }}
 
 	}</script>
 	

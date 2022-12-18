@@ -22,21 +22,40 @@
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component card-content" data-liquivelte-component-name="card-content.liquivelte">
 	{%- endunless -%}
-	
+	{% liquid
+  assign padding = true
+%}
 
-<div class="card-content {{ classes }}" {...restProps($$restProps)}>
+
+
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if padding
+	assign dynamic_classes = dynamic_classes | append: ' card-content-padding'
+	endif
+	-%}
+	<div 
+class="card-content {{ classes }}{{ dynamic_classes }}"
+{...restProps($$restProps)}>
   {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'card-content'
+	if module == 'framework7-liquivelte-card-content'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

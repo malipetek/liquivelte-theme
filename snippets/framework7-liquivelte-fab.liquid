@@ -46,37 +46,43 @@
 	
 
 <div
-  class={classes}
-  data-morph-to={morphTo}
-  bind:this={el}
-  data-f7-slot={f7Slot}
-  {...restProps($$restProps)}
+  class="fab {{ classes }}"
+  data-morph-to="{morphTo}"
+  bind:this="{el}"
+  data-f7-slot="{f7Slot}"
 >
   <a
-    bind:this={linkEl}
-    on:click={onClick}
-    {target}
-    href={hrefComputed}
-    use:useTooltip={{ tooltip, tooltipTrigger }}
+    bind:this="{linkEl}"
+    on:click="{onClick}"
+    target="{target}"
+    href="{hrefComputed}"
+    use:useTooltip="{ { tooltip, tooltipTrigger } }"
   >
     {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'fab'
+	if module == 'framework7-liquivelte-fab'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	
-    {#if typeof text !== 'undefined' || hasTextSlots}
-      <div class="fab-text" bind:this={textEl}>
-        {plainText(text)}
+    {% if text != blank || hasTextSlots %}
+      <div class="fab-text" bind:this="{textEl}">
+        {{ text }}
         {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -84,7 +90,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'fab' and name == 'text'
+	if module == 'framework7-liquivelte-fab' and name == 'text'
 	assign children_text = value | strip
 	endif
 	endfor
@@ -95,7 +101,7 @@
 	{%- assign children_text = '' -%}
 	
       </div>
-    {/if}
+    {% endif %}
     {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -103,7 +109,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'fab' and name == 'link'
+	if module == 'framework7-liquivelte-fab' and name == 'link'
 	assign children_link = value | strip
 	endif
 	endfor
@@ -121,7 +127,7 @@
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'fab' and name == 'root'
+	if module == 'framework7-liquivelte-fab' and name == 'root'
 	assign children_root = value | strip
 	endif
 	endfor

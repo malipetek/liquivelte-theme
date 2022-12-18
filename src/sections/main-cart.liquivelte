@@ -16,6 +16,7 @@
 <script >
   import QuantityBox from '../snippets/quantity-box.liquivelte';
   import Loadable from '../snippets/loadable.liquivelte';
+	import Icon from '../snippets/icon.liquivelte';
   import { cartStore, cartOpen } from '../scripts/store.module.js';
   import { disableScrollOnBody, enableScrollOnBody } from '../scripts/utils.js';
 	import { quintInOut } from 'svelte/easing';
@@ -149,7 +150,7 @@
 						</div>
 						<div class="cart-item-right">
 							<Loadable bind:loading > 
-								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > {% include 'icon-garbage' with color: '#a6a6a6' %} </div>
+								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > <Icon name="icon-garbage" color="#a6a6a6" /> </div>
 							</Loadable>
 							<div class="cart-item-price text-black text-xl"> {{- item.price | money -}} </div>
 						</div> 

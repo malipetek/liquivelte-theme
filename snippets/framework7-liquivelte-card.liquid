@@ -100,7 +100,7 @@
   data-backdrop-el={backdropEl}
   {...restProps($$restProps)}
 >
-  {#if typeof title !== 'undefined' || hasHeaderSlots}
+  {% if title != blank or hasHeaderSlots %}
     
 {% comment %}
 kvsp stands for "key value separator"
@@ -114,7 +114,7 @@ smns stands for "slot module name separator"
 {% capture props %}undefined-kvsp-{% endcapture %}
 
 {% capture slot_content_CardHeader %}
-      {plainText(title)}
+      {{ title }}
       {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -122,7 +122,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'card' and name == 'header'
+	if module == 'framework7-liquivelte-card' and name == 'header'
 	assign children_header = value | strip
 	endif
 	endfor
@@ -134,11 +134,11 @@ smns stands for "slot module name separator"
 	
     {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'card-header' | append: '-scvs-' | append: slot_content_CardHeader %}
-
-{% include 'card-header', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'card-header' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
-  {/if}
-  {#if typeof content !== 'undefined' || hasContentSlots}
+  {% endif %}
+  {% if content != blank or hasContentSlots %}
     
 {% comment %}
 kvsp stands for "key value separator"
@@ -152,7 +152,7 @@ smns stands for "slot module name separator"
 {% capture props %}{padding}-kvsp-{% endcapture %}
 
 {% capture slot_content_CardContent %}
-      {plainText(content)}
+      {{ content }}
       {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -160,7 +160,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'card' and name == 'content'
+	if module == 'framework7-liquivelte-card' and name == 'content'
 	assign children_content = value | strip
 	endif
 	endfor
@@ -172,11 +172,11 @@ smns stands for "slot module name separator"
 	
     {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'card-content' | append: '-scvs-' | append: slot_content_CardContent %}
-
-{% include 'card-content', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'card-content' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
-  {/if}
-  {#if typeof footer !== 'undefined' || hasFooterSlots}
+  {% endif %}
+  {% if footer != blank or hasFooterSlots %}
     
 {% comment %}
 kvsp stands for "key value separator"
@@ -190,7 +190,7 @@ smns stands for "slot module name separator"
 {% capture props %}undefined-kvsp-{% endcapture %}
 
 {% capture slot_content_CardFooter %}
-      {plainText(footer)}
+      {{ footer }}
       {%- liquid
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
@@ -198,7 +198,7 @@ smns stands for "slot module name separator"
 	assign module = module_and_slotname | split: '-smns-' | first
 	assign name = module_and_slotname | split: '-smns-' | last
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'card' and name == 'footer'
+	if module == 'framework7-liquivelte-card' and name == 'footer'
 	assign children_footer = value | strip
 	endif
 	endfor
@@ -210,22 +210,29 @@ smns stands for "slot module name separator"
 	
     {% endcapture %}
 {% assign slot_contents = slot_contents | append: '-scs-' | append: 'card-footer' | append: '-scvs-' | append: slot_content_CardFooter %}
-
-{% include 'card-footer', liquivelte: true, props: props, sub_include: true %}
+{% assign modulename = basename | append: 'card-footer' %}
+{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: '' %}
 {% assign props = '' %}
-  {/if}
+  {% endif %}
   {%- liquid 
 	assign slot_contents_and_values = slot_contents | split: '-scs-'
 	for content_and_value in slot_contents_and_values
 	assign module = content_and_value | split: '-scvs-' | first
 	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'card'
+	if module == 'framework7-liquivelte-card'
 	assign children = value | strip
 	endif
 	endfor
 	-%}
-	{%- if children != blank -%}
-	{{- children -}}
+	
+	{%- if sub_include -%}
+		{%- if children != blank -%}
+			{{- children -}}
+		{%- endif -%}
+	{%- else -%}
+		{%- if main_content != blank -%}
+			{{- main_content -}}
+		{%- endif -%}
 	{%- endif -%}
 	{%- assign children = '' -%}
 	

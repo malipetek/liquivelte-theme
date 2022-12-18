@@ -39,10 +39,10 @@
 		};
 	} 
   export let section = {};
-  export let section$settings; 
-section.settings = section$settings;
-  export let section$blocks; 
-section.blocks = section$blocks;
+  export let sectionƒƒsettings; 
+section.settings = sectionƒƒsettings;
+  export let sectionƒƒblocks; 
+section.blocks = sectionƒƒblocks;
 
   console.log('section ', section);
   console.log('section blocks', section.blocks);
@@ -89,7 +89,7 @@ section.blocks = section$blocks;
     <div class="comparison-container" transition:fade="{ { easing: cubicInOut, duration: 700 } }" >
       <div class="comparison">
         <div class="comparison-item">
-          <div class="product-image image-1">
+          <div class="product-image image-1" style="--ratio: { block.settings.product_image_1.aspect_ratio }">
             <img 
             class=""
             loading="eager" 
@@ -141,7 +141,7 @@ section.blocks = section$blocks;
           </div>
         </div>
         <div class="comparison-item">
-          <div class="product-image image-2">
+          <div class="product-image image-2" style="--ratio: { block.settings.product_image_1.aspect_ratio }">
             <img 
             class=""
             loading="eager" 
@@ -279,6 +279,17 @@ section.blocks = section$blocks;
     grid-row: 1/2;
   }
  
+  @media (max-width: 1124px) {
+    .comparison-item {
+      flex-wrap: wrap;
+    }
+    .product-image {
+      height: calc(50vw / var(--ratio));
+      img {
+        max-width: 50vw;
+      }
+    }
+  }
 @media (min-width: 768px){
   .product-title {
       font-size: 14px;
@@ -307,4 +318,5 @@ section.blocks = section$blocks;
       font-size: 10.5px;
     }
 }
+
 </style>
