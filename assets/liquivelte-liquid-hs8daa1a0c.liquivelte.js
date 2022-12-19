@@ -1,1 +1,154 @@
-const num=e=>(e.aspect_ratio&&(e=e.aspect_ratio),e);function isValidHttpUrl(e){let t;e=e.replace(/^\/\//,'https://');try{t=new URL(e)}catch(e){return!1}return"http:"===t.protocol||"https:"===t.protocol}function handleize(e){e=e.toLowerCase();var t=['"',"'","\\","(",")","[","]"];for(var r=0;r<t.length;++r)e=e.replace(t[r],"");return e=e.replace(/\W+/g,"-"),"-"==e.charAt(e.length-1)&&(e=e.replace(/-+\z/,"")),"-"==e.charAt(0)&&(e=e.replace(/\A-+/,"")),e}var cachedLiquid=e=>({default:(e,t)=>{let r=!1;try{r=e.constructor==={}.constructor}catch(e){}return'undefined'==e||'null'==e||'[]'==e||'[Object]'==e?t||'':e&&(e.length||r)?e:t||''},append:(e,t)=>e+t+"",prepend:(e,t)=>t+e+"",img_url:(t,r)=>{if(e.img_url&&e.img_url.has(`${t}${r}`))return e.img_url.get(`${t}${r}`);if(!t)return t="//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif";for(;t.src;)t=t.src;return t.image&&(t=t.image),t.constructor!==String?t="//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif":(isValidHttpUrl(t)||(t=`https://cdn.shopify.com/s/files/1/0621/4444/6683/${t}`),t.replace(/\.([^\.]+)($|\?)/,`_${r}.$1?`))},image_url:(t,{width:r="",height:i=""}={width:'',height:''})=>{if(e.image_url&&e.image_url.has(`${t}${r}x${i}`))return e.image_url.get(`${t}${r}x${i}`);if(!t)return t="//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif";for(;t.src;)t=t.src;return t.image&&(t=t.image),t.constructor!==String?t="//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif":(isValidHttpUrl(t)||(t=`https://cdn.shopify.com/s/files/1/0621/4444/6683/${t}`),t.replace(/\.([^\.]+)($|\?)/,`_${r}x${i}.$1?`))},file_url:t=>e.file_url&&e.file_url.has(`${t}`)?e.file_url.get(`${t}`):`//cdn.shopify.com/s/files/1/0621/4444/6683/files/${t}?v=${(9e15*Math.random()).toString(36)}`,money:e=>(e=String(e),isNaN(parseInt(e))?"$0.00":e.length>2?`$${(+e.slice(0,-2)).toLocaleString()}.${e.slice(-2)}`:`$${e}`),capitalize:e=>e[0].toUpperCase()+e.slice(1),divided_by:(e,t)=>num(e)/num(t),times:(e,t)=>num(e)*num(t),escape:e=>escape(e),replace:(e,t,r)=>e.replace(new RegExp(t),r),within:(e,t)=>`/collections/${t.handle}/${e}`,split:(e,t)=>e.split(t),first:e=>e[0],last:e=>e[e.length-1],link_to_tag:e=>{const t=new URL(window.location.href);return`<a href="${t.protocol}//${t.host}${t.pathname}/${e}"> ${e} </a>`},crop:(e,t)=>e.replace(/\.([^\.]+)[$\?]/,`_crop_${t}.$1?`),plus:e=>+e+1,minus:e=>+e-1,scale:(e,t)=>e.replace(/\.([^\.]+)[$\?]/,`@${t}x.$1?`),handleize:handleize,json:e=>JSON.stringify(e),date:e=>e,t:t=>e.t&&e.t.has(`${t}`)?e.t.get(`${t}`):"Could not get translation"});export{cachedLiquid};
+const num = (n) => {
+    if (n.aspect_ratio) {
+        n = n.aspect_ratio;
+    }
+    return n;
+};
+
+function isValidHttpUrl(string) {
+    let url;
+    string = string.replace(/^\/\//, 'https://');
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;  
+    }
+  
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
+function handleize(str) {
+    str = str.toLowerCase();
+  
+    var toReplace = ['"', "'", "\\", "(", ")", "[", "]"];
+  
+    // For the old browsers
+    for (var i = 0; i < toReplace.length; ++i) {
+      str = str.replace(toReplace[i], "");
+    }
+  
+    str = str.replace(/\W+/g, "-");
+  
+    if (str.charAt(str.length - 1) == "-") {
+      str = str.replace(/-+\z/, "");
+    }
+  
+    if (str.charAt(0) == "-") {
+      str = str.replace(/\A-+/, "");
+    }
+  
+    return str;
+}  
+var cachedLiquid = (liquid_expression_cache) => ({
+    default: (input, fallback) => {
+        let isObject = false;
+        try { isObject = input.constructor === {}.constructor; } catch (err) { }
+        if (input == 'undefined' || input == 'null' || input == '[]' || input == '[Object]') {
+            return fallback || '';
+        } else if (input && (input.length || isObject)) {
+            return input;
+        } else {
+            return fallback || '';
+        }
+    },
+    append: (input, str) => input + str + "",
+    prepend: (input, str) => str + input + "",
+    img_url: (input, size) => {
+        if (liquid_expression_cache['img_url'] && liquid_expression_cache['img_url'].has(`${input}${size}`)) {
+            return liquid_expression_cache['img_url'].get(`${input}${size}`);
+        }
+        // console.log('img url');
+        if (!input) {
+            return input = `//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif`;
+        }
+        while (input.src) {
+            input = input.src;
+        }
+        if (input.image) {
+            input = input.image;
+        }
+        if (input.constructor !== String) {
+            return input = `//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif`;
+        }
+
+        if (!isValidHttpUrl(input)) {
+            input = `https://cdn.shopify.com/s/files/1/0621/4444/6683/${input}`;
+        }
+        return input.replace(/\.([^\.]+)($|\?)/, `_${size}.$1?`);
+    },
+    image_url: (input, {width = '', height = ''} = { width: '', height: ''}) => {
+        if (liquid_expression_cache['image_url'] && liquid_expression_cache['image_url'].has(`${input}${width}x${height}`)) {
+            return liquid_expression_cache['image_url'].get(`${input}${width}x${height}`);
+        }
+        // console.log('img url');
+        if (!input) {
+            return input = `//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif`;
+        }
+        while (input.src) {
+            input = input.src;
+        }
+        if (input.image) {
+            input = input.image;
+        }
+        if (input.constructor !== String) {
+            return input = `//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c.gif`;
+        }
+
+        if (!isValidHttpUrl(input)) {
+            input = `https://cdn.shopify.com/s/files/1/0621/4444/6683/${input}`;
+        }
+        return input.replace(/\.([^\.]+)($|\?)/, `_${width}x${height}.$1?`);
+    },
+    file_url: (input) => {
+        if (liquid_expression_cache['file_url'] && liquid_expression_cache['file_url'].has(`${input}`)) {
+            return liquid_expression_cache['file_url'].get(`${input}`);
+        }
+        return `//cdn.shopify.com/s/files/1/0621/4444/6683/files/${input}?v=${(Math.random() * 9e15).toString(36)}`;
+    },
+    money: (input) => {
+        input = String(input);
+        if (isNaN(parseInt(input))) {
+            return `$0.00`;
+        }
+        if (input.length > 2) {
+            return `$${((+input.slice(0, -2)).toLocaleString())}.${input.slice(-2)}`;
+        } else {
+            return `$${input}`;
+        }
+    },
+    capitalize: (input) => (input[0].toUpperCase() + input.slice(1)),
+    divided_by: (input, n) => (num(input) / num(n)),
+    times: (input, n) => (num(input) * num(n)),
+    escape: (input) => escape(input),
+    replace: (input, rep, tar) => {
+        return input.replace(new RegExp(rep), tar);
+    },
+    within: (url, collection) => {
+        return `/collections/${collection.handle}/${url}`;
+    },
+    split: (input, splitter) => input.split(splitter),
+    first: (input) => input[0],
+    last: (input) => input[input.length - 1],
+    link_to_tag: (tag) => {
+        const u = new URL(window.location.href);
+        return `<a href="${u.protocol}//${u.host}${u.pathname}/${tag}"> ${tag} </a>`;
+    },
+    crop: (input, cropType) => {
+        return input.replace(/\.([^\.]+)[$\?]/, `_crop_${cropType}.$1?`);
+    },
+    plus: (input) => +input + 1,
+    minus: (input) => +input - 1,
+    scale: (input, scale) => {
+        return input.replace(/\.([^\.]+)[$\?]/, `@${scale}x.$1?`);
+    },
+    handleize,
+    json: (input) => JSON.stringify(input),
+    date: x => x,
+    t: (input) => {
+        if (liquid_expression_cache['t'] && liquid_expression_cache['t'].has(`${input}`)) {
+            return liquid_expression_cache['t'].get(`${input}`);
+        }
+        return `Could not get translation`;
+    }
+});
+
+export { cachedLiquid };

@@ -4,7 +4,6 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-export let inputWidth;
   import Icon from './icon.liquivelte';
   export let classes;
   export let loading = false;
@@ -15,7 +14,7 @@ export let inputWidth;
       class="w-6 absolute" 
       class:hidden="{ loading != true }"
       >
-    <Icon  name="icon-spinner"   inputWidth={inputWidth}    lec={lec} />
+    <Icon  name="icon-spinner"      lec={lec} />
   </div>
   <div 
       class:invisible="{ loading }" 

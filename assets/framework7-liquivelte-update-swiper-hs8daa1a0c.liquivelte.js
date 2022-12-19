@@ -1,1 +1,116 @@
-import{isObject as l,extend as e}from'./framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';function updateSwiper(n){let{swiper:i,slides:o,passedParams:t,changedParams:r,nextEl:a,prevEl:c,scrollbarEl:s,paginationEl:d}=n;const p=r.filter((l=>'children'!==l&&'direction'!==l));const{params:u,pagination:v,navigation:g,scrollbar:b,virtual:E,thumbs:h}=i;let m;let w;let x;let S;let f;r.includes('thumbs')&&t.thumbs&&t.thumbs.swiper&&u.thumbs&&!u.thumbs.swiper&&(m=!0),r.includes('controller')&&t.controller&&t.controller.control&&u.controller&&!u.controller.control&&(w=!0),r.includes('pagination')&&t.pagination&&(t.pagination.el||d)&&(u.pagination||!1===u.pagination)&&v&&!v.el&&(x=!0),r.includes('scrollbar')&&t.scrollbar&&(t.scrollbar.el||s)&&(u.scrollbar||!1===u.scrollbar)&&b&&!b.el&&(S=!0),r.includes('navigation')&&t.navigation&&(t.navigation.prevEl||c)&&(t.navigation.nextEl||a)&&(u.navigation||!1===u.navigation)&&g&&!g.prevEl&&!g.nextEl&&(f=!0);const destroyModule=l=>{i[l]&&(i[l].destroy(),'navigation'===l?(u[l].prevEl=void 0,u[l].nextEl=void 0,i[l].prevEl=void 0,i[l].nextEl=void 0):(u[l].el=void 0,i[l].el=void 0))};if(p.forEach((n=>{if(l(u[n])&&l(t[n]))e(u[n],t[n]);else{const l=t[n];!0!==l&&!1!==l||'navigation'!==n&&'pagination'!==n&&'scrollbar'!==n?u[n]=t[n]:!1===l&&destroyModule(n)}})),p.includes('controller')&&!w&&i.controller&&i.controller.control&&u.controller&&u.controller.control&&(i.controller.control=u.controller.control),r.includes('children')&&o&&E&&u.virtual.enabled?(E.slides=o,E.update(!0)):r.includes('children')&&i.lazy&&i.params.lazy.enabled&&i.lazy.load(),m){const l=h.init();l&&h.update(!0)}w&&(i.controller.control=u.controller.control),x&&(d&&(u.pagination.el=d),v.init(),v.render(),v.update()),S&&(s&&(u.scrollbar.el=s),b.init(),b.updateSize(),b.setTranslate()),f&&(a&&(u.navigation.nextEl=a),c&&(u.navigation.prevEl=c),g.init(),g.update()),r.includes('allowSlideNext')&&(i.allowSlideNext=t.allowSlideNext),r.includes('allowSlidePrev')&&(i.allowSlidePrev=t.allowSlidePrev),r.includes('direction')&&i.changeDirection(t.direction,!1),i.update()}export{updateSwiper};
+import { isObject, extend } from './framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';
+
+function updateSwiper(_ref) {
+  let {
+    swiper,
+    slides,
+    passedParams,
+    changedParams,
+    nextEl,
+    prevEl,
+    scrollbarEl,
+    paginationEl
+  } = _ref;
+  const updateParams = changedParams.filter(key => key !== 'children' && key !== 'direction');
+  const {
+    params: currentParams,
+    pagination,
+    navigation,
+    scrollbar,
+    virtual,
+    thumbs
+  } = swiper;
+  let needThumbsInit;
+  let needControllerInit;
+  let needPaginationInit;
+  let needScrollbarInit;
+  let needNavigationInit;
+  if (changedParams.includes('thumbs') && passedParams.thumbs && passedParams.thumbs.swiper && currentParams.thumbs && !currentParams.thumbs.swiper) {
+    needThumbsInit = true;
+  }
+  if (changedParams.includes('controller') && passedParams.controller && passedParams.controller.control && currentParams.controller && !currentParams.controller.control) {
+    needControllerInit = true;
+  }
+  if (changedParams.includes('pagination') && passedParams.pagination && (passedParams.pagination.el || paginationEl) && (currentParams.pagination || currentParams.pagination === false) && pagination && !pagination.el) {
+    needPaginationInit = true;
+  }
+  if (changedParams.includes('scrollbar') && passedParams.scrollbar && (passedParams.scrollbar.el || scrollbarEl) && (currentParams.scrollbar || currentParams.scrollbar === false) && scrollbar && !scrollbar.el) {
+    needScrollbarInit = true;
+  }
+  if (changedParams.includes('navigation') && passedParams.navigation && (passedParams.navigation.prevEl || prevEl) && (passedParams.navigation.nextEl || nextEl) && (currentParams.navigation || currentParams.navigation === false) && navigation && !navigation.prevEl && !navigation.nextEl) {
+    needNavigationInit = true;
+  }
+  const destroyModule = mod => {
+    if (!swiper[mod]) return;
+    swiper[mod].destroy();
+    if (mod === 'navigation') {
+      currentParams[mod].prevEl = undefined;
+      currentParams[mod].nextEl = undefined;
+      swiper[mod].prevEl = undefined;
+      swiper[mod].nextEl = undefined;
+    } else {
+      currentParams[mod].el = undefined;
+      swiper[mod].el = undefined;
+    }
+  };
+  updateParams.forEach(key => {
+    if (isObject(currentParams[key]) && isObject(passedParams[key])) {
+      extend(currentParams[key], passedParams[key]);
+    } else {
+      const newValue = passedParams[key];
+      if ((newValue === true || newValue === false) && (key === 'navigation' || key === 'pagination' || key === 'scrollbar')) {
+        if (newValue === false) {
+          destroyModule(key);
+        }
+      } else {
+        currentParams[key] = passedParams[key];
+      }
+    }
+  });
+  if (updateParams.includes('controller') && !needControllerInit && swiper.controller && swiper.controller.control && currentParams.controller && currentParams.controller.control) {
+    swiper.controller.control = currentParams.controller.control;
+  }
+  if (changedParams.includes('children') && slides && virtual && currentParams.virtual.enabled) {
+    virtual.slides = slides;
+    virtual.update(true);
+  } else if (changedParams.includes('children') && swiper.lazy && swiper.params.lazy.enabled) {
+    swiper.lazy.load();
+  }
+  if (needThumbsInit) {
+    const initialized = thumbs.init();
+    if (initialized) thumbs.update(true);
+  }
+  if (needControllerInit) {
+    swiper.controller.control = currentParams.controller.control;
+  }
+  if (needPaginationInit) {
+    if (paginationEl) currentParams.pagination.el = paginationEl;
+    pagination.init();
+    pagination.render();
+    pagination.update();
+  }
+  if (needScrollbarInit) {
+    if (scrollbarEl) currentParams.scrollbar.el = scrollbarEl;
+    scrollbar.init();
+    scrollbar.updateSize();
+    scrollbar.setTranslate();
+  }
+  if (needNavigationInit) {
+    if (nextEl) currentParams.navigation.nextEl = nextEl;
+    if (prevEl) currentParams.navigation.prevEl = prevEl;
+    navigation.init();
+    navigation.update();
+  }
+  if (changedParams.includes('allowSlideNext')) {
+    swiper.allowSlideNext = passedParams.allowSlideNext;
+  }
+  if (changedParams.includes('allowSlidePrev')) {
+    swiper.allowSlidePrev = passedParams.allowSlidePrev;
+  }
+  if (changedParams.includes('direction')) {
+    swiper.changeDirection(passedParams.direction, false);
+  }
+  swiper.update();
+}
+
+export { updateSwiper };

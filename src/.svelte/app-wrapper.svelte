@@ -27,6 +27,12 @@
   }
 </script>
 
+
+<style global lang="postcss">
+  @import "framework7/framework7-bundle.min.css";
+  @tailwind base;
+  @tailwind utilities;  
+</style>
 <App  theme="ios" name="My App" id="com.demoapp.test"     lec={lec} >
   <View  main     lec={lec} >
     <Page      lec={lec} >

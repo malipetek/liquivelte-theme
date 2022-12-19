@@ -1,1 +1,86 @@
-import{Swiper as e,Thumb as i,Zoom as t}from'./framework7-liquivelte-get-params-hs6b273664.liquivelte.js';function CustomResize(e){let{swiper:i,on:t,emit:n}=e;let o=null;let r=null;const resizeHandler=()=>{i&&!i.destroyed&&i.initialized&&(n('beforeResize'),n('resize'))};const createObserver=()=>{i&&!i.destroyed&&i.initialized&&(o=new ResizeObserver((e=>{r=window.requestAnimationFrame((()=>{const{width:t,height:n,params:o}=i;let r=t;let s=n;e.forEach((e=>{let{contentBoxSize:t,contentRect:n,target:o}=e;o&&o!==i.el||(r=n?n.width:(t[0]||t).inlineSize,s=n?n.height:(t[0]||t).blockSize)})),Math.round(r)===Math.round(t+('horizontal'==i.params.direction?o.spaceBetween:0))&&Math.round(s)===Math.round(n+('vertical'==i.params.direction?o.spaceBetween:0))||resizeHandler()}))})),o.observe(i.el))};const removeObserver=()=>{r&&window.cancelAnimationFrame(r),o&&o.unobserve&&i.el&&(o.unobserve(i.el),o=null)};const orientationChangeHandler=()=>{i&&!i.destroyed&&i.initialized&&n('orientationchange')};t('init',(()=>{i.params.resizeObserver&&void 0!==window.ResizeObserver?createObserver():(window.addEventListener('resize',resizeHandler),window.addEventListener('orientationchange',orientationChangeHandler))})),t('destroy',(()=>{removeObserver(),window.removeEventListener('resize',resizeHandler),window.removeEventListener('orientationchange',orientationChangeHandler)}))}window.Swiper=e,e.prototype.__modules__.find((e=>'Resize'==e.name)),e.prototype.__modules__=e.prototype.__modules__.map((e=>/Resize/.test(e.name)?CustomResize:e)),e.use([i,t]);
+import { Swiper, Thumb, Zoom } from './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
+
+window.Swiper = Swiper;
+Swiper.prototype.__modules__.find(m => m.name == 'Resize');
+
+function CustomResize(_ref) {
+  console.log('using curtom resize');
+  let {
+    swiper,
+    on,
+    emit
+  } = _ref;
+  let observer = null;
+  let animationFrame = null;
+
+  const resizeHandler = () => {
+    if (!swiper || swiper.destroyed || !swiper.initialized) return;
+    emit('beforeResize');
+    emit('resize');
+  };
+
+  const createObserver = () => {
+    if (!swiper || swiper.destroyed || !swiper.initialized) return;
+    observer = new ResizeObserver(entries => {
+      animationFrame = window.requestAnimationFrame(() => {
+        const {
+          width,
+          height,
+          params
+        } = swiper;
+        let newWidth = width;
+        let newHeight = height;
+        entries.forEach(_ref2 => {
+          let {
+            contentBoxSize,
+            contentRect,
+            target
+          } = _ref2;
+          if (target && target !== swiper.el) return;
+          newWidth = contentRect ? contentRect.width : (contentBoxSize[0] || contentBoxSize).inlineSize;
+          newHeight = contentRect ? contentRect.height : (contentBoxSize[0] || contentBoxSize).blockSize;
+        });
+
+        if (Math.round(newWidth) !== Math.round(width + (swiper.params.direction == 'horizontal' ? params.spaceBetween : 0)) || Math.round(newHeight) !== Math.round(height + (swiper.params.direction == 'vertical' ? params.spaceBetween : 0))) {
+          resizeHandler();
+        }
+      });
+    });
+    observer.observe(swiper.el);
+  };
+
+  const removeObserver = () => {
+    if (animationFrame) {
+      window.cancelAnimationFrame(animationFrame);
+    }
+
+    if (observer && observer.unobserve && swiper.el) {
+      observer.unobserve(swiper.el);
+      observer = null;
+    }
+  };
+
+  const orientationChangeHandler = () => {
+    if (!swiper || swiper.destroyed || !swiper.initialized) return;
+    emit('orientationchange');
+  };
+
+  on('init', () => {
+    if (swiper.params.resizeObserver && typeof window.ResizeObserver !== 'undefined') {
+      createObserver();
+      return;
+    }
+
+    window.addEventListener('resize', resizeHandler);
+    window.addEventListener('orientationchange', orientationChangeHandler);
+  });
+  on('destroy', () => {
+    removeObserver();
+    window.removeEventListener('resize', resizeHandler);
+    window.removeEventListener('orientationchange', orientationChangeHandler);
+  });
+}
+
+Swiper.prototype.__modules__ = Swiper.prototype.__modules__.map(m => /Resize/.test(m.name) ? CustomResize : m);
+
+Swiper.use([Thumb, Zoom]);

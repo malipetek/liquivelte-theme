@@ -4,13 +4,7 @@
   export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
-
-export let blockƒƒsettings;
-export let bold;
-export let color;
-export let font_size;
-export let title_top;
-export let left; 
+ 
 const section = {};
 export let sectionƒƒblocks; 
 section.blocks = sectionƒƒblocks; 
@@ -137,7 +131,7 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
 } }
         
         {#if block.type == 'title' }
-          <Title  anim_style="{ block.settings.anim_style }"   left={left} title_top={title_top} font_size={font_size} color={color} bold={bold} animations={animations}  blockƒƒsettings={blockƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
+          <Title  anim_style="{ block.settings.anim_style }"   animations={animations}  sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
         {/if}
         
         {#if block.type == 'image' }
@@ -149,11 +143,11 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
         {/if}
 
         {#if block.type == 'video' }
-          <ScrollVideo  block="{ block }" keepFor="{ keepFor }" bind:keptFor anim_style={ block.settings.anim_style }   left={left} title_top={title_top} font_size={font_size} color={color} bold={bold} animations={animations}  blockƒƒsettings={blockƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
+          <ScrollVideo  block="{ block }" keepFor="{ keepFor }" bind:keptFor anim_style={ block.settings.anim_style }   animations={animations}  sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
         {/if}
 
         {#if block.type == 'shape' }
-          <Shape  block="{ block }" anim_style="{ block.settings.anim_style }"   left={left} title_top={title_top} font_size={font_size} color={color} bold={bold} animations={animations}  blockƒƒsettings={blockƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} /> 
+          <Shape  block="{ block }" anim_style="{ block.settings.anim_style }"   animations={animations}  sectionƒƒblocks={sectionƒƒblocks}   lec={lec} /> 
         {/if}
       
       {/each}

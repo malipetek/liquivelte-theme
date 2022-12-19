@@ -1,1 +1,33 @@
-function isObject(n){return'object'==typeof n&&null!==n&&n.constructor&&'Object'===Object.prototype.toString.call(n).slice(8,-1)}function extend(n,t){const e=['__proto__','constructor','prototype'];Object.keys(t).filter((n=>e.indexOf(n)<0)).forEach((e=>{void 0===n[e]?n[e]=t[e]:isObject(t[e])&&isObject(n[e])&&Object.keys(t[e]).length>0?t[e].__swiper__?n[e]=t[e]:extend(n[e],t[e]):n[e]=t[e]}))}function needsNavigation(n){return void 0===n&&(n={}),n.navigation&&void 0===n.navigation.nextEl&&void 0===n.navigation.prevEl}function needsPagination(n){return void 0===n&&(n={}),n.pagination&&void 0===n.pagination.el}function needsScrollbar(n){return void 0===n&&(n={}),n.scrollbar&&void 0===n.scrollbar.el}export{extend,isObject,needsNavigation,needsPagination,needsScrollbar};
+function isObject(o) {
+  return typeof o === 'object' && o !== null && o.constructor && Object.prototype.toString.call(o).slice(8, -1) === 'Object';
+}
+function extend(target, src) {
+  const noExtend = ['__proto__', 'constructor', 'prototype'];
+  Object.keys(src).filter(key => noExtend.indexOf(key) < 0).forEach(key => {
+    if (typeof target[key] === 'undefined') target[key] = src[key];else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) {
+      if (src[key].__swiper__) target[key] = src[key];else extend(target[key], src[key]);
+    } else {
+      target[key] = src[key];
+    }
+  });
+}
+function needsNavigation(params) {
+  if (params === void 0) {
+    params = {};
+  }
+  return params.navigation && typeof params.navigation.nextEl === 'undefined' && typeof params.navigation.prevEl === 'undefined';
+}
+function needsPagination(params) {
+  if (params === void 0) {
+    params = {};
+  }
+  return params.pagination && typeof params.pagination.el === 'undefined';
+}
+function needsScrollbar(params) {
+  if (params === void 0) {
+    params = {};
+  }
+  return params.scrollbar && typeof params.scrollbar.el === 'undefined';
+}
+
+export { extend, isObject, needsNavigation, needsPagination, needsScrollbar };

@@ -2,6 +2,8 @@ console.log('custom entry');
   // Import F7 Bundle
   import Framework7 from 'framework7';
   import Panel from 'framework7/components/panel';
+  import Popup from 'framework7/components/popup';
+  import Stepper from 'framework7/components/stepper';
 
   // Import F7-Svelte Plugin
   import f7liquivelte from 'framework7-liquivelte';
@@ -9,7 +11,9 @@ console.log('custom entry');
   // Init F7-Svelte Plugin
 Framework7.use([
   f7liquivelte,
-  Panel
+  Panel,
+  Popup,
+  Stepper
 ]);
 
 

@@ -1,1 +1,291 @@
-import{SvelteComponent as e,init as t,safe_not_equal as l,create_component as i,claim_component as a,mount_component as r,transition_in as s,transition_out as o,destroy_component as c,beforeUpdate as u,create_slot as p,element as n,claim_element as m,children as $,detach as d,attr as f,insert_hydration as v,append_hydration as q,action_destroyer as h,update_slot_base as w,get_all_dirty_from_scope as g,get_slot_changes as _,is_function as j}from'./liquivelte-svelte-hs532e1aa9.liquivelte.js';import'./framework7-liquivelte-hs5d6b599e.liquivelte.js';import{View as k}from'./framework7-liquivelte-view-hs8daa1a0c.liquivelte.js';import{App as x}from'./framework7-liquivelte-app-hs8daa1a0c.liquivelte.js';import{Page as y}from'./framework7-liquivelte-page-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-get-params-hs6b273664.liquivelte.js';import'./framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-login-screen-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-sheet-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-popover-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-panel-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-router-context-provider-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-routable-modals-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-page-content-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-preloader-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';import'./framework7-liquivelte-params-list-hs8daa1a0c.liquivelte.js';function create_default_slot_2(e){let t;let l;let i;let a;let r;let c;const u=e[2].default;const k=p(u,e,e[3],null);return{c(){t=n("div"),l=n("div"),k&&k.c(),this.h()},l(e){t=m(e,"DIV",{});var i=$(t);l=m(i,"DIV",{class:!0});var a=$(l);k&&k.l(a),a.forEach(d),i.forEach(d),this.h()},h(){f(l,"class","liveslot")},m(s,o){v(s,t,o),q(t,l),k&&k.m(l,null),a=!0,r||(c=h(i=persistingchild.call(null,t,e[1])),r=!0)},p(e,t){k&&k.p&&(!a||8&t)&&w(k,u,e,e[3],a?_(u,e[3],t,null):g(e[3]),null),i&&j(i.update)&&2&t&&i.update.call(null,e[1])},i(e){a||(s(k,e),a=!0)},o(e){o(k,e),a=!1},d(e){e&&d(t),k&&k.d(e),r=!1,c()}}}function create_default_slot_1(e){let t;let l;return t=new y({props:{lec:e[0],$$slots:{default:[create_default_slot_2]},$$scope:{ctx:e}}}),{c(){i(t.$$.fragment)},l(e){a(t.$$.fragment,e)},m(e,i){r(t,e,i),l=!0},p(e,l){const i={};1&l&&(i.lec=e[0]),10&l&&(i.$$scope={dirty:l,ctx:e}),t.$set(i)},i(e){l||(s(t.$$.fragment,e),l=!0)},o(e){o(t.$$.fragment,e),l=!1},d(e){c(t,e)}}}function create_default_slot(e){let t;let l;return t=new k({props:{main:!0,lec:e[0],$$slots:{default:[create_default_slot_1]},$$scope:{ctx:e}}}),{c(){i(t.$$.fragment)},l(e){a(t.$$.fragment,e)},m(e,i){r(t,e,i),l=!0},p(e,l){const i={};1&l&&(i.lec=e[0]),11&l&&(i.$$scope={dirty:l,ctx:e}),t.$set(i)},i(e){l||(s(t.$$.fragment,e),l=!0)},o(e){o(t.$$.fragment,e),l=!1},d(e){c(t,e)}}}function create_fragment(e){let t;let l;return t=new x({props:{theme:"ios",name:"My App",id:"com.demoapp.test",lec:e[0],$$slots:{default:[create_default_slot]},$$scope:{ctx:e}}}),{c(){i(t.$$.fragment)},l(e){a(t.$$.fragment,e)},m(e,i){r(t,e,i),l=!0},p(e,[l]){const i={};1&l&&(i.lec=e[0]),11&l&&(i.$$scope={dirty:l,ctx:e}),t.$set(i)},i(e){l||(s(t.$$.fragment,e),l=!0)},o(e){o(t.$$.fragment,e),l=!1},d(e){c(t,e)}}}function persistingchild(e,t){e.children[0]!==t&&e.replaceChild(t,e.children[0])}function instance(e,t,l){let{$$slots:i={},$$scope:a}=t;let{lec:r}=t;let s;return u((()=>(s||(l(1,s=document.querySelector('.liveslot')),s.isConnected&&s.parentNode.removeChild(s)),!1))),e.$$set=e=>{'lec'in e&&l(0,r=e.lec),'$$scope'in e&&l(3,a=e.$$scope)},[r,s,i,a]}class App_wrapper extends e{constructor(e){super(),t(this,e,instance,create_fragment,l,{lec:0})}}export{App_wrapper as default};
+import { SvelteComponent, init, safe_not_equal, create_component, claim_component, mount_component, transition_in, transition_out, destroy_component, beforeUpdate, create_slot, element, claim_element, children, detach, attr, insert_hydration, append_hydration, action_destroyer, update_slot_base, get_all_dirty_from_scope, get_slot_changes, is_function } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import './framework7-liquivelte-hs5d6b599e.liquivelte.js';
+import { View } from './framework7-liquivelte-view-hs8daa1a0c.liquivelte.js';
+import { App } from './framework7-liquivelte-app-hs8daa1a0c.liquivelte.js';
+import { Page } from './framework7-liquivelte-page-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
+import './framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-login-screen-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-sheet-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-popover-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-panel-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-router-context-provider-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-routable-modals-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-page-content-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-preloader-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-params-list-hs8daa1a0c.liquivelte.js';
+
+/* Usersmalipetek/Documents/Documents/Projects/LIQUVELTE/LIQUIVELTE TEST/src/snippets/app-wrapper.liquivelte generated by Svelte v3.50.0 */
+
+function create_default_slot_2(ctx) {
+	let div1;
+	let div0;
+	let persistingchild_action;
+	let current;
+	let mounted;
+	let dispose;
+	const default_slot_template = /*#slots*/ ctx[2].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
+
+	return {
+		c() {
+			div1 = element("div");
+			div0 = element("div");
+			if (default_slot) default_slot.c();
+			this.h();
+		},
+		l(nodes) {
+			div1 = claim_element(nodes, "DIV", {});
+			var div1_nodes = children(div1);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+			if (default_slot) default_slot.l(div0_nodes);
+			div0_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div0, "class", "liveslot");
+		},
+		m(target, anchor) {
+			insert_hydration(target, div1, anchor);
+			append_hydration(div1, div0);
+
+			if (default_slot) {
+				default_slot.m(div0, null);
+			}
+
+			current = true;
+
+			if (!mounted) {
+				dispose = action_destroyer(persistingchild_action = persistingchild.call(null, div1, /*ls_cache*/ ctx[1]));
+				mounted = true;
+			}
+		},
+		p(ctx, dirty) {
+			if (default_slot) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 8)) {
+					update_slot_base(
+						default_slot,
+						default_slot_template,
+						ctx,
+						/*$$scope*/ ctx[3],
+						!current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[3])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[3], dirty, null),
+						null
+					);
+				}
+			}
+
+			if (persistingchild_action && is_function(persistingchild_action.update) && dirty & /*ls_cache*/ 2) persistingchild_action.update.call(null, /*ls_cache*/ ctx[1]);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(default_slot, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(default_slot, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div1);
+			if (default_slot) default_slot.d(detaching);
+			mounted = false;
+			dispose();
+		}
+	};
+}
+
+// (7631:2) <View  main     lec={lec} >
+function create_default_slot_1(ctx) {
+	let page;
+	let current;
+
+	page = new Page({
+			props: {
+				lec: /*lec*/ ctx[0],
+				$$slots: { default: [create_default_slot_2] },
+				$$scope: { ctx }
+			}
+		});
+
+	return {
+		c() {
+			create_component(page.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(page.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(page, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const page_changes = {};
+			if (dirty & /*lec*/ 1) page_changes.lec = /*lec*/ ctx[0];
+
+			if (dirty & /*$$scope, ls_cache*/ 10) {
+				page_changes.$$scope = { dirty, ctx };
+			}
+
+			page.$set(page_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(page.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(page.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(page, detaching);
+		}
+	};
+}
+
+// (7630:0) <App  theme="ios" name="My App" id="com.demoapp.test"     lec={lec} >
+function create_default_slot(ctx) {
+	let view;
+	let current;
+
+	view = new View({
+			props: {
+				main: true,
+				lec: /*lec*/ ctx[0],
+				$$slots: { default: [create_default_slot_1] },
+				$$scope: { ctx }
+			}
+		});
+
+	return {
+		c() {
+			create_component(view.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(view.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(view, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const view_changes = {};
+			if (dirty & /*lec*/ 1) view_changes.lec = /*lec*/ ctx[0];
+
+			if (dirty & /*$$scope, lec, ls_cache*/ 11) {
+				view_changes.$$scope = { dirty, ctx };
+			}
+
+			view.$set(view_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(view.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(view.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(view, detaching);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let app;
+	let current;
+
+	app = new App({
+			props: {
+				theme: "ios",
+				name: "My App",
+				id: "com.demoapp.test",
+				lec: /*lec*/ ctx[0],
+				$$slots: { default: [create_default_slot] },
+				$$scope: { ctx }
+			}
+		});
+
+	return {
+		c() {
+			create_component(app.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(app.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(app, target, anchor);
+			current = true;
+		},
+		p(ctx, [dirty]) {
+			const app_changes = {};
+			if (dirty & /*lec*/ 1) app_changes.lec = /*lec*/ ctx[0];
+
+			if (dirty & /*$$scope, lec, ls_cache*/ 11) {
+				app_changes.$$scope = { dirty, ctx };
+			}
+
+			app.$set(app_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(app.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(app.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(app, detaching);
+		}
+	};
+}
+
+function persistingchild(node, keep) {
+	if (node.children[0] !== keep) {
+		node.replaceChild(keep, node.children[0]);
+	}
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let { $$slots: slots = {}, $$scope } = $$props;
+	let { lec } = $$props;
+	let ls_cache;
+
+	beforeUpdate(() => {
+		if (!ls_cache) {
+			$$invalidate(1, ls_cache = document.querySelector('.liveslot'));
+
+			if (ls_cache.isConnected) {
+				ls_cache.parentNode.removeChild(ls_cache);
+			}
+		}
+
+		console.log('oh shit, the wrapper component is about to update');
+		return false;
+	});
+
+	$$self.$$set = $$props => {
+		if ('lec' in $$props) $$invalidate(0, lec = $$props.lec);
+		if ('$$scope' in $$props) $$invalidate(3, $$scope = $$props.$$scope);
+	};
+
+	return [lec, ls_cache, slots, $$scope];
+}
+
+class App_wrapper extends SvelteComponent {
+	constructor(options) {
+		super();
+		init(this, options, instance, create_fragment, safe_not_equal, { lec: 0 });
+	}
+}
+
+export { App_wrapper as default };

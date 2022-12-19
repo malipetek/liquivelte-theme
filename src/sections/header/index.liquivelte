@@ -39,7 +39,7 @@
   import CartDrawer from './components/cart-drawer.liquivelte';
   import Logo from './components/logo.liquivelte';
   import DetailsModal from '../../snippets/details-modal.liquivelte';
-  import { Appbar, Panel, Button, Block, View, Page } from 'framework7-liquivelte'; 
+  import { Appbar, Panel, Button, Block, View, Page, Popup } from 'framework7-liquivelte'; 
   import Icon from "../../snippets/icon.liquivelte";
   import settings from 'theme'; 
 
@@ -66,18 +66,18 @@
   </symbol>
 </svg>
 
-  <Panel resizable left reveal swipeOnlyClose="{true}"  >
+  <Panel resizable left reveal swipe swipeOnlyClose="{true}"  >
     <View>
       <Page>
         <Block> Left panel content </Block>
       </Page>
     </View>
   </Panel>
-  <Panel resizable right reveal swipeOnlyClose="{true}"  >
+  <Popup class="cart-popup" resizable right reveal swipe swipeOnlyClose="{true}"  >
     <View>
       <CartDrawer />
     </View>
-  </Panel>
+  </Popup>
   <header> 
     <Appbar>
       <div class="left">
@@ -89,7 +89,7 @@
         <Logo />
       </div>
       <div class="left">
-        <Button small panelToggle="right" class="display-flex" >
+        <Button small popupOpen=".cart-popup" class="display-flex" >
           <Icon name="icon-cart" width="40" />
         </Button>
       </div>
@@ -107,11 +107,13 @@
 {% endif %}
 
 
-<style global lang="postcss">
-  @import "framework7/framework7-bundle.min.css";
-  @tailwind base;
-  @tailwind utilities;
+<style global >
   
+  .panel {
+    min-width: 100px;
+    max-width: 90vw;
+  }
+
   header-drawer {
       justify-self: start;
       margin-left: -1.2rem;

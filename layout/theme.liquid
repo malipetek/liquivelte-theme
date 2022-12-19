@@ -8,6 +8,29 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
+
+    <script> 
+    
+function proxify(url) { 
+  if (url.constructor !== URL) {
+    url = new URL(url);  
+  }
+  url.searchParams.append('shop', 'liquivelte.myshopify.com');
+  const proxyUrl = new URL('https://partytown.onrender.com/reverse-proxy');
+  proxyUrl.searchParams.append('url', url.href);
+  proxyUrl.searchParams.append('shop', 'liquivelte.myshopify.com');
+  return proxyUrl;
+}
+    window.partytown = {
+      debug: false,
+      lib: '/a/proxy/',
+      resolveUrl: proxify
+    };
+  </script>
+  <script src="/a/proxy/partytown.js" > </script>
+  
+  <script src="/a/sw/Development%20(e34f7f-muhammets-air)/sw.liquivelte.js" ></script>
+    
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
@@ -240,8 +263,6 @@
       }
     {% endstyle %}
       
-      <link rel="preload" as="font" href="{{ 'Anton-Regular.ttf' | font_url }}" type="font/ttf" crossorigin>
-
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     if (Shopify.designMode) {
       document.documentElement.classList.add('shopify-design-mode');

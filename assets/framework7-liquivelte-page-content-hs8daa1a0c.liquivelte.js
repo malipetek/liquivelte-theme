@@ -1,1 +1,675 @@
-import{SvelteComponent as e,init as t,safe_not_equal as n,create_slot as l,assign as i,element as r,space as o,claim_element as a,children as c,claim_space as s,detach as f,set_attributes as p,insert_hydration as d,append_hydration as u,transition_in as h,group_outros as m,transition_out as P,check_outros as $,update_slot_base as b,get_all_dirty_from_scope as g,get_slot_changes as v,get_spread_update as _,compute_rest_props as S,createEventDispatcher as D,onMount as w,onDestroy as O,exclude_internal_props as k,create_component as E,claim_component as M,attr as B,mount_component as T,destroy_component as C,binding_callbacks as I}from'./liquivelte-svelte-hs532e1aa9.liquivelte.js';import{restProps as q,createEmitter as R,useTab as A,f7ready as N,app as V,classNames as j,colorClasses as x}from'./framework7-liquivelte-hs5d6b599e.liquivelte.js';import{Preloader as y}from'./framework7-liquivelte-preloader-hs8daa1a0c.liquivelte.js';function create_if_block_3(e){let t;let n;let l;let i;let p;return n=new y({props:{lec:e[0]}}),{c(){t=r("div"),E(n.$$.fragment),l=o(),i=r("div"),this.h()},l(e){t=a(e,"DIV",{class:!0});var r=c(t);M(n.$$.fragment,r),l=s(r),i=a(r,"DIV",{class:!0}),c(i).forEach(f),r.forEach(f),this.h()},h(){B(i,"class","ptr-arrow"),B(t,"class","ptr-preloader")},m(e,r){d(e,t,r),T(n,t,null),u(t,l),u(t,i),p=!0},p(e,t){const l={};1&t[0]&&(l.lec=e[0]),n.$set(l)},i(e){p||(h(n.$$.fragment,e),p=!0)},o(e){P(n.$$.fragment,e),p=!1},d(e){e&&f(t),C(n)}}}function create_if_block_2(e){let t;let n;return t=new y({props:{class:"infinite-scroll-preloader",lec:e[0]}}),{c(){E(t.$$.fragment)},l(e){M(t.$$.fragment,e)},m(e,l){T(t,e,l),n=!0},p(e,n){const l={};1&n[0]&&(l.lec=e[0]),t.$set(l)},i(e){n||(h(t.$$.fragment,e),n=!0)},o(e){P(t.$$.fragment,e),n=!1},d(e){C(t,e)}}}function create_if_block_1(e){let t;let n;return t=new y({props:{class:"infinite-scroll-preloader",lec:e[0]}}),{c(){E(t.$$.fragment)},l(e){M(t.$$.fragment,e)},m(e,l){T(t,e,l),n=!0},p(e,n){const l={};1&n[0]&&(l.lec=e[0]),t.$set(l)},i(e){n||(h(t.$$.fragment,e),n=!0)},o(e){P(t.$$.fragment,e),n=!1},d(e){C(t,e)}}}function create_if_block(e){let t;let n;let l;let i;let p;return n=new y({props:{lec:e[0]}}),{c(){t=r("div"),E(n.$$.fragment),l=o(),i=r("div"),this.h()},l(e){t=a(e,"DIV",{class:!0});var r=c(t);M(n.$$.fragment,r),l=s(r),i=a(r,"DIV",{class:!0}),c(i).forEach(f),r.forEach(f),this.h()},h(){B(i,"class","ptr-arrow"),B(t,"class","ptr-preloader")},m(e,r){d(e,t,r),T(n,t,null),u(t,l),u(t,i),p=!0},p(e,t){const l={};1&t[0]&&(l.lec=e[0]),n.$set(l)},i(e){p||(h(n.$$.fragment,e),p=!0)},o(e){P(n.$$.fragment,e),p=!1},d(e){e&&f(t),C(n)}}}function create_fragment(e){let t;let n;let S;let D;let w;let O;let k;let E;let M;let B=e[1]&&e[3]&&null==e[4]&&create_if_block_3(e);let T=e[6]&&e[7]&&e[9]&&create_if_block_2(e);const C=e[22].default;const I=l(C,e,e[21],null);let R=e[6]&&!e[7]&&e[9]&&create_if_block_1(e);let A=e[1]&&e[3]&&e[4]&&create_if_block(e);let N=[{class:O="page-content "+e[11]},{"data-ptr-distance":e[2]},{"data-ptr-mousewheel":k=e[5]||void 0},{"data-infinite-distance":E=e[8]||void 0},q(e[12])];let V={};for(let e=0;e<N.length;e+=1)V=i(V,N[e]);return{c(){t=r("div"),B&&B.c(),n=o(),T&&T.c(),S=o(),I&&I.c(),D=o(),R&&R.c(),w=o(),A&&A.c(),this.h()},l(e){t=a(e,"DIV",{class:!0,"data-ptr-distance":!0,"data-ptr-mousewheel":!0,"data-infinite-distance":!0});var l=c(t);B&&B.l(l),n=s(l),T&&T.l(l),S=s(l),I&&I.l(l),D=s(l),R&&R.l(l),w=s(l),A&&A.l(l),l.forEach(f),this.h()},h(){p(t,V)},m(l,i){d(l,t,i),B&&B.m(t,null),u(t,n),T&&T.m(t,null),u(t,S),I&&I.m(t,null),u(t,D),R&&R.m(t,null),u(t,w),A&&A.m(t,null),e[23](t),M=!0},p(e,l){e[1]&&e[3]&&null==e[4]?B?(B.p(e,l),26&l[0]&&h(B,1)):(B=create_if_block_3(e),B.c(),h(B,1),B.m(t,n)):B&&(m(),P(B,1,1,(()=>{B=null})),$()),e[6]&&e[7]&&e[9]?T?(T.p(e,l),704&l[0]&&h(T,1)):(T=create_if_block_2(e),T.c(),h(T,1),T.m(t,S)):T&&(m(),P(T,1,1,(()=>{T=null})),$()),I&&I.p&&(!M||2097152&l[0])&&b(I,C,e,e[21],M?v(C,e[21],l,null):g(e[21]),null),e[6]&&!e[7]&&e[9]?R?(R.p(e,l),704&l[0]&&h(R,1)):(R=create_if_block_1(e),R.c(),h(R,1),R.m(t,w)):R&&(m(),P(R,1,1,(()=>{R=null})),$()),e[1]&&e[3]&&e[4]?A?(A.p(e,l),26&l[0]&&h(A,1)):(A=create_if_block(e),A.c(),h(A,1),A.m(t,null)):A&&(m(),P(A,1,1,(()=>{A=null})),$()),p(t,V=_(N,[(!M||2048&l[0]&&O!==(O="page-content "+e[11]))&&{class:O},(!M||4&l[0])&&{"data-ptr-distance":e[2]},(!M||32&l[0]&&k!==(k=e[5]||void 0))&&{"data-ptr-mousewheel":k},(!M||256&l[0]&&E!==(E=e[8]||void 0))&&{"data-infinite-distance":E},4096&l[0]&&q(e[12])]))},i(e){M||(h(B),h(T),h(I,e),h(R),h(A),M=!0)},o(e){P(B),P(T),P(I,e),P(R),P(A),M=!1},d(n){n&&f(t),B&&B.d(),T&&T.d(),I&&I.d(n),R&&R.d(),A&&A.d(),e[23](null)}}}function instance(e,t,n){let l;const r=["lec","tab","tabActive","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","class"];let o=S(t,r);let{$$slots:a={},$$scope:c}=t;let{lec:s}=t;const f=R(D,t);let{tab:p=!1}=t;let{tabActive:d=!1}=t;let{ptr:u=!1}=t;let{ptrDistance:h}=t;let{ptrPreloader:m=!0}=t;let{ptrBottom:P=!1}=t;let{ptrMousewheel:$=!1}=t;let{infinite:b=!1}=t;let{infiniteTop:g=!1}=t;let{infiniteDistance:v}=t;let{infinitePreloader:_=!0}=t;let{hideBarsOnScroll:E=!1}=t;let{hideNavbarOnScroll:M=!1}=t;let{hideToolbarOnScroll:B=!1}=t;let{messagesContent:T=!1}=t;let{loginScreen:C=!1}=t;let{class:q}=t;let y;function onPtrPullStart(e){e===y&&f('ptrPullStart')}function onPtrPullMove(e){e===y&&f('ptrPullMove')}function onPtrPullEnd(e){e===y&&f('ptrPullEnd')}function onPtrRefresh(e,t){e===y&&f('ptrRefresh',[t])}function onPtrDone(e){e===y&&f('ptrDone')}function onInfinite(e){e===y&&f('infinite')}function mountPageContent(){u&&(V.f7.on('ptrPullStart',onPtrPullStart),V.f7.on('ptrPullMove',onPtrPullMove),V.f7.on('ptrPullEnd',onPtrPullEnd),V.f7.on('ptrRefresh',onPtrRefresh),V.f7.on('ptrDone',onPtrDone)),b&&V.f7.on('infinite',onInfinite)}function destroyPageContent(){u&&(V.f7.off('ptrPullStart',onPtrPullStart),V.f7.off('ptrPullMove',onPtrPullMove),V.f7.off('ptrPullEnd',onPtrPullEnd),V.f7.off('ptrRefresh',onPtrRefresh),V.f7.off('ptrDone',onPtrDone)),b&&V.f7.off('infinite',onInfinite)}function div_binding(e){I[e?'unshift':'push']((()=>{y=e,n(10,y)}))}return A((()=>y),f),w((()=>{N((()=>{mountPageContent()}))})),O((()=>{V.f7&&destroyPageContent()})),e.$$set=e=>{n(34,t=i(i({},t),k(e))),n(12,o=S(t,r)),'lec'in e&&n(0,s=e.lec),'tab'in e&&n(13,p=e.tab),'tabActive'in e&&n(14,d=e.tabActive),'ptr'in e&&n(1,u=e.ptr),'ptrDistance'in e&&n(2,h=e.ptrDistance),'ptrPreloader'in e&&n(3,m=e.ptrPreloader),'ptrBottom'in e&&n(4,P=e.ptrBottom),'ptrMousewheel'in e&&n(5,$=e.ptrMousewheel),'infinite'in e&&n(6,b=e.infinite),'infiniteTop'in e&&n(7,g=e.infiniteTop),'infiniteDistance'in e&&n(8,v=e.infiniteDistance),'infinitePreloader'in e&&n(9,_=e.infinitePreloader),'hideBarsOnScroll'in e&&n(15,E=e.hideBarsOnScroll),'hideNavbarOnScroll'in e&&n(16,M=e.hideNavbarOnScroll),'hideToolbarOnScroll'in e&&n(17,B=e.hideToolbarOnScroll),'messagesContent'in e&&n(18,T=e.messagesContent),'loginScreen'in e&&n(19,C=e.loginScreen),'class'in e&&n(20,q=e.class),'$$scope'in e&&n(21,c=e.$$scope)},e.$$.update=()=>{n(11,l=j(q,{tab:p,'tab-active':d,'ptr-content':u,'ptr-bottom':P,'infinite-scroll-content':b,'infinite-scroll-top':g,'hide-bars-on-scroll':E,'hide-navbar-on-scroll':M,'hide-toolbar-on-scroll':B,'messages-content':T,'login-screen-content':C},x(t)))},t=k(t),[s,u,h,m,P,$,b,g,v,_,y,l,o,p,d,E,M,B,T,C,q,c,a,div_binding]}class Page_content extends e{constructor(e){super(),t(this,e,instance,create_fragment,n,{lec:0,tab:13,tabActive:14,ptr:1,ptrDistance:2,ptrPreloader:3,ptrBottom:4,ptrMousewheel:5,infinite:6,infiniteTop:7,infiniteDistance:8,infinitePreloader:9,hideBarsOnScroll:15,hideNavbarOnScroll:16,hideToolbarOnScroll:17,messagesContent:18,loginScreen:19,class:20},null,[-1,-1])}}export{Page_content};
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, createEventDispatcher, onMount, onDestroy, exclude_internal_props, create_component, claim_component, attr, mount_component, destroy_component, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { restProps, createEmitter, useTab, f7ready, app, classNames, colorClasses } from './framework7-liquivelte-hs5d6b599e.liquivelte.js';
+import { Preloader } from './framework7-liquivelte-preloader-hs8daa1a0c.liquivelte.js';
+
+/* Usersmalipetek/Documents/Documents/Projects/LIQUVELTE/LIQUIVELTE TEST/node_modules/framework7-liquivelte/components/page-content.liquivelte generated by Svelte v3.50.0 */
+
+function create_if_block_3(ctx) {
+	let div1;
+	let preloader;
+	let t;
+	let div0;
+	let current;
+	preloader = new Preloader({ props: { lec: /*lec*/ ctx[0] } });
+
+	return {
+		c() {
+			div1 = element("div");
+			create_component(preloader.$$.fragment);
+			t = space();
+			div0 = element("div");
+			this.h();
+		},
+		l(nodes) {
+			div1 = claim_element(nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			claim_component(preloader.$$.fragment, div1_nodes);
+			t = claim_space(div1_nodes);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			children(div0).forEach(detach);
+			div1_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div0, "class", "ptr-arrow");
+			attr(div1, "class", "ptr-preloader");
+		},
+		m(target, anchor) {
+			insert_hydration(target, div1, anchor);
+			mount_component(preloader, div1, null);
+			append_hydration(div1, t);
+			append_hydration(div1, div0);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const preloader_changes = {};
+			if (dirty[0] & /*lec*/ 1) preloader_changes.lec = /*lec*/ ctx[0];
+			preloader.$set(preloader_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(preloader.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(preloader.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div1);
+			destroy_component(preloader);
+		}
+	};
+}
+
+// (135:2) {#if infinite && infiniteTop && infinitePreloader }
+function create_if_block_2(ctx) {
+	let preloader;
+	let current;
+
+	preloader = new Preloader({
+			props: {
+				class: "infinite-scroll-preloader",
+				lec: /*lec*/ ctx[0]
+			}
+		});
+
+	return {
+		c() {
+			create_component(preloader.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(preloader.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(preloader, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const preloader_changes = {};
+			if (dirty[0] & /*lec*/ 1) preloader_changes.lec = /*lec*/ ctx[0];
+			preloader.$set(preloader_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(preloader.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(preloader.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(preloader, detaching);
+		}
+	};
+}
+
+// (139:2) {#if infinite && !infiniteTop && infinitePreloader }
+function create_if_block_1(ctx) {
+	let preloader;
+	let current;
+
+	preloader = new Preloader({
+			props: {
+				class: "infinite-scroll-preloader",
+				lec: /*lec*/ ctx[0]
+			}
+		});
+
+	return {
+		c() {
+			create_component(preloader.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(preloader.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(preloader, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const preloader_changes = {};
+			if (dirty[0] & /*lec*/ 1) preloader_changes.lec = /*lec*/ ctx[0];
+			preloader.$set(preloader_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(preloader.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(preloader.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(preloader, detaching);
+		}
+	};
+}
+
+// (142:2) {#if ptr && ptrPreloader && ptrBottom }
+function create_if_block(ctx) {
+	let div1;
+	let preloader;
+	let t;
+	let div0;
+	let current;
+	preloader = new Preloader({ props: { lec: /*lec*/ ctx[0] } });
+
+	return {
+		c() {
+			div1 = element("div");
+			create_component(preloader.$$.fragment);
+			t = space();
+			div0 = element("div");
+			this.h();
+		},
+		l(nodes) {
+			div1 = claim_element(nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			claim_component(preloader.$$.fragment, div1_nodes);
+			t = claim_space(div1_nodes);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			children(div0).forEach(detach);
+			div1_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div0, "class", "ptr-arrow");
+			attr(div1, "class", "ptr-preloader");
+		},
+		m(target, anchor) {
+			insert_hydration(target, div1, anchor);
+			mount_component(preloader, div1, null);
+			append_hydration(div1, t);
+			append_hydration(div1, div0);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const preloader_changes = {};
+			if (dirty[0] & /*lec*/ 1) preloader_changes.lec = /*lec*/ ctx[0];
+			preloader.$set(preloader_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(preloader.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(preloader.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div1);
+			destroy_component(preloader);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let div;
+	let t0;
+	let t1;
+	let t2;
+	let t3;
+	let div_class_value;
+	let div_data_ptr_mousewheel_value;
+	let div_data_infinite_distance_value;
+	let current;
+	let if_block0 = /*ptr*/ ctx[1] && /*ptrPreloader*/ ctx[3] && /*ptrBottom*/ ctx[4] == undefined && create_if_block_3(ctx);
+	let if_block1 = /*infinite*/ ctx[6] && /*infiniteTop*/ ctx[7] && /*infinitePreloader*/ ctx[9] && create_if_block_2(ctx);
+	const default_slot_template = /*#slots*/ ctx[22].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[21], null);
+	let if_block2 = /*infinite*/ ctx[6] && !/*infiniteTop*/ ctx[7] && /*infinitePreloader*/ ctx[9] && create_if_block_1(ctx);
+	let if_block3 = /*ptr*/ ctx[1] && /*ptrPreloader*/ ctx[3] && /*ptrBottom*/ ctx[4] && create_if_block(ctx);
+
+	let div_levels = [
+		{
+			class: div_class_value = "page-content " + /*pageContentClasses*/ ctx[11]
+		},
+		{
+			"data-ptr-distance": /*ptrDistance*/ ctx[2]
+		},
+		{
+			"data-ptr-mousewheel": div_data_ptr_mousewheel_value = /*ptrMousewheel*/ ctx[5] || undefined
+		},
+		{
+			"data-infinite-distance": div_data_infinite_distance_value = /*infiniteDistance*/ ctx[8] || undefined
+		},
+		restProps(/*$$restProps*/ ctx[12])
+	];
+
+	let div_data = {};
+
+	for (let i = 0; i < div_levels.length; i += 1) {
+		div_data = assign(div_data, div_levels[i]);
+	}
+
+	return {
+		c() {
+			div = element("div");
+			if (if_block0) if_block0.c();
+			t0 = space();
+			if (if_block1) if_block1.c();
+			t1 = space();
+			if (default_slot) default_slot.c();
+			t2 = space();
+			if (if_block2) if_block2.c();
+			t3 = space();
+			if (if_block3) if_block3.c();
+			this.h();
+		},
+		l(nodes) {
+			div = claim_element(nodes, "DIV", {
+				class: true,
+				"data-ptr-distance": true,
+				"data-ptr-mousewheel": true,
+				"data-infinite-distance": true
+			});
+
+			var div_nodes = children(div);
+			if (if_block0) if_block0.l(div_nodes);
+			t0 = claim_space(div_nodes);
+			if (if_block1) if_block1.l(div_nodes);
+			t1 = claim_space(div_nodes);
+			if (default_slot) default_slot.l(div_nodes);
+			t2 = claim_space(div_nodes);
+			if (if_block2) if_block2.l(div_nodes);
+			t3 = claim_space(div_nodes);
+			if (if_block3) if_block3.l(div_nodes);
+			div_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			set_attributes(div, div_data);
+		},
+		m(target, anchor) {
+			insert_hydration(target, div, anchor);
+			if (if_block0) if_block0.m(div, null);
+			append_hydration(div, t0);
+			if (if_block1) if_block1.m(div, null);
+			append_hydration(div, t1);
+
+			if (default_slot) {
+				default_slot.m(div, null);
+			}
+
+			append_hydration(div, t2);
+			if (if_block2) if_block2.m(div, null);
+			append_hydration(div, t3);
+			if (if_block3) if_block3.m(div, null);
+			/*div_binding*/ ctx[23](div);
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (/*ptr*/ ctx[1] && /*ptrPreloader*/ ctx[3] && /*ptrBottom*/ ctx[4] == undefined) {
+				if (if_block0) {
+					if_block0.p(ctx, dirty);
+
+					if (dirty[0] & /*ptr, ptrPreloader, ptrBottom*/ 26) {
+						transition_in(if_block0, 1);
+					}
+				} else {
+					if_block0 = create_if_block_3(ctx);
+					if_block0.c();
+					transition_in(if_block0, 1);
+					if_block0.m(div, t0);
+				}
+			} else if (if_block0) {
+				group_outros();
+
+				transition_out(if_block0, 1, 1, () => {
+					if_block0 = null;
+				});
+
+				check_outros();
+			}
+
+			if (/*infinite*/ ctx[6] && /*infiniteTop*/ ctx[7] && /*infinitePreloader*/ ctx[9]) {
+				if (if_block1) {
+					if_block1.p(ctx, dirty);
+
+					if (dirty[0] & /*infinite, infiniteTop, infinitePreloader*/ 704) {
+						transition_in(if_block1, 1);
+					}
+				} else {
+					if_block1 = create_if_block_2(ctx);
+					if_block1.c();
+					transition_in(if_block1, 1);
+					if_block1.m(div, t1);
+				}
+			} else if (if_block1) {
+				group_outros();
+
+				transition_out(if_block1, 1, 1, () => {
+					if_block1 = null;
+				});
+
+				check_outros();
+			}
+
+			if (default_slot) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope*/ 2097152)) {
+					update_slot_base(
+						default_slot,
+						default_slot_template,
+						ctx,
+						/*$$scope*/ ctx[21],
+						!current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[21])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[21], dirty, null),
+						null
+					);
+				}
+			}
+
+			if (/*infinite*/ ctx[6] && !/*infiniteTop*/ ctx[7] && /*infinitePreloader*/ ctx[9]) {
+				if (if_block2) {
+					if_block2.p(ctx, dirty);
+
+					if (dirty[0] & /*infinite, infiniteTop, infinitePreloader*/ 704) {
+						transition_in(if_block2, 1);
+					}
+				} else {
+					if_block2 = create_if_block_1(ctx);
+					if_block2.c();
+					transition_in(if_block2, 1);
+					if_block2.m(div, t3);
+				}
+			} else if (if_block2) {
+				group_outros();
+
+				transition_out(if_block2, 1, 1, () => {
+					if_block2 = null;
+				});
+
+				check_outros();
+			}
+
+			if (/*ptr*/ ctx[1] && /*ptrPreloader*/ ctx[3] && /*ptrBottom*/ ctx[4]) {
+				if (if_block3) {
+					if_block3.p(ctx, dirty);
+
+					if (dirty[0] & /*ptr, ptrPreloader, ptrBottom*/ 26) {
+						transition_in(if_block3, 1);
+					}
+				} else {
+					if_block3 = create_if_block(ctx);
+					if_block3.c();
+					transition_in(if_block3, 1);
+					if_block3.m(div, null);
+				}
+			} else if (if_block3) {
+				group_outros();
+
+				transition_out(if_block3, 1, 1, () => {
+					if_block3 = null;
+				});
+
+				check_outros();
+			}
+
+			set_attributes(div, div_data = get_spread_update(div_levels, [
+				(!current || dirty[0] & /*pageContentClasses*/ 2048 && div_class_value !== (div_class_value = "page-content " + /*pageContentClasses*/ ctx[11])) && { class: div_class_value },
+				(!current || dirty[0] & /*ptrDistance*/ 4) && {
+					"data-ptr-distance": /*ptrDistance*/ ctx[2]
+				},
+				(!current || dirty[0] & /*ptrMousewheel*/ 32 && div_data_ptr_mousewheel_value !== (div_data_ptr_mousewheel_value = /*ptrMousewheel*/ ctx[5] || undefined)) && {
+					"data-ptr-mousewheel": div_data_ptr_mousewheel_value
+				},
+				(!current || dirty[0] & /*infiniteDistance*/ 256 && div_data_infinite_distance_value !== (div_data_infinite_distance_value = /*infiniteDistance*/ ctx[8] || undefined)) && {
+					"data-infinite-distance": div_data_infinite_distance_value
+				},
+				dirty[0] & /*$$restProps*/ 4096 && restProps(/*$$restProps*/ ctx[12])
+			]));
+		},
+		i(local) {
+			if (current) return;
+			transition_in(if_block0);
+			transition_in(if_block1);
+			transition_in(default_slot, local);
+			transition_in(if_block2);
+			transition_in(if_block3);
+			current = true;
+		},
+		o(local) {
+			transition_out(if_block0);
+			transition_out(if_block1);
+			transition_out(default_slot, local);
+			transition_out(if_block2);
+			transition_out(if_block3);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+			if (if_block0) if_block0.d();
+			if (if_block1) if_block1.d();
+			if (default_slot) default_slot.d(detaching);
+			if (if_block2) if_block2.d();
+			if (if_block3) if_block3.d();
+			/*div_binding*/ ctx[23](null);
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let pageContentClasses;
+
+	const omit_props_names = [
+		"lec","tab","tabActive","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","class"
+	];
+
+	let $$restProps = compute_rest_props($$props, omit_props_names);
+	let { $$slots: slots = {}, $$scope } = $$props;
+	let { lec } = $$props;
+	const emit = createEmitter(createEventDispatcher, $$props);
+	let { tab = false } = $$props;
+	let { tabActive = false } = $$props;
+	let { ptr = false } = $$props;
+	let { ptrDistance = undefined } = $$props;
+	let { ptrPreloader = true } = $$props;
+	let { ptrBottom = false } = $$props;
+	let { ptrMousewheel = false } = $$props;
+	let { infinite = false } = $$props;
+	let { infiniteTop = false } = $$props;
+	let { infiniteDistance = undefined } = $$props;
+	let { infinitePreloader = true } = $$props;
+	let { hideBarsOnScroll = false } = $$props;
+	let { hideNavbarOnScroll = false } = $$props;
+	let { hideToolbarOnScroll = false } = $$props;
+	let { messagesContent = false } = $$props;
+	let { loginScreen = false } = $$props;
+	let { class: className = undefined } = $$props;
+	let pageContentEl;
+
+	// Event handlers
+	function onPtrPullStart(ptrEl) {
+		if (ptrEl !== pageContentEl) return;
+		emit('ptrPullStart');
+	}
+
+	function onPtrPullMove(ptrEl) {
+		if (ptrEl !== pageContentEl) return;
+		emit('ptrPullMove');
+	}
+
+	function onPtrPullEnd(ptrEl) {
+		if (ptrEl !== pageContentEl) return;
+		emit('ptrPullEnd');
+	}
+
+	function onPtrRefresh(ptrEl, done) {
+		if (ptrEl !== pageContentEl) return;
+		emit('ptrRefresh', [done]);
+	}
+
+	function onPtrDone(ptrEl) {
+		if (ptrEl !== pageContentEl) return;
+		emit('ptrDone');
+	}
+
+	function onInfinite(infEl) {
+		if (infEl !== pageContentEl) return;
+		emit('infinite');
+	}
+
+	function mountPageContent() {
+		if (ptr) {
+			app.f7.on('ptrPullStart', onPtrPullStart);
+			app.f7.on('ptrPullMove', onPtrPullMove);
+			app.f7.on('ptrPullEnd', onPtrPullEnd);
+			app.f7.on('ptrRefresh', onPtrRefresh);
+			app.f7.on('ptrDone', onPtrDone);
+		}
+
+		if (infinite) {
+			app.f7.on('infinite', onInfinite);
+		}
+	}
+
+	function destroyPageContent() {
+		if (ptr) {
+			app.f7.off('ptrPullStart', onPtrPullStart);
+			app.f7.off('ptrPullMove', onPtrPullMove);
+			app.f7.off('ptrPullEnd', onPtrPullEnd);
+			app.f7.off('ptrRefresh', onPtrRefresh);
+			app.f7.off('ptrDone', onPtrDone);
+		}
+
+		if (infinite) {
+			app.f7.off('infinite', onInfinite);
+		}
+	}
+
+	useTab(() => pageContentEl, emit);
+
+	onMount(() => {
+		f7ready(() => {
+			mountPageContent();
+		});
+	});
+
+	onDestroy(() => {
+		if (!app.f7) return;
+		destroyPageContent();
+	});
+
+	function div_binding($$value) {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+			pageContentEl = $$value;
+			$$invalidate(10, pageContentEl);
+		});
+	}
+
+	$$self.$$set = $$new_props => {
+		$$invalidate(34, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(12, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
+		if ('tab' in $$new_props) $$invalidate(13, tab = $$new_props.tab);
+		if ('tabActive' in $$new_props) $$invalidate(14, tabActive = $$new_props.tabActive);
+		if ('ptr' in $$new_props) $$invalidate(1, ptr = $$new_props.ptr);
+		if ('ptrDistance' in $$new_props) $$invalidate(2, ptrDistance = $$new_props.ptrDistance);
+		if ('ptrPreloader' in $$new_props) $$invalidate(3, ptrPreloader = $$new_props.ptrPreloader);
+		if ('ptrBottom' in $$new_props) $$invalidate(4, ptrBottom = $$new_props.ptrBottom);
+		if ('ptrMousewheel' in $$new_props) $$invalidate(5, ptrMousewheel = $$new_props.ptrMousewheel);
+		if ('infinite' in $$new_props) $$invalidate(6, infinite = $$new_props.infinite);
+		if ('infiniteTop' in $$new_props) $$invalidate(7, infiniteTop = $$new_props.infiniteTop);
+		if ('infiniteDistance' in $$new_props) $$invalidate(8, infiniteDistance = $$new_props.infiniteDistance);
+		if ('infinitePreloader' in $$new_props) $$invalidate(9, infinitePreloader = $$new_props.infinitePreloader);
+		if ('hideBarsOnScroll' in $$new_props) $$invalidate(15, hideBarsOnScroll = $$new_props.hideBarsOnScroll);
+		if ('hideNavbarOnScroll' in $$new_props) $$invalidate(16, hideNavbarOnScroll = $$new_props.hideNavbarOnScroll);
+		if ('hideToolbarOnScroll' in $$new_props) $$invalidate(17, hideToolbarOnScroll = $$new_props.hideToolbarOnScroll);
+		if ('messagesContent' in $$new_props) $$invalidate(18, messagesContent = $$new_props.messagesContent);
+		if ('loginScreen' in $$new_props) $$invalidate(19, loginScreen = $$new_props.loginScreen);
+		if ('class' in $$new_props) $$invalidate(20, className = $$new_props.class);
+		if ('$$scope' in $$new_props) $$invalidate(21, $$scope = $$new_props.$$scope);
+	};
+
+	$$self.$$.update = () => {
+		$$invalidate(11, pageContentClasses = classNames(
+			className,
+			{
+				tab,
+				'tab-active': tabActive,
+				'ptr-content': ptr,
+				'ptr-bottom': ptrBottom,
+				'infinite-scroll-content': infinite,
+				'infinite-scroll-top': infiniteTop,
+				'hide-bars-on-scroll': hideBarsOnScroll,
+				'hide-navbar-on-scroll': hideNavbarOnScroll,
+				'hide-toolbar-on-scroll': hideToolbarOnScroll,
+				'messages-content': messagesContent,
+				'login-screen-content': loginScreen
+			},
+			colorClasses($$props)
+		));
+	};
+
+	$$props = exclude_internal_props($$props);
+
+	return [
+		lec,
+		ptr,
+		ptrDistance,
+		ptrPreloader,
+		ptrBottom,
+		ptrMousewheel,
+		infinite,
+		infiniteTop,
+		infiniteDistance,
+		infinitePreloader,
+		pageContentEl,
+		pageContentClasses,
+		$$restProps,
+		tab,
+		tabActive,
+		hideBarsOnScroll,
+		hideNavbarOnScroll,
+		hideToolbarOnScroll,
+		messagesContent,
+		loginScreen,
+		className,
+		$$scope,
+		slots,
+		div_binding
+	];
+}
+
+class Page_content extends SvelteComponent {
+	constructor(options) {
+		super();
+
+		init(
+			this,
+			options,
+			instance,
+			create_fragment,
+			safe_not_equal,
+			{
+				lec: 0,
+				tab: 13,
+				tabActive: 14,
+				ptr: 1,
+				ptrDistance: 2,
+				ptrPreloader: 3,
+				ptrBottom: 4,
+				ptrMousewheel: 5,
+				infinite: 6,
+				infiniteTop: 7,
+				infiniteDistance: 8,
+				infinitePreloader: 9,
+				hideBarsOnScroll: 15,
+				hideNavbarOnScroll: 16,
+				hideToolbarOnScroll: 17,
+				messagesContent: 18,
+				loginScreen: 19,
+				class: 20
+			},
+			null,
+			[-1, -1]
+		);
+	}
+}
+
+export { Page_content };

@@ -10,8 +10,8 @@
 	assign min_amounts = min_amounts | append: '}'
 %}
 <script>
-  import cart from 'theme/cart';  
-  import { Button, Block, View, Page } from 'framework7-liquivelte'; 
+  import cart from 'theme/cart';
+  import { Button, Block, View, Page, List, ListItem, Stepper } from 'framework7-liquivelte'; 
   import Loadable from '../../../snippets/loadable.liquivelte';
 	import QuantityBox from '../../../snippets/quantity-box.liquivelte';
   import { cartStore, cartOpen } from '../../../scripts/store.module.js';
@@ -47,8 +47,27 @@
   </script>
   <View>
     <Page>
-      <Block> 
+			<List mediaList>
 				{% for item in cart.items %}
+				<ListItem
+				title="{{- item.product_title -}}"
+			>
+			<div slot="after" class="ml-2"> {{- item.price | money -}} </div>
+			<div slot="text" class="cart-item-options">
+				{% for option in item.variant_options %}
+				<span class="text-gray-500k text-base line-item-option"> {{- option -}} </span> <br>
+				{% endfor %}
+			</div>
+				<img slot="media" src="{{- item.image | img_url: '120x' -}}" width="80" />
+				<div slot="after-start">
+					<Stepper buttonsOnly="{true}" small raised ></Stepper>
+				</div>
+			</ListItem>
+			{% endfor %}
+			</List>
+      <Block>
+				{% for item in cart.items %}
+
 					<div data-id="{{- item.id -}}" class="cart-item w-full flex mb-10" transition:scale="{ { duration: 300, easing: quintInOut } }" >
 						<img src="{{- item.image | img_url: '120x' -}}" alt="cart item product image" class="flex-grow-0 mr-2 w-32" />
 						<div class="cart-item-content">
@@ -77,7 +96,7 @@
   </View>
 
 	<style>
-
+		
 	.cart-drawer-bottom {
 		align-self: flex-end;
 		width: 100%;

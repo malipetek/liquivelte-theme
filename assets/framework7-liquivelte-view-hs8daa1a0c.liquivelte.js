@@ -1,1 +1,713 @@
-import{SvelteComponent as e,init as t,safe_not_equal as n,create_slot as o,element as i,space as r,claim_element as s,children as c,claim_space as l,detach as a,attr as f,insert_hydration as p,append_hydration as u,update_slot_base as w,get_all_dirty_from_scope as h,get_slot_changes as g,transition_in as d,group_outros as k,check_outros as $,transition_out as v,destroy_each as m,createEventDispatcher as _,onMount as B,tick as b,afterUpdate as R,onDestroy as A,assign as y,exclude_internal_props as S,create_component as x,claim_component as C,mount_component as I,destroy_component as M,binding_callbacks as q,empty as z,get_spread_update as V,get_spread_object as E}from'./liquivelte-svelte-hs532e1aa9.liquivelte.js';import{createEmitter as P,app as D,noUndefinedProps as j,getRouterInitialComponent as H,useTab as N,f7ready as O,classNames as T,colorClasses as U,getRouterId as F}from'./framework7-liquivelte-hs5d6b599e.liquivelte.js';import{Router_context_provider as G}from'./framework7-liquivelte-router-context-provider-hs8daa1a0c.liquivelte.js';function get_each_context(e,t,n){const o=e.slice();o[34]=t[n],o[37]=n;const i={first:0===o[37],index:o[37]+1,index0:o[37],last:o[37]===o[6].length-1,rindex:o[6].length-o[37],rindex0:o[6].length-o[37]-1,length:o[6].length};return o[35]=i,o}const get_default_slot_spread_changes_1=e=>64&e[0];const get_default_slot_changes_1=e=>({});const get_default_slot_context_1=e=>({...e[34].props});const get_default_slot_spread_changes=e=>64&e[0];const get_default_slot_changes=e=>({view:16&e[0]});const get_default_slot_context=e=>({view:e[4],...e[34].props});function create_else_block(e){let t;const n=e[12].default;const i=o(n,e,e[14],get_default_slot_context_1);return{c(){i&&i.c()},l(e){i&&i.l(e)},m(e,n){i&&i.m(e,n),t=!0},p(e,o){i&&i.p&&(!t||16448&o[0])&&w(i,n,e,e[14],get_default_slot_spread_changes_1(o)||!t?h(e[14]):g(n,e[14],o,get_default_slot_changes_1),get_default_slot_context_1)},i(e){t||(d(i,e),t=!0)},o(e){v(i,e),t=!1},d(e){i&&i.d(e)}}}function create_if_block(e){let t;let n;let o;const i=[e[34].props];var r=e[34].component;function switch_props(e){let t={};for(let e=0;e<i.length;e+=1)t=y(t,i[e]);return{props:t}}return r&&(t=new r(switch_props())),{c(){t&&x(t.$$.fragment),n=z()},l(e){t&&C(t.$$.fragment,e),n=z()},m(e,i){t&&I(t,e,i),p(e,n,i),o=!0},p(e,o){const s=64&o[0]?V(i,[E(e[34].props)]):{};if(r!==(r=e[34].component)){if(t){k();const e=t;v(e.$$.fragment,1,0,(()=>{M(e,1)})),$()}r?(t=new r(switch_props()),x(t.$$.fragment),d(t.$$.fragment,1),I(t,n.parentNode,n)):t=null}else r&&t.$set(s)},i(e){o||(t&&d(t.$$.fragment,e),o=!0)},o(e){t&&v(t.$$.fragment,e),o=!1},d(e){e&&a(n),t&&M(t,e)}}}function create_default_slot(e){let t;let n;let o;let i;const s=[create_if_block,create_else_block];const c=[];function select_block_type(e,t){return e[5]?0:1}return t=select_block_type(e),n=c[t]=s[t](e),{c(){n.c(),o=r()},l(e){n.l(e),o=l(e)},m(e,n){c[t].m(e,n),p(e,o,n),i=!0},p(e,i){let r=t;t=select_block_type(e),t===r?c[t].p(e,i):(k(),v(c[r],1,1,(()=>{c[r]=null})),$(),n=c[t],n?n.p(e,i):(n=c[t]=s[t](e),n.c()),d(n,1),n.m(o.parentNode,o))},i(e){i||(d(n),i=!0)},o(e){v(n),i=!1},d(e){c[t].d(e),e&&a(o)}}}function create_each_block(e){let t;let n;return t=new G({props:{route:e[34].props.f7route,router:e[34].props.f7router,lec:e[0],$$slots:{default:[create_default_slot]},$$scope:{ctx:e}}}),{c(){x(t.$$.fragment)},l(e){C(t.$$.fragment,e)},m(e,o){I(t,e,o),n=!0},p(e,n){const o={};64&n[0]&&(o.route=e[34].props.f7route),64&n[0]&&(o.router=e[34].props.f7router),1&n[0]&&(o.lec=e[0]),16480&n[0]&&(o.$$scope={dirty:n,ctx:e}),t.$set(o)},i(e){n||(d(t.$$.fragment,e),n=!0)},o(e){v(t.$$.fragment,e),n=!1},d(e){M(t,e)}}}function create_fragment(e){let t;let n;let _;let B;const b=e[12].default;const R=o(b,e,e[14],get_default_slot_context);let A=e[6];let y=[];for(let t=0;t<A.length;t+=1)y[t]=create_each_block(get_each_context(e,A,t));const out=e=>v(y[e],1,1,(()=>{y[e]=null}));return{c(){t=i("div"),R&&R.c(),n=r();for(let e=0;e<y.length;e+=1)y[e].c();this.h()},l(e){t=s(e,"DIV",{class:!0,style:!0,id:!0});var o=c(t);R&&R.l(o),n=l(o);for(let e=0;e<y.length;e+=1)y[e].l(o);o.forEach(a),this.h()},h(){f(t,"class",_="view "+e[7]),f(t,"style",e[2]),f(t,"id",e[1])},m(o,i){p(o,t,i),R&&R.m(t,null),u(t,n);for(let e=0;e<y.length;e+=1)y[e].m(t,null);e[13](t),B=!0},p(e,n){if(R&&R.p&&(!B||16464&n[0])&&w(R,b,e,e[14],get_default_slot_spread_changes(n)||!B?h(e[14]):g(b,e[14],n,get_default_slot_changes),get_default_slot_context),16481&n[0]){let o;for(A=e[6],o=0;o<A.length;o+=1){const i=get_each_context(e,A,o);y[o]?(y[o].p(i,n),d(y[o],1)):(y[o]=create_each_block(i),y[o].c(),d(y[o],1),y[o].m(t,null))}for(k(),o=A.length;o<y.length;o+=1)out(o);$()}(!B||128&n[0]&&_!==(_="view "+e[7]))&&f(t,"class",_),(!B||4&n[0])&&f(t,"style",e[2]),(!B||2&n[0])&&f(t,"id",e[1])},i(e){if(!B){d(R,e);for(let e=0;e<A.length;e+=1)d(y[e]);B=!0}},o(e){v(R,e),y=y.filter(Boolean);for(let e=0;e<y.length;e+=1)v(y[e]);B=!1},d(n){n&&a(t),R&&R.d(n),m(y,n),e[13](null)}}}function instance_1(e,t,n){let o;let{$$slots:i={},$$scope:r}=t;let{lec:s}=t;let{id:c}=t;let{style:l}=t;let{init:a=!0}=t;let{url:f}=t;let{class:p}=t;const u=P(_,t);const{main:w,tab:h,tabActive:g,browserHistoryInitialMatch:d=!0,initRouterOnTabShow:k}=t;const $=!(k&&h&&!g);let v;let m;let x;let C;let I;let M=!1;function instance(){return I}function onViewInit(e){u('viewInit',[e]),a||(n(4,I=e),C.instance=e)}if(D.f7&&!I&&a){const e=F();if(I=D.f7.views.create(x,{routerId:e,init:!1,...j(t),browserHistoryInitialMatch:d,on:{init:onViewInit}}),C={routerId:e,instance:I},D.f7routers.views.push(C),$&&I&&I.router&&(f||w)){const e=H(I.router);v=e.initialPage,m=e.initialRoute,m&&m.route&&m.route.masterRoute&&(v=void 0,m=void 0)}}let z=v?[v]:[];function onResize(e,t){u('viewResize',[t])}function onSwipeBackMove(e){u('swipeBackMove',[e])}function onSwipeBackBeforeChange(e){u('swipeBackBeforeChange',[e])}function onSwipeBackAfterChange(e){u('swipeBackAfterChange',[e])}function onSwipeBackBeforeReset(e){u('swipeBackBeforeReset',[e])}function onSwipeBackAfterReset(e){u('swipeBackAfterReset',[e])}function div_binding(e){q[e?'unshift':'push']((()=>{x=e,n(3,x)}))}return N((()=>x),u),B((()=>{n(5,M=!0),O((()=>{if(I)C.el=x,C.pages=z,C.setPages=e=>{b().then((()=>{n(6,z=e)}))},v&&v.isAsync&&!v.initialComponent?v.component().then((()=>{setTimeout((()=>{I.init(x),v&&(v.el=I.router.currentPageEl,m&&m.route&&m.route.keepAlive&&(m.route.keepAliveData={pageEl:v.el}))}),100)})):(I.init(x),v&&(v.el=I.router.currentPageEl,m&&m.route&&m.route.keepAlive&&(m.route.keepAliveData={pageEl:v.el})));else{const e=F();C={el:x,routerId:e,pages:z,instance:I,setPages(e){b().then((()=>{n(6,z=e)}))}},D.f7routers.views.push(C),C.instance=D.f7.views.create(x,{routerId:e,...j(t),browserHistoryInitialMatch:d,on:{init:onViewInit}}),n(4,I=C.instance)}a&&(I.on('resize',onResize),I.on('swipebackMove',onSwipeBackMove),I.on('swipebackBeforeChange',onSwipeBackBeforeChange),I.on('swipebackAfterChange',onSwipeBackAfterChange),I.on('swipebackBeforeReset',onSwipeBackBeforeReset),I.on('swipebackAfterReset',onSwipeBackAfterReset))}))})),R((()=>{C&&D.f7events.emit('viewRouterDidUpdate',C)})),A((()=>{I&&(I.off('resize',onResize),I.off('swipebackMove',onSwipeBackMove),I.off('swipebackBeforeChange',onSwipeBackBeforeChange),I.off('swipebackAfterChange',onSwipeBackAfterChange),I.off('swipebackBeforeReset',onSwipeBackBeforeReset),I.off('swipebackAfterReset',onSwipeBackAfterReset),I.destroy&&I.destroy(),n(4,I=null)),D.f7routers.views.splice(D.f7routers.views.indexOf(C),1),C=null})),e.$$set=e=>{n(33,t=y(y({},t),S(e))),'lec'in e&&n(0,s=e.lec),'id'in e&&n(1,c=e.id),'style'in e&&n(2,l=e.style),'init'in e&&n(8,a=e.init),'url'in e&&n(9,f=e.url),'class'in e&&n(10,p=e.class),'$$scope'in e&&n(14,r=e.$$scope)},e.$$.update=()=>{n(7,o=T(p,{'view-main':w,'tab-active':g,tab:h},U(t)))},t=S(t),[s,c,l,x,I,M,z,o,a,f,p,instance,i,div_binding,r]}class View extends e{constructor(e){super(),t(this,e,instance_1,create_fragment,n,{lec:0,id:1,style:2,init:8,url:9,class:10,instance:11},null,[-1,-1])}get instance(){return this.$$.ctx[11]}}export{View};
+import { SvelteComponent, init, safe_not_equal, create_slot, element, space, claim_element, children, claim_space, detach, attr, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, group_outros, check_outros, transition_out, destroy_each, createEventDispatcher, onMount, tick, afterUpdate, onDestroy, assign, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, binding_callbacks, empty, get_spread_update, get_spread_object } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { createEmitter, app, noUndefinedProps, getRouterInitialComponent, useTab, f7ready, classNames, colorClasses, getRouterId } from './framework7-liquivelte-hs5d6b599e.liquivelte.js';
+import { Router_context_provider } from './framework7-liquivelte-router-context-provider-hs8daa1a0c.liquivelte.js';
+
+/* Usersmalipetek/Documents/Documents/Projects/LIQUVELTE/LIQUIVELTE TEST/node_modules/framework7-liquivelte/components/view.liquivelte generated by Svelte v3.50.0 */
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[34] = list[i];
+	child_ctx[37] = i;
+
+	const constants_0 = {
+		first: /*index*/ child_ctx[37] === 0,
+		index: /*index*/ child_ctx[37] + 1,
+		index0: /*index*/ child_ctx[37],
+		last: /*index*/ child_ctx[37] === /*pages*/ child_ctx[6].length - 1,
+		rindex: /*pages*/ child_ctx[6].length - /*index*/ child_ctx[37],
+		rindex0: /*pages*/ child_ctx[6].length - /*index*/ child_ctx[37] - 1,
+		length: /*pages*/ child_ctx[6].length
+	};
+
+	child_ctx[35] = constants_0;
+	return child_ctx;
+}
+
+const get_default_slot_spread_changes_1 = dirty => dirty[0] & /*pages*/ 64;
+const get_default_slot_changes_1 = dirty => ({});
+const get_default_slot_context_1 = ctx => ({ .../*page*/ ctx[34].props });
+const get_default_slot_spread_changes = dirty => dirty[0] & /*pages*/ 64;
+const get_default_slot_changes = dirty => ({ view: dirty[0] & /*f7View*/ 16 });
+
+const get_default_slot_context = ctx => ({
+	view: /*f7View*/ ctx[4],
+	.../*page*/ ctx[34].props
+});
+
+// (214:6) {:else}
+function create_else_block(ctx) {
+	let current;
+	const default_slot_template = /*#slots*/ ctx[12].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[14], get_default_slot_context_1);
+
+	return {
+		c() {
+			if (default_slot) default_slot.c();
+		},
+		l(nodes) {
+			if (default_slot) default_slot.l(nodes);
+		},
+		m(target, anchor) {
+			if (default_slot) {
+				default_slot.m(target, anchor);
+			}
+
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (default_slot) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope, pages*/ 16448)) {
+					update_slot_base(
+						default_slot,
+						default_slot_template,
+						ctx,
+						/*$$scope*/ ctx[14],
+						get_default_slot_spread_changes_1(dirty) || !current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[14])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[14], dirty, get_default_slot_changes_1),
+						get_default_slot_context_1
+					);
+				}
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(default_slot, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(default_slot, local);
+			current = false;
+		},
+		d(detaching) {
+			if (default_slot) default_slot.d(detaching);
+		}
+	};
+}
+
+// (212:6) {#if initialized }
+function create_if_block(ctx) {
+	let switch_instance;
+	let switch_instance_anchor;
+	let current;
+	const switch_instance_spread_levels = [/*page*/ ctx[34].props];
+	var switch_value = /*page*/ ctx[34].component;
+
+	function switch_props(ctx) {
+		let switch_instance_props = {};
+
+		for (let i = 0; i < switch_instance_spread_levels.length; i += 1) {
+			switch_instance_props = assign(switch_instance_props, switch_instance_spread_levels[i]);
+		}
+
+		return { props: switch_instance_props };
+	}
+
+	if (switch_value) {
+		switch_instance = new switch_value(switch_props());
+	}
+
+	return {
+		c() {
+			if (switch_instance) create_component(switch_instance.$$.fragment);
+			switch_instance_anchor = empty();
+		},
+		l(nodes) {
+			if (switch_instance) claim_component(switch_instance.$$.fragment, nodes);
+			switch_instance_anchor = empty();
+		},
+		m(target, anchor) {
+			if (switch_instance) {
+				mount_component(switch_instance, target, anchor);
+			}
+
+			insert_hydration(target, switch_instance_anchor, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const switch_instance_changes = (dirty[0] & /*pages*/ 64)
+			? get_spread_update(switch_instance_spread_levels, [get_spread_object(/*page*/ ctx[34].props)])
+			: {};
+
+			if (switch_value !== (switch_value = /*page*/ ctx[34].component)) {
+				if (switch_instance) {
+					group_outros();
+					const old_component = switch_instance;
+
+					transition_out(old_component.$$.fragment, 1, 0, () => {
+						destroy_component(old_component, 1);
+					});
+
+					check_outros();
+				}
+
+				if (switch_value) {
+					switch_instance = new switch_value(switch_props());
+					create_component(switch_instance.$$.fragment);
+					transition_in(switch_instance.$$.fragment, 1);
+					mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+				} else {
+					switch_instance = null;
+				}
+			} else if (switch_value) {
+				switch_instance.$set(switch_instance_changes);
+			}
+		},
+		i(local) {
+			if (current) return;
+			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(switch_instance_anchor);
+			if (switch_instance) destroy_component(switch_instance, detaching);
+		}
+	};
+}
+
+// (211:4) <RouterContextProvider  route="{page.props.f7route}" router="{page.props.f7router}"     lec={lec} >
+function create_default_slot(ctx) {
+	let current_block_type_index;
+	let if_block;
+	let t;
+	let current;
+	const if_block_creators = [create_if_block, create_else_block];
+	const if_blocks = [];
+
+	function select_block_type(ctx, dirty) {
+		if (/*initialized*/ ctx[5]) return 0;
+		return 1;
+	}
+
+	current_block_type_index = select_block_type(ctx);
+	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+	return {
+		c() {
+			if_block.c();
+			t = space();
+		},
+		l(nodes) {
+			if_block.l(nodes);
+			t = claim_space(nodes);
+		},
+		m(target, anchor) {
+			if_blocks[current_block_type_index].m(target, anchor);
+			insert_hydration(target, t, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			let previous_block_index = current_block_type_index;
+			current_block_type_index = select_block_type(ctx);
+
+			if (current_block_type_index === previous_block_index) {
+				if_blocks[current_block_type_index].p(ctx, dirty);
+			} else {
+				group_outros();
+
+				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+					if_blocks[previous_block_index] = null;
+				});
+
+				check_outros();
+				if_block = if_blocks[current_block_type_index];
+
+				if (!if_block) {
+					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+					if_block.c();
+				} else {
+					if_block.p(ctx, dirty);
+				}
+
+				transition_in(if_block, 1);
+				if_block.m(t.parentNode, t);
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(if_block);
+			current = true;
+		},
+		o(local) {
+			transition_out(if_block);
+			current = false;
+		},
+		d(detaching) {
+			if_blocks[current_block_type_index].d(detaching);
+			if (detaching) detach(t);
+		}
+	};
+}
+
+// (201:2) {#each  pages as page, index  }
+function create_each_block(ctx) {
+	let routercontextprovider;
+	let current;
+
+	routercontextprovider = new Router_context_provider({
+			props: {
+				route: /*page*/ ctx[34].props.f7route,
+				router: /*page*/ ctx[34].props.f7router,
+				lec: /*lec*/ ctx[0],
+				$$slots: { default: [create_default_slot] },
+				$$scope: { ctx }
+			}
+		});
+
+	return {
+		c() {
+			create_component(routercontextprovider.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(routercontextprovider.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(routercontextprovider, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const routercontextprovider_changes = {};
+			if (dirty[0] & /*pages*/ 64) routercontextprovider_changes.route = /*page*/ ctx[34].props.f7route;
+			if (dirty[0] & /*pages*/ 64) routercontextprovider_changes.router = /*page*/ ctx[34].props.f7router;
+			if (dirty[0] & /*lec*/ 1) routercontextprovider_changes.lec = /*lec*/ ctx[0];
+
+			if (dirty[0] & /*$$scope, pages, initialized*/ 16480) {
+				routercontextprovider_changes.$$scope = { dirty, ctx };
+			}
+
+			routercontextprovider.$set(routercontextprovider_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(routercontextprovider.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(routercontextprovider.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(routercontextprovider, detaching);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let div;
+	let t;
+	let div_class_value;
+	let current;
+	const default_slot_template = /*#slots*/ ctx[12].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[14], get_default_slot_context);
+	let each_value = /*pages*/ ctx[6];
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
+
+	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+		each_blocks[i] = null;
+	});
+
+	return {
+		c() {
+			div = element("div");
+			if (default_slot) default_slot.c();
+			t = space();
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			this.h();
+		},
+		l(nodes) {
+			div = claim_element(nodes, "DIV", { class: true, style: true, id: true });
+			var div_nodes = children(div);
+			if (default_slot) default_slot.l(div_nodes);
+			t = claim_space(div_nodes);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(div_nodes);
+			}
+
+			div_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div, "class", div_class_value = "view " + /*classes*/ ctx[7]);
+			attr(div, "style", /*style*/ ctx[2]);
+			attr(div, "id", /*id*/ ctx[1]);
+		},
+		m(target, anchor) {
+			insert_hydration(target, div, anchor);
+
+			if (default_slot) {
+				default_slot.m(div, null);
+			}
+
+			append_hydration(div, t);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(div, null);
+			}
+
+			/*div_binding*/ ctx[13](div);
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (default_slot) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope, f7View, pages*/ 16464)) {
+					update_slot_base(
+						default_slot,
+						default_slot_template,
+						ctx,
+						/*$$scope*/ ctx[14],
+						get_default_slot_spread_changes(dirty) || !current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[14])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[14], dirty, get_default_slot_changes),
+						get_default_slot_context
+					);
+				}
+			}
+
+			if (dirty[0] & /*pages, lec, initialized, $$scope*/ 16481) {
+				each_value = /*pages*/ ctx[6];
+				let i;
+
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+						transition_in(each_blocks[i], 1);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						transition_in(each_blocks[i], 1);
+						each_blocks[i].m(div, null);
+					}
+				}
+
+				group_outros();
+
+				for (i = each_value.length; i < each_blocks.length; i += 1) {
+					out(i);
+				}
+
+				check_outros();
+			}
+
+			if (!current || dirty[0] & /*classes*/ 128 && div_class_value !== (div_class_value = "view " + /*classes*/ ctx[7])) {
+				attr(div, "class", div_class_value);
+			}
+
+			if (!current || dirty[0] & /*style*/ 4) {
+				attr(div, "style", /*style*/ ctx[2]);
+			}
+
+			if (!current || dirty[0] & /*id*/ 2) {
+				attr(div, "id", /*id*/ ctx[1]);
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(default_slot, local);
+
+			for (let i = 0; i < each_value.length; i += 1) {
+				transition_in(each_blocks[i]);
+			}
+
+			current = true;
+		},
+		o(local) {
+			transition_out(default_slot, local);
+			each_blocks = each_blocks.filter(Boolean);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				transition_out(each_blocks[i]);
+			}
+
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+			if (default_slot) default_slot.d(detaching);
+			destroy_each(each_blocks, detaching);
+			/*div_binding*/ ctx[13](null);
+		}
+	};
+}
+
+function instance_1($$self, $$props, $$invalidate) {
+	let classes;
+	let { $$slots: slots = {}, $$scope } = $$props;
+	let { lec } = $$props;
+	let { id = undefined } = $$props;
+	let { style = undefined } = $$props;
+	let { init = true } = $$props;
+	let { url = undefined } = $$props;
+	let { class: className = undefined } = $$props;
+	const emit = createEmitter(createEventDispatcher, $$props);
+	const { main, tab, tabActive, browserHistoryInitialMatch = true, initRouterOnTabShow } = $$props;
+	const shouldInitRouter = !(initRouterOnTabShow && tab && !tabActive);
+	let initialPage;
+	let initialRoute;
+	let el;
+	let routerData;
+	let f7View;
+	let initialized = false;
+
+	function instance() {
+		return f7View;
+	}
+
+	function onViewInit(view) {
+		emit('viewInit', [view]);
+
+		if (!init) {
+			$$invalidate(4, f7View = view);
+			routerData.instance = view;
+		}
+	}
+
+	if (app.f7 && !f7View && init) {
+		const routerId = getRouterId();
+
+		f7View = app.f7.views.create(el, {
+			routerId,
+			init: false,
+			...noUndefinedProps($$props),
+			browserHistoryInitialMatch,
+			on: { init: onViewInit }
+		});
+
+		routerData = { routerId, instance: f7View };
+		app.f7routers.views.push(routerData);
+
+		if (shouldInitRouter && f7View && f7View.router && (url || main)) {
+			const initialData = getRouterInitialComponent(f7View.router);
+			initialPage = initialData.initialPage;
+			initialRoute = initialData.initialRoute;
+
+			if (initialRoute && initialRoute.route && initialRoute.route.masterRoute) {
+				initialPage = undefined;
+				initialRoute = undefined;
+			}
+		}
+	}
+
+	let pages = initialPage ? [initialPage] : [];
+
+	function onResize(view, width) {
+		emit('viewResize', [width]);
+	}
+
+	function onSwipeBackMove(data) {
+		emit('swipeBackMove', [data]);
+	}
+
+	function onSwipeBackBeforeChange(data) {
+		emit('swipeBackBeforeChange', [data]);
+	}
+
+	function onSwipeBackAfterChange(data) {
+		emit('swipeBackAfterChange', [data]);
+	}
+
+	function onSwipeBackBeforeReset(data) {
+		emit('swipeBackBeforeReset', [data]);
+	}
+
+	function onSwipeBackAfterReset(data) {
+		emit('swipeBackAfterReset', [data]);
+	}
+
+	useTab(() => el, emit);
+
+	onMount(() => {
+		$$invalidate(5, initialized = true);
+
+		f7ready(() => {
+			if (f7View) {
+				routerData.el = el;
+				routerData.pages = pages;
+
+				routerData.setPages = newPages => {
+					tick().then(() => {
+						$$invalidate(6, pages = newPages);
+					});
+				};
+
+				if (initialPage && initialPage.isAsync && !initialPage.initialComponent) {
+					initialPage.component().then(() => {
+						setTimeout(
+							() => {
+								f7View.init(el);
+
+								if (initialPage) {
+									initialPage.el = f7View.router.currentPageEl;
+
+									if (initialRoute && initialRoute.route && initialRoute.route.keepAlive) {
+										initialRoute.route.keepAliveData = { pageEl: initialPage.el };
+									}
+								}
+							},
+							100
+						);
+					});
+				} else {
+					f7View.init(el);
+
+					if (initialPage) {
+						initialPage.el = f7View.router.currentPageEl;
+
+						if (initialRoute && initialRoute.route && initialRoute.route.keepAlive) {
+							initialRoute.route.keepAliveData = { pageEl: initialPage.el };
+						}
+					}
+				}
+			} else {
+				const routerId = getRouterId();
+
+				routerData = {
+					el,
+					routerId,
+					pages,
+					instance: f7View,
+					setPages(newPages) {
+						tick().then(() => {
+							$$invalidate(6, pages = newPages);
+						});
+					}
+				};
+
+				app.f7routers.views.push(routerData);
+
+				routerData.instance = app.f7.views.create(el, {
+					routerId,
+					...noUndefinedProps($$props),
+					browserHistoryInitialMatch,
+					on: { init: onViewInit }
+				});
+
+				$$invalidate(4, f7View = routerData.instance);
+			}
+
+			if (!init) return;
+			f7View.on('resize', onResize);
+			f7View.on('swipebackMove', onSwipeBackMove);
+			f7View.on('swipebackBeforeChange', onSwipeBackBeforeChange);
+			f7View.on('swipebackAfterChange', onSwipeBackAfterChange);
+			f7View.on('swipebackBeforeReset', onSwipeBackBeforeReset);
+			f7View.on('swipebackAfterReset', onSwipeBackAfterReset);
+		});
+	});
+
+	afterUpdate(() => {
+		if (!routerData) return;
+		app.f7events.emit('viewRouterDidUpdate', routerData);
+	});
+
+	onDestroy(() => {
+		if (f7View) {
+			f7View.off('resize', onResize);
+			f7View.off('swipebackMove', onSwipeBackMove);
+			f7View.off('swipebackBeforeChange', onSwipeBackBeforeChange);
+			f7View.off('swipebackAfterChange', onSwipeBackAfterChange);
+			f7View.off('swipebackBeforeReset', onSwipeBackBeforeReset);
+			f7View.off('swipebackAfterReset', onSwipeBackAfterReset);
+			if (f7View.destroy) f7View.destroy();
+			$$invalidate(4, f7View = null);
+		}
+
+		app.f7routers.views.splice(app.f7routers.views.indexOf(routerData), 1);
+		routerData = null;
+	});
+
+	function div_binding($$value) {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+			el = $$value;
+			$$invalidate(3, el);
+		});
+	}
+
+	$$self.$$set = $$new_props => {
+		$$invalidate(33, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
+		if ('id' in $$new_props) $$invalidate(1, id = $$new_props.id);
+		if ('style' in $$new_props) $$invalidate(2, style = $$new_props.style);
+		if ('init' in $$new_props) $$invalidate(8, init = $$new_props.init);
+		if ('url' in $$new_props) $$invalidate(9, url = $$new_props.url);
+		if ('class' in $$new_props) $$invalidate(10, className = $$new_props.class);
+		if ('$$scope' in $$new_props) $$invalidate(14, $$scope = $$new_props.$$scope);
+	};
+
+	$$self.$$.update = () => {
+		$$invalidate(7, classes = classNames(
+			className,
+			{
+				'view-main': main,
+				'tab-active': tabActive,
+				tab
+			},
+			colorClasses($$props)
+		));
+	};
+
+	$$props = exclude_internal_props($$props);
+
+	return [
+		lec,
+		id,
+		style,
+		el,
+		f7View,
+		initialized,
+		pages,
+		classes,
+		init,
+		url,
+		className,
+		instance,
+		slots,
+		div_binding,
+		$$scope
+	];
+}
+
+class View extends SvelteComponent {
+	constructor(options) {
+		super();
+
+		init(
+			this,
+			options,
+			instance_1,
+			create_fragment,
+			safe_not_equal,
+			{
+				lec: 0,
+				id: 1,
+				style: 2,
+				init: 8,
+				url: 9,
+				class: 10,
+				instance: 11
+			},
+			null,
+			[-1, -1]
+		);
+	}
+
+	get instance() {
+		return this.$$.ctx[11];
+	}
+}
+
+export { View };

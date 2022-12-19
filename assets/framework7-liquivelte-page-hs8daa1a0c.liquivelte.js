@@ -1,1 +1,882 @@
-import{SvelteComponent as e,init as n,safe_not_equal as a,create_slot as t,assign as o,element as r,space as i,claim_element as l,children as f,claim_space as c,detach as s,set_attributes as g,insert_hydration as p,append_hydration as d,update_slot_base as u,get_all_dirty_from_scope as b,get_slot_changes as P,group_outros as v,transition_out as h,check_outros as m,transition_in as S,get_spread_update as $,compute_rest_props as k,createEventDispatcher as B,onMount as O,afterUpdate as w,onDestroy as T,exclude_internal_props as C,binding_callbacks as M,create_component as N,claim_component as I,mount_component as R,destroy_component as _}from'./liquivelte-svelte-hs532e1aa9.liquivelte.js';import{restProps as E,createEmitter as L,f7ready as D,app as x,classNames as U,colorClasses as A}from'./framework7-liquivelte-hs5d6b599e.liquivelte.js';import{Page_content as y}from'./framework7-liquivelte-page-content-hs8daa1a0c.liquivelte.js';const get_static_slot_changes_1=e=>({});const get_static_slot_context_1=e=>({});const get_static_slot_changes=e=>({});const get_static_slot_context=e=>({});const get_fixed_slot_changes=e=>({});const get_fixed_slot_context=e=>({});function create_else_block(e){let n;let a;const o=e[47].static;const r=t(o,e,e[49],get_static_slot_context_1);const l=e[47].default;const f=t(l,e,e[49],null);return{c(){r&&r.c(),n=i(),f&&f.c()},l(e){r&&r.l(e),n=c(e),f&&f.l(e)},m(e,t){r&&r.m(e,t),p(e,n,t),f&&f.m(e,t),a=!0},p(e,n){r&&r.p&&(!a||262144&n[1])&&u(r,o,e,e[49],a?P(o,e[49],n,get_static_slot_changes_1):b(e[49]),get_static_slot_context_1),f&&f.p&&(!a||262144&n[1])&&u(f,l,e,e[49],a?P(l,e[49],n,null):b(e[49]),null)},i(e){a||(S(r,e),S(f,e),a=!0)},o(e){h(r,e),h(f,e),a=!1},d(e){r&&r.d(e),e&&s(n),f&&f.d(e)}}}function create_if_block(e){let n;let a;return n=new y({props:{ptr:e[3],ptrDistance:e[4],ptrPreloader:e[5],ptrBottom:e[6],ptrMousewheel:e[7],infinite:e[8],infiniteTop:e[9],infiniteDistance:e[10],infinitePreloader:e[11],hideBarsOnScroll:e[12],hideNavbarOnScroll:e[13],hideToolbarOnScroll:e[14],messagesContent:e[15],loginScreen:e[16],onPtrPullStart:e[19],onPtrPullMove:e[20],onPtrPullEnd:e[21],onPtrRefresh:e[22],onPtrDone:e[23],onInfinite:e[24],lec:e[0],$$slots:{default:[create_default_slot]},$$scope:{ctx:e}}}),{c(){N(n.$$.fragment)},l(e){I(n.$$.fragment,e)},m(e,t){R(n,e,t),a=!0},p(e,a){const t={};8&a[0]&&(t.ptr=e[3]),16&a[0]&&(t.ptrDistance=e[4]),32&a[0]&&(t.ptrPreloader=e[5]),64&a[0]&&(t.ptrBottom=e[6]),128&a[0]&&(t.ptrMousewheel=e[7]),256&a[0]&&(t.infinite=e[8]),512&a[0]&&(t.infiniteTop=e[9]),1024&a[0]&&(t.infiniteDistance=e[10]),2048&a[0]&&(t.infinitePreloader=e[11]),4096&a[0]&&(t.hideBarsOnScroll=e[12]),8192&a[0]&&(t.hideNavbarOnScroll=e[13]),16384&a[0]&&(t.hideToolbarOnScroll=e[14]),32768&a[0]&&(t.messagesContent=e[15]),65536&a[0]&&(t.loginScreen=e[16]),1&a[0]&&(t.lec=e[0]),262144&a[1]&&(t.$$scope={dirty:a,ctx:e}),n.$set(t)},i(e){a||(S(n.$$.fragment,e),a=!0)},o(e){h(n.$$.fragment,e),a=!1},d(e){_(n,e)}}}function create_default_slot(e){let n;let a;const o=e[47].static;const r=t(o,e,e[49],get_static_slot_context);const l=e[47].default;const f=t(l,e,e[49],null);return{c(){r&&r.c(),n=i(),f&&f.c()},l(e){r&&r.l(e),n=c(e),f&&f.l(e)},m(e,t){r&&r.m(e,t),p(e,n,t),f&&f.m(e,t),a=!0},p(e,n){r&&r.p&&(!a||262144&n[1])&&u(r,o,e,e[49],a?P(o,e[49],n,get_static_slot_changes):b(e[49]),get_static_slot_context),f&&f.p&&(!a||262144&n[1])&&u(f,l,e,e[49],a?P(l,e[49],n,null):b(e[49]),null)},i(e){a||(S(r,e),S(f,e),a=!0)},o(e){h(r,e),h(f,e),a=!1},d(e){r&&r.d(e),e&&s(n),f&&f.d(e)}}}function create_fragment(e){let n;let a;let k;let B;let O;let w;const T=e[47].fixed;const C=t(T,e,e[49],get_fixed_slot_context);const M=[create_if_block,create_else_block];const N=[];function select_block_type(e,n){return e[2]?0:1}k=select_block_type(e),B=N[k]=M[k](e);let I=[{class:O="page "+e[18]},{"data-name":e[1]},E(e[25])];let R={};for(let e=0;e<I.length;e+=1)R=o(R,I[e]);return{c(){n=r("div"),C&&C.c(),a=i(),B.c(),this.h()},l(e){n=l(e,"DIV",{class:!0,"data-name":!0});var t=f(n);C&&C.l(t),a=c(t),B.l(t),t.forEach(s),this.h()},h(){g(n,R)},m(t,o){p(t,n,o),C&&C.m(n,null),d(n,a),N[k].m(n,null),e[48](n),w=!0},p(e,a){C&&C.p&&(!w||262144&a[1])&&u(C,T,e,e[49],w?P(T,e[49],a,get_fixed_slot_changes):b(e[49]),get_fixed_slot_context);let t=k;k=select_block_type(e),k===t?N[k].p(e,a):(v(),h(N[t],1,1,(()=>{N[t]=null})),m(),B=N[k],B?B.p(e,a):(B=N[k]=M[k](e),B.c()),S(B,1),B.m(n,null)),g(n,R=$(I,[(!w||262144&a[0]&&O!==(O="page "+e[18]))&&{class:O},(!w||2&a[0])&&{"data-name":e[1]},33554432&a[0]&&E(e[25])]))},i(e){w||(S(C,e),S(B),w=!0)},o(e){h(C,e),h(B),w=!1},d(a){a&&s(n),C&&C.d(a),N[k].d(),e[48](null)}}}function instance(e,n,a){let t;let r;let i;const l=["lec","name","stacked","withSubnavbar","subnavbar","withNavbarLarge","navbarLarge","noNavbar","noToolbar","tabs","pageContent","noSwipeback","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","class"];let f=k(n,l);let{$$slots:c={},$$scope:s}=n;let{lec:g}=n;const p=L(B,n);let{name:d}=n;let{stacked:u}=n;let{withSubnavbar:b}=n;let{subnavbar:P}=n;let{withNavbarLarge:v}=n;let{navbarLarge:h}=n;let{noNavbar:m}=n;let{noToolbar:S}=n;let{tabs:$}=n;let{pageContent:N=!0}=n;let{noSwipeback:I}=n;let{ptr:R}=n;let{ptrDistance:_}=n;let{ptrPreloader:E=!0}=n;let{ptrBottom:y}=n;let{ptrMousewheel:q}=n;let{infinite:H}=n;let{infiniteTop:j}=n;let{infiniteDistance:V}=n;let{infinitePreloader:z=!0}=n;let{hideBarsOnScroll:F}=n;let{hideNavbarOnScroll:G}=n;let{hideToolbarOnScroll:J}=n;let{messagesContent:K}=n;let{loginScreen:Q}=n;let{class:W}=n;let X;let Y=!1;let Z=!1;let ee=!1;let ne=!1;let ae='';let te=!1;let oe=null;let re=!1;let ie=!1;function onPtrPullStart(){p('ptrPullStart')}function onPtrPullMove(){p('ptrPullMove')}function onPtrPullEnd(){p('ptrPullEnd')}function onPtrRefresh(e){p('ptrRefresh',[e])}function onPtrDone(){p('ptrDone')}function onInfinite(){p('infinite')}function onPageMounted(e){X===e.el&&p('pageMounted',[e])}function onPageInit(e){X===e.el&&(void 0===b&&void 0===P&&(e.$navbarEl&&e.$navbarEl.length&&e.$navbarEl.find('.subnavbar').length||e.$el.children('.navbar').find('.subnavbar').length)&&a(36,Y=!0),void 0===v&&void 0===h&&(e.$navbarEl&&e.$navbarEl.hasClass('navbar-large')||e.$el.children('.navbar-large').length)&&a(37,Z=!0),p('pageInit',[e]))}function onPageReinit(e){X===e.el&&p('pageReinit',[e])}function onPageBeforeIn(e){X===e.el&&(e.swipeBack||('next'===e.from&&a(40,ae='page-next'),'previous'===e.from&&a(40,ae='page-previous')),p('pageBeforeIn',[e]))}function onPageBeforeOut(e){X===e.el&&p('pageBeforeOut',[e])}function onPageAfterOut(e){X===e.el&&('next'===e.to&&a(40,ae='page-next'),'previous'===e.to&&a(40,ae='page-previous'),p('pageAfterOut',[e]))}function onPageAfterIn(e){X===e.el&&(a(40,ae='page-current'),p('pageAfterIn',[e]))}function onPageBeforeRemove(e){X===e.el&&(e.$navbarEl&&e.$navbarEl[0]&&e.$navbarEl.parent()[0]&&e.$navbarEl.parent()[0]!==X&&e.$el.prepend(e.$navbarEl),p('pageBeforeRemove',[e]))}function onPageBeforeUnmount(e){X===e.el&&p('pageBeforeUnmount',[e])}function onPageStack(e){X===e&&a(41,te=!1)}function onPageUnstack(e){X===e&&a(41,te=!0)}function onPagePosition(e,n){X===e&&a(40,ae=`page-${n}`)}function onPageRole(e,n){X===e&&(a(42,oe=n.role),a(43,re=n.detailRoot))}function onPageMasterStack(e){X===e&&a(44,ie=!0)}function onPageMasterUnstack(e){X===e&&a(44,ie=!1)}function onPageNavbarLargeCollapsed(e){X===e&&a(38,ee=!0)}function onPageNavbarLargeExpanded(e){X===e&&a(38,ee=!1)}function onCardOpened(e,n){X===n&&a(39,ne=!0)}function onCardClose(e,n){X===n&&a(39,ne=!1)}function onPageTabShow(e){X===e&&p('pageTabShow')}function onPageTabHide(e){X===e&&p('pageTabHide')}function mountPage(){x.f7.on('pageMounted',onPageMounted),x.f7.on('pageInit',onPageInit),x.f7.on('pageReinit',onPageReinit),x.f7.on('pageBeforeIn',onPageBeforeIn),x.f7.on('pageBeforeOut',onPageBeforeOut),x.f7.on('pageAfterOut',onPageAfterOut),x.f7.on('pageAfterIn',onPageAfterIn),x.f7.on('pageBeforeRemove',onPageBeforeRemove),x.f7.on('pageBeforeUnmount',onPageBeforeUnmount),x.f7.on('pageStack',onPageStack),x.f7.on('pageUnstack',onPageUnstack),x.f7.on('pagePosition',onPagePosition),x.f7.on('pageRole',onPageRole),x.f7.on('pageMasterStack',onPageMasterStack),x.f7.on('pageMasterUnstack',onPageMasterUnstack),x.f7.on('pageNavbarLargeCollapsed',onPageNavbarLargeCollapsed),x.f7.on('pageNavbarLargeExpanded',onPageNavbarLargeExpanded),x.f7.on('cardOpened',onCardOpened),x.f7.on('cardClose',onCardClose),x.f7.on('pageTabShow',onPageTabShow),x.f7.on('pageTabHide',onPageTabHide)}function destroyPage(){x.f7.off('pageMounted',onPageMounted),x.f7.off('pageInit',onPageInit),x.f7.off('pageReinit',onPageReinit),x.f7.off('pageBeforeIn',onPageBeforeIn),x.f7.off('pageBeforeOut',onPageBeforeOut),x.f7.off('pageAfterOut',onPageAfterOut),x.f7.off('pageAfterIn',onPageAfterIn),x.f7.off('pageBeforeRemove',onPageBeforeRemove),x.f7.off('pageBeforeUnmount',onPageBeforeUnmount),x.f7.off('pageStack',onPageStack),x.f7.off('pageUnstack',onPageUnstack),x.f7.off('pagePosition',onPagePosition),x.f7.off('pageRole',onPageRole),x.f7.off('pageMasterStack',onPageMasterStack),x.f7.off('pageMasterUnstack',onPageMasterUnstack),x.f7.off('pageNavbarLargeCollapsed',onPageNavbarLargeCollapsed),x.f7.off('pageNavbarLargeExpanded',onPageNavbarLargeExpanded),x.f7.off('cardOpened',onCardOpened),x.f7.off('cardClose',onCardClose),x.f7.off('pageTabShow',onPageTabShow),x.f7.off('pageTabHide',onPageTabHide)}function div_binding(e){M[e?'unshift':'push']((()=>{X=e,a(17,X)}))}return O((()=>{D((()=>{if(X){const e=x.f7.$;const n=e(X).children('.page-content').children('[data-f7-slot="fixed"]');if(n.length)for(let a=n.length-1;a>=0;a-=1)e(X).prepend(n[a])}mountPage()}))})),w((()=>{if(X&&x.f7){const e=x.f7.$;const n=e(X).children('.page-content').children('[data-f7-slot="fixed"]');if(n.length)for(let a=n.length-1;a>=0;a-=1)e(X).prepend(n[a])}})),T((()=>{x.f7&&destroyPage()})),e.$$set=e=>{a(75,n=o(o({},n),C(e))),a(25,f=k(n,l)),'lec'in e&&a(0,g=e.lec),'name'in e&&a(1,d=e.name),'stacked'in e&&a(26,u=e.stacked),'withSubnavbar'in e&&a(27,b=e.withSubnavbar),'subnavbar'in e&&a(28,P=e.subnavbar),'withNavbarLarge'in e&&a(29,v=e.withNavbarLarge),'navbarLarge'in e&&a(30,h=e.navbarLarge),'noNavbar'in e&&a(31,m=e.noNavbar),'noToolbar'in e&&a(32,S=e.noToolbar),'tabs'in e&&a(33,$=e.tabs),'pageContent'in e&&a(2,N=e.pageContent),'noSwipeback'in e&&a(34,I=e.noSwipeback),'ptr'in e&&a(3,R=e.ptr),'ptrDistance'in e&&a(4,_=e.ptrDistance),'ptrPreloader'in e&&a(5,E=e.ptrPreloader),'ptrBottom'in e&&a(6,y=e.ptrBottom),'ptrMousewheel'in e&&a(7,q=e.ptrMousewheel),'infinite'in e&&a(8,H=e.infinite),'infiniteTop'in e&&a(9,j=e.infiniteTop),'infiniteDistance'in e&&a(10,V=e.infiniteDistance),'infinitePreloader'in e&&a(11,z=e.infinitePreloader),'hideBarsOnScroll'in e&&a(12,F=e.hideBarsOnScroll),'hideNavbarOnScroll'in e&&a(13,G=e.hideNavbarOnScroll),'hideToolbarOnScroll'in e&&a(14,J=e.hideToolbarOnScroll),'messagesContent'in e&&a(15,K=e.messagesContent),'loginScreen'in e&&a(16,Q=e.loginScreen),'class'in e&&a(35,W=e.class),'$$scope'in e&&a(49,s=e.$$scope)},e.$$.update=()=>{402653184&e.$$.dirty[0]|32&e.$$.dirty[1]&&a(46,t=void 0===P&&void 0===b&&Y),1610612736&e.$$.dirty[0]|64&e.$$.dirty[1]&&a(45,r=void 0===h&&void 0===v&&Z),a(18,i=U(W,ae,{stacked:u&&!te,tabs:$,'page-with-subnavbar':P||b||t,'page-with-navbar-large':h||v||r,'no-navbar':m,'no-toolbar':S,'no-swipeback':I,'page-master':'master'===oe,'page-master-detail':'detail'===oe,'page-master-detail-root':!0===re,'page-master-stacked':!0===ie,'page-with-navbar-large-collapsed':!0===ee,'page-with-card-opened':!0===ne,'login-screen-page':Q},A(n)))},n=C(n),[g,d,N,R,_,E,y,q,H,j,V,z,F,G,J,K,Q,X,i,onPtrPullStart,onPtrPullMove,onPtrPullEnd,onPtrRefresh,onPtrDone,onInfinite,f,u,b,P,v,h,m,S,$,I,W,Y,Z,ee,ne,ae,te,oe,re,ie,r,t,c,div_binding,s]}class Page extends e{constructor(e){super(),n(this,e,instance,create_fragment,a,{lec:0,name:1,stacked:26,withSubnavbar:27,subnavbar:28,withNavbarLarge:29,navbarLarge:30,noNavbar:31,noToolbar:32,tabs:33,pageContent:2,noSwipeback:34,ptr:3,ptrDistance:4,ptrPreloader:5,ptrBottom:6,ptrMousewheel:7,infinite:8,infiniteTop:9,infiniteDistance:10,infinitePreloader:11,hideBarsOnScroll:12,hideNavbarOnScroll:13,hideToolbarOnScroll:14,messagesContent:15,loginScreen:16,class:35},null,[-1,-1,-1])}}export{Page};
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, group_outros, transition_out, check_outros, transition_in, get_spread_update, compute_rest_props, createEventDispatcher, onMount, afterUpdate, onDestroy, exclude_internal_props, binding_callbacks, create_component, claim_component, mount_component, destroy_component } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { restProps, createEmitter, f7ready, app, classNames, colorClasses } from './framework7-liquivelte-hs5d6b599e.liquivelte.js';
+import { Page_content } from './framework7-liquivelte-page-content-hs8daa1a0c.liquivelte.js';
+
+/* Usersmalipetek/Documents/Documents/Projects/LIQUVELTE/LIQUIVELTE TEST/node_modules/framework7-liquivelte/components/page.liquivelte generated by Svelte v3.50.0 */
+const get_static_slot_changes_1 = dirty => ({});
+const get_static_slot_context_1 = ctx => ({});
+const get_static_slot_changes = dirty => ({});
+const get_static_slot_context = ctx => ({});
+const get_fixed_slot_changes = dirty => ({});
+const get_fixed_slot_context = ctx => ({});
+
+// (346:2) {:else}
+function create_else_block(ctx) {
+	let t;
+	let current;
+	const static_slot_template = /*#slots*/ ctx[47].static;
+	const static_slot = create_slot(static_slot_template, ctx, /*$$scope*/ ctx[49], get_static_slot_context_1);
+	const default_slot_template = /*#slots*/ ctx[47].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[49], null);
+
+	return {
+		c() {
+			if (static_slot) static_slot.c();
+			t = space();
+			if (default_slot) default_slot.c();
+		},
+		l(nodes) {
+			if (static_slot) static_slot.l(nodes);
+			t = claim_space(nodes);
+			if (default_slot) default_slot.l(nodes);
+		},
+		m(target, anchor) {
+			if (static_slot) {
+				static_slot.m(target, anchor);
+			}
+
+			insert_hydration(target, t, anchor);
+
+			if (default_slot) {
+				default_slot.m(target, anchor);
+			}
+
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (static_slot) {
+				if (static_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
+					update_slot_base(
+						static_slot,
+						static_slot_template,
+						ctx,
+						/*$$scope*/ ctx[49],
+						!current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(static_slot_template, /*$$scope*/ ctx[49], dirty, get_static_slot_changes_1),
+						get_static_slot_context_1
+					);
+				}
+			}
+
+			if (default_slot) {
+				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
+					update_slot_base(
+						default_slot,
+						default_slot_template,
+						ctx,
+						/*$$scope*/ ctx[49],
+						!current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[49], dirty, null),
+						null
+					);
+				}
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(static_slot, local);
+			transition_in(default_slot, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(static_slot, local);
+			transition_out(default_slot, local);
+			current = false;
+		},
+		d(detaching) {
+			if (static_slot) static_slot.d(detaching);
+			if (detaching) detach(t);
+			if (default_slot) default_slot.d(detaching);
+		}
+	};
+}
+
+// (320:2) {#if pageContent }
+function create_if_block(ctx) {
+	let pagecontent;
+	let current;
+
+	pagecontent = new Page_content({
+			props: {
+				ptr: /*ptr*/ ctx[3],
+				ptrDistance: /*ptrDistance*/ ctx[4],
+				ptrPreloader: /*ptrPreloader*/ ctx[5],
+				ptrBottom: /*ptrBottom*/ ctx[6],
+				ptrMousewheel: /*ptrMousewheel*/ ctx[7],
+				infinite: /*infinite*/ ctx[8],
+				infiniteTop: /*infiniteTop*/ ctx[9],
+				infiniteDistance: /*infiniteDistance*/ ctx[10],
+				infinitePreloader: /*infinitePreloader*/ ctx[11],
+				hideBarsOnScroll: /*hideBarsOnScroll*/ ctx[12],
+				hideNavbarOnScroll: /*hideNavbarOnScroll*/ ctx[13],
+				hideToolbarOnScroll: /*hideToolbarOnScroll*/ ctx[14],
+				messagesContent: /*messagesContent*/ ctx[15],
+				loginScreen: /*loginScreen*/ ctx[16],
+				onPtrPullStart: /*onPtrPullStart*/ ctx[19],
+				onPtrPullMove: /*onPtrPullMove*/ ctx[20],
+				onPtrPullEnd: /*onPtrPullEnd*/ ctx[21],
+				onPtrRefresh: /*onPtrRefresh*/ ctx[22],
+				onPtrDone: /*onPtrDone*/ ctx[23],
+				onInfinite: /*onInfinite*/ ctx[24],
+				lec: /*lec*/ ctx[0],
+				$$slots: { default: [create_default_slot] },
+				$$scope: { ctx }
+			}
+		});
+
+	return {
+		c() {
+			create_component(pagecontent.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(pagecontent.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(pagecontent, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const pagecontent_changes = {};
+			if (dirty[0] & /*ptr*/ 8) pagecontent_changes.ptr = /*ptr*/ ctx[3];
+			if (dirty[0] & /*ptrDistance*/ 16) pagecontent_changes.ptrDistance = /*ptrDistance*/ ctx[4];
+			if (dirty[0] & /*ptrPreloader*/ 32) pagecontent_changes.ptrPreloader = /*ptrPreloader*/ ctx[5];
+			if (dirty[0] & /*ptrBottom*/ 64) pagecontent_changes.ptrBottom = /*ptrBottom*/ ctx[6];
+			if (dirty[0] & /*ptrMousewheel*/ 128) pagecontent_changes.ptrMousewheel = /*ptrMousewheel*/ ctx[7];
+			if (dirty[0] & /*infinite*/ 256) pagecontent_changes.infinite = /*infinite*/ ctx[8];
+			if (dirty[0] & /*infiniteTop*/ 512) pagecontent_changes.infiniteTop = /*infiniteTop*/ ctx[9];
+			if (dirty[0] & /*infiniteDistance*/ 1024) pagecontent_changes.infiniteDistance = /*infiniteDistance*/ ctx[10];
+			if (dirty[0] & /*infinitePreloader*/ 2048) pagecontent_changes.infinitePreloader = /*infinitePreloader*/ ctx[11];
+			if (dirty[0] & /*hideBarsOnScroll*/ 4096) pagecontent_changes.hideBarsOnScroll = /*hideBarsOnScroll*/ ctx[12];
+			if (dirty[0] & /*hideNavbarOnScroll*/ 8192) pagecontent_changes.hideNavbarOnScroll = /*hideNavbarOnScroll*/ ctx[13];
+			if (dirty[0] & /*hideToolbarOnScroll*/ 16384) pagecontent_changes.hideToolbarOnScroll = /*hideToolbarOnScroll*/ ctx[14];
+			if (dirty[0] & /*messagesContent*/ 32768) pagecontent_changes.messagesContent = /*messagesContent*/ ctx[15];
+			if (dirty[0] & /*loginScreen*/ 65536) pagecontent_changes.loginScreen = /*loginScreen*/ ctx[16];
+			if (dirty[0] & /*lec*/ 1) pagecontent_changes.lec = /*lec*/ ctx[0];
+
+			if (dirty[1] & /*$$scope*/ 262144) {
+				pagecontent_changes.$$scope = { dirty, ctx };
+			}
+
+			pagecontent.$set(pagecontent_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(pagecontent.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(pagecontent.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(pagecontent, detaching);
+		}
+	};
+}
+
+// (321:4) <PageContent        ptr="{ptr}"       ptrDistance="{ptrDistance}"       ptrPreloader="{ptrPreloader}"       ptrBottom="{ptrBottom}"       ptrMousewheel="{ptrMousewheel}"       infinite="{infinite}"       infiniteTop="{infiniteTop}"       infiniteDistance="{infiniteDistance}"       infinitePreloader="{infinitePreloader}"       hideBarsOnScroll="{hideBarsOnScroll}"       hideNavbarOnScroll="{hideNavbarOnScroll}"       hideToolbarOnScroll="{hideToolbarOnScroll}"       messagesContent="{messagesContent}"       loginScreen="{loginScreen}"       onPtrPullStart="{onPtrPullStart}"       onPtrPullMove="{onPtrPullMove}"       onPtrPullEnd="{onPtrPullEnd}"       onPtrRefresh="{onPtrRefresh}"       onPtrDone="{onPtrDone}"       onInfinite="{onInfinite}"          lec={lec} >
+function create_default_slot(ctx) {
+	let t;
+	let current;
+	const static_slot_template = /*#slots*/ ctx[47].static;
+	const static_slot = create_slot(static_slot_template, ctx, /*$$scope*/ ctx[49], get_static_slot_context);
+	const default_slot_template = /*#slots*/ ctx[47].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[49], null);
+
+	return {
+		c() {
+			if (static_slot) static_slot.c();
+			t = space();
+			if (default_slot) default_slot.c();
+		},
+		l(nodes) {
+			if (static_slot) static_slot.l(nodes);
+			t = claim_space(nodes);
+			if (default_slot) default_slot.l(nodes);
+		},
+		m(target, anchor) {
+			if (static_slot) {
+				static_slot.m(target, anchor);
+			}
+
+			insert_hydration(target, t, anchor);
+
+			if (default_slot) {
+				default_slot.m(target, anchor);
+			}
+
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (static_slot) {
+				if (static_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
+					update_slot_base(
+						static_slot,
+						static_slot_template,
+						ctx,
+						/*$$scope*/ ctx[49],
+						!current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(static_slot_template, /*$$scope*/ ctx[49], dirty, get_static_slot_changes),
+						get_static_slot_context
+					);
+				}
+			}
+
+			if (default_slot) {
+				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
+					update_slot_base(
+						default_slot,
+						default_slot_template,
+						ctx,
+						/*$$scope*/ ctx[49],
+						!current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[49], dirty, null),
+						null
+					);
+				}
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(static_slot, local);
+			transition_in(default_slot, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(static_slot, local);
+			transition_out(default_slot, local);
+			current = false;
+		},
+		d(detaching) {
+			if (static_slot) static_slot.d(detaching);
+			if (detaching) detach(t);
+			if (default_slot) default_slot.d(detaching);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let div;
+	let t;
+	let current_block_type_index;
+	let if_block;
+	let div_class_value;
+	let current;
+	const fixed_slot_template = /*#slots*/ ctx[47].fixed;
+	const fixed_slot = create_slot(fixed_slot_template, ctx, /*$$scope*/ ctx[49], get_fixed_slot_context);
+	const if_block_creators = [create_if_block, create_else_block];
+	const if_blocks = [];
+
+	function select_block_type(ctx, dirty) {
+		if (/*pageContent*/ ctx[2]) return 0;
+		return 1;
+	}
+
+	current_block_type_index = select_block_type(ctx);
+	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+	let div_levels = [
+		{
+			class: div_class_value = "page " + /*classes*/ ctx[18]
+		},
+		{ "data-name": /*name*/ ctx[1] },
+		restProps(/*$$restProps*/ ctx[25])
+	];
+
+	let div_data = {};
+
+	for (let i = 0; i < div_levels.length; i += 1) {
+		div_data = assign(div_data, div_levels[i]);
+	}
+
+	return {
+		c() {
+			div = element("div");
+			if (fixed_slot) fixed_slot.c();
+			t = space();
+			if_block.c();
+			this.h();
+		},
+		l(nodes) {
+			div = claim_element(nodes, "DIV", { class: true, "data-name": true });
+			var div_nodes = children(div);
+			if (fixed_slot) fixed_slot.l(div_nodes);
+			t = claim_space(div_nodes);
+			if_block.l(div_nodes);
+			div_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			set_attributes(div, div_data);
+		},
+		m(target, anchor) {
+			insert_hydration(target, div, anchor);
+
+			if (fixed_slot) {
+				fixed_slot.m(div, null);
+			}
+
+			append_hydration(div, t);
+			if_blocks[current_block_type_index].m(div, null);
+			/*div_binding*/ ctx[48](div);
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (fixed_slot) {
+				if (fixed_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
+					update_slot_base(
+						fixed_slot,
+						fixed_slot_template,
+						ctx,
+						/*$$scope*/ ctx[49],
+						!current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(fixed_slot_template, /*$$scope*/ ctx[49], dirty, get_fixed_slot_changes),
+						get_fixed_slot_context
+					);
+				}
+			}
+
+			let previous_block_index = current_block_type_index;
+			current_block_type_index = select_block_type(ctx);
+
+			if (current_block_type_index === previous_block_index) {
+				if_blocks[current_block_type_index].p(ctx, dirty);
+			} else {
+				group_outros();
+
+				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+					if_blocks[previous_block_index] = null;
+				});
+
+				check_outros();
+				if_block = if_blocks[current_block_type_index];
+
+				if (!if_block) {
+					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+					if_block.c();
+				} else {
+					if_block.p(ctx, dirty);
+				}
+
+				transition_in(if_block, 1);
+				if_block.m(div, null);
+			}
+
+			set_attributes(div, div_data = get_spread_update(div_levels, [
+				(!current || dirty[0] & /*classes*/ 262144 && div_class_value !== (div_class_value = "page " + /*classes*/ ctx[18])) && { class: div_class_value },
+				(!current || dirty[0] & /*name*/ 2) && { "data-name": /*name*/ ctx[1] },
+				dirty[0] & /*$$restProps*/ 33554432 && restProps(/*$$restProps*/ ctx[25])
+			]));
+		},
+		i(local) {
+			if (current) return;
+			transition_in(fixed_slot, local);
+			transition_in(if_block);
+			current = true;
+		},
+		o(local) {
+			transition_out(fixed_slot, local);
+			transition_out(if_block);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+			if (fixed_slot) fixed_slot.d(detaching);
+			if_blocks[current_block_type_index].d();
+			/*div_binding*/ ctx[48](null);
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let forceSubnavbar;
+	let forceNavbarLarge;
+	let classes;
+
+	const omit_props_names = [
+		"lec","name","stacked","withSubnavbar","subnavbar","withNavbarLarge","navbarLarge","noNavbar","noToolbar","tabs","pageContent","noSwipeback","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","class"
+	];
+
+	let $$restProps = compute_rest_props($$props, omit_props_names);
+	let { $$slots: slots = {}, $$scope } = $$props;
+	let { lec } = $$props;
+	const emit = createEmitter(createEventDispatcher, $$props);
+	let { name = undefined } = $$props;
+	let { stacked = undefined } = $$props;
+	let { withSubnavbar = undefined } = $$props;
+	let { subnavbar = undefined } = $$props;
+	let { withNavbarLarge = undefined } = $$props;
+	let { navbarLarge = undefined } = $$props;
+	let { noNavbar = undefined } = $$props;
+	let { noToolbar = undefined } = $$props;
+	let { tabs = undefined } = $$props;
+	let { pageContent = true } = $$props;
+	let { noSwipeback = undefined } = $$props;
+	let { ptr = undefined } = $$props;
+	let { ptrDistance = undefined } = $$props;
+	let { ptrPreloader = true } = $$props;
+	let { ptrBottom = undefined } = $$props;
+	let { ptrMousewheel = undefined } = $$props;
+	let { infinite = undefined } = $$props;
+	let { infiniteTop = undefined } = $$props;
+	let { infiniteDistance = undefined } = $$props;
+	let { infinitePreloader = true } = $$props;
+	let { hideBarsOnScroll = undefined } = $$props;
+	let { hideNavbarOnScroll = undefined } = $$props;
+	let { hideToolbarOnScroll = undefined } = $$props;
+	let { messagesContent = undefined } = $$props;
+	let { loginScreen = undefined } = $$props;
+	let { class: className = undefined } = $$props;
+
+	// State
+	let el;
+
+	let hasSubnavbar = false;
+	let hasNavbarLarge = false;
+	let hasNavbarLargeCollapsed = false;
+	let hasCardExpandableOpened = false;
+	let routerPositionClass = '';
+	let routerForceUnstack = false;
+	let routerPageRole = null;
+	let routerPageRoleDetailRoot = false;
+	let routerPageMasterStack = false;
+
+	// Handlers
+	function onPtrPullStart() {
+		emit('ptrPullStart');
+	}
+
+	function onPtrPullMove() {
+		emit('ptrPullMove');
+	}
+
+	function onPtrPullEnd() {
+		emit('ptrPullEnd');
+	}
+
+	function onPtrRefresh(done) {
+		emit('ptrRefresh', [done]);
+	}
+
+	function onPtrDone() {
+		emit('ptrDone');
+	}
+
+	function onInfinite() {
+		emit('infinite');
+	}
+
+	// Main Page Events
+	function onPageMounted(page) {
+		if (el !== page.el) return;
+		emit('pageMounted', [page]);
+	}
+
+	function onPageInit(page) {
+		if (el !== page.el) return;
+
+		if (typeof withSubnavbar === 'undefined' && typeof subnavbar === 'undefined') {
+			if (page.$navbarEl && page.$navbarEl.length && page.$navbarEl.find('.subnavbar').length || page.$el.children('.navbar').find('.subnavbar').length) {
+				$$invalidate(36, hasSubnavbar = true);
+			}
+		}
+
+		if (typeof withNavbarLarge === 'undefined' && typeof navbarLarge === 'undefined') {
+			if (page.$navbarEl && page.$navbarEl.hasClass('navbar-large') || page.$el.children('.navbar-large').length) {
+				$$invalidate(37, hasNavbarLarge = true);
+			}
+		}
+
+		emit('pageInit', [page]);
+	}
+
+	function onPageReinit(page) {
+		if (el !== page.el) return;
+		emit('pageReinit', [page]);
+	}
+
+	function onPageBeforeIn(page) {
+		if (el !== page.el) return;
+
+		if (!page.swipeBack) {
+			if (page.from === 'next') {
+				$$invalidate(40, routerPositionClass = 'page-next');
+			}
+
+			if (page.from === 'previous') {
+				$$invalidate(40, routerPositionClass = 'page-previous');
+			}
+		}
+
+		emit('pageBeforeIn', [page]);
+	}
+
+	function onPageBeforeOut(page) {
+		if (el !== page.el) return;
+		emit('pageBeforeOut', [page]);
+	}
+
+	function onPageAfterOut(page) {
+		if (el !== page.el) return;
+
+		if (page.to === 'next') {
+			$$invalidate(40, routerPositionClass = 'page-next');
+		}
+
+		if (page.to === 'previous') {
+			$$invalidate(40, routerPositionClass = 'page-previous');
+		}
+
+		emit('pageAfterOut', [page]);
+	}
+
+	function onPageAfterIn(page) {
+		if (el !== page.el) return;
+		$$invalidate(40, routerPositionClass = 'page-current');
+		emit('pageAfterIn', [page]);
+	}
+
+	function onPageBeforeRemove(page) {
+		if (el !== page.el) return;
+
+		if (page.$navbarEl && page.$navbarEl[0] && page.$navbarEl.parent()[0] && page.$navbarEl.parent()[0] !== el) {
+			page.$el.prepend(page.$navbarEl);
+		}
+
+		emit('pageBeforeRemove', [page]);
+	}
+
+	function onPageBeforeUnmount(page) {
+		if (el !== page.el) return;
+		emit('pageBeforeUnmount', [page]);
+	}
+
+	// Helper events
+	function onPageStack(pageEl) {
+		if (el !== pageEl) return;
+		$$invalidate(41, routerForceUnstack = false);
+	}
+
+	function onPageUnstack(pageEl) {
+		if (el !== pageEl) return;
+		$$invalidate(41, routerForceUnstack = true);
+	}
+
+	function onPagePosition(pageEl, position) {
+		if (el !== pageEl) return;
+		$$invalidate(40, routerPositionClass = `page-${position}`);
+	}
+
+	function onPageRole(pageEl, rolesData) {
+		if (el !== pageEl) return;
+		$$invalidate(42, routerPageRole = rolesData.role);
+		$$invalidate(43, routerPageRoleDetailRoot = rolesData.detailRoot);
+	}
+
+	function onPageMasterStack(pageEl) {
+		if (el !== pageEl) return;
+		$$invalidate(44, routerPageMasterStack = true);
+	}
+
+	function onPageMasterUnstack(pageEl) {
+		if (el !== pageEl) return;
+		$$invalidate(44, routerPageMasterStack = false);
+	}
+
+	function onPageNavbarLargeCollapsed(pageEl) {
+		if (el !== pageEl) return;
+		$$invalidate(38, hasNavbarLargeCollapsed = true);
+	}
+
+	function onPageNavbarLargeExpanded(pageEl) {
+		if (el !== pageEl) return;
+		$$invalidate(38, hasNavbarLargeCollapsed = false);
+	}
+
+	function onCardOpened(cardEl, pageEl) {
+		if (el !== pageEl) return;
+		$$invalidate(39, hasCardExpandableOpened = true);
+	}
+
+	function onCardClose(cardEl, pageEl) {
+		if (el !== pageEl) return;
+		$$invalidate(39, hasCardExpandableOpened = false);
+	}
+
+	function onPageTabShow(pageEl) {
+		if (el !== pageEl) return;
+		emit('pageTabShow');
+	}
+
+	function onPageTabHide(pageEl) {
+		if (el !== pageEl) return;
+		emit('pageTabHide');
+	}
+
+	// Mount/destroy
+	function mountPage() {
+		app.f7.on('pageMounted', onPageMounted);
+		app.f7.on('pageInit', onPageInit);
+		app.f7.on('pageReinit', onPageReinit);
+		app.f7.on('pageBeforeIn', onPageBeforeIn);
+		app.f7.on('pageBeforeOut', onPageBeforeOut);
+		app.f7.on('pageAfterOut', onPageAfterOut);
+		app.f7.on('pageAfterIn', onPageAfterIn);
+		app.f7.on('pageBeforeRemove', onPageBeforeRemove);
+		app.f7.on('pageBeforeUnmount', onPageBeforeUnmount);
+		app.f7.on('pageStack', onPageStack);
+		app.f7.on('pageUnstack', onPageUnstack);
+		app.f7.on('pagePosition', onPagePosition);
+		app.f7.on('pageRole', onPageRole);
+		app.f7.on('pageMasterStack', onPageMasterStack);
+		app.f7.on('pageMasterUnstack', onPageMasterUnstack);
+		app.f7.on('pageNavbarLargeCollapsed', onPageNavbarLargeCollapsed);
+		app.f7.on('pageNavbarLargeExpanded', onPageNavbarLargeExpanded);
+		app.f7.on('cardOpened', onCardOpened);
+		app.f7.on('cardClose', onCardClose);
+		app.f7.on('pageTabShow', onPageTabShow);
+		app.f7.on('pageTabHide', onPageTabHide);
+	}
+
+	function destroyPage() {
+		app.f7.off('pageMounted', onPageMounted);
+		app.f7.off('pageInit', onPageInit);
+		app.f7.off('pageReinit', onPageReinit);
+		app.f7.off('pageBeforeIn', onPageBeforeIn);
+		app.f7.off('pageBeforeOut', onPageBeforeOut);
+		app.f7.off('pageAfterOut', onPageAfterOut);
+		app.f7.off('pageAfterIn', onPageAfterIn);
+		app.f7.off('pageBeforeRemove', onPageBeforeRemove);
+		app.f7.off('pageBeforeUnmount', onPageBeforeUnmount);
+		app.f7.off('pageStack', onPageStack);
+		app.f7.off('pageUnstack', onPageUnstack);
+		app.f7.off('pagePosition', onPagePosition);
+		app.f7.off('pageRole', onPageRole);
+		app.f7.off('pageMasterStack', onPageMasterStack);
+		app.f7.off('pageMasterUnstack', onPageMasterUnstack);
+		app.f7.off('pageNavbarLargeCollapsed', onPageNavbarLargeCollapsed);
+		app.f7.off('pageNavbarLargeExpanded', onPageNavbarLargeExpanded);
+		app.f7.off('cardOpened', onCardOpened);
+		app.f7.off('cardClose', onCardClose);
+		app.f7.off('pageTabShow', onPageTabShow);
+		app.f7.off('pageTabHide', onPageTabHide);
+	}
+
+	onMount(() => {
+		f7ready(() => {
+			if (el) {
+				const dom7 = app.f7.$;
+				const fixedEls = dom7(el).children('.page-content').children('[data-f7-slot="fixed"]');
+
+				if (fixedEls.length) {
+					for (let i = fixedEls.length - 1; i >= 0; i -= 1) {
+						dom7(el).prepend(fixedEls[i]);
+					}
+				}
+			}
+
+			mountPage();
+		});
+	});
+
+	afterUpdate(() => {
+		if (el && app.f7) {
+			const dom7 = app.f7.$;
+			const fixedEls = dom7(el).children('.page-content').children('[data-f7-slot="fixed"]');
+
+			if (fixedEls.length) {
+				for (let i = fixedEls.length - 1; i >= 0; i -= 1) {
+					dom7(el).prepend(fixedEls[i]);
+				}
+			}
+		}
+	});
+
+	onDestroy(() => {
+		if (!app.f7) return;
+		destroyPage();
+	});
+
+	function div_binding($$value) {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+			el = $$value;
+			$$invalidate(17, el);
+		});
+	}
+
+	$$self.$$set = $$new_props => {
+		$$invalidate(75, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(25, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
+		if ('name' in $$new_props) $$invalidate(1, name = $$new_props.name);
+		if ('stacked' in $$new_props) $$invalidate(26, stacked = $$new_props.stacked);
+		if ('withSubnavbar' in $$new_props) $$invalidate(27, withSubnavbar = $$new_props.withSubnavbar);
+		if ('subnavbar' in $$new_props) $$invalidate(28, subnavbar = $$new_props.subnavbar);
+		if ('withNavbarLarge' in $$new_props) $$invalidate(29, withNavbarLarge = $$new_props.withNavbarLarge);
+		if ('navbarLarge' in $$new_props) $$invalidate(30, navbarLarge = $$new_props.navbarLarge);
+		if ('noNavbar' in $$new_props) $$invalidate(31, noNavbar = $$new_props.noNavbar);
+		if ('noToolbar' in $$new_props) $$invalidate(32, noToolbar = $$new_props.noToolbar);
+		if ('tabs' in $$new_props) $$invalidate(33, tabs = $$new_props.tabs);
+		if ('pageContent' in $$new_props) $$invalidate(2, pageContent = $$new_props.pageContent);
+		if ('noSwipeback' in $$new_props) $$invalidate(34, noSwipeback = $$new_props.noSwipeback);
+		if ('ptr' in $$new_props) $$invalidate(3, ptr = $$new_props.ptr);
+		if ('ptrDistance' in $$new_props) $$invalidate(4, ptrDistance = $$new_props.ptrDistance);
+		if ('ptrPreloader' in $$new_props) $$invalidate(5, ptrPreloader = $$new_props.ptrPreloader);
+		if ('ptrBottom' in $$new_props) $$invalidate(6, ptrBottom = $$new_props.ptrBottom);
+		if ('ptrMousewheel' in $$new_props) $$invalidate(7, ptrMousewheel = $$new_props.ptrMousewheel);
+		if ('infinite' in $$new_props) $$invalidate(8, infinite = $$new_props.infinite);
+		if ('infiniteTop' in $$new_props) $$invalidate(9, infiniteTop = $$new_props.infiniteTop);
+		if ('infiniteDistance' in $$new_props) $$invalidate(10, infiniteDistance = $$new_props.infiniteDistance);
+		if ('infinitePreloader' in $$new_props) $$invalidate(11, infinitePreloader = $$new_props.infinitePreloader);
+		if ('hideBarsOnScroll' in $$new_props) $$invalidate(12, hideBarsOnScroll = $$new_props.hideBarsOnScroll);
+		if ('hideNavbarOnScroll' in $$new_props) $$invalidate(13, hideNavbarOnScroll = $$new_props.hideNavbarOnScroll);
+		if ('hideToolbarOnScroll' in $$new_props) $$invalidate(14, hideToolbarOnScroll = $$new_props.hideToolbarOnScroll);
+		if ('messagesContent' in $$new_props) $$invalidate(15, messagesContent = $$new_props.messagesContent);
+		if ('loginScreen' in $$new_props) $$invalidate(16, loginScreen = $$new_props.loginScreen);
+		if ('class' in $$new_props) $$invalidate(35, className = $$new_props.class);
+		if ('$$scope' in $$new_props) $$invalidate(49, $$scope = $$new_props.$$scope);
+	};
+
+	$$self.$$.update = () => {
+		if ($$self.$$.dirty[0] & /*subnavbar, withSubnavbar*/ 402653184 | $$self.$$.dirty[1] & /*hasSubnavbar*/ 32) {
+			$$invalidate(46, forceSubnavbar = typeof subnavbar === 'undefined' && typeof withSubnavbar === 'undefined'
+			? hasSubnavbar
+			: false);
+		}
+
+		if ($$self.$$.dirty[0] & /*navbarLarge, withNavbarLarge*/ 1610612736 | $$self.$$.dirty[1] & /*hasNavbarLarge*/ 64) {
+			$$invalidate(45, forceNavbarLarge = typeof navbarLarge === 'undefined' && typeof withNavbarLarge === 'undefined'
+			? hasNavbarLarge
+			: false);
+		}
+
+		$$invalidate(18, classes = classNames(
+			className,
+			routerPositionClass,
+			{
+				stacked: stacked && !routerForceUnstack,
+				tabs,
+				'page-with-subnavbar': subnavbar || withSubnavbar || forceSubnavbar,
+				'page-with-navbar-large': navbarLarge || withNavbarLarge || forceNavbarLarge,
+				'no-navbar': noNavbar,
+				'no-toolbar': noToolbar,
+				'no-swipeback': noSwipeback,
+				'page-master': routerPageRole === 'master',
+				'page-master-detail': routerPageRole === 'detail',
+				'page-master-detail-root': routerPageRoleDetailRoot === true,
+				'page-master-stacked': routerPageMasterStack === true,
+				'page-with-navbar-large-collapsed': hasNavbarLargeCollapsed === true,
+				'page-with-card-opened': hasCardExpandableOpened === true,
+				'login-screen-page': loginScreen
+			},
+			colorClasses($$props)
+		));
+	};
+
+	$$props = exclude_internal_props($$props);
+
+	return [
+		lec,
+		name,
+		pageContent,
+		ptr,
+		ptrDistance,
+		ptrPreloader,
+		ptrBottom,
+		ptrMousewheel,
+		infinite,
+		infiniteTop,
+		infiniteDistance,
+		infinitePreloader,
+		hideBarsOnScroll,
+		hideNavbarOnScroll,
+		hideToolbarOnScroll,
+		messagesContent,
+		loginScreen,
+		el,
+		classes,
+		onPtrPullStart,
+		onPtrPullMove,
+		onPtrPullEnd,
+		onPtrRefresh,
+		onPtrDone,
+		onInfinite,
+		$$restProps,
+		stacked,
+		withSubnavbar,
+		subnavbar,
+		withNavbarLarge,
+		navbarLarge,
+		noNavbar,
+		noToolbar,
+		tabs,
+		noSwipeback,
+		className,
+		hasSubnavbar,
+		hasNavbarLarge,
+		hasNavbarLargeCollapsed,
+		hasCardExpandableOpened,
+		routerPositionClass,
+		routerForceUnstack,
+		routerPageRole,
+		routerPageRoleDetailRoot,
+		routerPageMasterStack,
+		forceNavbarLarge,
+		forceSubnavbar,
+		slots,
+		div_binding,
+		$$scope
+	];
+}
+
+class Page extends SvelteComponent {
+	constructor(options) {
+		super();
+
+		init(
+			this,
+			options,
+			instance,
+			create_fragment,
+			safe_not_equal,
+			{
+				lec: 0,
+				name: 1,
+				stacked: 26,
+				withSubnavbar: 27,
+				subnavbar: 28,
+				withNavbarLarge: 29,
+				navbarLarge: 30,
+				noNavbar: 31,
+				noToolbar: 32,
+				tabs: 33,
+				pageContent: 2,
+				noSwipeback: 34,
+				ptr: 3,
+				ptrDistance: 4,
+				ptrPreloader: 5,
+				ptrBottom: 6,
+				ptrMousewheel: 7,
+				infinite: 8,
+				infiniteTop: 9,
+				infiniteDistance: 10,
+				infinitePreloader: 11,
+				hideBarsOnScroll: 12,
+				hideNavbarOnScroll: 13,
+				hideToolbarOnScroll: 14,
+				messagesContent: 15,
+				loginScreen: 16,
+				class: 35
+			},
+			null,
+			[-1, -1, -1]
+		);
+	}
+}
+
+export { Page };

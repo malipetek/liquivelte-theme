@@ -1,1 +1,478 @@
-import{SvelteComponent as e,init as l,safe_not_equal as i,create_slot as n,assign as o,element as s,space as t,claim_element as a,children as p,claim_space as c,detach as r,set_attributes as d,insert_hydration as k,append_hydration as f,update_slot_base as h,get_all_dirty_from_scope as w,get_slot_changes as b,get_spread_update as u,transition_in as B,transition_out as v,compute_rest_props as C,onMount as O,onDestroy as $,exclude_internal_props as g,attr as y,createEventDispatcher as z,binding_callbacks as E}from'./liquivelte-svelte-hs532e1aa9.liquivelte.js';import{restProps as m,createEmitter as A,f7ready as _,app as S,noUndefinedProps as j,classNames as R,colorClasses as F}from'./framework7-liquivelte-hs5d6b599e.liquivelte.js';const get_default_slot_changes=e=>({panel:8&e[0]});const get_default_slot_context=e=>({panel:e[3]});function create_if_block(e){let l;return{c(){l=s("div"),this.h()},l(e){l=a(e,"DIV",{class:!0}),p(l).forEach(r),this.h()},h(){y(l,"class","panel-resize-handler")},m(e,i){k(e,l,i)},d(e){e&&r(l)}}}function create_fragment(e){let l;let i;let C;let O;const $=e[31].default;const g=n($,e,e[30],get_default_slot_context);let y=e[0]&&create_if_block();let z=[{class:C="panel "+e[4]},{"data-f7-slot":e[1]},m(e[5])];let E={};for(let e=0;e<z.length;e+=1)E=o(E,z[e]);return{c(){l=s("div"),g&&g.c(),i=t(),y&&y.c(),this.h()},l(e){l=a(e,"DIV",{class:!0,"data-f7-slot":!0});var n=p(l);g&&g.l(n),i=c(n),y&&y.l(n),n.forEach(r),this.h()},h(){d(l,E)},m(n,o){k(n,l,o),g&&g.m(l,null),f(l,i),y&&y.m(l,null),e[32](l),O=!0},p(e,i){g&&g.p&&(!O||1073741832&i[0])&&h(g,$,e,e[30],O?b($,e[30],i,get_default_slot_changes):w(e[30]),get_default_slot_context),e[0]?y||(y=create_if_block(),y.c(),y.m(l,null)):y&&(y.d(1),y=null),d(l,E=u(z,[(!O||16&i[0]&&C!==(C="panel "+e[4]))&&{class:C},(!O||2&i[0])&&{"data-f7-slot":e[1]},32&i[0]&&m(e[5])]))},i(e){O||(B(g,e),O=!0)},o(e){v(g,e),O=!1},d(i){i&&r(l),g&&g.d(i),y&&y.d(),e[32](null)}}}function instance_1(e,l,i){let n;let s;let t;const a=["lec","class","side","effect","cover","reveal","push","left","right","opened","resizable","backdrop","backdropEl","containerEl","closeByBackdropClick","visibleBreakpoint","collapsedBreakpoint","swipe","swipeNoFollow","swipeOnlyClose","swipeActiveArea","swipeThreshold","f7Slot","instance"];let p=C(l,a);let{$$slots:c={},$$scope:r}=l;let{lec:d}=l;const k=A(z,l);let{class:f}=l;let{side:h}=l;let{effect:w}=l;let{cover:b=!1}=l;let{reveal:u=!1}=l;let{push:B=!1}=l;let{left:v=!1}=l;let{right:y=!1}=l;let{opened:m=!1}=l;let{resizable:N=!1}=l;let{backdrop:T=!0}=l;let{backdropEl:q}=l;let{containerEl:x}=l;let{closeByBackdropClick:D}=l;let{visibleBreakpoint:I}=l;let{collapsedBreakpoint:P}=l;let{swipe:V=!1}=l;let{swipeNoFollow:G=!1}=l;let{swipeOnlyClose:H=!1}=l;let{swipeActiveArea:J=0}=l;let{swipeThreshold:K=0}=l;let{f7Slot:L="fixed"}=l;let M;let Q;const U={isOpened:!1,isClosing:!1,isCollapsed:!1,isBreakpoint:!1};function instance(){return Q}let W=N;let X=!1;function watchResizable(e){X?(Q&&e&&!W?Q.enableResizable():Q&&!e&&W&&Q.disableResizable(),W=e):X=!0}let Y=m;let Z=!1;function watchOpened(e){Z?(Q&&e&&!Y?Q.open():Q&&!e&&Y&&Q.close(),Y=e):Z=!0}function onOpen(...e){Object.assign(U,{isOpened:!0,isClosing:!1}),k('panelOpen',e),i(6,m=!0)}function onOpened(...e){k('panelOpened',e)}function onClose(...e){Object.assign(U,{isOpened:!1,isClosing:!0}),k('panelClose',e)}function onClosed(...e){Object.assign(U,{isClosing:!1}),k('panelClosed',e),i(6,m=!1)}function onBackdropClick(...e){k('panelBackdropClick',e)}function onSwipe(...e){k('panelSwipe',e)}function onSwipeOpen(...e){k('panelSwipeOpen',e)}function onBreakpoint(...e){Object.assign(U,{isBreakpoint:!0,isCollapsed:!1}),k('panelBreakpoint',e)}function onCollapsedBreakpoint(...e){Object.assign(U,{isBreakpoint:!1,isCollapsed:!0}),k('panelCollapsedBreakpoint',e)}function onResize(...e){k('panelResize',e)}function div_binding(e){E[e?'unshift':'push']((()=>{M=e,i(2,M)}))}return O((()=>{_((()=>{const e=S.f7.$;0===e('.panel-backdrop').length&&e('<div class="panel-backdrop"></div>').insertBefore(M);const l=j({el:M,resizable:N,backdrop:T,backdropEl:q,containerEl:x,closeByBackdropClick:D,visibleBreakpoint:I,collapsedBreakpoint:P,swipe:V,swipeNoFollow:G,swipeOnlyClose:H,swipeActiveArea:J,swipeThreshold:K,on:{open:onOpen,opened:onOpened,close:onClose,closed:onClosed,backdropClick:onBackdropClick,swipe:onSwipe,swipeOpen:onSwipeOpen,collapsedBreakpoint:onCollapsedBreakpoint,breakpoint:onBreakpoint,resize:onResize}});i(3,Q=S.f7.panel.create(l)),m&&Q.open(!1)}))})),$((()=>{Q&&Q.destroy&&Q.destroy(),i(3,Q=null)})),e.$$set=e=>{i(52,l=o(o({},l),g(e))),i(5,p=C(l,a)),'lec'in e&&i(7,d=e.lec),'class'in e&&i(8,f=e.class),'side'in e&&i(9,h=e.side),'effect'in e&&i(10,w=e.effect),'cover'in e&&i(11,b=e.cover),'reveal'in e&&i(12,u=e.reveal),'push'in e&&i(13,B=e.push),'left'in e&&i(14,v=e.left),'right'in e&&i(15,y=e.right),'opened'in e&&i(6,m=e.opened),'resizable'in e&&i(0,N=e.resizable),'backdrop'in e&&i(16,T=e.backdrop),'backdropEl'in e&&i(17,q=e.backdropEl),'containerEl'in e&&i(18,x=e.containerEl),'closeByBackdropClick'in e&&i(19,D=e.closeByBackdropClick),'visibleBreakpoint'in e&&i(20,I=e.visibleBreakpoint),'collapsedBreakpoint'in e&&i(21,P=e.collapsedBreakpoint),'swipe'in e&&i(22,V=e.swipe),'swipeNoFollow'in e&&i(23,G=e.swipeNoFollow),'swipeOnlyClose'in e&&i(24,H=e.swipeOnlyClose),'swipeActiveArea'in e&&i(25,J=e.swipeActiveArea),'swipeThreshold'in e&&i(26,K=e.swipeThreshold),'f7Slot'in e&&i(1,L=e.f7Slot),'$$scope'in e&&i(30,r=e.$$scope)},e.$$.update=()=>{49664&e.$$.dirty[0]&&i(29,n=h||(v?'left':y?'right':'left')),13312&e.$$.dirty[0]&&i(28,s=w||(u?'reveal':B?'push':'cover')),i(4,t=R(f,{'panel-in':U.isOpened&&!U.isClosing&&!U.isBreakpoint,'panel-in-breakpoint':U.isBreakpoint,'panel-in-collapsed':U.isCollapsed,'panel-resizable':N,[`panel-${n}`]:n,[`panel-${s}`]:s},F(l))),1&e.$$.dirty[0]&&watchResizable(N),64&e.$$.dirty[0]&&watchOpened(m)},l=g(l),[N,L,M,Q,t,p,m,d,f,h,w,b,u,B,v,y,T,q,x,D,I,P,V,G,H,J,K,instance,s,n,r,c,div_binding]}class Panel extends e{constructor(e){super(),l(this,e,instance_1,create_fragment,i,{lec:7,class:8,side:9,effect:10,cover:11,reveal:12,push:13,left:14,right:15,opened:6,resizable:0,backdrop:16,backdropEl:17,containerEl:18,closeByBackdropClick:19,visibleBreakpoint:20,collapsedBreakpoint:21,swipe:22,swipeNoFollow:23,swipeOnlyClose:24,swipeActiveArea:25,swipeThreshold:26,f7Slot:1,instance:27},null,[-1,-1])}get instance(){return this.$$.ctx[27]}}export{Panel};
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, transition_in, transition_out, compute_rest_props, onMount, onDestroy, exclude_internal_props, attr, createEventDispatcher, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { restProps, createEmitter, f7ready, app, noUndefinedProps, classNames, colorClasses } from './framework7-liquivelte-hs5d6b599e.liquivelte.js';
+
+/* Usersmalipetek/Documents/Documents/Projects/LIQUVELTE/LIQUIVELTE TEST/node_modules/framework7-liquivelte/components/panel.liquivelte generated by Svelte v3.50.0 */
+const get_default_slot_changes = dirty => ({ panel: dirty[0] & /*f7Panel*/ 8 });
+const get_default_slot_context = ctx => ({ panel: /*f7Panel*/ ctx[3] });
+
+// (209:2) {#if resizable }
+function create_if_block(ctx) {
+	let div;
+
+	return {
+		c() {
+			div = element("div");
+			this.h();
+		},
+		l(nodes) {
+			div = claim_element(nodes, "DIV", { class: true });
+			children(div).forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div, "class", "panel-resize-handler");
+		},
+		m(target, anchor) {
+			insert_hydration(target, div, anchor);
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let div;
+	let t;
+	let div_class_value;
+	let current;
+	const default_slot_template = /*#slots*/ ctx[31].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[30], get_default_slot_context);
+	let if_block = /*resizable*/ ctx[0] && create_if_block();
+
+	let div_levels = [
+		{
+			class: div_class_value = "panel " + /*classes*/ ctx[4]
+		},
+		{ "data-f7-slot": /*f7Slot*/ ctx[1] },
+		restProps(/*$$restProps*/ ctx[5])
+	];
+
+	let div_data = {};
+
+	for (let i = 0; i < div_levels.length; i += 1) {
+		div_data = assign(div_data, div_levels[i]);
+	}
+
+	return {
+		c() {
+			div = element("div");
+			if (default_slot) default_slot.c();
+			t = space();
+			if (if_block) if_block.c();
+			this.h();
+		},
+		l(nodes) {
+			div = claim_element(nodes, "DIV", { class: true, "data-f7-slot": true });
+			var div_nodes = children(div);
+			if (default_slot) default_slot.l(div_nodes);
+			t = claim_space(div_nodes);
+			if (if_block) if_block.l(div_nodes);
+			div_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			set_attributes(div, div_data);
+		},
+		m(target, anchor) {
+			insert_hydration(target, div, anchor);
+
+			if (default_slot) {
+				default_slot.m(div, null);
+			}
+
+			append_hydration(div, t);
+			if (if_block) if_block.m(div, null);
+			/*div_binding*/ ctx[32](div);
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (default_slot) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope, f7Panel*/ 1073741832)) {
+					update_slot_base(
+						default_slot,
+						default_slot_template,
+						ctx,
+						/*$$scope*/ ctx[30],
+						!current
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[30])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[30], dirty, get_default_slot_changes),
+						get_default_slot_context
+					);
+				}
+			}
+
+			if (/*resizable*/ ctx[0]) {
+				if (if_block) ; else {
+					if_block = create_if_block();
+					if_block.c();
+					if_block.m(div, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+
+			set_attributes(div, div_data = get_spread_update(div_levels, [
+				(!current || dirty[0] & /*classes*/ 16 && div_class_value !== (div_class_value = "panel " + /*classes*/ ctx[4])) && { class: div_class_value },
+				(!current || dirty[0] & /*f7Slot*/ 2) && { "data-f7-slot": /*f7Slot*/ ctx[1] },
+				dirty[0] & /*$$restProps*/ 32 && restProps(/*$$restProps*/ ctx[5])
+			]));
+		},
+		i(local) {
+			if (current) return;
+			transition_in(default_slot, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(default_slot, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+			if (default_slot) default_slot.d(detaching);
+			if (if_block) if_block.d();
+			/*div_binding*/ ctx[32](null);
+		}
+	};
+}
+
+function instance_1($$self, $$props, $$invalidate) {
+	let sideComputed;
+	let effectComputed;
+	let classes;
+
+	const omit_props_names = [
+		"lec","class","side","effect","cover","reveal","push","left","right","opened","resizable","backdrop","backdropEl","containerEl","closeByBackdropClick","visibleBreakpoint","collapsedBreakpoint","swipe","swipeNoFollow","swipeOnlyClose","swipeActiveArea","swipeThreshold","f7Slot","instance"
+	];
+
+	let $$restProps = compute_rest_props($$props, omit_props_names);
+	let { $$slots: slots = {}, $$scope } = $$props;
+	let { lec } = $$props;
+	const emit = createEmitter(createEventDispatcher, $$props);
+	let { class: className = undefined } = $$props;
+	let { side = undefined } = $$props;
+	let { effect = undefined } = $$props;
+	let { cover = false } = $$props;
+	let { reveal = false } = $$props;
+	let { push = false } = $$props;
+	let { left = false } = $$props;
+	let { right = false } = $$props;
+	let { opened = false } = $$props;
+	let { resizable = false } = $$props;
+	let { backdrop = true } = $$props;
+	let { backdropEl = undefined } = $$props;
+	let { containerEl = undefined } = $$props;
+	let { closeByBackdropClick = undefined } = $$props;
+	let { visibleBreakpoint = undefined } = $$props;
+	let { collapsedBreakpoint = undefined } = $$props;
+	let { swipe = false } = $$props;
+	let { swipeNoFollow = false } = $$props;
+	let { swipeOnlyClose = false } = $$props;
+	let { swipeActiveArea = 0 } = $$props;
+	let { swipeThreshold = 0 } = $$props;
+	let { f7Slot = 'fixed' } = $$props;
+	let el;
+	let f7Panel;
+
+	const state = {
+		isOpened: false,
+		isClosing: false,
+		isCollapsed: false,
+		isBreakpoint: false
+	};
+
+	function instance() {
+		return f7Panel;
+	}
+
+	let resizableOld = resizable;
+	let initialWatchedResizable = false;
+
+	function watchResizable(r) {
+		if (!initialWatchedResizable) {
+			initialWatchedResizable = true;
+			return;
+		}
+
+		if (f7Panel && r && !resizableOld) {
+			f7Panel.enableResizable();
+		} else if (f7Panel && !r && resizableOld) {
+			f7Panel.disableResizable();
+		}
+
+		resizableOld = r;
+	}
+
+	let openedOld = opened;
+	let initialWatchedOpened = false;
+
+	function watchOpened(o) {
+		if (!initialWatchedOpened) {
+			initialWatchedOpened = true;
+			return;
+		}
+
+		if (f7Panel && o && !openedOld) {
+			f7Panel.open();
+		} else if (f7Panel && !o && openedOld) {
+			f7Panel.close();
+		}
+
+		openedOld = o;
+	}
+
+	function onOpen(...args) {
+		Object.assign(state, { isOpened: true, isClosing: false });
+		emit('panelOpen', args);
+		$$invalidate(6, opened = true);
+	}
+
+	function onOpened(...args) {
+		emit('panelOpened', args);
+	}
+
+	function onClose(...args) {
+		Object.assign(state, { isOpened: false, isClosing: true });
+		emit('panelClose', args);
+	}
+
+	function onClosed(...args) {
+		Object.assign(state, { isClosing: false });
+		emit('panelClosed', args);
+		$$invalidate(6, opened = false);
+	}
+
+	function onBackdropClick(...args) {
+		emit('panelBackdropClick', args);
+	}
+
+	function onSwipe(...args) {
+		emit('panelSwipe', args);
+	}
+
+	function onSwipeOpen(...args) {
+		emit('panelSwipeOpen', args);
+	}
+
+	function onBreakpoint(...args) {
+		Object.assign(state, { isBreakpoint: true, isCollapsed: false });
+		emit('panelBreakpoint', args);
+	}
+
+	function onCollapsedBreakpoint(...args) {
+		Object.assign(state, { isBreakpoint: false, isCollapsed: true });
+		emit('panelCollapsedBreakpoint', args);
+	}
+
+	function onResize(...args) {
+		emit('panelResize', args);
+	}
+
+	onMount(() => {
+		f7ready(() => {
+			const dom7 = app.f7.$;
+
+			if (dom7('.panel-backdrop').length === 0) {
+				dom7('<div class="panel-backdrop"></div>').insertBefore(el);
+			}
+
+			const params = noUndefinedProps({
+				el,
+				resizable,
+				backdrop,
+				backdropEl,
+				containerEl,
+				closeByBackdropClick,
+				visibleBreakpoint,
+				collapsedBreakpoint,
+				swipe,
+				swipeNoFollow,
+				swipeOnlyClose,
+				swipeActiveArea,
+				swipeThreshold,
+				on: {
+					open: onOpen,
+					opened: onOpened,
+					close: onClose,
+					closed: onClosed,
+					backdropClick: onBackdropClick,
+					swipe: onSwipe,
+					swipeOpen: onSwipeOpen,
+					collapsedBreakpoint: onCollapsedBreakpoint,
+					breakpoint: onBreakpoint,
+					resize: onResize
+				}
+			});
+
+			$$invalidate(3, f7Panel = app.f7.panel.create(params));
+
+			if (opened) {
+				f7Panel.open(false);
+			}
+		});
+	});
+
+	onDestroy(() => {
+		if (f7Panel && f7Panel.destroy) {
+			f7Panel.destroy();
+		}
+
+		$$invalidate(3, f7Panel = null);
+	});
+
+	function div_binding($$value) {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+			el = $$value;
+			$$invalidate(2, el);
+		});
+	}
+
+	$$self.$$set = $$new_props => {
+		$$invalidate(52, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(5, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('lec' in $$new_props) $$invalidate(7, lec = $$new_props.lec);
+		if ('class' in $$new_props) $$invalidate(8, className = $$new_props.class);
+		if ('side' in $$new_props) $$invalidate(9, side = $$new_props.side);
+		if ('effect' in $$new_props) $$invalidate(10, effect = $$new_props.effect);
+		if ('cover' in $$new_props) $$invalidate(11, cover = $$new_props.cover);
+		if ('reveal' in $$new_props) $$invalidate(12, reveal = $$new_props.reveal);
+		if ('push' in $$new_props) $$invalidate(13, push = $$new_props.push);
+		if ('left' in $$new_props) $$invalidate(14, left = $$new_props.left);
+		if ('right' in $$new_props) $$invalidate(15, right = $$new_props.right);
+		if ('opened' in $$new_props) $$invalidate(6, opened = $$new_props.opened);
+		if ('resizable' in $$new_props) $$invalidate(0, resizable = $$new_props.resizable);
+		if ('backdrop' in $$new_props) $$invalidate(16, backdrop = $$new_props.backdrop);
+		if ('backdropEl' in $$new_props) $$invalidate(17, backdropEl = $$new_props.backdropEl);
+		if ('containerEl' in $$new_props) $$invalidate(18, containerEl = $$new_props.containerEl);
+		if ('closeByBackdropClick' in $$new_props) $$invalidate(19, closeByBackdropClick = $$new_props.closeByBackdropClick);
+		if ('visibleBreakpoint' in $$new_props) $$invalidate(20, visibleBreakpoint = $$new_props.visibleBreakpoint);
+		if ('collapsedBreakpoint' in $$new_props) $$invalidate(21, collapsedBreakpoint = $$new_props.collapsedBreakpoint);
+		if ('swipe' in $$new_props) $$invalidate(22, swipe = $$new_props.swipe);
+		if ('swipeNoFollow' in $$new_props) $$invalidate(23, swipeNoFollow = $$new_props.swipeNoFollow);
+		if ('swipeOnlyClose' in $$new_props) $$invalidate(24, swipeOnlyClose = $$new_props.swipeOnlyClose);
+		if ('swipeActiveArea' in $$new_props) $$invalidate(25, swipeActiveArea = $$new_props.swipeActiveArea);
+		if ('swipeThreshold' in $$new_props) $$invalidate(26, swipeThreshold = $$new_props.swipeThreshold);
+		if ('f7Slot' in $$new_props) $$invalidate(1, f7Slot = $$new_props.f7Slot);
+		if ('$$scope' in $$new_props) $$invalidate(30, $$scope = $$new_props.$$scope);
+	};
+
+	$$self.$$.update = () => {
+		if ($$self.$$.dirty[0] & /*side, left, right*/ 49664) {
+			// eslint-disable-next-line
+			$$invalidate(29, sideComputed = side || (left ? 'left' : right ? 'right' : 'left'));
+		}
+
+		if ($$self.$$.dirty[0] & /*effect, reveal, push*/ 13312) {
+			// eslint-disable-next-line
+			$$invalidate(28, effectComputed = effect || (reveal ? 'reveal' : push ? 'push' : 'cover'));
+		}
+
+		$$invalidate(4, classes = classNames(
+			className,
+			{
+				'panel-in': state.isOpened && !state.isClosing && !state.isBreakpoint,
+				'panel-in-breakpoint': state.isBreakpoint,
+				'panel-in-collapsed': state.isCollapsed,
+				'panel-resizable': resizable,
+				[`panel-${sideComputed}`]: sideComputed,
+				[`panel-${effectComputed}`]: effectComputed
+			},
+			colorClasses($$props)
+		));
+
+		if ($$self.$$.dirty[0] & /*resizable*/ 1) {
+			watchResizable(resizable);
+		}
+
+		if ($$self.$$.dirty[0] & /*opened*/ 64) {
+			watchOpened(opened);
+		}
+	};
+
+	$$props = exclude_internal_props($$props);
+
+	return [
+		resizable,
+		f7Slot,
+		el,
+		f7Panel,
+		classes,
+		$$restProps,
+		opened,
+		lec,
+		className,
+		side,
+		effect,
+		cover,
+		reveal,
+		push,
+		left,
+		right,
+		backdrop,
+		backdropEl,
+		containerEl,
+		closeByBackdropClick,
+		visibleBreakpoint,
+		collapsedBreakpoint,
+		swipe,
+		swipeNoFollow,
+		swipeOnlyClose,
+		swipeActiveArea,
+		swipeThreshold,
+		instance,
+		effectComputed,
+		sideComputed,
+		$$scope,
+		slots,
+		div_binding
+	];
+}
+
+class Panel extends SvelteComponent {
+	constructor(options) {
+		super();
+
+		init(
+			this,
+			options,
+			instance_1,
+			create_fragment,
+			safe_not_equal,
+			{
+				lec: 7,
+				class: 8,
+				side: 9,
+				effect: 10,
+				cover: 11,
+				reveal: 12,
+				push: 13,
+				left: 14,
+				right: 15,
+				opened: 6,
+				resizable: 0,
+				backdrop: 16,
+				backdropEl: 17,
+				containerEl: 18,
+				closeByBackdropClick: 19,
+				visibleBreakpoint: 20,
+				collapsedBreakpoint: 21,
+				swipe: 22,
+				swipeNoFollow: 23,
+				swipeOnlyClose: 24,
+				swipeActiveArea: 25,
+				swipeThreshold: 26,
+				f7Slot: 1,
+				instance: 27
+			},
+			null,
+			[-1, -1]
+		);
+	}
+
+	get instance() {
+		return this.$$.ctx[27];
+	}
+}
+
+export { Panel };

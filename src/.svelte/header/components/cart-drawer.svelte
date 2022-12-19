@@ -5,9 +5,8 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-export let inputWidth;
-  export let cart;  
-  import { Button, Block, View, Page } from 'framework7-liquivelte'; 
+  export let cart;
+  import { Button, Block, View, Page, List, ListItem, Stepper } from 'framework7-liquivelte'; 
   import Loadable from '../../../snippets/loadable.liquivelte';
 	import QuantityBox from '../../../snippets/quantity-box.liquivelte';
   import { cartStore, cartOpen } from '../../../scripts/store.module.js';
@@ -41,9 +40,9 @@ export let inputWidth;
 
   $: console.log('------> cart ', cart);
   </script>
-  <View   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
-    <Page   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
-      <Block   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
+  <View   cart={cart} min_amounts={min_amounts}    lec={lec} >
+    <Page   cart={cart} min_amounts={min_amounts}    lec={lec} >
+			<List  mediaList  cart={cart} min_amounts={min_amounts}    lec={lec} >
 				{#each  cart.items as item, index  }
 {@const forloop = {
   first: index === 0,
@@ -54,6 +53,43 @@ export let inputWidth;
   rindex0: ( cart.items).length - index - 1,
   length: ( cart.items).length,
 } }
+				<ListItem 
+				title="{ item.product_title }"
+			  cart={cart} min_amounts={min_amounts}    lec={lec} >
+			<div slot="after" class="ml-2"> { liquid.money(item.price) } </div>
+			<div slot="text" class="cart-item-options">
+				{#each  item.variant_options as option, index  }
+{@const forloop = {
+  first: index === 0,
+  index: index + 1,
+  index0: index,
+  last: index === ( item.variant_options).length - 1,
+  rindex: ( item.variant_options).length - index,
+  rindex0: ( item.variant_options).length - index - 1,
+  length: ( item.variant_options).length,
+} }
+				<span class="text-gray-500k text-base line-item-option"> { option } </span> <br>
+				{/each}
+			</div>
+				<img slot="media" src="{ liquid.img_url(item.image, '120x') }" width="80" />
+				<div slot="after-start">
+					<Stepper  buttonsOnly="{true}" small raised   cart={cart} min_amounts={min_amounts}    lec={lec} />
+				</div>
+			</ListItem>
+			{/each}
+			</List>
+      <Block   cart={cart} min_amounts={min_amounts}    lec={lec} >
+				{#each  cart.items as item, index  }
+{@const forloop = {
+  first: index === 0,
+  index: index + 1,
+  index0: index,
+  last: index === ( cart.items).length - 1,
+  rindex: ( cart.items).length - index,
+  rindex0: ( cart.items).length - index - 1,
+  length: ( cart.items).length,
+} }
+
 					<div data-id="{ item.id }" class="cart-item w-full flex mb-10" transition:scale="{ { duration: 300, easing: quintInOut } }" >
 						<img src="{ liquid.img_url(item.image, '120x') }" alt="cart item product image" class="flex-grow-0 mr-2 w-32" />
 						<div class="cart-item-content">
@@ -74,12 +110,12 @@ export let inputWidth;
 									{/each}
 								</div>
 							</div>
-							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
-								<QuantityBox  quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} /> 
+							<Loadable  bind:loading   cart={cart} min_amounts={min_amounts}    lec={lec} > 
+								<QuantityBox  quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}"   cart={cart} min_amounts={min_amounts}    lec={lec} /> 
 							</Loadable>
 						</div>
 						<div class="cart-item-right">
-							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
+							<Loadable  bind:loading   cart={cart} min_amounts={min_amounts}    lec={lec} > 
 								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > </div>
 							</Loadable>
 							<div class="cart-item-price text-black text-xl"> { liquid.money(item.price) } </div>
@@ -91,7 +127,7 @@ export let inputWidth;
   </View>
 
 	<style>
-
+		
 	.cart-drawer-bottom {
 		align-self: flex-end;
 		width: 100%;
