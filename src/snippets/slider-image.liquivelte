@@ -4,7 +4,7 @@
   export let sizes;
 </script>
 <div class="image">
-  <Image src="{{- src -}}" sizes="{{- sizes -}}" />
+  <Image sizes="{{- sizes -}}" />
 </div>
 
 {% schema %}

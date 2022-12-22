@@ -1,17 +1,8 @@
 	{%- liquid
 			
 			
-			assign style = null
-			assign classes = null
-			assign material = null
-			assign f7 = null
-			assign icon = null
-			assign ios = null
-			assign aurora = null
-			assign md = null
-			assign tooltip = null
-			assign tooltipTrigger = null
-			assign size = null
+			assign src = null
+			assign sizes = null
 			-%}
 	{%- liquid
 	assign lv_props_arr = props | split: '-prsp-'
@@ -36,38 +27,11 @@
 	
 	endfor
 	endif
-	if lv_propName == 'style'
-		assign style = lv_propValue
+	if lv_propName == 'src'
+		assign src = lv_propValue
 	endif
-	if lv_propName == 'classes'
-		assign classes = lv_propValue
-	endif
-	if lv_propName == 'material'
-		assign material = lv_propValue
-	endif
-	if lv_propName == 'f7'
-		assign f7 = lv_propValue
-	endif
-	if lv_propName == 'icon'
-		assign icon = lv_propValue
-	endif
-	if lv_propName == 'ios'
-		assign ios = lv_propValue
-	endif
-	if lv_propName == 'aurora'
-		assign aurora = lv_propValue
-	endif
-	if lv_propName == 'md'
-		assign md = lv_propValue
-	endif
-	if lv_propName == 'tooltip'
-		assign tooltip = lv_propValue
-	endif
-	if lv_propName == 'tooltipTrigger'
-		assign tooltipTrigger = lv_propValue
-	endif
-	if lv_propName == 'size'
-		assign size = lv_propValue
+	if lv_propName == 'sizes'
+		assign sizes = lv_propValue
 	endif
 	endfor
 	-%}
@@ -80,36 +44,27 @@
 					assign lv_name = module_and_slotname | split: '-smns-' | last
 					assign lv_value = content_and_value | split: '-scvs-' | last
 					
-					if lv_module == 'framework7-liquivelte-icon'
-						assign slot_default_framework7-liquivelte_icon = lv_value | strip
+					if lv_module == 'slider-image'
+						assign slot_default_slider-image = lv_value | strip
 					endif
 				endfor
 				-%}
 	{%- unless sub_include -%} 
-	<div class="liquivelte-component icon" data-liquivelte-component-name="icon.liquivelte">
+	<div class="liquivelte-component slider-image" data-liquivelte-component-name="slider-image.liquivelte">
 	{%- endunless -%}
 	
-
-<i
-  style="{iconStyle}"
-  class="icon {{ iconClasses }} {{ classes }}"
-  bind:this="{el}"
-  {...restProps($$restProps)}
-  use:useTooltip="{ { tooltip, tooltipTrigger } }"
->
-  {{ iconText | default: '' }}
+<div class="image">
   
-	{%- if sub_include -%}
-		{%- if slot_default_framework7-liquivelte_icon != blank -%}
-			{{- slot_default_framework7-liquivelte_icon -}}
-		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
-	
-</i>
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props_Image %}sizes-kvsp-{{ sizes }}{% endcapture %}
+{% assign modulename = basename | append: 'image' %}
+{% include modulename, liquivelte: true, props: props_Image, sub_include: true, basename: '' %}
+{% assign props = '' %}
+</div>
+
 
 	
 						
@@ -167,20 +122,11 @@
 	{%- liquid
 			
 			
-			assign style = null
-			assign classes = null
-			assign material = null
-			assign f7 = null
-			assign icon = null
-			assign ios = null
-			assign aurora = null
-			assign md = null
-			assign tooltip = null
-			assign tooltipTrigger = null
-			assign size = null
+			assign src = null
+			assign sizes = null
 			-%}
 	{%- liquid 
-			assign slot_default_framework7-liquivelte_icon = null
+			assign slot_default_slider-image = null
 			
 			-%}
 	{%- unless sub_include -%} 

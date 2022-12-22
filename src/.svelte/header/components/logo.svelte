@@ -5,9 +5,6 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-export let min_amounts;
-export let cart;
-export let inputWidth;
 const section = {};
 const shop = {};
 export let sectionƒƒsettings; 

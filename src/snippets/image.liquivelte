@@ -1,120 +1,4 @@
-<!--  
-{% assign pageurl = content_for_header| split:'"pageurl":"' | last | split:'"' | first %}
-  {% assign urlparams = pageurl | split: '?' | last 
-    | replace:'\/','/' 
-    | replace:'%20',' ' 
-    | replace:'\u0026','&' | split: '&' %}
 
-  {% for param in urlparams %}   
-    {% assign key = param | split: '=' | first %}
-    {% assign value = param | split: '=' | last %}
-    {% if key == 'sizetest' %}
-      {% assign image_test_mode = true %}
-    {% endif %}
-  {% endfor %}
-
-{% if sizes != blank %}
-  {% assign default_sizes = '320@320, 640@640, 768@768, 960@960, 1024@1024, 1280@1280, 1440@1440, 1536@1536, 1920@1920' %}
-  {% if sizes contains '%' or sizes contains 'vw' %}
-    {% assign image_sizes = default_sizes | replace: ' ', '' | split: ',' %}
-  {% else %}
-    {% assign image_sizes = sizes | replace: ' ', '' | split: ',' %}
-  {% endif %}
-  {% assign sizes = sizes | replace: ' ', '' | split: ',' %}
-  {% capture srcset %}
-    {%- for size in image_sizes %}
-    {%- liquid 
-        unless size contains '@' 
-          assign _size = size
-          assign size = _size | append: '@' | append: _size 
-        endunless 
-        assign img_width = size | split: '@' | first 
-        -%}
-      {% comment %} 
-        We add 2x and 3x versions for usage in high dpi devices 
-      {% endcomment %}
-      {%- liquid
-        assign img_width_x2 = img_width | times: 2 
-        assign img_width_x3 = img_width | times: 3 
-        assign img_width_x = img_width | append: 'x' 
-        assign img_width_x_x2 = img_width_x2 | append: 'x' 
-        assign img_width_x_x3 = img_width_x3 | append: 'x'
-      -%}
-      {%- liquid
-        if imageUrl.aspect_ratio > 0 and aspect_ratio == blank
-          assign aspect_ratio = imageUrl.aspect_ratio
-        elsif aspect_ratio == blank
-          assign aspect_ratio = 1 
-        endif 
-      -%}
-      {%- if image_test_mode -%}
-        https://via.placeholder.com/{{- img_width_x -}}{% if square == true %}{{ img_width }}{% else %}{{ img_width | divided_by: aspect_ratio | ceil }} {{ img_width }}{% endif %}w,
-        https://via.placeholder.com/{{- img_width_x_x2 -}}{% if square == true %}{{ img_width_x2 }}{% else %}{{ img_width_x2 | divided_by: aspect_ratio | ceil }} {{ img_width_x2 }}{% endif %}w,
-        https://via.placeholder.com/{{- img_width_x_x3 -}}{% if square == true %}{{ img_width_x3 }}{% else %}{{ img_width_x3 | divided_by: aspect_ratio | ceil }} {{ img_width_x3 }}{% endif %}w
-      {%- else -%}
-        {%- if square == true -%}
-          {{ imageUrl | image_url: width: img_width_x, height: img_width_x }} {{ img_width }}w,
-          {{ imageUrl | image_url: width: img_width_x2, height: img_width_x2 }} {{ img_width_x2 }}w,
-          {{ imageUrl | image_url: width: img_width_x3, height: img_width_x3 }} {{ img_width_x3 }}w
-        {%- else -%}
-          {{ imageUrl | image_url: width: img_width }} {{ img_width }}w,
-          {{ imageUrl | image_url: width: img_width_x2 }} {{ img_width_x2 }}w,
-          {{ imageUrl | image_url: width: img_width_x3 }} {{ img_width_x3 }}w
-        {%- endif -%}
-      {%- endif -%}
-    {%- unless forloop.last -%}, {%- endunless -%}
-    {%- endfor -%}
-  {% endcapture %}
-  {% capture sizes -%}
-    {%- assign prev_viewport_size_with_unit = '' -%}
-    {%- for size in sizes -%}
-      {%- liquid 
-      unless size contains '@'
-          unless size contains 'vw' or size contains 'px' or size contains '%'
-            assign default_size = size | append: 'px' 
-          else
-            assign default_size = size
-          endunless 
-          assign prev_viewport_size_with_unit_plus_1 = prev_viewport_size_with_unit | plus: 1
-          echo '@media(min-width: ' | append: prev_viewport_size_with_unit_plus_1 | append: 'px' | append: ') ' | append: default_size
-          unless forloop.last
-            echo ', '
-          endunless
-          continue
-        endunless
-      -%}
-      {%- liquid
-              assign img_width = size | split: '@' | first 
-              assign viewport_size = size | split: '@' | last 
-        -%}
-        {%- liquid 
-          unless viewport_size contains 'vw' or viewport_size contains 'px' or viewport_size contains '%'
-            assign viewport_size_with_unit = viewport_size | append: 'px' 
-          endunless 
-        -%}
-        {%- liquid
-          unless img_width contains 'vw' or img_width contains 'px' or img_width contains '%'
-            assign img_width_with_unit = img_width | append: 'px' 
-          else
-            assign img_width_with_unit = img_width 
-          endunless 
-        -%}
-        {%- if viewport_size == 'fixed' -%}
-          {{- img_width_with_unit -}}
-        {%- else -%}
-        @media{% if prev_viewport_size_with_unit != blank -%}
-          (min-width: {{ prev_viewport_size_with_unit | plus: 1 }}) and {% endif -%}
-        (max-width: {{ viewport_size_with_unit -}}) {{ img_width_with_unit -}}
-        {%- assign prev_viewport_size_with_unit = viewport_size_with_unit -%}
-      {%- endif -%}
-      {%- unless forloop.last -%}, {% endunless -%}
-    {%- endfor -%}
-  {% endcapture %}
-{% endif %}
-{% assign src = image | image_url: width: null %}
-{% assign alt = image.alt %}
-{% assign aspect_ratio = image.aspect_ratio %}
--->
 <script>
 import src from 'theme';
 import alt from 'theme';
@@ -128,16 +12,15 @@ export let classes;
     sizes="{{- sizes -}}"
     class="{{- classes -}}"
     src="{{- src -}}"
-    alt="{{ alt | escape }}"
-    loading="{%- if lazy == false -%}eager{%- else -%}lazy{%- endif -%}"
-    width="{{ imageUrl.width }}"
+    alt="{{- alt | escape -}}"
+    width="{{- imageUrl.width -}}"
     height="{{- imageUrl.width | divided_by: aspect_ratio | ceil -}}"
   >
 {% else %}
 <img
-  class="{{ classes }}"
+  class="{{- classes -}}"
   src="{{- src -}}"
-  alt="{{ alt | escape }}"
+  alt="{{- alt | escape -}}"
 >
 {% endif %}
 

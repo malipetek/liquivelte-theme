@@ -192,7 +192,7 @@
 
     {#if hasNameSlots || name}
       <div class="message-name" on:click={onNameClick}>
-        {plainText(name)}
+        {{{ name }}}
         
 	{%- if slot_name_framework7-liquivelte_message != blank -%}
 		{{- slot_name_framework7-liquivelte_message -}}
@@ -202,7 +202,7 @@
     {/if}
     {#if hasHeaderSlots || header}
       <div class="message-header" on:click={onHeaderClick}>
-        {plainText(header)}
+        {{{ header }}}
         
 	{%- if slot_header_framework7-liquivelte_message != blank -%}
 		{{- slot_header_framework7-liquivelte_message -}}
@@ -230,7 +230,7 @@
       {/if}
       {#if hasTextHeaderSlots || textHeader}
         <div class="message-text-header">
-          {plainText(textHeader)}
+          {{{ textHeader }}}
           
 	{%- if slot_text-header_framework7-liquivelte_message != blank -%}
 		{{- slot_text-header_framework7-liquivelte_message -}}
@@ -240,7 +240,7 @@
       {/if}
       {#if hasTextSlots || text || htmlText || typing}
         <div class="message-text" on:click={onTextClick}>
-          {plainText(text)}
+          {{{ text }}}
           {#if htmlText}{@html htmlText}{/if}
           
 	{%- if slot_text_framework7-liquivelte_message != blank -%}
@@ -258,7 +258,7 @@
       {/if}
       {#if hasTextFooterSlots || textFooter}
         <div class="message-text-footer">
-          {plainText(textFooter)}
+          {{{ textFooter }}}
           
 	{%- if slot_text-footer_framework7-liquivelte_message != blank -%}
 		{{- slot_text-footer_framework7-liquivelte_message -}}
@@ -285,7 +285,7 @@
     </div>
     {#if hasFooterSlots || footer}
       <div class="message-footer" on:click={onFooterClick}>
-        {plainText(footer)}
+        {{{ footer }}}
         
 	{%- if slot_footer_framework7-liquivelte_message != blank -%}
 		{{- slot_footer_framework7-liquivelte_message -}}

@@ -63,8 +63,8 @@
 	
 
 <div class={computedClasses} {...restProps($$restProps)}>
-  {#if typeof title !== 'undefined'}{plainText(title)}{/if}
-  {#if typeof subtitle !== 'undefined'}<span class="subtitle">{plainText(subtitle)}</span>{/if}
+  {#if typeof title !== 'undefined'}{{{ title }}}{/if}
+  {#if typeof subtitle !== 'undefined'}<span class="subtitle">{{{ subtitle }}}</span>{/if}
   
 	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_nav-title != blank -%}

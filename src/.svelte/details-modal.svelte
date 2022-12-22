@@ -4,13 +4,6 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-export let shopƒƒname;
-export let sectionƒƒsettings;
-export let logo_alt;
-export let logo_height;
-export let min_amounts;
-export let cart;
-export let inputWidth;
 import { onMount } from "svelte";
 export let classes = '';
 let container, detailsContainer, summaryToggle;

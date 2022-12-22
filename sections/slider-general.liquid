@@ -105,7 +105,15 @@ smns stands for "slot module name separator"
 
 {%- capture slot_content_def_SwiperSlide -%}
       {% if block.type == 'image' %}
-
+        
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props_SliderImage %}{% endcapture %}
+{% assign modulename = basename | append: 'slider-image' %}
+{% include modulename, liquivelte: true, props: props_SliderImage, sub_include: true, basename: '' %}
+{% assign props = '' %}
       {% elsif block.type == 'image-with-card' %}
       
       {% elsif block.type == 'image-with-card' %}
@@ -141,6 +149,19 @@ smns stands for "slot module name separator"
       "id": "collection",
       "type": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Slider Image"
+    },
+    {
+      "type": "header",
+      "content": "Swiper"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
     }
   ],
   "presets": [

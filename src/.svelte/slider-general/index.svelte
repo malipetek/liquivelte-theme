@@ -5,7 +5,7 @@
   let index = 0;
 
     import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
-
+    import SliderImage from '../../snippets/slider-image.liquivelte';
 </script>
 
 <Block      lec={lec} >
@@ -23,7 +23,7 @@
 } }
     <SwiperSlide       lec={lec} >
       {#if block.type == 'image' }
-
+        <SliderImage       lec={lec} />
       {:else if block.type == 'image-with-card'}
       
       {:else if block.type == 'image-with-card'}

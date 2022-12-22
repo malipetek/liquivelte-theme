@@ -1,17 +1,8 @@
 	{%- liquid
 			
 			
-			assign style = null
+			assign sizes = null
 			assign classes = null
-			assign material = null
-			assign f7 = null
-			assign icon = null
-			assign ios = null
-			assign aurora = null
-			assign md = null
-			assign tooltip = null
-			assign tooltipTrigger = null
-			assign size = null
 			-%}
 	{%- liquid
 	assign lv_props_arr = props | split: '-prsp-'
@@ -36,38 +27,11 @@
 	
 	endfor
 	endif
-	if lv_propName == 'style'
-		assign style = lv_propValue
+	if lv_propName == 'sizes'
+		assign sizes = lv_propValue
 	endif
 	if lv_propName == 'classes'
 		assign classes = lv_propValue
-	endif
-	if lv_propName == 'material'
-		assign material = lv_propValue
-	endif
-	if lv_propName == 'f7'
-		assign f7 = lv_propValue
-	endif
-	if lv_propName == 'icon'
-		assign icon = lv_propValue
-	endif
-	if lv_propName == 'ios'
-		assign ios = lv_propValue
-	endif
-	if lv_propName == 'aurora'
-		assign aurora = lv_propValue
-	endif
-	if lv_propName == 'md'
-		assign md = lv_propValue
-	endif
-	if lv_propName == 'tooltip'
-		assign tooltip = lv_propValue
-	endif
-	if lv_propName == 'tooltipTrigger'
-		assign tooltipTrigger = lv_propValue
-	endif
-	if lv_propName == 'size'
-		assign size = lv_propValue
 	endif
 	endfor
 	-%}
@@ -80,42 +44,40 @@
 					assign lv_name = module_and_slotname | split: '-smns-' | last
 					assign lv_value = content_and_value | split: '-scvs-' | last
 					
-					if lv_module == 'framework7-liquivelte-icon'
-						assign slot_default_framework7-liquivelte_icon = lv_value | strip
+					if lv_module == 'image'
+						assign slot_default_image = lv_value | strip
 					endif
 				endfor
 				-%}
 	{%- unless sub_include -%} 
-	<div class="liquivelte-component icon" data-liquivelte-component-name="icon.liquivelte">
+	<div class="liquivelte-component image" data-liquivelte-component-name="image.liquivelte">
 	{%- endunless -%}
 	
 
-<i
-  style="{iconStyle}"
-  class="icon {{ iconClasses }} {{ classes }}"
-  bind:this="{el}"
-  {...restProps($$restProps)}
-  use:useTooltip="{ { tooltip, tooltipTrigger } }"
+{% if srcset %}
+  <img
+    srcset="{{ srcset }}"
+    sizes="{{ sizes }}"
+    class="{{ classes }}"
+    src="{{ src }}"
+    alt="{{ alt | escape }}" liquivelte-value-cache="escape§{{alt}}§{{alt| escape  }}"
+    width="{{ imageUrl.width }}"
+    height="{{ imageUrl.width | divided_by: aspect_ratio | ceil }}" liquivelte-value-cache="ceil§{{divided_by§{{imageUrl.width}}, {{aspect_ratio}}}}§{{imageUrl.width| divided_by: aspect_ratio | ceil  }}"
+  >
+{% else %}
+<img
+  class="{{ classes }}"
+  src="{{ src }}"
+  alt="{{ alt | escape }}" liquivelte-value-cache="escape§{{alt}}§{{alt| escape  }}"
 >
-  {{ iconText | default: '' }}
-  
-	{%- if sub_include -%}
-		{%- if slot_default_framework7-liquivelte_icon != blank -%}
-			{{- slot_default_framework7-liquivelte_icon -}}
-		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
-	
-</i>
+{% endif %}
+
 
 	
 						
 						
 	<script type="text/noscript" class="instance-data">{
-	
+	"src" : {{ src | json }} , "alt" : {{ alt | json }} , "aspect_ratio" : {{ aspect_ratio | json }}
 	
 	
 	}</script>
@@ -167,20 +129,11 @@
 	{%- liquid
 			
 			
-			assign style = null
+			assign sizes = null
 			assign classes = null
-			assign material = null
-			assign f7 = null
-			assign icon = null
-			assign ios = null
-			assign aurora = null
-			assign md = null
-			assign tooltip = null
-			assign tooltipTrigger = null
-			assign size = null
 			-%}
 	{%- liquid 
-			assign slot_default_framework7-liquivelte_icon = null
+			assign slot_default_image = null
 			
 			-%}
 	{%- unless sub_include -%} 
