@@ -709,7 +709,7 @@
     data-virtual-list-index={virtualListIndex}
     {...restProps($$restProps)}
   >
-    <span><slot>{{{ title }}}</slot></span>
+    <span><slot>{{ title }}</slot></span>
   </li>
 {:else if isSimple}
   <li
@@ -720,7 +720,7 @@
     data-virtual-list-index={virtualListIndex}
     {...restProps($$restProps)}
   >
-    {{{ title }}}
+    {{ title }}
     
 	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_list-item != blank -%}
@@ -787,7 +787,7 @@
                 {#if isMedia}
                   {#if hasHeader}
                     <div class="item-header">
-                      {{{ header }}}
+                      {{ header }}
                       
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -803,7 +803,7 @@
 
                     {#if hasTitle}
                       <div class="item-title">
-                        {{{ title }}}
+                        {{ title }}
                         
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -824,7 +824,7 @@
 	{%- endif -%}
 
                         {#if typeof after !== 'undefined'}
-                          <span>{{{ after }}}</span>
+                          <span>{{ after }}</span>
                         {/if}
                         {#if typeof badge !== 'undefined'}
                           
@@ -839,7 +839,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -860,7 +860,7 @@ smns stands for "slot module name separator"
                   </div>
                   {#if hasSubtitle}
                     <div class="item-subtitle">
-                      {{{ subtitle }}}
+                      {{ subtitle }}
                       
 	{%- if slot_subtitle_framework7-liquivelte_list-item != blank -%}
 		{{- slot_subtitle_framework7-liquivelte_list-item -}}
@@ -870,7 +870,7 @@ smns stands for "slot module name separator"
                   {/if}
                   {#if hasText}
                     <div class="item-text">
-                      {{{ text }}}
+                      {{ text }}
                       
 	{%- if slot_text_framework7-liquivelte_list-item != blank -%}
 		{{- slot_text_framework7-liquivelte_list-item -}}
@@ -898,7 +898,7 @@ smns stands for "slot module name separator"
                   {/if}
                   {#if hasFooter}
                     <div class="item-footer">
-                      {{{ footer }}}
+                      {{ footer }}
                       
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -916,7 +916,7 @@ smns stands for "slot module name separator"
                     <div class="item-title">
                       {#if hasHeader}
                         <div class="item-header">
-                          {{{ header }}}
+                          {{ header }}
                           
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -924,7 +924,7 @@ smns stands for "slot module name separator"
 
                         </div>
                       {/if}
-                      {{{ title }}}
+                      {{ title }}
                       
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -932,7 +932,7 @@ smns stands for "slot module name separator"
 
                       {#if hasFooter}
                         <div class="item-footer">
-                          {{{ footer }}}
+                          {{ footer }}
                           
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -955,7 +955,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                       {#if typeof after !== 'undefined'}
-                        <span>{{{ after }}}</span>
+                        <span>{{ after }}</span>
                       {/if}
                       {#if typeof badge !== 'undefined'}
                         
@@ -970,7 +970,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -1071,7 +1071,7 @@ smns stands for "slot module name separator"
                 {#if isMedia}
                   {#if hasHeader}
                     <div class="item-header">
-                      {{{ header }}}
+                      {{ header }}
                       
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -1087,7 +1087,7 @@ smns stands for "slot module name separator"
 
                     {#if hasTitle}
                       <div class="item-title">
-                        {{{ title }}}
+                        {{ title }}
                         
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -1108,7 +1108,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                         {#if typeof after !== 'undefined'}
-                          <span>{{{ after }}}</span>
+                          <span>{{ after }}</span>
                         {/if}
                         {#if typeof badge !== 'undefined'}
                           
@@ -1123,7 +1123,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -1144,7 +1144,7 @@ smns stands for "slot module name separator"
                   </div>
                   {#if hasSubtitle}
                     <div class="item-subtitle">
-                      {{{ subtitle }}}
+                      {{ subtitle }}
                       
 	{%- if slot_subtitle_framework7-liquivelte_list-item != blank -%}
 		{{- slot_subtitle_framework7-liquivelte_list-item -}}
@@ -1154,7 +1154,7 @@ smns stands for "slot module name separator"
                   {/if}
                   {#if hasText}
                     <div class="item-text">
-                      {{{ text }}}
+                      {{ text }}
                       
 	{%- if slot_text_framework7-liquivelte_list-item != blank -%}
 		{{- slot_text_framework7-liquivelte_list-item -}}
@@ -1182,7 +1182,7 @@ smns stands for "slot module name separator"
                   {/if}
                   {#if hasFooter}
                     <div class="item-footer">
-                      {{{ footer }}}
+                      {{ footer }}
                       
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -1200,7 +1200,7 @@ smns stands for "slot module name separator"
                     <div class="item-title">
                       {#if hasHeader}
                         <div class="item-header">
-                          {{{ header }}}
+                          {{ header }}
                           
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -1208,7 +1208,7 @@ smns stands for "slot module name separator"
 
                         </div>
                       {/if}
-                      {{{ title }}}
+                      {{ title }}
                       
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -1216,7 +1216,7 @@ smns stands for "slot module name separator"
 
                       {#if hasFooter}
                         <div class="item-footer">
-                          {{{ footer }}}
+                          {{ footer }}
                           
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -1239,7 +1239,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                       {#if typeof after !== 'undefined'}
-                        <span>{{{ after }}}</span>
+                        <span>{{ after }}</span>
                       {/if}
                       {#if typeof badge !== 'undefined'}
                         
@@ -1254,7 +1254,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -1339,7 +1339,7 @@ smns stands for "slot module name separator"
                 {#if isMedia}
                   {#if hasHeader}
                     <div class="item-header">
-                      {{{ header }}}
+                      {{ header }}
                       
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -1355,7 +1355,7 @@ smns stands for "slot module name separator"
 
                     {#if hasTitle}
                       <div class="item-title">
-                        {{{ title }}}
+                        {{ title }}
                         
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -1376,7 +1376,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                         {#if typeof after !== 'undefined'}
-                          <span>{{{ after }}}</span>
+                          <span>{{ after }}</span>
                         {/if}
                         {#if typeof badge !== 'undefined'}
                           
@@ -1391,7 +1391,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -1412,7 +1412,7 @@ smns stands for "slot module name separator"
                   </div>
                   {#if hasSubtitle}
                     <div class="item-subtitle">
-                      {{{ subtitle }}}
+                      {{ subtitle }}
                       
 	{%- if slot_subtitle_framework7-liquivelte_list-item != blank -%}
 		{{- slot_subtitle_framework7-liquivelte_list-item -}}
@@ -1422,7 +1422,7 @@ smns stands for "slot module name separator"
                   {/if}
                   {#if hasText}
                     <div class="item-text">
-                      {{{ text }}}
+                      {{ text }}
                       
 	{%- if slot_text_framework7-liquivelte_list-item != blank -%}
 		{{- slot_text_framework7-liquivelte_list-item -}}
@@ -1450,7 +1450,7 @@ smns stands for "slot module name separator"
                   {/if}
                   {#if hasFooter}
                     <div class="item-footer">
-                      {{{ footer }}}
+                      {{ footer }}
                       
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -1468,7 +1468,7 @@ smns stands for "slot module name separator"
                     <div class="item-title">
                       {#if hasHeader}
                         <div class="item-header">
-                          {{{ header }}}
+                          {{ header }}
                           
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -1476,7 +1476,7 @@ smns stands for "slot module name separator"
 
                         </div>
                       {/if}
-                      {{{ title }}}
+                      {{ title }}
                       
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -1484,7 +1484,7 @@ smns stands for "slot module name separator"
 
                       {#if hasFooter}
                         <div class="item-footer">
-                          {{{ footer }}}
+                          {{ footer }}
                           
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -1507,7 +1507,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                       {#if typeof after !== 'undefined'}
-                        <span>{{{ after }}}</span>
+                        <span>{{ after }}</span>
                       {/if}
                       {#if typeof badge !== 'undefined'}
                         
@@ -1522,7 +1522,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -1619,7 +1619,7 @@ smns stands for "slot module name separator"
             {#if isMedia}
               {#if hasHeader}
                 <div class="item-header">
-                  {{{ header }}}
+                  {{ header }}
                   
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -1635,7 +1635,7 @@ smns stands for "slot module name separator"
 
                 {#if hasTitle}
                   <div class="item-title">
-                    {{{ title }}}
+                    {{ title }}
                     
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -1656,7 +1656,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                     {#if typeof after !== 'undefined'}
-                      <span>{{{ after }}}</span>
+                      <span>{{ after }}</span>
                     {/if}
                     {#if typeof badge !== 'undefined'}
                       
@@ -1671,7 +1671,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -1692,7 +1692,7 @@ smns stands for "slot module name separator"
               </div>
               {#if hasSubtitle}
                 <div class="item-subtitle">
-                  {{{ subtitle }}}
+                  {{ subtitle }}
                   
 	{%- if slot_subtitle_framework7-liquivelte_list-item != blank -%}
 		{{- slot_subtitle_framework7-liquivelte_list-item -}}
@@ -1702,7 +1702,7 @@ smns stands for "slot module name separator"
               {/if}
               {#if hasText}
                 <div class="item-text">
-                  {{{ text }}}
+                  {{ text }}
                   
 	{%- if slot_text_framework7-liquivelte_list-item != blank -%}
 		{{- slot_text_framework7-liquivelte_list-item -}}
@@ -1730,7 +1730,7 @@ smns stands for "slot module name separator"
               {/if}
               {#if hasFooter}
                 <div class="item-footer">
-                  {{{ footer }}}
+                  {{ footer }}
                   
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -1748,7 +1748,7 @@ smns stands for "slot module name separator"
                 <div class="item-title">
                   {#if hasHeader}
                     <div class="item-header">
-                      {{{ header }}}
+                      {{ header }}
                       
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -1756,7 +1756,7 @@ smns stands for "slot module name separator"
 
                     </div>
                   {/if}
-                  {{{ title }}}
+                  {{ title }}
                   
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -1764,7 +1764,7 @@ smns stands for "slot module name separator"
 
                   {#if hasFooter}
                     <div class="item-footer">
-                      {{{ footer }}}
+                      {{ footer }}
                       
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -1787,7 +1787,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                   {#if typeof after !== 'undefined'}
-                    <span>{{{ after }}}</span>
+                    <span>{{ after }}</span>
                   {/if}
                   {#if typeof badge !== 'undefined'}
                     
@@ -1802,7 +1802,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -1903,7 +1903,7 @@ smns stands for "slot module name separator"
             {#if isMedia}
               {#if hasHeader}
                 <div class="item-header">
-                  {{{ header }}}
+                  {{ header }}
                   
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -1919,7 +1919,7 @@ smns stands for "slot module name separator"
 
                 {#if hasTitle}
                   <div class="item-title">
-                    {{{ title }}}
+                    {{ title }}
                     
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -1940,7 +1940,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                     {#if typeof after !== 'undefined'}
-                      <span>{{{ after }}}</span>
+                      <span>{{ after }}</span>
                     {/if}
                     {#if typeof badge !== 'undefined'}
                       
@@ -1955,7 +1955,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -1976,7 +1976,7 @@ smns stands for "slot module name separator"
               </div>
               {#if hasSubtitle}
                 <div class="item-subtitle">
-                  {{{ subtitle }}}
+                  {{ subtitle }}
                   
 	{%- if slot_subtitle_framework7-liquivelte_list-item != blank -%}
 		{{- slot_subtitle_framework7-liquivelte_list-item -}}
@@ -1986,7 +1986,7 @@ smns stands for "slot module name separator"
               {/if}
               {#if hasText}
                 <div class="item-text">
-                  {{{ text }}}
+                  {{ text }}
                   
 	{%- if slot_text_framework7-liquivelte_list-item != blank -%}
 		{{- slot_text_framework7-liquivelte_list-item -}}
@@ -2014,7 +2014,7 @@ smns stands for "slot module name separator"
               {/if}
               {#if hasFooter}
                 <div class="item-footer">
-                  {{{ footer }}}
+                  {{ footer }}
                   
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -2032,7 +2032,7 @@ smns stands for "slot module name separator"
                 <div class="item-title">
                   {#if hasHeader}
                     <div class="item-header">
-                      {{{ header }}}
+                      {{ header }}
                       
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -2040,7 +2040,7 @@ smns stands for "slot module name separator"
 
                     </div>
                   {/if}
-                  {{{ title }}}
+                  {{ title }}
                   
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -2048,7 +2048,7 @@ smns stands for "slot module name separator"
 
                   {#if hasFooter}
                     <div class="item-footer">
-                      {{{ footer }}}
+                      {{ footer }}
                       
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -2071,7 +2071,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                   {#if typeof after !== 'undefined'}
-                    <span>{{{ after }}}</span>
+                    <span>{{ after }}</span>
                   {/if}
                   {#if typeof badge !== 'undefined'}
                     
@@ -2086,7 +2086,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -2171,7 +2171,7 @@ smns stands for "slot module name separator"
             {#if isMedia}
               {#if hasHeader}
                 <div class="item-header">
-                  {{{ header }}}
+                  {{ header }}
                   
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -2187,7 +2187,7 @@ smns stands for "slot module name separator"
 
                 {#if hasTitle}
                   <div class="item-title">
-                    {{{ title }}}
+                    {{ title }}
                     
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -2208,7 +2208,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                     {#if typeof after !== 'undefined'}
-                      <span>{{{ after }}}</span>
+                      <span>{{ after }}</span>
                     {/if}
                     {#if typeof badge !== 'undefined'}
                       
@@ -2223,7 +2223,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
@@ -2244,7 +2244,7 @@ smns stands for "slot module name separator"
               </div>
               {#if hasSubtitle}
                 <div class="item-subtitle">
-                  {{{ subtitle }}}
+                  {{ subtitle }}
                   
 	{%- if slot_subtitle_framework7-liquivelte_list-item != blank -%}
 		{{- slot_subtitle_framework7-liquivelte_list-item -}}
@@ -2254,7 +2254,7 @@ smns stands for "slot module name separator"
               {/if}
               {#if hasText}
                 <div class="item-text">
-                  {{{ text }}}
+                  {{ text }}
                   
 	{%- if slot_text_framework7-liquivelte_list-item != blank -%}
 		{{- slot_text_framework7-liquivelte_list-item -}}
@@ -2282,7 +2282,7 @@ smns stands for "slot module name separator"
               {/if}
               {#if hasFooter}
                 <div class="item-footer">
-                  {{{ footer }}}
+                  {{ footer }}
                   
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -2300,7 +2300,7 @@ smns stands for "slot module name separator"
                 <div class="item-title">
                   {#if hasHeader}
                     <div class="item-header">
-                      {{{ header }}}
+                      {{ header }}
                       
 	{%- if slot_header_framework7-liquivelte_list-item != blank -%}
 		{{- slot_header_framework7-liquivelte_list-item -}}
@@ -2308,7 +2308,7 @@ smns stands for "slot module name separator"
 
                     </div>
                   {/if}
-                  {{{ title }}}
+                  {{ title }}
                   
 	{%- if slot_title_framework7-liquivelte_list-item != blank -%}
 		{{- slot_title_framework7-liquivelte_list-item -}}
@@ -2316,7 +2316,7 @@ smns stands for "slot module name separator"
 
                   {#if hasFooter}
                     <div class="item-footer">
-                      {{{ footer }}}
+                      {{ footer }}
                       
 	{%- if slot_footer_framework7-liquivelte_list-item != blank -%}
 		{{- slot_footer_framework7-liquivelte_list-item -}}
@@ -2339,7 +2339,7 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
                   {#if typeof after !== 'undefined'}
-                    <span>{{{ after }}}</span>
+                    <span>{{ after }}</span>
                   {/if}
                   {#if typeof badge !== 'undefined'}
                     
@@ -2354,7 +2354,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{badgeColor}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{{ badge }}}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
