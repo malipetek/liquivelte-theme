@@ -362,7 +362,7 @@
 
         {#if typeof label !== 'undefined' || hasLabelSlots}
           <div class={labelClasses}>
-            {{ label }}
+            {{ label | default: '' }}
             
 	{%- if slot_label_framework7-liquivelte_list-input != blank -%}
 		{{- slot_label_framework7-liquivelte_list-input -}}
@@ -540,7 +540,7 @@
 
           {#if hasErrorMessage && errorMessageForce}
             <div class="item-input-error-message">
-              {{ errorMessage }}
+              {{ errorMessage | default: '' }}
               
 	{%- if slot_error-message_framework7-liquivelte_list-input != blank -%}
 		{{- slot_error-message_framework7-liquivelte_list-input -}}
@@ -551,7 +551,7 @@
           {#if clearButton}<span class="input-clear-button" />{/if}
           {#if typeof info !== 'undefined' || hasInfoSlots}
             <div class="item-input-info">
-              {{ info }}
+              {{ info | default: '' }}
               
 	{%- if slot_info_framework7-liquivelte_list-input != blank -%}
 		{{- slot_info_framework7-liquivelte_list-input -}}
@@ -625,7 +625,7 @@
 
       {#if typeof label !== 'undefined' || hasLabelSlots}
         <div class={labelClasses}>
-          {{ label }}
+          {{ label | default: '' }}
           
 	{%- if slot_label_framework7-liquivelte_list-input != blank -%}
 		{{- slot_label_framework7-liquivelte_list-input -}}
@@ -803,7 +803,7 @@
 
         {#if hasErrorMessage && errorMessageForce}
           <div class="item-input-error-message">
-            {{ errorMessage }}
+            {{ errorMessage | default: '' }}
             
 	{%- if slot_error-message_framework7-liquivelte_list-input != blank -%}
 		{{- slot_error-message_framework7-liquivelte_list-input -}}
@@ -814,7 +814,7 @@
         {#if clearButton}<span class="input-clear-button" />{/if}
         {#if typeof info !== 'undefined' || hasInfoSlots}
           <div class="item-input-info">
-            {{ info }}
+            {{ info | default: '' }}
             
 	{%- if slot_info_framework7-liquivelte_list-input != blank -%}
 		{{- slot_info_framework7-liquivelte_list-input -}}

@@ -117,7 +117,7 @@
 	
     {% if text != blank || hasTextSlots %}
       <div class="fab-text" bind:this="{textEl}">
-        {{ text }}
+        {{ text | default: '' }}
         
 	{%- if slot_text_framework7-liquivelte_fab != blank -%}
 		{{- slot_text_framework7-liquivelte_fab -}}

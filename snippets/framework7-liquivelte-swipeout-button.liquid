@@ -82,7 +82,7 @@
   on:click={onClick}
   {...restProps($$restProps)}
 >
-  {{ text }}
+  {{ text | default: '' }}
   
 	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_swipeout-button != blank -%}

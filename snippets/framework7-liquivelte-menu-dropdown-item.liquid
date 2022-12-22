@@ -77,7 +77,7 @@
 <!-- svelte-ignore a11y-missing-attribute -->
 {#if isLink}
   <a on:click={onClick} bind:this={el} class={computedClasses} {...attrs} use:useRouteProps={routeProps}>
-    {{ text }}
+    {{ text | default: '' }}
     
 	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_menu-dropdown-item != blank -%}
@@ -92,7 +92,7 @@
   </a>
 {:else}
   <div on:click={onClick} bind:this={el} class={computedClasses} {...attrs} use:useRouteProps={routeProps}>
-    {{ text }}
+    {{ text | default: '' }}
     
 	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_menu-dropdown-item != blank -%}

@@ -150,7 +150,7 @@
 	endif
 	-%}
 	<span class="{{ dynamic_classes }}">
-      {{ text }}
+      {{ text | default: '' }}
       {% if badge != blank %}
 {% comment %}
 kvsp stands for "key value separator"
@@ -163,7 +163,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{{ badgeColor }}{% endcapture %}
 
-{%- capture slot_content_def_Badge -%}{{ badge }}{%- endcapture -%}
+{%- capture slot_content_def_Badge -%}{{ badge | default: '' }}{%- endcapture -%}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}

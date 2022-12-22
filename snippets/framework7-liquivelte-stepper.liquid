@@ -241,7 +241,7 @@
     </div>
   {% endif %}
   {% unless input or buttonsOnly %}
-    <div class="stepper-value">{{ value }}</div>
+    <div class="stepper-value">{{ value | default: '' }}</div>
   {% endunless %}
   <div on:click="{onPlusClick}" class="stepper-button-plus" ></div>
 </div>

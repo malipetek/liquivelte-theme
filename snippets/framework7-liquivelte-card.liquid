@@ -171,7 +171,7 @@ smns stands for "slot module name separator"
 {% capture props_CardHeader %}undefined-kvsp-1{% endcapture %}
 
 {%- capture slot_content_def_CardHeader -%}
-      {{ title }}
+      {{ title | default: '' }}
       
 	{%- if slot_header_framework7-liquivelte_card != blank -%}
 		{{- slot_header_framework7-liquivelte_card -}}
@@ -197,7 +197,7 @@ smns stands for "slot module name separator"
 {% capture props_CardContent %}{padding}-kvsp-1{% endcapture %}
 
 {%- capture slot_content_def_CardContent -%}
-      {{ content }}
+      {{ content | default: '' }}
       
 	{%- if slot_content_framework7-liquivelte_card != blank -%}
 		{{- slot_content_framework7-liquivelte_card -}}
@@ -223,7 +223,7 @@ smns stands for "slot module name separator"
 {% capture props_CardFooter %}undefined-kvsp-1{% endcapture %}
 
 {%- capture slot_content_def_CardFooter -%}
-      {{ footer }}
+      {{ footer | default: '' }}
       
 	{%- if slot_footer_framework7-liquivelte_card != blank -%}
 		{{- slot_footer_framework7-liquivelte_card -}}

@@ -1,1 +1,1 @@
-import'./index-hs39e4d84e.liquivelte.js';document.addEventListener('DOMContentLoaded',(()=>{}));
+import'./index-hs1d149eed.liquivelte.js';document.addEventListener('DOMContentLoaded',(()=>{}));
