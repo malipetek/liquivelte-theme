@@ -1,165 +1,249 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign classes = null
+			assign init = null
+			assign value = null
+			assign min = null
+			assign max = null
+			assign step = null
+			assign formatValue = null
+			assign name = null
+			assign inputId = null
+			assign input = null
+			assign inputType = null
+			assign inputReadonly = null
+			assign autorepeat = null
+			assign autorepeatDynamic = null
+			assign wraps = null
+			assign manualInputMode = null
+			assign decimalPoint = null
+			assign buttonsEndInputMode = null
+			assign disabled = null
+			assign buttonsOnly = null
+			assign round = null
+			assign roundMd = null
+			assign roundIos = null
+			assign roundAurora = null
+			assign fill = null
+			assign fillMd = null
+			assign fillIos = null
+			assign fillAurora = null
+			assign large = null
+			assign largeMd = null
+			assign largeIos = null
+			assign largeAurora = null
+			assign small = null
+			assign smallMd = null
+			assign smallIos = null
+			assign smallAurora = null
+			assign raised = null
+			assign raisedMd = null
+			assign raisedIos = null
+			assign raisedAurora = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'init'
-	assign init = propValue
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
-	if propName == 'value'
-	assign value = propValue
+	if lv_propName == 'init'
+		assign init = lv_propValue
 	endif
-	if propName == 'min'
-	assign min = propValue
+	if lv_propName == 'value'
+		assign value = lv_propValue
 	endif
-	if propName == 'max'
-	assign max = propValue
+	if lv_propName == 'min'
+		assign min = lv_propValue
 	endif
-	if propName == 'step'
-	assign step = propValue
+	if lv_propName == 'max'
+		assign max = lv_propValue
 	endif
-	if propName == 'formatValue'
-	assign formatValue = propValue
+	if lv_propName == 'step'
+		assign step = lv_propValue
 	endif
-	if propName == 'name'
-	assign name = propValue
+	if lv_propName == 'formatValue'
+		assign formatValue = lv_propValue
 	endif
-	if propName == 'inputId'
-	assign inputId = propValue
+	if lv_propName == 'name'
+		assign name = lv_propValue
 	endif
-	if propName == 'input'
-	assign input = propValue
+	if lv_propName == 'inputId'
+		assign inputId = lv_propValue
 	endif
-	if propName == 'inputType'
-	assign inputType = propValue
+	if lv_propName == 'input'
+		assign input = lv_propValue
 	endif
-	if propName == 'inputReadonly'
-	assign inputReadonly = propValue
+	if lv_propName == 'inputType'
+		assign inputType = lv_propValue
 	endif
-	if propName == 'autorepeat'
-	assign autorepeat = propValue
+	if lv_propName == 'inputReadonly'
+		assign inputReadonly = lv_propValue
 	endif
-	if propName == 'autorepeatDynamic'
-	assign autorepeatDynamic = propValue
+	if lv_propName == 'autorepeat'
+		assign autorepeat = lv_propValue
 	endif
-	if propName == 'wraps'
-	assign wraps = propValue
+	if lv_propName == 'autorepeatDynamic'
+		assign autorepeatDynamic = lv_propValue
 	endif
-	if propName == 'manualInputMode'
-	assign manualInputMode = propValue
+	if lv_propName == 'wraps'
+		assign wraps = lv_propValue
 	endif
-	if propName == 'decimalPoint'
-	assign decimalPoint = propValue
+	if lv_propName == 'manualInputMode'
+		assign manualInputMode = lv_propValue
 	endif
-	if propName == 'buttonsEndInputMode'
-	assign buttonsEndInputMode = propValue
+	if lv_propName == 'decimalPoint'
+		assign decimalPoint = lv_propValue
 	endif
-	if propName == 'disabled'
-	assign disabled = propValue
+	if lv_propName == 'buttonsEndInputMode'
+		assign buttonsEndInputMode = lv_propValue
 	endif
-	if propName == 'buttonsOnly'
-	assign buttonsOnly = propValue
+	if lv_propName == 'disabled'
+		assign disabled = lv_propValue
 	endif
-	if propName == 'round'
-	assign round = propValue
+	if lv_propName == 'buttonsOnly'
+		assign buttonsOnly = lv_propValue
 	endif
-	if propName == 'roundMd'
-	assign roundMd = propValue
+	if lv_propName == 'round'
+		assign round = lv_propValue
 	endif
-	if propName == 'roundIos'
-	assign roundIos = propValue
+	if lv_propName == 'roundMd'
+		assign roundMd = lv_propValue
 	endif
-	if propName == 'roundAurora'
-	assign roundAurora = propValue
+	if lv_propName == 'roundIos'
+		assign roundIos = lv_propValue
 	endif
-	if propName == 'fill'
-	assign fill = propValue
+	if lv_propName == 'roundAurora'
+		assign roundAurora = lv_propValue
 	endif
-	if propName == 'fillMd'
-	assign fillMd = propValue
+	if lv_propName == 'fill'
+		assign fill = lv_propValue
 	endif
-	if propName == 'fillIos'
-	assign fillIos = propValue
+	if lv_propName == 'fillMd'
+		assign fillMd = lv_propValue
 	endif
-	if propName == 'fillAurora'
-	assign fillAurora = propValue
+	if lv_propName == 'fillIos'
+		assign fillIos = lv_propValue
 	endif
-	if propName == 'large'
-	assign large = propValue
+	if lv_propName == 'fillAurora'
+		assign fillAurora = lv_propValue
 	endif
-	if propName == 'largeMd'
-	assign largeMd = propValue
+	if lv_propName == 'large'
+		assign large = lv_propValue
 	endif
-	if propName == 'largeIos'
-	assign largeIos = propValue
+	if lv_propName == 'largeMd'
+		assign largeMd = lv_propValue
 	endif
-	if propName == 'largeAurora'
-	assign largeAurora = propValue
+	if lv_propName == 'largeIos'
+		assign largeIos = lv_propValue
 	endif
-	if propName == 'small'
-	assign small = propValue
+	if lv_propName == 'largeAurora'
+		assign largeAurora = lv_propValue
 	endif
-	if propName == 'smallMd'
-	assign smallMd = propValue
+	if lv_propName == 'small'
+		assign small = lv_propValue
 	endif
-	if propName == 'smallIos'
-	assign smallIos = propValue
+	if lv_propName == 'smallMd'
+		assign smallMd = lv_propValue
 	endif
-	if propName == 'smallAurora'
-	assign smallAurora = propValue
+	if lv_propName == 'smallIos'
+		assign smallIos = lv_propValue
 	endif
-	if propName == 'raised'
-	assign raised = propValue
+	if lv_propName == 'smallAurora'
+		assign smallAurora = lv_propValue
 	endif
-	if propName == 'raisedMd'
-	assign raisedMd = propValue
+	if lv_propName == 'raised'
+		assign raised = lv_propValue
 	endif
-	if propName == 'raisedIos'
-	assign raisedIos = propValue
+	if lv_propName == 'raisedMd'
+		assign raisedMd = lv_propValue
 	endif
-	if propName == 'raisedAurora'
-	assign raisedAurora = propValue
+	if lv_propName == 'raisedIos'
+		assign raisedIos = lv_propValue
+	endif
+	if lv_propName == 'raisedAurora'
+		assign raisedAurora = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'framework7-liquivelte-stepper'
+						assign slot_default_framework7-liquivelte_stepper = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component stepper" data-liquivelte-component-name="stepper.liquivelte">
 	{%- endunless -%}
-	
+	{% liquid
+  assign init = true
+  assign value = 0
+  assign min = 0
+  assign max = 100
+  assign step = 1
+  assign input = true
+  assign inputType = 'text'
+  assign inputReadonly = false
+  assign autorepeat = false
+  assign autorepeatDynamic = false
+  assign wraps = false
+  assign manualInputMode = false
+  assign decimalPoint = 4
+  assign buttonsEndInputMode = true
+%}
 
-<div bind:this={el} class={classes} {...restProps($$restProps)}>
-  <div on:click={onMinusClick} class="stepper-button-minus" />
-  {#if input && !buttonsOnly}
+
+<div bind:this="{el}" class="stepper {{ classes }} {{ computedClasses }}" {...restProps($$restProps)} >
+  <div on:click="{onMinusClick}" class="stepper-button-minus" ></div>
+  {% if input and buttonsOnly != true %}
     <div class="stepper-input-wrap">
       <input
-        {name}
-        id={inputId}
-        type={inputType}
-        min={inputType === 'number' ? min : undefined}
-        max={inputType === 'number' ? max : undefined}
-        step={inputType === 'number' ? step : undefined}
-        on:input={onInput}
-        on:change={onChange}
-        value={typeof value === 'undefined' ? '' : value}
-        readonly={inputReadonly}
+        name="{name}"
+        id="{inputId}"
+        type="{inputType}"
+        min="{inputType === 'number' ? min : undefined}"
+        max="{inputType === 'number' ? max : undefined}"
+        step="{inputType === 'number' ? step : undefined}"
+        on:input="{onInput}"
+        on:change="{onChange}"
+        value="{{ value }}"
+        readonly="{inputReadonly}"
       />
     </div>
-  {/if}
-  {#if !input && !buttonsOnly}
-    <div class="stepper-value">{plainText(value)}</div>
-  {/if}
-  <div on:click={onPlusClick} class="stepper-button-plus" />
+  {% endif %}
+  {% unless input or buttonsOnly %}
+    <div class="stepper-value">{{ value }}</div>
+  {% endunless %}
+  <div on:click="{onPlusClick}" class="stepper-button-plus" ></div>
 </div>
 
 	
@@ -169,7 +253,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -216,6 +299,54 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign classes = null
+			assign init = null
+			assign value = null
+			assign min = null
+			assign max = null
+			assign step = null
+			assign formatValue = null
+			assign name = null
+			assign inputId = null
+			assign input = null
+			assign inputType = null
+			assign inputReadonly = null
+			assign autorepeat = null
+			assign autorepeatDynamic = null
+			assign wraps = null
+			assign manualInputMode = null
+			assign decimalPoint = null
+			assign buttonsEndInputMode = null
+			assign disabled = null
+			assign buttonsOnly = null
+			assign round = null
+			assign roundMd = null
+			assign roundIos = null
+			assign roundAurora = null
+			assign fill = null
+			assign fillMd = null
+			assign fillIos = null
+			assign fillAurora = null
+			assign large = null
+			assign largeMd = null
+			assign largeIos = null
+			assign largeAurora = null
+			assign small = null
+			assign smallMd = null
+			assign smallIos = null
+			assign smallAurora = null
+			assign raised = null
+			assign raisedMd = null
+			assign raisedIos = null
+			assign raisedAurora = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_stepper = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

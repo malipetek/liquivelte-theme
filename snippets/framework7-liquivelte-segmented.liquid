@@ -1,114 +1,134 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign classes = null
+			assign raised = null
+			assign raisedIos = null
+			assign raisedMd = null
+			assign raisedAurora = null
+			assign round = null
+			assign roundIos = null
+			assign roundMd = null
+			assign roundAurora = null
+			assign strong = null
+			assign strongIos = null
+			assign strongMd = null
+			assign strongAurora = null
+			assign tag = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'raised'
-	assign raised = propValue
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
-	if propName == 'raisedIos'
-	assign raisedIos = propValue
+	if lv_propName == 'raised'
+		assign raised = lv_propValue
 	endif
-	if propName == 'raisedMd'
-	assign raisedMd = propValue
+	if lv_propName == 'raisedIos'
+		assign raisedIos = lv_propValue
 	endif
-	if propName == 'raisedAurora'
-	assign raisedAurora = propValue
+	if lv_propName == 'raisedMd'
+		assign raisedMd = lv_propValue
 	endif
-	if propName == 'round'
-	assign round = propValue
+	if lv_propName == 'raisedAurora'
+		assign raisedAurora = lv_propValue
 	endif
-	if propName == 'roundIos'
-	assign roundIos = propValue
+	if lv_propName == 'round'
+		assign round = lv_propValue
 	endif
-	if propName == 'roundMd'
-	assign roundMd = propValue
+	if lv_propName == 'roundIos'
+		assign roundIos = lv_propValue
 	endif
-	if propName == 'roundAurora'
-	assign roundAurora = propValue
+	if lv_propName == 'roundMd'
+		assign roundMd = lv_propValue
 	endif
-	if propName == 'strong'
-	assign strong = propValue
+	if lv_propName == 'roundAurora'
+		assign roundAurora = lv_propValue
 	endif
-	if propName == 'strongIos'
-	assign strongIos = propValue
+	if lv_propName == 'strong'
+		assign strong = lv_propValue
 	endif
-	if propName == 'strongMd'
-	assign strongMd = propValue
+	if lv_propName == 'strongIos'
+		assign strongIos = lv_propValue
 	endif
-	if propName == 'strongAurora'
-	assign strongAurora = propValue
+	if lv_propName == 'strongMd'
+		assign strongMd = lv_propValue
 	endif
-	if propName == 'tag'
-	assign tag = propValue
+	if lv_propName == 'strongAurora'
+		assign strongAurora = lv_propValue
+	endif
+	if lv_propName == 'tag'
+		assign tag = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'framework7-liquivelte-segmented'
+						assign slot_default_framework7-liquivelte_segmented = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component segmented" data-liquivelte-component-name="segmented.liquivelte">
 	{%- endunless -%}
 	
 
 {#if tag === 'div'}
-  <div class={classes} {...restProps($$restProps)}>
-    {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-segmented'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+  <div class={computedClasses} {...restProps($$restProps)}>
+    
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_segmented != blank -%}
+			{{- slot_default_framework7-liquivelte_segmented -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     {#if strong || strongIos || strongMd || strongAurora}<span class="segmented-highlight" />{/if}
   </div>
 {:else if tag === 'p'}
-  <p class={classes} {...restProps($$restProps)}>
-    {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-segmented'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+  <p class={computedClasses} {...restProps($$restProps)}>
+    
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_segmented != blank -%}
+			{{- slot_default_framework7-liquivelte_segmented -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     {#if strong || strongIos || strongMd || strongAurora}<span class="segmented-highlight" />{/if}
   </p>
@@ -121,7 +141,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -168,6 +187,28 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign classes = null
+			assign raised = null
+			assign raisedIos = null
+			assign raisedMd = null
+			assign raisedAurora = null
+			assign round = null
+			assign roundIos = null
+			assign roundMd = null
+			assign roundAurora = null
+			assign strong = null
+			assign strongIos = null
+			assign strongMd = null
+			assign strongAurora = null
+			assign tag = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_segmented = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

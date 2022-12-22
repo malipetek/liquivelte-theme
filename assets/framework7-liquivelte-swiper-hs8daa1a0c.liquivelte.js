@@ -166,7 +166,7 @@ function create_fragment(ctx) {
 
 	let div1_levels = [
 		{
-			class: div1_class_value = "" + (/*containerClasses*/ ctx[1] + " " + /*className*/ ctx[0])
+			class: div1_class_value = "" + (/*containerClasses*/ ctx[1] + " " + /*classes*/ ctx[0])
 		},
 		/*restProps*/ ctx[2]
 	];
@@ -383,7 +383,7 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(div1, div1_data = get_spread_update(div1_levels, [
-				(!current || dirty[0] & /*containerClasses, className*/ 3 && div1_class_value !== (div1_class_value = "" + (/*containerClasses*/ ctx[1] + " " + /*className*/ ctx[0]))) && { class: div1_class_value },
+				(!current || dirty[0] & /*containerClasses, classes*/ 3 && div1_class_value !== (div1_class_value = "" + (/*containerClasses*/ ctx[1] + " " + /*classes*/ ctx[0]))) && { class: div1_class_value },
 				dirty[0] & /*restProps*/ 4 && /*restProps*/ ctx[2]
 			]));
 		},
@@ -423,12 +423,12 @@ function instance($$self, $$props, $$invalidate) {
 	let _needsNavigation;
 	let _needsScrollbar;
 	let _needsPagination;
-	const omit_props_names = ["lec","class","tag","wrapperTag","swiper"];
+	const omit_props_names = ["lec","classes","tag","wrapperTag","swiper"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
 	const dispatch = createEventDispatcher();
-	let { class: className = undefined } = $$props;
+	let { classes } = $$props;
 	let { tag = 'div' } = $$props;
 	let { wrapperTag = 'div' } = $$props;
 	let containerClasses = 'swiper';
@@ -601,9 +601,9 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$new_props => {
 		$$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
-		$$invalidate(34, $$restProps = compute_rest_props($$props, omit_props_names));
+		$$invalidate(35, $$restProps = compute_rest_props($$props, omit_props_names));
 		if ('lec' in $$new_props) $$invalidate(12, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(0, className = $$new_props.class);
+		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
 		if ('tag' in $$new_props) $$invalidate(13, tag = $$new_props.tag);
 		if ('wrapperTag' in $$new_props) $$invalidate(14, wrapperTag = $$new_props.wrapperTag);
 		if ('$$scope' in $$new_props) $$invalidate(17, $$scope = $$new_props.$$scope);
@@ -624,7 +624,7 @@ function instance($$self, $$props, $$invalidate) {
 	};
 
 	return [
-		className,
+		classes,
 		containerClasses,
 		restProps,
 		swiperEl,
@@ -663,7 +663,7 @@ class Swiper_1 extends SvelteComponent {
 			safe_not_equal,
 			{
 				lec: 12,
-				class: 0,
+				classes: 0,
 				tag: 13,
 				wrapperTag: 14,
 				swiper: 15

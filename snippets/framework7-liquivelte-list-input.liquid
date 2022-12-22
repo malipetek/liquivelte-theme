@@ -1,171 +1,325 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign classes = null
+			assign sortable = null
+			assign sortableOpposite = null
+			assign media = null
+			assign dropdown = null
+			assign wrap = null
+			assign input = null
+			assign type = null
+			assign name = null
+			assign value = null
+			assign inputmode = null
+			assign readonly = null
+			assign required = null
+			assign disabled = null
+			assign placeholder = null
+			assign inputId = null
+			assign size = null
+			assign accept = null
+			assign autocomplete = null
+			assign autocorrect = null
+			assign autocapitalize = null
+			assign spellcheck = null
+			assign autofocus = null
+			assign autosave = null
+			assign max = null
+			assign min = null
+			assign step = null
+			assign maxlength = null
+			assign minlength = null
+			assign multiple = null
+			assign inputStyle = null
+			assign pattern = null
+			assign validate = null
+			assign validateOnBlur = null
+			assign onValidate = null
+			assign tabindex = null
+			assign resizable = null
+			assign clearButton = null
+			assign noFormStoreData = null
+			assign noStoreData = null
+			assign ignoreStoreData = null
+			assign errorMessage = null
+			assign errorMessageForce = null
+			assign info = null
+			assign outline = null
+			assign label = null
+			assign inlineLabel = null
+			assign floatingLabel = null
+			assign calendarParams = null
+			assign colorPickerParams = null
+			assign textEditorParams = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'sortable'
-	assign sortable = propValue
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
-	if propName == 'sortableOpposite'
-	assign sortableOpposite = propValue
+	if lv_propName == 'sortable'
+		assign sortable = lv_propValue
 	endif
-	if propName == 'media'
-	assign media = propValue
+	if lv_propName == 'sortableOpposite'
+		assign sortableOpposite = lv_propValue
 	endif
-	if propName == 'dropdown'
-	assign dropdown = propValue
+	if lv_propName == 'media'
+		assign media = lv_propValue
 	endif
-	if propName == 'wrap'
-	assign wrap = propValue
+	if lv_propName == 'dropdown'
+		assign dropdown = lv_propValue
 	endif
-	if propName == 'input'
-	assign input = propValue
+	if lv_propName == 'wrap'
+		assign wrap = lv_propValue
 	endif
-	if propName == 'type'
-	assign type = propValue
+	if lv_propName == 'input'
+		assign input = lv_propValue
 	endif
-	if propName == 'name'
-	assign name = propValue
+	if lv_propName == 'type'
+		assign type = lv_propValue
 	endif
-	if propName == 'value'
-	assign value = propValue
+	if lv_propName == 'name'
+		assign name = lv_propValue
 	endif
-	if propName == 'inputmode'
-	assign inputmode = propValue
+	if lv_propName == 'value'
+		assign value = lv_propValue
 	endif
-	if propName == 'readonly'
-	assign readonly = propValue
+	if lv_propName == 'inputmode'
+		assign inputmode = lv_propValue
 	endif
-	if propName == 'required'
-	assign required = propValue
+	if lv_propName == 'readonly'
+		assign readonly = lv_propValue
 	endif
-	if propName == 'disabled'
-	assign disabled = propValue
+	if lv_propName == 'required'
+		assign required = lv_propValue
 	endif
-	if propName == 'placeholder'
-	assign placeholder = propValue
+	if lv_propName == 'disabled'
+		assign disabled = lv_propValue
 	endif
-	if propName == 'inputId'
-	assign inputId = propValue
+	if lv_propName == 'placeholder'
+		assign placeholder = lv_propValue
 	endif
-	if propName == 'size'
-	assign size = propValue
+	if lv_propName == 'inputId'
+		assign inputId = lv_propValue
 	endif
-	if propName == 'accept'
-	assign accept = propValue
+	if lv_propName == 'size'
+		assign size = lv_propValue
 	endif
-	if propName == 'autocomplete'
-	assign autocomplete = propValue
+	if lv_propName == 'accept'
+		assign accept = lv_propValue
 	endif
-	if propName == 'autocorrect'
-	assign autocorrect = propValue
+	if lv_propName == 'autocomplete'
+		assign autocomplete = lv_propValue
 	endif
-	if propName == 'autocapitalize'
-	assign autocapitalize = propValue
+	if lv_propName == 'autocorrect'
+		assign autocorrect = lv_propValue
 	endif
-	if propName == 'spellcheck'
-	assign spellcheck = propValue
+	if lv_propName == 'autocapitalize'
+		assign autocapitalize = lv_propValue
 	endif
-	if propName == 'autofocus'
-	assign autofocus = propValue
+	if lv_propName == 'spellcheck'
+		assign spellcheck = lv_propValue
 	endif
-	if propName == 'autosave'
-	assign autosave = propValue
+	if lv_propName == 'autofocus'
+		assign autofocus = lv_propValue
 	endif
-	if propName == 'max'
-	assign max = propValue
+	if lv_propName == 'autosave'
+		assign autosave = lv_propValue
 	endif
-	if propName == 'min'
-	assign min = propValue
+	if lv_propName == 'max'
+		assign max = lv_propValue
 	endif
-	if propName == 'step'
-	assign step = propValue
+	if lv_propName == 'min'
+		assign min = lv_propValue
 	endif
-	if propName == 'maxlength'
-	assign maxlength = propValue
+	if lv_propName == 'step'
+		assign step = lv_propValue
 	endif
-	if propName == 'minlength'
-	assign minlength = propValue
+	if lv_propName == 'maxlength'
+		assign maxlength = lv_propValue
 	endif
-	if propName == 'multiple'
-	assign multiple = propValue
+	if lv_propName == 'minlength'
+		assign minlength = lv_propValue
 	endif
-	if propName == 'inputStyle'
-	assign inputStyle = propValue
+	if lv_propName == 'multiple'
+		assign multiple = lv_propValue
 	endif
-	if propName == 'pattern'
-	assign pattern = propValue
+	if lv_propName == 'inputStyle'
+		assign inputStyle = lv_propValue
 	endif
-	if propName == 'validate'
-	assign validate = propValue
+	if lv_propName == 'pattern'
+		assign pattern = lv_propValue
 	endif
-	if propName == 'validateOnBlur'
-	assign validateOnBlur = propValue
+	if lv_propName == 'validate'
+		assign validate = lv_propValue
 	endif
-	if propName == 'onValidate'
-	assign onValidate = propValue
+	if lv_propName == 'validateOnBlur'
+		assign validateOnBlur = lv_propValue
 	endif
-	if propName == 'tabindex'
-	assign tabindex = propValue
+	if lv_propName == 'onValidate'
+		assign onValidate = lv_propValue
 	endif
-	if propName == 'resizable'
-	assign resizable = propValue
+	if lv_propName == 'tabindex'
+		assign tabindex = lv_propValue
 	endif
-	if propName == 'clearButton'
-	assign clearButton = propValue
+	if lv_propName == 'resizable'
+		assign resizable = lv_propValue
 	endif
-	if propName == 'noFormStoreData'
-	assign noFormStoreData = propValue
+	if lv_propName == 'clearButton'
+		assign clearButton = lv_propValue
 	endif
-	if propName == 'noStoreData'
-	assign noStoreData = propValue
+	if lv_propName == 'noFormStoreData'
+		assign noFormStoreData = lv_propValue
 	endif
-	if propName == 'ignoreStoreData'
-	assign ignoreStoreData = propValue
+	if lv_propName == 'noStoreData'
+		assign noStoreData = lv_propValue
 	endif
-	if propName == 'errorMessage'
-	assign errorMessage = propValue
+	if lv_propName == 'ignoreStoreData'
+		assign ignoreStoreData = lv_propValue
 	endif
-	if propName == 'errorMessageForce'
-	assign errorMessageForce = propValue
+	if lv_propName == 'errorMessage'
+		assign errorMessage = lv_propValue
 	endif
-	if propName == 'info'
-	assign info = propValue
+	if lv_propName == 'errorMessageForce'
+		assign errorMessageForce = lv_propValue
 	endif
-	if propName == 'outline'
-	assign outline = propValue
+	if lv_propName == 'info'
+		assign info = lv_propValue
 	endif
-	if propName == 'label'
-	assign label = propValue
+	if lv_propName == 'outline'
+		assign outline = lv_propValue
 	endif
-	if propName == 'inlineLabel'
-	assign inlineLabel = propValue
+	if lv_propName == 'label'
+		assign label = lv_propValue
 	endif
-	if propName == 'floatingLabel'
-	assign floatingLabel = propValue
+	if lv_propName == 'inlineLabel'
+		assign inlineLabel = lv_propValue
 	endif
-	if propName == 'calendarParams'
-	assign calendarParams = propValue
+	if lv_propName == 'floatingLabel'
+		assign floatingLabel = lv_propValue
 	endif
-	if propName == 'colorPickerParams'
-	assign colorPickerParams = propValue
+	if lv_propName == 'calendarParams'
+		assign calendarParams = lv_propValue
 	endif
-	if propName == 'textEditorParams'
-	assign textEditorParams = propValue
+	if lv_propName == 'colorPickerParams'
+		assign colorPickerParams = lv_propValue
+	endif
+	if lv_propName == 'textEditorParams'
+		assign textEditorParams = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'root-start'
+						assign slot_root-start_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'content-start'
+						assign slot_content-start_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'media'
+						assign slot_media_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'inner-start'
+						assign slot_inner-start_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'label'
+						assign slot_label_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'input'
+						assign slot_input_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'error-message'
+						assign slot_error-message_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'info'
+						assign slot_info_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'inner'
+						assign slot_inner_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'inner-end'
+						assign slot_inner-end_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'content'
+						assign slot_content_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'content-end'
+						assign slot_content-end_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'root'
+						assign slot_root_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'root-end'
+						assign slot_root-end_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'content-start'
+						assign slot_content-start_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'media'
+						assign slot_media_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'inner-start'
+						assign slot_inner-start_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'label'
+						assign slot_label_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'input'
+						assign slot_input_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'error-message'
+						assign slot_error-message_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'info'
+						assign slot_info_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'inner'
+						assign slot_inner_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'inner-end'
+						assign slot_inner-end_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'content'
+						assign slot_content_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list-input' and lv_name == 'content-end'
+						assign slot_content-end_framework7-liquivelte_list-input = lv_value | strip
+					endif
+					
+					if lv_module == 'framework7-liquivelte-list-input'
+						assign slot_default_framework7-liquivelte_list-input = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component list-input" data-liquivelte-component-name="list-input.liquivelte">
 	{%- endunless -%}
@@ -174,42 +328,18 @@
 <!-- svelte-ignore a11y-autofocus -->
 <!-- svelte-ignore a11y-missing-attribute -->
 {#if wrap}
-  <li class={classes} {...restProps($$restProps)}>
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'root-start'
-	assign children_root-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_root-start != blank -%}
-	{{- children_root-start -}}
+  <li class={computedClasses} {...restProps($$restProps)}>
+    
+	{%- if slot_root-start_framework7-liquivelte_list-input != blank -%}
+		{{- slot_root-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_root-start = '' -%}
-	
+
     <div class={itemContentClasses}>
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'content-start'
-	assign children_content-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_content-start != blank -%}
-	{{- children_content-start -}}
+      
+	{%- if slot_content-start_framework7-liquivelte_list-input != blank -%}
+		{{- slot_content-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_content-start = '' -%}
-	
+
       {#if isSortable && isSortableOpposite}
         <div class="sortable-handler" />
       {/if}
@@ -217,63 +347,27 @@
       {#if media || hasMediaSlots}
         <div class="item-media">
           {#if typeof media !== 'undefined'}<img src={media} />{/if}
-          {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'media'
-	assign children_media = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_media != blank -%}
-	{{- children_media -}}
+          
+	{%- if slot_media_framework7-liquivelte_list-input != blank -%}
+		{{- slot_media_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_media = '' -%}
-	
+
         </div>
       {/if}
       <div class="item-inner">
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'inner-start'
-	assign children_inner-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_inner-start != blank -%}
-	{{- children_inner-start -}}
+        
+	{%- if slot_inner-start_framework7-liquivelte_list-input != blank -%}
+		{{- slot_inner-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_inner-start = '' -%}
-	
+
         {#if typeof label !== 'undefined' || hasLabelSlots}
           <div class={labelClasses}>
             {plainText(label)}
-            {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'label'
-	assign children_label = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_label != blank -%}
-	{{- children_label -}}
+            
+	{%- if slot_label_framework7-liquivelte_list-input != blank -%}
+		{{- slot_label_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_label = '' -%}
-	
+
           </div>
         {/if}
         <div class={inputWrapClasses}>
@@ -322,27 +416,16 @@
                 on:change={onChange}
                 value={inputValue}
               >
-                {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+                
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_list-input != blank -%}
+			{{- slot_default_framework7-liquivelte_list-input -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
               </select>
             {:else if type === 'textarea'}
@@ -396,16 +479,9 @@
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props %}value-kvsp-{typeof value === 'undefined' ? '' : value}
--prsp-{resizable}
--kvsp--prsp-{placeholder}
--kvsp--prsp-onTextEditorFocus-kvsp-{onFocus}
--prsp-onTextEditorBlur-kvsp-{onBlur}
--prsp-onTextEditorInput-kvsp-{onInput}
--prsp-onTextEditorChange-kvsp-{onChange}
-{% endcapture %}
+{% capture props_TextEditor %}value-kvsp-{typeof value === 'undefined' ? '' : value}-prsp-{resizable}-kvsp-1-prsp-{placeholder}-kvsp-1-prsp-onTextEditorFocus-kvsp-{onFocus}-prsp-onTextEditorBlur-kvsp-{onBlur}-prsp-onTextEditorInput-kvsp-{onInput}-prsp-onTextEditorChange-kvsp-{onChange}{% endcapture %}
 {% assign modulename = basename | append: 'text-editor' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_TextEditor, sub_include: true, basename: '' %}
 {% assign props = '' %}
             {:else}
               <input
@@ -457,196 +533,76 @@
               />
             {/if}
           {/if}
-          {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'input'
-	assign children_input = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_input != blank -%}
-	{{- children_input -}}
+          
+	{%- if slot_input_framework7-liquivelte_list-input != blank -%}
+		{{- slot_input_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_input = '' -%}
-	
+
           {#if hasErrorMessage && errorMessageForce}
             <div class="item-input-error-message">
               {plainText(errorMessage)}
-              {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'error-message'
-	assign children_error-message = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_error-message != blank -%}
-	{{- children_error-message -}}
+              
+	{%- if slot_error-message_framework7-liquivelte_list-input != blank -%}
+		{{- slot_error-message_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_error-message = '' -%}
-	
+
             </div>
           {/if}
           {#if clearButton}<span class="input-clear-button" />{/if}
           {#if typeof info !== 'undefined' || hasInfoSlots}
             <div class="item-input-info">
               {plainText(info)}
-              {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'info'
-	assign children_info = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_info != blank -%}
-	{{- children_info -}}
+              
+	{%- if slot_info_framework7-liquivelte_list-input != blank -%}
+		{{- slot_info_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_info = '' -%}
-	
+
             </div>
           {/if}
         </div>
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'inner'
-	assign children_inner = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_inner != blank -%}
-	{{- children_inner -}}
+        
+	{%- if slot_inner_framework7-liquivelte_list-input != blank -%}
+		{{- slot_inner_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_inner = '' -%}
-	
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'inner-end'
-	assign children_inner-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_inner-end != blank -%}
-	{{- children_inner-end -}}
+
+        
+	{%- if slot_inner-end_framework7-liquivelte_list-input != blank -%}
+		{{- slot_inner-end_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_inner-end = '' -%}
-	
+
       </div>
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'content'
-	assign children_content = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_content != blank -%}
-	{{- children_content -}}
+      
+	{%- if slot_content_framework7-liquivelte_list-input != blank -%}
+		{{- slot_content_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_content = '' -%}
-	
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'content-end'
-	assign children_content-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_content-end != blank -%}
-	{{- children_content-end -}}
+
+      
+	{%- if slot_content-end_framework7-liquivelte_list-input != blank -%}
+		{{- slot_content-end_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_content-end = '' -%}
-	
+
     </div>
     {#if isSortable && !isSortableOpposite}
       <div class="sortable-handler" />
     {/if}
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'root'
-	assign children_root = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_root != blank -%}
-	{{- children_root -}}
+    
+	{%- if slot_root_framework7-liquivelte_list-input != blank -%}
+		{{- slot_root_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_root = '' -%}
-	
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'root-end'
-	assign children_root-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_root-end != blank -%}
-	{{- children_root-end -}}
+
+    
+	{%- if slot_root-end_framework7-liquivelte_list-input != blank -%}
+		{{- slot_root-end_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_root-end = '' -%}
-	
+
   </li>
 {:else}
   <div class={itemContentClasses} {...restProps($$restProps)}>
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'content-start'
-	assign children_content-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_content-start != blank -%}
-	{{- children_content-start -}}
+    
+	{%- if slot_content-start_framework7-liquivelte_list-input != blank -%}
+		{{- slot_content-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_content-start = '' -%}
-	
+
     {#if isSortable && isSortableOpposite}
       <div class="sortable-handler" />
     {/if}
@@ -654,63 +610,27 @@
     {#if media || hasMediaSlots}
       <div class="item-media">
         {#if typeof media !== 'undefined'}<img src={media} />{/if}
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'media'
-	assign children_media = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_media != blank -%}
-	{{- children_media -}}
+        
+	{%- if slot_media_framework7-liquivelte_list-input != blank -%}
+		{{- slot_media_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_media = '' -%}
-	
+
       </div>
     {/if}
     <div class="item-inner">
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'inner-start'
-	assign children_inner-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_inner-start != blank -%}
-	{{- children_inner-start -}}
+      
+	{%- if slot_inner-start_framework7-liquivelte_list-input != blank -%}
+		{{- slot_inner-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_inner-start = '' -%}
-	
+
       {#if typeof label !== 'undefined' || hasLabelSlots}
         <div class={labelClasses}>
           {plainText(label)}
-          {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'label'
-	assign children_label = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_label != blank -%}
-	{{- children_label -}}
+          
+	{%- if slot_label_framework7-liquivelte_list-input != blank -%}
+		{{- slot_label_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_label = '' -%}
-	
+
         </div>
       {/if}
       <div class={inputWrapClasses}>
@@ -759,27 +679,16 @@
               on:change={onChange}
               value={inputValue}
             >
-              {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+              
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_list-input != blank -%}
+			{{- slot_default_framework7-liquivelte_list-input -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
             </select>
           {:else if type === 'textarea'}
@@ -833,16 +742,9 @@
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props %}value-kvsp-{typeof value === 'undefined' ? '' : value}
--prsp-{resizable}
--kvsp--prsp-{placeholder}
--kvsp--prsp-onTextEditorFocus-kvsp-{onFocus}
--prsp-onTextEditorBlur-kvsp-{onBlur}
--prsp-onTextEditorInput-kvsp-{onInput}
--prsp-onTextEditorChange-kvsp-{onChange}
-{% endcapture %}
+{% capture props_TextEditor %}value-kvsp-{typeof value === 'undefined' ? '' : value}-prsp-{resizable}-kvsp-1-prsp-{placeholder}-kvsp-1-prsp-onTextEditorFocus-kvsp-{onFocus}-prsp-onTextEditorBlur-kvsp-{onBlur}-prsp-onTextEditorInput-kvsp-{onInput}-prsp-onTextEditorChange-kvsp-{onChange}{% endcapture %}
 {% assign modulename = basename | append: 'text-editor' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_TextEditor, sub_include: true, basename: '' %}
 {% assign props = '' %}
           {:else}
             <input
@@ -894,138 +796,54 @@
             />
           {/if}
         {/if}
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'input'
-	assign children_input = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_input != blank -%}
-	{{- children_input -}}
+        
+	{%- if slot_input_framework7-liquivelte_list-input != blank -%}
+		{{- slot_input_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_input = '' -%}
-	
+
         {#if hasErrorMessage && errorMessageForce}
           <div class="item-input-error-message">
             {plainText(errorMessage)}
-            {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'error-message'
-	assign children_error-message = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_error-message != blank -%}
-	{{- children_error-message -}}
+            
+	{%- if slot_error-message_framework7-liquivelte_list-input != blank -%}
+		{{- slot_error-message_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_error-message = '' -%}
-	
+
           </div>
         {/if}
         {#if clearButton}<span class="input-clear-button" />{/if}
         {#if typeof info !== 'undefined' || hasInfoSlots}
           <div class="item-input-info">
             {plainText(info)}
-            {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'info'
-	assign children_info = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_info != blank -%}
-	{{- children_info -}}
+            
+	{%- if slot_info_framework7-liquivelte_list-input != blank -%}
+		{{- slot_info_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_info = '' -%}
-	
+
           </div>
         {/if}
       </div>
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'inner'
-	assign children_inner = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_inner != blank -%}
-	{{- children_inner -}}
+      
+	{%- if slot_inner_framework7-liquivelte_list-input != blank -%}
+		{{- slot_inner_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_inner = '' -%}
-	
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'inner-end'
-	assign children_inner-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_inner-end != blank -%}
-	{{- children_inner-end -}}
+
+      
+	{%- if slot_inner-end_framework7-liquivelte_list-input != blank -%}
+		{{- slot_inner-end_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_inner-end = '' -%}
-	
+
     </div>
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'content'
-	assign children_content = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_content != blank -%}
-	{{- children_content -}}
+    
+	{%- if slot_content_framework7-liquivelte_list-input != blank -%}
+		{{- slot_content_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_content = '' -%}
-	
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list-input' and name == 'content-end'
-	assign children_content-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_content-end != blank -%}
-	{{- children_content-end -}}
+
+    
+	{%- if slot_content-end_framework7-liquivelte_list-input != blank -%}
+		{{- slot_content-end_framework7-liquivelte_list-input -}}
 	{%- endif -%}
-	{%- assign children_content-end = '' -%}
-	
+
   </div>
 {/if}
 
@@ -1036,7 +854,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -1083,6 +900,90 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign classes = null
+			assign sortable = null
+			assign sortableOpposite = null
+			assign media = null
+			assign dropdown = null
+			assign wrap = null
+			assign input = null
+			assign type = null
+			assign name = null
+			assign value = null
+			assign inputmode = null
+			assign readonly = null
+			assign required = null
+			assign disabled = null
+			assign placeholder = null
+			assign inputId = null
+			assign size = null
+			assign accept = null
+			assign autocomplete = null
+			assign autocorrect = null
+			assign autocapitalize = null
+			assign spellcheck = null
+			assign autofocus = null
+			assign autosave = null
+			assign max = null
+			assign min = null
+			assign step = null
+			assign maxlength = null
+			assign minlength = null
+			assign multiple = null
+			assign inputStyle = null
+			assign pattern = null
+			assign validate = null
+			assign validateOnBlur = null
+			assign onValidate = null
+			assign tabindex = null
+			assign resizable = null
+			assign clearButton = null
+			assign noFormStoreData = null
+			assign noStoreData = null
+			assign ignoreStoreData = null
+			assign errorMessage = null
+			assign errorMessageForce = null
+			assign info = null
+			assign outline = null
+			assign label = null
+			assign inlineLabel = null
+			assign floatingLabel = null
+			assign calendarParams = null
+			assign colorPickerParams = null
+			assign textEditorParams = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_list-input = null
+			assign slot_root-start_framework7-liquivelte_list-input = null
+			assign slot_content-start_framework7-liquivelte_list-input = null
+			assign slot_media_framework7-liquivelte_list-input = null
+			assign slot_inner-start_framework7-liquivelte_list-input = null
+			assign slot_label_framework7-liquivelte_list-input = null
+			assign slot_input_framework7-liquivelte_list-input = null
+			assign slot_error-message_framework7-liquivelte_list-input = null
+			assign slot_info_framework7-liquivelte_list-input = null
+			assign slot_inner_framework7-liquivelte_list-input = null
+			assign slot_inner-end_framework7-liquivelte_list-input = null
+			assign slot_content_framework7-liquivelte_list-input = null
+			assign slot_content-end_framework7-liquivelte_list-input = null
+			assign slot_root_framework7-liquivelte_list-input = null
+			assign slot_root-end_framework7-liquivelte_list-input = null
+			assign slot_content-start_framework7-liquivelte_list-input = null
+			assign slot_media_framework7-liquivelte_list-input = null
+			assign slot_inner-start_framework7-liquivelte_list-input = null
+			assign slot_label_framework7-liquivelte_list-input = null
+			assign slot_input_framework7-liquivelte_list-input = null
+			assign slot_error-message_framework7-liquivelte_list-input = null
+			assign slot_info_framework7-liquivelte_list-input = null
+			assign slot_inner_framework7-liquivelte_list-input = null
+			assign slot_inner-end_framework7-liquivelte_list-input = null
+			assign slot_content_framework7-liquivelte_list-input = null
+			assign slot_content-end_framework7-liquivelte_list-input = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

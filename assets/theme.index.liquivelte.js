@@ -36,77 +36,77 @@ const onIntersect = (el, callback) => {
   
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-Array.from(document.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
-  let svelteProps = wrapper.svelteProps;
-  let rawIncludes = wrapper.rawIncludes;
-  let liquid_expression_cache = wrapper.liquid_expression_cache;
-  wrapper.module_loaded = true;
-  let initialized = false;
-  onIntersect(wrapper, ([entry]) => {
-    (async () => {
-      if(entry.isIntersecting && !initialized) {
-        initialized = true;
-        wrapper.svelteComponent = new (await import('./prompts-hs8daa1a0c.liquivelte.js')).default({
-          target: wrapper,
-          hydrate: true,
-          props: {
-              ...svelteProps,
-              ...rawIncludes,
-              lec: liquid_expression_cache
-          }
-        });
-      }
-    })();
-  });
-});
 
-Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
-  let svelteProps = wrapper.svelteProps;
-  let rawIncludes = wrapper.rawIncludes;
-  let liquid_expression_cache = wrapper.liquid_expression_cache;
-  wrapper.module_loaded = true;
-  let initialized = false;
-  onIntersect(wrapper, ([entry]) => {
-    (async () => {
-      if(entry.isIntersecting && !initialized) {
-        initialized = true;
-        wrapper.svelteComponent = new (await import('./header-hs66d429da.liquivelte.js').then(function (n) { return n.index; })).default({
-          target: wrapper,
-          hydrate: true,
-          props: {
+  Array.from(document.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if (entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import('./prompts-hs8daa1a0c.liquivelte.js')).default({
+            target: wrapper,
+            hydrate: true,
+            props: {
               ...svelteProps,
               ...rawIncludes,
               lec: liquid_expression_cache
-          }
-        });
-      }
-    })();
+            }
+          });
+        }
+      })();
+    });
   });
-});
 
-Array.from(document.querySelectorAll('.liquivelte-component.app-wrapper')).forEach(wrapper => {
-  let svelteProps = wrapper.svelteProps;
-  let rawIncludes = wrapper.rawIncludes;
-  let liquid_expression_cache = wrapper.liquid_expression_cache;
-  wrapper.module_loaded = true;
-  let initialized = false;
-  onIntersect(wrapper, ([entry]) => {
-    (async () => {
-      if(entry.isIntersecting && !initialized) {
-        initialized = true;
-        wrapper.svelteComponent = new (await import('./app-wrapper-hs8daa1a0c.liquivelte.js')).default({
-          target: wrapper,
-          hydrate: true,
-          props: {
+  Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if (entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import('./header-hs39c6dc7d.liquivelte.js').then(function (n) { return n.index; })).default({
+            target: wrapper,
+            hydrate: true,
+            props: {
               ...svelteProps,
               ...rawIncludes,
               lec: liquid_expression_cache
-          }
-        });
-      }
-    })();
+            }
+          });
+        }
+      })();
+    });
   });
-});
+
+  Array.from(document.querySelectorAll('.liquivelte-component.app-wrapper')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if (entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import('./app-wrapper-hs8daa1a0c.liquivelte.js')).default({
+            target: wrapper,
+            hydrate: true,
+            props: {
+              ...svelteProps,
+              ...rawIncludes,
+              lec: liquid_expression_cache
+            }
+          });
+        }
+      })();
+    });
+  });
 
 });

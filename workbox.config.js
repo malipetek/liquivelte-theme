@@ -1,6 +1,10 @@
 
 module.exports = {
-  swSrc: 'src/scripts/sw.module.js',
-  swDest: '/src/.sw/sw.js',
+  swSrc: 'src/sw/sw.js',
+  swDest: 'assets/sw.js',
   globDirectory: 'assets/',
+  globPatterns: [
+    '/**/*.liquivelte.{css,js}*',
+		'**/*.{jpg,ttf,woff,woff2,html}'
+  ],
 }

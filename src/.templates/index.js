@@ -10,7 +10,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     
-  Array.from(document.querySelectorAll('.liquivelte-component.slider')).forEach(wrapper => {
+  Array.from(document.querySelectorAll('.liquivelte-component.product-carousel')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -20,7 +20,7 @@
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import("../sections/slider/index.liquivelte")).default({
+          wrapper.svelteComponent = new (await import("../sections/product-carousel/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
             props: {

@@ -154,7 +154,7 @@ function create_fragment(ctx) {
 			style: "width: calc(100% / var(--slides-per-view, 1));"
 		},
 		{
-			class: div_class_value = "" + (/*className*/ ctx[2] + " " + /*slideClasses*/ ctx[3])
+			class: div_class_value = "" + (/*classes*/ ctx[2] + " " + /*slideClasses*/ ctx[3])
 		},
 		{
 			"data-swiper-slide-index": /*virtualIndex*/ ctx[1]
@@ -226,7 +226,7 @@ function create_fragment(ctx) {
 				{
 					style: "width: calc(100% / var(--slides-per-view, 1));"
 				},
-				(!current || dirty & /*className, slideClasses*/ 12 && div_class_value !== (div_class_value = "" + (/*className*/ ctx[2] + " " + /*slideClasses*/ ctx[3]))) && { class: div_class_value },
+				(!current || dirty & /*classes, slideClasses*/ 12 && div_class_value !== (div_class_value = "" + (/*classes*/ ctx[2] + " " + /*slideClasses*/ ctx[3]))) && { class: div_class_value },
 				(!current || dirty & /*virtualIndex*/ 2) && {
 					"data-swiper-slide-index": /*virtualIndex*/ ctx[1]
 				},
@@ -252,13 +252,13 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let slideData;
-	const omit_props_names = ["lec","zoom","virtualIndex","class"];
+	const omit_props_names = ["lec","zoom","virtualIndex","classes"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
 	let { zoom = undefined } = $$props;
 	let { virtualIndex = undefined } = $$props;
-	let { class: className = undefined } = $$props;
+	let { classes } = $$props;
 	let slideEl = null;
 	let slideClasses = 'swiper-slide';
 	let swiper = getContext('swiper');
@@ -333,7 +333,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ('lec' in $$new_props) $$invalidate(7, lec = $$new_props.lec);
 		if ('zoom' in $$new_props) $$invalidate(0, zoom = $$new_props.zoom);
 		if ('virtualIndex' in $$new_props) $$invalidate(1, virtualIndex = $$new_props.virtualIndex);
-		if ('class' in $$new_props) $$invalidate(2, className = $$new_props.class);
+		if ('classes' in $$new_props) $$invalidate(2, classes = $$new_props.classes);
 		if ('$$scope' in $$new_props) $$invalidate(8, $$scope = $$new_props.$$scope);
 	};
 
@@ -352,7 +352,7 @@ function instance($$self, $$props, $$invalidate) {
 	return [
 		zoom,
 		virtualIndex,
-		className,
+		classes,
 		slideClasses,
 		slideEl,
 		slideData,
@@ -372,7 +372,7 @@ class Swiper_slide extends SvelteComponent {
 			lec: 7,
 			zoom: 0,
 			virtualIndex: 1,
-			class: 2
+			classes: 2
 		});
 	}
 }

@@ -4,12 +4,15 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
+export let min_amounts;
+export let cart;
+export let inputWidth;
   export let links;
 
   console.log('links ', links);
 </script>
 <ul class="menu-drawer__menu has-submenu list-menu" role="list">
-  {#each  links as lnk, index  }
+  {#each  links as lnk, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

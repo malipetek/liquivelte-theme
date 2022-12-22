@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
 
-    <script> 
-    
+<script> 
 function proxify(url) { 
   if (url.constructor !== URL) {
     url = new URL(url);  
@@ -21,23 +20,20 @@ function proxify(url) {
   proxyUrl.searchParams.append('shop', 'liquivelte.myshopify.com');
   return proxyUrl;
 }
-    window.partytown = {
-      debug: false,
-      lib: '/a/proxy/',
-      resolveUrl: proxify
-    };
-  </script>
-  <script src="/a/proxy/partytown.js" > </script>
+window.partytown = {
+  debug: false,
+  lib: '/a/proxy/',
+  resolveUrl: proxify
+};
+</script>
+{% comment %} <script src="/a/proxy/partytown.js" > </script> {% endcomment %}
+{%- if settings.favicon != blank -%}
+  <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+{%- endif -%}
 
-  <script src="/a/sw/liquivelte-theme%2Fmaster/sw.liquivelte.js" ></script>
-    
-    {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-    {%- endif -%}
-
-    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    {%- endunless -%}
+{%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+  <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+{%- endunless -%}
 
     <title>
       {{ page_title }}
@@ -214,6 +210,9 @@ function proxify(url) {
         --variant-pills-shadow-horizontal-offset: {{ settings.variant_pills_shadow_horizontal_offset }}px;
         --variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
         --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
+      
+        --f7-theme-color: #4caf50;
+        --f7-appbar-height: 60px;
       }
 
       *,

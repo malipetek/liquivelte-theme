@@ -1,27 +1,48 @@
+
 <script>
   import cachedLiquid from 'liquivelte-liquid.js';
   export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-  import { Card, CardHeader, CardContent, CardFooter, Link, Button } from 'framework7-liquivelte';
+  import { Card, CardHeader, CardContent, CardFooter, Link, Button, Badge } from 'framework7-liquivelte';
+  import { cartStore } from '../scripts/store.module.js';
+  import VerticalStepper from './vertical-stepper.liquivelte';
+  import Loadable from './loadable.liquivelte';
+  import Icon from './icon.liquivelte';
+  
   export let product;
   let expandableOpened = false;
-  $: console.log('expandableOpened ', expandableOpened);
+
   function expandedToggle() {
     expandableOpened = !expandableOpened;
   }
 
-  let clicked = 0;
-  function increment() {
-    clicked = clicked + 1
+  let cartItem;
+  $: if($cartStore) {
+    cartItem = $cartStore.items.find(i => i.product?.id == product.id || i.product_id == product.id);
   }
-  
-</script>
+  function addToCart() {
+    cartStore.add({product});
+  }
 
-<Card  class="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}"     lec={lec} >
+	function quantityChange(event) {
+		cartStore.setQuantity(this.id, +event.target.value); 
+	}
+  
+  $: quantity = cartItem?.quantity || 0;
+</script>
+<Card  classes="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}"     lec={lec} >
+    <Loadable  classes="absolute -right-[10px] -top-[10px] z-10" centered     lec={lec} >
+      <VerticalStepper  small
+                      disabled="{ !product.available }" 
+                      bind:value="{ quantity }"  
+                      onChange="{ quantityChange.bind(cartItem) }"
+                      onClick="{addToCart}"      lec={lec} >
+      </VerticalStepper>
+    </Loadable>
   <CardHeader 
-  class="no-border"
+  classes="no-border"
   valign="bottom"
        lec={lec} >
   <img src="{ liquid.image_url(product.media[0], {"width":"300"}) }" 
@@ -29,15 +50,15 @@
   style="aspect-ratio: { product.media[0].aspect_ratio }" />
 </CardHeader>
 <CardContent      lec={lec} >
-<div on:click="{increment}">
+<div >
   <h3>
     { product.title }
   </h3>
-  { liquid.money(product.price) }
 </div> 
+
 </CardContent>
     <CardFooter      lec={lec} >
-      <Button      lec={lec} > Add to Card </Button> 
+      <span> { liquid.money(product.price) } </span>
       <Link      lec={lec} > Add to Wishlist </Link>
     </CardFooter>
 </Card>

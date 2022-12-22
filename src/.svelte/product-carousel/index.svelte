@@ -12,7 +12,7 @@
 section.settings = sectionƒƒsettings;
   export let products;
   
-  console.log('products ', products);
+  console.log(' ==> products ', products);
   
   const slidesPerView = 3;
   const breakpoints = {
@@ -37,7 +37,7 @@ section.settings = sectionƒƒsettings;
 <Block   products={products}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >
 <BlockTitle   products={products}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >With all controls</BlockTitle>
   <Swiper  breakpoints="{breakpoints}"  products={products}  sectionƒƒsettings={sectionƒƒsettings}   lec={lec} >
-    {#each  products as product, index  }
+    {#each  products as product, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

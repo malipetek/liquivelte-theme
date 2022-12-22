@@ -1,28 +1,61 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign product = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'product'
-	assign product = propValue
+	if lv_propName == 'product'
+		assign product = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'product-card'
+						assign slot_default_product-card = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component product-card svelte-3p59xp" data-liquivelte-component-name="product-card.liquivelte">
 	{%- endunless -%}
-	
+	{% liquid 
+  assign quantity = 0
+  assign product_id = product.id
+  assign cartItem = cart.items | where: 'product_id', product_id | first
+  if cartItem
+    assign quantity = cartItem.quantity
+  endif
+%}
 
 
 {% comment %}
@@ -34,9 +67,45 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props %}class-kvsp-card-header-pic-prsp-swipeToClose-kvsp--prsp-hideToolbarOnOpen-kvsp--prsp-hideNavbarOnOpen-kvsp--prsp-bind:expandableOpened-kvsp-{expandableOpened}{% endcapture %}
+{% capture props_Card %}classes-kvsp-card-header-pic-prsp-swipeToClose-kvsp-1-prsp-hideToolbarOnOpen-kvsp-1-prsp-hideNavbarOnOpen-kvsp-1-prsp-expandableOpened-kvsp-{expandableOpened}{% endcapture %}
 
-{% capture slot_content_Card %}
+{%- capture slot_content_def_Card -%}
+    
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Loadable %}classes-kvsp-absolute -right-[10px] -top-[10px] z-10-prsp-centered-kvsp-1{% endcapture %}
+
+{%- capture slot_content_def_Loadable -%}
+      
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_VerticalStepper %}small-kvsp-1-prsp-disabled-kvsp-{%- unless product.available -%}1{%- endunless -%}-prsp-value-kvsp-{{ quantity }}-prsp-onChange-kvsp-{ quantityChange.bind(cartItem) }-prsp-onClick-kvsp-{addToCart}{% endcapture %}
+
+{%- capture slot_content_def_VerticalStepper -%}
+      {%- endcapture -%}
+{% assign slot_content_VerticalStepper = slot_content_VerticalStepper | append: '-scs-' | append: 'vertical-stepper' | append: '-scvs-' | append: slot_content_def_VerticalStepper %}
+{% assign modulename = basename | append: 'vertical-stepper' %}
+{% include modulename, liquivelte: true, props: props_VerticalStepper, sub_include: true, slot_contents: slot_content_VerticalStepper, basename: '' %}
+{% assign props = '' %}
+    {%- endcapture -%}
+{% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_def_Loadable %}
+{% assign modulename = basename | append: 'loadable' %}
+{% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: '' %}
+{% assign props = '' %}
   
 {% comment %}
 kvsp stands for "key value separator"
@@ -47,18 +116,16 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props %}class-kvsp-no-border"
--prsp-valign-kvsp-bottom"
-{% endcapture %}
+{% capture props_CardHeader %}classes-kvsp-no-border-prsp-valign-kvsp-bottom{% endcapture %}
 
-{% capture slot_content_CardHeader %}
+{%- capture slot_content_def_CardHeader -%}
   <img src="{{ product.media[0] | image_url: width: 300 }}" liquivelte-value-cache="image_url§{{product.media[0]}}, {{width}}, {{300}}§{{product.media[0]| image_url: width: 300  }}" 
   width="300"
   style="aspect-ratio: {{ product.media[0].aspect_ratio }}" />
-{% endcapture %}
-{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card-header' | append: '-scvs-' | append: slot_content_CardHeader %}
+{%- endcapture -%}
+{% assign slot_content_CardHeader = slot_content_CardHeader | append: '-scs-' | append: 'framework7-liquivelte-card-header' | append: '-scvs-' | append: slot_content_def_CardHeader %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card-header' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% include modulename, liquivelte: true, props: props_CardHeader, sub_include: true, slot_contents: slot_content_CardHeader, basename: 'framework7-liquivelte-' %}
 {% assign props = '' %}
 
 {% comment %}
@@ -70,19 +137,19 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props %}undefined-kvsp-{% endcapture %}
+{% capture props_CardContent %}undefined-kvsp-1{% endcapture %}
 
-{% capture slot_content_CardContent %}
-<div on:click="{increment}">
+{%- capture slot_content_def_CardContent -%}
+<div >
   <h3>
     {{ product.title }}
   </h3>
-  {{ product.price | money }}
 </div> 
-{% endcapture %}
-{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card-content' | append: '-scvs-' | append: slot_content_CardContent %}
+
+{%- endcapture -%}
+{% assign slot_content_CardContent = slot_content_CardContent | append: '-scs-' | append: 'framework7-liquivelte-card-content' | append: '-scvs-' | append: slot_content_def_CardContent %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card-content' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% include modulename, liquivelte: true, props: props_CardContent, sub_include: true, slot_contents: slot_content_CardContent, basename: 'framework7-liquivelte-' %}
 {% assign props = '' %}
     
 {% comment %}
@@ -94,9 +161,10 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props %}undefined-kvsp-{% endcapture %}
+{% capture props_CardFooter %}undefined-kvsp-1{% endcapture %}
 
-{% capture slot_content_CardFooter %}
+{%- capture slot_content_def_CardFooter -%}
+      <span> {{ product.price | money }} </span>
       
 {% comment %}
 kvsp stands for "key value separator"
@@ -107,39 +175,22 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props %}undefined-kvsp-{% endcapture %}
+{% capture props_Link %}undefined-kvsp-1{% endcapture %}
 
-{% capture slot_content_Button %} Add to Card {% endcapture %}
-{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-button' | append: '-scvs-' | append: slot_content_Button %}
-{% assign modulename = basename | append: 'framework7-liquivelte-button' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
-{% assign props = '' %} 
-      
-{% comment %}
-kvsp stands for "key value separator"
-prsp stands for "props separator"
-{% endcomment %}
-{% comment %}
-scs stands for "slot component separator"
-scvs stands for "slot component value separator"
-smns stands for "slot module name separator"
-{% endcomment %}
-{% capture props %}undefined-kvsp-{% endcapture %}
-
-{% capture slot_content_Link %} Add to Wishlist {% endcapture %}
-{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-link' | append: '-scvs-' | append: slot_content_Link %}
+{%- capture slot_content_def_Link -%} Add to Wishlist {%- endcapture -%}
+{% assign slot_content_Link = slot_content_Link | append: '-scs-' | append: 'framework7-liquivelte-link' | append: '-scvs-' | append: slot_content_def_Link %}
 {% assign modulename = basename | append: 'framework7-liquivelte-link' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% include modulename, liquivelte: true, props: props_Link, sub_include: true, slot_contents: slot_content_Link, basename: 'framework7-liquivelte-' %}
 {% assign props = '' %}
-    {% endcapture %}
-{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card-footer' | append: '-scvs-' | append: slot_content_CardFooter %}
+    {%- endcapture -%}
+{% assign slot_content_CardFooter = slot_content_CardFooter | append: '-scs-' | append: 'framework7-liquivelte-card-footer' | append: '-scvs-' | append: slot_content_def_CardFooter %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card-footer' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% include modulename, liquivelte: true, props: props_CardFooter, sub_include: true, slot_contents: slot_content_CardFooter, basename: 'framework7-liquivelte-' %}
 {% assign props = '' %}
-{% endcapture %}
-{% assign slot_contents = slot_contents | append: '-scs-' | append: 'framework7-liquivelte-card' | append: '-scvs-' | append: slot_content_Card %}
+{%- endcapture -%}
+{% assign slot_content_Card = slot_content_Card | append: '-scs-' | append: 'framework7-liquivelte-card' | append: '-scvs-' | append: slot_content_def_Card %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, slot_contents: slot_contents, basename: 'framework7-liquivelte-' %}
+{% include modulename, liquivelte: true, props: props_Card, sub_include: true, slot_contents: slot_content_Card, basename: 'framework7-liquivelte-' %}
 {% assign props = '' %}
 
 
@@ -152,7 +203,6 @@ smns stands for "slot module name separator"
 	
 	
 	
-
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-3p59xp">(() => {
@@ -199,6 +249,15 @@ smns stands for "slot module name separator"
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign product = null
+			-%}
+	{%- liquid 
+			assign slot_default_product-card = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

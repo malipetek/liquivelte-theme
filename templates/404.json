@@ -1,11 +1,49 @@
 {
   "sections": {
-    "main": {
+    "795ea415-2961-4e19-a647-f32ce38634a3": {
       "type": "main-404",
-      "settings": {}
+      "settings": {
+        "section_spacing_x": "none",
+        "section_spacing_y": "both-y",
+        "container": true,
+        "title": "Page not found",
+        "content": "The page you are looking for is not available. Try search instead.",
+        "button_label": "shop best sellers",
+        "button_link": "#",
+        "second_button_label": "shop new arrivals",
+        "second_button_link": "#"
+      }
+    },
+    "269c6175-51ae-4fcc-b70b-e295ac8fc852": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "description": "",
+        "tailwind_classes": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "alpa-ramas-fave-styles",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
-    ]
+    "795ea415-2961-4e19-a647-f32ce38634a3",
+    "269c6175-51ae-4fcc-b70b-e295ac8fc852"
+  ]
 }

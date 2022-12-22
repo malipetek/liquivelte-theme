@@ -13,7 +13,7 @@ function create_fragment(ctx) {
 	let current;
 	const default_slot_template = /*#slots*/ ctx[18].default;
 	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[17], get_default_slot_context);
-	let div2_levels = [{ class: /*classes*/ ctx[2] }, restProps(/*$$restProps*/ ctx[3])];
+	let div2_levels = [{ class: /*computedClasses*/ ctx[2] }, restProps(/*$$restProps*/ ctx[3])];
 	let div2_data = {};
 
 	for (let i = 0; i < div2_levels.length; i += 1) {
@@ -77,7 +77,7 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(div2, div2_data = get_spread_update(div2_levels, [
-				(!current || dirty & /*classes*/ 4) && { class: /*classes*/ ctx[2] },
+				{ class: /*computedClasses*/ ctx[2] },
 				dirty & /*$$restProps*/ 8 && restProps(/*$$restProps*/ ctx[3])
 			]));
 		},
@@ -99,17 +99,16 @@ function create_fragment(ctx) {
 }
 
 function instance_1($$self, $$props, $$invalidate) {
-	let classes;
-
 	const omit_props_names = [
-		"lec","class","opened","animate","targetEl","backdrop","backdropEl","closeByBackdropClick","closeByOutsideClick","closeOnEscape","containerEl","verticalPosition","instance"
+		"lec","classes","opened","animate","targetEl","backdrop","backdropEl","closeByBackdropClick","closeByOutsideClick","closeOnEscape","containerEl","verticalPosition","instance"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
 	const emit = createEmitter(createEventDispatcher, $$props);
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 	let { opened = undefined } = $$props;
 	let { animate = undefined } = $$props;
 	let { targetEl = undefined } = $$props;
@@ -131,7 +130,7 @@ function instance_1($$self, $$props, $$invalidate) {
 	function onOpen(instance) {
 		Object.assign(state, { isOpened: true, isClosing: false });
 		emit('popoverOpen', [instance]);
-		$$invalidate(4, opened = true);
+		$$invalidate(5, opened = true);
 	}
 
 	function onOpened(instance) {
@@ -146,7 +145,7 @@ function instance_1($$self, $$props, $$invalidate) {
 	function onClosed(instance) {
 		Object.assign(state, { isClosing: false });
 		emit('popoverClosed', [instance]);
-		$$invalidate(4, opened = false);
+		$$invalidate(5, opened = false);
 	}
 
 	let initialWatched = false;
@@ -206,9 +205,9 @@ function instance_1($$self, $$props, $$invalidate) {
 	$$self.$$set = $$new_props => {
 		$$invalidate(29, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('lec' in $$new_props) $$invalidate(5, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(6, className = $$new_props.class);
-		if ('opened' in $$new_props) $$invalidate(4, opened = $$new_props.opened);
+		if ('lec' in $$new_props) $$invalidate(6, lec = $$new_props.lec);
+		if ('classes' in $$new_props) $$invalidate(4, classes = $$new_props.classes);
+		if ('opened' in $$new_props) $$invalidate(5, opened = $$new_props.opened);
 		if ('animate' in $$new_props) $$invalidate(7, animate = $$new_props.animate);
 		if ('targetEl' in $$new_props) $$invalidate(8, targetEl = $$new_props.targetEl);
 		if ('backdrop' in $$new_props) $$invalidate(9, backdrop = $$new_props.backdrop);
@@ -222,9 +221,9 @@ function instance_1($$self, $$props, $$invalidate) {
 	};
 
 	$$self.$$.update = () => {
-		$$invalidate(2, classes = classNames(className, 'popover', modalStateClasses(state), colorClasses($$props)));
+		$$invalidate(4, classes = classNames(classes, 'popover', modalStateClasses(state), colorClasses($$props)));
 
-		if ($$self.$$.dirty & /*opened*/ 16) {
+		if ($$self.$$.dirty & /*opened*/ 32) {
 			watchOpened(opened);
 		}
 	};
@@ -234,11 +233,11 @@ function instance_1($$self, $$props, $$invalidate) {
 	return [
 		el,
 		f7Popover,
-		classes,
+		computedClasses,
 		$$restProps,
+		classes,
 		opened,
 		lec,
-		className,
 		animate,
 		targetEl,
 		backdrop,
@@ -260,9 +259,9 @@ class Popover extends SvelteComponent {
 		super();
 
 		init(this, options, instance_1, create_fragment, safe_not_equal, {
-			lec: 5,
-			class: 6,
-			opened: 4,
+			lec: 6,
+			classes: 4,
+			opened: 5,
 			animate: 7,
 			targetEl: 8,
 			backdrop: 9,

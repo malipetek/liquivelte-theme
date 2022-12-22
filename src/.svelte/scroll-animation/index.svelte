@@ -6,6 +6,8 @@
   let index = 0;
  
 const section = {};
+export let sectionƒƒsettings; 
+section.settings = sectionƒƒsettings; 
 export let sectionƒƒblocks; 
 section.blocks = sectionƒƒblocks; 
 export let animations;
@@ -22,7 +24,8 @@ import Shape from './blocks/shape.liquivelte';
 import './animation.schema.json'; 
 import { onMount } from 'svelte';
 
-let keepFor = 5000;
+let keepFor = section.settings.animation_duration / 100 * window.innerHeight;
+console.log('section settings ', section.settings, keepFor);
 
 let top = 0;
 let height = 0;
@@ -119,7 +122,7 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
 
   <div class="stage-container" >
     <div class="animation-stage" bind:this="{stage}">
-      {#each  section.blocks as block, index  }
+      {#each  section.blocks as block, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,
@@ -131,7 +134,7 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
 } }
         
         {#if block.type == 'title' }
-          <Title  anim_style="{ block.settings.anim_style }"   animations={animations}  sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
+          <Title  anim_style="{ block.settings.anim_style }"   animations={animations}  sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
         {/if}
         
         {#if block.type == 'image' }
@@ -143,11 +146,11 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
         {/if}
 
         {#if block.type == 'video' }
-          <ScrollVideo  block="{ block }" keepFor="{ keepFor }" bind:keptFor anim_style={ block.settings.anim_style }   animations={animations}  sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
+          <ScrollVideo  block="{ block }" keepFor="{ keepFor }" bind:keptFor anim_style={ block.settings.anim_style }   animations={animations}  sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
         {/if}
 
         {#if block.type == 'shape' }
-          <Shape  block="{ block }" anim_style="{ block.settings.anim_style }"   animations={animations}  sectionƒƒblocks={sectionƒƒblocks}   lec={lec} /> 
+          <Shape  block="{ block }" anim_style="{ block.settings.anim_style }"   animations={animations}  sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} /> 
         {/if}
       
       {/each}

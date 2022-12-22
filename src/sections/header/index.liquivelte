@@ -39,7 +39,7 @@
   import CartDrawer from './components/cart-drawer.liquivelte';
   import Logo from './components/logo.liquivelte';
   import DetailsModal from '../../snippets/details-modal.liquivelte';
-  import { Appbar, Panel, Button, Block, View, Page, Popup } from 'framework7-liquivelte'; 
+  import { Appbar, Panel, Button, Link, Badge, Block, View, Page, Popup } from 'framework7-liquivelte'; 
   import Icon from "../../snippets/icon.liquivelte";
   import settings from 'theme'; 
 
@@ -54,6 +54,12 @@
 
   console.log('section header ', section);
   console.log('section.settings.menu ', section.settings.menu);
+
+  cartStore.subscribe(state => {
+    if(state) {
+      cart = state;
+    }
+  });
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
@@ -73,15 +79,15 @@
       </Page>
     </View>
   </Panel>
-  <Popup class="cart-popup" resizable right reveal swipe swipeOnlyClose="{true}"  >
+  <Panel classes="cart-popup" resizable right reveal swipe swipeOnlyClose="{true}"  >
     <View>
       <CartDrawer />
     </View>
-  </Popup>
+  </Panel>
   <header> 
     <Appbar>
       <div class="left">
-        <Button small panelToggle="left" class="display-flex" >
+        <Button small panelToggle="left" classes="display-flex" >
           <Icon name="icon-hamburger" width="15" />
         </Button>
       </div>
@@ -89,9 +95,14 @@
         <Logo />
       </div>
       <div class="left">
-        <Button small popupOpen=".cart-popup" class="display-flex" >
-          <Icon name="icon-cart" width="40" />
-        </Button>
+        <Link small panelToggle="right" classes="display-flex" >
+          <div class="icon">
+            <Icon name="icon-cart" width="40" />
+            {% if cart.items %}
+              <Badge > {{- cart.items.size -}} </Badge>
+            {% endif %}
+          </div>
+        </Link>
       </div>
     </Appbar>
   </header>
@@ -107,8 +118,10 @@
 {% endif %}
 
 
-<style global >
-  
+<style global lang="postcss">
+  :root {
+    --f7-panel-right-width: 400px;
+  }
   .panel {
     min-width: 100px;
     max-width: 90vw;

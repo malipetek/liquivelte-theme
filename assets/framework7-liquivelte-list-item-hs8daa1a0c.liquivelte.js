@@ -15861,7 +15861,7 @@ function instance($$self, $$props, $$invalidate) {
 	let hasAfter;
 
 	const omit_props_names = [
-		"lec","class","title","text","media","subtitle","header","footer","tooltip","tooltipTrigger","link","tabLink","tabLinkActive","selected","href","target","after","badge","badgeColor","mediaItem","mediaList","divider","groupTitle","swipeout","swipeoutOpened","sortable","sortableOpposite","accordionItem","accordionItemOpened","smartSelect","smartSelectParams","noChevron","chevronCenter","checkbox","radio","radioIcon","checked","indeterminate","name","value","readonly","required","disabled","virtualListIndex","routeProps","smartSelectInstance"
+		"lec","classes","title","text","media","subtitle","header","footer","tooltip","tooltipTrigger","link","tabLink","tabLinkActive","selected","href","target","after","badge","badgeColor","mediaItem","mediaList","divider","groupTitle","swipeout","swipeoutOpened","sortable","sortableOpposite","accordionItem","accordionItemOpened","smartSelect","smartSelectParams","noChevron","chevronCenter","checkbox","radio","radioIcon","checked","indeterminate","name","value","readonly","required","disabled","virtualListIndex","routeProps","smartSelectInstance"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
@@ -15869,7 +15869,7 @@ function instance($$self, $$props, $$invalidate) {
 	const $$slots = compute_slots(slots);
 	let { lec } = $$props;
 	const emit = createEmitter(createEventDispatcher, $$props);
-	let { class: className = undefined } = $$props;
+	let { classes } = $$props;
 	let { title = undefined } = $$props;
 	let { text = undefined } = $$props;
 	let { media = undefined } = $$props;
@@ -16195,10 +16195,10 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(106, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(107, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(49, $$restProps = compute_rest_props($$props, omit_props_names));
 		if ('lec' in $$new_props) $$invalidate(1, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(50, className = $$new_props.class);
+		if ('classes' in $$new_props) $$invalidate(50, classes = $$new_props.classes);
 		if ('title' in $$new_props) $$invalidate(2, title = $$new_props.title);
 		if ('text' in $$new_props) $$invalidate(3, text = $$new_props.text);
 		if ('media' in $$new_props) $$invalidate(4, media = $$new_props.media);
@@ -16265,7 +16265,7 @@ function instance($$self, $$props, $$invalidate) {
 		}
 
 		$$invalidate(43, liClasses = classNames(
-			className,
+			classes,
 			{
 				'item-divider': divider,
 				'list-group-title': groupTitle,
@@ -16282,7 +16282,7 @@ function instance($$self, $$props, $$invalidate) {
 		));
 
 		$$invalidate(42, contentClasses = classNames(
-			className,
+			classes,
 			'item-content',
 			{
 				'item-checkbox': checkbox,
@@ -16404,7 +16404,7 @@ function instance($$self, $$props, $$invalidate) {
 		onClick,
 		onChange,
 		$$restProps,
-		className,
+		classes,
 		link,
 		tabLink,
 		tabLinkActive,
@@ -16454,7 +16454,7 @@ class List_item extends SvelteComponent {
 			safe_not_equal,
 			{
 				lec: 1,
-				class: 50,
+				classes: 50,
 				title: 2,
 				text: 3,
 				media: 4,

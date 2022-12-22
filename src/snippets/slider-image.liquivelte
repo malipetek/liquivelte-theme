@@ -1,0 +1,25 @@
+<script>
+  import Image from './image.liquivelte';
+  export let src;
+  export let sizes;
+</script>
+<div class="image">
+  <Image src="{{- src -}}" sizes="{{- sizes -}}" />
+</div>
+
+{% schema %}
+{
+  "name": "Slider Image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Swiper"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

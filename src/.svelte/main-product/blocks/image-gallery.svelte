@@ -69,7 +69,7 @@ let gallery_images = [];
     <div class="thumbs-slider swiper max-w-full hidden lg:flex justify-items-center overflow-hidden" >
       <div class="mx-auto max-w-full" bind:this="{thubmnailsElement}">
         <div class="flex-column swiper-wrapper"> 
-          {#each  product.images as image, index  }
+          {#each  product.images as image, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,
@@ -90,7 +90,7 @@ let gallery_images = [];
     </div>
     <div class="swiper max-w-full" bind:this="{galleryElement}">
     <div class="swiper-wrapper">
-      {#each  product.images as image, index  }
+      {#each  product.images as image, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,
@@ -113,7 +113,7 @@ let gallery_images = [];
 </div>
   <!-- Image gallery -->
   <!-- <div class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8">
-    {#each  product.images as image, index  }
+    {#each  product.images as image, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

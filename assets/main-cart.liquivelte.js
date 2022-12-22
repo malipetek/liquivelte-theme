@@ -1,6 +1,6 @@
 import { SvelteComponent, init, safe_not_equal, element, text, space, claim_element, children, claim_text, detach, claim_space, attr, toggle_class, set_style, add_render_callback, insert_hydration, append_hydration, add_resize_listener, listen, action_destroyer, set_data, transition_in, check_outros, transition_out, create_bidirectional_transition, destroy_each, run_all, component_subscribe, set_store_value, spring, binding_callbacks, bind, create_component, claim_component, src_url_equal, mount_component, add_flush_callback, quintInOut, destroy_component, group_outros, is_function } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
-import { Loadable, Quantity_box, Icon } from './header-hs66d429da.liquivelte.js';
+import { Loadable, Quantity_box, Icon } from './header-hs39c6dc7d.liquivelte.js';
 import { cartStore, disableScrollOnBody, enableScrollOnBody, cartOpen } from './store.js-hs6c336c77.liquivelte.js';
 import './framework7-liquivelte-hs5d6b599e.liquivelte.js';
 import './framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';
@@ -13,6 +13,7 @@ import './framework7-liquivelte-panel-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
 import './framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-params-list-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-block-title-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-block-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-list-item-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-badge-hs8daa1a0c.liquivelte.js';
@@ -25,6 +26,7 @@ import './framework7-liquivelte-appbar-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-button-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-use-icon-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-icon-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-link-hs8daa1a0c.liquivelte.js';
 
 function swipe(node, p = {}) {
 
@@ -95,46 +97,46 @@ function swipe(node, p = {}) {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[30] = list[i];
-	child_ctx[33] = i;
+	child_ctx[28] = list[i];
+	child_ctx[31] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[33] === 0,
-		index: /*index*/ child_ctx[33] + 1,
-		index0: /*index*/ child_ctx[33],
-		last: /*index*/ child_ctx[33] === /*cart*/ child_ctx[1].items.length - 1,
-		rindex: /*cart*/ child_ctx[1].items.length - /*index*/ child_ctx[33],
-		rindex0: /*cart*/ child_ctx[1].items.length - /*index*/ child_ctx[33] - 1,
+		first: /*index*/ child_ctx[31] === 0,
+		index: /*index*/ child_ctx[31] + 1,
+		index0: /*index*/ child_ctx[31],
+		last: /*index*/ child_ctx[31] === /*cart*/ child_ctx[1].items.length - 1,
+		rindex: /*cart*/ child_ctx[1].items.length - /*index*/ child_ctx[31],
+		rindex0: /*cart*/ child_ctx[1].items.length - /*index*/ child_ctx[31] - 1,
 		length: /*cart*/ child_ctx[1].items.length
 	};
 
-	child_ctx[31] = constants_0;
+	child_ctx[29] = constants_0;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[34] = list[i];
-	child_ctx[33] = i;
+	child_ctx[32] = list[i];
+	child_ctx[31] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[33] === 0,
-		index: /*index*/ child_ctx[33] + 1,
-		index0: /*index*/ child_ctx[33],
-		last: /*index*/ child_ctx[33] === /*item*/ child_ctx[30].variant_options.length - 1,
-		rindex: /*item*/ child_ctx[30].variant_options.length - /*index*/ child_ctx[33],
-		rindex0: /*item*/ child_ctx[30].variant_options.length - /*index*/ child_ctx[33] - 1,
-		length: /*item*/ child_ctx[30].variant_options.length
+		first: /*index*/ child_ctx[31] === 0,
+		index: /*index*/ child_ctx[31] + 1,
+		index0: /*index*/ child_ctx[31],
+		last: /*index*/ child_ctx[31] === /*item*/ child_ctx[28].variant_options.length - 1,
+		rindex: /*item*/ child_ctx[28].variant_options.length - /*index*/ child_ctx[31],
+		rindex0: /*item*/ child_ctx[28].variant_options.length - /*index*/ child_ctx[31] - 1,
+		length: /*item*/ child_ctx[28].variant_options.length
 	};
 
-	child_ctx[31] = constants_0;
+	child_ctx[29] = constants_0;
 	return child_ctx;
 }
 
-// (142:9) {#each  item.variant_options as option, index  }
+// (123:9) {#each  item.variant_options as option, index   }
 function create_each_block_1(ctx) {
 	let span;
-	let t0_value = /*option*/ ctx[34] + "";
+	let t0_value = /*option*/ ctx[32] + "";
 	let t0;
 	let t1;
 	let br;
@@ -166,7 +168,7 @@ function create_each_block_1(ctx) {
 			insert_hydration(target, br, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*cart*/ 2 && t0_value !== (t0_value = /*option*/ ctx[34] + "")) set_data(t0, t0_value);
+			if (dirty[0] & /*cart*/ 2 && t0_value !== (t0_value = /*option*/ ctx[32] + "")) set_data(t0, t0_value);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -176,15 +178,15 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (156:7) <Loadable  bind:loading   cart={cart} min_amounts={min_amounts}    lec={lec} >
+// (137:7) <Loadable  bind:loading   cart={cart} min_amounts={min_amounts}    lec={lec} >
 function create_default_slot_1(ctx) {
 	let quantitybox;
 	let current;
 
 	quantitybox = new Quantity_box({
 			props: {
-				minimum: /*min_amounts_data*/ ctx[12][/*item*/ ctx[30].id],
-				quantity: /*item*/ ctx[30].quantity,
+				minimum: /*min_amounts_data*/ ctx[12][/*item*/ ctx[28].id],
+				quantity: /*item*/ ctx[28].quantity,
 				cart: /*cart*/ ctx[1],
 				min_amounts: /*min_amounts*/ ctx[2],
 				lec: /*lec*/ ctx[0]
@@ -192,7 +194,7 @@ function create_default_slot_1(ctx) {
 		});
 
 	quantitybox.$on("qtychange", function () {
-		if (is_function(/*quantityChange*/ ctx[19].bind(/*item*/ ctx[30]))) /*quantityChange*/ ctx[19].bind(/*item*/ ctx[30]).apply(this, arguments);
+		if (is_function(quantityChange.bind(/*item*/ ctx[28]))) quantityChange.bind(/*item*/ ctx[28]).apply(this, arguments);
 	});
 
 	return {
@@ -209,8 +211,8 @@ function create_default_slot_1(ctx) {
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
 			const quantitybox_changes = {};
-			if (dirty[0] & /*cart*/ 2) quantitybox_changes.minimum = /*min_amounts_data*/ ctx[12][/*item*/ ctx[30].id];
-			if (dirty[0] & /*cart*/ 2) quantitybox_changes.quantity = /*item*/ ctx[30].quantity;
+			if (dirty[0] & /*cart*/ 2) quantitybox_changes.minimum = /*min_amounts_data*/ ctx[12][/*item*/ ctx[28].id];
+			if (dirty[0] & /*cart*/ 2) quantitybox_changes.quantity = /*item*/ ctx[28].quantity;
 			if (dirty[0] & /*cart*/ 2) quantitybox_changes.cart = /*cart*/ ctx[1];
 			if (dirty[0] & /*min_amounts*/ 4) quantitybox_changes.min_amounts = /*min_amounts*/ ctx[2];
 			if (dirty[0] & /*lec*/ 1) quantitybox_changes.lec = /*lec*/ ctx[0];
@@ -231,7 +233,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (161:7) <Loadable  bind:loading   cart={cart} min_amounts={min_amounts}    lec={lec} >
+// (142:7) <Loadable  bind:loading   cart={cart} min_amounts={min_amounts}    lec={lec} >
 function create_default_slot(ctx) {
 	let div;
 	let icon;
@@ -250,7 +252,7 @@ function create_default_slot(ctx) {
 		});
 
 	function click_handler() {
-		return /*click_handler*/ ctx[21](/*item*/ ctx[30]);
+		return /*click_handler*/ ctx[19](/*item*/ ctx[28]);
 	}
 
 	return {
@@ -305,7 +307,7 @@ function create_default_slot(ctx) {
 	};
 }
 
-// (126:4) {#each  cart.items as item, index  }
+// (107:4) {#each  cart.items as item, index   }
 function create_each_block(ctx) {
 	let div5;
 	let img;
@@ -314,7 +316,7 @@ function create_each_block(ctx) {
 	let div2;
 	let div1;
 	let span;
-	let t1_value = /*item*/ ctx[30].product_title + "";
+	let t1_value = /*item*/ ctx[28].product_title + "";
 	let t1;
 	let t2;
 	let div0;
@@ -327,13 +329,13 @@ function create_each_block(ctx) {
 	let updating_loading_1;
 	let t5;
 	let div3;
-	let t6_value = /*liquid*/ ctx[11].money(/*item*/ ctx[30].price) + "";
+	let t6_value = /*liquid*/ ctx[11].money(/*item*/ ctx[28].price) + "";
 	let t6;
 	let t7;
 	let div5_data_id_value;
 	let div5_transition;
 	let current;
-	let each_value_1 = /*item*/ ctx[30].variant_options;
+	let each_value_1 = /*item*/ ctx[28].variant_options;
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_1.length; i += 1) {
@@ -341,7 +343,7 @@ function create_each_block(ctx) {
 	}
 
 	function loadable0_loading_binding(value) {
-		/*loadable0_loading_binding*/ ctx[20](value);
+		/*loadable0_loading_binding*/ ctx[18](value);
 	}
 
 	let loadable0_props = {
@@ -360,7 +362,7 @@ function create_each_block(ctx) {
 	binding_callbacks.push(() => bind(loadable0, 'loading', loadable0_loading_binding));
 
 	function loadable1_loading_binding(value) {
-		/*loadable1_loading_binding*/ ctx[22](value);
+		/*loadable1_loading_binding*/ ctx[20](value);
 	}
 
 	let loadable1_props = {
@@ -446,7 +448,7 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			if (!src_url_equal(img.src, img_src_value = /*liquid*/ ctx[11].img_url(/*item*/ ctx[30].image, '120x'))) attr(img, "src", img_src_value);
+			if (!src_url_equal(img.src, img_src_value = /*liquid*/ ctx[11].img_url(/*item*/ ctx[28].image, '120x'))) attr(img, "src", img_src_value);
 			attr(img, "alt", "cart item product image");
 			attr(img, "class", "flex-grow-0 mr-2 w-32");
 			attr(span, "class", "cart-item-title text-lg");
@@ -455,7 +457,7 @@ function create_each_block(ctx) {
 			attr(div2, "class", "cart-item-content");
 			attr(div3, "class", "cart-item-price text-black text-xl");
 			attr(div4, "class", "cart-item-right");
-			attr(div5, "data-id", div5_data_id_value = /*item*/ ctx[30].id);
+			attr(div5, "data-id", div5_data_id_value = /*item*/ ctx[28].id);
 			attr(div5, "class", "cart-item w-full flex mb-10");
 		},
 		m(target, anchor) {
@@ -487,14 +489,14 @@ function create_each_block(ctx) {
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
 
-			if (!current || dirty[0] & /*cart*/ 2 && !src_url_equal(img.src, img_src_value = /*liquid*/ ctx[11].img_url(/*item*/ ctx[30].image, '120x'))) {
+			if (!current || dirty[0] & /*cart*/ 2 && !src_url_equal(img.src, img_src_value = /*liquid*/ ctx[11].img_url(/*item*/ ctx[28].image, '120x'))) {
 				attr(img, "src", img_src_value);
 			}
 
-			if ((!current || dirty[0] & /*cart*/ 2) && t1_value !== (t1_value = /*item*/ ctx[30].product_title + "")) set_data(t1, t1_value);
+			if ((!current || dirty[0] & /*cart*/ 2) && t1_value !== (t1_value = /*item*/ ctx[28].product_title + "")) set_data(t1, t1_value);
 
 			if (dirty[0] & /*cart*/ 2) {
-				each_value_1 = /*item*/ ctx[30].variant_options;
+				each_value_1 = /*item*/ ctx[28].variant_options;
 				let i;
 
 				for (i = 0; i < each_value_1.length; i += 1) {
@@ -521,7 +523,7 @@ function create_each_block(ctx) {
 			if (dirty[0] & /*min_amounts*/ 4) loadable0_changes.min_amounts = /*min_amounts*/ ctx[2];
 			if (dirty[0] & /*lec*/ 1) loadable0_changes.lec = /*lec*/ ctx[0];
 
-			if (dirty[0] & /*cart, min_amounts, lec*/ 7 | dirty[1] & /*$$scope*/ 32) {
+			if (dirty[0] & /*cart, min_amounts, lec*/ 7 | dirty[1] & /*$$scope*/ 8) {
 				loadable0_changes.$$scope = { dirty, ctx };
 			}
 
@@ -537,7 +539,7 @@ function create_each_block(ctx) {
 			if (dirty[0] & /*min_amounts*/ 4) loadable1_changes.min_amounts = /*min_amounts*/ ctx[2];
 			if (dirty[0] & /*lec*/ 1) loadable1_changes.lec = /*lec*/ ctx[0];
 
-			if (dirty[0] & /*cart, min_amounts, lec*/ 7 | dirty[1] & /*$$scope*/ 32) {
+			if (dirty[0] & /*cart, min_amounts, lec*/ 7 | dirty[1] & /*$$scope*/ 8) {
 				loadable1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -548,9 +550,9 @@ function create_each_block(ctx) {
 			}
 
 			loadable1.$set(loadable1_changes);
-			if ((!current || dirty[0] & /*cart*/ 2) && t6_value !== (t6_value = /*liquid*/ ctx[11].money(/*item*/ ctx[30].price) + "")) set_data(t6, t6_value);
+			if ((!current || dirty[0] & /*cart*/ 2) && t6_value !== (t6_value = /*liquid*/ ctx[11].money(/*item*/ ctx[28].price) + "")) set_data(t6, t6_value);
 
-			if (!current || dirty[0] & /*cart*/ 2 && div5_data_id_value !== (div5_data_id_value = /*item*/ ctx[30].id)) {
+			if (!current || dirty[0] & /*cart*/ 2 && div5_data_id_value !== (div5_data_id_value = /*item*/ ctx[28].id)) {
 				attr(div5, "data-id", div5_data_id_value);
 			}
 		},
@@ -835,7 +837,7 @@ function create_fragment(ctx) {
 			attr(div10, "id", "cart-drawer");
 			attr(div10, "class", "block fixed top-0 bg-white p-16 h-full z-10 -right-full transition-all duration-300 max-w-full");
 			set_style(div10, "transform", "translateX(" + /*$swipeLeft*/ ctx[10] + "px)");
-			add_render_callback(() => /*div10_elementresize_handler*/ ctx[27].call(div10));
+			add_render_callback(() => /*div10_elementresize_handler*/ ctx[25].call(div10));
 			toggle_class(div10, "right-0", /*$cartOpen*/ ctx[3]);
 		},
 		m(target, anchor) {
@@ -889,22 +891,22 @@ function create_fragment(ctx) {
 			append_hydration(div7, t22);
 			append_hydration(div7, button2);
 			append_hydration(button2, t23);
-			/*form_binding*/ ctx[25](form);
-			/*div10_binding*/ ctx[26](div10);
-			div10_resize_listener = add_resize_listener(div10, /*div10_elementresize_handler*/ ctx[27].bind(div10));
+			/*form_binding*/ ctx[23](form);
+			/*div10_binding*/ ctx[24](div10);
+			div10_resize_listener = add_resize_listener(div10, /*div10_elementresize_handler*/ ctx[25].bind(div10));
 			current = true;
 
 			if (!mounted) {
 				dispose = [
-					listen(button0, "click", /*toggleCart*/ ctx[18]),
-					listen(div0, "click", /*closeCart*/ ctx[17]),
-					listen(span1, "click", /*closeCart*/ ctx[17]),
-					listen(button1, "click", /*click_handler_1*/ ctx[23]),
-					listen(button2, "click", /*click_handler_2*/ ctx[24]),
+					listen(button0, "click", /*toggleCart*/ ctx[17]),
+					listen(div0, "click", /*closeCart*/ ctx[16]),
+					listen(span1, "click", /*closeCart*/ ctx[16]),
+					listen(button1, "click", /*click_handler_1*/ ctx[21]),
+					listen(button2, "click", /*click_handler_2*/ ctx[22]),
 					action_destroyer(swipe.call(null, div10)),
-					listen(div10, "swipe", /*handleSwipe*/ ctx[14]),
-					listen(div10, "swipeStart", /*handleSwipeStart*/ ctx[16]),
-					listen(div10, "swipeEnd", /*handleSwipeEnd*/ ctx[15])
+					listen(div10, "swipe", /*handleSwipe*/ ctx[13]),
+					listen(div10, "swipeStart", /*handleSwipeStart*/ ctx[15]),
+					listen(div10, "swipeEnd", /*handleSwipeEnd*/ ctx[14])
 				];
 
 				mounted = true;
@@ -917,7 +919,7 @@ function create_fragment(ctx) {
 				toggle_class(div0, "hidden", /*$cartOpen*/ ctx[3] != true);
 			}
 
-			if (dirty[0] & /*cart, liquid, min_amounts, lec, loading, updateLineItem, min_amounts_data, quantityChange*/ 538759) {
+			if (dirty[0] & /*cart, liquid, min_amounts, lec, loading, min_amounts_data*/ 6279) {
 				each_value = /*cart*/ ctx[1].items;
 				let i;
 
@@ -987,8 +989,8 @@ function create_fragment(ctx) {
 			if (detaching) detach(t3);
 			if (detaching) detach(div10);
 			destroy_each(each_blocks, detaching);
-			/*form_binding*/ ctx[25](null);
-			/*div10_binding*/ ctx[26](null);
+			/*form_binding*/ ctx[23](null);
+			/*div10_binding*/ ctx[24](null);
 			div10_resize_listener();
 			if (detaching && div10_transition) div10_transition.end();
 			mounted = false;
@@ -997,13 +999,17 @@ function create_fragment(ctx) {
 	};
 }
 
+function quantityChange(event) {
+	updateLineItem(this.id, event.detail.quantity);
+}
+
 function instance($$self, $$props, $$invalidate) {
 	let cart_action;
 	let $cartOpen;
 	let $swipeLeft;
 	let $cartStore;
 	component_subscribe($$self, cartOpen, $$value => $$invalidate(3, $cartOpen = $$value));
-	component_subscribe($$self, cartStore, $$value => $$invalidate(28, $cartStore = $$value));
+	component_subscribe($$self, cartStore, $$value => $$invalidate(26, $cartStore = $$value));
 	let { lec } = $$props;
 	const liquid = cachedLiquid(lec);
 	let { cart } = $$props;
@@ -1016,23 +1022,6 @@ function instance($$self, $$props, $$invalidate) {
 	let loading = false;
 	console.log('cart store ', $cartStore);
 	set_store_value(cartOpen, $cartOpen = false, $cartOpen);
-
-	async function updateLineItem(itemid, quantity) {
-		$$invalidate(7, loading = true);
-
-		await fetch(`/cart/update.js`, {
-			method: 'POST',
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ updates: { [itemid]: quantity } })
-		});
-
-		const cartResponse = await fetch('/cart?view=json');
-		const newCartData = await cartResponse.json();
-		set_store_value(cartStore, $cartStore.items = newCartData.items, $cartStore);
-		set_store_value(cartStore, $cartStore.items_subtotal_price = newCartData.items_subtotal_price, $cartStore);
-		$$invalidate(7, loading = false);
-	}
-
 	const swipeLeft = spring(0, { stiffness: 0.2, damping: 0.4 });
 	component_subscribe($$self, swipeLeft, value => $$invalidate(10, $swipeLeft = value));
 
@@ -1063,10 +1052,6 @@ function instance($$self, $$props, $$invalidate) {
 
 	function toggleCart() {
 		set_store_value(cartOpen, $cartOpen = !$cartOpen, $cartOpen);
-	}
-
-	function quantityChange(event) {
-		updateLineItem(this.id, event.detail.quantity);
 	}
 
 	function loadable0_loading_binding(value) {
@@ -1137,13 +1122,11 @@ function instance($$self, $$props, $$invalidate) {
 		$swipeLeft,
 		liquid,
 		min_amounts_data,
-		updateLineItem,
 		handleSwipe,
 		handleSwipeEnd,
 		handleSwipeStart,
 		closeCart,
 		toggleCart,
-		quantityChange,
 		loadable0_loading_binding,
 		click_handler,
 		loadable1_loading_binding,

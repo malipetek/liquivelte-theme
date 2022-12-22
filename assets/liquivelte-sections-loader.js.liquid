@@ -31,6 +31,11 @@
           css: "{{ 'main-product.liquivelte.css' | asset_url }}"
         });
         
+        liquivelteSections.set('product-carousel', {
+          js: "{{ 'product-carousel.liquivelte.js' | asset_url }}",
+          css: "{{ 'product-carousel.liquivelte.css' | asset_url }}"
+        });
+        
         liquivelteSections.set('product-comparison', {
           js: "{{ 'product-comparison.liquivelte.js' | asset_url }}",
           css: "{{ 'product-comparison.liquivelte.css' | asset_url }}"
@@ -46,9 +51,9 @@
           css: "{{ 'scroll-animation.liquivelte.css' | asset_url }}"
         });
         
-        liquivelteSections.set('slider', {
-          js: "{{ 'slider.liquivelte.js' | asset_url }}",
-          css: "{{ 'slider.liquivelte.css' | asset_url }}"
+        liquivelteSections.set('slider-general', {
+          js: "{{ 'slider-general.liquivelte.js' | asset_url }}",
+          css: "{{ 'slider-general.liquivelte.css' | asset_url }}"
         });
         
     window.liquivelteSections = liquivelteSections;

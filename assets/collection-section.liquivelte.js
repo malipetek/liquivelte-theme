@@ -77,7 +77,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (20:0) {#each  section.blocks as block, index  }
+// (20:0) {#each  section.blocks as block, index   }
 function create_each_block(ctx) {
 	let if_block_anchor;
 

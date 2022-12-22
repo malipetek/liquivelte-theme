@@ -1,27 +1,70 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign classes = null
+			assign tag = null
+			assign wrapperTag = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'tag'
-	assign tag = propValue
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
-	if propName == 'wrapperTag'
-	assign wrapperTag = propValue
+	if lv_propName == 'tag'
+		assign tag = lv_propValue
+	endif
+	if lv_propName == 'wrapperTag'
+		assign wrapperTag = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					if lv_module == 'framework7-liquivelte-swiper' and lv_name == 'container-start'
+						assign slot_container-start_framework7-liquivelte_swiper = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-swiper' and lv_name == 'wrapper-start'
+						assign slot_wrapper-start_framework7-liquivelte_swiper = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-swiper' and lv_name == 'wrapper-end'
+						assign slot_wrapper-end_framework7-liquivelte_swiper = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-swiper' and lv_name == 'container-end'
+						assign slot_container-end_framework7-liquivelte_swiper = lv_value | strip
+					endif
+					
+					if lv_module == 'framework7-liquivelte-swiper'
+						assign slot_default_framework7-liquivelte_swiper = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component swiper" data-liquivelte-component-name="swiper.liquivelte">
 	{%- endunless -%}
@@ -32,83 +75,36 @@
 
 <div
   bind:this={swiperEl}
-  class="{{ containerClasses }} {{ className }}"
+  class="{{ containerClasses }} {{ classes }}"
   {...restProps}
 >
-  {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-swiper' and name == 'container-start'
-	assign children_container-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_container-start != blank -%}
-	{{- children_container-start -}}
+  
+	{%- if slot_container-start_framework7-liquivelte_swiper != blank -%}
+		{{- slot_container-start_framework7-liquivelte_swiper -}}
 	{%- endif -%}
-	{%- assign children_container-start = '' -%}
-	
+
   <div class="swiper-wrapper">
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-swiper' and name == 'wrapper-start'
-	assign children_wrapper-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_wrapper-start != blank -%}
-	{{- children_wrapper-start -}}
+    
+	{%- if slot_wrapper-start_framework7-liquivelte_swiper != blank -%}
+		{{- slot_wrapper-start_framework7-liquivelte_swiper -}}
 	{%- endif -%}
-	{%- assign children_wrapper-start = '' -%}
-	
-    {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-swiper'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+
+    
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_swiper != blank -%}
+			{{- slot_default_framework7-liquivelte_swiper -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-swiper' and name == 'wrapper-end'
-	assign children_wrapper-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_wrapper-end != blank -%}
-	{{- children_wrapper-end -}}
+    
+	{%- if slot_wrapper-end_framework7-liquivelte_swiper != blank -%}
+		{{- slot_wrapper-end_framework7-liquivelte_swiper -}}
 	{%- endif -%}
-	{%- assign children_wrapper-end = '' -%}
-	
+
   </div>
   {% if _needsNavigation %}
     <div bind:this="{prevEl}" class="swiper-button-prev" />
@@ -120,23 +116,11 @@
   {% if _needsPagination %}
     <div bind:this="{paginationEl}" class="swiper-pagination" />
   {% endif %}
-  {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-swiper' and name == 'container-end'
-	assign children_container-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_container-end != blank -%}
-	{{- children_container-end -}}
+  
+	{%- if slot_container-end_framework7-liquivelte_swiper != blank -%}
+		{{- slot_container-end_framework7-liquivelte_swiper -}}
 	{%- endif -%}
-	{%- assign children_container-end = '' -%}
-	
+
 </div>
 
 	
@@ -146,7 +130,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -193,6 +176,21 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign classes = null
+			assign tag = null
+			assign wrapperTag = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_swiper = null
+			assign slot_container-start_framework7-liquivelte_swiper = null
+			assign slot_wrapper-start_framework7-liquivelte_swiper = null
+			assign slot_wrapper-end_framework7-liquivelte_swiper = null
+			assign slot_container-end_framework7-liquivelte_swiper = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

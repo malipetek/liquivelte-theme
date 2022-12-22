@@ -294,7 +294,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (61:4) {#each  section.blocks as block, index  }
+// (61:4) {#each  section.blocks as block, index   }
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 	let current;
@@ -1017,7 +1017,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (102:14) {#each  section.blocks as block, index  }
+// (102:14) {#each  section.blocks as block, index   }
 function create_each_block_1(ctx) {
 	let option;
 	let t0_value = /*block*/ ctx[8].settings.product_title_1 + "";
@@ -1064,7 +1064,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (78:2) {#each  section.blocks as block, index  }
+// (78:2) {#each  section.blocks as block, index   }
 function create_each_block(ctx) {
 	let if_block_anchor;
 	let current;
@@ -1363,7 +1363,7 @@ function instance($$self, $$props, $$invalidate) {
 		console.log('$cart ', cartStore);
 	});
 
-	let { section = {} } = $$props;
+	let section = {};
 	let { sectionƒƒsettings } = $$props;
 	section.settings = sectionƒƒsettings;
 	let { sectionƒƒblocks } = $$props;
@@ -1381,7 +1381,6 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ('lec' in $$props) $$invalidate(3, lec = $$props.lec);
-		if ('section' in $$props) $$invalidate(0, section = $$props.section);
 		if ('sectionƒƒsettings' in $$props) $$invalidate(4, sectionƒƒsettings = $$props.sectionƒƒsettings);
 		if ('sectionƒƒblocks' in $$props) $$invalidate(5, sectionƒƒblocks = $$props.sectionƒƒblocks);
 	};
@@ -1403,7 +1402,6 @@ class Product_comparison extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			lec: 3,
-			section: 0,
 			sectionƒƒsettings: 4,
 			sectionƒƒblocks: 5
 		});

@@ -1,129 +1,212 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign classes = null
+			assign ul = null
+			assign inset = null
+			assign xsmallInset = null
+			assign smallInset = null
+			assign mediumInset = null
+			assign largeInset = null
+			assign xlargeInset = null
+			assign mediaList = null
+			assign sortable = null
+			assign sortableTapHold = null
+			assign sortableEnabled = null
+			assign sortableMoveElements = null
+			assign sortableOpposite = null
+			assign accordionList = null
+			assign accordionOpposite = null
+			assign contactsList = null
+			assign simpleList = null
+			assign linksList = null
+			assign menuList = null
+			assign noHairlines = null
+			assign noHairlinesBetween = null
+			assign noHairlinesMd = null
+			assign noHairlinesBetweenMd = null
+			assign noHairlinesIos = null
+			assign noHairlinesBetweenIos = null
+			assign noHairlinesAurora = null
+			assign noHairlinesBetweenAurora = null
+			assign noChevron = null
+			assign chevronCenter = null
+			assign tab = null
+			assign tabActive = null
+			assign form = null
+			assign formStoreData = null
+			assign inlineLabels = null
+			assign virtualList = null
+			assign virtualListParams = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'ul'
-	assign ul = propValue
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
-	if propName == 'inset'
-	assign inset = propValue
+	if lv_propName == 'ul'
+		assign ul = lv_propValue
 	endif
-	if propName == 'xsmallInset'
-	assign xsmallInset = propValue
+	if lv_propName == 'inset'
+		assign inset = lv_propValue
 	endif
-	if propName == 'smallInset'
-	assign smallInset = propValue
+	if lv_propName == 'xsmallInset'
+		assign xsmallInset = lv_propValue
 	endif
-	if propName == 'mediumInset'
-	assign mediumInset = propValue
+	if lv_propName == 'smallInset'
+		assign smallInset = lv_propValue
 	endif
-	if propName == 'largeInset'
-	assign largeInset = propValue
+	if lv_propName == 'mediumInset'
+		assign mediumInset = lv_propValue
 	endif
-	if propName == 'xlargeInset'
-	assign xlargeInset = propValue
+	if lv_propName == 'largeInset'
+		assign largeInset = lv_propValue
 	endif
-	if propName == 'mediaList'
-	assign mediaList = propValue
+	if lv_propName == 'xlargeInset'
+		assign xlargeInset = lv_propValue
 	endif
-	if propName == 'sortable'
-	assign sortable = propValue
+	if lv_propName == 'mediaList'
+		assign mediaList = lv_propValue
 	endif
-	if propName == 'sortableTapHold'
-	assign sortableTapHold = propValue
+	if lv_propName == 'sortable'
+		assign sortable = lv_propValue
 	endif
-	if propName == 'sortableEnabled'
-	assign sortableEnabled = propValue
+	if lv_propName == 'sortableTapHold'
+		assign sortableTapHold = lv_propValue
 	endif
-	if propName == 'sortableMoveElements'
-	assign sortableMoveElements = propValue
+	if lv_propName == 'sortableEnabled'
+		assign sortableEnabled = lv_propValue
 	endif
-	if propName == 'sortableOpposite'
-	assign sortableOpposite = propValue
+	if lv_propName == 'sortableMoveElements'
+		assign sortableMoveElements = lv_propValue
 	endif
-	if propName == 'accordionList'
-	assign accordionList = propValue
+	if lv_propName == 'sortableOpposite'
+		assign sortableOpposite = lv_propValue
 	endif
-	if propName == 'accordionOpposite'
-	assign accordionOpposite = propValue
+	if lv_propName == 'accordionList'
+		assign accordionList = lv_propValue
 	endif
-	if propName == 'contactsList'
-	assign contactsList = propValue
+	if lv_propName == 'accordionOpposite'
+		assign accordionOpposite = lv_propValue
 	endif
-	if propName == 'simpleList'
-	assign simpleList = propValue
+	if lv_propName == 'contactsList'
+		assign contactsList = lv_propValue
 	endif
-	if propName == 'linksList'
-	assign linksList = propValue
+	if lv_propName == 'simpleList'
+		assign simpleList = lv_propValue
 	endif
-	if propName == 'menuList'
-	assign menuList = propValue
+	if lv_propName == 'linksList'
+		assign linksList = lv_propValue
 	endif
-	if propName == 'noHairlines'
-	assign noHairlines = propValue
+	if lv_propName == 'menuList'
+		assign menuList = lv_propValue
 	endif
-	if propName == 'noHairlinesBetween'
-	assign noHairlinesBetween = propValue
+	if lv_propName == 'noHairlines'
+		assign noHairlines = lv_propValue
 	endif
-	if propName == 'noHairlinesMd'
-	assign noHairlinesMd = propValue
+	if lv_propName == 'noHairlinesBetween'
+		assign noHairlinesBetween = lv_propValue
 	endif
-	if propName == 'noHairlinesBetweenMd'
-	assign noHairlinesBetweenMd = propValue
+	if lv_propName == 'noHairlinesMd'
+		assign noHairlinesMd = lv_propValue
 	endif
-	if propName == 'noHairlinesIos'
-	assign noHairlinesIos = propValue
+	if lv_propName == 'noHairlinesBetweenMd'
+		assign noHairlinesBetweenMd = lv_propValue
 	endif
-	if propName == 'noHairlinesBetweenIos'
-	assign noHairlinesBetweenIos = propValue
+	if lv_propName == 'noHairlinesIos'
+		assign noHairlinesIos = lv_propValue
 	endif
-	if propName == 'noHairlinesAurora'
-	assign noHairlinesAurora = propValue
+	if lv_propName == 'noHairlinesBetweenIos'
+		assign noHairlinesBetweenIos = lv_propValue
 	endif
-	if propName == 'noHairlinesBetweenAurora'
-	assign noHairlinesBetweenAurora = propValue
+	if lv_propName == 'noHairlinesAurora'
+		assign noHairlinesAurora = lv_propValue
 	endif
-	if propName == 'noChevron'
-	assign noChevron = propValue
+	if lv_propName == 'noHairlinesBetweenAurora'
+		assign noHairlinesBetweenAurora = lv_propValue
 	endif
-	if propName == 'chevronCenter'
-	assign chevronCenter = propValue
+	if lv_propName == 'noChevron'
+		assign noChevron = lv_propValue
 	endif
-	if propName == 'tab'
-	assign tab = propValue
+	if lv_propName == 'chevronCenter'
+		assign chevronCenter = lv_propValue
 	endif
-	if propName == 'tabActive'
-	assign tabActive = propValue
+	if lv_propName == 'tab'
+		assign tab = lv_propValue
 	endif
-	if propName == 'form'
-	assign form = propValue
+	if lv_propName == 'tabActive'
+		assign tabActive = lv_propValue
 	endif
-	if propName == 'formStoreData'
-	assign formStoreData = propValue
+	if lv_propName == 'form'
+		assign form = lv_propValue
 	endif
-	if propName == 'inlineLabels'
-	assign inlineLabels = propValue
+	if lv_propName == 'formStoreData'
+		assign formStoreData = lv_propValue
 	endif
-	if propName == 'virtualList'
-	assign virtualList = propValue
+	if lv_propName == 'inlineLabels'
+		assign inlineLabels = lv_propValue
 	endif
-	if propName == 'virtualListParams'
-	assign virtualListParams = propValue
+	if lv_propName == 'virtualList'
+		assign virtualList = lv_propValue
+	endif
+	if lv_propName == 'virtualListParams'
+		assign virtualListParams = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					if lv_module == 'framework7-liquivelte-list' and lv_name == 'before-list'
+						assign slot_before-list_framework7-liquivelte_list = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list' and lv_name == 'list'
+						assign slot_list_framework7-liquivelte_list = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list' and lv_name == 'after-list'
+						assign slot_after-list_framework7-liquivelte_list = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list' and lv_name == 'before-list'
+						assign slot_before-list_framework7-liquivelte_list = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list' and lv_name == 'list'
+						assign slot_list_framework7-liquivelte_list = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-list' and lv_name == 'after-list'
+						assign slot_after-list_framework7-liquivelte_list = lv_value | strip
+					endif
+					
+					if lv_module == 'framework7-liquivelte-list'
+						assign slot_default_framework7-liquivelte_list = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component list" data-liquivelte-component-name="list.liquivelte">
 	{%- endunless -%}
@@ -132,216 +215,100 @@
 <!-- svelte-ignore a11y-missing-attribute -->
 {#if form}
   
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list' and name == 'before-list'
-	assign children_before-list = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_before-list != blank -%}
-	{{- children_before-list -}}
+    
+	{%- if slot_before-list_framework7-liquivelte_list != blank -%}
+		{{- slot_before-list_framework7-liquivelte_list -}}
 	{%- endif -%}
-	{%- assign children_before-list = '' -%}
-	
+
     {#if hasUlSlots && ul}
       <ul>
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list' and name == 'list'
-	assign children_list = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_list != blank -%}
-	{{- children_list -}}
+        
+	{%- if slot_list_framework7-liquivelte_list != blank -%}
+		{{- slot_list_framework7-liquivelte_list -}}
 	{%- endif -%}
-	{%- assign children_list = '' -%}
-	
-        {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+
+        
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_list != blank -%}
+			{{- slot_default_framework7-liquivelte_list -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
       </ul>
     {:else}
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_list != blank -%}
+			{{- slot_default_framework7-liquivelte_list -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     {/if}
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list' and name == 'after-list'
-	assign children_after-list = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_after-list != blank -%}
-	{{- children_after-list -}}
+    
+	{%- if slot_after-list_framework7-liquivelte_list != blank -%}
+		{{- slot_after-list_framework7-liquivelte_list -}}
 	{%- endif -%}
-	{%- assign children_after-list = '' -%}
-	
+
   </form>
 {:else}
   <div
     bind:this={el}
-    class={classes}
+    class={computedClasses}
     data-sortable-move-elements={typeof sortableMoveElements !== 'undefined'
       ? sortableMoveElements.toString()
       : undefined}
     {...restProps($$restProps)}
   >
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list' and name == 'before-list'
-	assign children_before-list = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_before-list != blank -%}
-	{{- children_before-list -}}
+    
+	{%- if slot_before-list_framework7-liquivelte_list != blank -%}
+		{{- slot_before-list_framework7-liquivelte_list -}}
 	{%- endif -%}
-	{%- assign children_before-list = '' -%}
-	
+
     {#if hasUlSlots && ul}
       <ul>
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list' and name == 'list'
-	assign children_list = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_list != blank -%}
-	{{- children_list -}}
+        
+	{%- if slot_list_framework7-liquivelte_list != blank -%}
+		{{- slot_list_framework7-liquivelte_list -}}
 	{%- endif -%}
-	{%- assign children_list = '' -%}
-	
-        {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+
+        
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_list != blank -%}
+			{{- slot_default_framework7-liquivelte_list -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
       </ul>
     {:else}
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_list != blank -%}
+			{{- slot_default_framework7-liquivelte_list -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     {/if}
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-list' and name == 'after-list'
-	assign children_after-list = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_after-list != blank -%}
-	{{- children_after-list -}}
+    
+	{%- if slot_after-list_framework7-liquivelte_list != blank -%}
+		{{- slot_after-list_framework7-liquivelte_list -}}
 	{%- endif -%}
-	{%- assign children_after-list = '' -%}
-	
+
   </div>
 {/if}
 
@@ -352,7 +319,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -399,6 +365,57 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign classes = null
+			assign ul = null
+			assign inset = null
+			assign xsmallInset = null
+			assign smallInset = null
+			assign mediumInset = null
+			assign largeInset = null
+			assign xlargeInset = null
+			assign mediaList = null
+			assign sortable = null
+			assign sortableTapHold = null
+			assign sortableEnabled = null
+			assign sortableMoveElements = null
+			assign sortableOpposite = null
+			assign accordionList = null
+			assign accordionOpposite = null
+			assign contactsList = null
+			assign simpleList = null
+			assign linksList = null
+			assign menuList = null
+			assign noHairlines = null
+			assign noHairlinesBetween = null
+			assign noHairlinesMd = null
+			assign noHairlinesBetweenMd = null
+			assign noHairlinesIos = null
+			assign noHairlinesBetweenIos = null
+			assign noHairlinesAurora = null
+			assign noHairlinesBetweenAurora = null
+			assign noChevron = null
+			assign chevronCenter = null
+			assign tab = null
+			assign tabActive = null
+			assign form = null
+			assign formStoreData = null
+			assign inlineLabels = null
+			assign virtualList = null
+			assign virtualListParams = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_list = null
+			assign slot_before-list_framework7-liquivelte_list = null
+			assign slot_list_framework7-liquivelte_list = null
+			assign slot_after-list_framework7-liquivelte_list = null
+			assign slot_before-list_framework7-liquivelte_list = null
+			assign slot_list_framework7-liquivelte_list = null
+			assign slot_after-list_framework7-liquivelte_list = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

@@ -10,17 +10,20 @@ import shop.name from 'theme';
 import logo_height from 'theme';
 import logo_alt from 'theme';
 
-console.log('??? section settings ', section.settings, section.settings.logo != '');
-
 </script>
 {% if section.settings.logo != blank %}
   <img src="{{- section.settings.logo | img_url: '500x' -}}"
     class="header__heading-logo"
     widths="50, 100, 150, 200, 250, 300, 400, 500"
     height="{{- logo_height -}}"
-    width="{{- section.settings.logo_width -}}"
     alt="{{- logo_alt -}}"
   />
 {% else %}
   <span class="h2">{{- shop.name -}}</span>
 {% endif %}
+
+<style lang="postcss">
+  img {
+    max-height: var(--f7-appbar-height);
+  }
+</style>

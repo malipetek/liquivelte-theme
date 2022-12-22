@@ -1682,7 +1682,7 @@ const setReactiveContext = (name, getValue) => {
  *
  * Released under the MIT License
  *
- * Released on: December 18, 2022
+ * Released on: December 22, 2022
  */
 
 export { Framework7Svelte, actionsAttrs, actionsClasses, app, classNames, colorClasses, createEmitter, extend, f7init, f7ready, getReactiveContext, getRouterId, getRouterInitialComponent, isStringProp, modalStateClasses, noUndefinedProps, plainText, restProps, routerAttrs, routerClasses, setReactiveContext, useIcon, useRouteProps, useSmartSelect, useTab, useTheme, useTooltip };

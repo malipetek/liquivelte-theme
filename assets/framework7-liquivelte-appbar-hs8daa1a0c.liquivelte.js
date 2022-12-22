@@ -80,7 +80,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", div_class_value = "appbar-inner " + /*innerClasses*/ ctx[1]);
+			attr(div, "class", div_class_value = "appbar-inner " + /*innerClasses*/ ctx[3]);
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -107,7 +107,7 @@ function create_if_block(ctx) {
 				}
 			}
 
-			if (!current || dirty & /*innerClasses*/ 2 && div_class_value !== (div_class_value = "appbar-inner " + /*innerClasses*/ ctx[1])) {
+			if (!current || dirty & /*innerClasses*/ 8 && div_class_value !== (div_class_value = "appbar-inner " + /*innerClasses*/ ctx[3])) {
 				attr(div, "class", div_class_value);
 			}
 		},
@@ -141,7 +141,7 @@ function create_fragment(ctx) {
 	const if_blocks = [];
 
 	function select_block_type(ctx, dirty) {
-		if (/*inner*/ ctx[0]) return 0;
+		if (/*inner*/ ctx[1]) return 0;
 		return 1;
 	}
 
@@ -152,9 +152,9 @@ function create_fragment(ctx) {
 
 	let div_levels = [
 		{
-			class: div_class_value = "appbar " + /*classes*/ ctx[2]
+			class: div_class_value = "appbar " + /*classes*/ ctx[0] + " " + /*computedClasses*/ ctx[2]
 		},
-		restProps(/*$$restProps*/ ctx[3])
+		restProps(/*$$restProps*/ ctx[4])
 	];
 
 	let div_data = {};
@@ -262,8 +262,8 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(div, div_data = get_spread_update(div_levels, [
-				(!current || dirty & /*classes*/ 4 && div_class_value !== (div_class_value = "appbar " + /*classes*/ ctx[2])) && { class: div_class_value },
-				dirty & /*$$restProps*/ 8 && restProps(/*$$restProps*/ ctx[3])
+				(!current || dirty & /*classes, computedClasses*/ 5 && div_class_value !== (div_class_value = "appbar " + /*classes*/ ctx[0] + " " + /*computedClasses*/ ctx[2])) && { class: div_class_value },
+				dirty & /*$$restProps*/ 16 && restProps(/*$$restProps*/ ctx[4])
 			]));
 		},
 		i(local) {
@@ -289,13 +289,13 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let classes;
 	let innerClasses;
-	const omit_props_names = ["lec","class","noShadow","noHairline","inner","innerClass","innerClassName"];
+	const omit_props_names = ["lec","classes","noShadow","noHairline","inner","innerClass","innerClassName"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 	let { noShadow = undefined } = $$props;
 	let { noHairline = undefined } = $$props;
 	let { inner = true } = $$props;
@@ -304,20 +304,20 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$new_props => {
 		$$invalidate(13, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-		$$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('lec' in $$new_props) $$invalidate(4, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(5, className = $$new_props.class);
+		$$invalidate(4, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('lec' in $$new_props) $$invalidate(5, lec = $$new_props.lec);
+		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
 		if ('noShadow' in $$new_props) $$invalidate(6, noShadow = $$new_props.noShadow);
 		if ('noHairline' in $$new_props) $$invalidate(7, noHairline = $$new_props.noHairline);
-		if ('inner' in $$new_props) $$invalidate(0, inner = $$new_props.inner);
+		if ('inner' in $$new_props) $$invalidate(1, inner = $$new_props.inner);
 		if ('innerClass' in $$new_props) $$invalidate(8, innerClass = $$new_props.innerClass);
 		if ('innerClassName' in $$new_props) $$invalidate(9, innerClassName = $$new_props.innerClassName);
 		if ('$$scope' in $$new_props) $$invalidate(10, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		$$invalidate(2, classes = classNames(
-			className,
+		$$invalidate(2, computedClasses = classNames(
+			classes,
 			{
 				'no-shadow': noShadow,
 				'no-hairline': noHairline
@@ -326,19 +326,19 @@ function instance($$self, $$props, $$invalidate) {
 		));
 
 		if ($$self.$$.dirty & /*innerClass, innerClassName*/ 768) {
-			$$invalidate(1, innerClasses = classNames(innerClass, innerClassName));
+			$$invalidate(3, innerClasses = classNames(innerClass, innerClassName));
 		}
 	};
 
 	$$props = exclude_internal_props($$props);
 
 	return [
-		inner,
-		innerClasses,
 		classes,
+		inner,
+		computedClasses,
+		innerClasses,
 		$$restProps,
 		lec,
-		className,
 		noShadow,
 		noHairline,
 		innerClass,
@@ -353,11 +353,11 @@ class Appbar extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			lec: 4,
-			class: 5,
+			lec: 5,
+			classes: 0,
 			noShadow: 6,
 			noHairline: 7,
-			inner: 0,
+			inner: 1,
 			innerClass: 8,
 			innerClassName: 9
 		});

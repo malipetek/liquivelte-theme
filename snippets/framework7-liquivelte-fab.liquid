@@ -1,52 +1,98 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign classes = null
+			assign morphTo = null
+			assign href = null
+			assign target = null
+			assign text = null
+			assign position = null
+			assign tooltip = null
+			assign tooltipTrigger = null
+			assign f7Slot = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'morphTo'
-	assign morphTo = propValue
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
-	if propName == 'href'
-	assign href = propValue
+	if lv_propName == 'morphTo'
+		assign morphTo = lv_propValue
 	endif
-	if propName == 'target'
-	assign target = propValue
+	if lv_propName == 'href'
+		assign href = lv_propValue
 	endif
-	if propName == 'text'
-	assign text = propValue
+	if lv_propName == 'target'
+		assign target = lv_propValue
 	endif
-	if propName == 'position'
-	assign position = propValue
+	if lv_propName == 'text'
+		assign text = lv_propValue
 	endif
-	if propName == 'tooltip'
-	assign tooltip = propValue
+	if lv_propName == 'position'
+		assign position = lv_propValue
 	endif
-	if propName == 'tooltipTrigger'
-	assign tooltipTrigger = propValue
+	if lv_propName == 'tooltip'
+		assign tooltip = lv_propValue
 	endif
-	if propName == 'f7Slot'
-	assign f7Slot = propValue
+	if lv_propName == 'tooltipTrigger'
+		assign tooltipTrigger = lv_propValue
+	endif
+	if lv_propName == 'f7Slot'
+		assign f7Slot = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					if lv_module == 'framework7-liquivelte-fab' and lv_name == 'text'
+						assign slot_text_framework7-liquivelte_fab = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-fab' and lv_name == 'link'
+						assign slot_link_framework7-liquivelte_fab = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-fab' and lv_name == 'root'
+						assign slot_root_framework7-liquivelte_fab = lv_value | strip
+					endif
+					
+					if lv_module == 'framework7-liquivelte-fab'
+						assign slot_default_framework7-liquivelte_fab = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component fab" data-liquivelte-component-name="fab.liquivelte">
 	{%- endunless -%}
 	
 
 <div
-  class="fab {{ classes }}"
+  class="fab {{ classes }} {{ computedClasses }}"
   data-morph-to="{morphTo}"
   bind:this="{el}"
   data-f7-slot="{f7Slot}"
@@ -58,85 +104,38 @@
     href="{hrefComputed}"
     use:useTooltip="{ { tooltip, tooltipTrigger } }"
   >
-    {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-fab'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+    
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_fab != blank -%}
+			{{- slot_default_framework7-liquivelte_fab -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     {% if text != blank || hasTextSlots %}
       <div class="fab-text" bind:this="{textEl}">
         {{ text }}
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-fab' and name == 'text'
-	assign children_text = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_text != blank -%}
-	{{- children_text -}}
+        
+	{%- if slot_text_framework7-liquivelte_fab != blank -%}
+		{{- slot_text_framework7-liquivelte_fab -}}
 	{%- endif -%}
-	{%- assign children_text = '' -%}
-	
+
       </div>
     {% endif %}
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-fab' and name == 'link'
-	assign children_link = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_link != blank -%}
-	{{- children_link -}}
+    
+	{%- if slot_link_framework7-liquivelte_fab != blank -%}
+		{{- slot_link_framework7-liquivelte_fab -}}
 	{%- endif -%}
-	{%- assign children_link = '' -%}
-	
+
   </a>
-  {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-fab' and name == 'root'
-	assign children_root = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_root != blank -%}
-	{{- children_root -}}
+  
+	{%- if slot_root_framework7-liquivelte_fab != blank -%}
+		{{- slot_root_framework7-liquivelte_fab -}}
 	{%- endif -%}
-	{%- assign children_root = '' -%}
-	
+
 </div>
 
 	
@@ -146,7 +145,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -193,6 +191,26 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign classes = null
+			assign morphTo = null
+			assign href = null
+			assign target = null
+			assign text = null
+			assign position = null
+			assign tooltip = null
+			assign tooltipTrigger = null
+			assign f7Slot = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_fab = null
+			assign slot_text_framework7-liquivelte_fab = null
+			assign slot_link_framework7-liquivelte_fab = null
+			assign slot_root_framework7-liquivelte_fab = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

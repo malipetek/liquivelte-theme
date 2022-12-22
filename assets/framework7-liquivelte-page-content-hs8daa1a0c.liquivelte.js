@@ -457,7 +457,7 @@ function instance($$self, $$props, $$invalidate) {
 	let pageContentClasses;
 
 	const omit_props_names = [
-		"lec","tab","tabActive","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","class"
+		"lec","tab","tabActive","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","classes"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
@@ -480,7 +480,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { hideToolbarOnScroll = false } = $$props;
 	let { messagesContent = false } = $$props;
 	let { loginScreen = false } = $$props;
-	let { class: className = undefined } = $$props;
+	let { classes } = $$props;
 	let pageContentEl;
 
 	// Event handlers
@@ -563,7 +563,7 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(34, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(35, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(12, $$restProps = compute_rest_props($$props, omit_props_names));
 		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
 		if ('tab' in $$new_props) $$invalidate(13, tab = $$new_props.tab);
@@ -582,13 +582,13 @@ function instance($$self, $$props, $$invalidate) {
 		if ('hideToolbarOnScroll' in $$new_props) $$invalidate(17, hideToolbarOnScroll = $$new_props.hideToolbarOnScroll);
 		if ('messagesContent' in $$new_props) $$invalidate(18, messagesContent = $$new_props.messagesContent);
 		if ('loginScreen' in $$new_props) $$invalidate(19, loginScreen = $$new_props.loginScreen);
-		if ('class' in $$new_props) $$invalidate(20, className = $$new_props.class);
+		if ('classes' in $$new_props) $$invalidate(20, classes = $$new_props.classes);
 		if ('$$scope' in $$new_props) $$invalidate(21, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
 		$$invalidate(11, pageContentClasses = classNames(
-			className,
+			classes,
 			{
 				tab,
 				'tab-active': tabActive,
@@ -629,7 +629,7 @@ function instance($$self, $$props, $$invalidate) {
 		hideToolbarOnScroll,
 		messagesContent,
 		loginScreen,
-		className,
+		classes,
 		$$scope,
 		slots,
 		div_binding
@@ -664,7 +664,7 @@ class Page_content extends SvelteComponent {
 				hideToolbarOnScroll: 17,
 				messagesContent: 18,
 				loginScreen: 19,
-				class: 20
+				classes: 20
 			},
 			null,
 			[-1, -1]

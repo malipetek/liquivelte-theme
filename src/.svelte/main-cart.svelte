@@ -37,25 +37,6 @@
 		enableScrollOnBody(); 
 	}
 
-	async function updateLineItem(itemid, quantity) {
-		loading = true;
-		await fetch(`/cart/update.js`, {
-			method: 'POST',
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-					updates: { [itemid]: quantity }
-			})
-		})
-		const cartResponse = await fetch('/cart?view=json');
-		const newCartData = await cartResponse.json()
-		$cartStore.items = newCartData.items;
-		$cartStore.items_subtotal_price = newCartData.items_subtotal_price;
-
-		loading = false;
-	}
-
 	const swipeLeft = spring(0, {
 		stiffness: 0.2,
 		damping: 0.4
@@ -123,7 +104,7 @@
 		</div>
 		<div class="spacer"></div> 
 			<div class="cart-drawer-items"> 
-				{#each  cart.items as item, index  }
+				{#each  cart.items as item, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,
@@ -139,7 +120,7 @@
 							<div class="cart-item-content__up"> 
 								<span class="cart-item-title text-lg"> { item.product_title } </span>
 								<div class="cart-item-options">
-									{#each  item.variant_options as option, index  }
+									{#each  item.variant_options as option, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

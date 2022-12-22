@@ -1,0 +1,46 @@
+<script>
+    import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
+    import SliderImage from '../../snippets/slider-image.liquivelte';
+</script>
+
+<Block>
+<BlockTitle>With all controls</BlockTitle>
+  <Swiper breakpoints="{breakpoints}">
+    {% for block in section.blocks %}
+    <SwiperSlide >
+      {% if block.type == 'image' %}
+        <SliderImage ></SliderImage>
+      {% elsif block.type == 'image-with-card' %}
+      
+      {% elsif block.type == 'image-with-card' %}
+
+      {% endif %}
+    </SwiperSlide>
+    {% endfor %} 
+  </Swiper>
+</Block>
+
+{% schema %}
+{
+  "name": "Slider",
+  "tag": "section",
+  "class": "product-section spaced-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Swiper"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider",
+      "category": "Gallery"
+    }
+  ]
+}
+{% endschema %}

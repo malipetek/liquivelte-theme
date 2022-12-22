@@ -17,7 +17,7 @@ section.blocks = sectionƒƒblocks;
   Liquid Comment 
 -->
  
-{#each  section.blocks as block, index  }
+{#each  section.blocks as block, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

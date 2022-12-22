@@ -1,24 +1,50 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign anim_style = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'anim_style'
-	assign anim_style = propValue
+	if lv_propName == 'anim_style'
+		assign anim_style = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'title'
+						assign slot_default_title = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component title svelte-e2nbez" data-liquivelte-component-name="title.liquivelte">
 	{%- endunless -%}
@@ -45,10 +71,9 @@
 						
 						
 	<script type="text/noscript"  class="instance-data svelte-e2nbez">{
-	"left" : {{ left | json }} , "title_top" : {{ title_top | json }} , "font_size" : {{ font_size | json }} , "color" : {{ color | json }} , "bold" : {{ bold | json }} 
+	"left" : {{ left | json }} , "title_top" : {{ title_top | json }} , "font_size" : {{ font_size | json }} , "color" : {{ color | json }} , "bold" : {{ bold | json }}
 	,
-	"blockƒƒsettings": {{ block.settings | json }} 
-
+	"blockƒƒsettings": {{ block.settings | json }}
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-e2nbez">(() => {
@@ -95,6 +120,15 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign anim_style = null
+			-%}
+	{%- liquid 
+			assign slot_default_title = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

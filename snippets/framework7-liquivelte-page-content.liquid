@@ -1,69 +1,114 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign tab = null
+			assign tabActive = null
+			assign ptr = null
+			assign ptrDistance = null
+			assign ptrPreloader = null
+			assign ptrBottom = null
+			assign ptrMousewheel = null
+			assign infinite = null
+			assign infiniteTop = null
+			assign infiniteDistance = null
+			assign infinitePreloader = null
+			assign hideBarsOnScroll = null
+			assign hideNavbarOnScroll = null
+			assign hideToolbarOnScroll = null
+			assign messagesContent = null
+			assign loginScreen = null
+			assign classes = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'tab'
-	assign tab = propValue
+	if lv_propName == 'tab'
+		assign tab = lv_propValue
 	endif
-	if propName == 'tabActive'
-	assign tabActive = propValue
+	if lv_propName == 'tabActive'
+		assign tabActive = lv_propValue
 	endif
-	if propName == 'ptr'
-	assign ptr = propValue
+	if lv_propName == 'ptr'
+		assign ptr = lv_propValue
 	endif
-	if propName == 'ptrDistance'
-	assign ptrDistance = propValue
+	if lv_propName == 'ptrDistance'
+		assign ptrDistance = lv_propValue
 	endif
-	if propName == 'ptrPreloader'
-	assign ptrPreloader = propValue
+	if lv_propName == 'ptrPreloader'
+		assign ptrPreloader = lv_propValue
 	endif
-	if propName == 'ptrBottom'
-	assign ptrBottom = propValue
+	if lv_propName == 'ptrBottom'
+		assign ptrBottom = lv_propValue
 	endif
-	if propName == 'ptrMousewheel'
-	assign ptrMousewheel = propValue
+	if lv_propName == 'ptrMousewheel'
+		assign ptrMousewheel = lv_propValue
 	endif
-	if propName == 'infinite'
-	assign infinite = propValue
+	if lv_propName == 'infinite'
+		assign infinite = lv_propValue
 	endif
-	if propName == 'infiniteTop'
-	assign infiniteTop = propValue
+	if lv_propName == 'infiniteTop'
+		assign infiniteTop = lv_propValue
 	endif
-	if propName == 'infiniteDistance'
-	assign infiniteDistance = propValue
+	if lv_propName == 'infiniteDistance'
+		assign infiniteDistance = lv_propValue
 	endif
-	if propName == 'infinitePreloader'
-	assign infinitePreloader = propValue
+	if lv_propName == 'infinitePreloader'
+		assign infinitePreloader = lv_propValue
 	endif
-	if propName == 'hideBarsOnScroll'
-	assign hideBarsOnScroll = propValue
+	if lv_propName == 'hideBarsOnScroll'
+		assign hideBarsOnScroll = lv_propValue
 	endif
-	if propName == 'hideNavbarOnScroll'
-	assign hideNavbarOnScroll = propValue
+	if lv_propName == 'hideNavbarOnScroll'
+		assign hideNavbarOnScroll = lv_propValue
 	endif
-	if propName == 'hideToolbarOnScroll'
-	assign hideToolbarOnScroll = propValue
+	if lv_propName == 'hideToolbarOnScroll'
+		assign hideToolbarOnScroll = lv_propValue
 	endif
-	if propName == 'messagesContent'
-	assign messagesContent = propValue
+	if lv_propName == 'messagesContent'
+		assign messagesContent = lv_propValue
 	endif
-	if propName == 'loginScreen'
-	assign loginScreen = propValue
+	if lv_propName == 'loginScreen'
+		assign loginScreen = lv_propValue
+	endif
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'framework7-liquivelte-page-content'
+						assign slot_default_framework7-liquivelte_page-content = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component page-content" data-liquivelte-component-name="page-content.liquivelte">
 	{%- endunless -%}
@@ -84,9 +129,9 @@
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props %}{% endcapture %}
+{% capture props_Preloader %}{% endcapture %}
 {% assign modulename = basename | append: 'preloader' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: '' %}
 {% assign props = '' %}
       <div class="ptr-arrow" />
     </div>
@@ -97,32 +142,21 @@
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props %}class-kvsp-infinite-scroll-preloader{% endcapture %}
+{% capture props_Preloader %}class-kvsp-infinite-scroll-preloader{% endcapture %}
 {% assign modulename = basename | append: 'preloader' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: '' %}
 {% assign props = '' %}
   {% endif %}
-  {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-page-content'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+  
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_page-content != blank -%}
+			{{- slot_default_framework7-liquivelte_page-content -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
   {% if infinite and !infiniteTop and infinitePreloader %}
     
@@ -130,9 +164,9 @@
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props %}class-kvsp-infinite-scroll-preloader{% endcapture %}
+{% capture props_Preloader %}class-kvsp-infinite-scroll-preloader{% endcapture %}
 {% assign modulename = basename | append: 'preloader' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: '' %}
 {% assign props = '' %}
   {% endif %}
   {% if ptr and ptrPreloader and ptrBottom %}
@@ -142,9 +176,9 @@
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props %}{% endcapture %}
+{% capture props_Preloader %}{% endcapture %}
 {% assign modulename = basename | append: 'preloader' %}
-{% include modulename, liquivelte: true, props: props, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: '' %}
 {% assign props = '' %}
       <div class="ptr-arrow" />
     </div>
@@ -158,7 +192,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -205,6 +238,31 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign tab = null
+			assign tabActive = null
+			assign ptr = null
+			assign ptrDistance = null
+			assign ptrPreloader = null
+			assign ptrBottom = null
+			assign ptrMousewheel = null
+			assign infinite = null
+			assign infiniteTop = null
+			assign infiniteDistance = null
+			assign infinitePreloader = null
+			assign hideBarsOnScroll = null
+			assign hideNavbarOnScroll = null
+			assign hideToolbarOnScroll = null
+			assign messagesContent = null
+			assign loginScreen = null
+			assign classes = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_page-content = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

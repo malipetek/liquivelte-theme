@@ -1,271 +1,252 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign classes = null
+			assign text = null
+			assign htmlText = null
+			assign name = null
+			assign avatar = null
+			assign type = null
+			assign image = null
+			assign header = null
+			assign footer = null
+			assign textHeader = null
+			assign textFooter = null
+			assign first = null
+			assign last = null
+			assign tail = null
+			assign sameName = null
+			assign sameHeader = null
+			assign sameFooter = null
+			assign sameAvatar = null
+			assign typing = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'text'
-	assign text = propValue
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
-	if propName == 'htmlText'
-	assign htmlText = propValue
+	if lv_propName == 'text'
+		assign text = lv_propValue
 	endif
-	if propName == 'name'
-	assign name = propValue
+	if lv_propName == 'htmlText'
+		assign htmlText = lv_propValue
 	endif
-	if propName == 'avatar'
-	assign avatar = propValue
+	if lv_propName == 'name'
+		assign name = lv_propValue
 	endif
-	if propName == 'type'
-	assign type = propValue
+	if lv_propName == 'avatar'
+		assign avatar = lv_propValue
 	endif
-	if propName == 'image'
-	assign image = propValue
+	if lv_propName == 'type'
+		assign type = lv_propValue
 	endif
-	if propName == 'header'
-	assign header = propValue
+	if lv_propName == 'image'
+		assign image = lv_propValue
 	endif
-	if propName == 'footer'
-	assign footer = propValue
+	if lv_propName == 'header'
+		assign header = lv_propValue
 	endif
-	if propName == 'textHeader'
-	assign textHeader = propValue
+	if lv_propName == 'footer'
+		assign footer = lv_propValue
 	endif
-	if propName == 'textFooter'
-	assign textFooter = propValue
+	if lv_propName == 'textHeader'
+		assign textHeader = lv_propValue
 	endif
-	if propName == 'first'
-	assign first = propValue
+	if lv_propName == 'textFooter'
+		assign textFooter = lv_propValue
 	endif
-	if propName == 'last'
-	assign last = propValue
+	if lv_propName == 'first'
+		assign first = lv_propValue
 	endif
-	if propName == 'tail'
-	assign tail = propValue
+	if lv_propName == 'last'
+		assign last = lv_propValue
 	endif
-	if propName == 'sameName'
-	assign sameName = propValue
+	if lv_propName == 'tail'
+		assign tail = lv_propValue
 	endif
-	if propName == 'sameHeader'
-	assign sameHeader = propValue
+	if lv_propName == 'sameName'
+		assign sameName = lv_propValue
 	endif
-	if propName == 'sameFooter'
-	assign sameFooter = propValue
+	if lv_propName == 'sameHeader'
+		assign sameHeader = lv_propValue
 	endif
-	if propName == 'sameAvatar'
-	assign sameAvatar = propValue
+	if lv_propName == 'sameFooter'
+		assign sameFooter = lv_propValue
 	endif
-	if propName == 'typing'
-	assign typing = propValue
+	if lv_propName == 'sameAvatar'
+		assign sameAvatar = lv_propValue
+	endif
+	if lv_propName == 'typing'
+		assign typing = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'start'
+						assign slot_start_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'avatar'
+						assign slot_avatar_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'content-start'
+						assign slot_content-start_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'name'
+						assign slot_name_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'header'
+						assign slot_header_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'bubble-start'
+						assign slot_bubble-start_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'image'
+						assign slot_image_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'text-header'
+						assign slot_text-header_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'text'
+						assign slot_text_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'text-footer'
+						assign slot_text-footer_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'bubble-end'
+						assign slot_bubble-end_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'footer'
+						assign slot_footer_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'content-end'
+						assign slot_content-end_framework7-liquivelte_message = lv_value | strip
+					endif
+					if lv_module == 'framework7-liquivelte-message' and lv_name == 'end'
+						assign slot_end_framework7-liquivelte_message = lv_value | strip
+					endif
+					
+					if lv_module == 'framework7-liquivelte-message'
+						assign slot_default_framework7-liquivelte_message = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component message" data-liquivelte-component-name="message.liquivelte">
 	{%- endunless -%}
 	
 
 <!-- svelte-ignore a11y-missing-attribute -->
-<div class={classes} on:click={onClick} {...restProps($$restProps)}>
-  {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'start'
-	assign children_start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_start != blank -%}
-	{{- children_start -}}
+<div class={computedClasses} on:click={onClick} {...restProps($$restProps)}>
+  
+	{%- if slot_start_framework7-liquivelte_message != blank -%}
+		{{- slot_start_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_start = '' -%}
-	
+
   {#if avatar || hasAvatarSlots}
     <div
       on:click={onAvatarClick}
       class="message-avatar"
       style={avatar ? `background-image: url(${avatar})` : undefined}
     >
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'avatar'
-	assign children_avatar = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_avatar != blank -%}
-	{{- children_avatar -}}
+      
+	{%- if slot_avatar_framework7-liquivelte_message != blank -%}
+		{{- slot_avatar_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_avatar = '' -%}
-	
+
     </div>
   {/if}
   <div class="message-content">
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'content-start'
-	assign children_content-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_content-start != blank -%}
-	{{- children_content-start -}}
+    
+	{%- if slot_content-start_framework7-liquivelte_message != blank -%}
+		{{- slot_content-start_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_content-start = '' -%}
-	
+
     {#if hasNameSlots || name}
       <div class="message-name" on:click={onNameClick}>
         {plainText(name)}
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'name'
-	assign children_name = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_name != blank -%}
-	{{- children_name -}}
+        
+	{%- if slot_name_framework7-liquivelte_message != blank -%}
+		{{- slot_name_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_name = '' -%}
-	
+
       </div>
     {/if}
     {#if hasHeaderSlots || header}
       <div class="message-header" on:click={onHeaderClick}>
         {plainText(header)}
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'header'
-	assign children_header = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_header != blank -%}
-	{{- children_header -}}
+        
+	{%- if slot_header_framework7-liquivelte_message != blank -%}
+		{{- slot_header_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_header = '' -%}
-	
+
       </div>
     {/if}
     <div class="message-bubble" on:click={onBubbleClick}>
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'bubble-start'
-	assign children_bubble-start = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_bubble-start != blank -%}
-	{{- children_bubble-start -}}
+      
+	{%- if slot_bubble-start_framework7-liquivelte_message != blank -%}
+		{{- slot_bubble-start_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_bubble-start = '' -%}
-	
+
       {#if hasImageSlots || image}
         <div class="message-image">
           {#if image}
             <img src={image} />
           {/if}
-          {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'image'
-	assign children_image = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_image != blank -%}
-	{{- children_image -}}
+          
+	{%- if slot_image_framework7-liquivelte_message != blank -%}
+		{{- slot_image_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_image = '' -%}
-	
+
         </div>
       {/if}
       {#if hasTextHeaderSlots || textHeader}
         <div class="message-text-header">
           {plainText(textHeader)}
-          {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'text-header'
-	assign children_text-header = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_text-header != blank -%}
-	{{- children_text-header -}}
+          
+	{%- if slot_text-header_framework7-liquivelte_message != blank -%}
+		{{- slot_text-header_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_text-header = '' -%}
-	
+
         </div>
       {/if}
       {#if hasTextSlots || text || htmlText || typing}
         <div class="message-text" on:click={onTextClick}>
           {plainText(text)}
           {#if htmlText}{@html htmlText}{/if}
-          {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'text'
-	assign children_text = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_text != blank -%}
-	{{- children_text -}}
+          
+	{%- if slot_text_framework7-liquivelte_message != blank -%}
+		{{- slot_text_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_text = '' -%}
-	
+
           {#if typing}
             <div class="message-typing-indicator">
               <div />
@@ -278,122 +259,51 @@
       {#if hasTextFooterSlots || textFooter}
         <div class="message-text-footer">
           {plainText(textFooter)}
-          {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'text-footer'
-	assign children_text-footer = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_text-footer != blank -%}
-	{{- children_text-footer -}}
+          
+	{%- if slot_text-footer_framework7-liquivelte_message != blank -%}
+		{{- slot_text-footer_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_text-footer = '' -%}
-	
+
         </div>
       {/if}
-      {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'bubble-end'
-	assign children_bubble-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_bubble-end != blank -%}
-	{{- children_bubble-end -}}
+      
+	{%- if slot_bubble-end_framework7-liquivelte_message != blank -%}
+		{{- slot_bubble-end_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_bubble-end = '' -%}
-	
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_message != blank -%}
+			{{- slot_default_framework7-liquivelte_message -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     </div>
     {#if hasFooterSlots || footer}
       <div class="message-footer" on:click={onFooterClick}>
         {plainText(footer)}
-        {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'footer'
-	assign children_footer = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_footer != blank -%}
-	{{- children_footer -}}
+        
+	{%- if slot_footer_framework7-liquivelte_message != blank -%}
+		{{- slot_footer_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_footer = '' -%}
-	
+
       </div>
     {/if}
-    {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'content-end'
-	assign children_content-end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_content-end != blank -%}
-	{{- children_content-end -}}
+    
+	{%- if slot_content-end_framework7-liquivelte_message != blank -%}
+		{{- slot_content-end_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_content-end = '' -%}
-	
+
   </div>
-  {%- liquid
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module_and_slotname = content_and_value | split: '-scvs-' | first
-	assign module = module_and_slotname | split: '-smns-' | first
-	assign name = module_and_slotname | split: '-smns-' | last
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-message' and name == 'end'
-	assign children_end = value | strip
-	endif
-	endfor
-	-%}
-	{%- if children_end != blank -%}
-	{{- children_end -}}
+  
+	{%- if slot_end_framework7-liquivelte_message != blank -%}
+		{{- slot_end_framework7-liquivelte_message -}}
 	{%- endif -%}
-	{%- assign children_end = '' -%}
-	
+
 </div>
 
 	
@@ -403,7 +313,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -450,6 +359,47 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign classes = null
+			assign text = null
+			assign htmlText = null
+			assign name = null
+			assign avatar = null
+			assign type = null
+			assign image = null
+			assign header = null
+			assign footer = null
+			assign textHeader = null
+			assign textFooter = null
+			assign first = null
+			assign last = null
+			assign tail = null
+			assign sameName = null
+			assign sameHeader = null
+			assign sameFooter = null
+			assign sameAvatar = null
+			assign typing = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_message = null
+			assign slot_start_framework7-liquivelte_message = null
+			assign slot_avatar_framework7-liquivelte_message = null
+			assign slot_content-start_framework7-liquivelte_message = null
+			assign slot_name_framework7-liquivelte_message = null
+			assign slot_header_framework7-liquivelte_message = null
+			assign slot_bubble-start_framework7-liquivelte_message = null
+			assign slot_image_framework7-liquivelte_message = null
+			assign slot_text-header_framework7-liquivelte_message = null
+			assign slot_text_framework7-liquivelte_message = null
+			assign slot_text-footer_framework7-liquivelte_message = null
+			assign slot_bubble-end_framework7-liquivelte_message = null
+			assign slot_footer_framework7-liquivelte_message = null
+			assign slot_content-end_framework7-liquivelte_message = null
+			assign slot_end_framework7-liquivelte_message = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

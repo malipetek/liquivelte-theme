@@ -11,128 +11,90 @@
 %}
 <script>
   import cart from 'theme/cart';
-  import { Button, Block, View, Page, List, ListItem, Stepper } from 'framework7-liquivelte'; 
+  import { Button, Block, BlockTitle, View, Page, List, ListItem, Stepper } from 'framework7-liquivelte'; 
   import Loadable from '../../../snippets/loadable.liquivelte';
 	import QuantityBox from '../../../snippets/quantity-box.liquivelte';
   import { cartStore, cartOpen } from '../../../scripts/store.module.js';
 
 	import min_amounts from 'theme';
 	// const min_amounts_data = JSON.parse(min_amounts);
-	console.log('min amounts ', min_amounts);
-  let loading = false;
 
-	async function updateLineItem(itemid, quantity) {
-		loading = true;
-		await fetch(`/cart/update.js`, {
-			method: 'POST',
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-					updates: { [itemid]: quantity }
-			})
-		})
-		const cartResponse = await fetch('/cart?view=json');
-		const newCartData = await cartResponse.json()
-		$cartStore.items = newCartData.items;
-		$cartStore.items_subtotal_price = newCartData.items_subtotal_price;
-
-		loading = false;
-	}
 	function quantityChange(event) {
-		updateLineItem(this.id, event.detail.quantity); 
+		cartStore.setQuantity(this.id, +event.target.value); 
 	}
-
-  $: console.log('------> cart ', cart);
+ 
+	cartStore.set(cart);
   </script>
-  <View>
+  <View classes="cart-drawer">
     <Page>
-			<List mediaList>
-				{% for item in cart.items %}
-				<ListItem
-				title="{{- item.product_title -}}"
-			>
-			<div slot="after" class="ml-2"> {{- item.price | money -}} </div>
-			<div slot="text" class="cart-item-options">
-				{% for option in item.variant_options %}
-				<span class="text-gray-500k text-base line-item-option"> {{- option -}} </span> <br>
-				{% endfor %}
-			</div>
-				<img slot="media" src="{{- item.image | img_url: '120x' -}}" width="80" />
-				<div slot="after-start">
-					<Stepper buttonsOnly="{true}" small raised ></Stepper>
-				</div>
-			</ListItem>
-			{% endfor %}
-			</List>
-      <Block>
-				{% for item in cart.items %}
-
-					<div data-id="{{- item.id -}}" class="cart-item w-full flex mb-10" transition:scale="{ { duration: 300, easing: quintInOut } }" >
-						<img src="{{- item.image | img_url: '120x' -}}" alt="cart item product image" class="flex-grow-0 mr-2 w-32" />
-						<div class="cart-item-content">
-							<div class="cart-item-content__up"> 
-								<span class="cart-item-title text-lg"> {{- item.product_title -}} </span>
-								<div class="cart-item-options">
-									{% for option in item.variant_options %}
-									<span class="text-gray-500 text-base line-item-option"> {{- option -}} </span> <br>
-									{% endfor %}
-								</div>
-							</div>
-							<Loadable bind:loading > 
-								<QuantityBox quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}" /> 
+			<Block>
+				<BlockTitle>
+					Cart
+				</BlockTitle>
+			</Block>
+			<List >
+				{% for item in $cartStore.items (item.id) %}
+					<ListItem classes="h-[120px]">
+						<div slot="header" class="text-xl mb-4">{{- item.product_title -}}</div>
+						<div slot="after" class="ml-2"> {{- item.price | money -}} </div>
+						<div slot="text" class="cart-item-options">
+							{% for option in item.variant_options %}
+							<span class="text-gray-500k text-base line-item-option"> {{- option -}} </span> <br>
+							{% endfor %}
+						</div>
+						<div slot="media">
+							{% if item.image %}
+								<img src="{{- item.image | image_url: width: 120 -}}" width="80" />
+							{% endif %}
+						</div>
+						<div slot="footer" class="ml-2">
+							<Loadable > 
+								<Stepper raised 
+									onChange="{ quantityChange.bind(item) }"
+									value="{item.quantity}"
+									></Stepper>
 							</Loadable>
 						</div>
-						<div class="cart-item-right">
-							<Loadable bind:loading > 
-								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > </div>
-							</Loadable>
-							<div class="cart-item-price text-black text-xl"> {{- item.price | money -}} </div>
-						</div> 
+					</ListItem>
+				{% endfor %}
+			</List>
+			<Block classes="cart-drawer-bottom">
+					<div class="cart-drawer-subtotal">
+						<span class="text-gray text-base float-left" data-t="{{- 'general.cart.subtotal' | t -}}"> {{- 'general.cart.subtotal' | t -}} </span> 
+						<span cart-drawer-subtotal-text class="float-right text-black text-lg ">{{- cart.items_subtotal_price | money -}}</span>
 					</div>
-				{% endfor %}      
+					<div class="cart-drawer-taxes-notice text-base text-black float-left"> Taxes and shipping calculated at checkout </div>
+					<button on:click="{() => submit() }" class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+						 Checkout 
+					</button>
+					<a class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/cart"> View Cart </a>
 			</Block>
     </Page>
   </View>
 
-	<style>
-		
+	<style lang="postcss">
+	.cart-drawer {
+		.item-title {
+			overflow: visible;
+		}
+	}		
 	.cart-drawer-bottom {
 		align-self: flex-end;
 		width: 100%;
 	}
-.quantity-box {
-		display: inline-flex;
-		align-self: flex-start;
-	}
+	.quantity-box {
+			display: inline-flex;
+			align-self: flex-start;
+		}
 
-.cart-drawer-subtotal {
-		margin-bottom: 10px;
-	}
-	.cart-drawer-taxes-notice {
-		margin-bottom: 15px;
-	}
-	.cart-drawer-subtotal-text {
-		float: right;
-	}
-/*================ Spinner Icon ================*/
-.icon-spinner {
-  -moz-animation: spin 500ms infinite linear;
-  -o-animation: spin 500ms infinite linear;
-  -webkit-animation: spin 500ms infinite linear;
-  animation: spin 500ms infinite linear;
-}
+	.cart-drawer-subtotal {
+			margin-bottom: 10px;
+		}
+		.cart-drawer-taxes-notice {
+			margin-bottom: 15px;
+		}
+		.cart-drawer-subtotal-text {
+			float: right;
+		}
 
-@-webkit-keyframes spin {
-  0% {
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
 	</style>

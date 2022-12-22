@@ -1,96 +1,130 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign inset = null
+			assign xsmallInset = null
+			assign smallInset = null
+			assign mediumInset = null
+			assign largeInset = null
+			assign xlargeInset = null
+			assign strong = null
+			assign tabs = null
+			assign tab = null
+			assign tabActive = null
+			assign accordionList = null
+			assign accordionOpposite = null
+			assign noHairlines = null
+			assign noHairlinesMd = null
+			assign noHairlinesIos = null
+			assign noHairlinesAurora = null
+			assign classes = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'inset'
-	assign inset = propValue
+	if lv_propName == 'inset'
+		assign inset = lv_propValue
 	endif
-	if propName == 'xsmallInset'
-	assign xsmallInset = propValue
+	if lv_propName == 'xsmallInset'
+		assign xsmallInset = lv_propValue
 	endif
-	if propName == 'smallInset'
-	assign smallInset = propValue
+	if lv_propName == 'smallInset'
+		assign smallInset = lv_propValue
 	endif
-	if propName == 'mediumInset'
-	assign mediumInset = propValue
+	if lv_propName == 'mediumInset'
+		assign mediumInset = lv_propValue
 	endif
-	if propName == 'largeInset'
-	assign largeInset = propValue
+	if lv_propName == 'largeInset'
+		assign largeInset = lv_propValue
 	endif
-	if propName == 'xlargeInset'
-	assign xlargeInset = propValue
+	if lv_propName == 'xlargeInset'
+		assign xlargeInset = lv_propValue
 	endif
-	if propName == 'strong'
-	assign strong = propValue
+	if lv_propName == 'strong'
+		assign strong = lv_propValue
 	endif
-	if propName == 'tabs'
-	assign tabs = propValue
+	if lv_propName == 'tabs'
+		assign tabs = lv_propValue
 	endif
-	if propName == 'tab'
-	assign tab = propValue
+	if lv_propName == 'tab'
+		assign tab = lv_propValue
 	endif
-	if propName == 'tabActive'
-	assign tabActive = propValue
+	if lv_propName == 'tabActive'
+		assign tabActive = lv_propValue
 	endif
-	if propName == 'accordionList'
-	assign accordionList = propValue
+	if lv_propName == 'accordionList'
+		assign accordionList = lv_propValue
 	endif
-	if propName == 'accordionOpposite'
-	assign accordionOpposite = propValue
+	if lv_propName == 'accordionOpposite'
+		assign accordionOpposite = lv_propValue
 	endif
-	if propName == 'noHairlines'
-	assign noHairlines = propValue
+	if lv_propName == 'noHairlines'
+		assign noHairlines = lv_propValue
 	endif
-	if propName == 'noHairlinesMd'
-	assign noHairlinesMd = propValue
+	if lv_propName == 'noHairlinesMd'
+		assign noHairlinesMd = lv_propValue
 	endif
-	if propName == 'noHairlinesIos'
-	assign noHairlinesIos = propValue
+	if lv_propName == 'noHairlinesIos'
+		assign noHairlinesIos = lv_propValue
 	endif
-	if propName == 'noHairlinesAurora'
-	assign noHairlinesAurora = propValue
+	if lv_propName == 'noHairlinesAurora'
+		assign noHairlinesAurora = lv_propValue
+	endif
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'framework7-liquivelte-block'
+						assign slot_default_framework7-liquivelte_block = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component block" data-liquivelte-component-name="block.liquivelte">
 	{%- endunless -%}
 	
 
-<div class="block {{ classes }}" bind:this="{el}" {...restProps($$restProps)}>
-  {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-block'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+<div class="block {{ classes }} {{ computedClasses }}" bind:this="{el}" {...restProps($$restProps)}>
+  
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_block != blank -%}
+			{{- slot_default_framework7-liquivelte_block -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
 </div>
 
@@ -101,7 +135,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -148,6 +181,31 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign inset = null
+			assign xsmallInset = null
+			assign smallInset = null
+			assign mediumInset = null
+			assign largeInset = null
+			assign xlargeInset = null
+			assign strong = null
+			assign tabs = null
+			assign tab = null
+			assign tabActive = null
+			assign accordionList = null
+			assign accordionOpposite = null
+			assign noHairlines = null
+			assign noHairlinesMd = null
+			assign noHairlinesIos = null
+			assign noHairlinesAurora = null
+			assign classes = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_block = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

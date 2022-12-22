@@ -1,120 +1,182 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign classes = null
+			assign noShadow = null
+			assign noHairline = null
+			assign form = null
+			assign placeholder = null
+			assign autocomplete = null
+			assign autocorrect = null
+			assign autocapitalize = null
+			assign spellcheck = null
+			assign disableButton = null
+			assign disableButtonText = null
+			assign clearButton = null
+			assign value = null
+			assign inputEvents = null
+			assign expandable = null
+			assign inline = null
+			assign searchContainer = null
+			assign searchIn = null
+			assign searchItem = null
+			assign searchGroup = null
+			assign searchGroupTitle = null
+			assign foundEl = null
+			assign notFoundEl = null
+			assign backdrop = null
+			assign backdropEl = null
+			assign hideOnEnableEl = null
+			assign hideOnSearchEl = null
+			assign ignore = null
+			assign customSearch = null
+			assign removeDiacritics = null
+			assign hideDividers = null
+			assign hideGroups = null
+			assign init = null
+			assign f7Slot = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'noShadow'
-	assign noShadow = propValue
+	if lv_propName == 'classes'
+		assign classes = lv_propValue
 	endif
-	if propName == 'noHairline'
-	assign noHairline = propValue
+	if lv_propName == 'noShadow'
+		assign noShadow = lv_propValue
 	endif
-	if propName == 'form'
-	assign form = propValue
+	if lv_propName == 'noHairline'
+		assign noHairline = lv_propValue
 	endif
-	if propName == 'placeholder'
-	assign placeholder = propValue
+	if lv_propName == 'form'
+		assign form = lv_propValue
 	endif
-	if propName == 'autocomplete'
-	assign autocomplete = propValue
+	if lv_propName == 'placeholder'
+		assign placeholder = lv_propValue
 	endif
-	if propName == 'autocorrect'
-	assign autocorrect = propValue
+	if lv_propName == 'autocomplete'
+		assign autocomplete = lv_propValue
 	endif
-	if propName == 'autocapitalize'
-	assign autocapitalize = propValue
+	if lv_propName == 'autocorrect'
+		assign autocorrect = lv_propValue
 	endif
-	if propName == 'spellcheck'
-	assign spellcheck = propValue
+	if lv_propName == 'autocapitalize'
+		assign autocapitalize = lv_propValue
 	endif
-	if propName == 'disableButton'
-	assign disableButton = propValue
+	if lv_propName == 'spellcheck'
+		assign spellcheck = lv_propValue
 	endif
-	if propName == 'disableButtonText'
-	assign disableButtonText = propValue
+	if lv_propName == 'disableButton'
+		assign disableButton = lv_propValue
 	endif
-	if propName == 'clearButton'
-	assign clearButton = propValue
+	if lv_propName == 'disableButtonText'
+		assign disableButtonText = lv_propValue
 	endif
-	if propName == 'value'
-	assign value = propValue
+	if lv_propName == 'clearButton'
+		assign clearButton = lv_propValue
 	endif
-	if propName == 'inputEvents'
-	assign inputEvents = propValue
+	if lv_propName == 'value'
+		assign value = lv_propValue
 	endif
-	if propName == 'expandable'
-	assign expandable = propValue
+	if lv_propName == 'inputEvents'
+		assign inputEvents = lv_propValue
 	endif
-	if propName == 'inline'
-	assign inline = propValue
+	if lv_propName == 'expandable'
+		assign expandable = lv_propValue
 	endif
-	if propName == 'searchContainer'
-	assign searchContainer = propValue
+	if lv_propName == 'inline'
+		assign inline = lv_propValue
 	endif
-	if propName == 'searchIn'
-	assign searchIn = propValue
+	if lv_propName == 'searchContainer'
+		assign searchContainer = lv_propValue
 	endif
-	if propName == 'searchItem'
-	assign searchItem = propValue
+	if lv_propName == 'searchIn'
+		assign searchIn = lv_propValue
 	endif
-	if propName == 'searchGroup'
-	assign searchGroup = propValue
+	if lv_propName == 'searchItem'
+		assign searchItem = lv_propValue
 	endif
-	if propName == 'searchGroupTitle'
-	assign searchGroupTitle = propValue
+	if lv_propName == 'searchGroup'
+		assign searchGroup = lv_propValue
 	endif
-	if propName == 'foundEl'
-	assign foundEl = propValue
+	if lv_propName == 'searchGroupTitle'
+		assign searchGroupTitle = lv_propValue
 	endif
-	if propName == 'notFoundEl'
-	assign notFoundEl = propValue
+	if lv_propName == 'foundEl'
+		assign foundEl = lv_propValue
 	endif
-	if propName == 'backdrop'
-	assign backdrop = propValue
+	if lv_propName == 'notFoundEl'
+		assign notFoundEl = lv_propValue
 	endif
-	if propName == 'backdropEl'
-	assign backdropEl = propValue
+	if lv_propName == 'backdrop'
+		assign backdrop = lv_propValue
 	endif
-	if propName == 'hideOnEnableEl'
-	assign hideOnEnableEl = propValue
+	if lv_propName == 'backdropEl'
+		assign backdropEl = lv_propValue
 	endif
-	if propName == 'hideOnSearchEl'
-	assign hideOnSearchEl = propValue
+	if lv_propName == 'hideOnEnableEl'
+		assign hideOnEnableEl = lv_propValue
 	endif
-	if propName == 'ignore'
-	assign ignore = propValue
+	if lv_propName == 'hideOnSearchEl'
+		assign hideOnSearchEl = lv_propValue
 	endif
-	if propName == 'customSearch'
-	assign customSearch = propValue
+	if lv_propName == 'ignore'
+		assign ignore = lv_propValue
 	endif
-	if propName == 'removeDiacritics'
-	assign removeDiacritics = propValue
+	if lv_propName == 'customSearch'
+		assign customSearch = lv_propValue
 	endif
-	if propName == 'hideDividers'
-	assign hideDividers = propValue
+	if lv_propName == 'removeDiacritics'
+		assign removeDiacritics = lv_propValue
 	endif
-	if propName == 'hideGroups'
-	assign hideGroups = propValue
+	if lv_propName == 'hideDividers'
+		assign hideDividers = lv_propValue
 	endif
-	if propName == 'init'
-	assign init = propValue
+	if lv_propName == 'hideGroups'
+		assign hideGroups = lv_propValue
 	endif
-	if propName == 'f7Slot'
-	assign f7Slot = propValue
+	if lv_propName == 'init'
+		assign init = lv_propValue
+	endif
+	if lv_propName == 'f7Slot'
+		assign f7Slot = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'framework7-liquivelte-searchbar'
+						assign slot_default_framework7-liquivelte_searchbar = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component searchbar" data-liquivelte-component-name="searchbar.liquivelte">
 	{%- endunless -%}
@@ -122,73 +184,40 @@
 
 {#if form}
   
-    {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+    
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     <div class="searchbar-inner">
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
       <div class="searchbar-input-wrap">
-        {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+        
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
         <input
           value={typeof value === 'undefined' ? '' : value}
@@ -205,27 +234,16 @@
         />
         <i class="searchbar-icon" />
         {#if clearButton}<span on:click={onClearButtonClick} class="input-clear-button" />{/if}
-        {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+        
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
       </div>
       {#if disableButton}
@@ -233,143 +251,77 @@
           >{disableButtonText}</span
         >
       {/if}
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     </div>
-    {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+    
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
   </form>
 {:else}
-  <div bind:this={el} class={classes} data-f7-slot={f7Slot} {...restProps($$restProps)}>
-    {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+  <div bind:this={el} class={computedClasses} data-f7-slot={f7Slot} {...restProps($$restProps)}>
+    
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     <div class="searchbar-inner">
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
       <div class="searchbar-input-wrap">
-        {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+        
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
         <input
           value={typeof value === 'undefined' ? '' : value}
@@ -386,27 +338,16 @@
         />
         <i class="searchbar-icon" />
         {#if clearButton}<span on:click={onClearButtonClick} class="input-clear-button" />{/if}
-        {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+        
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
       </div>
       {#if disableButton}
@@ -414,72 +355,39 @@
           >{disableButtonText}</span
         >
       {/if}
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
-      {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+      
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
     </div>
-    {%- liquid 
-	assign slot_contents_and_values = slot_contents | split: '-scs-'
-	for content_and_value in slot_contents_and_values
-	assign module = content_and_value | split: '-scvs-' | first
-	assign value = content_and_value | split: '-scvs-' | last
-	if module == 'framework7-liquivelte-searchbar'
-	assign children = value | strip
-	endif
-	endfor
-	-%}
-	
+    
 	{%- if sub_include -%}
-		{%- if children != blank -%}
-			{{- children -}}
+		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
+			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	{%- else -%}
 		{%- if main_content != blank -%}
 			{{- main_content -}}
 		{%- endif -%}
 	{%- endif -%}
-	{%- assign children = '' -%}
 	
   </div>
 {/if}
@@ -491,7 +399,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -538,6 +445,48 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign classes = null
+			assign noShadow = null
+			assign noHairline = null
+			assign form = null
+			assign placeholder = null
+			assign autocomplete = null
+			assign autocorrect = null
+			assign autocapitalize = null
+			assign spellcheck = null
+			assign disableButton = null
+			assign disableButtonText = null
+			assign clearButton = null
+			assign value = null
+			assign inputEvents = null
+			assign expandable = null
+			assign inline = null
+			assign searchContainer = null
+			assign searchIn = null
+			assign searchItem = null
+			assign searchGroup = null
+			assign searchGroupTitle = null
+			assign foundEl = null
+			assign notFoundEl = null
+			assign backdrop = null
+			assign backdropEl = null
+			assign hideOnEnableEl = null
+			assign hideOnSearchEl = null
+			assign ignore = null
+			assign customSearch = null
+			assign removeDiacritics = null
+			assign hideDividers = null
+			assign hideGroups = null
+			assign init = null
+			assign f7Slot = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_searchbar = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

@@ -7,7 +7,6 @@
       assign products = products | concat: product_arr
     endunless
   endfor
-
 %}
 <script>
   import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
@@ -16,7 +15,7 @@
   import section.settings from 'theme';
   import products from 'theme';
   
-  console.log('products ', products);
+  console.log(' ==> products ', products);
   
   const slidesPerView = 3;
   const breakpoints = {
@@ -93,7 +92,7 @@
 </style>
 {% schema %}
 {
-  "name": "Slider",
+  "name": "Product Carousel",
   "tag": "section",
   "class": "product-section spaced-section",
   "settings": [

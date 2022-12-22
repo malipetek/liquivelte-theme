@@ -2,6 +2,7 @@
   export let name;
   export let width;
   export let color;
+  export let classes;
 </script>
 
 {% if name == 'icon-3d-model' %}
@@ -218,7 +219,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" fill="none" viewBox="0 0 10 14"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/></svg>
   {% endif %}
 {% if name == 'icon-plus' %}
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
+    <svg xmlns="http://www.w3.org/2000/svg" width="{{- width -}}" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor">
 </svg>
   {% endif %}
@@ -256,7 +257,7 @@
 </svg>
   {% endif %}
 {% if name == 'icon-spinner' %}
-    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-spinner" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"/></svg>
+    <svg aria-hidden="true" focusable="false" role="presentation" width="{{- width -}}" class="icon icon-spinner {{- classes -}}" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"/></svg>
   {% endif %}
 {% if name == 'icon-stripe' %}
     <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-stripe" viewBox="0 0 28 20"><path fill="#444" d="M14.375 7.313q.469 0 .781-.322t.313-.771-.313-.771-.781-.322q-.293 0-.547.146t-.391.4-.137.547q0 .449.313.771t.762.322zm-5.801 5.234q-.039 0-.166.02t-.234.039-.225.029-.156.01q-.195 0-.283-.107t-.088-.4V9.443h.879l.273-1.387H7.422V6.22l-1.895.469-.293 1.367h-.82v1.387h.82v3.105q0 .352.068.625t.176.459.264.313.303.195.342.107.322.049.303.01q.781 0 1.563-.195v-1.563zM2.676 10.32q-.254-.117-.332-.156t-.146-.127-.068-.205q0-.313.469-.313.645 0 1.367.254V8.23q-.762-.273-1.602-.273-.449 0-.84.088t-.752.293-.566.615-.205.996q0 1.191 1.25 1.777l.273.137q.293.117.41.215t.117.254q0 .371-.605.371-.488 0-1.367-.293v1.602q.996.293 1.777.293 2.344 0 2.344-2.09 0-.41-.117-.723t-.332-.518-.4-.313-.439-.225zm8.554-.332q.391-.195.723-.195.41 0 .801.117V8.074q-.156-.117-.664-.117-.781 0-.977.703l-.332-.605H9.043v6.133h2.188V9.989zm7.364 4.18q.508.137.781.137.234 0 .391-.01t.43-.078.459-.186.41-.352.361-.566.234-.859.098-1.172q0-.84-.127-1.436t-.303-.918-.459-.498-.518-.225-.547-.049q-.762 0-1.309.508l-.313-.41h-1.777v8.32h2.188v-2.207zm8.886-2.305v-.723q0-1.738-.635-2.461t-1.787-.723q-2.715 0-2.715 3.184 0 .84.195 1.455t.469.938.723.508.801.225.859.039q.918 0 1.797-.313V12.39q-1.445.254-1.797.254-.293 0-.469-.049t-.283-.234-.107-.498h2.949zm-11.992 2.325V8.055H13.3v6.133h2.188zm9.043-3.516v-.234l.01-.234.01-.215.02-.205.039-.166.059-.146.098-.107.127-.078.166-.02q.137 0 .225.088t.117.322.039.42.01.576h-.918zm-5.937-.918q.273-.195.508-.195.293 0 .391.273t.098 1.25q0 .957-.156 1.318t-.469.361q-.195 0-.371-.059V9.753z"/></svg>

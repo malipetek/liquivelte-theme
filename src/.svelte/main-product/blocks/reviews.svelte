@@ -21,7 +21,7 @@
 
         Active: "text-gray-900", Default: "text-gray-200"
       -->
-      {#each  review_stars as star, index  }
+      {#each  review_stars as star, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

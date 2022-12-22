@@ -99,7 +99,7 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (7631:2) <View  main     lec={lec} >
+// (7677:2) <View  main     lec={lec} >
 function create_default_slot_1(ctx) {
 	let page;
 	let current;
@@ -148,7 +148,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (7630:0) <App  theme="ios" name="My App" id="com.demoapp.test"     lec={lec} >
+// (7676:0) <App  theme="ios" name="My App" id="com.demoapp.test"     lec={lec} >
 function create_default_slot(ctx) {
 	let view;
 	let current;
@@ -258,6 +258,8 @@ function persistingchild(node, keep) {
 function instance($$self, $$props, $$invalidate) {
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
+
+	// import { Workbox } from 'workbox-window';
 	let ls_cache;
 
 	beforeUpdate(() => {

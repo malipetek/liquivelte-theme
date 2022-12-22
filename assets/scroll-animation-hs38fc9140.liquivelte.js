@@ -724,33 +724,34 @@ class Shape extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[31] = list[i];
-	child_ctx[34] = i;
+	child_ctx[33] = list[i];
+	child_ctx[36] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[34] === 0,
-		index: /*index*/ child_ctx[34] + 1,
-		index0: /*index*/ child_ctx[34],
-		last: /*index*/ child_ctx[34] === /*section*/ child_ctx[6].blocks.length - 1,
-		rindex: /*section*/ child_ctx[6].blocks.length - /*index*/ child_ctx[34],
-		rindex0: /*section*/ child_ctx[6].blocks.length - /*index*/ child_ctx[34] - 1,
-		length: /*section*/ child_ctx[6].blocks.length
+		first: /*index*/ child_ctx[36] === 0,
+		index: /*index*/ child_ctx[36] + 1,
+		index0: /*index*/ child_ctx[36],
+		last: /*index*/ child_ctx[36] === /*section*/ child_ctx[7].blocks.length - 1,
+		rindex: /*section*/ child_ctx[7].blocks.length - /*index*/ child_ctx[36],
+		rindex0: /*section*/ child_ctx[7].blocks.length - /*index*/ child_ctx[36] - 1,
+		length: /*section*/ child_ctx[7].blocks.length
 	};
 
-	child_ctx[32] = constants_0;
+	child_ctx[34] = constants_0;
 	return child_ctx;
 }
 
-// (133:8) {#if block.type == 'title' }
+// (136:8) {#if block.type == 'title' }
 function create_if_block_4(ctx) {
 	let title;
 	let current;
 
 	title = new Title({
 			props: {
-				anim_style: /*block*/ ctx[31].settings.anim_style,
-				animations: /*animations*/ ctx[2],
-				sectionƒƒblocks: /*sectionƒƒblocks*/ ctx[1],
+				anim_style: /*block*/ ctx[33].settings.anim_style,
+				animations: /*animations*/ ctx[3],
+				sectionƒƒsettings: /*sectionƒƒsettings*/ ctx[1],
+				sectionƒƒblocks: /*sectionƒƒblocks*/ ctx[2],
 				lec: /*lec*/ ctx[0]
 			}
 		});
@@ -768,9 +769,10 @@ function create_if_block_4(ctx) {
 		},
 		p(ctx, dirty) {
 			const title_changes = {};
-			if (dirty[0] & /*section*/ 64) title_changes.anim_style = /*block*/ ctx[31].settings.anim_style;
-			if (dirty[0] & /*animations*/ 4) title_changes.animations = /*animations*/ ctx[2];
-			if (dirty[0] & /*sectionƒƒblocks*/ 2) title_changes.sectionƒƒblocks = /*sectionƒƒblocks*/ ctx[1];
+			if (dirty[0] & /*section*/ 128) title_changes.anim_style = /*block*/ ctx[33].settings.anim_style;
+			if (dirty[0] & /*animations*/ 8) title_changes.animations = /*animations*/ ctx[3];
+			if (dirty[0] & /*sectionƒƒsettings*/ 2) title_changes.sectionƒƒsettings = /*sectionƒƒsettings*/ ctx[1];
+			if (dirty[0] & /*sectionƒƒblocks*/ 4) title_changes.sectionƒƒblocks = /*sectionƒƒblocks*/ ctx[2];
 			if (dirty[0] & /*lec*/ 1) title_changes.lec = /*lec*/ ctx[0];
 			title.$set(title_changes);
 		},
@@ -789,7 +791,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (137:8) {#if block.type == 'image' }
+// (140:8) {#if block.type == 'image' }
 function create_if_block_3(ctx) {
 	let img;
 	let img_src_value;
@@ -805,14 +807,14 @@ function create_if_block_3(ctx) {
 		},
 		h() {
 			attr(img, "loading", "lazy");
-			if (!src_url_equal(img.src, img_src_value = /*block*/ ctx[31].settings.image)) attr(img, "src", img_src_value);
+			if (!src_url_equal(img.src, img_src_value = /*block*/ ctx[33].settings.image)) attr(img, "src", img_src_value);
 			attr(img, "class", "svelte-strz53");
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*section*/ 64 && !src_url_equal(img.src, img_src_value = /*block*/ ctx[31].settings.image)) {
+			if (dirty[0] & /*section*/ 128 && !src_url_equal(img.src, img_src_value = /*block*/ ctx[33].settings.image)) {
 				attr(img, "src", img_src_value);
 			}
 		},
@@ -822,10 +824,10 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (141:8) {#if block.type == 'text' }
+// (144:8) {#if block.type == 'text' }
 function create_if_block_2(ctx) {
 	let html_tag;
-	let raw_value = (/*block*/ ctx[31].settings.content || '') + "";
+	let raw_value = (/*block*/ ctx[33].settings.content || '') + "";
 	let html_anchor;
 
 	return {
@@ -847,7 +849,7 @@ function create_if_block_2(ctx) {
 			insert_hydration(target, html_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*section*/ 64 && raw_value !== (raw_value = (/*block*/ ctx[31].settings.content || '') + "")) html_tag.p(raw_value);
+			if (dirty[0] & /*section*/ 128 && raw_value !== (raw_value = (/*block*/ ctx[33].settings.content || '') + "")) html_tag.p(raw_value);
 		},
 		d(detaching) {
 			if (detaching) detach(html_anchor);
@@ -856,27 +858,28 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (145:8) {#if block.type == 'video' }
+// (148:8) {#if block.type == 'video' }
 function create_if_block_1(ctx) {
 	let scrollvideo;
 	let updating_keptFor;
 	let current;
 
 	function scrollvideo_keptFor_binding(value) {
-		/*scrollvideo_keptFor_binding*/ ctx[17](value);
+		/*scrollvideo_keptFor_binding*/ ctx[19](value);
 	}
 
 	let scrollvideo_props = {
-		block: /*block*/ ctx[31],
-		keepFor,
-		anim_style: /*block*/ ctx[31].settings.anim_style,
-		animations: /*animations*/ ctx[2],
-		sectionƒƒblocks: /*sectionƒƒblocks*/ ctx[1],
+		block: /*block*/ ctx[33],
+		keepFor: /*keepFor*/ ctx[12],
+		anim_style: /*block*/ ctx[33].settings.anim_style,
+		animations: /*animations*/ ctx[3],
+		sectionƒƒsettings: /*sectionƒƒsettings*/ ctx[1],
+		sectionƒƒblocks: /*sectionƒƒblocks*/ ctx[2],
 		lec: /*lec*/ ctx[0]
 	};
 
-	if (/*keptFor*/ ctx[5] !== void 0) {
-		scrollvideo_props.keptFor = /*keptFor*/ ctx[5];
+	if (/*keptFor*/ ctx[6] !== void 0) {
+		scrollvideo_props.keptFor = /*keptFor*/ ctx[6];
 	}
 
 	scrollvideo = new Video({ props: scrollvideo_props });
@@ -895,15 +898,16 @@ function create_if_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			const scrollvideo_changes = {};
-			if (dirty[0] & /*section*/ 64) scrollvideo_changes.block = /*block*/ ctx[31];
-			if (dirty[0] & /*section*/ 64) scrollvideo_changes.anim_style = /*block*/ ctx[31].settings.anim_style;
-			if (dirty[0] & /*animations*/ 4) scrollvideo_changes.animations = /*animations*/ ctx[2];
-			if (dirty[0] & /*sectionƒƒblocks*/ 2) scrollvideo_changes.sectionƒƒblocks = /*sectionƒƒblocks*/ ctx[1];
+			if (dirty[0] & /*section*/ 128) scrollvideo_changes.block = /*block*/ ctx[33];
+			if (dirty[0] & /*section*/ 128) scrollvideo_changes.anim_style = /*block*/ ctx[33].settings.anim_style;
+			if (dirty[0] & /*animations*/ 8) scrollvideo_changes.animations = /*animations*/ ctx[3];
+			if (dirty[0] & /*sectionƒƒsettings*/ 2) scrollvideo_changes.sectionƒƒsettings = /*sectionƒƒsettings*/ ctx[1];
+			if (dirty[0] & /*sectionƒƒblocks*/ 4) scrollvideo_changes.sectionƒƒblocks = /*sectionƒƒblocks*/ ctx[2];
 			if (dirty[0] & /*lec*/ 1) scrollvideo_changes.lec = /*lec*/ ctx[0];
 
-			if (!updating_keptFor && dirty[0] & /*keptFor*/ 32) {
+			if (!updating_keptFor && dirty[0] & /*keptFor*/ 64) {
 				updating_keptFor = true;
-				scrollvideo_changes.keptFor = /*keptFor*/ ctx[5];
+				scrollvideo_changes.keptFor = /*keptFor*/ ctx[6];
 				add_flush_callback(() => updating_keptFor = false);
 			}
 
@@ -924,17 +928,18 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (149:8) {#if block.type == 'shape' }
+// (152:8) {#if block.type == 'shape' }
 function create_if_block(ctx) {
 	let shape;
 	let current;
 
 	shape = new Shape({
 			props: {
-				block: /*block*/ ctx[31],
-				anim_style: /*block*/ ctx[31].settings.anim_style,
-				animations: /*animations*/ ctx[2],
-				sectionƒƒblocks: /*sectionƒƒblocks*/ ctx[1],
+				block: /*block*/ ctx[33],
+				anim_style: /*block*/ ctx[33].settings.anim_style,
+				animations: /*animations*/ ctx[3],
+				sectionƒƒsettings: /*sectionƒƒsettings*/ ctx[1],
+				sectionƒƒblocks: /*sectionƒƒblocks*/ ctx[2],
 				lec: /*lec*/ ctx[0]
 			}
 		});
@@ -952,10 +957,11 @@ function create_if_block(ctx) {
 		},
 		p(ctx, dirty) {
 			const shape_changes = {};
-			if (dirty[0] & /*section*/ 64) shape_changes.block = /*block*/ ctx[31];
-			if (dirty[0] & /*section*/ 64) shape_changes.anim_style = /*block*/ ctx[31].settings.anim_style;
-			if (dirty[0] & /*animations*/ 4) shape_changes.animations = /*animations*/ ctx[2];
-			if (dirty[0] & /*sectionƒƒblocks*/ 2) shape_changes.sectionƒƒblocks = /*sectionƒƒblocks*/ ctx[1];
+			if (dirty[0] & /*section*/ 128) shape_changes.block = /*block*/ ctx[33];
+			if (dirty[0] & /*section*/ 128) shape_changes.anim_style = /*block*/ ctx[33].settings.anim_style;
+			if (dirty[0] & /*animations*/ 8) shape_changes.animations = /*animations*/ ctx[3];
+			if (dirty[0] & /*sectionƒƒsettings*/ 2) shape_changes.sectionƒƒsettings = /*sectionƒƒsettings*/ ctx[1];
+			if (dirty[0] & /*sectionƒƒblocks*/ 4) shape_changes.sectionƒƒblocks = /*sectionƒƒblocks*/ ctx[2];
 			if (dirty[0] & /*lec*/ 1) shape_changes.lec = /*lec*/ ctx[0];
 			shape.$set(shape_changes);
 		},
@@ -974,7 +980,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (122:6) {#each  section.blocks as block, index  }
+// (125:6) {#each  section.blocks as block, index   }
 function create_each_block(ctx) {
 	let t0;
 	let t1;
@@ -982,11 +988,11 @@ function create_each_block(ctx) {
 	let t3;
 	let if_block4_anchor;
 	let current;
-	let if_block0 = /*block*/ ctx[31].type == 'title' && create_if_block_4(ctx);
-	let if_block1 = /*block*/ ctx[31].type == 'image' && create_if_block_3(ctx);
-	let if_block2 = /*block*/ ctx[31].type == 'text' && create_if_block_2(ctx);
-	let if_block3 = /*block*/ ctx[31].type == 'video' && create_if_block_1(ctx);
-	let if_block4 = /*block*/ ctx[31].type == 'shape' && create_if_block(ctx);
+	let if_block0 = /*block*/ ctx[33].type == 'title' && create_if_block_4(ctx);
+	let if_block1 = /*block*/ ctx[33].type == 'image' && create_if_block_3(ctx);
+	let if_block2 = /*block*/ ctx[33].type == 'text' && create_if_block_2(ctx);
+	let if_block3 = /*block*/ ctx[33].type == 'video' && create_if_block_1(ctx);
+	let if_block4 = /*block*/ ctx[33].type == 'shape' && create_if_block(ctx);
 
 	return {
 		c() {
@@ -1027,11 +1033,11 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*block*/ ctx[31].type == 'title') {
+			if (/*block*/ ctx[33].type == 'title') {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty[0] & /*section*/ 64) {
+					if (dirty[0] & /*section*/ 128) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -1050,7 +1056,7 @@ function create_each_block(ctx) {
 				check_outros();
 			}
 
-			if (/*block*/ ctx[31].type == 'image') {
+			if (/*block*/ ctx[33].type == 'image') {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 				} else {
@@ -1063,7 +1069,7 @@ function create_each_block(ctx) {
 				if_block1 = null;
 			}
 
-			if (/*block*/ ctx[31].type == 'text') {
+			if (/*block*/ ctx[33].type == 'text') {
 				if (if_block2) {
 					if_block2.p(ctx, dirty);
 				} else {
@@ -1076,11 +1082,11 @@ function create_each_block(ctx) {
 				if_block2 = null;
 			}
 
-			if (/*block*/ ctx[31].type == 'video') {
+			if (/*block*/ ctx[33].type == 'video') {
 				if (if_block3) {
 					if_block3.p(ctx, dirty);
 
-					if (dirty[0] & /*section*/ 64) {
+					if (dirty[0] & /*section*/ 128) {
 						transition_in(if_block3, 1);
 					}
 				} else {
@@ -1099,11 +1105,11 @@ function create_each_block(ctx) {
 				check_outros();
 			}
 
-			if (/*block*/ ctx[31].type == 'shape') {
+			if (/*block*/ ctx[33].type == 'shape') {
 				if (if_block4) {
 					if_block4.p(ctx, dirty);
 
-					if (dirty[0] & /*section*/ 64) {
+					if (dirty[0] & /*section*/ 128) {
 						transition_in(if_block4, 1);
 					}
 				} else {
@@ -1159,7 +1165,7 @@ function create_fragment(ctx) {
 	let t1;
 	let div3_style_value;
 	let current;
-	let each_value = /*section*/ ctx[6].blocks;
+	let each_value = /*section*/ ctx[7].blocks;
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -1211,9 +1217,9 @@ function create_fragment(ctx) {
 			attr(div0, "class", "animation-stage svelte-strz53");
 			attr(div1, "class", "stage-container svelte-strz53");
 			attr(div2, "class", "stage-placeholder");
-			set_style(div2, "height", /*stageHeight*/ ctx[7] + keepFor + "px");
+			set_style(div2, "height", /*stageHeight*/ ctx[8] + /*keepFor*/ ctx[12] + "px");
 			attr(div3, "class", "animation-container svelte-strz53");
-			attr(div3, "style", div3_style_value = "--explode-gap: 1em; --explode-size-imbalance: 0%; --image-oversize: 1; " + /*animationVariables*/ ctx[8].join(';') + "; " + /*widthVariables*/ ctx[10].join(';') + "; " + /*heightVariables*/ ctx[9].join(';'));
+			attr(div3, "style", div3_style_value = "--explode-gap: 1em; --explode-size-imbalance: 0%; --image-oversize: 1; " + /*animationVariables*/ ctx[9].join(';') + "; " + /*widthVariables*/ ctx[11].join(';') + "; " + /*heightVariables*/ ctx[10].join(';'));
 		},
 		m(target, anchor) {
 			insert_hydration(target, div3, anchor);
@@ -1224,16 +1230,16 @@ function create_fragment(ctx) {
 				each_blocks[i].m(div0, null);
 			}
 
-			/*div0_binding*/ ctx[18](div0);
+			/*div0_binding*/ ctx[20](div0);
 			append_hydration(div3, t0);
 			append_hydration(div3, div2);
 			append_hydration(div2, t1);
-			/*div3_binding*/ ctx[19](div3);
+			/*div3_binding*/ ctx[21](div3);
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*section, animations, sectionƒƒblocks, lec, keptFor*/ 103) {
-				each_value = /*section*/ ctx[6].blocks;
+			if (dirty[0] & /*section, animations, sectionƒƒsettings, sectionƒƒblocks, lec, keepFor, keptFor*/ 4303) {
+				each_value = /*section*/ ctx[7].blocks;
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -1259,11 +1265,11 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty[0] & /*stageHeight*/ 128) {
-				set_style(div2, "height", /*stageHeight*/ ctx[7] + keepFor + "px");
+			if (!current || dirty[0] & /*stageHeight*/ 256) {
+				set_style(div2, "height", /*stageHeight*/ ctx[8] + /*keepFor*/ ctx[12] + "px");
 			}
 
-			if (!current || dirty[0] & /*animationVariables, widthVariables, heightVariables*/ 1792 && div3_style_value !== (div3_style_value = "--explode-gap: 1em; --explode-size-imbalance: 0%; --image-oversize: 1; " + /*animationVariables*/ ctx[8].join(';') + "; " + /*widthVariables*/ ctx[10].join(';') + "; " + /*heightVariables*/ ctx[9].join(';'))) {
+			if (!current || dirty[0] & /*animationVariables, widthVariables, heightVariables*/ 3584 && div3_style_value !== (div3_style_value = "--explode-gap: 1em; --explode-size-imbalance: 0%; --image-oversize: 1; " + /*animationVariables*/ ctx[9].join(';') + "; " + /*widthVariables*/ ctx[11].join(';') + "; " + /*heightVariables*/ ctx[10].join(';'))) {
 				attr(div3, "style", div3_style_value);
 			}
 		},
@@ -1288,18 +1294,19 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(div3);
 			destroy_each(each_blocks, detaching);
-			/*div0_binding*/ ctx[18](null);
-			/*div3_binding*/ ctx[19](null);
+			/*div0_binding*/ ctx[20](null);
+			/*div3_binding*/ ctx[21](null);
 		}
 	};
 }
-let keepFor = 5000;
 
 function instance($$self, $$props, $$invalidate) {
 	let widthVariables;
 	let heightVariables;
 	let { lec } = $$props;
 	const section = {};
+	let { sectionƒƒsettings } = $$props;
+	section.settings = sectionƒƒsettings;
 	let { sectionƒƒblocks } = $$props;
 	section.blocks = sectionƒƒblocks;
 	let { animations } = $$props;
@@ -1316,6 +1323,8 @@ function instance($$self, $$props, $$invalidate) {
 	console.log('section blocks 2', animations, section.blocks);
 	let container, stage;
 	let scrollY = 0;
+	let keepFor = section.settings.animation_duration / 100 * window.innerHeight;
+	console.log('section settings ', section.settings, keepFor);
 	let height = 0;
 	let isTopped = 0;
 	let cachedHeight = 0;
@@ -1328,7 +1337,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	onMount(() => {
 		document.querySelector('.page-content').addEventListener('scroll', e => {
-			$$invalidate(11, scrollY = e.target.scrollTop);
+			$$invalidate(13, scrollY = e.target.scrollTop);
 		});
 	});
 
@@ -1336,31 +1345,32 @@ function instance($$self, $$props, $$invalidate) {
 
 	function scrollvideo_keptFor_binding(value) {
 		keptFor = value;
-		(((((($$invalidate(5, keptFor), $$invalidate(3, container)), $$invalidate(4, stage)), $$invalidate(11, scrollY)), $$invalidate(13, isTopped)), $$invalidate(14, cachedHeight)), $$invalidate(15, progressPercent));
+		((((((($$invalidate(6, keptFor), $$invalidate(4, container)), $$invalidate(5, stage)), $$invalidate(13, scrollY)), $$invalidate(15, isTopped)), $$invalidate(12, keepFor)), $$invalidate(16, cachedHeight)), $$invalidate(17, progressPercent));
 	}
 
 	function div0_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			stage = $$value;
-			$$invalidate(4, stage);
+			$$invalidate(5, stage);
 		});
 	}
 
 	function div3_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			container = $$value;
-			$$invalidate(3, container);
+			$$invalidate(4, container);
 		});
 	}
 
 	$$self.$$set = $$props => {
 		if ('lec' in $$props) $$invalidate(0, lec = $$props.lec);
-		if ('sectionƒƒblocks' in $$props) $$invalidate(1, sectionƒƒblocks = $$props.sectionƒƒblocks);
-		if ('animations' in $$props) $$invalidate(2, animations = $$props.animations);
+		if ('sectionƒƒsettings' in $$props) $$invalidate(1, sectionƒƒsettings = $$props.sectionƒƒsettings);
+		if ('sectionƒƒblocks' in $$props) $$invalidate(2, sectionƒƒblocks = $$props.sectionƒƒblocks);
+		if ('animations' in $$props) $$invalidate(3, animations = $$props.animations);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[0] & /*container, stage, scrollY, isTopped, keptFor, cachedHeight, progressPercent*/ 59448) {
+		if ($$self.$$.dirty[0] & /*container, stage, scrollY, isTopped, keptFor, cachedHeight, progressPercent*/ 237680) {
 			// [
 			//   {
 			//     from: 52,
@@ -1387,16 +1397,16 @@ function instance($$self, $$props, $$invalidate) {
 			//   }
 			// ];
 			if (container && stage) {
-				(container.offsetTop, $$invalidate(12, height = container.clientHeight), container.offsetTop < scrollY + window.innerHeight, container.offsetTop - (scrollY + window.innerHeight), $$invalidate(13, isTopped = container.offsetTop - scrollY < 0), $$invalidate(14, cachedHeight = isTopped ? cachedHeight : container.clientHeight), $$invalidate(5, keptFor = Math.abs(container.offsetTop - scrollY)), container.offsetTop - scrollY < 0 && keepFor > keptFor
+				(container.offsetTop, $$invalidate(14, height = container.clientHeight), container.offsetTop < scrollY + window.innerHeight, container.offsetTop - (scrollY + window.innerHeight), $$invalidate(15, isTopped = container.offsetTop - scrollY < 0), $$invalidate(16, cachedHeight = isTopped ? cachedHeight : container.clientHeight), $$invalidate(6, keptFor = Math.abs(container.offsetTop - scrollY)), container.offsetTop - scrollY < 0 && keepFor > keptFor
 				? keptFor
-				: isTopped ? keepFor : 0, $$invalidate(15, progressPercent = (scrollY + window.innerHeight - container.offsetTop) / (container.clientHeight + window.innerHeight) * 100), $$invalidate(15, progressPercent = progressPercent > 0 ? progressPercent : 0));
+				: isTopped ? keepFor : 0, $$invalidate(17, progressPercent = (scrollY + window.innerHeight - container.offsetTop) / (container.clientHeight + window.innerHeight) * 100), $$invalidate(17, progressPercent = progressPercent > 0 ? progressPercent : 0));
 
-				$$invalidate(16, progress = progressPercent);
-				$$invalidate(7, stageHeight = stage.clientHeight);
+				$$invalidate(18, progress = progressPercent);
+				$$invalidate(8, stageHeight = stage.clientHeight);
 			}
 		}
 
-		if ($$self.$$.dirty[0] & /*container, scrollY*/ 2056) {
+		if ($$self.$$.dirty[0] & /*container, scrollY*/ 8208) {
 			// $: if(scrollY && container && seeked) {
 			//   seeked = false;
 			//   top = container.offsetTop; 
@@ -1404,14 +1414,14 @@ function instance($$self, $$props, $$invalidate) {
 			//   // time = duration * keptFor / keepFor;
 			// }
 			if (container) {
-				$$invalidate(5, keptFor = container.offsetTop < scrollY
+				$$invalidate(6, keptFor = container.offsetTop < scrollY
 				? -1 * (container.offsetTop - scrollY)
 				: 0);
 			} // console.log('keptFor index ', keptFor);
 		}
 
-		if ($$self.$$.dirty[0] & /*animations, progress*/ 65540) {
-			$$invalidate(8, animationVariables = animations.map(animation => {
+		if ($$self.$$.dirty[0] & /*animations, progress*/ 262152) {
+			$$invalidate(9, animationVariables = animations.map(animation => {
 				let animationProgress = (progress - animation.from) / (animation.to - animation.from);
 				let value = animation.valueFrom + (animation.valueTo - animation.valueFrom) * animationProgress;
 
@@ -1426,11 +1436,12 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	};
 
-	$$invalidate(10, widthVariables = itemWidths.map((width, index) => `--item-${index}-width: ${width}px`));
-	$$invalidate(9, heightVariables = itemHeights.map((height, index) => `--item-${index}-height: ${height}px`));
+	$$invalidate(11, widthVariables = itemWidths.map((width, index) => `--item-${index}-width: ${width}px`));
+	$$invalidate(10, heightVariables = itemHeights.map((height, index) => `--item-${index}-height: ${height}px`));
 
 	return [
 		lec,
+		sectionƒƒsettings,
 		sectionƒƒblocks,
 		animations,
 		container,
@@ -1441,6 +1452,7 @@ function instance($$self, $$props, $$invalidate) {
 		animationVariables,
 		heightVariables,
 		widthVariables,
+		keepFor,
 		scrollY,
 		height,
 		isTopped,
@@ -1465,8 +1477,9 @@ class Scroll_animation extends SvelteComponent {
 			safe_not_equal,
 			{
 				lec: 0,
-				sectionƒƒblocks: 1,
-				animations: 2
+				sectionƒƒsettings: 1,
+				sectionƒƒblocks: 2,
+				animations: 3
 			},
 			null,
 			[-1, -1]

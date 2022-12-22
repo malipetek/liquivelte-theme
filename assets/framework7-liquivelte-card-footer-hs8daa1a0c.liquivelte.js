@@ -12,9 +12,9 @@ function create_fragment(ctx) {
 
 	let div_levels = [
 		{
-			class: div_class_value = "card-footer " + /*classes*/ ctx[0]
+			class: div_class_value = "card-footer " + /*classes*/ ctx[0] + " " + /*computedClasses*/ ctx[1]
 		},
-		restProps(/*$$restProps*/ ctx[1])
+		restProps(/*$$restProps*/ ctx[2])
 	];
 
 	let div_data = {};
@@ -65,8 +65,8 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(div, div_data = get_spread_update(div_levels, [
-				(!current || dirty & /*classes*/ 1 && div_class_value !== (div_class_value = "card-footer " + /*classes*/ ctx[0])) && { class: div_class_value },
-				dirty & /*$$restProps*/ 2 && restProps(/*$$restProps*/ ctx[1])
+				(!current || dirty & /*classes*/ 1 && div_class_value !== (div_class_value = "card-footer " + /*classes*/ ctx[0] + " " + /*computedClasses*/ ctx[1])) && { class: div_class_value },
+				dirty & /*$$restProps*/ 4 && restProps(/*$$restProps*/ ctx[2])
 			]));
 		},
 		i(local) {
@@ -86,33 +86,33 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let classes;
-	const omit_props_names = ["lec","class"];
+	const omit_props_names = ["lec","classes"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 
 	$$self.$$set = $$new_props => {
 		$$invalidate(7, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-		$$invalidate(1, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('lec' in $$new_props) $$invalidate(2, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(3, className = $$new_props.class);
+		$$invalidate(2, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('lec' in $$new_props) $$invalidate(3, lec = $$new_props.lec);
+		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
 		if ('$$scope' in $$new_props) $$invalidate(4, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		$$invalidate(0, classes = classNames(className, colorClasses($$props)));
+		$$invalidate(0, classes = classNames(classes, colorClasses($$props)));
 	};
 
 	$$props = exclude_internal_props($$props);
-	return [classes, $$restProps, lec, className, $$scope, slots];
+	return [classes, computedClasses, $$restProps, lec, $$scope, slots];
 }
 
 class Card_footer extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { lec: 2, class: 3 });
+		init(this, options, instance, create_fragment, safe_not_equal, { lec: 3, classes: 0 });
 	}
 }
 

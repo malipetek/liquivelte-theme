@@ -1,7 +1,7 @@
 {
   "sections": {
     "f55fd9df-34e5-4a6a-ad16-040620edc061": {
-      "type": "slider",
+      "type": "product-carousel",
       "settings": {
         "collection": "cheetah",
         "layout": "regular",
@@ -81,7 +81,7 @@
         "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c": {
           "type": "video",
           "settings": {
-            "source": "MACPRO.mp4",
+            "source": "MACPRO_MAIN_DESKTOP.mp4",
             "trim": 1,
             "is_bg": true,
             "id": ""
@@ -92,7 +92,7 @@
         "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c"
       ],
       "settings": {
-        "animation_duration": 200
+        "animation_duration": 500
       }
     },
     "exploding-gallery": {

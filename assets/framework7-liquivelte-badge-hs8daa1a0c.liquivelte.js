@@ -15,9 +15,9 @@ function create_fragment(ctx) {
 
 	let span_levels = [
 		{
-			class: span_class_value = "badge " + /*classes*/ ctx[2]
+			class: span_class_value = "badge " + /*classes*/ ctx[0] + " " + /*computedClasses*/ ctx[3]
 		},
-		restProps(/*$$restProps*/ ctx[3])
+		restProps(/*$$restProps*/ ctx[4])
 	];
 
 	let span_data = {};
@@ -53,8 +53,8 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = action_destroyer(useTooltip_action = useTooltip.call(null, span, {
-					tooltip: /*tooltip*/ ctx[0],
-					tooltipTrigger: /*tooltipTrigger*/ ctx[1]
+					tooltip: /*tooltip*/ ctx[1],
+					tooltipTrigger: /*tooltipTrigger*/ ctx[2]
 				}));
 
 				mounted = true;
@@ -77,13 +77,13 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(span, span_data = get_spread_update(span_levels, [
-				(!current || dirty & /*classes*/ 4 && span_class_value !== (span_class_value = "badge " + /*classes*/ ctx[2])) && { class: span_class_value },
-				dirty & /*$$restProps*/ 8 && restProps(/*$$restProps*/ ctx[3])
+				(!current || dirty & /*classes*/ 1 && span_class_value !== (span_class_value = "badge " + /*classes*/ ctx[0] + " " + /*computedClasses*/ ctx[3])) && { class: span_class_value },
+				dirty & /*$$restProps*/ 16 && restProps(/*$$restProps*/ ctx[4])
 			]));
 
-			if (useTooltip_action && is_function(useTooltip_action.update) && dirty & /*tooltip, tooltipTrigger*/ 3) useTooltip_action.update.call(null, {
-				tooltip: /*tooltip*/ ctx[0],
-				tooltipTrigger: /*tooltipTrigger*/ ctx[1]
+			if (useTooltip_action && is_function(useTooltip_action.update) && dirty & /*tooltip, tooltipTrigger*/ 6) useTooltip_action.update.call(null, {
+				tooltip: /*tooltip*/ ctx[1],
+				tooltipTrigger: /*tooltipTrigger*/ ctx[2]
 			});
 		},
 		i(local) {
@@ -105,31 +105,41 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let classes;
-	const omit_props_names = ["lec","class","tooltip","tooltipTrigger"];
+	const omit_props_names = ["lec","classes","tooltip","tooltipTrigger"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 	let { tooltip = undefined } = $$props;
 	let { tooltipTrigger = undefined } = $$props;
 
 	$$self.$$set = $$new_props => {
 		$$invalidate(9, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-		$$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('lec' in $$new_props) $$invalidate(4, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(5, className = $$new_props.class);
-		if ('tooltip' in $$new_props) $$invalidate(0, tooltip = $$new_props.tooltip);
-		if ('tooltipTrigger' in $$new_props) $$invalidate(1, tooltipTrigger = $$new_props.tooltipTrigger);
+		$$invalidate(4, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('lec' in $$new_props) $$invalidate(5, lec = $$new_props.lec);
+		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
+		if ('tooltip' in $$new_props) $$invalidate(1, tooltip = $$new_props.tooltip);
+		if ('tooltipTrigger' in $$new_props) $$invalidate(2, tooltipTrigger = $$new_props.tooltipTrigger);
 		if ('$$scope' in $$new_props) $$invalidate(6, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		$$invalidate(2, classes = classNames(className, colorClasses($$props)));
+		$$invalidate(0, classes = classNames(classes, colorClasses($$props)));
 	};
 
 	$$props = exclude_internal_props($$props);
-	return [tooltip, tooltipTrigger, classes, $$restProps, lec, className, $$scope, slots];
+
+	return [
+		classes,
+		tooltip,
+		tooltipTrigger,
+		computedClasses,
+		$$restProps,
+		lec,
+		$$scope,
+		slots
+	];
 }
 
 class Badge extends SvelteComponent {
@@ -137,10 +147,10 @@ class Badge extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			lec: 4,
-			class: 5,
-			tooltip: 0,
-			tooltipTrigger: 1
+			lec: 5,
+			classes: 0,
+			tooltip: 1,
+			tooltipTrigger: 2
 		});
 	}
 }

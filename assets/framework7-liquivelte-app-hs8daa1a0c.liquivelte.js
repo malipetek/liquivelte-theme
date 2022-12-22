@@ -9,9 +9,9 @@ function create_fragment(ctx) {
 	let t;
 	let routablemodals;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[5].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[4], null);
-	routablemodals = new Routable_modals({ props: { lec: /*lec*/ ctx[0] } });
+	const default_slot_template = /*#slots*/ ctx[4].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
+	routablemodals = new Routable_modals({ props: { lec: /*lec*/ ctx[1] } });
 
 	return {
 		c() {
@@ -31,7 +31,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", /*classes*/ ctx[2]);
+			attr(div, "class", /*classes*/ ctx[0]);
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -42,31 +42,31 @@ function create_fragment(ctx) {
 
 			append_hydration(div, t);
 			mount_component(routablemodals, div, null);
-			/*div_binding*/ ctx[6](div);
+			/*div_binding*/ ctx[5](div);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 16)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 8)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[4],
+						/*$$scope*/ ctx[3],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[4])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[4], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[3])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[3], dirty, null),
 						null
 					);
 				}
 			}
 
 			const routablemodals_changes = {};
-			if (dirty & /*lec*/ 1) routablemodals_changes.lec = /*lec*/ ctx[0];
+			if (dirty & /*lec*/ 2) routablemodals_changes.lec = /*lec*/ ctx[1];
 			routablemodals.$set(routablemodals_changes);
 
-			if (!current || dirty & /*classes*/ 4) {
-				attr(div, "class", /*classes*/ ctx[2]);
+			if (!current || dirty & /*classes*/ 1) {
+				attr(div, "class", /*classes*/ ctx[0]);
 			}
 		},
 		i(local) {
@@ -84,16 +84,15 @@ function create_fragment(ctx) {
 			if (detaching) detach(div);
 			if (default_slot) default_slot.d(detaching);
 			destroy_component(routablemodals);
-			/*div_binding*/ ctx[6](null);
+			/*div_binding*/ ctx[5](null);
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let classes;
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
-	let { class: className = undefined } = $$props;
+	let { classes } = $$props;
 	let el;
 
 	if (!app.f7 || typeof window === 'undefined') {
@@ -118,29 +117,29 @@ function instance($$self, $$props, $$invalidate) {
 	function div_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			el = $$value;
-			$$invalidate(1, el);
+			$$invalidate(2, el);
 		});
 	}
 
 	$$self.$$set = $$new_props => {
 		$$invalidate(8, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(3, className = $$new_props.class);
-		if ('$$scope' in $$new_props) $$invalidate(4, $$scope = $$new_props.$$scope);
+		if ('lec' in $$new_props) $$invalidate(1, lec = $$new_props.lec);
+		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
+		if ('$$scope' in $$new_props) $$invalidate(3, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		$$invalidate(2, classes = classNames(className, 'framework7-root', colorClasses($$props)));
+		$$invalidate(0, classes = classNames(classes, 'framework7-root', colorClasses($$props)));
 	};
 
 	$$props = exclude_internal_props($$props);
-	return [lec, el, classes, className, $$scope, slots, div_binding];
+	return [classes, lec, el, $$scope, slots, div_binding];
 }
 
 class App extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { lec: 0, class: 3 });
+		init(this, options, instance, create_fragment, safe_not_equal, { lec: 1, classes: 0 });
 	}
 }
 

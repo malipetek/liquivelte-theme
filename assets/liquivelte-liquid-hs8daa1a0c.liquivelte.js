@@ -38,7 +38,7 @@ function handleize(str) {
   
     return str;
 }  
-var cachedLiquid = (liquid_expression_cache) => ({
+var cachedLiquid = (liquid_expression_cache = {}) => ({
     default: (input, fallback) => {
         let isObject = false;
         try { isObject = input.constructor === {}.constructor; } catch (err) { }

@@ -70,19 +70,37 @@ export function updateHistoryState(variant) {
 
 /**
  * @typedef {object} AddToCartResult
- * @property 
+ * @property any
  */
 /**
- * @param  {HTMLFormElement | Number} formOrVariantId
- * @param  {Number} quantity
- * @param  {Object} properties
+ * @param  {Object} Props
  * @returns 
  */
-export async function addToCart(formOrVariantId, quantity, properties) {
+export async function addToCart({
+  form,
+  variant,
+  variantId,
+  product,
+  quantity = 1,
+  properties
+} = {
+  form: null,
+  variant: null,
+  variantId: null,
+  product: null,
+  quantity: null,
+  properties: null
+}) {
   let result = {};
   let response;
+  if (product && product.variants) {
+    variantId = product.variants.find(v => v.available)?.id;
+  }
+  if (variant) {
+    variantId = variant.id;
+  }
   try {
-    if (formOrVariantId.constructor === HTMLFormElement) {
+    if (form && form.constructor === HTMLFormElement) {
       response = await fetch('/cart/add.js', {
         method: 'POST',
         credentials: 'same-origin',
@@ -90,11 +108,26 @@ export async function addToCart(formOrVariantId, quantity, properties) {
           'Content-Type': 'application/x-www-form-urlencoded',
           'X-Requested-With': 'XMLHttpRequest'
         },
-        body: theme.Helpers.serialize(formOrVariantId)
+        body: theme.Helpers.serialize(form)
+      });
+    }
+    else if (!quantity) {
+      response = await fetch(`/cart/add.js`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          items: [{
+            id: variantId,
+            quantity,
+            properties
+        }]
+        })
       });
     }
     else {
-      response = await fetch(`/cart/update.js`, {
+      response = await fetch(`/cart/add.js`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -102,7 +135,7 @@ export async function addToCart(formOrVariantId, quantity, properties) {
         body: JSON.stringify({items: [
           {
             quantity,
-            id: formOrVariantId,
+            id: variantId,
             properties
           }
         ]})
@@ -123,8 +156,29 @@ export async function addToCart(formOrVariantId, quantity, properties) {
       description: err.message
     };
   }
-  return result;
+
+  // const cartResponse = await fetch('/cart?view=json');
+  const cartResponse = await fetch('/cart.js');
+  const newCartData = await cartResponse.json();
+  return newCartData;
 }
+
+
+export async function updateLineItem(itemid, quantity) {
+  await fetch(`/cart/update.js`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        updates: { [itemid]: quantity }
+    })
+  })
+  const cartResponse = await fetch('/cart.js');
+  const newCartData = await cartResponse.json();
+  return newCartData;
+}
+
 
 export function preloadImage(src) {
   return new Promise(done => {

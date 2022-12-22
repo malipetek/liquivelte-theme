@@ -12,9 +12,9 @@ function create_fragment(ctx) {
 
 	let div_levels = [
 		{
-			class: div_class_value = "card-content " + /*classes*/ ctx[1]
+			class: div_class_value = "card-content " + /*classes*/ ctx[0] + " " + /*computedClasses*/ ctx[2]
 		},
-		restProps(/*$$restProps*/ ctx[2])
+		restProps(/*$$restProps*/ ctx[3])
 	];
 
 	let div_data = {};
@@ -38,7 +38,7 @@ function create_fragment(ctx) {
 		},
 		h() {
 			set_attributes(div, div_data);
-			toggle_class(div, "card-content-padding", /*padding*/ ctx[0]);
+			toggle_class(div, "card-content-padding", /*padding*/ ctx[1]);
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -66,11 +66,11 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(div, div_data = get_spread_update(div_levels, [
-				(!current || dirty & /*classes*/ 2 && div_class_value !== (div_class_value = "card-content " + /*classes*/ ctx[1])) && { class: div_class_value },
-				dirty & /*$$restProps*/ 4 && restProps(/*$$restProps*/ ctx[2])
+				(!current || dirty & /*classes, computedClasses*/ 5 && div_class_value !== (div_class_value = "card-content " + /*classes*/ ctx[0] + " " + /*computedClasses*/ ctx[2])) && { class: div_class_value },
+				dirty & /*$$restProps*/ 8 && restProps(/*$$restProps*/ ctx[3])
 			]));
 
-			toggle_class(div, "card-content-padding", /*padding*/ ctx[0]);
+			toggle_class(div, "card-content-padding", /*padding*/ ctx[1]);
 		},
 		i(local) {
 			if (current) return;
@@ -89,35 +89,35 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let classes;
-	const omit_props_names = ["lec","class","padding"];
+	const omit_props_names = ["lec","classes","padding"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 	let { padding = true } = $$props;
 
 	$$self.$$set = $$new_props => {
 		$$invalidate(8, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-		$$invalidate(2, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('lec' in $$new_props) $$invalidate(3, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(4, className = $$new_props.class);
-		if ('padding' in $$new_props) $$invalidate(0, padding = $$new_props.padding);
+		$$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('lec' in $$new_props) $$invalidate(4, lec = $$new_props.lec);
+		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
+		if ('padding' in $$new_props) $$invalidate(1, padding = $$new_props.padding);
 		if ('$$scope' in $$new_props) $$invalidate(5, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		$$invalidate(1, classes = classNames(className, { 'card-content-padding': padding }, colorClasses($$props)));
+		$$invalidate(2, computedClasses = classNames(classes, { 'card-content-padding': padding }, colorClasses($$props)));
 	};
 
 	$$props = exclude_internal_props($$props);
-	return [padding, classes, $$restProps, lec, className, $$scope, slots];
+	return [classes, padding, computedClasses, $$restProps, lec, $$scope, slots];
 }
 
 class Card_content extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { lec: 3, class: 4, padding: 0 });
+		init(this, options, instance, create_fragment, safe_not_equal, { lec: 4, classes: 0, padding: 1 });
 	}
 }
 

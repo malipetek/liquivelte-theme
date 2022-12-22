@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, empty, insert_hydration, group_outros, transition_out, check_outros, transition_in, detach, compute_rest_props, createEventDispatcher, assign, exclude_internal_props, binding_callbacks, element, claim_element, children, set_attributes, action_destroyer, listen, get_spread_update, is_function, run_all, create_slot, space, claim_space, update_slot_base, get_all_dirty_from_scope, get_slot_changes, create_component, claim_component, mount_component, append_hydration, destroy_component, text, claim_text, set_data } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, empty, insert_hydration, group_outros, transition_out, check_outros, transition_in, detach, compute_rest_props, createEventDispatcher, assign, exclude_internal_props, binding_callbacks, element, claim_element, children, set_attributes, toggle_class, action_destroyer, listen, get_spread_update, is_function, run_all, create_slot, space, claim_space, update_slot_base, get_all_dirty_from_scope, get_slot_changes, create_component, claim_component, mount_component, append_hydration, destroy_component, text, claim_text, set_data } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
 import { createEmitter, extend, routerAttrs, isStringProp, restProps, actionsAttrs, classNames, colorClasses, routerClasses, actionsClasses, useIcon, useRouteProps, useTooltip } from './framework7-liquivelte-hs5d6b599e.liquivelte.js';
 import { Use_icon } from './framework7-liquivelte-use-icon-hs8daa1a0c.liquivelte.js';
 import { Preloader } from './framework7-liquivelte-preloader-hs8daa1a0c.liquivelte.js';
@@ -19,7 +19,7 @@ function create_else_block_1(ctx) {
 	const if_blocks = [];
 
 	function select_block_type_2(ctx, dirty) {
-		if (/*preloader*/ ctx[5]) return 0;
+		if (/*preloader*/ ctx[32]) return 0;
 		return 1;
 	}
 
@@ -28,9 +28,9 @@ function create_else_block_1(ctx) {
 
 	let a_levels = [
 		{
-			class: a_class_value = "button " + /*classes*/ ctx[11]
+			class: a_class_value = "button " + /*classes*/ ctx[1] + " " + /*computedClasses*/ ctx[36]
 		},
-		/*attrs*/ ctx[12]
+		/*attrs*/ ctx[40]
 	];
 
 	let a_data = {};
@@ -54,6 +54,34 @@ function create_else_block_1(ctx) {
 		},
 		h() {
 			set_attributes(a, a_data);
+			toggle_class(a, "button-round", /*round*/ ctx[3]);
+			toggle_class(a, "button-round-ios", /*roundIos*/ ctx[5]);
+			toggle_class(a, "button-round-aurora", /*roundAurora*/ ctx[6]);
+			toggle_class(a, "button-round-md", /*roundMd*/ ctx[4]);
+			toggle_class(a, "button-fill", /*fill*/ ctx[7]);
+			toggle_class(a, "button-fill-ios", /*fillIos*/ ctx[9]);
+			toggle_class(a, "button-fill-aurora", /*fillAurora*/ ctx[10]);
+			toggle_class(a, "button-fill-md", /*fillMd*/ ctx[8]);
+			toggle_class(a, "button-large", /*large*/ ctx[11]);
+			toggle_class(a, "button-large-ios", /*largeIos*/ ctx[13]);
+			toggle_class(a, "button-large-aurora", /*largeAurora*/ ctx[14]);
+			toggle_class(a, "button-large-md", /*largeMd*/ ctx[12]);
+			toggle_class(a, "button-small", /*small*/ ctx[15]);
+			toggle_class(a, "button-small-ios", /*smallIos*/ ctx[17]);
+			toggle_class(a, "button-small-aurora", /*smallAurora*/ ctx[18]);
+			toggle_class(a, "button-small-md", /*smallMd*/ ctx[16]);
+			toggle_class(a, "button-raised", /*raised*/ ctx[19]);
+			toggle_class(a, "button-raised-ios", /*raisedIos*/ ctx[21]);
+			toggle_class(a, "button-raised-aurora", /*raisedAurora*/ ctx[22]);
+			toggle_class(a, "button-raised-md", /*raisedMd*/ ctx[20]);
+			toggle_class(a, "button-active", /*active*/ ctx[27]);
+			toggle_class(a, "button-outline", /*outline*/ ctx[23]);
+			toggle_class(a, "button-outline-ios", /*outlineIos*/ ctx[25]);
+			toggle_class(a, "button-outline-aurora", /*outlineAurora*/ ctx[26]);
+			toggle_class(a, "button-outline-md", /*outlineMd*/ ctx[24]);
+			toggle_class(a, "button-preloader", /*preloader*/ ctx[32]);
+			toggle_class(a, "button-loading", /*loading*/ ctx[35]);
+			toggle_class(a, "disabled", /*disabled*/ ctx[28]);
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -63,11 +91,11 @@ function create_else_block_1(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					action_destroyer(useRouteProps_action = useRouteProps.call(null, a, /*routeProps*/ ctx[4])),
-					listen(a, "click", /*onClick*/ ctx[13]),
+					action_destroyer(useRouteProps_action = useRouteProps.call(null, a, /*routeProps*/ ctx[31])),
+					listen(a, "click", /*onClick*/ ctx[41]),
 					action_destroyer(useTooltip_action = useTooltip.call(null, a, {
-						tooltip: /*tooltip*/ ctx[2],
-						tooltipTrigger: /*tooltipTrigger*/ ctx[3]
+						tooltip: /*tooltip*/ ctx[29],
+						tooltipTrigger: /*tooltipTrigger*/ ctx[30]
 					}))
 				];
 
@@ -102,16 +130,45 @@ function create_else_block_1(ctx) {
 			}
 
 			set_attributes(a, a_data = get_spread_update(a_levels, [
-				(!current || dirty[0] & /*classes*/ 2048 && a_class_value !== (a_class_value = "button " + /*classes*/ ctx[11])) && { class: a_class_value },
-				dirty[0] & /*attrs*/ 4096 && /*attrs*/ ctx[12]
+				(!current || dirty[0] & /*classes*/ 2 | dirty[1] & /*computedClasses*/ 32 && a_class_value !== (a_class_value = "button " + /*classes*/ ctx[1] + " " + /*computedClasses*/ ctx[36])) && { class: a_class_value },
+				dirty[1] & /*attrs*/ 512 && /*attrs*/ ctx[40]
 			]));
 
-			if (useRouteProps_action && is_function(useRouteProps_action.update) && dirty[0] & /*routeProps*/ 16) useRouteProps_action.update.call(null, /*routeProps*/ ctx[4]);
+			if (useRouteProps_action && is_function(useRouteProps_action.update) && dirty[1] & /*routeProps*/ 1) useRouteProps_action.update.call(null, /*routeProps*/ ctx[31]);
 
-			if (useTooltip_action && is_function(useTooltip_action.update) && dirty[0] & /*tooltip, tooltipTrigger*/ 12) useTooltip_action.update.call(null, {
-				tooltip: /*tooltip*/ ctx[2],
-				tooltipTrigger: /*tooltipTrigger*/ ctx[3]
+			if (useTooltip_action && is_function(useTooltip_action.update) && dirty[0] & /*tooltip, tooltipTrigger*/ 1610612736) useTooltip_action.update.call(null, {
+				tooltip: /*tooltip*/ ctx[29],
+				tooltipTrigger: /*tooltipTrigger*/ ctx[30]
 			});
+
+			toggle_class(a, "button-round", /*round*/ ctx[3]);
+			toggle_class(a, "button-round-ios", /*roundIos*/ ctx[5]);
+			toggle_class(a, "button-round-aurora", /*roundAurora*/ ctx[6]);
+			toggle_class(a, "button-round-md", /*roundMd*/ ctx[4]);
+			toggle_class(a, "button-fill", /*fill*/ ctx[7]);
+			toggle_class(a, "button-fill-ios", /*fillIos*/ ctx[9]);
+			toggle_class(a, "button-fill-aurora", /*fillAurora*/ ctx[10]);
+			toggle_class(a, "button-fill-md", /*fillMd*/ ctx[8]);
+			toggle_class(a, "button-large", /*large*/ ctx[11]);
+			toggle_class(a, "button-large-ios", /*largeIos*/ ctx[13]);
+			toggle_class(a, "button-large-aurora", /*largeAurora*/ ctx[14]);
+			toggle_class(a, "button-large-md", /*largeMd*/ ctx[12]);
+			toggle_class(a, "button-small", /*small*/ ctx[15]);
+			toggle_class(a, "button-small-ios", /*smallIos*/ ctx[17]);
+			toggle_class(a, "button-small-aurora", /*smallAurora*/ ctx[18]);
+			toggle_class(a, "button-small-md", /*smallMd*/ ctx[16]);
+			toggle_class(a, "button-raised", /*raised*/ ctx[19]);
+			toggle_class(a, "button-raised-ios", /*raisedIos*/ ctx[21]);
+			toggle_class(a, "button-raised-aurora", /*raisedAurora*/ ctx[22]);
+			toggle_class(a, "button-raised-md", /*raisedMd*/ ctx[20]);
+			toggle_class(a, "button-active", /*active*/ ctx[27]);
+			toggle_class(a, "button-outline", /*outline*/ ctx[23]);
+			toggle_class(a, "button-outline-ios", /*outlineIos*/ ctx[25]);
+			toggle_class(a, "button-outline-aurora", /*outlineAurora*/ ctx[26]);
+			toggle_class(a, "button-outline-md", /*outlineMd*/ ctx[24]);
+			toggle_class(a, "button-preloader", /*preloader*/ ctx[32]);
+			toggle_class(a, "button-loading", /*loading*/ ctx[35]);
+			toggle_class(a, "disabled", /*disabled*/ ctx[28]);
 		},
 		i(local) {
 			if (current) return;
@@ -132,7 +189,7 @@ function create_else_block_1(ctx) {
 	};
 }
 
-// (136:0) {#if tagName == 'button' }
+// (106:0) {#if tagName == 'button' }
 function create_if_block(ctx) {
 	let button;
 	let current_block_type_index;
@@ -147,7 +204,7 @@ function create_if_block(ctx) {
 	const if_blocks = [];
 
 	function select_block_type_1(ctx, dirty) {
-		if (/*preloader*/ ctx[5]) return 0;
+		if (/*preloader*/ ctx[32]) return 0;
 		return 1;
 	}
 
@@ -156,9 +213,9 @@ function create_if_block(ctx) {
 
 	let button_levels = [
 		{
-			class: button_class_value = "button " + /*classes*/ ctx[11]
+			class: button_class_value = "button " + /*classes*/ ctx[1] + " " + /*computedClasses*/ ctx[36]
 		},
-		/*attrs*/ ctx[12]
+		/*attrs*/ ctx[40]
 	];
 
 	let button_data = {};
@@ -182,6 +239,34 @@ function create_if_block(ctx) {
 		},
 		h() {
 			set_attributes(button, button_data);
+			toggle_class(button, "button-round", /*round*/ ctx[3]);
+			toggle_class(button, "button-round-ios", /*roundIos*/ ctx[5]);
+			toggle_class(button, "button-round-aurora", /*roundAurora*/ ctx[6]);
+			toggle_class(button, "button-round-md", /*roundMd*/ ctx[4]);
+			toggle_class(button, "button-fill", /*fill*/ ctx[7]);
+			toggle_class(button, "button-fill-ios", /*fillIos*/ ctx[9]);
+			toggle_class(button, "button-fill-aurora", /*fillAurora*/ ctx[10]);
+			toggle_class(button, "button-fill-md", /*fillMd*/ ctx[8]);
+			toggle_class(button, "button-large", /*large*/ ctx[11]);
+			toggle_class(button, "button-large-ios", /*largeIos*/ ctx[13]);
+			toggle_class(button, "button-large-aurora", /*largeAurora*/ ctx[14]);
+			toggle_class(button, "button-large-md", /*largeMd*/ ctx[12]);
+			toggle_class(button, "button-small", /*small*/ ctx[15]);
+			toggle_class(button, "button-small-ios", /*smallIos*/ ctx[17]);
+			toggle_class(button, "button-small-aurora", /*smallAurora*/ ctx[18]);
+			toggle_class(button, "button-small-md", /*smallMd*/ ctx[16]);
+			toggle_class(button, "button-raised", /*raised*/ ctx[19]);
+			toggle_class(button, "button-raised-ios", /*raisedIos*/ ctx[21]);
+			toggle_class(button, "button-raised-aurora", /*raisedAurora*/ ctx[22]);
+			toggle_class(button, "button-raised-md", /*raisedMd*/ ctx[20]);
+			toggle_class(button, "button-active", /*active*/ ctx[27]);
+			toggle_class(button, "button-outline", /*outline*/ ctx[23]);
+			toggle_class(button, "button-outline-ios", /*outlineIos*/ ctx[25]);
+			toggle_class(button, "button-outline-aurora", /*outlineAurora*/ ctx[26]);
+			toggle_class(button, "button-outline-md", /*outlineMd*/ ctx[24]);
+			toggle_class(button, "button-preloader", /*preloader*/ ctx[32]);
+			toggle_class(button, "button-loading", /*loading*/ ctx[35]);
+			toggle_class(button, "disabled", /*disabled*/ ctx[28]);
 		},
 		m(target, anchor) {
 			insert_hydration(target, button, anchor);
@@ -192,11 +277,11 @@ function create_if_block(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					action_destroyer(useRouteProps_action = useRouteProps.call(null, button, /*routeProps*/ ctx[4])),
-					listen(button, "click", /*onClick*/ ctx[13]),
+					action_destroyer(useRouteProps_action = useRouteProps.call(null, button, /*routeProps*/ ctx[31])),
+					listen(button, "click", /*onClick*/ ctx[41]),
 					action_destroyer(useTooltip_action = useTooltip.call(null, button, {
-						tooltip: /*tooltip*/ ctx[2],
-						tooltipTrigger: /*tooltipTrigger*/ ctx[3]
+						tooltip: /*tooltip*/ ctx[29],
+						tooltipTrigger: /*tooltipTrigger*/ ctx[30]
 					}))
 				];
 
@@ -231,16 +316,45 @@ function create_if_block(ctx) {
 			}
 
 			set_attributes(button, button_data = get_spread_update(button_levels, [
-				(!current || dirty[0] & /*classes*/ 2048 && button_class_value !== (button_class_value = "button " + /*classes*/ ctx[11])) && { class: button_class_value },
-				dirty[0] & /*attrs*/ 4096 && /*attrs*/ ctx[12]
+				(!current || dirty[0] & /*classes*/ 2 | dirty[1] & /*computedClasses*/ 32 && button_class_value !== (button_class_value = "button " + /*classes*/ ctx[1] + " " + /*computedClasses*/ ctx[36])) && { class: button_class_value },
+				dirty[1] & /*attrs*/ 512 && /*attrs*/ ctx[40]
 			]));
 
-			if (useRouteProps_action && is_function(useRouteProps_action.update) && dirty[0] & /*routeProps*/ 16) useRouteProps_action.update.call(null, /*routeProps*/ ctx[4]);
+			if (useRouteProps_action && is_function(useRouteProps_action.update) && dirty[1] & /*routeProps*/ 1) useRouteProps_action.update.call(null, /*routeProps*/ ctx[31]);
 
-			if (useTooltip_action && is_function(useTooltip_action.update) && dirty[0] & /*tooltip, tooltipTrigger*/ 12) useTooltip_action.update.call(null, {
-				tooltip: /*tooltip*/ ctx[2],
-				tooltipTrigger: /*tooltipTrigger*/ ctx[3]
+			if (useTooltip_action && is_function(useTooltip_action.update) && dirty[0] & /*tooltip, tooltipTrigger*/ 1610612736) useTooltip_action.update.call(null, {
+				tooltip: /*tooltip*/ ctx[29],
+				tooltipTrigger: /*tooltipTrigger*/ ctx[30]
 			});
+
+			toggle_class(button, "button-round", /*round*/ ctx[3]);
+			toggle_class(button, "button-round-ios", /*roundIos*/ ctx[5]);
+			toggle_class(button, "button-round-aurora", /*roundAurora*/ ctx[6]);
+			toggle_class(button, "button-round-md", /*roundMd*/ ctx[4]);
+			toggle_class(button, "button-fill", /*fill*/ ctx[7]);
+			toggle_class(button, "button-fill-ios", /*fillIos*/ ctx[9]);
+			toggle_class(button, "button-fill-aurora", /*fillAurora*/ ctx[10]);
+			toggle_class(button, "button-fill-md", /*fillMd*/ ctx[8]);
+			toggle_class(button, "button-large", /*large*/ ctx[11]);
+			toggle_class(button, "button-large-ios", /*largeIos*/ ctx[13]);
+			toggle_class(button, "button-large-aurora", /*largeAurora*/ ctx[14]);
+			toggle_class(button, "button-large-md", /*largeMd*/ ctx[12]);
+			toggle_class(button, "button-small", /*small*/ ctx[15]);
+			toggle_class(button, "button-small-ios", /*smallIos*/ ctx[17]);
+			toggle_class(button, "button-small-aurora", /*smallAurora*/ ctx[18]);
+			toggle_class(button, "button-small-md", /*smallMd*/ ctx[16]);
+			toggle_class(button, "button-raised", /*raised*/ ctx[19]);
+			toggle_class(button, "button-raised-ios", /*raisedIos*/ ctx[21]);
+			toggle_class(button, "button-raised-aurora", /*raisedAurora*/ ctx[22]);
+			toggle_class(button, "button-raised-md", /*raisedMd*/ ctx[20]);
+			toggle_class(button, "button-active", /*active*/ ctx[27]);
+			toggle_class(button, "button-outline", /*outline*/ ctx[23]);
+			toggle_class(button, "button-outline-ios", /*outlineIos*/ ctx[25]);
+			toggle_class(button, "button-outline-aurora", /*outlineAurora*/ ctx[26]);
+			toggle_class(button, "button-outline-md", /*outlineMd*/ ctx[24]);
+			toggle_class(button, "button-preloader", /*preloader*/ ctx[32]);
+			toggle_class(button, "button-loading", /*loading*/ ctx[35]);
+			toggle_class(button, "disabled", /*disabled*/ ctx[28]);
 		},
 		i(local) {
 			if (current) return;
@@ -261,13 +375,13 @@ function create_if_block(ctx) {
 	};
 }
 
-// (186:4) {:else}
+// (212:4) {:else}
 function create_else_block_2(ctx) {
 	let t0;
 	let t1;
 	let current;
-	let if_block0 = /*icon*/ ctx[9] && create_if_block_10(ctx);
-	let if_block1 = /*text*/ ctx[1] != undefined && create_if_block_9(ctx);
+	let if_block0 = /*icon*/ ctx[38] && create_if_block_10(ctx);
+	let if_block1 = /*text*/ ctx[2] != undefined && create_if_block_9(ctx);
 	const default_slot_template = /*#slots*/ ctx[49].default;
 	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
 
@@ -299,11 +413,11 @@ function create_else_block_2(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*icon*/ ctx[9]) {
+			if (/*icon*/ ctx[38]) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty[0] & /*icon*/ 512) {
+					if (dirty[1] & /*icon*/ 128) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -322,7 +436,7 @@ function create_else_block_2(ctx) {
 				check_outros();
 			}
 
-			if (/*text*/ ctx[1] != undefined) {
+			if (/*text*/ ctx[2] != undefined) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 				} else {
@@ -371,7 +485,7 @@ function create_else_block_2(ctx) {
 	};
 }
 
-// (175:4) {#if preloader }
+// (201:4) {#if preloader }
 function create_if_block_6(ctx) {
 	let preloader_1;
 	let t0;
@@ -382,14 +496,14 @@ function create_if_block_6(ctx) {
 
 	preloader_1 = new Preloader({
 			props: {
-				size: /*preloaderSize*/ ctx[6],
-				color: /*preloaderColor*/ ctx[7],
+				size: /*preloaderSize*/ ctx[33],
+				color: /*preloaderColor*/ ctx[34],
 				lec: /*lec*/ ctx[0]
 			}
 		});
 
-	let if_block0 = /*icon*/ ctx[9] && create_if_block_8(ctx);
-	let if_block1 = /*text*/ ctx[1] != undefined && create_if_block_7(ctx);
+	let if_block0 = /*icon*/ ctx[38] && create_if_block_8(ctx);
+	let if_block1 = /*text*/ ctx[2] != undefined && create_if_block_7(ctx);
 	const default_slot_template = /*#slots*/ ctx[49].default;
 	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
 
@@ -433,16 +547,16 @@ function create_if_block_6(ctx) {
 		},
 		p(ctx, dirty) {
 			const preloader_1_changes = {};
-			if (dirty[0] & /*preloaderSize*/ 64) preloader_1_changes.size = /*preloaderSize*/ ctx[6];
-			if (dirty[0] & /*preloaderColor*/ 128) preloader_1_changes.color = /*preloaderColor*/ ctx[7];
+			if (dirty[1] & /*preloaderSize*/ 4) preloader_1_changes.size = /*preloaderSize*/ ctx[33];
+			if (dirty[1] & /*preloaderColor*/ 8) preloader_1_changes.color = /*preloaderColor*/ ctx[34];
 			if (dirty[0] & /*lec*/ 1) preloader_1_changes.lec = /*lec*/ ctx[0];
 			preloader_1.$set(preloader_1_changes);
 
-			if (/*icon*/ ctx[9]) {
+			if (/*icon*/ ctx[38]) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty[0] & /*icon*/ 512) {
+					if (dirty[1] & /*icon*/ 128) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -461,7 +575,7 @@ function create_if_block_6(ctx) {
 				check_outros();
 			}
 
-			if (/*text*/ ctx[1] != undefined) {
+			if (/*text*/ ctx[2] != undefined) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 				} else {
@@ -513,14 +627,14 @@ function create_if_block_6(ctx) {
 	};
 }
 
-// (187:6) {#if icon }
+// (213:6) {#if icon }
 function create_if_block_10(ctx) {
 	let useicon;
 	let current;
 
 	useicon = new Use_icon({
 			props: {
-				icon: /*icon*/ ctx[9],
+				icon: /*icon*/ ctx[38],
 				lec: /*lec*/ ctx[0]
 			}
 		});
@@ -538,7 +652,7 @@ function create_if_block_10(ctx) {
 		},
 		p(ctx, dirty) {
 			const useicon_changes = {};
-			if (dirty[0] & /*icon*/ 512) useicon_changes.icon = /*icon*/ ctx[9];
+			if (dirty[1] & /*icon*/ 128) useicon_changes.icon = /*icon*/ ctx[38];
 			if (dirty[0] & /*lec*/ 1) useicon_changes.lec = /*lec*/ ctx[0];
 			useicon.$set(useicon_changes);
 		},
@@ -557,7 +671,7 @@ function create_if_block_10(ctx) {
 	};
 }
 
-// (190:6) {#if text != undefined }
+// (216:6) {#if text != undefined }
 function create_if_block_9(ctx) {
 	let span;
 	let t;
@@ -565,12 +679,12 @@ function create_if_block_9(ctx) {
 	return {
 		c() {
 			span = element("span");
-			t = text(/*text*/ ctx[1]);
+			t = text(/*text*/ ctx[2]);
 		},
 		l(nodes) {
 			span = claim_element(nodes, "SPAN", {});
 			var span_nodes = children(span);
-			t = claim_text(span_nodes, /*text*/ ctx[1]);
+			t = claim_text(span_nodes, /*text*/ ctx[2]);
 			span_nodes.forEach(detach);
 		},
 		m(target, anchor) {
@@ -578,7 +692,7 @@ function create_if_block_9(ctx) {
 			append_hydration(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*text*/ 2) set_data(t, /*text*/ ctx[1]);
+			if (dirty[0] & /*text*/ 4) set_data(t, /*text*/ ctx[2]);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -586,14 +700,14 @@ function create_if_block_9(ctx) {
 	};
 }
 
-// (178:8) {#if icon }
+// (204:8) {#if icon }
 function create_if_block_8(ctx) {
 	let useicon;
 	let current;
 
 	useicon = new Use_icon({
 			props: {
-				icon: /*icon*/ ctx[9],
+				icon: /*icon*/ ctx[38],
 				lec: /*lec*/ ctx[0]
 			}
 		});
@@ -611,7 +725,7 @@ function create_if_block_8(ctx) {
 		},
 		p(ctx, dirty) {
 			const useicon_changes = {};
-			if (dirty[0] & /*icon*/ 512) useicon_changes.icon = /*icon*/ ctx[9];
+			if (dirty[1] & /*icon*/ 128) useicon_changes.icon = /*icon*/ ctx[38];
 			if (dirty[0] & /*lec*/ 1) useicon_changes.lec = /*lec*/ ctx[0];
 			useicon.$set(useicon_changes);
 		},
@@ -630,7 +744,7 @@ function create_if_block_8(ctx) {
 	};
 }
 
-// (181:8) {#if text != undefined }
+// (207:8) {#if text != undefined }
 function create_if_block_7(ctx) {
 	let span;
 	let t;
@@ -638,12 +752,12 @@ function create_if_block_7(ctx) {
 	return {
 		c() {
 			span = element("span");
-			t = text(/*text*/ ctx[1]);
+			t = text(/*text*/ ctx[2]);
 		},
 		l(nodes) {
 			span = claim_element(nodes, "SPAN", {});
 			var span_nodes = children(span);
-			t = claim_text(span_nodes, /*text*/ ctx[1]);
+			t = claim_text(span_nodes, /*text*/ ctx[2]);
 			span_nodes.forEach(detach);
 		},
 		m(target, anchor) {
@@ -651,7 +765,7 @@ function create_if_block_7(ctx) {
 			append_hydration(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*text*/ 2) set_data(t, /*text*/ ctx[1]);
+			if (dirty[0] & /*text*/ 4) set_data(t, /*text*/ ctx[2]);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -659,13 +773,13 @@ function create_if_block_7(ctx) {
 	};
 }
 
-// (156:4) {:else}
+// (154:4) {:else}
 function create_else_block(ctx) {
 	let t0;
 	let t1;
 	let current;
-	let if_block0 = /*icon*/ ctx[9] && create_if_block_5(ctx);
-	let if_block1 = /*text*/ ctx[1] != undefined && create_if_block_4(ctx);
+	let if_block0 = /*icon*/ ctx[38] && create_if_block_5(ctx);
+	let if_block1 = /*text*/ ctx[2] != undefined && create_if_block_4(ctx);
 	const default_slot_template = /*#slots*/ ctx[49].default;
 	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
 
@@ -697,11 +811,11 @@ function create_else_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*icon*/ ctx[9]) {
+			if (/*icon*/ ctx[38]) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty[0] & /*icon*/ 512) {
+					if (dirty[1] & /*icon*/ 128) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -720,7 +834,7 @@ function create_else_block(ctx) {
 				check_outros();
 			}
 
-			if (/*text*/ ctx[1] != undefined) {
+			if (/*text*/ ctx[2] != undefined) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 				} else {
@@ -769,7 +883,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (145:4) {#if preloader }
+// (143:4) {#if preloader }
 function create_if_block_1(ctx) {
 	let preloader_1;
 	let t0;
@@ -780,14 +894,14 @@ function create_if_block_1(ctx) {
 
 	preloader_1 = new Preloader({
 			props: {
-				size: /*preloaderSize*/ ctx[6],
-				color: /*preloaderColor*/ ctx[7],
+				size: /*preloaderSize*/ ctx[33],
+				color: /*preloaderColor*/ ctx[34],
 				lec: /*lec*/ ctx[0]
 			}
 		});
 
-	let if_block0 = /*icon*/ ctx[9] && create_if_block_3(ctx);
-	let if_block1 = /*text*/ ctx[1] != undefined && create_if_block_2(ctx);
+	let if_block0 = /*icon*/ ctx[38] && create_if_block_3(ctx);
+	let if_block1 = /*text*/ ctx[2] != undefined && create_if_block_2(ctx);
 	const default_slot_template = /*#slots*/ ctx[49].default;
 	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
 
@@ -831,16 +945,16 @@ function create_if_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			const preloader_1_changes = {};
-			if (dirty[0] & /*preloaderSize*/ 64) preloader_1_changes.size = /*preloaderSize*/ ctx[6];
-			if (dirty[0] & /*preloaderColor*/ 128) preloader_1_changes.color = /*preloaderColor*/ ctx[7];
+			if (dirty[1] & /*preloaderSize*/ 4) preloader_1_changes.size = /*preloaderSize*/ ctx[33];
+			if (dirty[1] & /*preloaderColor*/ 8) preloader_1_changes.color = /*preloaderColor*/ ctx[34];
 			if (dirty[0] & /*lec*/ 1) preloader_1_changes.lec = /*lec*/ ctx[0];
 			preloader_1.$set(preloader_1_changes);
 
-			if (/*icon*/ ctx[9]) {
+			if (/*icon*/ ctx[38]) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty[0] & /*icon*/ 512) {
+					if (dirty[1] & /*icon*/ 128) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -859,7 +973,7 @@ function create_if_block_1(ctx) {
 				check_outros();
 			}
 
-			if (/*text*/ ctx[1] != undefined) {
+			if (/*text*/ ctx[2] != undefined) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 				} else {
@@ -911,14 +1025,14 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (157:6) {#if icon }
+// (155:6) {#if icon }
 function create_if_block_5(ctx) {
 	let useicon;
 	let current;
 
 	useicon = new Use_icon({
 			props: {
-				icon: /*icon*/ ctx[9],
+				icon: /*icon*/ ctx[38],
 				lec: /*lec*/ ctx[0]
 			}
 		});
@@ -936,7 +1050,7 @@ function create_if_block_5(ctx) {
 		},
 		p(ctx, dirty) {
 			const useicon_changes = {};
-			if (dirty[0] & /*icon*/ 512) useicon_changes.icon = /*icon*/ ctx[9];
+			if (dirty[1] & /*icon*/ 128) useicon_changes.icon = /*icon*/ ctx[38];
 			if (dirty[0] & /*lec*/ 1) useicon_changes.lec = /*lec*/ ctx[0];
 			useicon.$set(useicon_changes);
 		},
@@ -955,7 +1069,7 @@ function create_if_block_5(ctx) {
 	};
 }
 
-// (160:6) {#if text != undefined }
+// (158:6) {#if text != undefined }
 function create_if_block_4(ctx) {
 	let span;
 	let t;
@@ -963,12 +1077,12 @@ function create_if_block_4(ctx) {
 	return {
 		c() {
 			span = element("span");
-			t = text(/*text*/ ctx[1]);
+			t = text(/*text*/ ctx[2]);
 		},
 		l(nodes) {
 			span = claim_element(nodes, "SPAN", {});
 			var span_nodes = children(span);
-			t = claim_text(span_nodes, /*text*/ ctx[1]);
+			t = claim_text(span_nodes, /*text*/ ctx[2]);
 			span_nodes.forEach(detach);
 		},
 		m(target, anchor) {
@@ -976,7 +1090,7 @@ function create_if_block_4(ctx) {
 			append_hydration(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*text*/ 2) set_data(t, /*text*/ ctx[1]);
+			if (dirty[0] & /*text*/ 4) set_data(t, /*text*/ ctx[2]);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -984,14 +1098,14 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (148:8) {#if icon }
+// (146:8) {#if icon }
 function create_if_block_3(ctx) {
 	let useicon;
 	let current;
 
 	useicon = new Use_icon({
 			props: {
-				icon: /*icon*/ ctx[9],
+				icon: /*icon*/ ctx[38],
 				lec: /*lec*/ ctx[0]
 			}
 		});
@@ -1009,7 +1123,7 @@ function create_if_block_3(ctx) {
 		},
 		p(ctx, dirty) {
 			const useicon_changes = {};
-			if (dirty[0] & /*icon*/ 512) useicon_changes.icon = /*icon*/ ctx[9];
+			if (dirty[1] & /*icon*/ 128) useicon_changes.icon = /*icon*/ ctx[38];
 			if (dirty[0] & /*lec*/ 1) useicon_changes.lec = /*lec*/ ctx[0];
 			useicon.$set(useicon_changes);
 		},
@@ -1028,7 +1142,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (151:8) {#if text != undefined }
+// (149:8) {#if text != undefined }
 function create_if_block_2(ctx) {
 	let span;
 	let t;
@@ -1036,12 +1150,12 @@ function create_if_block_2(ctx) {
 	return {
 		c() {
 			span = element("span");
-			t = text(/*text*/ ctx[1]);
+			t = text(/*text*/ ctx[2]);
 		},
 		l(nodes) {
 			span = claim_element(nodes, "SPAN", {});
 			var span_nodes = children(span);
-			t = claim_text(span_nodes, /*text*/ ctx[1]);
+			t = claim_text(span_nodes, /*text*/ ctx[2]);
 			span_nodes.forEach(detach);
 		},
 		m(target, anchor) {
@@ -1049,7 +1163,7 @@ function create_if_block_2(ctx) {
 			append_hydration(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*text*/ 2) set_data(t, /*text*/ ctx[1]);
+			if (dirty[0] & /*text*/ 4) set_data(t, /*text*/ ctx[2]);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -1066,7 +1180,7 @@ function create_fragment(ctx) {
 	const if_blocks = [];
 
 	function select_block_type(ctx, dirty) {
-		if (/*tagName*/ ctx[10] == 'button') return 0;
+		if (/*tagName*/ ctx[39] == 'button') return 0;
 		return 1;
 	}
 
@@ -1133,19 +1247,19 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let hrefComputed;
 	let attrs;
-	let classes;
 	let tagName;
 	let icon;
 
 	const omit_props_names = [
-		"lec","class","text","tabLink","tabLinkActive","type","href","target","round","roundMd","roundIos","roundAurora","fill","fillMd","fillIos","fillAurora","large","largeMd","largeIos","largeAurora","small","smallMd","smallIos","smallAurora","raised","raisedMd","raisedIos","raisedAurora","outline","outlineMd","outlineIos","outlineAurora","active","disabled","tooltip","tooltipTrigger","routeProps","preloader","preloaderSize","preloaderColor","loading"
+		"lec","classes","text","tabLink","tabLinkActive","type","href","target","round","roundMd","roundIos","roundAurora","fill","fillMd","fillIos","fillAurora","large","largeMd","largeIos","largeAurora","small","smallMd","smallIos","smallAurora","raised","raisedMd","raisedIos","raisedAurora","outline","outlineMd","outlineIos","outlineAurora","active","disabled","tooltip","tooltipTrigger","routeProps","preloader","preloaderSize","preloaderColor","loading"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	let { lec } = $$props;
 	const emit = createEmitter(createEventDispatcher, $$props);
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 	let { text = undefined } = $$props;
 	let { tabLink = undefined } = $$props;
 	let { tabLinkActive = false } = $$props;
@@ -1194,14 +1308,14 @@ function instance($$self, $$props, $$invalidate) {
 	function button_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			el = $$value;
-			$$invalidate(8, el);
+			$$invalidate(37, el);
 		});
 	}
 
 	function a_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			el = $$value;
-			$$invalidate(8, el);
+			$$invalidate(37, el);
 		});
 	}
 
@@ -1209,55 +1323,55 @@ function instance($$self, $$props, $$invalidate) {
 		$$invalidate(54, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(55, $$restProps = compute_rest_props($$props, omit_props_names));
 		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(14, className = $$new_props.class);
-		if ('text' in $$new_props) $$invalidate(1, text = $$new_props.text);
-		if ('tabLink' in $$new_props) $$invalidate(15, tabLink = $$new_props.tabLink);
-		if ('tabLinkActive' in $$new_props) $$invalidate(16, tabLinkActive = $$new_props.tabLinkActive);
-		if ('type' in $$new_props) $$invalidate(17, type = $$new_props.type);
-		if ('href' in $$new_props) $$invalidate(18, href = $$new_props.href);
-		if ('target' in $$new_props) $$invalidate(19, target = $$new_props.target);
-		if ('round' in $$new_props) $$invalidate(20, round = $$new_props.round);
-		if ('roundMd' in $$new_props) $$invalidate(21, roundMd = $$new_props.roundMd);
-		if ('roundIos' in $$new_props) $$invalidate(22, roundIos = $$new_props.roundIos);
-		if ('roundAurora' in $$new_props) $$invalidate(23, roundAurora = $$new_props.roundAurora);
-		if ('fill' in $$new_props) $$invalidate(24, fill = $$new_props.fill);
-		if ('fillMd' in $$new_props) $$invalidate(25, fillMd = $$new_props.fillMd);
-		if ('fillIos' in $$new_props) $$invalidate(26, fillIos = $$new_props.fillIos);
-		if ('fillAurora' in $$new_props) $$invalidate(27, fillAurora = $$new_props.fillAurora);
-		if ('large' in $$new_props) $$invalidate(28, large = $$new_props.large);
-		if ('largeMd' in $$new_props) $$invalidate(29, largeMd = $$new_props.largeMd);
-		if ('largeIos' in $$new_props) $$invalidate(30, largeIos = $$new_props.largeIos);
-		if ('largeAurora' in $$new_props) $$invalidate(31, largeAurora = $$new_props.largeAurora);
-		if ('small' in $$new_props) $$invalidate(32, small = $$new_props.small);
-		if ('smallMd' in $$new_props) $$invalidate(33, smallMd = $$new_props.smallMd);
-		if ('smallIos' in $$new_props) $$invalidate(34, smallIos = $$new_props.smallIos);
-		if ('smallAurora' in $$new_props) $$invalidate(35, smallAurora = $$new_props.smallAurora);
-		if ('raised' in $$new_props) $$invalidate(36, raised = $$new_props.raised);
-		if ('raisedMd' in $$new_props) $$invalidate(37, raisedMd = $$new_props.raisedMd);
-		if ('raisedIos' in $$new_props) $$invalidate(38, raisedIos = $$new_props.raisedIos);
-		if ('raisedAurora' in $$new_props) $$invalidate(39, raisedAurora = $$new_props.raisedAurora);
-		if ('outline' in $$new_props) $$invalidate(40, outline = $$new_props.outline);
-		if ('outlineMd' in $$new_props) $$invalidate(41, outlineMd = $$new_props.outlineMd);
-		if ('outlineIos' in $$new_props) $$invalidate(42, outlineIos = $$new_props.outlineIos);
-		if ('outlineAurora' in $$new_props) $$invalidate(43, outlineAurora = $$new_props.outlineAurora);
-		if ('active' in $$new_props) $$invalidate(44, active = $$new_props.active);
-		if ('disabled' in $$new_props) $$invalidate(45, disabled = $$new_props.disabled);
-		if ('tooltip' in $$new_props) $$invalidate(2, tooltip = $$new_props.tooltip);
-		if ('tooltipTrigger' in $$new_props) $$invalidate(3, tooltipTrigger = $$new_props.tooltipTrigger);
-		if ('routeProps' in $$new_props) $$invalidate(4, routeProps = $$new_props.routeProps);
-		if ('preloader' in $$new_props) $$invalidate(5, preloader = $$new_props.preloader);
-		if ('preloaderSize' in $$new_props) $$invalidate(6, preloaderSize = $$new_props.preloaderSize);
-		if ('preloaderColor' in $$new_props) $$invalidate(7, preloaderColor = $$new_props.preloaderColor);
-		if ('loading' in $$new_props) $$invalidate(46, loading = $$new_props.loading);
+		if ('classes' in $$new_props) $$invalidate(1, classes = $$new_props.classes);
+		if ('text' in $$new_props) $$invalidate(2, text = $$new_props.text);
+		if ('tabLink' in $$new_props) $$invalidate(42, tabLink = $$new_props.tabLink);
+		if ('tabLinkActive' in $$new_props) $$invalidate(43, tabLinkActive = $$new_props.tabLinkActive);
+		if ('type' in $$new_props) $$invalidate(44, type = $$new_props.type);
+		if ('href' in $$new_props) $$invalidate(45, href = $$new_props.href);
+		if ('target' in $$new_props) $$invalidate(46, target = $$new_props.target);
+		if ('round' in $$new_props) $$invalidate(3, round = $$new_props.round);
+		if ('roundMd' in $$new_props) $$invalidate(4, roundMd = $$new_props.roundMd);
+		if ('roundIos' in $$new_props) $$invalidate(5, roundIos = $$new_props.roundIos);
+		if ('roundAurora' in $$new_props) $$invalidate(6, roundAurora = $$new_props.roundAurora);
+		if ('fill' in $$new_props) $$invalidate(7, fill = $$new_props.fill);
+		if ('fillMd' in $$new_props) $$invalidate(8, fillMd = $$new_props.fillMd);
+		if ('fillIos' in $$new_props) $$invalidate(9, fillIos = $$new_props.fillIos);
+		if ('fillAurora' in $$new_props) $$invalidate(10, fillAurora = $$new_props.fillAurora);
+		if ('large' in $$new_props) $$invalidate(11, large = $$new_props.large);
+		if ('largeMd' in $$new_props) $$invalidate(12, largeMd = $$new_props.largeMd);
+		if ('largeIos' in $$new_props) $$invalidate(13, largeIos = $$new_props.largeIos);
+		if ('largeAurora' in $$new_props) $$invalidate(14, largeAurora = $$new_props.largeAurora);
+		if ('small' in $$new_props) $$invalidate(15, small = $$new_props.small);
+		if ('smallMd' in $$new_props) $$invalidate(16, smallMd = $$new_props.smallMd);
+		if ('smallIos' in $$new_props) $$invalidate(17, smallIos = $$new_props.smallIos);
+		if ('smallAurora' in $$new_props) $$invalidate(18, smallAurora = $$new_props.smallAurora);
+		if ('raised' in $$new_props) $$invalidate(19, raised = $$new_props.raised);
+		if ('raisedMd' in $$new_props) $$invalidate(20, raisedMd = $$new_props.raisedMd);
+		if ('raisedIos' in $$new_props) $$invalidate(21, raisedIos = $$new_props.raisedIos);
+		if ('raisedAurora' in $$new_props) $$invalidate(22, raisedAurora = $$new_props.raisedAurora);
+		if ('outline' in $$new_props) $$invalidate(23, outline = $$new_props.outline);
+		if ('outlineMd' in $$new_props) $$invalidate(24, outlineMd = $$new_props.outlineMd);
+		if ('outlineIos' in $$new_props) $$invalidate(25, outlineIos = $$new_props.outlineIos);
+		if ('outlineAurora' in $$new_props) $$invalidate(26, outlineAurora = $$new_props.outlineAurora);
+		if ('active' in $$new_props) $$invalidate(27, active = $$new_props.active);
+		if ('disabled' in $$new_props) $$invalidate(28, disabled = $$new_props.disabled);
+		if ('tooltip' in $$new_props) $$invalidate(29, tooltip = $$new_props.tooltip);
+		if ('tooltipTrigger' in $$new_props) $$invalidate(30, tooltipTrigger = $$new_props.tooltipTrigger);
+		if ('routeProps' in $$new_props) $$invalidate(31, routeProps = $$new_props.routeProps);
+		if ('preloader' in $$new_props) $$invalidate(32, preloader = $$new_props.preloader);
+		if ('preloaderSize' in $$new_props) $$invalidate(33, preloaderSize = $$new_props.preloaderSize);
+		if ('preloaderColor' in $$new_props) $$invalidate(34, preloaderColor = $$new_props.preloaderColor);
+		if ('loading' in $$new_props) $$invalidate(35, loading = $$new_props.loading);
 		if ('$$scope' in $$new_props) $$invalidate(48, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[0] & /*href*/ 262144) {
+		if ($$self.$$.dirty[1] & /*href*/ 16384) {
 			$$invalidate(47, hrefComputed = href === true ? '#' : href || undefined);
 		}
 
-		$$invalidate(12, attrs = extend(
+		$$invalidate(40, attrs = extend(
 			{
 				href: hrefComputed,
 				target,
@@ -1269,77 +1383,32 @@ function instance($$self, $$props, $$invalidate) {
 			actionsAttrs($$props)
 		));
 
-		$$invalidate(11, classes = classNames(
-			className,
+		$$invalidate(36, computedClasses = classNames(
+			classes,
 			{
 				'tab-link': tabLink || tabLink === '',
-				'tab-link-active': tabLinkActive,
-				'button-round': round,
-				'button-round-ios': roundIos,
-				'button-round-aurora': roundAurora,
-				'button-round-md': roundMd,
-				'button-fill': fill,
-				'button-fill-ios': fillIos,
-				'button-fill-aurora': fillAurora,
-				'button-fill-md': fillMd,
-				'button-large': large,
-				'button-large-ios': largeIos,
-				'button-large-aurora': largeAurora,
-				'button-large-md': largeMd,
-				'button-small': small,
-				'button-small-ios': smallIos,
-				'button-small-aurora': smallAurora,
-				'button-small-md': smallMd,
-				'button-raised': raised,
-				'button-raised-ios': raisedIos,
-				'button-raised-aurora': raisedAurora,
-				'button-raised-md': raisedMd,
-				'button-active': active,
-				'button-outline': outline,
-				'button-outline-ios': outlineIos,
-				'button-outline-aurora': outlineAurora,
-				'button-outline-md': outlineMd,
-				'button-preloader': preloader,
-				'button-loading': loading,
-				disabled
+				'tab-link-active': tabLinkActive
 			},
 			colorClasses($$props),
 			routerClasses($$props),
 			actionsClasses($$props)
 		));
 
-		if ($$self.$$.dirty[0] & /*type*/ 131072) {
-			$$invalidate(10, tagName = type === 'submit' || type === 'reset' || type === 'button'
+		if ($$self.$$.dirty[1] & /*type*/ 8192) {
+			$$invalidate(39, tagName = type === 'submit' || type === 'reset' || type === 'button'
 			? 'button'
 			: 'a');
 		}
 
-		$$invalidate(9, icon = useIcon($$props));
+		$$invalidate(38, icon = useIcon($$props));
 	};
 
 	$$props = exclude_internal_props($$props);
 
 	return [
 		lec,
-		text,
-		tooltip,
-		tooltipTrigger,
-		routeProps,
-		preloader,
-		preloaderSize,
-		preloaderColor,
-		el,
-		icon,
-		tagName,
 		classes,
-		attrs,
-		onClick,
-		className,
-		tabLink,
-		tabLinkActive,
-		type,
-		href,
-		target,
+		text,
 		round,
 		roundMd,
 		roundIos,
@@ -1366,7 +1435,24 @@ function instance($$self, $$props, $$invalidate) {
 		outlineAurora,
 		active,
 		disabled,
+		tooltip,
+		tooltipTrigger,
+		routeProps,
+		preloader,
+		preloaderSize,
+		preloaderColor,
 		loading,
+		computedClasses,
+		el,
+		icon,
+		tagName,
+		attrs,
+		onClick,
+		tabLink,
+		tabLinkActive,
+		type,
+		href,
+		target,
 		hrefComputed,
 		$$scope,
 		slots,
@@ -1387,46 +1473,46 @@ class Button extends SvelteComponent {
 			safe_not_equal,
 			{
 				lec: 0,
-				class: 14,
-				text: 1,
-				tabLink: 15,
-				tabLinkActive: 16,
-				type: 17,
-				href: 18,
-				target: 19,
-				round: 20,
-				roundMd: 21,
-				roundIos: 22,
-				roundAurora: 23,
-				fill: 24,
-				fillMd: 25,
-				fillIos: 26,
-				fillAurora: 27,
-				large: 28,
-				largeMd: 29,
-				largeIos: 30,
-				largeAurora: 31,
-				small: 32,
-				smallMd: 33,
-				smallIos: 34,
-				smallAurora: 35,
-				raised: 36,
-				raisedMd: 37,
-				raisedIos: 38,
-				raisedAurora: 39,
-				outline: 40,
-				outlineMd: 41,
-				outlineIos: 42,
-				outlineAurora: 43,
-				active: 44,
-				disabled: 45,
-				tooltip: 2,
-				tooltipTrigger: 3,
-				routeProps: 4,
-				preloader: 5,
-				preloaderSize: 6,
-				preloaderColor: 7,
-				loading: 46
+				classes: 1,
+				text: 2,
+				tabLink: 42,
+				tabLinkActive: 43,
+				type: 44,
+				href: 45,
+				target: 46,
+				round: 3,
+				roundMd: 4,
+				roundIos: 5,
+				roundAurora: 6,
+				fill: 7,
+				fillMd: 8,
+				fillIos: 9,
+				fillAurora: 10,
+				large: 11,
+				largeMd: 12,
+				largeIos: 13,
+				largeAurora: 14,
+				small: 15,
+				smallMd: 16,
+				smallIos: 17,
+				smallAurora: 18,
+				raised: 19,
+				raisedMd: 20,
+				raisedIos: 21,
+				raisedAurora: 22,
+				outline: 23,
+				outlineMd: 24,
+				outlineIos: 25,
+				outlineAurora: 26,
+				active: 27,
+				disabled: 28,
+				tooltip: 29,
+				tooltipTrigger: 30,
+				routeProps: 31,
+				preloader: 32,
+				preloaderSize: 33,
+				preloaderColor: 34,
+				loading: 35
 			},
 			null,
 			[-1, -1]

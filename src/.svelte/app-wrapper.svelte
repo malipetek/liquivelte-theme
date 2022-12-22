@@ -6,6 +6,7 @@
 
   import { App, View, Page } from 'framework7-liquivelte';
   import { onMount, beforeUpdate, afterUpdate } from 'svelte';
+  // import { Workbox } from 'workbox-window';
 
   let ls_cache;
 
@@ -25,6 +26,15 @@
       node.replaceChild(keep, node.children[0]);
     }
   }
+  // onMount(() => {
+  //   if ('serviceWorker' in navigator) {    
+  //     const wb = new Workbox('/a/sw/Development%20(e34f7f-muhammets-air)/sw.js', {
+  //       scope: '/'
+  //     });
+      
+  //     wb.register();
+  //   }
+  // })
 </script>
 
 

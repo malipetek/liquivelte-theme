@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, createEventDispatcher, onMount, onDestroy, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, text, claim_text, set_data, compute_slots, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, compute_slots, createEventDispatcher, onMount, onDestroy, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, text, claim_text, set_data, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
 import { restProps, createEmitter, f7ready, app, classNames, colorClasses } from './framework7-liquivelte-hs5d6b599e.liquivelte.js';
 import { Card_header } from './framework7-liquivelte-card-header-hs8daa1a0c.liquivelte.js';
 import { Card_content } from './framework7-liquivelte-card-content-hs8daa1a0c.liquivelte.js';
@@ -40,7 +40,7 @@ function create_if_block_2(ctx) {
 			const cardheader_changes = {};
 			if (dirty[0] & /*lec*/ 1) cardheader_changes.lec = /*lec*/ ctx[0];
 
-			if (dirty[0] & /*$$scope, title*/ 536870914) {
+			if (dirty[0] & /*$$scope, title*/ 536870916) {
 				cardheader_changes.$$scope = { dirty, ctx };
 			}
 
@@ -71,12 +71,12 @@ function create_default_slot_2(ctx) {
 
 	return {
 		c() {
-			t0 = text(/*title*/ ctx[1]);
+			t0 = text(/*title*/ ctx[2]);
 			t1 = space();
 			if (header_slot) header_slot.c();
 		},
 		l(nodes) {
-			t0 = claim_text(nodes, /*title*/ ctx[1]);
+			t0 = claim_text(nodes, /*title*/ ctx[2]);
 			t1 = claim_space(nodes);
 			if (header_slot) header_slot.l(nodes);
 		},
@@ -91,7 +91,7 @@ function create_default_slot_2(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty[0] & /*title*/ 2) set_data(t0, /*title*/ ctx[1]);
+			if (!current || dirty[0] & /*title*/ 4) set_data(t0, /*title*/ ctx[2]);
 
 			if (header_slot) {
 				if (header_slot.p && (!current || dirty[0] & /*$$scope*/ 536870912)) {
@@ -132,7 +132,7 @@ function create_if_block_1(ctx) {
 
 	cardcontent = new Card_content({
 			props: {
-				padding: /*padding*/ ctx[13],
+				padding: /*padding*/ ctx[14],
 				lec: /*lec*/ ctx[0],
 				$$slots: { default: [create_default_slot_1] },
 				$$scope: { ctx }
@@ -152,10 +152,10 @@ function create_if_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			const cardcontent_changes = {};
-			if (dirty[0] & /*padding*/ 8192) cardcontent_changes.padding = /*padding*/ ctx[13];
+			if (dirty[0] & /*padding*/ 16384) cardcontent_changes.padding = /*padding*/ ctx[14];
 			if (dirty[0] & /*lec*/ 1) cardcontent_changes.lec = /*lec*/ ctx[0];
 
-			if (dirty[0] & /*$$scope, content*/ 536870916) {
+			if (dirty[0] & /*$$scope, content*/ 536870920) {
 				cardcontent_changes.$$scope = { dirty, ctx };
 			}
 
@@ -186,12 +186,12 @@ function create_default_slot_1(ctx) {
 
 	return {
 		c() {
-			t0 = text(/*content*/ ctx[2]);
+			t0 = text(/*content*/ ctx[3]);
 			t1 = space();
 			if (content_slot) content_slot.c();
 		},
 		l(nodes) {
-			t0 = claim_text(nodes, /*content*/ ctx[2]);
+			t0 = claim_text(nodes, /*content*/ ctx[3]);
 			t1 = claim_space(nodes);
 			if (content_slot) content_slot.l(nodes);
 		},
@@ -206,7 +206,7 @@ function create_default_slot_1(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty[0] & /*content*/ 4) set_data(t0, /*content*/ ctx[2]);
+			if (!current || dirty[0] & /*content*/ 8) set_data(t0, /*content*/ ctx[3]);
 
 			if (content_slot) {
 				if (content_slot.p && (!current || dirty[0] & /*$$scope*/ 536870912)) {
@@ -268,7 +268,7 @@ function create_if_block(ctx) {
 			const cardfooter_changes = {};
 			if (dirty[0] & /*lec*/ 1) cardfooter_changes.lec = /*lec*/ ctx[0];
 
-			if (dirty[0] & /*$$scope, footer*/ 536870920) {
+			if (dirty[0] & /*$$scope, footer*/ 536870928) {
 				cardfooter_changes.$$scope = { dirty, ctx };
 			}
 
@@ -299,12 +299,12 @@ function create_default_slot(ctx) {
 
 	return {
 		c() {
-			t0 = text(/*footer*/ ctx[3]);
+			t0 = text(/*footer*/ ctx[4]);
 			t1 = space();
 			if (footer_slot) footer_slot.c();
 		},
 		l(nodes) {
-			t0 = claim_text(nodes, /*footer*/ ctx[3]);
+			t0 = claim_text(nodes, /*footer*/ ctx[4]);
 			t1 = claim_space(nodes);
 			if (footer_slot) footer_slot.l(nodes);
 		},
@@ -319,7 +319,7 @@ function create_default_slot(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty[0] & /*footer*/ 8) set_data(t0, /*footer*/ ctx[3]);
+			if (!current || dirty[0] & /*footer*/ 16) set_data(t0, /*footer*/ ctx[4]);
 
 			if (footer_slot) {
 				if (footer_slot.p && (!current || dirty[0] & /*$$scope*/ 536870912)) {
@@ -367,58 +367,58 @@ function create_fragment(ctx) {
 	let div_data_close_by_backdrop_click_value;
 	let div_data_backdrop_value;
 	let current;
-	let if_block0 = (/*title*/ ctx[1] != undefined || /*hasHeaderSlots*/ ctx[17]) && create_if_block_2(ctx);
-	let if_block1 = (/*content*/ ctx[2] != undefined || /*hasContentSlots*/ ctx[16]) && create_if_block_1(ctx);
-	let if_block2 = (/*footer*/ ctx[3] != undefined || /*hasFooterSlots*/ ctx[15]) && create_if_block(ctx);
+	let if_block0 = (/*title*/ ctx[2] != undefined || /*hasHeaderSlots*/ ctx[19]) && create_if_block_2(ctx);
+	let if_block1 = (/*content*/ ctx[3] != undefined || /*hasContentSlots*/ ctx[18]) && create_if_block_1(ctx);
+	let if_block2 = (/*footer*/ ctx[4] != undefined || /*hasFooterSlots*/ ctx[17]) && create_if_block(ctx);
 	const default_slot_template = /*#slots*/ ctx[27].default;
 	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[29], null);
 
 	let div_levels = [
 		{
-			class: div_class_value = "card " + /*classes*/ ctx[18]
+			class: div_class_value = "card " + /*classes*/ ctx[1] + " " + /*computedClasses*/ ctx[15]
 		},
 		{
-			"data-animate": div_data_animate_value = typeof /*animate*/ ctx[4] === 'undefined'
-			? /*animate*/ ctx[4]
-			: /*animate*/ ctx[4].toString()
+			"data-animate": div_data_animate_value = typeof /*animate*/ ctx[5] === 'undefined'
+			? /*animate*/ ctx[5]
+			: /*animate*/ ctx[5].toString()
 		},
 		{
-			"data-hide-navbar-on-open": div_data_hide_navbar_on_open_value = typeof /*hideNavbarOnOpen*/ ctx[5] === 'undefined'
-			? /*hideNavbarOnOpen*/ ctx[5]
-			: /*hideNavbarOnOpen*/ ctx[5].toString()
+			"data-hide-navbar-on-open": div_data_hide_navbar_on_open_value = typeof /*hideNavbarOnOpen*/ ctx[6] === 'undefined'
+			? /*hideNavbarOnOpen*/ ctx[6]
+			: /*hideNavbarOnOpen*/ ctx[6].toString()
 		},
 		{
-			"data-hide-toolbar-on-open": div_data_hide_toolbar_on_open_value = typeof /*hideToolbarOnOpen*/ ctx[6] === 'undefined'
-			? /*hideToolbarOnOpen*/ ctx[6]
-			: /*hideToolbarOnOpen*/ ctx[6].toString()
+			"data-hide-toolbar-on-open": div_data_hide_toolbar_on_open_value = typeof /*hideToolbarOnOpen*/ ctx[7] === 'undefined'
+			? /*hideToolbarOnOpen*/ ctx[7]
+			: /*hideToolbarOnOpen*/ ctx[7].toString()
 		},
 		{
-			"data-hide-statusbar-on-open": div_data_hide_statusbar_on_open_value = typeof /*hideStatusbarOnOpen*/ ctx[7] === 'undefined'
-			? /*hideStatusbarOnOpen*/ ctx[7]
-			: /*hideStatusbarOnOpen*/ ctx[7].toString()
+			"data-hide-statusbar-on-open": div_data_hide_statusbar_on_open_value = typeof /*hideStatusbarOnOpen*/ ctx[8] === 'undefined'
+			? /*hideStatusbarOnOpen*/ ctx[8]
+			: /*hideStatusbarOnOpen*/ ctx[8].toString()
 		},
 		{
-			"data-scrollable-el": /*scrollableEl*/ ctx[8]
+			"data-scrollable-el": /*scrollableEl*/ ctx[9]
 		},
 		{
-			"data-swipe-to-close": div_data_swipe_to_close_value = typeof /*swipeToClose*/ ctx[9] === 'undefined'
-			? /*swipeToClose*/ ctx[9]
-			: /*swipeToClose*/ ctx[9].toString()
+			"data-swipe-to-close": div_data_swipe_to_close_value = typeof /*swipeToClose*/ ctx[10] === 'undefined'
+			? /*swipeToClose*/ ctx[10]
+			: /*swipeToClose*/ ctx[10].toString()
 		},
 		{
-			"data-close-by-backdrop-click": div_data_close_by_backdrop_click_value = typeof /*closeByBackdropClick*/ ctx[10] === 'undefined'
-			? /*closeByBackdropClick*/ ctx[10]
-			: /*closeByBackdropClick*/ ctx[10].toString()
+			"data-close-by-backdrop-click": div_data_close_by_backdrop_click_value = typeof /*closeByBackdropClick*/ ctx[11] === 'undefined'
+			? /*closeByBackdropClick*/ ctx[11]
+			: /*closeByBackdropClick*/ ctx[11].toString()
 		},
 		{
-			"data-backdrop": div_data_backdrop_value = typeof /*backdrop*/ ctx[11] === 'undefined'
-			? /*backdrop*/ ctx[11]
-			: /*backdrop*/ ctx[11].toString()
+			"data-backdrop": div_data_backdrop_value = typeof /*backdrop*/ ctx[12] === 'undefined'
+			? /*backdrop*/ ctx[12]
+			: /*backdrop*/ ctx[12].toString()
 		},
 		{
-			"data-backdrop-el": /*backdropEl*/ ctx[12]
+			"data-backdrop-el": /*backdropEl*/ ctx[13]
 		},
-		restProps(/*$$restProps*/ ctx[19])
+		restProps(/*$$restProps*/ ctx[20])
 	];
 
 	let div_data = {};
@@ -484,11 +484,11 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*title*/ ctx[1] != undefined || /*hasHeaderSlots*/ ctx[17]) {
+			if (/*title*/ ctx[2] != undefined || /*hasHeaderSlots*/ ctx[19]) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty[0] & /*title, hasHeaderSlots*/ 131074) {
+					if (dirty[0] & /*title, hasHeaderSlots*/ 524292) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -507,11 +507,11 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (/*content*/ ctx[2] != undefined || /*hasContentSlots*/ ctx[16]) {
+			if (/*content*/ ctx[3] != undefined || /*hasContentSlots*/ ctx[18]) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 
-					if (dirty[0] & /*content, hasContentSlots*/ 65540) {
+					if (dirty[0] & /*content, hasContentSlots*/ 262152) {
 						transition_in(if_block1, 1);
 					}
 				} else {
@@ -530,11 +530,11 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (/*footer*/ ctx[3] != undefined || /*hasFooterSlots*/ ctx[15]) {
+			if (/*footer*/ ctx[4] != undefined || /*hasFooterSlots*/ ctx[17]) {
 				if (if_block2) {
 					if_block2.p(ctx, dirty);
 
-					if (dirty[0] & /*footer, hasFooterSlots*/ 32776) {
+					if (dirty[0] & /*footer, hasFooterSlots*/ 131088) {
 						transition_in(if_block2, 1);
 					}
 				} else {
@@ -569,45 +569,45 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(div, div_data = get_spread_update(div_levels, [
-				(!current || dirty[0] & /*classes*/ 262144 && div_class_value !== (div_class_value = "card " + /*classes*/ ctx[18])) && { class: div_class_value },
-				(!current || dirty[0] & /*animate*/ 16 && div_data_animate_value !== (div_data_animate_value = typeof /*animate*/ ctx[4] === 'undefined'
-				? /*animate*/ ctx[4]
-				: /*animate*/ ctx[4].toString())) && { "data-animate": div_data_animate_value },
-				(!current || dirty[0] & /*hideNavbarOnOpen*/ 32 && div_data_hide_navbar_on_open_value !== (div_data_hide_navbar_on_open_value = typeof /*hideNavbarOnOpen*/ ctx[5] === 'undefined'
-				? /*hideNavbarOnOpen*/ ctx[5]
-				: /*hideNavbarOnOpen*/ ctx[5].toString())) && {
+				(!current || dirty[0] & /*classes, computedClasses*/ 32770 && div_class_value !== (div_class_value = "card " + /*classes*/ ctx[1] + " " + /*computedClasses*/ ctx[15])) && { class: div_class_value },
+				(!current || dirty[0] & /*animate*/ 32 && div_data_animate_value !== (div_data_animate_value = typeof /*animate*/ ctx[5] === 'undefined'
+				? /*animate*/ ctx[5]
+				: /*animate*/ ctx[5].toString())) && { "data-animate": div_data_animate_value },
+				(!current || dirty[0] & /*hideNavbarOnOpen*/ 64 && div_data_hide_navbar_on_open_value !== (div_data_hide_navbar_on_open_value = typeof /*hideNavbarOnOpen*/ ctx[6] === 'undefined'
+				? /*hideNavbarOnOpen*/ ctx[6]
+				: /*hideNavbarOnOpen*/ ctx[6].toString())) && {
 					"data-hide-navbar-on-open": div_data_hide_navbar_on_open_value
 				},
-				(!current || dirty[0] & /*hideToolbarOnOpen*/ 64 && div_data_hide_toolbar_on_open_value !== (div_data_hide_toolbar_on_open_value = typeof /*hideToolbarOnOpen*/ ctx[6] === 'undefined'
-				? /*hideToolbarOnOpen*/ ctx[6]
-				: /*hideToolbarOnOpen*/ ctx[6].toString())) && {
+				(!current || dirty[0] & /*hideToolbarOnOpen*/ 128 && div_data_hide_toolbar_on_open_value !== (div_data_hide_toolbar_on_open_value = typeof /*hideToolbarOnOpen*/ ctx[7] === 'undefined'
+				? /*hideToolbarOnOpen*/ ctx[7]
+				: /*hideToolbarOnOpen*/ ctx[7].toString())) && {
 					"data-hide-toolbar-on-open": div_data_hide_toolbar_on_open_value
 				},
-				(!current || dirty[0] & /*hideStatusbarOnOpen*/ 128 && div_data_hide_statusbar_on_open_value !== (div_data_hide_statusbar_on_open_value = typeof /*hideStatusbarOnOpen*/ ctx[7] === 'undefined'
-				? /*hideStatusbarOnOpen*/ ctx[7]
-				: /*hideStatusbarOnOpen*/ ctx[7].toString())) && {
+				(!current || dirty[0] & /*hideStatusbarOnOpen*/ 256 && div_data_hide_statusbar_on_open_value !== (div_data_hide_statusbar_on_open_value = typeof /*hideStatusbarOnOpen*/ ctx[8] === 'undefined'
+				? /*hideStatusbarOnOpen*/ ctx[8]
+				: /*hideStatusbarOnOpen*/ ctx[8].toString())) && {
 					"data-hide-statusbar-on-open": div_data_hide_statusbar_on_open_value
 				},
-				(!current || dirty[0] & /*scrollableEl*/ 256) && {
-					"data-scrollable-el": /*scrollableEl*/ ctx[8]
+				(!current || dirty[0] & /*scrollableEl*/ 512) && {
+					"data-scrollable-el": /*scrollableEl*/ ctx[9]
 				},
-				(!current || dirty[0] & /*swipeToClose*/ 512 && div_data_swipe_to_close_value !== (div_data_swipe_to_close_value = typeof /*swipeToClose*/ ctx[9] === 'undefined'
-				? /*swipeToClose*/ ctx[9]
-				: /*swipeToClose*/ ctx[9].toString())) && {
+				(!current || dirty[0] & /*swipeToClose*/ 1024 && div_data_swipe_to_close_value !== (div_data_swipe_to_close_value = typeof /*swipeToClose*/ ctx[10] === 'undefined'
+				? /*swipeToClose*/ ctx[10]
+				: /*swipeToClose*/ ctx[10].toString())) && {
 					"data-swipe-to-close": div_data_swipe_to_close_value
 				},
-				(!current || dirty[0] & /*closeByBackdropClick*/ 1024 && div_data_close_by_backdrop_click_value !== (div_data_close_by_backdrop_click_value = typeof /*closeByBackdropClick*/ ctx[10] === 'undefined'
-				? /*closeByBackdropClick*/ ctx[10]
-				: /*closeByBackdropClick*/ ctx[10].toString())) && {
+				(!current || dirty[0] & /*closeByBackdropClick*/ 2048 && div_data_close_by_backdrop_click_value !== (div_data_close_by_backdrop_click_value = typeof /*closeByBackdropClick*/ ctx[11] === 'undefined'
+				? /*closeByBackdropClick*/ ctx[11]
+				: /*closeByBackdropClick*/ ctx[11].toString())) && {
 					"data-close-by-backdrop-click": div_data_close_by_backdrop_click_value
 				},
-				(!current || dirty[0] & /*backdrop*/ 2048 && div_data_backdrop_value !== (div_data_backdrop_value = typeof /*backdrop*/ ctx[11] === 'undefined'
-				? /*backdrop*/ ctx[11]
-				: /*backdrop*/ ctx[11].toString())) && { "data-backdrop": div_data_backdrop_value },
-				(!current || dirty[0] & /*backdropEl*/ 4096) && {
-					"data-backdrop-el": /*backdropEl*/ ctx[12]
+				(!current || dirty[0] & /*backdrop*/ 4096 && div_data_backdrop_value !== (div_data_backdrop_value = typeof /*backdrop*/ ctx[12] === 'undefined'
+				? /*backdrop*/ ctx[12]
+				: /*backdrop*/ ctx[12].toString())) && { "data-backdrop": div_data_backdrop_value },
+				(!current || dirty[0] & /*backdropEl*/ 8192) && {
+					"data-backdrop-el": /*backdropEl*/ ctx[13]
 				},
-				dirty[0] & /*$$restProps*/ 524288 && restProps(/*$$restProps*/ ctx[19])
+				dirty[0] & /*$$restProps*/ 1048576 && restProps(/*$$restProps*/ ctx[20])
 			]));
 		},
 		i(local) {
@@ -637,13 +637,12 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let classes;
 	let hasHeaderSlots;
 	let hasContentSlots;
 	let hasFooterSlots;
 
 	const omit_props_names = [
-		"lec","class","title","content","footer","outline","expandable","expandableAnimateWidth","expandableOpened","animate","hideNavbarOnOpen","hideToolbarOnOpen","hideStatusbarOnOpen","scrollableEl","swipeToClose","closeByBackdropClick","backdrop","backdropEl","noShadow","noBorder","padding"
+		"lec","classes","title","content","footer","outline","expandable","expandableAnimateWidth","expandableOpened","animate","hideNavbarOnOpen","hideToolbarOnOpen","hideStatusbarOnOpen","scrollableEl","swipeToClose","closeByBackdropClick","backdrop","backdropEl","noShadow","noBorder","padding"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
@@ -651,7 +650,8 @@ function instance($$self, $$props, $$invalidate) {
 	const $$slots = compute_slots(slots);
 	let { lec } = $$props;
 	const emit = createEmitter(createEventDispatcher, $$props);
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 	let { title = undefined } = $$props;
 	let { content = undefined } = $$props;
 	let { footer = undefined } = $$props;
@@ -705,7 +705,7 @@ function instance($$self, $$props, $$invalidate) {
 	function onOpen(cardEl) {
 		if (cardEl !== el) return;
 		emit('cardOpen', [el]);
-		$$invalidate(20, expandableOpened = true);
+		$$invalidate(21, expandableOpened = true);
 	}
 
 	function onOpened(cardEl, pageEl) {
@@ -721,7 +721,7 @@ function instance($$self, $$props, $$invalidate) {
 	function onClosed(cardEl, pageEl) {
 		if (cardEl !== el) return;
 		emit('cardClosed', [el, pageEl]);
-		$$invalidate(20, expandableOpened = false);
+		$$invalidate(21, expandableOpened = false);
 	}
 
 	onMount(() => {
@@ -753,40 +753,40 @@ function instance($$self, $$props, $$invalidate) {
 	function div_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			el = $$value;
-			$$invalidate(14, el);
+			$$invalidate(16, el);
 		});
 	}
 
 	$$self.$$set = $$new_props => {
 		$$invalidate(42, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-		$$invalidate(19, $$restProps = compute_rest_props($$props, omit_props_names));
+		$$invalidate(20, $$restProps = compute_rest_props($$props, omit_props_names));
 		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(21, className = $$new_props.class);
-		if ('title' in $$new_props) $$invalidate(1, title = $$new_props.title);
-		if ('content' in $$new_props) $$invalidate(2, content = $$new_props.content);
-		if ('footer' in $$new_props) $$invalidate(3, footer = $$new_props.footer);
+		if ('classes' in $$new_props) $$invalidate(1, classes = $$new_props.classes);
+		if ('title' in $$new_props) $$invalidate(2, title = $$new_props.title);
+		if ('content' in $$new_props) $$invalidate(3, content = $$new_props.content);
+		if ('footer' in $$new_props) $$invalidate(4, footer = $$new_props.footer);
 		if ('outline' in $$new_props) $$invalidate(22, outline = $$new_props.outline);
 		if ('expandable' in $$new_props) $$invalidate(23, expandable = $$new_props.expandable);
 		if ('expandableAnimateWidth' in $$new_props) $$invalidate(24, expandableAnimateWidth = $$new_props.expandableAnimateWidth);
-		if ('expandableOpened' in $$new_props) $$invalidate(20, expandableOpened = $$new_props.expandableOpened);
-		if ('animate' in $$new_props) $$invalidate(4, animate = $$new_props.animate);
-		if ('hideNavbarOnOpen' in $$new_props) $$invalidate(5, hideNavbarOnOpen = $$new_props.hideNavbarOnOpen);
-		if ('hideToolbarOnOpen' in $$new_props) $$invalidate(6, hideToolbarOnOpen = $$new_props.hideToolbarOnOpen);
-		if ('hideStatusbarOnOpen' in $$new_props) $$invalidate(7, hideStatusbarOnOpen = $$new_props.hideStatusbarOnOpen);
-		if ('scrollableEl' in $$new_props) $$invalidate(8, scrollableEl = $$new_props.scrollableEl);
-		if ('swipeToClose' in $$new_props) $$invalidate(9, swipeToClose = $$new_props.swipeToClose);
-		if ('closeByBackdropClick' in $$new_props) $$invalidate(10, closeByBackdropClick = $$new_props.closeByBackdropClick);
-		if ('backdrop' in $$new_props) $$invalidate(11, backdrop = $$new_props.backdrop);
-		if ('backdropEl' in $$new_props) $$invalidate(12, backdropEl = $$new_props.backdropEl);
+		if ('expandableOpened' in $$new_props) $$invalidate(21, expandableOpened = $$new_props.expandableOpened);
+		if ('animate' in $$new_props) $$invalidate(5, animate = $$new_props.animate);
+		if ('hideNavbarOnOpen' in $$new_props) $$invalidate(6, hideNavbarOnOpen = $$new_props.hideNavbarOnOpen);
+		if ('hideToolbarOnOpen' in $$new_props) $$invalidate(7, hideToolbarOnOpen = $$new_props.hideToolbarOnOpen);
+		if ('hideStatusbarOnOpen' in $$new_props) $$invalidate(8, hideStatusbarOnOpen = $$new_props.hideStatusbarOnOpen);
+		if ('scrollableEl' in $$new_props) $$invalidate(9, scrollableEl = $$new_props.scrollableEl);
+		if ('swipeToClose' in $$new_props) $$invalidate(10, swipeToClose = $$new_props.swipeToClose);
+		if ('closeByBackdropClick' in $$new_props) $$invalidate(11, closeByBackdropClick = $$new_props.closeByBackdropClick);
+		if ('backdrop' in $$new_props) $$invalidate(12, backdrop = $$new_props.backdrop);
+		if ('backdropEl' in $$new_props) $$invalidate(13, backdropEl = $$new_props.backdropEl);
 		if ('noShadow' in $$new_props) $$invalidate(25, noShadow = $$new_props.noShadow);
 		if ('noBorder' in $$new_props) $$invalidate(26, noBorder = $$new_props.noBorder);
-		if ('padding' in $$new_props) $$invalidate(13, padding = $$new_props.padding);
+		if ('padding' in $$new_props) $$invalidate(14, padding = $$new_props.padding);
 		if ('$$scope' in $$new_props) $$invalidate(29, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		$$invalidate(18, classes = classNames(
-			className,
+		$$invalidate(15, computedClasses = classNames(
+			classes,
 			{
 				'card-outline': outline,
 				'card-expandable': expandable,
@@ -797,18 +797,19 @@ function instance($$self, $$props, $$invalidate) {
 			colorClasses($$props)
 		));
 
-		if ($$self.$$.dirty[0] & /*expandableOpened*/ 1048576) {
+		if ($$self.$$.dirty[0] & /*expandableOpened*/ 2097152) {
 			watchOpened(expandableOpened);
 		}
 	};
 
-	$$invalidate(17, hasHeaderSlots = $$slots.header);
-	$$invalidate(16, hasContentSlots = $$slots.content);
-	$$invalidate(15, hasFooterSlots = $$slots.footer);
+	$$invalidate(19, hasHeaderSlots = $$slots.header);
+	$$invalidate(18, hasContentSlots = $$slots.content);
+	$$invalidate(17, hasFooterSlots = $$slots.footer);
 	$$props = exclude_internal_props($$props);
 
 	return [
 		lec,
+		classes,
 		title,
 		content,
 		footer,
@@ -822,14 +823,13 @@ function instance($$self, $$props, $$invalidate) {
 		backdrop,
 		backdropEl,
 		padding,
+		computedClasses,
 		el,
 		hasFooterSlots,
 		hasContentSlots,
 		hasHeaderSlots,
-		classes,
 		$$restProps,
 		expandableOpened,
-		className,
 		outline,
 		expandable,
 		expandableAnimateWidth,
@@ -853,26 +853,26 @@ class Card extends SvelteComponent {
 			safe_not_equal,
 			{
 				lec: 0,
-				class: 21,
-				title: 1,
-				content: 2,
-				footer: 3,
+				classes: 1,
+				title: 2,
+				content: 3,
+				footer: 4,
 				outline: 22,
 				expandable: 23,
 				expandableAnimateWidth: 24,
-				expandableOpened: 20,
-				animate: 4,
-				hideNavbarOnOpen: 5,
-				hideToolbarOnOpen: 6,
-				hideStatusbarOnOpen: 7,
-				scrollableEl: 8,
-				swipeToClose: 9,
-				closeByBackdropClick: 10,
-				backdrop: 11,
-				backdropEl: 12,
+				expandableOpened: 21,
+				animate: 5,
+				hideNavbarOnOpen: 6,
+				hideToolbarOnOpen: 7,
+				hideStatusbarOnOpen: 8,
+				scrollableEl: 9,
+				swipeToClose: 10,
+				closeByBackdropClick: 11,
+				backdrop: 12,
+				backdropEl: 13,
 				noShadow: 25,
 				noBorder: 26,
-				padding: 13
+				padding: 14
 			},
 			null,
 			[-1, -1]

@@ -9,7 +9,7 @@ const onIntersect = (el, callback) => {
 
   document.addEventListener('DOMContentLoaded', () => {
     
-  Array.from(document.querySelectorAll('.liquivelte-component.slider')).forEach(wrapper => {
+  Array.from(document.querySelectorAll('.liquivelte-component.product-carousel')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -19,7 +19,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./slider-hs1a3a229b.liquivelte.js')).default({
+          wrapper.svelteComponent = new (await import('./product-carousel-hs743bee3c.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
             props: {

@@ -65,7 +65,7 @@ product.selected_or_first_available_variant = productƒƒselected_or_first_avail
           
           <input type="hidden" name="id" value="{ product.selected_or_first_available_variant.id }">
           <div class="">
-            {#each  product.options_with_values as option, index  }
+            {#each  product.options_with_values as option, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,
@@ -85,7 +85,7 @@ product.selected_or_first_available_variant = productƒƒselected_or_first_avail
                 <legend class="sr-only">Choose a { option.name }</legend>
                 {#if option.name == 'Color' }
                 <div class="flex items-center space-x-3">
-                  {#each  option.values as value, index  }
+                  {#each  option.values as value, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,
@@ -112,7 +112,7 @@ product.selected_or_first_available_variant = productƒƒselected_or_first_avail
                 </div>
                 {:else}
                 <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                  {#each  option.values as value, index  }
+                  {#each  option.values as value, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

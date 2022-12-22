@@ -72,7 +72,7 @@
 			}
 		};
 	} 
-  export let section = {};
+  let section = {};
   import section.settings from 'theme';
   import section.blocks from 'theme';
 

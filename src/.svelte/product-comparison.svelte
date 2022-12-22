@@ -38,7 +38,7 @@
 			}
 		};
 	} 
-  export let section = {};
+  let section = {};
   export let sectionƒƒsettings; 
 section.settings = sectionƒƒsettings;
   export let sectionƒƒblocks; 
@@ -58,7 +58,7 @@ section.blocks = sectionƒƒblocks;
 <div class="comparison-section-wrapper">
   <h1 class=""> { section.settings.title } </h1>
   <h2 class=""> { section.settings.subtitle } </h2>
-    {#each  section.blocks as block, index  }
+    {#each  section.blocks as block, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,
@@ -75,7 +75,7 @@ section.blocks = sectionƒƒblocks;
       {/if}
     {/each}
     <div class="transition-enforcement">
-  {#each  section.blocks as block, index  }
+  {#each  section.blocks as block, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,
@@ -99,7 +99,7 @@ section.blocks = sectionƒƒblocks;
           </div>
           <div class="product-info">
             <select bind:value="{ current_block }" class="product-title">       
-              {#each  section.blocks as block, index  }
+              {#each  section.blocks as block, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

@@ -1,22 +1,50 @@
+{% liquid 
+  assign quantity = 0
+  assign product_id = product.id
+  assign cartItem = cart.items | where: 'product_id', product_id | first
+  if cartItem
+    assign quantity = cartItem.quantity
+  endif
+%}
 <script>
-  import { Card, CardHeader, CardContent, CardFooter, Link, Button } from 'framework7-liquivelte';
+  import { Card, CardHeader, CardContent, CardFooter, Link, Button, Badge } from 'framework7-liquivelte';
+  import { cartStore } from '../scripts/store.module.js';
+  import VerticalStepper from './vertical-stepper.liquivelte';
+  import Loadable from './loadable.liquivelte';
+  import Icon from './icon.liquivelte';
+  
   export let product;
   let expandableOpened = false;
-  $: console.log('expandableOpened ', expandableOpened);
+
   function expandedToggle() {
     expandableOpened = !expandableOpened;
   }
 
-  let clicked = 0;
-  function increment() {
-    clicked = clicked + 1
+  let cartItem;
+  $: if($cartStore) {
+    cartItem = $cartStore.items.find(i => i.product?.id == product.id || i.product_id == product.id);
   }
-  
-</script>
+  function addToCart() {
+    cartStore.add({product});
+  }
 
-<Card class="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}">
+	function quantityChange(event) {
+		cartStore.setQuantity(this.id, +event.target.value); 
+	}
+  
+  $: quantity = cartItem?.quantity || 0;
+</script>
+<Card classes="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}">
+    <Loadable classes="absolute -right-[10px] -top-[10px] z-10" centered>
+      <VerticalStepper small
+                      disabled="{{- !product.available -}}" 
+                      bind:value="{{- quantity -}}"  
+                      onChange="{ quantityChange.bind(cartItem) }"
+                      onClick="{addToCart}" >
+      </VerticalStepper>
+    </Loadable>
   <CardHeader
-  class="no-border"
+  classes="no-border"
   valign="bottom"
   >
   <img src="{{- product.media[0] | image_url: width: 300 -}}" 
@@ -24,15 +52,15 @@
   style="aspect-ratio: {{- product.media[0].aspect_ratio -}}" />
 </CardHeader>
 <CardContent>
-<div on:click="{increment}">
+<div >
   <h3>
     {{- product.title -}}
   </h3>
-  {{- product.price | money -}}
 </div> 
+
 </CardContent>
     <CardFooter>
-      <Button> Add to Card </Button> 
+      <span> {{- product.price | money -}} </span>
       <Link> Add to Wishlist </Link>
     </CardFooter>
 </Card>

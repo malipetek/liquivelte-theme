@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, listen, action_destroyer, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, is_function, run_all, compute_rest_props, compute_slots, createEventDispatcher, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, text, claim_text, toggle_class, set_data, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, listen, action_destroyer, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, is_function, run_all, compute_rest_props, createEventDispatcher, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, text, claim_text, toggle_class, set_data, compute_slots, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
 import { useTooltip, useRouteProps, createEmitter, getReactiveContext, useSmartSelect, extend, routerAttrs, isStringProp, restProps, actionsAttrs, classNames, colorClasses, routerClasses, actionsClasses, useIcon } from './framework7-liquivelte-hs5d6b599e.liquivelte.js';
 import { Use_icon } from './framework7-liquivelte-use-icon-hs8daa1a0c.liquivelte.js';
 import { Badge } from './framework7-liquivelte-badge-hs8daa1a0c.liquivelte.js';
@@ -11,7 +11,7 @@ function create_if_block_2(ctx) {
 
 	useicon = new Use_icon({
 			props: {
-				icon: /*icon*/ ctx[9],
+				icon: /*icon*/ ctx[11],
 				lec: /*lec*/ ctx[0]
 			}
 		});
@@ -29,7 +29,7 @@ function create_if_block_2(ctx) {
 		},
 		p(ctx, dirty) {
 			const useicon_changes = {};
-			if (dirty[0] & /*icon*/ 512) useicon_changes.icon = /*icon*/ ctx[9];
+			if (dirty[0] & /*icon*/ 2048) useicon_changes.icon = /*icon*/ ctx[11];
 			if (dirty[0] & /*lec*/ 1) useicon_changes.lec = /*lec*/ ctx[0];
 			useicon.$set(useicon_changes);
 		},
@@ -54,12 +54,12 @@ function create_if_block(ctx) {
 	let t0;
 	let t1;
 	let current;
-	let if_block = /*badge*/ ctx[2] != undefined && create_if_block_1(ctx);
+	let if_block = /*badge*/ ctx[3] != undefined && create_if_block_1(ctx);
 
 	return {
 		c() {
 			span = element("span");
-			t0 = text(/*text*/ ctx[1]);
+			t0 = text(/*text*/ ctx[2]);
 			t1 = space();
 			if (if_block) if_block.c();
 			this.h();
@@ -67,14 +67,14 @@ function create_if_block(ctx) {
 		l(nodes) {
 			span = claim_element(nodes, "SPAN", {});
 			var span_nodes = children(span);
-			t0 = claim_text(span_nodes, /*text*/ ctx[1]);
+			t0 = claim_text(span_nodes, /*text*/ ctx[2]);
 			t1 = claim_space(span_nodes);
 			if (if_block) if_block.l(span_nodes);
 			span_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			toggle_class(span, "tabbar-label", /*isTabbarLabel*/ ctx[7]);
+			toggle_class(span, "tabbar-label", /*isTabbarLabel*/ ctx[8]);
 		},
 		m(target, anchor) {
 			insert_hydration(target, span, anchor);
@@ -84,13 +84,13 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty[0] & /*text*/ 2) set_data(t0, /*text*/ ctx[1]);
+			if (!current || dirty[0] & /*text*/ 4) set_data(t0, /*text*/ ctx[2]);
 
-			if (/*badge*/ ctx[2] != undefined) {
+			if (/*badge*/ ctx[3] != undefined) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty[0] & /*badge*/ 4) {
+					if (dirty[0] & /*badge*/ 8) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -109,8 +109,8 @@ function create_if_block(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty[0] & /*isTabbarLabel*/ 128) {
-				toggle_class(span, "tabbar-label", /*isTabbarLabel*/ ctx[7]);
+			if (!current || dirty[0] & /*isTabbarLabel*/ 256) {
+				toggle_class(span, "tabbar-label", /*isTabbarLabel*/ ctx[8]);
 			}
 		},
 		i(local) {
@@ -136,7 +136,7 @@ function create_if_block_1(ctx) {
 
 	badge_1 = new Badge({
 			props: {
-				color: /*badgeColor*/ ctx[3],
+				color: /*badgeColor*/ ctx[4],
 				lec: /*lec*/ ctx[0],
 				$$slots: { default: [create_default_slot] },
 				$$scope: { ctx }
@@ -156,10 +156,10 @@ function create_if_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			const badge_1_changes = {};
-			if (dirty[0] & /*badgeColor*/ 8) badge_1_changes.color = /*badgeColor*/ ctx[3];
+			if (dirty[0] & /*badgeColor*/ 16) badge_1_changes.color = /*badgeColor*/ ctx[4];
 			if (dirty[0] & /*lec*/ 1) badge_1_changes.lec = /*lec*/ ctx[0];
 
-			if (dirty[0] & /*$$scope, badge*/ 1073741828) {
+			if (dirty[0] & /*$$scope, badge*/ 1073741832) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -186,16 +186,16 @@ function create_default_slot(ctx) {
 
 	return {
 		c() {
-			t = text(/*badge*/ ctx[2]);
+			t = text(/*badge*/ ctx[3]);
 		},
 		l(nodes) {
-			t = claim_text(nodes, /*badge*/ ctx[2]);
+			t = claim_text(nodes, /*badge*/ ctx[3]);
 		},
 		m(target, anchor) {
 			insert_hydration(target, t, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*badge*/ 4) set_data(t, /*badge*/ ctx[2]);
+			if (dirty[0] & /*badge*/ 8) set_data(t, /*badge*/ ctx[3]);
 		},
 		d(detaching) {
 			if (detaching) detach(t);
@@ -207,16 +207,24 @@ function create_fragment(ctx) {
 	let a;
 	let t0;
 	let t1;
+	let a_class_value;
 	let useTooltip_action;
 	let useRouteProps_action;
 	let current;
 	let mounted;
 	let dispose;
-	let if_block0 = /*icon*/ ctx[9] && create_if_block_2(ctx);
+	let if_block0 = /*icon*/ ctx[11] && create_if_block_2(ctx);
 	const default_slot_template = /*#slots*/ ctx[28].default;
 	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[30], null);
-	let if_block1 = (/*text*/ ctx[1] != undefined || /*badge*/ ctx[2] != undefined) && create_if_block(ctx);
-	let a_levels = [{ class: /*classes*/ ctx[10] }, /*attrs*/ ctx[11]];
+	let if_block1 = (/*text*/ ctx[2] != undefined || /*badge*/ ctx[3] != undefined) && create_if_block(ctx);
+
+	let a_levels = [
+		{
+			class: a_class_value = "" + (/*classes*/ ctx[1] + " " + /*computedClasses*/ ctx[9])
+		},
+		/*attrs*/ ctx[12]
+	];
+
 	let a_data = {};
 
 	for (let i = 0; i < a_levels.length; i += 1) {
@@ -263,23 +271,23 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(a, "click", /*onClick*/ ctx[12]),
+					listen(a, "click", /*onClick*/ ctx[13]),
 					action_destroyer(useTooltip_action = useTooltip.call(null, a, {
-						tooltip: /*tooltip*/ ctx[4],
-						tooltipTrigger: /*tooltipTrigger*/ ctx[5]
+						tooltip: /*tooltip*/ ctx[5],
+						tooltipTrigger: /*tooltipTrigger*/ ctx[6]
 					})),
-					action_destroyer(useRouteProps_action = useRouteProps.call(null, a, /*routeProps*/ ctx[6]))
+					action_destroyer(useRouteProps_action = useRouteProps.call(null, a, /*routeProps*/ ctx[7]))
 				];
 
 				mounted = true;
 			}
 		},
 		p(ctx, dirty) {
-			if (/*icon*/ ctx[9]) {
+			if (/*icon*/ ctx[11]) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty[0] & /*icon*/ 512) {
+					if (dirty[0] & /*icon*/ 2048) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -313,11 +321,11 @@ function create_fragment(ctx) {
 				}
 			}
 
-			if (/*text*/ ctx[1] != undefined || /*badge*/ ctx[2] != undefined) {
+			if (/*text*/ ctx[2] != undefined || /*badge*/ ctx[3] != undefined) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 
-					if (dirty[0] & /*text, badge*/ 6) {
+					if (dirty[0] & /*text, badge*/ 12) {
 						transition_in(if_block1, 1);
 					}
 				} else {
@@ -337,16 +345,16 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(a, a_data = get_spread_update(a_levels, [
-				(!current || dirty[0] & /*classes*/ 1024) && { class: /*classes*/ ctx[10] },
-				dirty[0] & /*attrs*/ 2048 && /*attrs*/ ctx[11]
+				(!current || dirty[0] & /*classes, computedClasses*/ 514 && a_class_value !== (a_class_value = "" + (/*classes*/ ctx[1] + " " + /*computedClasses*/ ctx[9]))) && { class: a_class_value },
+				dirty[0] & /*attrs*/ 4096 && /*attrs*/ ctx[12]
 			]));
 
-			if (useTooltip_action && is_function(useTooltip_action.update) && dirty[0] & /*tooltip, tooltipTrigger*/ 48) useTooltip_action.update.call(null, {
-				tooltip: /*tooltip*/ ctx[4],
-				tooltipTrigger: /*tooltipTrigger*/ ctx[5]
+			if (useTooltip_action && is_function(useTooltip_action.update) && dirty[0] & /*tooltip, tooltipTrigger*/ 96) useTooltip_action.update.call(null, {
+				tooltip: /*tooltip*/ ctx[5],
+				tooltipTrigger: /*tooltipTrigger*/ ctx[6]
 			});
 
-			if (useRouteProps_action && is_function(useRouteProps_action.update) && dirty[0] & /*routeProps*/ 64) useRouteProps_action.update.call(null, /*routeProps*/ ctx[6]);
+			if (useRouteProps_action && is_function(useRouteProps_action.update) && dirty[0] & /*routeProps*/ 128) useRouteProps_action.update.call(null, /*routeProps*/ ctx[7]);
 		},
 		i(local) {
 			if (current) return;
@@ -379,11 +387,10 @@ function instance($$self, $$props, $$invalidate) {
 	let attrs;
 	let hasDefaultSlots;
 	let iconOnlyComputed;
-	let classes;
 	let icon;
 
 	const omit_props_names = [
-		"lec","class","noLinkClass","text","tabLink","tabLinkActive","tabbarLabel","iconOnly","badge","badgeColor","href","target","tooltip","tooltipTrigger","routeProps","smartSelect","smartSelectParams","smartSelectInstance"
+		"lec","classes","noLinkClass","text","tabLink","tabLinkActive","tabbarLabel","iconOnly","badge","badgeColor","href","target","tooltip","tooltipTrigger","routeProps","smartSelect","smartSelectParams","smartSelectInstance"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
@@ -391,7 +398,8 @@ function instance($$self, $$props, $$invalidate) {
 	const $$slots = compute_slots(slots);
 	let { lec } = $$props;
 	const emit = createEmitter(createEventDispatcher, $$props);
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 	let { noLinkClass = false } = $$props;
 	let { text = undefined } = $$props;
 	let { tabLink = undefined } = $$props;
@@ -433,7 +441,7 @@ function instance($$self, $$props, $$invalidate) {
 	function a_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			el = $$value;
-			$$invalidate(8, el);
+			$$invalidate(10, el);
 		});
 	}
 
@@ -441,20 +449,20 @@ function instance($$self, $$props, $$invalidate) {
 		$$invalidate(34, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(36, $$restProps = compute_rest_props($$props, omit_props_names));
 		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
-		if ('class' in $$new_props) $$invalidate(13, className = $$new_props.class);
+		if ('classes' in $$new_props) $$invalidate(1, classes = $$new_props.classes);
 		if ('noLinkClass' in $$new_props) $$invalidate(14, noLinkClass = $$new_props.noLinkClass);
-		if ('text' in $$new_props) $$invalidate(1, text = $$new_props.text);
+		if ('text' in $$new_props) $$invalidate(2, text = $$new_props.text);
 		if ('tabLink' in $$new_props) $$invalidate(15, tabLink = $$new_props.tabLink);
 		if ('tabLinkActive' in $$new_props) $$invalidate(16, tabLinkActive = $$new_props.tabLinkActive);
 		if ('tabbarLabel' in $$new_props) $$invalidate(17, tabbarLabel = $$new_props.tabbarLabel);
 		if ('iconOnly' in $$new_props) $$invalidate(18, iconOnly = $$new_props.iconOnly);
-		if ('badge' in $$new_props) $$invalidate(2, badge = $$new_props.badge);
-		if ('badgeColor' in $$new_props) $$invalidate(3, badgeColor = $$new_props.badgeColor);
+		if ('badge' in $$new_props) $$invalidate(3, badge = $$new_props.badge);
+		if ('badgeColor' in $$new_props) $$invalidate(4, badgeColor = $$new_props.badgeColor);
 		if ('href' in $$new_props) $$invalidate(19, href = $$new_props.href);
 		if ('target' in $$new_props) $$invalidate(20, target = $$new_props.target);
-		if ('tooltip' in $$new_props) $$invalidate(4, tooltip = $$new_props.tooltip);
-		if ('tooltipTrigger' in $$new_props) $$invalidate(5, tooltipTrigger = $$new_props.tooltipTrigger);
-		if ('routeProps' in $$new_props) $$invalidate(6, routeProps = $$new_props.routeProps);
+		if ('tooltip' in $$new_props) $$invalidate(5, tooltip = $$new_props.tooltip);
+		if ('tooltipTrigger' in $$new_props) $$invalidate(6, tooltipTrigger = $$new_props.tooltipTrigger);
+		if ('routeProps' in $$new_props) $$invalidate(7, routeProps = $$new_props.routeProps);
 		if ('smartSelect' in $$new_props) $$invalidate(21, smartSelect = $$new_props.smartSelect);
 		if ('smartSelectParams' in $$new_props) $$invalidate(22, smartSelectParams = $$new_props.smartSelectParams);
 		if ('$$scope' in $$new_props) $$invalidate(30, $$scope = $$new_props.$$scope);
@@ -462,14 +470,14 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$.update = () => {
 		if ($$self.$$.dirty[0] & /*tabbarLabel, TabbarContext*/ 16908288) {
-			$$invalidate(7, isTabbarLabel = tabbarLabel || TabbarContext.tabbarHasLabels);
+			$$invalidate(8, isTabbarLabel = tabbarLabel || TabbarContext.tabbarHasLabels);
 		}
 
 		if ($$self.$$.dirty[0] & /*href*/ 524288) {
 			$$invalidate(27, hrefComputed = href === true ? '#' : href || undefined);
 		}
 
-		$$invalidate(11, attrs = extend(
+		$$invalidate(12, attrs = extend(
 			{
 				href: hrefComputed,
 				target,
@@ -480,12 +488,12 @@ function instance($$self, $$props, $$invalidate) {
 			actionsAttrs($$props)
 		));
 
-		if ($$self.$$.dirty[0] & /*iconOnly, text, hasDefaultSlots*/ 67371010) {
+		if ($$self.$$.dirty[0] & /*iconOnly, text, hasDefaultSlots*/ 67371012) {
 			$$invalidate(25, iconOnlyComputed = iconOnly || !text && !hasDefaultSlots);
 		}
 
-		$$invalidate(10, classes = classNames(
-			className,
+		$$invalidate(9, computedClasses = classNames(
+			classes,
 			{
 				link: !(noLinkClass || isTabbarLabel),
 				'icon-only': iconOnlyComputed,
@@ -498,7 +506,7 @@ function instance($$self, $$props, $$invalidate) {
 			actionsClasses($$props)
 		));
 
-		$$invalidate(9, icon = useIcon($$props));
+		$$invalidate(11, icon = useIcon($$props));
 	};
 
 	$$invalidate(26, hasDefaultSlots = $$slots.default);
@@ -506,6 +514,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	return [
 		lec,
+		classes,
 		text,
 		badge,
 		badgeColor,
@@ -513,12 +522,11 @@ function instance($$self, $$props, $$invalidate) {
 		tooltipTrigger,
 		routeProps,
 		isTabbarLabel,
+		computedClasses,
 		el,
 		icon,
-		classes,
 		attrs,
 		onClick,
-		className,
 		noLinkClass,
 		tabLink,
 		tabLinkActive,
@@ -551,20 +559,20 @@ class Link extends SvelteComponent {
 			safe_not_equal,
 			{
 				lec: 0,
-				class: 13,
+				classes: 1,
 				noLinkClass: 14,
-				text: 1,
+				text: 2,
 				tabLink: 15,
 				tabLinkActive: 16,
 				tabbarLabel: 17,
 				iconOnly: 18,
-				badge: 2,
-				badgeColor: 3,
+				badge: 3,
+				badgeColor: 4,
 				href: 19,
 				target: 20,
-				tooltip: 4,
-				tooltipTrigger: 5,
-				routeProps: 6,
+				tooltip: 5,
+				tooltipTrigger: 6,
+				routeProps: 7,
 				smartSelect: 21,
 				smartSelectParams: 22,
 				smartSelectInstance: 23

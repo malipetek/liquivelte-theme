@@ -112,7 +112,7 @@ onMount(() => {
       style="--explode-gap: 1em; --explode-size-imbalance: 0%; --image-oversize: 1; {animationVariables.join(';')}; {widthVariables.join(';')}; {heightVariables.join(';')}">
     <div class="stage-container" >
       <div class="exp-gallery-stage" bind:this="{stage}">
-      {#each  section.blocks as block, index  }
+      {#each  section.blocks as block, index   }
 {@const forloop = {
   first: index === 0,
   index: index + 1,

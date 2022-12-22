@@ -114,12 +114,12 @@ function create_if_block(ctx) {
 				hideToolbarOnScroll: /*hideToolbarOnScroll*/ ctx[14],
 				messagesContent: /*messagesContent*/ ctx[15],
 				loginScreen: /*loginScreen*/ ctx[16],
-				onPtrPullStart: /*onPtrPullStart*/ ctx[19],
-				onPtrPullMove: /*onPtrPullMove*/ ctx[20],
-				onPtrPullEnd: /*onPtrPullEnd*/ ctx[21],
-				onPtrRefresh: /*onPtrRefresh*/ ctx[22],
-				onPtrDone: /*onPtrDone*/ ctx[23],
-				onInfinite: /*onInfinite*/ ctx[24],
+				onPtrPullStart: /*onPtrPullStart*/ ctx[20],
+				onPtrPullMove: /*onPtrPullMove*/ ctx[21],
+				onPtrPullEnd: /*onPtrPullEnd*/ ctx[22],
+				onPtrRefresh: /*onPtrRefresh*/ ctx[23],
+				onPtrDone: /*onPtrDone*/ ctx[24],
+				onInfinite: /*onInfinite*/ ctx[25],
 				lec: /*lec*/ ctx[0],
 				$$slots: { default: [create_default_slot] },
 				$$scope: { ctx }
@@ -281,10 +281,10 @@ function create_fragment(ctx) {
 
 	let div_levels = [
 		{
-			class: div_class_value = "page " + /*classes*/ ctx[18]
+			class: div_class_value = "page " + /*classes*/ ctx[17] + " " + /*computedClasses*/ ctx[18]
 		},
 		{ "data-name": /*name*/ ctx[1] },
-		restProps(/*$$restProps*/ ctx[25])
+		restProps(/*$$restProps*/ ctx[26])
 	];
 
 	let div_data = {};
@@ -368,9 +368,9 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(div, div_data = get_spread_update(div_levels, [
-				(!current || dirty[0] & /*classes*/ 262144 && div_class_value !== (div_class_value = "page " + /*classes*/ ctx[18])) && { class: div_class_value },
+				(!current || dirty[0] & /*classes, computedClasses*/ 393216 && div_class_value !== (div_class_value = "page " + /*classes*/ ctx[17] + " " + /*computedClasses*/ ctx[18])) && { class: div_class_value },
 				(!current || dirty[0] & /*name*/ 2) && { "data-name": /*name*/ ctx[1] },
-				dirty[0] & /*$$restProps*/ 33554432 && restProps(/*$$restProps*/ ctx[25])
+				dirty[0] & /*$$restProps*/ 67108864 && restProps(/*$$restProps*/ ctx[26])
 			]));
 		},
 		i(local) {
@@ -396,10 +396,9 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let forceSubnavbar;
 	let forceNavbarLarge;
-	let classes;
 
 	const omit_props_names = [
-		"lec","name","stacked","withSubnavbar","subnavbar","withNavbarLarge","navbarLarge","noNavbar","noToolbar","tabs","pageContent","noSwipeback","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","class"
+		"lec","name","stacked","withSubnavbar","subnavbar","withNavbarLarge","navbarLarge","noNavbar","noToolbar","tabs","pageContent","noSwipeback","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","classes"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
@@ -431,7 +430,8 @@ function instance($$self, $$props, $$invalidate) {
 	let { hideToolbarOnScroll = undefined } = $$props;
 	let { messagesContent = undefined } = $$props;
 	let { loginScreen = undefined } = $$props;
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 
 	// State
 	let el;
@@ -705,25 +705,25 @@ function instance($$self, $$props, $$invalidate) {
 	function div_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			el = $$value;
-			$$invalidate(17, el);
+			$$invalidate(19, el);
 		});
 	}
 
 	$$self.$$set = $$new_props => {
 		$$invalidate(75, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-		$$invalidate(25, $$restProps = compute_rest_props($$props, omit_props_names));
+		$$invalidate(26, $$restProps = compute_rest_props($$props, omit_props_names));
 		if ('lec' in $$new_props) $$invalidate(0, lec = $$new_props.lec);
 		if ('name' in $$new_props) $$invalidate(1, name = $$new_props.name);
-		if ('stacked' in $$new_props) $$invalidate(26, stacked = $$new_props.stacked);
-		if ('withSubnavbar' in $$new_props) $$invalidate(27, withSubnavbar = $$new_props.withSubnavbar);
-		if ('subnavbar' in $$new_props) $$invalidate(28, subnavbar = $$new_props.subnavbar);
-		if ('withNavbarLarge' in $$new_props) $$invalidate(29, withNavbarLarge = $$new_props.withNavbarLarge);
-		if ('navbarLarge' in $$new_props) $$invalidate(30, navbarLarge = $$new_props.navbarLarge);
-		if ('noNavbar' in $$new_props) $$invalidate(31, noNavbar = $$new_props.noNavbar);
-		if ('noToolbar' in $$new_props) $$invalidate(32, noToolbar = $$new_props.noToolbar);
-		if ('tabs' in $$new_props) $$invalidate(33, tabs = $$new_props.tabs);
+		if ('stacked' in $$new_props) $$invalidate(27, stacked = $$new_props.stacked);
+		if ('withSubnavbar' in $$new_props) $$invalidate(28, withSubnavbar = $$new_props.withSubnavbar);
+		if ('subnavbar' in $$new_props) $$invalidate(29, subnavbar = $$new_props.subnavbar);
+		if ('withNavbarLarge' in $$new_props) $$invalidate(30, withNavbarLarge = $$new_props.withNavbarLarge);
+		if ('navbarLarge' in $$new_props) $$invalidate(31, navbarLarge = $$new_props.navbarLarge);
+		if ('noNavbar' in $$new_props) $$invalidate(32, noNavbar = $$new_props.noNavbar);
+		if ('noToolbar' in $$new_props) $$invalidate(33, noToolbar = $$new_props.noToolbar);
+		if ('tabs' in $$new_props) $$invalidate(34, tabs = $$new_props.tabs);
 		if ('pageContent' in $$new_props) $$invalidate(2, pageContent = $$new_props.pageContent);
-		if ('noSwipeback' in $$new_props) $$invalidate(34, noSwipeback = $$new_props.noSwipeback);
+		if ('noSwipeback' in $$new_props) $$invalidate(35, noSwipeback = $$new_props.noSwipeback);
 		if ('ptr' in $$new_props) $$invalidate(3, ptr = $$new_props.ptr);
 		if ('ptrDistance' in $$new_props) $$invalidate(4, ptrDistance = $$new_props.ptrDistance);
 		if ('ptrPreloader' in $$new_props) $$invalidate(5, ptrPreloader = $$new_props.ptrPreloader);
@@ -738,25 +738,25 @@ function instance($$self, $$props, $$invalidate) {
 		if ('hideToolbarOnScroll' in $$new_props) $$invalidate(14, hideToolbarOnScroll = $$new_props.hideToolbarOnScroll);
 		if ('messagesContent' in $$new_props) $$invalidate(15, messagesContent = $$new_props.messagesContent);
 		if ('loginScreen' in $$new_props) $$invalidate(16, loginScreen = $$new_props.loginScreen);
-		if ('class' in $$new_props) $$invalidate(35, className = $$new_props.class);
+		if ('classes' in $$new_props) $$invalidate(17, classes = $$new_props.classes);
 		if ('$$scope' in $$new_props) $$invalidate(49, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[0] & /*subnavbar, withSubnavbar*/ 402653184 | $$self.$$.dirty[1] & /*hasSubnavbar*/ 32) {
+		if ($$self.$$.dirty[0] & /*subnavbar, withSubnavbar*/ 805306368 | $$self.$$.dirty[1] & /*hasSubnavbar*/ 32) {
 			$$invalidate(46, forceSubnavbar = typeof subnavbar === 'undefined' && typeof withSubnavbar === 'undefined'
 			? hasSubnavbar
 			: false);
 		}
 
-		if ($$self.$$.dirty[0] & /*navbarLarge, withNavbarLarge*/ 1610612736 | $$self.$$.dirty[1] & /*hasNavbarLarge*/ 64) {
+		if ($$self.$$.dirty[0] & /*withNavbarLarge*/ 1073741824 | $$self.$$.dirty[1] & /*navbarLarge, hasNavbarLarge*/ 65) {
 			$$invalidate(45, forceNavbarLarge = typeof navbarLarge === 'undefined' && typeof withNavbarLarge === 'undefined'
 			? hasNavbarLarge
 			: false);
 		}
 
-		$$invalidate(18, classes = classNames(
-			className,
+		$$invalidate(18, computedClasses = classNames(
+			classes,
 			routerPositionClass,
 			{
 				stacked: stacked && !routerForceUnstack,
@@ -798,8 +798,9 @@ function instance($$self, $$props, $$invalidate) {
 		hideToolbarOnScroll,
 		messagesContent,
 		loginScreen,
-		el,
 		classes,
+		computedClasses,
+		el,
 		onPtrPullStart,
 		onPtrPullMove,
 		onPtrPullEnd,
@@ -816,7 +817,6 @@ function instance($$self, $$props, $$invalidate) {
 		noToolbar,
 		tabs,
 		noSwipeback,
-		className,
 		hasSubnavbar,
 		hasNavbarLarge,
 		hasNavbarLargeCollapsed,
@@ -847,16 +847,16 @@ class Page extends SvelteComponent {
 			{
 				lec: 0,
 				name: 1,
-				stacked: 26,
-				withSubnavbar: 27,
-				subnavbar: 28,
-				withNavbarLarge: 29,
-				navbarLarge: 30,
-				noNavbar: 31,
-				noToolbar: 32,
-				tabs: 33,
+				stacked: 27,
+				withSubnavbar: 28,
+				subnavbar: 29,
+				withNavbarLarge: 30,
+				navbarLarge: 31,
+				noNavbar: 32,
+				noToolbar: 33,
+				tabs: 34,
 				pageContent: 2,
-				noSwipeback: 34,
+				noSwipeback: 35,
 				ptr: 3,
 				ptrDistance: 4,
 				ptrPreloader: 5,
@@ -871,7 +871,7 @@ class Page extends SvelteComponent {
 				hideToolbarOnScroll: 14,
 				messagesContent: 15,
 				loginScreen: 16,
-				class: 35
+				classes: 17
 			},
 			null,
 			[-1, -1, -1]

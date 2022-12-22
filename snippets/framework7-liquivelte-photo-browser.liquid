@@ -1,111 +1,166 @@
-
 	{%- liquid
-	assign props_arr = props | split: '-prsp-'
-	for prop in props_arr
-	assign propName = prop | split: '-kvsp-' | first
-	assign propValue = prop | split: '-kvsp-' | last | remove: '"'
-	if propValue contains '{' and propValue contains '}'
-	assign propValue = propValue | remove: '{' | remove: '}'
-	assign propValueArr = propValue | split: ','
-	for entry in propValueArr
-	assign key = entry | split: ':' | first | strip | remove: '"'
-	assign value = entry | split: ':' | last | strip | remove: '"'
-	assign composite_key = propName | append: '_' | append: key
+			
+			
+			assign init = null
+			assign params = null
+			assign photos = null
+			assign exposition = null
+			assign expositionHideCaptions = null
+			assign type = null
+			assign navbar = null
+			assign toolbar = null
+			assign theme = null
+			assign captionsTheme = null
+			assign iconsColor = null
+			assign swipeToClose = null
+			assign pageBackLinkText = null
+			assign popupCloseLinkText = null
+			assign navbarOfText = null
+			assign navbarShowCount = null
+			assign swiper = null
+			assign url = null
+			assign routableModals = null
+			assign virtualSlides = null
+			assign view = null
+			assign renderNavbar = null
+			assign renderToolbar = null
+			assign renderCaption = null
+			assign renderObject = null
+			assign renderLazyPhoto = null
+			assign renderPhoto = null
+			assign renderPage = null
+			assign renderPopup = null
+			assign renderStandalone = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
 	endif
-	if propName == 'init'
-	assign init = propValue
+	if lv_propName == 'init'
+		assign init = lv_propValue
 	endif
-	if propName == 'params'
-	assign params = propValue
+	if lv_propName == 'params'
+		assign params = lv_propValue
 	endif
-	if propName == 'photos'
-	assign photos = propValue
+	if lv_propName == 'photos'
+		assign photos = lv_propValue
 	endif
-	if propName == 'exposition'
-	assign exposition = propValue
+	if lv_propName == 'exposition'
+		assign exposition = lv_propValue
 	endif
-	if propName == 'expositionHideCaptions'
-	assign expositionHideCaptions = propValue
+	if lv_propName == 'expositionHideCaptions'
+		assign expositionHideCaptions = lv_propValue
 	endif
-	if propName == 'type'
-	assign type = propValue
+	if lv_propName == 'type'
+		assign type = lv_propValue
 	endif
-	if propName == 'navbar'
-	assign navbar = propValue
+	if lv_propName == 'navbar'
+		assign navbar = lv_propValue
 	endif
-	if propName == 'toolbar'
-	assign toolbar = propValue
+	if lv_propName == 'toolbar'
+		assign toolbar = lv_propValue
 	endif
-	if propName == 'theme'
-	assign theme = propValue
+	if lv_propName == 'theme'
+		assign theme = lv_propValue
 	endif
-	if propName == 'captionsTheme'
-	assign captionsTheme = propValue
+	if lv_propName == 'captionsTheme'
+		assign captionsTheme = lv_propValue
 	endif
-	if propName == 'iconsColor'
-	assign iconsColor = propValue
+	if lv_propName == 'iconsColor'
+		assign iconsColor = lv_propValue
 	endif
-	if propName == 'swipeToClose'
-	assign swipeToClose = propValue
+	if lv_propName == 'swipeToClose'
+		assign swipeToClose = lv_propValue
 	endif
-	if propName == 'pageBackLinkText'
-	assign pageBackLinkText = propValue
+	if lv_propName == 'pageBackLinkText'
+		assign pageBackLinkText = lv_propValue
 	endif
-	if propName == 'popupCloseLinkText'
-	assign popupCloseLinkText = propValue
+	if lv_propName == 'popupCloseLinkText'
+		assign popupCloseLinkText = lv_propValue
 	endif
-	if propName == 'navbarOfText'
-	assign navbarOfText = propValue
+	if lv_propName == 'navbarOfText'
+		assign navbarOfText = lv_propValue
 	endif
-	if propName == 'navbarShowCount'
-	assign navbarShowCount = propValue
+	if lv_propName == 'navbarShowCount'
+		assign navbarShowCount = lv_propValue
 	endif
-	if propName == 'swiper'
-	assign swiper = propValue
+	if lv_propName == 'swiper'
+		assign swiper = lv_propValue
 	endif
-	if propName == 'url'
-	assign url = propValue
+	if lv_propName == 'url'
+		assign url = lv_propValue
 	endif
-	if propName == 'routableModals'
-	assign routableModals = propValue
+	if lv_propName == 'routableModals'
+		assign routableModals = lv_propValue
 	endif
-	if propName == 'virtualSlides'
-	assign virtualSlides = propValue
+	if lv_propName == 'virtualSlides'
+		assign virtualSlides = lv_propValue
 	endif
-	if propName == 'view'
-	assign view = propValue
+	if lv_propName == 'view'
+		assign view = lv_propValue
 	endif
-	if propName == 'renderNavbar'
-	assign renderNavbar = propValue
+	if lv_propName == 'renderNavbar'
+		assign renderNavbar = lv_propValue
 	endif
-	if propName == 'renderToolbar'
-	assign renderToolbar = propValue
+	if lv_propName == 'renderToolbar'
+		assign renderToolbar = lv_propValue
 	endif
-	if propName == 'renderCaption'
-	assign renderCaption = propValue
+	if lv_propName == 'renderCaption'
+		assign renderCaption = lv_propValue
 	endif
-	if propName == 'renderObject'
-	assign renderObject = propValue
+	if lv_propName == 'renderObject'
+		assign renderObject = lv_propValue
 	endif
-	if propName == 'renderLazyPhoto'
-	assign renderLazyPhoto = propValue
+	if lv_propName == 'renderLazyPhoto'
+		assign renderLazyPhoto = lv_propValue
 	endif
-	if propName == 'renderPhoto'
-	assign renderPhoto = propValue
+	if lv_propName == 'renderPhoto'
+		assign renderPhoto = lv_propValue
 	endif
-	if propName == 'renderPage'
-	assign renderPage = propValue
+	if lv_propName == 'renderPage'
+		assign renderPage = lv_propValue
 	endif
-	if propName == 'renderPopup'
-	assign renderPopup = propValue
+	if lv_propName == 'renderPopup'
+		assign renderPopup = lv_propValue
 	endif
-	if propName == 'renderStandalone'
-	assign renderStandalone = propValue
+	if lv_propName == 'renderStandalone'
+		assign renderStandalone = lv_propValue
 	endif
 	endfor
 	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'framework7-liquivelte-photo-browser'
+						assign slot_default_framework7-liquivelte_photo-browser = lv_value | strip
+					endif
+				endfor
+				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component photo-browser" data-liquivelte-component-name="photo-browser.liquivelte">
 	{%- endunless -%}
@@ -118,7 +173,6 @@
 	
 	
 	
-
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -165,6 +219,44 @@
 	propScript.previousElementSibling.remove();
 	}
 	})();</script>
+	{%- liquid
+			
+			
+			assign init = null
+			assign params = null
+			assign photos = null
+			assign exposition = null
+			assign expositionHideCaptions = null
+			assign type = null
+			assign navbar = null
+			assign toolbar = null
+			assign theme = null
+			assign captionsTheme = null
+			assign iconsColor = null
+			assign swipeToClose = null
+			assign pageBackLinkText = null
+			assign popupCloseLinkText = null
+			assign navbarOfText = null
+			assign navbarShowCount = null
+			assign swiper = null
+			assign url = null
+			assign routableModals = null
+			assign virtualSlides = null
+			assign view = null
+			assign renderNavbar = null
+			assign renderToolbar = null
+			assign renderCaption = null
+			assign renderObject = null
+			assign renderLazyPhoto = null
+			assign renderPhoto = null
+			assign renderPage = null
+			assign renderPopup = null
+			assign renderStandalone = null
+			-%}
+	{%- liquid 
+			assign slot_default_framework7-liquivelte_photo-browser = null
+			
+			-%}
 	{%- unless sub_include -%} 
 	</div>
 	{%- endunless -%}

@@ -39,7 +39,7 @@ function handleize(str) {
     return str;
 };
   
-export default (liquid_expression_cache) => ({
+export default (liquid_expression_cache = {}) => ({
     default: (input, fallback) => {
         let isObject = false;
         try { isObject = input.constructor === {}.constructor; } catch (err) { }

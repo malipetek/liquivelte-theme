@@ -22,7 +22,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (115:6) {#each  section.blocks as block, index  }
+// (115:6) {#each  section.blocks as block, index   }
 function create_each_block(ctx) {
 	let div;
 	let picture;

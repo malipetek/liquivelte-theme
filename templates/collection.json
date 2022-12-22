@@ -3,9 +3,264 @@
     "banner": {
       "type": "main-collection-banner",
       "settings": {
-        "show_collection_description": true,
-        "show_collection_image": false,
+        "show_collection_description": false,
+        "show_collection_image": true,
         "color_scheme": "background-1"
+      }
+    },
+    "698b9676-2581-47b7-bf81-f58a711628bb": {
+      "type": "collection-top-slider",
+      "blocks": {
+        "af3eeec3-1d07-4e69-ac43-586b25978e99": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x64_Tanks_Flo.jpg",
+            "title": "Tanks",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "https:\/\/anatomie.com\/collections\/tanks"
+          }
+        },
+        "d97a1841-5081-4573-83ad-4e876373ee3a": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640X640_ShortSleeve_Melissa.jpg",
+            "title": "Shortsleeves",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "https:\/\/anatomie.com\/collections\/short-sleeve-tops"
+          }
+        },
+        "5d72b636-baf1-4b08-9c78-7935c9106e98": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Sweaters_Glenn.jpg",
+            "title": "Sweaters",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/sweater-weather"
+          }
+        }
+      },
+      "block_order": [
+        "af3eeec3-1d07-4e69-ac43-586b25978e99",
+        "d97a1841-5081-4573-83ad-4e876373ee3a",
+        "5d72b636-baf1-4b08-9c78-7935c9106e98"
+      ],
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "collection_short_desc": "<p>For the ultimate comfort on long haul flights, check out Anatomie's wrinkle-free travel shirts and travel tops.<\/p>",
+        "collection": "womens-wrinkle-free-travel-tops"
+      }
+    },
+    "518cc427-0343-48cd-9c4d-506b6319623b": {
+      "type": "collection-top-slider",
+      "blocks": {
+        "3475b3a8-74a3-4e41-b70e-43278bfd5c0a": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Pants_Hollywod_fdb4d959-aedb-4384-bc3a-ddd17c4c3a04.jpg",
+            "title": "Cropped Pants",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/womens-cropped-length-wrinkle-free-pants"
+          }
+        },
+        "fc527c55-389a-4ad8-a708-65e60af4902f": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Pants_Pullon_902bfc23-75a5-4cdb-96e8-0b266482af90.jpg",
+            "title": "Pull-On Pants",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/women-s-pull-on-wrinkle-free-travel-pants"
+          }
+        },
+        "c9052740-9b74-41cd-92ee-278d904c1f66": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Essentials_Pants_Kate_c9b1b9f3-e745-4da0-8bdf-256c88316604.jpg",
+            "title": "Essential Best Selling Pants",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/essential-pants-lifetime-guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "3475b3a8-74a3-4e41-b70e-43278bfd5c0a",
+        "fc527c55-389a-4ad8-a708-65e60af4902f",
+        "c9052740-9b74-41cd-92ee-278d904c1f66"
+      ],
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "collection_short_desc": "<p>ANATOMIE is proud to introduce the only must-have performance pant with a LIFETIME GUARANTEE.<\/p>",
+        "collection": "view-all-pants"
+      }
+    },
+    "7d713589-db74-4cf7-81f2-0fe3e710bba4": {
+      "type": "collection-top-slider",
+      "blocks": {
+        "70e37ef0-0566-4214-8af5-1eb02a15d8d0": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Pants_Under200.jpg",
+            "title": "Pants Under $150",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "\/collections\/pants-under-150"
+          }
+        },
+        "033201fa-9fbf-453d-8a28-3ea24ddb3ee9": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Under100_Anabella.jpg",
+            "title": "Sale: Under $100",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "\/collections\/sale-under-100"
+          }
+        },
+        "21a5d1a6-1163-4b8d-83a0-a50cdf3c9ffe": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_NewToSale_Greta.jpg",
+            "title": "New To Sale",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "\/collections\/sale?sort=extra-sort1-descending"
+          }
+        }
+      },
+      "block_order": [
+        "70e37ef0-0566-4214-8af5-1eb02a15d8d0",
+        "033201fa-9fbf-453d-8a28-3ea24ddb3ee9",
+        "21a5d1a6-1163-4b8d-83a0-a50cdf3c9ffe"
+      ],
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "collection_short_desc": "",
+        "collection": "sale"
+      }
+    },
+    "5cdec2b5-dd01-42af-a750-b6e014be6df5": {
+      "type": "collection-top-slider",
+      "blocks": {
+        "aae5c00f-fc13-4cfe-a82d-e9607c4965e2": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Outerwear_Puffer_1.jpg",
+            "title": "Puffer Jackets",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/quilted-puffer-jackets"
+          }
+        },
+        "bd3991f0-6aa3-4202-81a4-1f68d7e3b1d7": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Outerwear_Hooded_Sherpa_1.jpg",
+            "title": "Hooded Jackets",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/hooded-jackets"
+          }
+        },
+        "378ba20e-33f8-4cbc-b0c9-896d2ef5a44a": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Outerwear_Kenya_1.jpg",
+            "title": "Best Selling Essential Jackets",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/best-selling-essential-jacket"
+          }
+        }
+      },
+      "block_order": [
+        "aae5c00f-fc13-4cfe-a82d-e9607c4965e2",
+        "bd3991f0-6aa3-4202-81a4-1f68d7e3b1d7",
+        "378ba20e-33f8-4cbc-b0c9-896d2ef5a44a"
+      ],
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "collection_short_desc": "<p>Taking up minimal room in a carry-on suitcase, our travel jackets are lightweight and wrinkle-resistant, plus are offered in a variety of styles and colors to complement any travel destination.<\/p>",
+        "collection": "womens-outerwear"
+      }
+    },
+    "4457bf35-5cc0-49a5-a886-dce0f888276a": {
+      "type": "collection-top-slider",
+      "blocks": {
+        "f95c03af-41c9-4196-855e-c5eeae890483": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Essentials_Outerwear_Delaney_1.jpg",
+            "title": "Essential Outerwear",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/best-selling-essential-jacket"
+          }
+        },
+        "6d3c1f91-8353-4da2-8197-4511ba557911": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Essentials_Top_Buddah_1.jpg",
+            "title": "Essential Tops",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/best-selling-essential-tops"
+          }
+        },
+        "42a53924-722a-4dd8-aa2f-1b17f793d26e": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify:\/\/shop_images\/640x640_Essentials_Pants_Kate_2.jpg",
+            "title": "Essential Pants",
+            "material_one": "None",
+            "material_two": "None",
+            "material_three": "None",
+            "url_label": "Shop Now",
+            "url_link": "shopify:\/\/collections\/essential-pants-lifetime-guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "f95c03af-41c9-4196-855e-c5eeae890483",
+        "6d3c1f91-8353-4da2-8197-4511ba557911",
+        "42a53924-722a-4dd8-aa2f-1b17f793d26e"
+      ],
+      "settings": {
+        "title": "",
+        "collection_short_desc": "<p>Prepping for a getaway? Shop Anatomie's lightweight, wrinkle-free travel essentials for women.<\/p>",
+        "collection": "essentials"
       }
     },
     "product-grid": {
@@ -14,13 +269,14 @@
         "products_per_page": 16,
         "columns_desktop": 4,
         "image_ratio": "adapt",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": true,
         "enable_filtering": true,
+        "filter_type": "vertical",
         "enable_sorting": true,
-        "collapse_on_larger_devices": false,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -28,6 +284,11 @@
   },
   "order": [
     "banner",
+    "698b9676-2581-47b7-bf81-f58a711628bb",
+    "518cc427-0343-48cd-9c4d-506b6319623b",
+    "7d713589-db74-4cf7-81f2-0fe3e710bba4",
+    "5cdec2b5-dd01-42af-a750-b6e014be6df5",
+    "4457bf35-5cc0-49a5-a886-dce0f888276a",
     "product-grid"
   ]
 }

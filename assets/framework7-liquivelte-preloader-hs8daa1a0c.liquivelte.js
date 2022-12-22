@@ -220,8 +220,8 @@ function create_fragment(ctx) {
 	let if_block = current_block_type(ctx);
 
 	let span_levels = [
-		{ style: /*preloaderStyle*/ ctx[2] },
-		{ class: /*classes*/ ctx[1] },
+		{ style: /*preloaderStyle*/ ctx[1] },
+		{ class: /*computedClasses*/ ctx[2] },
 		restProps(/*$$restProps*/ ctx[3])
 	];
 
@@ -263,8 +263,8 @@ function create_fragment(ctx) {
 			}
 
 			set_attributes(span, span_data = get_spread_update(span_levels, [
-				dirty & /*preloaderStyle*/ 4 && { style: /*preloaderStyle*/ ctx[2] },
-				dirty & /*classes*/ 2 && { class: /*classes*/ ctx[1] },
+				dirty & /*preloaderStyle*/ 2 && { style: /*preloaderStyle*/ ctx[1] },
+				{ class: /*computedClasses*/ ctx[2] },
 				dirty & /*$$restProps*/ 8 && restProps(/*$$restProps*/ ctx[3])
 			]));
 		},
@@ -280,12 +280,12 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let sizeComputed;
 	let preloaderStyle;
-	let classes;
-	const omit_props_names = ["lec","style","class","size"];
+	const omit_props_names = ["lec","style","classes","size"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { lec } = $$props;
 	let { style = undefined } = $$props;
-	let { class: className = undefined } = $$props;
+	let computedClasses = undefined;
+	let { classes } = $$props;
 	let { size = undefined } = $$props;
 
 	let theme = useTheme(t => {
@@ -295,9 +295,9 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$new_props => {
 		$$invalidate(10, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('lec' in $$new_props) $$invalidate(4, lec = $$new_props.lec);
-		if ('style' in $$new_props) $$invalidate(5, style = $$new_props.style);
-		if ('class' in $$new_props) $$invalidate(6, className = $$new_props.class);
+		if ('lec' in $$new_props) $$invalidate(5, lec = $$new_props.lec);
+		if ('style' in $$new_props) $$invalidate(6, style = $$new_props.style);
+		if ('classes' in $$new_props) $$invalidate(4, classes = $$new_props.classes);
 		if ('size' in $$new_props) $$invalidate(7, size = $$new_props.size);
 	};
 
@@ -308,25 +308,25 @@ function instance($$self, $$props, $$invalidate) {
 			: size);
 		}
 
-		if ($$self.$$.dirty & /*style, sizeComputed*/ 288) {
-			$$invalidate(2, preloaderStyle = ((style || '') + (sizeComputed
+		if ($$self.$$.dirty & /*style, sizeComputed*/ 320) {
+			$$invalidate(1, preloaderStyle = ((style || '') + (sizeComputed
 			? `;width: ${sizeComputed}px; height: ${sizeComputed}px; --f7-preloader-size: ${sizeComputed}px`
 			: '')).replace(';;', ';'));
 		}
 
-		$$invalidate(1, classes = classNames(className, 'preloader', colorClasses($$props)));
+		$$invalidate(4, classes = classNames(classes, 'preloader', colorClasses($$props)));
 	};
 
 	$$props = exclude_internal_props($$props);
 
 	return [
 		theme,
-		classes,
 		preloaderStyle,
+		computedClasses,
 		$$restProps,
+		classes,
 		lec,
 		style,
-		className,
 		size,
 		sizeComputed
 	];
@@ -335,7 +335,7 @@ function instance($$self, $$props, $$invalidate) {
 class Preloader extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { lec: 4, style: 5, class: 6, size: 7 });
+		init(this, options, instance, create_fragment, safe_not_equal, { lec: 5, style: 6, classes: 4, size: 7 });
 	}
 }
 
