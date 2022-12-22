@@ -4,11 +4,13 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
+export let aspect_ratio;
+export let alt;
   import Image from './image.liquivelte';
   export let src;
   export let sizes;
 </script>
 <div class="image">
-  <Image  sizes="{ sizes }"      lec={lec} />
+  <Image  sizes="{ sizes }"   src={src} alt={alt} aspect_ratio={aspect_ratio}    lec={lec} />
 </div>
 

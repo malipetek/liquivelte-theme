@@ -5,6 +5,7 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
+export let inputWidth;
   export let cart;
   import { Button, Block, BlockTitle, View, Page, List, ListItem, Stepper } from 'framework7-liquivelte'; 
   import Loadable from '../../../snippets/loadable.liquivelte';
@@ -20,14 +21,14 @@
  
 	cartStore.set(cart);
   </script>
-  <View  classes="cart-drawer"  cart={cart} min_amounts={min_amounts}    lec={lec} >
-    <Page   cart={cart} min_amounts={min_amounts}    lec={lec} >
-			<Block   cart={cart} min_amounts={min_amounts}    lec={lec} >
-				<BlockTitle   cart={cart} min_amounts={min_amounts}    lec={lec} >
+  <View  classes="cart-drawer"  inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
+    <Page   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
+			<Block   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
+				<BlockTitle   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
 					Cart
 				</BlockTitle>
 			</Block>
-			<List    cart={cart} min_amounts={min_amounts}    lec={lec} >
+			<List    inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
 				{#each  $cartStore.items as item, index  (item.id) }
 {@const forloop = {
   first: index === 0,
@@ -38,7 +39,7 @@
   rindex0: ( $cartStore.items).length - index - 1,
   length: ( $cartStore.items).length,
 } }
-					<ListItem  classes="h-[120px]"  cart={cart} min_amounts={min_amounts}    lec={lec} >
+					<ListItem  classes="h-[120px]"  inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
 						<div slot="header" class="text-xl mb-4">{ item.product_title }</div>
 						<div slot="after" class="ml-2"> { liquid.money(item.price) } </div>
 						<div slot="text" class="cart-item-options">
@@ -61,17 +62,17 @@
 							{/if}
 						</div>
 						<div slot="footer" class="ml-2">
-							<Loadable    cart={cart} min_amounts={min_amounts}    lec={lec} > 
+							<Loadable    inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
 								<Stepper  raised 
 									onChange="{ quantityChange.bind(item) }"
 									value="{item.quantity}"
-									  cart={cart} min_amounts={min_amounts}    lec={lec} />
+									  inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} />
 							</Loadable>
 						</div>
 					</ListItem>
 				{/each}
 			</List>
-			<Block  classes="cart-drawer-bottom"  cart={cart} min_amounts={min_amounts}    lec={lec} >
+			<Block  classes="cart-drawer-bottom"  inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} >
 					<div class="cart-drawer-subtotal">
 						<span class="text-gray text-base float-left" data-t="{ liquid.t('general.cart.subtotal') }"> { liquid.t('general.cart.subtotal') } </span> 
 						<span cart-drawer-subtotal-text class="float-right text-black text-lg ">{ liquid.money(cart.items_subtotal_price) }</span>

@@ -419,9 +419,9 @@
   assign section_blocks_json = section_blocks_json | append: ']'
 %}					
 	<script type="text/noscript"  class="instance-data svelte-strz53">{
-	"animations" : {{ animations | json }}
+	"left" : {{ left | json }} , "title_top" : {{ title_top | json }} , "font_size" : {{ font_size | json }} , "color" : {{ color | json }} , "bold" : {{ bold | json }} , "animations" : {{ animations | json }}
 	,
-	"sectionƒƒsettings": {{ section.settings | json }} , "sectionƒƒblocks": {{ section_blocks_json }}
+	"blockƒƒsettings": {{ block.settings | json }} , "sectionƒƒsettings": {{ section.settings | json }} , "sectionƒƒblocks": {{ section_blocks_json }}
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-strz53">(() => {

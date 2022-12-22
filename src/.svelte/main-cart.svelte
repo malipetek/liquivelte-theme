@@ -5,6 +5,7 @@
   const liquid = cachedLiquid(lec);
   let index = 0;
 
+export let inputWidth;
   import QuantityBox from '../snippets/quantity-box.liquivelte';
   import Loadable from '../snippets/loadable.liquivelte';
 	import Icon from '../snippets/icon.liquivelte';
@@ -134,13 +135,13 @@
 									{/each}
 								</div>
 							</div>
-							<Loadable  bind:loading   cart={cart} min_amounts={min_amounts}    lec={lec} > 
-								<QuantityBox  minimum={min_amounts_data[item.id]} quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}"   cart={cart} min_amounts={min_amounts}    lec={lec} /> 
+							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
+								<QuantityBox  minimum={min_amounts_data[item.id]} quantity="{item.quantity}" on:qtychange="{quantityChange.bind(item)}"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} /> 
 							</Loadable>
 						</div>
 						<div class="cart-item-right">
-							<Loadable  bind:loading   cart={cart} min_amounts={min_amounts}    lec={lec} > 
-								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > <Icon  name="icon-garbage" color="#a6a6a6"   cart={cart} min_amounts={min_amounts}    lec={lec} /> </div>
+							<Loadable  bind:loading   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} > 
+								<div class="pointer" on:click="{() => updateLineItem(item.id, 0) }" > <Icon  name="icon-garbage" color="#a6a6a6"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts}    lec={lec} /> </div>
 							</Loadable>
 							<div class="cart-item-price text-black text-xl"> { liquid.money(item.price) } </div>
 						</div> 
