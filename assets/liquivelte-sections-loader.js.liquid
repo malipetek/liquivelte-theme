@@ -1,6 +1,16 @@
 
   let liquivelteSections = new Map;
     
+        liquivelteSections.set('collection-banner', {
+          js: "{{ 'collection-banner.liquivelte.js' | asset_url }}",
+          css: "{{ 'collection-banner.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('collection-product-grid', {
+          js: "{{ 'collection-product-grid.liquivelte.js' | asset_url }}",
+          css: "{{ 'collection-product-grid.liquivelte.css' | asset_url }}"
+        });
+        
         liquivelteSections.set('collection-section', {
           js: "{{ 'collection-section.liquivelte.js' | asset_url }}",
           css: "{{ 'collection-section.liquivelte.css' | asset_url }}"
@@ -11,9 +21,19 @@
           css: "{{ 'exploding-gallery.liquivelte.css' | asset_url }}"
         });
         
+        liquivelteSections.set('facets', {
+          js: "{{ 'facets.liquivelte.js' | asset_url }}",
+          css: "{{ 'facets.liquivelte.css' | asset_url }}"
+        });
+        
         liquivelteSections.set('header', {
           js: "{{ 'header.liquivelte.js' | asset_url }}",
           css: "{{ 'header.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('icons-gallery', {
+          js: "{{ 'icons-gallery.liquivelte.js' | asset_url }}",
+          css: "{{ 'icons-gallery.liquivelte.css' | asset_url }}"
         });
         
         liquivelteSections.set('liquivelte-product', {
@@ -75,11 +95,7 @@
         wrapper.svelteComponent = new liquivelteComponent.default({
           target: wrapper,
           hydrate: true,
-          props: {
-              ...svelteProps,
-              ...rawIncludes,
-              lec: liquid_expression_cache
-          }
+          context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
         });
         
       }

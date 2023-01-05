@@ -63,8 +63,7 @@
 
 <div
   bind:this="{slideEl}"
-  style="width: calc(100% / var(--slides-per-view, 1));"
-  class="{{ classes }} {{ slideClasses }}"
+  class="swiper-slide {{ classes }} {{ slideClasses }}"
   data-swiper-slide-index="{virtualIndex}"
   {...$$restProps}
 >
@@ -74,28 +73,16 @@
       data-swiper-zoom="{zoom == 'number' ? zoom : undefined}"
     >
       
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_swiper-slide != blank -%}
 			{{- slot_default_framework7-liquivelte_swiper-slide -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
     </div>
   {% else %}
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_swiper-slide != blank -%}
 			{{- slot_default_framework7-liquivelte_swiper-slide -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   {% endif %}
 </div>
@@ -141,6 +128,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

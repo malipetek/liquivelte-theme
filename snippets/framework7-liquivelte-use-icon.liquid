@@ -80,12 +80,14 @@ smns stands for "slot module name separator"
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
 {% assign modulename = basename | append: 'badge' %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
+{% assign slot_content_Badge = '' %}
 {% assign props = '' %}
   {/if}
 {%- endcapture -%}
 {% assign slot_content_Icon = slot_content_Icon | append: '-scs-' | append: 'icon' | append: '-scvs-' | append: slot_content_def_Icon %}
 {% assign modulename = basename | append: 'icon' %}
 {% include modulename, liquivelte: true, props: props_Icon, sub_include: true, slot_contents: slot_content_Icon, basename: '' %}
+{% assign slot_content_Icon = '' %}
 {% assign props = '' %}
 
 	
@@ -129,6 +131,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

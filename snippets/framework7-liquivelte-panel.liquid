@@ -136,15 +136,9 @@
 
 <div bind:this="{el}" class="panel {{ classes }} {{ computedClasses }}" data-f7-slot="{f7Slot}" {...restProps($$restProps)}>
   
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_panel != blank -%}
 			{{- slot_default_framework7-liquivelte_panel -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   {% if resizable %}
     <div class="panel-resize-handler" ></div>
@@ -192,6 +186,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

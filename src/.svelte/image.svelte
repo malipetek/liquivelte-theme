@@ -6,10 +6,10 @@
   let index = 0;
 
 export let src;
-export let alt;
 export let aspect_ratio;
 export let sizes;
 export let classes;
+let srcset = false;
 </script>
 {#if srcset }
   <img

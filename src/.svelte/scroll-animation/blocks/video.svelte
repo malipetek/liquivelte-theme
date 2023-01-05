@@ -1,7 +1,11 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 

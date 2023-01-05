@@ -6,6 +6,7 @@
 			assign init = null
 			assign url = null
 			assign classes = null
+			assign main = null
 			-%}
 	{%- liquid
 	assign lv_props_arr = props | split: '-prsp-'
@@ -45,6 +46,9 @@
 	if lv_propName == 'classes'
 		assign classes = lv_propValue
 	endif
+	if lv_propName == 'main'
+		assign main = lv_propValue
+	endif
 	endfor
 	-%}
 	
@@ -66,17 +70,23 @@
 	{%- endunless -%}
 	
 
-<div class="view {{ classes }} {{ computedClasses }}" style="{{ style }}" id="{{ id }}" bind:this="{el}">
+
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if main != blank
+	assign dynamic_classes = dynamic_classes | append: ' view-main'
+	endif
+	-%}
+	<div  class="view {{ classes }} {{ computedClasses }}{{ dynamic_classes }}"
+     
+      style="{{ style }}"
+      id="{{ id }}"
+      bind:this="{el}"
+    >
   
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_view != blank -%}
 			{{- slot_default_framework7-liquivelte_view -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   {% for page in pages %}
     {% assign index = forloop.index0 %}
@@ -97,21 +107,16 @@ smns stands for "slot module name separator"
         <svelte:component this={page.component} {...page.props} />
       {% else %}
         
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_view != blank -%}
 			{{- slot_default_framework7-liquivelte_view -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
       {% endif %}
     {%- endcapture -%}
 {% assign slot_content_RouterContextProvider = slot_content_RouterContextProvider | append: '-scs-' | append: 'router-context-provider' | append: '-scvs-' | append: slot_content_def_RouterContextProvider %}
 {% assign modulename = basename | append: 'router-context-provider' %}
 {% include modulename, liquivelte: true, props: props_RouterContextProvider, sub_include: true, slot_contents: slot_content_RouterContextProvider, basename: '' %}
+{% assign slot_content_RouterContextProvider = '' %}
 {% assign props = '' %}
   {% endfor %}
 </div>
@@ -157,6 +162,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);
@@ -177,6 +183,7 @@ smns stands for "slot module name separator"
 			assign init = null
 			assign url = null
 			assign classes = null
+			assign main = null
 			-%}
 	{%- liquid 
 			assign slot_default_framework7-liquivelte_view = null

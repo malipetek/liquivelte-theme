@@ -1,21 +1,25 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
   let block = {};
   export let blockƒƒsettings; 
-block.settings = blockƒƒsettings;
+block.settings = themeImports['blockƒƒsettings'];
   import "./text.schema.json";
   import "./item.schema.json";
 
-  export let left;
-  export let title_top;
-  export let font_size;
-  export let color;
-  export let bold;
+  export let left = themeImports['left'];
+  export let title_top = themeImports['title_top'];
+  export let font_size = themeImports['font_size'];
+  export let color = themeImports['color'];
+  export let bold = themeImports['bold'];
   export let anim_style;
 </script>
 

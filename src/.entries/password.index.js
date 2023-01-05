@@ -12,6 +12,8 @@
   import "../.templates/index.js";
   
 
-  document.addEventListener('DOMContentLoaded', () => {
-    
-  });
+   const initializeObservers = () => {
+     };
+  document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
+  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
+  

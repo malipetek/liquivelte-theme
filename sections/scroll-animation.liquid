@@ -419,9 +419,9 @@
   assign section_blocks_json = section_blocks_json | append: ']'
 %}					
 	<script type="text/noscript"  class="instance-data svelte-strz53">{
-	"left" : {{ left | json }} , "title_top" : {{ title_top | json }} , "font_size" : {{ font_size | json }} , "color" : {{ color | json }} , "bold" : {{ bold | json }} , "animations" : {{ animations | json }}
+	"animations" : {{ animations | json }}
 	,
-	"blockƒƒsettings": {{ block.settings | json }} , "sectionƒƒsettings": {{ section.settings | json }} , "sectionƒƒblocks": {{ section_blocks_json }}
+	"sectionƒƒsettings": {{ section.settings | json }} , "sectionƒƒblocks": {{ section_blocks_json }}
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-strz53">(() => {
@@ -456,6 +456,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

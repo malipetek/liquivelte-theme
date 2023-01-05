@@ -60,9 +60,9 @@
         bind:clientWidth="{itemWidths[forloop.index]}"
         bind:clientHeight="{itemHeights[forloop.index]}">
           <picture  class=" svelte-12dbek">
-            <source media="(min-width:650px)" srcset="{{ block.settings.image | img_url: 'x800' }}" liquivelte-value-cache="img_url§{{block.settings.image}}, {{'x800'}}§{{block.settings.image| img_url: 'x800'  }}">
-            <source media="(min-width:1200px)" srcset="{{ block.settings.image | img_url: 'x800' }}" liquivelte-value-cache="img_url§{{block.settings.image}}, {{'x800'}}§{{block.settings.image| img_url: 'x800'  }}">
-            <img  class=" svelte-12dbek" src="{{ block.settings.image | img_url: 'x800' }}" liquivelte-value-cache="img_url§{{block.settings.image}}, {{'x800'}}§{{block.settings.image| img_url: 'x800'  }}" alt="{{ block.settings.image.alt }}" style="width:auto;" />
+            <source media="(min-width:650px)" srcset="{{ block.settings.image | img_url: 'x800' }}" liquivelte-value-cache="img_url§{{block.settings.image | escape -}}, {{'x800'}}§{{block.settings.image| img_url: 'x800'  }}">
+            <source media="(min-width:1200px)" srcset="{{ block.settings.image | img_url: 'x800' }}" liquivelte-value-cache="img_url§{{block.settings.image | escape -}}, {{'x800'}}§{{block.settings.image| img_url: 'x800'  }}">
+            <img  class=" svelte-12dbek" src="{{ block.settings.image | img_url: 'x800' }}" liquivelte-value-cache="img_url§{{block.settings.image | escape -}}, {{'x800'}}§{{block.settings.image| img_url: 'x800'  }}" alt="{{ block.settings.image.alt }}" style="width:auto;" />
           </picture>
         </div>
         {% endfor %}
@@ -192,6 +192,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

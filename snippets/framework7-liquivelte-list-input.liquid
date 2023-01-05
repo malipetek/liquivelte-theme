@@ -327,41 +327,41 @@
 
 <!-- svelte-ignore a11y-autofocus -->
 <!-- svelte-ignore a11y-missing-attribute -->
-{#if wrap}
-  <li class={computedClasses} {...restProps($$restProps)}>
+{% if wrap %}
+  <li class="{{ classes }}" {...restProps($$restProps)}>
     
 	{%- if slot_root-start_framework7-liquivelte_list-input != blank -%}
 		{{- slot_root-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
-    <div class={itemContentClasses}>
+    <div class="item-content item-input {{ itemContentClasses }}">
       
 	{%- if slot_content-start_framework7-liquivelte_list-input != blank -%}
 		{{- slot_content-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
-      {#if isSortable && isSortableOpposite}
+      {% if isSortable and isSortableOpposite %}
         <div class="sortable-handler" />
-      {/if}
+      {% endif %}
 
-      {#if media || hasMediaSlots}
+      {% if media or hasMediaSlots %}
         <div class="item-media">
-          {#if typeof media !== 'undefined'}<img src={media} />{/if}
+          {% if media != blank %}<img src={media} />{% endif %}
           
 	{%- if slot_media_framework7-liquivelte_list-input != blank -%}
 		{{- slot_media_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
         </div>
-      {/if}
+      {% endif %}
       <div class="item-inner">
         
 	{%- if slot_inner-start_framework7-liquivelte_list-input != blank -%}
 		{{- slot_inner-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
-        {#if typeof label !== 'undefined' || hasLabelSlots}
-          <div class={labelClasses}>
+        {% if label != blank or hasLabelSlots %}
+          <div class="item-title item-label {{ labelClasses }}">
             {{ label | default: '' }}
             
 	{%- if slot_label_framework7-liquivelte_list-input != blank -%}
@@ -369,16 +369,16 @@
 	{%- endif -%}
 
           </div>
-        {/if}
-        <div class={inputWrapClasses}>
-          {#if input}
-            {#if type === 'select'}
+        {% endif %}
+        <div class="item-input-wrap {{ inputWrapClasses }}">
+          {% if input %}
+            {% if type == 'select' %}
               <select
-                bind:this={inputEl}
-                style={inputStyle}
-                {name}
-                {placeholder}
-                id={inputId}
+                bind:this="{inputEl}"
+                style="{inputStyle}"
+                name="{name}"
+                placeholder="{{ placeholder }}"
+                id="{inputId}"
                 {size}
                 {accept}
                 {autocomplete}
@@ -397,44 +397,38 @@
                 {readonly}
                 {required}
                 {pattern}
-                validate={typeof validate === 'string' && validate.length ? validate : undefined}
-                data-validate={validate === true ||
+                validate="{typeof validate === 'string' && validate.length ? validate : undefined}"
+                data-validate="{validate === true ||
                 validate === '' ||
                 validateOnBlur === true ||
                 validateOnBlur === ''
                   ? true
-                  : undefined}
-                data-validate-on-blur={validateOnBlur === true || validateOnBlur === ''
+                  : undefined}"
+                data-validate-on-blur="{validateOnBlur === true || validateOnBlur === ''
                   ? true
-                  : undefined}
+                  : undefined}"
                 {tabindex}
-                data-error-message={errorMessageForce ? undefined : errorMessage}
-                class={inputClasses}
-                on:focus={onFocus}
-                on:blur={onBlur}
-                on:input={onInput}
-                on:change={onChange}
-                value={inputValue}
+                data-error-message="{errorMessageForce ? undefined : errorMessage}"
+                class="{inputClasses}"
+                on:focus="{onFocus}"
+                on:blur="{onBlur}"
+                on:input="{onInput}"
+                on:change="{onChange}"
+                value="{inputValue}"
               >
                 
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_list-input != blank -%}
 			{{- slot_default_framework7-liquivelte_list-input -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
               </select>
-            {:else if type === 'textarea'}
+            {% elsif type == 'textarea' %}
               <textarea
-                bind:this={inputEl}
-                style={inputStyle}
+                bind:this="{inputEl}"
+                style="{inputStyle}"
                 {name}
                 {placeholder}
-                id={inputId}
+                id="{inputId}"
                 {size}
                 {inputmode}
                 {accept}
@@ -454,26 +448,26 @@
                 {readonly}
                 {required}
                 {pattern}
-                validate={typeof validate === 'string' && validate.length ? validate : undefined}
-                data-validate={validate === true ||
+                validate="{typeof validate === 'string' && validate.length ? validate : undefined}"
+                data-validate="{validate === true ||
                 validate === '' ||
                 validateOnBlur === true ||
                 validateOnBlur === ''
                   ? true
-                  : undefined}
-                data-validate-on-blur={validateOnBlur === true || validateOnBlur === ''
+                  : undefined}"
+                data-validate-on-blur="{validateOnBlur === true || validateOnBlur === ''
                   ? true
-                  : undefined}
+                  : undefined}"
                 {tabindex}
-                data-error-message={errorMessageForce ? undefined : errorMessage}
-                class={inputClasses}
-                on:focus={onFocus}
-                on:blur={onBlur}
-                on:input={onInput}
-                on:change={onChange}
-                value={inputValue}
+                data-error-message="{errorMessageForce ? undefined : errorMessage}"
+                class="{inputClasses}"
+                on:focus="{onFocus}"
+                on:blur="{onBlur}"
+                on:input="{onInput}"
+                on:change="{onChange}"
+                value="{inputValue}"
               />
-            {:else if type === 'texteditor'}
+            {% elsif type == 'texteditor' %}
               
 {% comment %}
   kvsp stands for "key value separator"
@@ -483,15 +477,15 @@
 {% assign modulename = basename | append: 'text-editor' %}
 {% include modulename, liquivelte: true, props: props_TextEditor, sub_include: true, basename: '' %}
 {% assign props = '' %}
-            {:else}
+            {% else %}
               <input
-                bind:this={inputEl}
-                style={inputStyle}
+                bind:this="{inputEl}"
+                style="{inputStyle}"
                 {name}
-                type={inputType}
+                type="{inputType}"
                 {inputmode}
                 {placeholder}
-                id={inputId}
+                id="{inputId}"
                 {size}
                 {accept}
                 {autocomplete}
@@ -510,35 +504,35 @@
                 {readonly}
                 {required}
                 {pattern}
-                validate={typeof validate === 'string' && validate.length ? validate : undefined}
-                data-validate={validate === true ||
+                validate="{typeof validate === 'string' && validate.length ? validate : undefined}"
+                data-validate="{validate === true ||
                 validate === '' ||
                 validateOnBlur === true ||
                 validateOnBlur === ''
                   ? true
-                  : undefined}
-                data-validate-on-blur={validateOnBlur === true || validateOnBlur === ''
+                  : undefined}"
+                data-validate-on-blur="{validateOnBlur === true || validateOnBlur === ''
                   ? true
-                  : undefined}
-                tabIndex={tabindex}
-                data-error-message={errorMessageForce ? undefined : errorMessage}
-                class={inputClasses}
-                on:focus={onFocus}
-                on:blur={onBlur}
-                on:input={onInput}
-                on:change={onChange}
-                value={type === 'datepicker' || type === 'colorpicker' || type === 'file'
+                  : undefined}"
+                tabIndex="{tabindex}"
+                data-error-message="{errorMessageForce ? undefined : errorMessage}"
+                class="{inputClasses}"
+                on:focus="{onFocus}"
+                on:blur="{onBlur}"
+                on:input="{onInput}"
+                on:change="{onChange}"
+                value="{type === 'datepicker' || type === 'colorpicker' || type === 'file'
                   ? ''
-                  : inputValue}
+                  : inputValue}"
               />
-            {/if}
-          {/if}
+            {% endif %}
+          {% endif %}
           
 	{%- if slot_input_framework7-liquivelte_list-input != blank -%}
 		{{- slot_input_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
-          {#if hasErrorMessage && errorMessageForce}
+          {% if hasErrorMessage && errorMessageForce %}
             <div class="item-input-error-message">
               {{ errorMessage | default: '' }}
               
@@ -547,9 +541,9 @@
 	{%- endif -%}
 
             </div>
-          {/if}
-          {#if clearButton}<span class="input-clear-button" />{/if}
-          {#if typeof info !== 'undefined' || hasInfoSlots}
+          {% endif %}
+          {% if clearButton %}<span class="input-clear-button" />{% endif %}
+          {% if info != blank or hasInfoSlots %}
             <div class="item-input-info">
               {{ info | default: '' }}
               
@@ -558,7 +552,7 @@
 	{%- endif -%}
 
             </div>
-          {/if}
+          {% endif %}
         </div>
         
 	{%- if slot_inner_framework7-liquivelte_list-input != blank -%}
@@ -582,9 +576,9 @@
 	{%- endif -%}
 
     </div>
-    {#if isSortable && !isSortableOpposite}
+    {% if isSortable and isSortableOpposite == blank %}
       <div class="sortable-handler" />
-    {/if}
+    {% endif %}
     
 	{%- if slot_root_framework7-liquivelte_list-input != blank -%}
 		{{- slot_root_framework7-liquivelte_list-input -}}
@@ -596,35 +590,35 @@
 	{%- endif -%}
 
   </li>
-{:else}
-  <div class={itemContentClasses} {...restProps($$restProps)}>
+{% else %}
+  <div class="{itemContentClasses}" {...restProps($$restProps)}>
     
 	{%- if slot_content-start_framework7-liquivelte_list-input != blank -%}
 		{{- slot_content-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
-    {#if isSortable && isSortableOpposite}
+    {% if isSortable and isSortableOpposite %}
       <div class="sortable-handler" />
-    {/if}
+    {% endif %}
 
-    {#if media || hasMediaSlots}
+    {% if media or hasMediaSlots %}
       <div class="item-media">
-        {#if typeof media !== 'undefined'}<img src={media} />{/if}
+        {% if media != blank %}<img src={media} />{% endif %}
         
 	{%- if slot_media_framework7-liquivelte_list-input != blank -%}
 		{{- slot_media_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
       </div>
-    {/if}
+    {% endif %}
     <div class="item-inner">
       
 	{%- if slot_inner-start_framework7-liquivelte_list-input != blank -%}
 		{{- slot_inner-start_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
-      {#if typeof label !== 'undefined' || hasLabelSlots}
-        <div class={labelClasses}>
+      {% if label != blank or hasLabelSlots %}
+        <div class="item-title item-label {{ labelClasses }}">
           {{ label | default: '' }}
           
 	{%- if slot_label_framework7-liquivelte_list-input != blank -%}
@@ -632,16 +626,16 @@
 	{%- endif -%}
 
         </div>
-      {/if}
-      <div class={inputWrapClasses}>
-        {#if input}
-          {#if type === 'select'}
+      {% endif %}
+      <div class="item-input-wrap {{ inputWrapClasses }}">
+        {% if input %}
+          {% if type == 'select' %}
             <select
-              bind:this={inputEl}
-              style={inputStyle}
+              bind:this="{inputEl}"
+              style="{inputStyle}"
               {name}
               {placeholder}
-              id={inputId}
+              id="{inputId}"
               {size}
               {accept}
               {autocomplete}
@@ -660,44 +654,38 @@
               {readonly}
               {required}
               {pattern}
-              validate={typeof validate === 'string' && validate.length ? validate : undefined}
-              data-validate={validate === true ||
+              validate="{typeof validate === 'string' && validate.length ? validate : undefined}"
+              data-validate="{validate === true ||
               validate === '' ||
               validateOnBlur === true ||
               validateOnBlur === ''
                 ? true
-                : undefined}
-              data-validate-on-blur={validateOnBlur === true || validateOnBlur === ''
+                : undefined}"
+              data-validate-on-blur="{validateOnBlur === true || validateOnBlur === ''
                 ? true
-                : undefined}
+                : undefined}"
               {tabindex}
-              data-error-message={errorMessageForce ? undefined : errorMessage}
-              class={inputClasses}
-              on:focus={onFocus}
-              on:blur={onBlur}
-              on:input={onInput}
-              on:change={onChange}
-              value={inputValue}
+              data-error-message="{errorMessageForce ? undefined : errorMessage}"
+              class="{inputClasses}"
+              on:focus="{onFocus}"
+              on:blur="{onBlur}"
+              on:input="{onInput}"
+              on:change="{onChange}"
+              value="{inputValue}"
             >
               
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_list-input != blank -%}
 			{{- slot_default_framework7-liquivelte_list-input -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
             </select>
-          {:else if type === 'textarea'}
+          {% elsif type == 'textarea' %}
             <textarea
-              bind:this={inputEl}
-              style={inputStyle}
+              bind:this="{inputEl}"
+              style="{inputStyle}"
               {name}
               {placeholder}
-              id={inputId}
+              id="{inputId}"
               {size}
               {inputmode}
               {accept}
@@ -717,26 +705,26 @@
               {readonly}
               {required}
               {pattern}
-              validate={typeof validate === 'string' && validate.length ? validate : undefined}
-              data-validate={validate === true ||
+              validate="{typeof validate === 'string' && validate.length ? validate : undefined}"
+              data-validate="{validate === true ||
               validate === '' ||
               validateOnBlur === true ||
               validateOnBlur === ''
                 ? true
-                : undefined}
-              data-validate-on-blur={validateOnBlur === true || validateOnBlur === ''
+                : undefined}"
+              data-validate-on-blur="{validateOnBlur === true || validateOnBlur === ''
                 ? true
-                : undefined}
+                : undefined}"
               {tabindex}
-              data-error-message={errorMessageForce ? undefined : errorMessage}
-              class={inputClasses}
-              on:focus={onFocus}
-              on:blur={onBlur}
-              on:input={onInput}
-              on:change={onChange}
-              value={inputValue}
+              data-error-message="{errorMessageForce ? undefined : errorMessage}"
+              class="{inputClasses}"
+              on:focus="{onFocus}"
+              on:blur="{onBlur}"
+              on:input="{onInput}"
+              on:change="{onChange}"
+              value="{inputValue}"
             />
-          {:else if type === 'texteditor'}
+          {% elsif type == 'texteditor' %}
             
 {% comment %}
   kvsp stands for "key value separator"
@@ -746,15 +734,15 @@
 {% assign modulename = basename | append: 'text-editor' %}
 {% include modulename, liquivelte: true, props: props_TextEditor, sub_include: true, basename: '' %}
 {% assign props = '' %}
-          {:else}
+          {% else %}
             <input
-              bind:this={inputEl}
-              style={inputStyle}
+              bind:this="{inputEl}"
+              style="{inputStyle}"
               {name}
-              type={inputType}
+              type="{inputType}"
               {inputmode}
               {placeholder}
-              id={inputId}
+              id="{inputId}"
               {size}
               {accept}
               {autocomplete}
@@ -773,35 +761,35 @@
               {readonly}
               {required}
               {pattern}
-              validate={typeof validate === 'string' && validate.length ? validate : undefined}
-              data-validate={validate === true ||
+              validate="{typeof validate === 'string' && validate.length ? validate : undefined}"
+              data-validate="{validate === true ||
               validate === '' ||
               validateOnBlur === true ||
               validateOnBlur === ''
                 ? true
-                : undefined}
-              data-validate-on-blur={validateOnBlur === true || validateOnBlur === ''
+                : undefined}"
+              data-validate-on-blur="{validateOnBlur === true || validateOnBlur === ''
                 ? true
-                : undefined}
-              tabIndex={tabindex}
-              data-error-message={errorMessageForce ? undefined : errorMessage}
-              class={inputClasses}
-              on:focus={onFocus}
-              on:blur={onBlur}
-              on:input={onInput}
-              on:change={onChange}
-              value={type === 'datepicker' || type === 'colorpicker' || type === 'file'
+                : undefined}"
+              tabIndex="{tabindex}"
+              data-error-message="{errorMessageForce ? undefined : errorMessage}"
+              class="{inputClasses}"
+              on:focus="{onFocus}"
+              on:blur="{onBlur}"
+              on:input="{onInput}"
+              on:change="{onChange}"
+              value="{type === 'datepicker' || type === 'colorpicker' || type === 'file'
                 ? ''
-                : inputValue}
+                : inputValue}"
             />
-          {/if}
-        {/if}
+          {% endif %}
+        {% endif %}
         
 	{%- if slot_input_framework7-liquivelte_list-input != blank -%}
 		{{- slot_input_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
-        {#if hasErrorMessage && errorMessageForce}
+        {% if hasErrorMessage and errorMessageForce %}
           <div class="item-input-error-message">
             {{ errorMessage | default: '' }}
             
@@ -810,9 +798,9 @@
 	{%- endif -%}
 
           </div>
-        {/if}
-        {#if clearButton}<span class="input-clear-button" />{/if}
-        {#if typeof info !== 'undefined' || hasInfoSlots}
+        {% endif %}
+        {% if clearButton %}<span class="input-clear-button" />{% endif %}
+        {% if info != blank or hasInfoSlots %}
           <div class="item-input-info">
             {{ info | default: '' }}
             
@@ -821,7 +809,7 @@
 	{%- endif -%}
 
           </div>
-        {/if}
+        {% endif %}
       </div>
       
 	{%- if slot_inner_framework7-liquivelte_list-input != blank -%}
@@ -845,7 +833,7 @@
 	{%- endif -%}
 
   </div>
-{/if}
+{% endif %}
 
 	
 						
@@ -888,6 +876,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

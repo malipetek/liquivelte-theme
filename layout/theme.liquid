@@ -49,7 +49,7 @@ window.partytown = {
     {% render 'meta-tags' %}
 
 <!-- liquivelte includes -->
-      {% assign templatesWithLiquivelte = 'index,product' | split: ',' %}
+      {% assign templatesWithLiquivelte = 'collection,index.icon,index,product' | split: ',' %}
       {% assign template_with_suffix_and_directory = template %}
       {% if template.directory %}
         {% assign template_with_suffix_and_directory = template.directory | append: '-' | append: template_with_suffix_and_directory %}
@@ -271,16 +271,25 @@ window.partytown = {
 
   <body class="ios">
 
-    {% capture main_content %}
-      {% section 'prompts' %}
-      {% section 'header' %}
-
-      {{ content_for_layout }}
-
-      {% section 'footer' %}
+    {% capture header_slot_content %}
+    {% section 'prompts' %}
+    {% section 'header' %}
     {% endcapture %}
     
-    {% include 'app-wrapper' with liquivelte: true, main_content: main_content %}
+    {% capture footer_slot_content %}
+      {% section 'footer' %}
+    {% endcapture %}
+
+    {% capture default_slot_content %}
+      {{ content_for_layout }}
+    {% endcapture %}
+
+    {% assign slot_contents_App_Wrapper = '' %}
+    {% assign slot_contents_App_Wrapper = slot_contents_App_Wrapper | append: '-scs-' | append: 'app-wrapper' | append: '-smns-' | append: 'header' | append: '-scvs-' | append: header_slot_content %}
+    {% assign slot_contents_App_Wrapper = slot_contents_App_Wrapper | append: '-scs-' | append: 'app-wrapper' | append: '-smns-' | append: 'footer' | append: '-scvs-' | append: footer_slot_content %}
+    {% assign slot_contents_App_Wrapper = slot_contents_App_Wrapper | append: '-scs-' | append: 'app-wrapper' | append: '-scvs-' | append: default_slot_content %}
+
+    {% include 'app-wrapper' with liquivelte: true, slot_contents: slot_contents_App_Wrapper %}
 
     {% comment %} {% section 'announcement-bar' %} {% endcomment %}    
 

@@ -1,10 +1,13 @@
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-export let inputWidth;
   import Icon from './icon.liquivelte';
   import { loading } from '../scripts/store.module.js';
   export let classes;
@@ -23,7 +26,7 @@ export let inputWidth;
       class:align-center="{ centered }"
       >  
     {#if loading_ }
-      <Icon  name="icon-spinner" width="{ width }"   inputWidth={inputWidth}    lec={lec} />
+      <Icon  name="icon-spinner" width="{ width }"      lec={lec} />
     {:else}
       <slot />
     {/if}

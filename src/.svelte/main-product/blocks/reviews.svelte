@@ -1,13 +1,17 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-  export let review_stars;
-  export let score; 
-  export let reviews_count;
+  export let review_stars = themeImports['review_stars'];
+  export let score = themeImports['score']; 
+  export let reviews_count = themeImports['reviews_count'];
 
   console.log('review_stars ', review_stars);
 </script>

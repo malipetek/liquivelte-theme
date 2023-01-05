@@ -11,9 +11,9 @@
   /* {% comment %} DO NOT REMOVE THIS LINE {% endcomment %} */
   // include template module
 
-  document.addEventListener('DOMContentLoaded', () => {
+   const initializeObservers = () => {
     
-  Array.from(document.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -26,18 +26,14 @@
           wrapper.svelteComponent = new (await import("../sections/prompts/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
   
-  Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -50,18 +46,14 @@
           wrapper.svelteComponent = new (await import("../sections/header/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
   
-  Array.from(document.querySelectorAll('.liquivelte-component.app-wrapper')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.app-wrapper')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -74,15 +66,13 @@
           wrapper.svelteComponent = new (await import("../snippets/app-wrapper.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
+   };
+  document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
+  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
   
-  });

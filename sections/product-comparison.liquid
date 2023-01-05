@@ -106,9 +106,9 @@
           <div  class="product-image image-1 svelte-2hua15" style="--ratio: {{ block.settings.product_image_1.aspect_ratio }}">
             <img  class=" svelte-2hua15"
             loading="eager" 
-            src="{{ block.settings.product_image_1 | img_url: '300x' }}" liquivelte-value-cache="img_url§{{block.settings.product_image_1}}, {{'300x'}}§{{block.settings.product_image_1| img_url: '300x'  }}"
+            src="{{ block.settings.product_image_1 | img_url: '300x' }}" liquivelte-value-cache="img_url§{{block.settings.product_image_1 | escape -}}, {{'300x'}}§{{block.settings.product_image_1| img_url: '300x'  }}"
             width={{ 300 }} 
-            height="{{ 300 | divided_by: block.settings.product_image_1.aspect_ratio }}" liquivelte-value-cache="divided_by§{{300}}, {{block.settings.product_image_1.aspect_ratio}}§{{300| divided_by: block.settings.product_image_1.aspect_ratio  }}" />
+            height="{{ 300 | divided_by: block.settings.product_image_1.aspect_ratio }}" liquivelte-value-cache="divided_by§{{300 | escape -}}, {{block.settings.product_image_1.aspect_ratio}}§{{300| divided_by: block.settings.product_image_1.aspect_ratio  }}" />
           </div>
           <div  class="product-info svelte-2hua15">
             <select bind:value="{ current_block }"  class="product-title svelte-2hua15">       
@@ -149,9 +149,9 @@
           <div  class="product-image image-2 svelte-2hua15" style="--ratio: {{ block.settings.product_image_1.aspect_ratio }}">
             <img  class=" svelte-2hua15"
             loading="eager" 
-            src="{{ block.settings.product_image_2 | img_url: '300x' }}" liquivelte-value-cache="img_url§{{block.settings.product_image_2}}, {{'300x'}}§{{block.settings.product_image_2| img_url: '300x'  }}"
+            src="{{ block.settings.product_image_2 | img_url: '300x' }}" liquivelte-value-cache="img_url§{{block.settings.product_image_2 | escape -}}, {{'300x'}}§{{block.settings.product_image_2| img_url: '300x'  }}"
             width={{ 300 }} 
-            height="{{ 300 | divided_by: block.settings.product_image_2.aspect_ratio }}" liquivelte-value-cache="divided_by§{{300}}, {{block.settings.product_image_2.aspect_ratio}}§{{300| divided_by: block.settings.product_image_2.aspect_ratio  }}"
+            height="{{ 300 | divided_by: block.settings.product_image_2.aspect_ratio }}" liquivelte-value-cache="divided_by§{{300 | escape -}}, {{block.settings.product_image_2.aspect_ratio}}§{{300| divided_by: block.settings.product_image_2.aspect_ratio  }}"
             />
           </div>
           <div  class="product-info svelte-2hua15">
@@ -444,6 +444,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

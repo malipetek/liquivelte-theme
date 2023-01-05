@@ -107,6 +107,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: 'framework7-liquivelte-button' | append: '-scvs-' | append: slot_content_def_Button %}
 {% assign modulename = basename | append: 'framework7-liquivelte-button' %}
 {% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Button = '' %}
 {% assign props = '' %}
 {% endif %}
 
@@ -152,6 +153,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

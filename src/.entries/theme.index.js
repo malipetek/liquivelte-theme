@@ -4,6 +4,10 @@ console.log('custom entry');
   import Panel from 'framework7/components/panel';
   import Popup from 'framework7/components/popup';
   import Stepper from 'framework7/components/stepper';
+  import Accordion from 'framework7/components/accordion';
+  import Menu from 'framework7/components/menu';
+  import SmartSelect from 'framework7/components/smart-select';
+  import Range from 'framework7/components/range';
 
   // Import F7-Svelte Plugin
   import f7liquivelte from 'framework7-liquivelte';
@@ -13,9 +17,12 @@ Framework7.use([
   f7liquivelte,
   Panel,
   Popup,
-  Stepper
+  Stepper,
+  Accordion,
+  Menu,
+  SmartSelect,
+  Range
 ]);
-
 
 const onIntersect = (el, callback) => {
   const observer = new IntersectionObserver(callback, {
@@ -45,11 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
           wrapper.svelteComponent = new (await import("../sections/prompts/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-              ...svelteProps,
-              ...rawIncludes,
-              lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
@@ -69,11 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
           wrapper.svelteComponent = new (await import("../sections/header/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-              ...svelteProps,
-              ...rawIncludes,
-              lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
@@ -93,11 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
           wrapper.svelteComponent = new (await import("../snippets/app-wrapper.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-              ...svelteProps,
-              ...rawIncludes,
-              lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();

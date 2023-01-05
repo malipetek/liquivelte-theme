@@ -70,18 +70,12 @@
 	{%- endunless -%}
 	
 
-<div class={computedClasses} {...restProps($$restProps)}>
-  <div class="menu-dropdown-content" style={contentHeight && `height: ${contentHeight}`}>
+<div class="menu-dropdown {{ classes }} {{ computedClasses }}" {...restProps($$restProps)}>
+  <div class="menu-dropdown-content" style="{contentHeight && `height: ${contentHeight}`}">
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_menu-dropdown != blank -%}
 			{{- slot_default_framework7-liquivelte_menu-dropdown -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   </div>
 </div>
@@ -127,6 +121,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

@@ -12,9 +12,9 @@
   import "../.templates/index.js";
   
 
-  document.addEventListener('DOMContentLoaded', () => {
+   const initializeObservers = () => {
     
-  Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -27,15 +27,13 @@
           wrapper.svelteComponent = new (await import("../sections/header/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
+   };
+  document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
+  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
   
-  });

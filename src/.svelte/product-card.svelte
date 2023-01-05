@@ -1,7 +1,11 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
@@ -10,7 +14,7 @@
   import VerticalStepper from './vertical-stepper.liquivelte';
   import Loadable from './loadable.liquivelte';
   import Icon from './icon.liquivelte';
-  
+    
   export let product;
   let expandableOpened = false;
 
@@ -32,7 +36,8 @@
   
   $: quantity = cartItem?.quantity || 0;
 </script>
-<Card  classes="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}"     lec={lec} >
+
+  <Card  classes="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}"     lec={lec} >
     <Loadable  classes="absolute -right-[10px] -top-[10px] z-10" centered     lec={lec} >
       <VerticalStepper  small
                       disabled="{ !product.available }" 
@@ -41,28 +46,29 @@
                       onClick="{addToCart}"      lec={lec} >
       </VerticalStepper>
     </Loadable>
-  <CardHeader 
-  classes="no-border"
-  valign="bottom"
-       lec={lec} >
-  <img src="{ liquid.image_url(product.media[0], {"width":"300"}) }" 
-  width="300"
-  style="aspect-ratio: { product.media[0].aspect_ratio }" />
-</CardHeader>
-<CardContent      lec={lec} >
-<div >
-  <h3>
-    { product.title }
-  </h3>
-</div> 
-
-</CardContent>
-    <CardFooter      lec={lec} >
-      <span> { liquid.money(product.price) } </span>
-      <Link      lec={lec} > Add to Wishlist </Link>
-    </CardFooter>
-</Card>
-
+    <CardHeader 
+    classes="no-border"
+    valign="bottom"
+         lec={lec} >
+    <Link  external href="/products/{ product.handle }"     lec={lec} >
+    <img src="{ liquid.image_url(product.media[0], {"width":"300"}) }" 
+    width="300"
+    style="aspect-ratio: { product.media[0].aspect_ratio }" />
+    </Link>
+  </CardHeader>
+  <CardContent      lec={lec} >
+  <div >
+    <span> { liquid.money(product.price) } </span>
+  </div> 
+    <h3>
+      { product.title }
+    </h3>
+  </CardContent>
+  
+      <CardFooter      lec={lec} >
+        <Link      lec={lec} > Add to Wishlist </Link>
+      </CardFooter>
+  </Card>
 <style>
    .card-header-pic .card-header {
     background-size: cover;

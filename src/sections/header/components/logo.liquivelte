@@ -18,6 +18,7 @@ import logo_alt from 'theme';
     height="{{- logo_height -}}"
     alt="{{- logo_alt -}}"
   />
+  <span class="h2 text-white">{{- shop.name -}}</span>
 {% else %}
   <span class="h2">{{- shop.name -}}</span>
 {% endif %}

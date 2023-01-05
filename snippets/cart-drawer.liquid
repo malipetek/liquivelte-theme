@@ -84,7 +84,7 @@ smns stands for "slot module name separator"
 
 {%- capture slot_content_View_media -%}<div slot="media">
 							{% if item.image %}
-								<img src="{{ item.image | image_url: width: 120 }}" liquivelte-value-cache="image_url§{{item.image}}, {{width}}, {{120}}§{{item.image| image_url: width: 120  }}" width="80" />
+								<img src="{{ item.image | image_url: width: 120 }}" liquivelte-value-cache="image_url§{{item.image | escape -}}, {{width}}, {{120}}§{{item.image| image_url: width: 120  }}" width="80" />
 							{% endif %}
 						</div>{%- endcapture -%}
 {% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-smns-' | append: 'media' | append: '-scvs-' | append: slot_content_View_media %}
@@ -116,6 +116,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_def_Loadable %}
 {% assign modulename = basename | append: 'loadable' %}
 {% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: '' %}
+{% assign slot_content_Loadable = '' %}
 {% assign props = '' %}
 						</div>{%- endcapture -%}
 {% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-smns-' | append: 'footer' | append: '-scvs-' | append: slot_content_View_footer %}
@@ -165,11 +166,13 @@ smns stands for "slot module name separator"
 {% assign slot_content_BlockTitle = slot_content_BlockTitle | append: '-scs-' | append: 'framework7-liquivelte-block-title' | append: '-scvs-' | append: slot_content_def_BlockTitle %}
 {% assign modulename = basename | append: 'framework7-liquivelte-block-title' %}
 {% include modulename, liquivelte: true, props: props_BlockTitle, sub_include: true, slot_contents: slot_content_BlockTitle, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_BlockTitle = '' %}
 {% assign props = '' %}
 			{%- endcapture -%}
 {% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: 'framework7-liquivelte-block' | append: '-scvs-' | append: slot_content_def_Block %}
 {% assign modulename = basename | append: 'framework7-liquivelte-block' %}
 {% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Block = '' %}
 {% assign props = '' %}
 			
 {% comment %}
@@ -208,12 +211,14 @@ smns stands for "slot module name separator"
 {% assign slot_content_ListItem = slot_content_ListItem | append: '-scs-' | append: 'framework7-liquivelte-list-item' | append: '-scvs-' | append: slot_content_def_ListItem %}
 {% assign modulename = basename | append: 'framework7-liquivelte-list-item' %}
 {% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, slot_contents: slot_content_ListItem, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_ListItem = '' %}
 {% assign props = '' %}
 				{% endfor %}
 			{%- endcapture -%}
 {% assign slot_content_List = slot_content_List | append: '-scs-' | append: 'framework7-liquivelte-list' | append: '-scvs-' | append: slot_content_def_List %}
 {% assign modulename = basename | append: 'framework7-liquivelte-list' %}
 {% include modulename, liquivelte: true, props: props_List, sub_include: true, slot_contents: slot_content_List, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_List = '' %}
 {% assign props = '' %}
 			
 {% comment %}
@@ -229,7 +234,7 @@ smns stands for "slot module name separator"
 
 {%- capture slot_content_def_Block -%}
 					<div  class="cart-drawer-subtotal svelte-2fnp2n">
-						<span  class="text-gray text-base float-left svelte-2fnp2n" data-t="{{ 'general.cart.subtotal' | t }}" liquivelte-value-cache="t§{{'general.cart.subtotal'}}§{{'general.cart.subtotal'| t  }}"> {{ 'general.cart.subtotal' | t }} </span> 
+						<span  class="text-gray text-base float-left svelte-2fnp2n" data-t="{{ 'general.cart.subtotal' | t }}" liquivelte-value-cache="t§{{'general.cart.subtotal' | escape -}}§{{'general.cart.subtotal'| t  }}"> {{ 'general.cart.subtotal' | t }} </span> 
 						<span cart-drawer-subtotal-text  class="float-right text-black text-lg  svelte-2fnp2n">{{ cart.items_subtotal_price | money }}</span>
 					</div>
 					<div  class="cart-drawer-taxes-notice text-base text-black float-left svelte-2fnp2n"> Taxes and shipping calculated at checkout </div>
@@ -241,16 +246,19 @@ smns stands for "slot module name separator"
 {% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: 'framework7-liquivelte-block' | append: '-scvs-' | append: slot_content_def_Block %}
 {% assign modulename = basename | append: 'framework7-liquivelte-block' %}
 {% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Block = '' %}
 {% assign props = '' %}
     {%- endcapture -%}
 {% assign slot_content_Page = slot_content_Page | append: '-scs-' | append: 'framework7-liquivelte-page' | append: '-scvs-' | append: slot_content_def_Page %}
 {% assign modulename = basename | append: 'framework7-liquivelte-page' %}
 {% include modulename, liquivelte: true, props: props_Page, sub_include: true, slot_contents: slot_content_Page, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Page = '' %}
 {% assign props = '' %}
   {%- endcapture -%}
 {% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-scvs-' | append: slot_content_def_View %}
 {% assign modulename = basename | append: 'framework7-liquivelte-view' %}
 {% include modulename, liquivelte: true, props: props_View, sub_include: true, slot_contents: slot_content_View, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_View = '' %}
 {% assign props = '' %}
 
 	
@@ -312,7 +320,7 @@ smns stands for "slot module name separator"
 -%}					
 						
 	<script type="text/noscript"  class="instance-data svelte-2fnp2n">{
-	"inputWidth" : {{ inputWidth | json }} , "cart": {{ cart_json }}, "min_amounts" : {{ min_amounts | json }}
+	"cart": {{ cart_json }}, "min_amounts" : {{ min_amounts | json }}
 	
 	
 	}</script>
@@ -349,6 +357,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

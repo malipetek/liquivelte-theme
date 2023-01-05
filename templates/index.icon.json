@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "icons": {
+      "type": "icons-gallery"
+    }
+  },
+  "order": [
+    "icons"
+  ]
+}

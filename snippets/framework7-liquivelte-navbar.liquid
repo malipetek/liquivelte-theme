@@ -143,14 +143,14 @@
 	
 
 <div class="navbar {{ classes }}" bind:this="{el}" data-f7-slot="{f7Slot}" {...restProps($$restProps)}>
-  <div class="navbar-bg" />
+  <div class="navbar-bg" ></div>
   
 	{%- if slot_before-inner_framework7-liquivelte_navbar != blank -%}
 		{{- slot_before-inner_framework7-liquivelte_navbar -}}
 	{%- endif -%}
 
-  <div class="{{ innerClasses }}">
-    {#if backLink || hasLeftSlots}
+  <div class="navbar-inner {{ innerClasses }}">
+    {% if backLink or hasLeftSlots %}
       
 {% comment %}
 kvsp stands for "key value separator"
@@ -178,9 +178,10 @@ smns stands for "slot module name separator"
 {% assign slot_content_NavLeft = slot_content_NavLeft | append: '-scs-' | append: 'nav-left' | append: '-scvs-' | append: slot_content_def_NavLeft %}
 {% assign modulename = basename | append: 'nav-left' %}
 {% include modulename, liquivelte: true, props: props_NavLeft, sub_include: true, slot_contents: slot_content_NavLeft, basename: '' %}
+{% assign slot_content_NavLeft = '' %}
 {% assign props = '' %}
-    {/if}
-    {#if title || subtitle || hasTitleSlots}
+    {% endif %}
+    {% if title or subtitle or hasTitleSlots %}
       
 {% comment %}
 kvsp stands for "key value separator"
@@ -203,9 +204,10 @@ smns stands for "slot module name separator"
 {% assign slot_content_NavTitle = slot_content_NavTitle | append: '-scs-' | append: 'nav-title' | append: '-scvs-' | append: slot_content_def_NavTitle %}
 {% assign modulename = basename | append: 'nav-title' %}
 {% include modulename, liquivelte: true, props: props_NavTitle, sub_include: true, slot_contents: slot_content_NavTitle, basename: '' %}
+{% assign slot_content_NavTitle = '' %}
 {% assign props = '' %}
-    {/if}
-    {#if hasRightSlots}
+    {% endif %}
+    {% if hasRightSlots %}
       
 {% comment %}
 kvsp stands for "key value separator"
@@ -233,9 +235,10 @@ smns stands for "slot module name separator"
 {% assign slot_content_NavRight = slot_content_NavRight | append: '-scs-' | append: 'nav-right' | append: '-scvs-' | append: slot_content_def_NavRight %}
 {% assign modulename = basename | append: 'nav-right' %}
 {% include modulename, liquivelte: true, props: props_NavRight, sub_include: true, slot_contents: slot_content_NavRight, basename: '' %}
+{% assign slot_content_NavRight = '' %}
 {% assign props = '' %}
-    {/if}
-    {#if largeTitle || hasTitleLargeSlots}
+    {% endif %}
+    {% if largeTitle or hasTitleLargeSlots %}
       <div class="title-large">
         <div class="title-large-text">
           {{ largeTitle | default: '' }}
@@ -246,17 +249,11 @@ smns stands for "slot module name separator"
 
         </div>
       </div>
-    {/if}
+    {% endif %}
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_navbar != blank -%}
 			{{- slot_default_framework7-liquivelte_navbar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   </div>
   
@@ -307,6 +304,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

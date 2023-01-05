@@ -97,6 +97,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Popup = slot_content_Popup | append: '-scs-' | append: 'popup' | append: '-scvs-' | append: slot_content_def_Popup %}
 {% assign modulename = basename | append: 'popup' %}
 {% include modulename, liquivelte: true, props: props_Popup, sub_include: true, slot_contents: slot_content_Popup, basename: '' %}
+{% assign slot_content_Popup = '' %}
 {% assign props = '' %}
 {% endif %}
 {% if openIn === 'loginScreen' %}
@@ -126,6 +127,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_LoginScreen = slot_content_LoginScreen | append: '-scs-' | append: 'login-screen' | append: '-scvs-' | append: slot_content_def_LoginScreen %}
 {% assign modulename = basename | append: 'login-screen' %}
 {% include modulename, liquivelte: true, props: props_LoginScreen, sub_include: true, slot_contents: slot_content_LoginScreen, basename: '' %}
+{% assign slot_content_LoginScreen = '' %}
 {% assign props = '' %}
 {% endif %}
 {% if openIn === 'sheet' %}
@@ -155,6 +157,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Sheet = slot_content_Sheet | append: '-scs-' | append: 'sheet' | append: '-scvs-' | append: slot_content_def_Sheet %}
 {% assign modulename = basename | append: 'sheet' %}
 {% include modulename, liquivelte: true, props: props_Sheet, sub_include: true, slot_contents: slot_content_Sheet, basename: '' %}
+{% assign slot_content_Sheet = '' %}
 {% assign props = '' %}
 {% endif %}
 {% if openIn === 'popover' %}
@@ -184,6 +187,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Popover = slot_content_Popover | append: '-scs-' | append: 'popover' | append: '-scvs-' | append: slot_content_def_Popover %}
 {% assign modulename = basename | append: 'popover' %}
 {% include modulename, liquivelte: true, props: props_Popover, sub_include: true, slot_contents: slot_content_Popover, basename: '' %}
+{% assign slot_content_Popover = '' %}
 {% assign props = '' %}
 {% endif %}
 {% if openIn.indexOf('panel') === 0 %}
@@ -213,6 +217,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Panel = slot_content_Panel | append: '-scs-' | append: 'panel' | append: '-scvs-' | append: slot_content_def_Panel %}
 {% assign modulename = basename | append: 'panel' %}
 {% include modulename, liquivelte: true, props: props_Panel, sub_include: true, slot_contents: slot_content_Panel, basename: '' %}
+{% assign slot_content_Panel = '' %}
 {% assign props = '' %}
 {% endif %}
 
@@ -257,6 +262,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

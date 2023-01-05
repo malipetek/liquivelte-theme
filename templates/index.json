@@ -1,15 +1,64 @@
 {
   "sections": {
+    "b1d8d94c-2e32-4b36-9431-d26978893a9a": {
+      "type": "slider-general",
+      "blocks": {
+        "2b267d2a-9e23-431f-b4ec-6db9f36e52d8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/KAR_20130707-4295_2048x2048_70d7648f-04ce-40ab-bc7a-34f50c6f16b7.jpg"
+          }
+        },
+        "dc91269b-087a-42b8-b714-987bdbce39b9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/KAR_20130707-4344_2048x2048_90d20365-353d-4793-ac98-bbbc3af9c8ac.jpg"
+          }
+        },
+        "7a9d81e3-b02c-4525-87a7-3138408a312d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alfa-lifestyle-lady_2048x2048_c50ad39b-5ddf-413c-8384-ee4eb66e7adb.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "2b267d2a-9e23-431f-b4ec-6db9f36e52d8",
+        "dc91269b-087a-42b8-b714-987bdbce39b9",
+        "7a9d81e3-b02c-4525-87a7-3138408a312d"
+      ],
+      "settings": {
+        "flush_with_header": true,
+        "shadow_at_top": true
+      }
+    },
     "f55fd9df-34e5-4a6a-ad16-040620edc061": {
       "type": "product-carousel",
       "settings": {
-        "collection": "cheetah",
+        "collection": "bikes",
+        "layout": "regular",
+        "title_size": "normal"
+      }
+    },
+    "4538c27b-ee63-47b8-b76f-3ac556f013c3": {
+      "type": "product-carousel",
+      "settings": {
+        "collection": "bars",
+        "layout": "regular",
+        "title_size": "normal"
+      }
+    },
+    "0e2c63ca-e4c9-482b-a157-73272dd89ee8": {
+      "type": "product-carousel",
+      "settings": {
+        "collection": "glowes",
         "layout": "regular",
         "title_size": "normal"
       }
     },
     "product-comparison": {
       "type": "product-comparison",
+      "disabled": true,
       "blocks": {
         "6c1ead59-4127-4080-bc64-c8c5d658407b": {
           "type": "comparison",
@@ -77,6 +126,7 @@
     },
     "scroll-anim": {
       "type": "scroll-animation",
+      "disabled": true,
       "blocks": {
         "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c": {
           "type": "video",
@@ -97,6 +147,7 @@
     },
     "exploding-gallery": {
       "type": "exploding-gallery",
+      "disabled": true,
       "blocks": {
         "a853409f-e207-4ec2-a40d-4711428bb2c4": {
           "type": "image",
@@ -152,7 +203,10 @@
     }
   },
   "order": [
+    "b1d8d94c-2e32-4b36-9431-d26978893a9a",
     "f55fd9df-34e5-4a6a-ad16-040620edc061",
+    "4538c27b-ee63-47b8-b76f-3ac556f013c3",
+    "0e2c63ca-e4c9-482b-a157-73272dd89ee8",
     "product-comparison",
     "scroll-anim",
     "exploding-gallery"

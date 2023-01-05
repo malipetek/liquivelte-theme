@@ -114,17 +114,81 @@
 	{%- endunless -%}
 	
 
-<div class="block {{ classes }} {{ computedClasses }}" bind:this="{el}" {...restProps($$restProps)}>
+
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if inset != blank
+	assign dynamic_classes = dynamic_classes | append: ' inset'
+	endif
+	  if xsmallInset != blank
+	assign dynamic_classes = dynamic_classes | append: ' xsmall-inset'
+	endif
+	  if smallInset != blank
+	assign dynamic_classes = dynamic_classes | append: ' small-inset'
+	endif
+	  if mediumInset != blank
+	assign dynamic_classes = dynamic_classes | append: ' medium-inset'
+	endif
+	  if largeInset != blank
+	assign dynamic_classes = dynamic_classes | append: ' large-inset'
+	endif
+	  if xlargeInset != blank
+	assign dynamic_classes = dynamic_classes | append: ' xlarge-inset'
+	endif
+	  if strong != blank
+	assign dynamic_classes = dynamic_classes | append: ' block-strong'
+	endif
+	  if accordionList != blank
+	assign dynamic_classes = dynamic_classes | append: ' accordion-list'
+	endif
+	  if accordionOpposite != blank
+	assign dynamic_classes = dynamic_classes | append: ' accordion-opposite'
+	endif
+	  if tabs != blank
+	assign dynamic_classes = dynamic_classes | append: ' tabs'
+	endif
+	  if tab != blank
+	assign dynamic_classes = dynamic_classes | append: ' tab'
+	endif
+	  if tabActive != blank
+	assign dynamic_classes = dynamic_classes | append: ' tab-active'
+	endif
+	  if noHairlines != blank
+	assign dynamic_classes = dynamic_classes | append: ' no-hairlines'
+	endif
+	  if noHairlinesMd != blank
+	assign dynamic_classes = dynamic_classes | append: ' no-hairlines-md'
+	endif
+	  if noHairlinesIos != blank
+	assign dynamic_classes = dynamic_classes | append: ' no-hairlines-ios'
+	endif
+	  if noHairlinesAurora != blank
+	assign dynamic_classes = dynamic_classes | append: ' no-hairlines-aurora'
+	endif
+	-%}
+	<div  class="block {{ classes }} {{ computedClasses }}{{ dynamic_classes }}"
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+      bind:this="{el}"
+      {...restProps($$restProps)}>
   
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_block != blank -%}
 			{{- slot_default_framework7-liquivelte_block -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
 </div>
 
@@ -169,6 +233,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

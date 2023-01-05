@@ -1,0 +1,25 @@
+
+<script>
+  import collection from 'theme';
+  import collection.products from 'theme';
+
+  import { f7ready } from 'framework7-liquivelte';
+  import { onMount } from 'svelte';
+
+  import ProductCard from '../snippets/product-card.liquivelte';
+  import { Panel, Page, View, Views, Block, Button, Link, List, ListItem, ListInput, Swiper, SwiperSlide, Navbar, Range } from 'framework7-liquivelte';
+
+  
+  onMount(() => {
+    f7ready((f7) => {
+      console.log('f7 ready', f7);
+      window.f7 = f7;
+    });
+  });
+</script>
+
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+  {% for product in collection.products %}
+      <ProductCard product="{{- product -}}"></ProductCard>
+  {% endfor %}
+</div>

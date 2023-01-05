@@ -2,23 +2,40 @@
   import { App, View, Page } from 'framework7-liquivelte';
   import { onMount, beforeUpdate, afterUpdate } from 'svelte';
   // import { Workbox } from 'workbox-window';
+  const request = {};
+  import request.path from 'theme';
 
-  let ls_cache;
+  console.log('request ', request);
+  let live_slot_cache = new Map;
+  let firstRun = true;
+  beforeUpdate(() => {
+    if(firstRun) {
+      firstRun = false;
+      [...document.querySelectorAll('[liveslot]')].forEach(element => {
+        if(!live_slot_cache.has(element.getAttribute('liveslot'))) {
+          live_slot_cache.set(element.getAttribute('liveslot'), element);
+          if(element.isConnected) {
+            element.parentNode.removeChild(element);
+          }
+        }
+      });
+    } 
 
-  beforeUpdate(() => { 
-    if(!ls_cache) {
-      ls_cache = document.querySelector('.liveslot');
-      if(ls_cache.isConnected) { ls_cache.parentNode.removeChild(ls_cache); }
-    }
+    // if(!live_slot_cache.has('[liveslot]')) {
+    //   ls_cache = document.querySelector('.liveslot');
+      
+    // if(ls_cache.isConnected) { ls_cache.parentNode.removeChild(ls_cache); }
+    
+    // }
     
     console.log('oh shit, the wrapper component is about to update');
     return false;
   });
   
 
-  function persistingchild(node, keep) {
-    if(node.children[0] !== keep) {
-      node.replaceChild(keep, node.children[0]);
+  function persistingchild(node, slotname) {
+    if(node.children[0] !== live_slot_cache.get(slotname)) {
+      node.replaceChild(live_slot_cache.get(slotname), node.children[0]);
     }
   }
   // onMount(() => {
@@ -30,6 +47,50 @@
   //     wb.register();
   //   }
   // })
+const clientSideRouter = ({ app, to, resolve }, ...rest) => {
+      const { path } = to;
+
+      app.views.main.on('pageMounted', ({pageEl}) => {
+        Shopify.designMode = true;
+        [...pageEl.querySelectorAll('[liquivelte-eval], .liquivelte-prop-script')].forEach(element => {
+          window.propScriptForDesignMode = element;
+          eval(element.textContent);
+        });
+        Shopify.designMode = false;
+        document.dispatchEvent(new CustomEvent('view-loaded', { 
+          detail: { 
+            document: pageEl
+          }
+        }));
+        app.views.main.router.updateCurrentUrl(path);
+        // console.log('page mounted ', pageData);
+      });
+      fetch(path)
+      .then(res => res.text())
+      .then(async content => {
+        const template = document.createElement('template');
+        template.innerHTML = content;
+        const fragment = template.content;
+        const pageJS = fragment.querySelector('script[src*="liquivelte.js"]');
+        const pageCSS = fragment.querySelector('link[href*="liquivelte.css"]');
+
+        const JSsrc = new URL(pageJS.src).pathname;
+        
+        await import(JSsrc);
+
+        document.head.appendChild(pageCSS);
+        resolve({content});
+      });
+    
+    }
+  const routes = [{
+    path: '/(products|collections|pages)/:handle',
+    async: clientSideRouter,
+    options: {
+      transition: 'f7-circle',
+    },
+  }];
+
 </script>
 
 
@@ -37,15 +98,29 @@
   @import "framework7/framework7-bundle.min.css";
   @tailwind base;
   @tailwind utilities;  
+
+  .text-theme {
+        color: var(--f7-theme-color);
+  }
 </style>
-<App theme="ios" name="My App" id="com.demoapp.test">
-  <View main>
-    <Page>
-      <div use:persistingchild="{ ls_cache }" >
-        <div class="liveslot" >
+<App theme="ios" name="My App" id="com.demoapp.test" routes="{routes}" viewMainClass="mainview">
+  <div use:persistingchild="{"header"}" >
+    <div liveslot="header" >
+      <slot name="header" />
+    </div>
+  </div>
+  <View main classes="mainview" browserHistoryInitialMatch="{true}" loadInitialPage="{false}" data-url="{{- request.path -}}" browserHistory="{true}" browserHistorySeparator="{""}">
+    <Page name="main">
+      <div use:persistingchild="{"main"}" >
+        <div liveslot="main" >
           <slot />
         </div>
       </div>
     </Page>
   </View>
+  <div use:persistingchild="{"footer"}" >
+    <div liveslot="footer" >
+      <slot name="footer" />
+    </div>
+  </div>
 </App>

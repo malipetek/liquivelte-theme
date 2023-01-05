@@ -1,32 +1,30 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
-  export let form_inputs_f58d08b6b;
-  export let form_props_f58d08b6b;
-export let rawinclude_f5b8cf1c;
-export let inputWidth;
-export let reviews_count;
-export let score;
-export let review_stars;
-  export let breadcrumbs;
-  export let breadcrumbs_size;
-  export let price_formatted;
-  export let product;
+  export let form_inputs_f58d08b6b = themeImports['form_inputs_f58d08b6b'];
+  export let form_props_f58d08b6b = themeImports['form_props_f58d08b6b'];
+  export let price_formatted = themeImports['price_formatted'];
+  export let product = themeImports['product'];
   export let productƒƒoptions_with_values; 
-product.options_with_values = productƒƒoptions_with_values;
+product.options_with_values = themeImports['productƒƒoptions_with_values'];
 
   let section = {};
   export let sectionƒƒsettings; 
-section.settings = sectionƒƒsettings;
+section.settings = themeImports['sectionƒƒsettings'];
   export let productƒƒselected_or_first_available_variant; 
-product.selected_or_first_available_variant = productƒƒselected_or_first_available_variant;
+product.selected_or_first_available_variant = themeImports['productƒƒselected_or_first_available_variant'];
   import ImageGallery from './blocks/image-gallery.liquivelte';
   import Reviews from './blocks/reviews.liquivelte';
   import QuantityBox from '../../snippets/quantity-box.liquivelte';
+  import Breadcrumbs from '../../snippets/breadcrumbs.liquivelte';
   const JSTRFY = JSON.stringify;
   
   let selected_options = [null, ...product.selected_or_first_available_variant.options];
@@ -46,12 +44,12 @@ product.selected_or_first_available_variant = productƒƒselected_or_first_avail
 </style> 
 
 <div class="bg-white">
-  {@html rawinclude_f5b8cf1c[index || 0]}
+  <!-- Breadcrumbs -->
   <div class="pt-6">
     <!-- Product info -->
     <div class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
       <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <ImageGallery    product={product} review_stars={review_stars} score={score} reviews_count={reviews_count} inputWidth={inputWidth} breadcrumbs={breadcrumbs} breadcrumbs_size={breadcrumbs_size} price_formatted={price_formatted}  productƒƒoptions_with_values={productƒƒoptions_with_values} sectionƒƒsettings={sectionƒƒsettings} productƒƒselected_or_first_available_variant={productƒƒselected_or_first_available_variant}  form_props_f58d08b6b={form_props_f58d08b6b} form_inputs_f58d08b6b={form_inputs_f58d08b6b}  rawinclude_f5b8cf1c={rawinclude_f5b8cf1c} lec={lec} />
+        <ImageGallery    price_formatted={price_formatted} product={product}  productƒƒoptions_with_values={productƒƒoptions_with_values} sectionƒƒsettings={sectionƒƒsettings} productƒƒselected_or_first_available_variant={productƒƒselected_or_first_available_variant}  form_props_f58d08b6b={form_props_f58d08b6b} form_inputs_f58d08b6b={form_inputs_f58d08b6b}  lec={lec} />
         <div class="h-8 md:h-20"></div>
         <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{ section.settings.product_title } </h1>
       </div>
@@ -61,8 +59,6 @@ product.selected_or_first_available_variant = productƒƒselected_or_first_avail
         <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{ product.title }</h1>
         <h2 class="sr-only">Product information</h2> 
         <p class="text-3xl text-gray-900 mt-4">{ price_formatted }</p>
-
-        <Reviews    product={product} review_stars={review_stars} score={score} reviews_count={reviews_count} inputWidth={inputWidth} breadcrumbs={breadcrumbs} breadcrumbs_size={breadcrumbs_size} price_formatted={price_formatted}  productƒƒoptions_with_values={productƒƒoptions_with_values} sectionƒƒsettings={sectionƒƒsettings} productƒƒselected_or_first_available_variant={productƒƒselected_or_first_available_variant}  form_props_f58d08b6b={form_props_f58d08b6b} form_inputs_f58d08b6b={form_inputs_f58d08b6b}  rawinclude_f5b8cf1c={rawinclude_f5b8cf1c} lec={lec} />
 
         <form   class="mt-10"  {...form_props_f58d08b6b[index || 0]}>
   {@html form_inputs_f58d08b6b[index || 0]}
@@ -148,7 +144,7 @@ product.selected_or_first_available_variant = productƒƒselected_or_first_avail
           </div>
           <div class="mt-10">
             <label class="text-base"> Quantity </label>
-              <QuantityBox  bind:quantity   product={product} review_stars={review_stars} score={score} reviews_count={reviews_count} inputWidth={inputWidth} breadcrumbs={breadcrumbs} breadcrumbs_size={breadcrumbs_size} price_formatted={price_formatted}  productƒƒoptions_with_values={productƒƒoptions_with_values} sectionƒƒsettings={sectionƒƒsettings} productƒƒselected_or_first_available_variant={productƒƒselected_or_first_available_variant}  form_props_f58d08b6b={form_props_f58d08b6b} form_inputs_f58d08b6b={form_inputs_f58d08b6b}  rawinclude_f5b8cf1c={rawinclude_f5b8cf1c} lec={lec} />
+              <QuantityBox  bind:quantity   price_formatted={price_formatted} product={product}  productƒƒoptions_with_values={productƒƒoptions_with_values} sectionƒƒsettings={sectionƒƒsettings} productƒƒselected_or_first_available_variant={productƒƒselected_or_first_available_variant}  form_props_f58d08b6b={form_props_f58d08b6b} form_inputs_f58d08b6b={form_inputs_f58d08b6b}  lec={lec} />
           <div>
           <button type="submit" class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Add to bag</button>
         </form>

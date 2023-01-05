@@ -49,38 +49,84 @@
 	<div class="liquivelte-component navigation" data-liquivelte-component-name="navigation.liquivelte">
 	{%- endunless -%}
 	
-<ul class="menu-drawer__menu has-submenu list-menu" role="list">
+
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_List %}accordionList-kvsp-1{% endcapture %}
+
+{%- capture slot_content_def_List -%}
   {% for lnk in links %}
     {% assign index = forloop.index0 %}
-    <li>
-      {% if lnk.links %}
-      <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
-        
-	{%- liquid 
-	assign dynamic_classes = ''
-	  if lnk.child_active != blank
-	assign dynamic_classes = dynamic_classes | append: ' menu-drawer__menu-item--active'
-	endif
-	-%}
-	<summary  class="menu-drawer__menu-item list-menu__item link link--text focus-inset{{ dynamic_classes }}" >
-          <svelte:self links="{lnk.links}" />  
-        </summary>
-      </details>
-      {% endif %}
-      
-	{%- liquid 
-	assign dynamic_classes = ''
-	  if lnk.current != blank
-	assign dynamic_classes = dynamic_classes | append: ' menu-drawer__menu-item--active'
-	endif
-	-%}
-	<a  href="{{ lnk.url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset{{ dynamic_classes }}">
-        {{ lnk.title | escape }}
-      </a>
-    </li>
-  {% endfor %}
+    {% if lnk.links and lnk.links.size %}
+    
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_ListItem %}accordionItem-kvsp-1-prsp-title-kvsp-{{ lnk.title }}{% endcapture %}
 
-</ul>
+{%- capture slot_content_def_ListItem -%}
+      {% if lnk.links and lnk.links.size %}
+      
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_AccordionContent %}undefined-kvsp-1{% endcapture %}
+
+{%- capture slot_content_def_AccordionContent -%}
+        <svelte:self links="{lnk.links}" />  
+      {%- endcapture -%}
+{% assign slot_content_AccordionContent = slot_content_AccordionContent | append: '-scs-' | append: 'framework7-liquivelte-accordion-content' | append: '-scvs-' | append: slot_content_def_AccordionContent %}
+{% assign modulename = basename | append: 'framework7-liquivelte-accordion-content' %}
+{% include modulename, liquivelte: true, props: props_AccordionContent, sub_include: true, slot_contents: slot_content_AccordionContent, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_AccordionContent = '' %}
+{% assign props = '' %}
+      {% endif %}
+    {%- endcapture -%}
+{% assign slot_content_ListItem = slot_content_ListItem | append: '-scs-' | append: 'framework7-liquivelte-list-item' | append: '-scvs-' | append: slot_content_def_ListItem %}
+{% assign modulename = basename | append: 'framework7-liquivelte-list-item' %}
+{% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, slot_contents: slot_content_ListItem, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_ListItem = '' %}
+{% assign props = '' %}
+    {% else %}
+      {@debug mainview}
+    
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props_ListItem %}accordionItem-kvsp-{false}-prsp-title-kvsp-{{ lnk.title }}-prsp-routeProps-kvsp-{ { view: mainview } }-prsp-link-kvsp-{lnk.url}{% endcapture %}
+{% assign modulename = basename | append: 'framework7-liquivelte-list-item' %}
+{% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, basename: 'framework7-liquivelte-' %}
+{% assign props = '' %}
+    {% endif %}
+  {% endfor %}
+{%- endcapture -%}
+{% assign slot_content_List = slot_content_List | append: '-scs-' | append: 'framework7-liquivelte-list' | append: '-scvs-' | append: slot_content_def_List %}
+{% assign modulename = basename | append: 'framework7-liquivelte-list' %}
+{% include modulename, liquivelte: true, props: props_List, sub_include: true, slot_contents: slot_content_List, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_List = '' %}
+{% assign props = '' %}
+
+
 	
 						
 						
@@ -122,6 +168,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

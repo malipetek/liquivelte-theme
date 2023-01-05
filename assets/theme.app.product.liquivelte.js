@@ -1,1 +1,36 @@
-import'./product-hs1d149eee.liquivelte.js';const onIntersect=(e,t)=>{const o=new IntersectionObserver(t,{root:null,rootMargin:'100px',threshold:0});o.observe(e)};document.addEventListener('DOMContentLoaded',(()=>{Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach((e=>{let t=e.svelteProps;let o=e.rawIncludes;let r=e.liquid_expression_cache;e.module_loaded=!0;let n=!1;onIntersect(e,(([l])=>{(async()=>{l.isIntersecting&&!n&&(n=!0,e.svelteComponent=new((await import('./header-hs21597f64.liquivelte.js').then((function(e){return e.index}))).default)({target:e,hydrate:!0,props:{...t,...o,lec:r}}))})()}))}))}));
+import './product-hs8daa1a0c.liquivelte.js';
+
+const onIntersect = (el, callback) => {
+    const observer = new IntersectionObserver(callback, {
+      root: null,   // default is the viewport
+      rootMargin: '100px', // default is '0px'
+      threshold: 0 // percentage of taregt's visible area. Triggers "onIntersection"
+    });
+    observer.observe(el);
+  };
+  
+
+   const initializeObservers = () => {
+    
+  Array.from(doc.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if(entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import('./header-hs39c6dc7d.liquivelte.js').then(function (n) { return n.index; })).default({
+            target: wrapper,
+            hydrate: true,
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+          });
+        }
+      })();
+    });
+  });
+   };
+  document.addEventListener('DOMContentLoaded', () => initializeObservers());
+  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));

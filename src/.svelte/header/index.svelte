@@ -1,26 +1,26 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
 export let rawinclude_679e0e24;
 export let rawinclude_3be65912;
 export let rawinclude_602baf9d;
-export let logo_alt;
-export let logo_height;
-export let min_amounts;
-export let inputWidth;
   import { cartStore, cartOpen } from '../../scripts/store.module.js';
-  export let cart;
-  export let shop;
+  export let cart = themeImports['cart'];
+  export let shop = themeImports['shop'];
   export let shopƒƒname; 
-shop.name = shopƒƒname;
+shop.name = themeImports['shopƒƒname'];
   const section = {};
   export let sectionƒƒsettings; 
-section.settings = sectionƒƒsettings;
-  export let menu_json;
+section.settings = themeImports['sectionƒƒsettings'];
+  export let menu_json = themeImports['menu_json'];
   section.settings.menu = JSON.parse(menu_json);
   import Navigation from './components/navigation.liquivelte';
   import PredictiveSearch from './components/predictive-search.liquivelte';
@@ -29,16 +29,16 @@ section.settings = sectionƒƒsettings;
   import DetailsModal from '../../snippets/details-modal.liquivelte';
   import { Appbar, Panel, Button, Link, Badge, Block, View, Page, Popup } from 'framework7-liquivelte'; 
   import Icon from "../../snippets/icon.liquivelte";
-  export let settings; 
+  export let settings = themeImports['settings']; 
 
-  export let logo_html;
+  export let logo_html = themeImports['logo_html'];
   console.log('settings ', settings); 
   
-  export let routes;
-  export let request;
+  export let routes = themeImports['routes'];
+  export let request = themeImports['request'];
 
-  export let account_url;
-  export let account_text;
+  export let account_url = themeImports['account_url'];
+  export let account_text = themeImports['account_text'];
 
   console.log('section header ', section);
   console.log('section.settings.menu ', section.settings.menu);
@@ -60,34 +60,32 @@ section.settings = sectionƒƒsettings;
   </symbol>
 </svg>
 
-  <Panel  resizable left reveal swipe swipeOnlyClose="{true}"    inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
-    <View   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
-      <Page   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
-        <Block   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} > Left panel content </Block>
-      </Page>
+  <Panel  resizable left reveal swipe swipeOnlyClose="{true}"    cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
+    <View   cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
+      <Navigation  links="{ section.settings.menu.links }"  cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
     </View>
   </Panel>
-  <Panel  classes="cart-popup" resizable right reveal swipe swipeOnlyClose="{true}"    inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
-    <View   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
-      <CartDrawer    inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
+  <Panel  classes="cart-popup" resizable right reveal swipe swipeOnlyClose="{true}"    cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
+    <View   cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
+      <CartDrawer    cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
     </View>
   </Panel>
   <header> 
-    <Appbar   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
-      <div class="left">
-        <Button  small panelToggle="left" classes="display-flex"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
-          <Icon  name="icon-hamburger" width="15"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
+    <Appbar   cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
+      <div class="left pt-[10px] pl-[10px]">
+        <Button  small panelToggle="left" classes="display-flex"   cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
+          <Icon  name="icon-hamburger" width="25"   cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
         </Button>
       </div>
       <div class="center">
-        <Logo    inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
+        <Logo    cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
       </div>
-      <div class="left">
-        <Link  small panelToggle="right" classes="display-flex"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
-          <div class="icon">
-            <Icon  name="icon-cart" width="40"   inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
+      <div class="right pt-[10px] pr-[10px]">
+        <Link  small panelToggle="right" classes="display-flex"   cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} >
+          <div class="icon relative">
+            <Icon  name="icon-cart" width="30"   cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} />
             {#if cart.items }
-              <Badge    inputWidth={inputWidth} cart={cart} min_amounts={min_amounts} logo_height={logo_height} logo_alt={logo_alt} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  sectionƒƒsettings={sectionƒƒsettings} shopƒƒname={shopƒƒname}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} > { cart.items.length } </Badge>
+              <Badge  color="red"  cart={cart} shop={shop} menu_json={menu_json} settings={settings} logo_html={logo_html} routes={routes} request={request} account_url={account_url} account_text={account_text}  shopƒƒname={shopƒƒname} sectionƒƒsettings={sectionƒƒsettings}   rawinclude_679e0e24={rawinclude_679e0e24} rawinclude_3be65912={rawinclude_3be65912} rawinclude_602baf9d={rawinclude_602baf9d} lec={lec} > { cart.items.length } </Badge>
             {/if}
           </div>
         </Link>

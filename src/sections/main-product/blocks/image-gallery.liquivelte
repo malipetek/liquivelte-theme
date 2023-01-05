@@ -1,45 +1,57 @@
+{% liquid 
+  assign thumbnailsPerView = 4
+  assign thumbnailSpaceBetween = 10
+  assign first_image = product.images | first
+  assign first_image_ratio = first_image.aspect_ratio
+%}
 <script>
 import product from 'theme';
-import Swiper from '../../../scripts/swiper.module.js';
-import { onMount } from 'svelte';
-
+import first_image_ratio from 'theme';
+import { Swiper, SwiperSlide } from 'framework7-liquivelte';
+import { FreeMode, Mousewheel, Zoom, Thumbs } from 'swiper';
+import { onMount, tick } from 'svelte';
 let initialized; 
 let galleryElement, thubmnailsElement;
+let thumbnailsPerView = 4;
+let thumbnailSpaceBetween = 10;
 let gallery_images = [];
+let firstImageHeight = 0;
 
-  onMount(() => {
-    const thumbnailsSwiper = new Swiper(thubmnailsElement, {
-      slidesPerView: 5,
-      spaceBetween: 10,
-      watchSlidesProgress: true,
-      direction: 'vertical'
-    });
-    const swiper = new Swiper(galleryElement, {
-      zoom: true,
-      loop: true,
-      slidesPerView: 1,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      thumbs: {
-        swiper: thumbnailsSwiper
-      }
-    });
+  $: console.log('thumbnailsSwiper is set to ', thumbsSwiper);
+  $: console.log('gallery_images[0] ', gallery_images[0]);
+
+  $: if(gallery_images[0]) {
+    if(gallery_images[0].complete) {
+      firstImageHeight = gallery_images[0].naturalHeight;
+    } else {
+      gallery_images[0].addEventListener('load', () => {
+        console.log('image loaded');
+        firstImageHeight = gallery_images[0].naturalHeight;
+      });
+    }
+  }
+
+  $: console.log('firstImageHeight ', firstImageHeight);
+  // store Thumbs swiper instance
+  let thumbsSwiper = null;
+
+  const setThumbsSwiper = (e) => {
+    const [swiper] = e.detail;
+    // set Thumbs swiper instance
     initialized = true;
-    console.log('gallery_images ', gallery_images);
-  });
-
+    setTimeout(() => {
+      thumbsSwiper = swiper;
+    });
+  };
 </script>
 
 <style global lang="postcss">
-  @import 'swiper/swiper-bundle.min.css';
-  @import 'swiper/modules/zoom/zoom.min.css';
 
-  .uninitialized .thumbs-slider .slide-thumbs {
-    width: 25% !important;
+  .thumbs-swiper .slide-thumbs {
+    height: calc(var(--max-height) / var(--thumbnailsPerView));
+    margin-bottom: var(--thumbnailSpaceBetween);
   }
-  .thumbs-slider .swiper-slide {
+  .thumbs-swiper .swiper-slide {
     opacity: 0.4;
   }
 
@@ -47,47 +59,92 @@ let gallery_images = [];
     opacity: 1 !important;
   }
 
-  .w-fit {
-    width: fit-content;
+  .image-gallery .thumbs-swiper {
+    position: absolute !important;
+    left: 0;
+    height: 100%;
   }
-  .flex-column {
+  .uninitialized .thumbs-swiper .swiper-wrapper {
     flex-direction: column;
   }
-  .image-gallery, .image-gallery .thumbs-slider, .image-gallery .swiper-wrapper {
-    max-height: var(--max-height) !important;
+
+  .product-gallery .swiper-wrapper {
+    aspect-ratio: var(--aspect-ratio);
   }
+  
+  .uninitialized .thumbs-wrapper {
+    height: 100px;
+  }
+  .initialized .thumbs-wrapper {
+    height: 100%;
+  }
+  .initialized .thumbs-wrapper .thumbs-swiper {
+    position: absolute;
+  }
+  .uninitialized.thumbs-wrapper .swiper-slide {
+    margin-bottom: var(--space-between);
+  }
+  .initialized.image-gallery .swiper-wrapper {
+    max-height: var(--max-height);
+  }
+  /*  : */
 </style>
 <div
+    class:initialized="{{- initialized == true -}}"
     class:uninitialized="{{- initialized != true -}}"
-    style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; grid-template-columns: 100px auto; --max-height: {gallery_images[0] ? gallery_images[0].clientHeight : 500}px"
-    class="mt-6 w-2xl max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid justify-items-center lg:gap-8 image-gallery">
-    <div class="thumbs-slider swiper max-w-full hidden lg:flex justify-items-center overflow-hidden" >
-      <div class="mx-auto max-w-full" bind:this="{thubmnailsElement}">
-        <div class="flex-column swiper-wrapper"> 
+    style="
+    grid-template-columns: 100px auto;
+    --swiper-navigation-color: #fff; 
+    --swiper-pagination-color: #fff; 
+    --aspect-ratio: {{- first_image_ratio -}};
+    --max-height: {{- firstImageHeight -}}px;
+    min-height: 300px;
+    "
+    class="mt-6 w-2xl max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 flex lg:grid 
+      justify-items-center lg:gap-8 image-gallery overflow-hidden relative"
+      >
+        <div 
+          class="thumbs-wrapper hidden lg:block"
+          class:initialized="{{- initialized == true -}}"
+          class:uninitialized="{{- initialized != true -}}"
+          style="
+            --slides-per-view: {{- thumbnailsPerView -}};
+            --space-between: {{- thumbnailSpaceBetween -}}px
+          ">
+            <Swiper classes="thumbs-swiper max-w-full" 
+              slidesPerView="{thumbnailsPerView}"
+              spaceBetween="{thumbnailSpaceBetween}"
+              direction="vertical"
+              vertical
+              freemode="{ { enabled: true, sticky: true } }" 
+              mousewheel="{ { forceToAxis: true, sensitivity: 1 } }"
+              modules="{[FreeMode, Mousewheel, Thumbs]}"
+              on:swiper={setThumbsSwiper}
+              watchSlidesProgress
+          >
           {% for image in product.images %}
-          <div class="swiper-slide slide-thumbs ">
-            <div class="w-fit aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4" >
-              <img src="{{- image | img_url: '100x' -}}" alt="{{- image.alt -}}" class="object-center object-cover">
-            </div>
-          </div>
+            <SwiperSlide classes="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4" >
+              <img src="{{- image | image_url: width: 100 -}}" alt="{{- image.alt -}}" class="">
+            </SwiperSlide>
           {% endfor %}
+          </Swiper>
         </div>
-      </div>
-    </div>
-    <div class="swiper max-w-full" bind:this="{galleryElement}">
-    <div class="swiper-wrapper">
+    <Swiper classes="product-gallery max-w-full" 
+        loop="{true}" 
+        slidesPerView="{1}"
+        thumbs={ { swiper: thumbsSwiper } }
+        freemode="{ { enabled: true, sticky: true } }" 
+        mousewheel="{ { forceToAxis: true, sensitivity: 1 } }"
+        modules="{[FreeMode, Mousewheel, Thumbs]}"
+      >
       {% for image in product.images %}
-        <div class="swiper-slide aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4" >
-          <div class="swiper-zoom-container" data-swiper-zoom="5">
-          <img bind:this="{gallery_images[index]}" src="{{- image | img_url: '500x' -}}" alt="{{- image.alt -}}" class="w-full h-full object-center object-cover">
-          </div>
-        </div>
+        <SwiperSlide classes="sm:rounded-lg sm:overflow-hidden" >
+          <img bind:this="{gallery_images[index]}" src="{{- image | image_url: width: 500 -}}" alt="{{- image.alt -}}" 
+          class="w-full object-center object-cover">
+        </SwiperSlide>
       {% endfor %}
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
+      </Swiper>
   </div>
-</div>
   <!-- Image gallery -->
   <!-- <div class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8">
     {% for image in product.images %}

@@ -1,14 +1,18 @@
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
   export let links;
-
+  import { List, ListItem, AccordionContent } from 'framework7-liquivelte';
   console.log('links ', links);
 </script>
-<ul class="menu-drawer__menu has-submenu list-menu" role="list">
+<List  accordionList     lec={lec} >
   {#each  links as lnk, index   }
 {@const forloop = {
   first: index === 0,
@@ -19,18 +23,17 @@
   rindex0: ( links).length - index - 1,
   length: ( links).length,
 } }
-    <li>
-      {#if lnk.links }
-      <details id="Details-menu-drawer-menu-item-{ forloop.index }">
-        <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset" class:menu-drawer__menu-item--active="{ lnk.child_active }" >
-          <svelte:self links="{lnk.links}" />  
-        </summary>
-      </details>
+    {#if lnk.links && lnk.links.length }
+    <ListItem  accordionItem title="{ lnk.title }"      lec={lec} >
+      {#if lnk.links && lnk.links.length }
+      <AccordionContent      lec={lec} >
+        <svelte:self links="{lnk.links}" />  
+      </AccordionContent>
       {/if}
-      <a href="{ lnk.url }" class="menu-drawer__menu-item list-menu__item link link--text focus-inset" class:menu-drawer__menu-item--active="{ lnk.current }">
-        { liquid.escape(lnk.title) }
-      </a>
-    </li>
+    </ListItem>
+    {:else}
+    <ListItem  accordionItem="{false}" title="{ lnk.title }" external link="{lnk.url}"     lec={lec} />
+    {/if}
   {/each}
+</List>
 
-</ul>

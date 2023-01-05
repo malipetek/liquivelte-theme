@@ -8,9 +8,9 @@
     observer.observe(el);
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const initializeObservers = (doc) => {
     
-  Array.from(document.querySelectorAll('.liquivelte-component.main-product')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.main-product')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -23,15 +23,13 @@
           wrapper.svelteComponent = new (await import("../sections/main-product/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
+  };
+  document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
+  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
   
-  });

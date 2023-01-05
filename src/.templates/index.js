@@ -8,9 +8,29 @@
     observer.observe(el);
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const initializeObservers = (doc) => {
     
-  Array.from(document.querySelectorAll('.liquivelte-component.product-carousel')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.slider-general')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if(entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import("../sections/slider-general/index.liquivelte")).default({
+            target: wrapper,
+            hydrate: true,
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+          });
+        }
+      })();
+    });
+  });
+  
+  Array.from(doc.querySelectorAll('.liquivelte-component.product-carousel')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -23,18 +43,14 @@
           wrapper.svelteComponent = new (await import("../sections/product-carousel/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
   
-  Array.from(document.querySelectorAll('.liquivelte-component.product-comparison')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.product-comparison')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -47,18 +63,14 @@
           wrapper.svelteComponent = new (await import("../sections/product-comparison.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
   
-  Array.from(document.querySelectorAll('.liquivelte-component.scroll-animation')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.scroll-animation')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -71,18 +83,14 @@
           wrapper.svelteComponent = new (await import("../sections/scroll-animation/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
   
-  Array.from(document.querySelectorAll('.liquivelte-component.exploding-gallery')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.exploding-gallery')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -95,15 +103,13 @@
           wrapper.svelteComponent = new (await import("../sections/exploding-gallery.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            props: {
-                ...svelteProps,
-                ...rawIncludes,
-                lec: liquid_expression_cache
-            }
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
       })();
     });
   });
+  };
+  document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
+  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
   
-  });

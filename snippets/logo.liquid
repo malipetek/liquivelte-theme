@@ -50,12 +50,13 @@
 %}
 
 {% if section.settings.logo != blank %}
-  <img src="{{ section.settings.logo | img_url: '500x' }}" liquivelte-value-cache="img_url§{{section.settings.logo}}, {{'500x'}}§{{section.settings.logo| img_url: '500x'  }}"
+  <img src="{{ section.settings.logo | img_url: '500x' }}" liquivelte-value-cache="img_url§{{section.settings.logo | escape -}}, {{'500x'}}§{{section.settings.logo| img_url: '500x'  }}"
      class="header__heading-logo svelte-690dwv"
     widths="50, 100, 150, 200, 250, 300, 400, 500"
     height="{{ logo_height }}"
     alt="{{ logo_alt }}"
   />
+  <span  class="h2 text-white svelte-690dwv">{{ shop.name }}</span>
 {% else %}
   <span  class="h2 svelte-690dwv">{{ shop.name }}</span>
 {% endif %}
@@ -102,6 +103,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

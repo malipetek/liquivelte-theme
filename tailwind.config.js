@@ -44,6 +44,9 @@ module.exports = {
   content: {
     files: ['src/**/*'],
     extract: {
+      class: (content) => {
+        return [...content.match(/class="([^"]+)"/gi)];
+      },
       classes: (content) => {
         return [...content.match(/classes="([^"]+)"/gi)];
       }

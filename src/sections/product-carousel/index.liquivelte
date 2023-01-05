@@ -7,11 +7,14 @@
       assign products = products | concat: product_arr
     endunless
   endfor
+  assign collection_title = collection.title
 %}
 <script>
   import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
+  import { FreeMode, Mousewheel, Pagination } from 'swiper';
   import ProductCard from '../../snippets/product-card.liquivelte';
   const section = {};
+  import collection_title from 'theme';
   import section.settings from 'theme';
   import products from 'theme';
   
@@ -37,9 +40,14 @@
 			}
 </script>
 
-<Block>
-<BlockTitle>With all controls</BlockTitle>
-  <Swiper breakpoints="{breakpoints}">
+<Block classes="product-carousel">
+<BlockTitle>{{- collection_title -}}</BlockTitle>
+<Swiper modules="{[FreeMode, Mousewheel, Pagination]}" 
+          freemode="{ { enabled: true, sticky: true } }"
+          pagination="{true}" 
+          mousewheel="{ { enabled: true, forceToAxis: true, sensitivity: 1.5 } }"
+          breakpoints="{breakpoints}"
+          >
     {% for product in products %}
     <SwiperSlide >
       <ProductCard product="{{- product -}}"></ProductCard>
@@ -56,39 +64,25 @@
   background: none;
  }
 
- :root {
-  --slides-per-view: 1;
- }
- @include sm {
-  :root{
-    --slides-per-view: 2;
+ .product-carousel {
+   --slides-per-view: 1;
+   @include sm {
+     --slides-per-view: 2;
+    }
+    @include md {
+       --slides-per-view: 3;
+    }
+    @include lg {
+      --slides-per-view: 4;
+     }
+    @include xl {
+      --slides-per-view: 6;
+    }
+    @include xxl {
+      --slides-per-view: 8;
+    }
   }
- }
-
- @include md {
-  :root{
-    --slides-per-view: 3;
-  }
- }
-
- @include lg {
-  :root{
-    --slides-per-view: 4;
-  }
- }
-
- @include xl {
-  :root{
-    --slides-per-view: 6;
-  }
- }
-
- @include xxl {
-  :root{
-    --slides-per-view: 8;
-  }
- }
-
+  
 </style>
 {% schema %}
 {
@@ -108,7 +102,7 @@
   ],
   "presets": [
     {
-      "name": "Slider",
+      "name": "Product Carousel",
       "category": "Gallery"
     }
   ]

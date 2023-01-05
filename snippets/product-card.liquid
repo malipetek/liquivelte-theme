@@ -58,6 +58,7 @@
 %}
 
 
+  
 {% comment %}
 kvsp stands for "key value separator"
 prsp stands for "props separator"
@@ -100,13 +101,15 @@ smns stands for "slot module name separator"
 {% assign slot_content_VerticalStepper = slot_content_VerticalStepper | append: '-scs-' | append: 'vertical-stepper' | append: '-scvs-' | append: slot_content_def_VerticalStepper %}
 {% assign modulename = basename | append: 'vertical-stepper' %}
 {% include modulename, liquivelte: true, props: props_VerticalStepper, sub_include: true, slot_contents: slot_content_VerticalStepper, basename: '' %}
+{% assign slot_content_VerticalStepper = '' %}
 {% assign props = '' %}
     {%- endcapture -%}
 {% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_def_Loadable %}
 {% assign modulename = basename | append: 'loadable' %}
 {% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: '' %}
+{% assign slot_content_Loadable = '' %}
 {% assign props = '' %}
-  
+    
 {% comment %}
 kvsp stands for "key value separator"
 prsp stands for "props separator"
@@ -119,15 +122,35 @@ smns stands for "slot module name separator"
 {% capture props_CardHeader %}classes-kvsp-no-border-prsp-valign-kvsp-bottom{% endcapture %}
 
 {%- capture slot_content_def_CardHeader -%}
-  <img src="{{ product.media[0] | image_url: width: 300 }}" liquivelte-value-cache="image_url§{{product.media[0]}}, {{width}}, {{300}}§{{product.media[0]| image_url: width: 300  }}" 
-  width="300"
-  style="aspect-ratio: {{ product.media[0].aspect_ratio }}" />
-{%- endcapture -%}
+    
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Link %}href-kvsp-/products/{{ product.handle }}{% endcapture %}
+
+{%- capture slot_content_def_Link -%}
+    <img src="{{ product.media[0] | image_url: width: 300 }}" liquivelte-value-cache="image_url§{{product.media[0] | escape -}}, {{width}}, {{300}}§{{product.media[0]| image_url: width: 300  }}" 
+    width="300"
+    style="aspect-ratio: {{ product.media[0].aspect_ratio }}" />
+    {%- endcapture -%}
+{% assign slot_content_Link = slot_content_Link | append: '-scs-' | append: 'framework7-liquivelte-link' | append: '-scvs-' | append: slot_content_def_Link %}
+{% assign modulename = basename | append: 'framework7-liquivelte-link' %}
+{% include modulename, liquivelte: true, props: props_Link, sub_include: true, slot_contents: slot_content_Link, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Link = '' %}
+{% assign props = '' %}
+  {%- endcapture -%}
 {% assign slot_content_CardHeader = slot_content_CardHeader | append: '-scs-' | append: 'framework7-liquivelte-card-header' | append: '-scvs-' | append: slot_content_def_CardHeader %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card-header' %}
 {% include modulename, liquivelte: true, props: props_CardHeader, sub_include: true, slot_contents: slot_content_CardHeader, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_CardHeader = '' %}
 {% assign props = '' %}
-
+  
 {% comment %}
 kvsp stands for "key value separator"
 prsp stands for "props separator"
@@ -140,18 +163,20 @@ smns stands for "slot module name separator"
 {% capture props_CardContent %}undefined-kvsp-1{% endcapture %}
 
 {%- capture slot_content_def_CardContent -%}
-<div >
-  <h3>
-    {{ product.title }}
-  </h3>
-</div> 
-
-{%- endcapture -%}
+  <div  class="text-theme svelte-3p59xp">
+   {{ product.price | money }}
+  </div> 
+    <h3>
+      {{ product.title }}
+    </h3>
+  {%- endcapture -%}
 {% assign slot_content_CardContent = slot_content_CardContent | append: '-scs-' | append: 'framework7-liquivelte-card-content' | append: '-scvs-' | append: slot_content_def_CardContent %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card-content' %}
 {% include modulename, liquivelte: true, props: props_CardContent, sub_include: true, slot_contents: slot_content_CardContent, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_CardContent = '' %}
 {% assign props = '' %}
-    
+  
+      
 {% comment %}
 kvsp stands for "key value separator"
 prsp stands for "props separator"
@@ -164,8 +189,7 @@ smns stands for "slot module name separator"
 {% capture props_CardFooter %}undefined-kvsp-1{% endcapture %}
 
 {%- capture slot_content_def_CardFooter -%}
-      <span> {{ product.price | money }} </span>
-      
+        
 {% comment %}
 kvsp stands for "key value separator"
 prsp stands for "props separator"
@@ -181,18 +205,20 @@ smns stands for "slot module name separator"
 {% assign slot_content_Link = slot_content_Link | append: '-scs-' | append: 'framework7-liquivelte-link' | append: '-scvs-' | append: slot_content_def_Link %}
 {% assign modulename = basename | append: 'framework7-liquivelte-link' %}
 {% include modulename, liquivelte: true, props: props_Link, sub_include: true, slot_contents: slot_content_Link, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Link = '' %}
 {% assign props = '' %}
-    {%- endcapture -%}
+      {%- endcapture -%}
 {% assign slot_content_CardFooter = slot_content_CardFooter | append: '-scs-' | append: 'framework7-liquivelte-card-footer' | append: '-scvs-' | append: slot_content_def_CardFooter %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card-footer' %}
 {% include modulename, liquivelte: true, props: props_CardFooter, sub_include: true, slot_contents: slot_content_CardFooter, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_CardFooter = '' %}
 {% assign props = '' %}
-{%- endcapture -%}
+  {%- endcapture -%}
 {% assign slot_content_Card = slot_content_Card | append: '-scs-' | append: 'framework7-liquivelte-card' | append: '-scvs-' | append: slot_content_def_Card %}
 {% assign modulename = basename | append: 'framework7-liquivelte-card' %}
 {% include modulename, liquivelte: true, props: props_Card, sub_include: true, slot_contents: slot_content_Card, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Card = '' %}
 {% assign props = '' %}
-
 
 
 
@@ -237,6 +263,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

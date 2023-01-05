@@ -1,18 +1,22 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
 const section = {};
 const shop = {};
 export let sectionƒƒsettings; 
-section.settings = sectionƒƒsettings;
+section.settings = themeImports['sectionƒƒsettings'];
 export let shopƒƒname; 
-shop.name = shopƒƒname;
-export let logo_height;
-export let logo_alt;
+shop.name = themeImports['shopƒƒname'];
+export let logo_height = themeImports['logo_height'];
+export let logo_alt = themeImports['logo_alt'];
 
 </script>
 {#if section.settings.logo != undefined }
@@ -22,6 +26,7 @@ export let logo_alt;
     height="{ logo_height }"
     alt="{ logo_alt }"
   />
+  <span class="h2 text-white">{ shop.name }</span>
 {:else}
   <span class="h2">{ shop.name }</span>
 {/if}

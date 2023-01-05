@@ -185,20 +185,15 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
       
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_page != blank -%}
 			{{- slot_default_framework7-liquivelte_page -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
     {%- endcapture -%}
 {% assign slot_content_PageContent = slot_content_PageContent | append: '-scs-' | append: 'page-content' | append: '-scvs-' | append: slot_content_def_PageContent %}
 {% assign modulename = basename | append: 'page-content' %}
 {% include modulename, liquivelte: true, props: props_PageContent, sub_include: true, slot_contents: slot_content_PageContent, basename: '' %}
+{% assign slot_content_PageContent = '' %}
 {% assign props = '' %}
   {% else %}
     
@@ -207,15 +202,9 @@ smns stands for "slot module name separator"
 	{%- endif -%}
 
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_page != blank -%}
 			{{- slot_default_framework7-liquivelte_page -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   {% endif %}
 </div>
@@ -261,6 +250,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

@@ -1,0 +1,222 @@
+{% liquid 
+  assign filters = '['
+  assign filter_keys = 'false_value,label,param_name,range_max,true_value,type,url_to_remove' | split: ','
+  assign values_keys = 'active,count,label,param_name,url_to_add,url_to_remove,value' | split: ','
+  for filter in collection.filters
+    assign filters = filters | append: '{'
+
+    assign filters = filters | append: '"' | append: 'active_values' | append: '": ' | append: "["
+    for value in filter.active_values
+      assign filters = filters | append: '{'
+
+      for key in values_keys
+
+        assign val = value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '}'
+      unless forloop.last
+        assign filters = filters | append: ','
+      endunless
+
+    endfor
+
+    assign filters = filters | append: '],'
+    
+    assign filters = filters | append: '"' | append: 'inactive_values' | append: '": ' | append: "["
+    for value in filter.inactive_values
+      assign filters = filters | append: '{'
+
+      for key in values_keys
+
+        assign val = value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '}'
+      unless forloop.last
+        assign filters = filters | append: ','
+      endunless
+
+    endfor
+
+    assign filters = filters | append: '],'
+    
+    assign filters = filters | append: '"' | append: 'values' | append: '": ' | append: "["
+    for value in filter.values
+      assign filters = filters | append: '{'
+
+      for key in values_keys
+
+        assign val = value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '}'
+      unless forloop.last
+        assign filters = filters | append: ','
+      endunless
+
+    endfor
+
+    assign filters = filters | append: '],'
+
+    assign filters = filters | append: '"' | append: 'max_value' | append: '": ' | append: "{"
+
+      for key in values_keys
+
+        assign val = filter.max_value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '},'
+   
+      assign filters = filters | append: '"' | append: 'min_value' | append: '": ' | append: "{"
+
+      for key in values_keys
+
+        assign val = filter.min_value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '},'
+
+    for key in filter_keys
+      assign value = filter[key] | json
+      assign filters = filters | append: '"' | append: key | append: '": ' | append: value
+      
+      unless forloop.last
+        assign filters = filters | append: ','
+      endunless
+    endfor
+      
+    assign filters = filters | append: '}'
+    unless forloop.last
+      assign filters = filters | append: ','
+    endunless
+  endfor
+  assign filters = filters | append: ']'
+%}
+<script>
+  import { Panel, Page, View, Views, Block, Button, Chip, Link, List, ListItem, ListInput, Swiper, SwiperSlide, Navbar, Range } from 'framework7-liquivelte';
+  import Icon from '../snippets/icon.liquivelte';
+  const collection = {};
+  import filters from 'theme';
+  filters = JSON.parse(filters);
+  collection.filters = filters;
+
+  $: console.log('filters ', filters);
+
+  function priceChange(e) {
+    console.log('price change ', e);
+
+  }
+  function removeFilter() {
+
+  }
+</script>
+<Navbar>
+  <Button panelOpen="#filters-panel">  
+    <Icon name="icon-filter" width="20"></Icon> 
+    <span class="ml-1" data-translate="{{- 'products.facets.filter_button' | t -}}"> {{- 'products.facets.filter_button' | t -}} </span> 
+  </Button>
+    <Button >  
+    <span class="mr-1"> Sort </span>
+    <Icon name="icon-chevron-down" width="17"></Icon> 
+  </Button>
+</Navbar>
+
+<Panel left cover id="filters-panel">
+    <View init name="filters-view" stackPages="{true}">
+    <Page>
+      <List>
+        {% for filter in collection.filters %}
+          {% if filter.type == 'price_range' %}
+            <ListInput
+              label="{{- filter.label -}}"
+              input="{false}"
+            > 
+              <span slot="input">
+                 <Range
+                    min="{0}"
+                    max="{filter.range_max}"
+                    step="{1}"
+                    value="{[filter.min_value.value, filter.max_value.value]}"
+                    dual="{true}"
+                    onRangeChange="{priceChange.bind(filter)}"
+                  ></Range>
+              </span>
+            </ListInput>
+          {% else %}
+          <ListItem title="{{- filter.label -}}" smartSelect>
+            <select multiple name="{{- filter.label -}}" value="{ filter.active_values.map(v => v.value) }">
+              {% for value in filter.values %}
+                <option value="{{- value.value -}}">{{- value.label -}}</option>
+              {% endfor %}
+            </select>
+          </ListItem>
+          {% endif %}
+        {% endfor %}
+      </List>
+    </Page>
+  </View>
+</Panel>
+
+<Block>
+  {% for filter in collection.filters %}
+    {% for value in filter.active_values %}
+      <Chip text="{{- value.label -}}" deleteable onDelete={removeFilter} ></Chip>
+      {% endfor %}
+      {% if filter.type == 'price_range' %}
+        {% if filter.max_value %}
+          <Chip deleteable onDelete={removeFilter} >
+            <span slot="text">Max {{- filter.max_value.value | money -}}</span>
+          </Chip>
+        {% endif %}
+        {% if filter.min_value %}
+          <Chip deleteable onDelete={removeFilter} >
+            <span slot="text">Min {{- filter.min_value.value | money -}}</span>
+          </Chip>
+        {% endif %}
+    {% endif %}
+  {% endfor %}
+</Block>
+{% schema %}
+{
+  "name": "Facets",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "Facets (Filters)"
+    }
+  ]
+}
+{% endschema %}

@@ -120,39 +120,21 @@
 
 <div bind:this={el} class={computedClasses} data-f7-slot={f7Slot} {...restProps($$restProps)}>
   
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   <div class="toolbar-inner">
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
     <div class="messagebar-area">
       
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
       
 {% comment %}
@@ -164,15 +146,9 @@
 {% include modulename, liquivelte: true, props: props_Input, sub_include: true, basename: '' %}
 {% assign props = '' %}
       
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
     </div>
     {#if (sendLink && sendLink.length > 0) || hasSendLinkSlots}
@@ -190,56 +166,33 @@ smns stands for "slot module name separator"
 
 {%- capture slot_content_def_Link -%}
         
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
         {sendLink}
       {%- endcapture -%}
 {% assign slot_content_Link = slot_content_Link | append: '-scs-' | append: 'link' | append: '-scvs-' | append: slot_content_def_Link %}
 {% assign modulename = basename | append: 'link' %}
 {% include modulename, liquivelte: true, props: props_Link, sub_include: true, slot_contents: slot_content_Link, basename: '' %}
+{% assign slot_content_Link = '' %}
 {% assign props = '' %}
     {/if}
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   </div>
   
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
 </div>
 
@@ -284,6 +237,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

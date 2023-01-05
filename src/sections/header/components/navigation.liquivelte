@@ -1,22 +1,24 @@
 <script>
   export let links;
+  import { f7, List, ListItem, AccordionContent } from 'framework7-liquivelte';
+  $: mainview = f7?.views?.main;
 
-  console.log('links ', links);
+  $: console.log('mainview ', mainview);
 </script>
-<ul class="menu-drawer__menu has-submenu list-menu" role="list">
+<List accordionList>
   {% for lnk in links %}
-    <li>
-      {% if lnk.links %}
-      <details id="Details-menu-drawer-menu-item-{{- forloop.index -}}">
-        <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset" class:menu-drawer__menu-item--active="{{- lnk.child_active -}}" >
-          <svelte:self links="{lnk.links}" />  
-        </summary>
-      </details>
+    {% if lnk.links and lnk.links.size %}
+    <ListItem accordionItem title="{{- lnk.title -}}" >
+      {% if lnk.links and lnk.links.size %}
+      <AccordionContent>
+        <svelte:self links="{lnk.links}" />  
+      </AccordionContent>
       {% endif %}
-      <a href="{{- lnk.url -}}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset" class:menu-drawer__menu-item--active="{{- lnk.current -}}">
-        {{- lnk.title | escape -}}
-      </a>
-    </li>
+    </ListItem>
+    {% else %}
+      {@debug mainview}
+    <ListItem accordionItem="{false}" title="{{- lnk.title -}}" routeProps="{ { view: mainview } }" link="{lnk.url}"></ListItem>
+    {% endif %}
   {% endfor %}
+</List>
 
-</ul>

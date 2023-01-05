@@ -12,7 +12,7 @@
   import VerticalStepper from './vertical-stepper.liquivelte';
   import Loadable from './loadable.liquivelte';
   import Icon from './icon.liquivelte';
-  
+    
   export let product;
   let expandableOpened = false;
 
@@ -34,7 +34,8 @@
   
   $: quantity = cartItem?.quantity || 0;
 </script>
-<Card classes="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}">
+
+  <Card classes="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}">
     <Loadable classes="absolute -right-[10px] -top-[10px] z-10" centered>
       <VerticalStepper small
                       disabled="{{- !product.available -}}" 
@@ -43,28 +44,29 @@
                       onClick="{addToCart}" >
       </VerticalStepper>
     </Loadable>
-  <CardHeader
-  classes="no-border"
-  valign="bottom"
-  >
-  <img src="{{- product.media[0] | image_url: width: 300 -}}" 
-  width="300"
-  style="aspect-ratio: {{- product.media[0].aspect_ratio -}}" />
-</CardHeader>
-<CardContent>
-<div >
-  <h3>
-    {{- product.title -}}
-  </h3>
-</div> 
-
-</CardContent>
-    <CardFooter>
-      <span> {{- product.price | money -}} </span>
-      <Link> Add to Wishlist </Link>
-    </CardFooter>
-</Card>
-
+    <CardHeader
+    classes="no-border"
+    valign="bottom"
+    >
+    <Link href="/products/{{- product.handle -}}">
+    <img src="{{- product.media[0] | image_url: width: 300 -}}" 
+    width="300"
+    style="aspect-ratio: {{- product.media[0].aspect_ratio -}}" />
+    </Link>
+  </CardHeader>
+  <CardContent>
+  <div class="text-theme">
+   {{- product.price | money -}}
+  </div> 
+    <h3>
+      {{- product.title -}}
+    </h3>
+  </CardContent>
+  
+      <CardFooter>
+        <Link> Add to Wishlist </Link>
+      </CardFooter>
+  </Card>
 <style>
    .card-header-pic .card-header {
     background-size: cover;

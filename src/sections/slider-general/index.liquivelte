@@ -1,28 +1,54 @@
 <script>
     import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
-    import SliderImage from '../../snippets/slider-image.liquivelte';
+    import { FreeMode, Mousewheel } from 'swiper';
+    import SliderImage from './blocks/slider-image.liquivelte';
+    const section = {};
+    import section.settings from 'theme';
+    import section.blocks from 'theme';
+    
+    let container;
+
+    console.log('general slider section ', section);
+    console.log('general slider section.blocks ', section.blocks);
 </script>
 
-<Block>
-<BlockTitle>With all controls</BlockTitle>
-  <Swiper breakpoints="{breakpoints}">
+<div class="relative" bind:this="{container}">
+  {% if section.settings.flush_with_header %}
+    <div class="flush-shadow"></div>
+  {% endif %}
+  <Swiper freemode="{ { enabled: true, sticky: true } }" 
+          mousewheel="{ { forceToAxis: true, sensitivity: 1.5 } }"
+          modules="{[FreeMode, Mousewheel]}" >
     {% for block in section.blocks %}
-    <SwiperSlide >
-      {% if block.type == 'image' %}
-        <SliderImage ></SliderImage>
-      {% elsif block.type == 'image-with-card' %}
-      
-      {% elsif block.type == 'image-with-card' %}
-
-      {% endif %}
-    </SwiperSlide>
+    {% if block.type == 'image' %}
+        <SwiperSlide >
+          <SliderImage block="{{- block -}}"></SliderImage>
+        </SwiperSlide>
+        {% endif %}
     {% endfor %} 
   </Swiper>
-</Block>
+</div>
+
+{% include 'flush-header' %}
+
+<style global>
+    :root {
+      --header-slider-flush: -1;
+      --header-slider-flush-color: transparent;
+    }
+    .flush-shadow {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(229,228,226,0) 0%, rgba(0,0,0,0.3) 100%);
+      z-index: 51; 
+      pointer-events: none;
+    }
+
+</style>
 
 {% schema %}
 {
-  "name": "Slider",
+  "name": "Slider General",
   "tag": "section",
   "class": "product-section spaced-section",
   "settings": [
@@ -31,14 +57,22 @@
       "content": "Swiper"
     },
     {
-      "id": "collection",
-      "type": "collection",
-      "label": "Collection"
+      "id": "flush_with_header",
+      "type": "checkbox",
+      "label": "Flush to top",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "shadow_at_top",
+      "label": "Shadow at top to ensure text visibility",
+      "default": false
     }
   ],
+  "blocks": [],
   "presets": [
     {
-      "name": "Slider",
+      "name": "Slider General",
       "category": "Gallery"
     }
   ]

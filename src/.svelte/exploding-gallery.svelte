@@ -1,7 +1,11 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
 
@@ -9,14 +13,14 @@ let container, stage;
 let scrollY = 0;
 const section = {};
 export let sectionƒƒsettings; 
-section.settings = sectionƒƒsettings;
+section.settings = themeImports['sectionƒƒsettings'];
 export let sectionƒƒblocks; 
-section.blocks = sectionƒƒblocks;
+section.blocks = themeImports['sectionƒƒblocks'];
 import { onMount } from 'svelte';
 import { tweened } from 'svelte/motion';
 import { cubicOut, linear } from 'svelte/easing';
 
-export let imbalance;
+export let imbalance = themeImports['imbalance'];
 const itemWidths = [];
 const itemHeights = [];
 

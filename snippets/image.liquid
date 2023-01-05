@@ -1,6 +1,8 @@
 	{%- liquid
 			
 			
+			assign src = null
+			assign aspect_ratio = null
 			assign sizes = null
 			assign classes = null
 			-%}
@@ -26,6 +28,12 @@
 	assign composite_key = lv_propName | append: '_' | append: lv_key
 	
 	endfor
+	endif
+	if lv_propName == 'src'
+		assign src = lv_propValue
+	endif
+	if lv_propName == 'aspect_ratio'
+		assign aspect_ratio = lv_propValue
 	endif
 	if lv_propName == 'sizes'
 		assign sizes = lv_propValue
@@ -77,7 +85,7 @@
 						
 						
 	<script type="text/noscript" class="instance-data">{
-	"src" : {{ src | json }} , "alt" : {{ alt | json }} , "aspect_ratio" : {{ aspect_ratio | json }}
+	
 	
 	
 	}</script>
@@ -129,6 +137,8 @@
 	{%- liquid
 			
 			
+			assign src = null
+			assign aspect_ratio = null
 			assign sizes = null
 			assign classes = null
 			-%}

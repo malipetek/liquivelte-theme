@@ -99,8 +99,8 @@
     bind:this="{el}"
     class="menu-item {{ classes }} {{ computedClasses }}"
     {...attrs}
-    use:useTooltip={{ tooltip, tooltipTrigger }}
-    use:useRouteProps={routeProps}
+    use:useTooltip="{ { tooltip, tooltipTrigger } }"
+    use:useRouteProps="{routeProps}"
   >
     {% if text != blank or hasTextSlots or icon %}
       <div class="menu-item-content">
@@ -124,15 +124,9 @@
       </div>
     {% endif %}
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_menu-item != blank -%}
 			{{- slot_default_framework7-liquivelte_menu-item -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   </a>
 {% else %}
@@ -166,15 +160,9 @@
       </div>
     {% endif %}
     
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_menu-item != blank -%}
 			{{- slot_default_framework7-liquivelte_menu-item -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
   </div>
 {% endif %}
@@ -220,6 +208,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

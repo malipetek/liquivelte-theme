@@ -17,7 +17,21 @@
   assign menu = linklists[section.settings.menu]
   assign menu_json = '{ "title": "' | append: menu.title | append: '", "levels": ' | append: menu.levels | append: ', "links": ['
   for link in menu.links
-    assign menu_json = menu_json | append: '{ "url": "' | append: link.url | append: '", "title": "' | append: link.title | append: '"}' 
+    assign menu_json = menu_json | append: '{ "url": "' | append: link.url | append: '", "title": "' | append: link.title | append: '"'
+
+    if link.links
+      assign menu_json = menu_json | append: ',"links": ['
+      for link_2 in link.links
+        assign menu_json = menu_json | append: '{ "url": "' | append: link_2.url | append: '", "title": "' | append: link_2.title | append: '"}' 
+        unless forloop.last
+          assign menu_json = menu_json | append: ','
+        endunless
+      endfor
+      assign menu_json = menu_json | append: ']'
+    endif
+
+    assign menu_json = menu_json | append: '}' 
+    
     unless forloop.last
       assign menu_json = menu_json | append: ','
     endunless
@@ -73,33 +87,35 @@
 </svg>
 
   <Panel resizable left reveal swipe swipeOnlyClose="{true}"  >
-    <View>
+    <View name="sidebar">
       <Page>
-        <Block> Left panel content </Block>
+        <Navigation links="{{- section.settings.menu.links -}}"></Navigation>
       </Page>
     </View>
   </Panel>
   <Panel classes="cart-popup" resizable right reveal swipe swipeOnlyClose="{true}"  >
-    <View>
-      <CartDrawer />
+    <View name="cart">
+      <Page>
+        <CartDrawer />
+      </Page>
     </View>
   </Panel>
   <header> 
     <Appbar>
-      <div class="left">
+      <div class="left pt-[10px] pl-[10px]">
         <Button small panelToggle="left" classes="display-flex" >
-          <Icon name="icon-hamburger" width="15" />
+          <Icon name="icon-hamburger" width="25" />
         </Button>
       </div>
       <div class="center">
         <Logo />
       </div>
-      <div class="left">
+      <div class="right pt-[10px] pr-[10px]">
         <Link small panelToggle="right" classes="display-flex" >
-          <div class="icon">
-            <Icon name="icon-cart" width="40" />
+          <div class="icon relative">
+            <Icon name="icon-cart" width="30" />
             {% if cart.items %}
-              <Badge > {{- cart.items.size -}} </Badge>
+              <Badge color="red"> {{- cart.items.size -}} </Badge>
             {% endif %}
           </div>
         </Link>

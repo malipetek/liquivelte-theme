@@ -181,6 +181,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_CardHeader = slot_content_CardHeader | append: '-scs-' | append: 'card-header' | append: '-scvs-' | append: slot_content_def_CardHeader %}
 {% assign modulename = basename | append: 'card-header' %}
 {% include modulename, liquivelte: true, props: props_CardHeader, sub_include: true, slot_contents: slot_content_CardHeader, basename: '' %}
+{% assign slot_content_CardHeader = '' %}
 {% assign props = '' %}
   {% endif %}
   {% if content != blank or hasContentSlots %}
@@ -207,6 +208,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_CardContent = slot_content_CardContent | append: '-scs-' | append: 'card-content' | append: '-scvs-' | append: slot_content_def_CardContent %}
 {% assign modulename = basename | append: 'card-content' %}
 {% include modulename, liquivelte: true, props: props_CardContent, sub_include: true, slot_contents: slot_content_CardContent, basename: '' %}
+{% assign slot_content_CardContent = '' %}
 {% assign props = '' %}
   {% endif %}
   {% if footer != blank or hasFooterSlots %}
@@ -233,18 +235,13 @@ smns stands for "slot module name separator"
 {% assign slot_content_CardFooter = slot_content_CardFooter | append: '-scs-' | append: 'card-footer' | append: '-scvs-' | append: slot_content_def_CardFooter %}
 {% assign modulename = basename | append: 'card-footer' %}
 {% include modulename, liquivelte: true, props: props_CardFooter, sub_include: true, slot_contents: slot_content_CardFooter, basename: '' %}
+{% assign slot_content_CardFooter = '' %}
 {% assign props = '' %}
   {% endif %}
   
-	{%- if sub_include -%}
 		{%- if slot_default_framework7-liquivelte_card != blank -%}
 			{{- slot_default_framework7-liquivelte_card -}}
 		{%- endif -%}
-	{%- else -%}
-		{%- if main_content != blank -%}
-			{{- main_content -}}
-		{%- endif -%}
-	{%- endif -%}
 	
 </div>
 
@@ -289,6 +286,7 @@ smns stands for "slot module name separator"
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);

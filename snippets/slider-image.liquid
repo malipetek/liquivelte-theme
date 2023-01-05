@@ -1,7 +1,7 @@
 	{%- liquid
 			
 			
-			assign src = null
+			assign block = null
 			assign sizes = null
 			-%}
 	{%- liquid
@@ -27,8 +27,8 @@
 	
 	endfor
 	endif
-	if lv_propName == 'src'
-		assign src = lv_propValue
+	if lv_propName == 'block'
+		assign block = lv_propValue
 	endif
 	if lv_propName == 'sizes'
 		assign sizes = lv_propValue
@@ -54,15 +54,7 @@
 	{%- endunless -%}
 	
 <div class="image">
-  
-{% comment %}
-  kvsp stands for "key value separator"
-  prsp stands for "props separator"
-{% endcomment %}
-{% capture props_Image %}sizes-kvsp-{{ sizes }}{% endcapture %}
-{% assign modulename = basename | append: 'image' %}
-{% include modulename, liquivelte: true, props: props_Image, sub_include: true, basename: '' %}
-{% assign props = '' %}
+  <img src="{{ block.settings.image | image_url: width: 2500 }}" liquivelte-value-cache="image_url§{{block.settings.image | escape -}}, {{width}}, {{2500}}§{{block.settings.image| image_url: width: 2500  }}" />
 </div>
 
 
@@ -70,7 +62,7 @@
 						
 						
 	<script type="text/noscript" class="instance-data">{
-	"src" : {{ src | json }} , "alt" : {{ alt | json }} , "aspect_ratio" : {{ aspect_ratio | json }}
+	
 	
 	
 	}</script>
@@ -107,6 +99,7 @@
 	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
 	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
 	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
 	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
 	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
 	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);
@@ -122,7 +115,7 @@
 	{%- liquid
 			
 			
-			assign src = null
+			assign block = null
 			assign sizes = null
 			-%}
 	{%- liquid 

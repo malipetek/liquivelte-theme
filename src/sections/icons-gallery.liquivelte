@@ -1,0 +1,28 @@
+
+{% liquid 
+  assign icons = 'icon-3d-model,icon-accordion,icon-account,icon-amazon_payments,icon-american_express,icon-apple_pay,icon-arrow-left,icon-arrow-right,icon-arrow,icon-bitcoin,icon-caret,icon-cart-empty,icon-cart,icon-checkmark,icon-chevron-down,icon-chevron-left,icon-chevron-right,icon-chevron-up,icon-cirrus,icon-clipboard,icon-close-small,icon-close,icon-dankort,icon-diners_club,icon-discount,icon-discover,icon-dogecoin,icon-dwolla,icon-error,icon-facebook,icon-filter,icon-forbrugsforeningen,icon-garbage,icon-hamburger,icon-instagram,icon-interac,icon-jcb,icon-klarna,icon-laser,icon-litecoin,icon-lock,icon-login,icon-maestro,icon-master,icon-minus,icon-padlock,icon-pause,icon-paypal,icon-pin,icon-pinterest,icon-play-video,icon-play,icon-plus,icon-quote,icon-remove,icon-rss,icon-search,icon-share,icon-shopify-logo,icon-shopify_pay,icon-snapchat,icon-spinner,icon-stripe,icon-success,icon-tick,icon-tiktok,icon-tumblr,icon-twitter,icon-unavailable,icon-vimeo,icon-visa,icon-youtube,icon-zoom,apple,banana,bottle,box,carrot,chat_bubble,check_mark,clipboard,dairy,dairy_free,dryer,eye,fire,gluten_free,heart,iron,leaf,leather,lightning_bolt,lipstick,lock,map_pin,nut_free,pants,paw_print,pepper,perfume,plane,plant,price_tag,question_mark,recycle,return,ruler,serving_dish,shirt,shoe,silhouette,snowflake,star,stopwatch,truck,washing' | split: ','
+  %}
+<script>
+  import Icon from '../snippets/icon.liquivelte';
+  import icons from 'theme';
+</script>
+
+<style>
+  .gallery {
+    display: flex;
+  }
+  .gallery > * {
+    flex: 1 1 200px;
+    padding: 20px;
+  }
+</style>
+<div class="gallery">
+  {% for icon in icons %}
+  <div>
+    <h3> {{- icon -}} </h3>
+    <div class="w-8">
+      <Icon name="{{- icon -}}" ></Icon>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,22 +1,20 @@
 
 <script>
+  import { getContext, setContext } from 'svelte';
+  export let themeImports = getContext('svelteProps');
+  export let rawIncludes = getContext('rawIncludes');
+  export let lec = getContext('lec');
+
   import cachedLiquid from 'liquivelte-liquid.js';
-  export let lec;
   const liquid = cachedLiquid(lec);
   let index = 0;
-
-export let blockƒƒsettings;
-export let bold;
-export let color;
-export let font_size;
-export let title_top;
-export let left; 
+ 
 const section = {};
 export let sectionƒƒsettings; 
-section.settings = sectionƒƒsettings; 
+section.settings = themeImports['sectionƒƒsettings']; 
 export let sectionƒƒblocks; 
-section.blocks = sectionƒƒblocks; 
-export let animations;
+section.blocks = themeImports['sectionƒƒblocks']; 
+export let animations = themeImports['animations'];
 
 console.log('section blocks 1', animations, section.blocks);
 section.blocks = section.blocks.map(block => ({...block, settings: { ...block.settings, anim_style: animations.filter(anim => anim.target == block.settings.id).reduce((c, anim) => `${c}${anim.anim_style}`, '') } }));
@@ -140,7 +138,7 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
 } }
         
         {#if block.type == 'title' }
-          <Title  anim_style="{ block.settings.anim_style }"   left={left} title_top={title_top} font_size={font_size} color={color} bold={bold} animations={animations}  blockƒƒsettings={blockƒƒsettings} sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
+          <Title  anim_style="{ block.settings.anim_style }"   animations={animations}  sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
         {/if}
         
         {#if block.type == 'image' }
@@ -152,11 +150,11 @@ $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height:
         {/if}
 
         {#if block.type == 'video' }
-          <ScrollVideo  block="{ block }" keepFor="{ keepFor }" bind:keptFor anim_style={ block.settings.anim_style }   left={left} title_top={title_top} font_size={font_size} color={color} bold={bold} animations={animations}  blockƒƒsettings={blockƒƒsettings} sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
+          <ScrollVideo  block="{ block }" keepFor="{ keepFor }" bind:keptFor anim_style={ block.settings.anim_style }   animations={animations}  sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} />
         {/if}
 
         {#if block.type == 'shape' }
-          <Shape  block="{ block }" anim_style="{ block.settings.anim_style }"   left={left} title_top={title_top} font_size={font_size} color={color} bold={bold} animations={animations}  blockƒƒsettings={blockƒƒsettings} sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} /> 
+          <Shape  block="{ block }" anim_style="{ block.settings.anim_style }"   animations={animations}  sectionƒƒsettings={sectionƒƒsettings} sectionƒƒblocks={sectionƒƒblocks}   lec={lec} /> 
         {/if}
       
       {/each}
