@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, assign, create_component, claim_component, mount_component, get_spread_update, get_spread_object, transition_in, transition_out, destroy_component, getContext, empty, insert_hydration, group_outros, check_outros, detach, text, claim_text, set_data } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, assign, create_component, claim_component, mount_component, get_spread_update, get_spread_object, transition_in, transition_out, destroy_component, getContext, exclude_internal_props, empty, insert_hydration, group_outros, check_outros, detach, text, claim_text, set_data } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { Icon } from './framework7-liquivelte-icon-hs8daa1a0c.liquivelte.js';
 import { Badge } from './framework7-liquivelte-badge-hs8daa1a0c.liquivelte.js';
 
@@ -36,7 +36,7 @@ function create_if_block(ctx) {
 			? get_spread_update(badge_spread_levels, [get_spread_object(/*icon*/ ctx[0].badge.props)])
 			: {};
 
-			if (dirty & /*$$scope, icon*/ 17) {
+			if (dirty & /*$$scope, icon*/ 129) {
 				badge_changes.$$scope = { dirty, ctx };
 			}
 
@@ -57,7 +57,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (18:4) <Badge  {...icon.badge.props} >
+// (22:4) <Badge  {...icon.badge.props} >
 function create_default_slot_1(ctx) {
 	let t_value = /*icon*/ ctx[0].badge.content + "";
 	let t;
@@ -81,7 +81,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (16:0) <Icon  {...icon.props} >
+// (20:0) <Icon  {...icon.props} >
 function create_default_slot(ctx) {
 	let if_block_anchor;
 	let current;
@@ -173,7 +173,7 @@ function create_fragment(ctx) {
 			? get_spread_update(icon_1_spread_levels, [get_spread_object(/*icon*/ ctx[0].props)])
 			: {};
 
-			if (dirty & /*$$scope, icon*/ 17) {
+			if (dirty & /*$$scope, icon*/ 129) {
 				icon_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -195,21 +195,26 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	let { icon = undefined } = $$props;
 
-	$$self.$$set = $$props => {
-		if ('icon' in $$props) $$invalidate(0, icon = $$props.icon);
+	$$self.$$set = $$new_props => {
+		$$invalidate(6, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(1, importsSeek = $$new_props.importsSeek);
+		if ('icon' in $$new_props) $$invalidate(0, icon = $$new_props.icon);
 	};
 
-	return [icon];
+	$$props = exclude_internal_props($$props);
+	return [icon, importsSeek];
 }
 
 class Use_icon extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { icon: 0 });
+		init(this, options, instance, create_fragment, safe_not_equal, { importsSeek: 1, icon: 0 });
 	}
 }
 

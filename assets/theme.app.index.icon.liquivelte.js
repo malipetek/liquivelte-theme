@@ -1,4 +1,4 @@
-import './index.icon-hs8daa1a0c.liquivelte.js';
+import './index.icon-hs212208bb.liquivelte.js';
 
 const onIntersect = (el, callback) => {
     const observer = new IntersectionObserver(callback, {
@@ -10,7 +10,7 @@ const onIntersect = (el, callback) => {
   };
   
 
-   const initializeObservers = () => {
+   const initializeObservers = (doc) => {
     
   Array.from(doc.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
@@ -22,15 +22,36 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./header-hs39c6dc7d.liquivelte.js').then(function (n) { return n.index; })).default({
+          wrapper.svelteComponent = new (await import('./header-hsbcd51f53.liquivelte.js').then(function (n) { return n.index; })).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
+          });
+        }
+      })();
+    });
+  });
+  
+  Array.from(doc.querySelectorAll('.liquivelte-component.footer')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if(entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import('./footer-hs7ec9a54b.liquivelte.js')).default({
+            target: wrapper,
+            hydrate: true,
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
     });
   });
    };
-  document.addEventListener('DOMContentLoaded', () => initializeObservers());
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
+  document.addEventListener('DOMContentLoaded', () => initializeObservers(document));

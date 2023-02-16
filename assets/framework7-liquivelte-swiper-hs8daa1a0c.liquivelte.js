@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, attr, set_attributes, toggle_class, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, transition_in, transition_out, compute_rest_props, getContext, createEventDispatcher, setContext, onMount, afterUpdate, onDestroy, exclude_internal_props, noop, binding_callbacks, tick } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, attr, set_attributes, toggle_class, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, transition_in, transition_out, compute_rest_props, getContext, createEventDispatcher, setContext, onMount, afterUpdate, onDestroy, exclude_internal_props, noop, binding_callbacks, tick } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { Swiper, getParams } from './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
 import { mountSwiper } from './framework7-liquivelte-mount-swiper-hs8daa1a0c.liquivelte.js';
 import { extend, needsNavigation, needsScrollbar, needsPagination } from './framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';
@@ -37,7 +37,7 @@ const get_container_start_slot_changes = dirty => ({
 
 const get_container_start_slot_context = ctx => ({ virtualData: /*virtualData*/ ctx[9] });
 
-// (188:2) {#if _needsNavigation }
+// (192:2) {#if _needsNavigation }
 function create_if_block_2(ctx) {
 	let div0;
 	let t;
@@ -64,23 +64,23 @@ function create_if_block_2(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, div0, anchor);
-			/*div0_binding*/ ctx[19](div0);
+			/*div0_binding*/ ctx[20](div0);
 			insert_hydration(target, t, anchor);
 			insert_hydration(target, div1, anchor);
-			/*div1_binding*/ ctx[20](div1);
+			/*div1_binding*/ ctx[21](div1);
 		},
 		p: noop,
 		d(detaching) {
 			if (detaching) detach(div0);
-			/*div0_binding*/ ctx[19](null);
+			/*div0_binding*/ ctx[20](null);
 			if (detaching) detach(t);
 			if (detaching) detach(div1);
-			/*div1_binding*/ ctx[20](null);
+			/*div1_binding*/ ctx[21](null);
 		}
 	};
 }
 
-// (192:2) {#if _needsScrollbar }
+// (196:2) {#if _needsScrollbar }
 function create_if_block_1(ctx) {
 	let div;
 
@@ -99,17 +99,17 @@ function create_if_block_1(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
-			/*div_binding*/ ctx[21](div);
+			/*div_binding*/ ctx[22](div);
 		},
 		p: noop,
 		d(detaching) {
 			if (detaching) detach(div);
-			/*div_binding*/ ctx[21](null);
+			/*div_binding*/ ctx[22](null);
 		}
 	};
 }
 
-// (195:2) {#if _needsPagination }
+// (199:2) {#if _needsPagination }
 function create_if_block(ctx) {
 	let div;
 
@@ -128,12 +128,12 @@ function create_if_block(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
-			/*div_binding_1*/ ctx[22](div);
+			/*div_binding_1*/ ctx[23](div);
 		},
 		p: noop,
 		d(detaching) {
 			if (detaching) detach(div);
-			/*div_binding_1*/ ctx[22](null);
+			/*div_binding_1*/ ctx[23](null);
 		}
 	};
 }
@@ -150,19 +150,19 @@ function create_fragment(ctx) {
 	let t6;
 	let div1_class_value;
 	let current;
-	const container_start_slot_template = /*#slots*/ ctx[18]["container-start"];
-	const container_start_slot = create_slot(container_start_slot_template, ctx, /*$$scope*/ ctx[17], get_container_start_slot_context);
-	const wrapper_start_slot_template = /*#slots*/ ctx[18]["wrapper-start"];
-	const wrapper_start_slot = create_slot(wrapper_start_slot_template, ctx, /*$$scope*/ ctx[17], get_wrapper_start_slot_context);
-	const default_slot_template = /*#slots*/ ctx[18].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[17], get_default_slot_context);
-	const wrapper_end_slot_template = /*#slots*/ ctx[18]["wrapper-end"];
-	const wrapper_end_slot = create_slot(wrapper_end_slot_template, ctx, /*$$scope*/ ctx[17], get_wrapper_end_slot_context);
+	const container_start_slot_template = /*#slots*/ ctx[19]["container-start"];
+	const container_start_slot = create_slot(container_start_slot_template, ctx, /*$$scope*/ ctx[18], get_container_start_slot_context);
+	const wrapper_start_slot_template = /*#slots*/ ctx[19]["wrapper-start"];
+	const wrapper_start_slot = create_slot(wrapper_start_slot_template, ctx, /*$$scope*/ ctx[18], get_wrapper_start_slot_context);
+	const default_slot_template = /*#slots*/ ctx[19].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[18], get_default_slot_context);
+	const wrapper_end_slot_template = /*#slots*/ ctx[19]["wrapper-end"];
+	const wrapper_end_slot = create_slot(wrapper_end_slot_template, ctx, /*$$scope*/ ctx[18], get_wrapper_end_slot_context);
 	let if_block0 = /*_needsNavigation*/ ctx[12] && create_if_block_2(ctx);
 	let if_block1 = /*_needsScrollbar*/ ctx[11] && create_if_block_1(ctx);
 	let if_block2 = /*_needsPagination*/ ctx[10] && create_if_block(ctx);
-	const container_end_slot_template = /*#slots*/ ctx[18]["container-end"];
-	const container_end_slot = create_slot(container_end_slot_template, ctx, /*$$scope*/ ctx[17], get_container_end_slot_context);
+	const container_end_slot_template = /*#slots*/ ctx[19]["container-end"];
+	const container_end_slot = create_slot(container_end_slot_template, ctx, /*$$scope*/ ctx[18], get_container_end_slot_context);
 
 	let div1_levels = [
 		{
@@ -265,65 +265,65 @@ function create_fragment(ctx) {
 				container_end_slot.m(div1, null);
 			}
 
-			/*div1_binding_1*/ ctx[23](div1);
+			/*div1_binding_1*/ ctx[24](div1);
 			current = true;
 		},
 		p(ctx, dirty) {
 			if (container_start_slot) {
-				if (container_start_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 131584)) {
+				if (container_start_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 262656)) {
 					update_slot_base(
 						container_start_slot,
 						container_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[17],
+						/*$$scope*/ ctx[18],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[17])
-						: get_slot_changes(container_start_slot_template, /*$$scope*/ ctx[17], dirty, get_container_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[18])
+						: get_slot_changes(container_start_slot_template, /*$$scope*/ ctx[18], dirty, get_container_start_slot_changes),
 						get_container_start_slot_context
 					);
 				}
 			}
 
 			if (wrapper_start_slot) {
-				if (wrapper_start_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 131584)) {
+				if (wrapper_start_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 262656)) {
 					update_slot_base(
 						wrapper_start_slot,
 						wrapper_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[17],
+						/*$$scope*/ ctx[18],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[17])
-						: get_slot_changes(wrapper_start_slot_template, /*$$scope*/ ctx[17], dirty, get_wrapper_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[18])
+						: get_slot_changes(wrapper_start_slot_template, /*$$scope*/ ctx[18], dirty, get_wrapper_start_slot_changes),
 						get_wrapper_start_slot_context
 					);
 				}
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 131584)) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 262656)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[17],
+						/*$$scope*/ ctx[18],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[17])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[17], dirty, get_default_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[18])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[18], dirty, get_default_slot_changes),
 						get_default_slot_context
 					);
 				}
 			}
 
 			if (wrapper_end_slot) {
-				if (wrapper_end_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 131584)) {
+				if (wrapper_end_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 262656)) {
 					update_slot_base(
 						wrapper_end_slot,
 						wrapper_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[17],
+						/*$$scope*/ ctx[18],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[17])
-						: get_slot_changes(wrapper_end_slot_template, /*$$scope*/ ctx[17], dirty, get_wrapper_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[18])
+						: get_slot_changes(wrapper_end_slot_template, /*$$scope*/ ctx[18], dirty, get_wrapper_end_slot_changes),
 						get_wrapper_end_slot_context
 					);
 				}
@@ -369,15 +369,15 @@ function create_fragment(ctx) {
 			}
 
 			if (container_end_slot) {
-				if (container_end_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 131584)) {
+				if (container_end_slot.p && (!current || dirty[0] & /*$$scope, virtualData*/ 262656)) {
 					update_slot_base(
 						container_end_slot,
 						container_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[17],
+						/*$$scope*/ ctx[18],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[17])
-						: get_slot_changes(container_end_slot_template, /*$$scope*/ ctx[17], dirty, get_container_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[18])
+						: get_slot_changes(container_end_slot_template, /*$$scope*/ ctx[18], dirty, get_container_end_slot_changes),
 						get_container_end_slot_context
 					);
 				}
@@ -417,7 +417,7 @@ function create_fragment(ctx) {
 			if (if_block1) if_block1.d();
 			if (if_block2) if_block2.d();
 			if (container_end_slot) container_end_slot.d(detaching);
-			/*div1_binding_1*/ ctx[23](null);
+			/*div1_binding_1*/ ctx[24](null);
 		}
 	};
 }
@@ -426,11 +426,13 @@ function instance($$self, $$props, $$invalidate) {
 	let _needsNavigation;
 	let _needsScrollbar;
 	let _needsPagination;
-	const omit_props_names = ["classes","tag","wrapperTag","vertical","swiper"];
+	const omit_props_names = ["importsSeek","classes","tag","wrapperTag","vertical","swiper"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const dispatch = createEventDispatcher();
 	let { classes = '' } = $$props;
 	let { tag = 'div' } = $$props;
@@ -475,7 +477,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	const calcParams = () => {
 		paramsData = getParams($$restProps);
-		$$invalidate(16, swiperParams = paramsData.params);
+		$$invalidate(17, swiperParams = paramsData.params);
 		passedParams = paramsData.passedParams;
 		$$invalidate(3, restProps = paramsData.rest);
 	};
@@ -605,28 +607,31 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
-		$$invalidate(37, $$restProps = compute_rest_props($$props, omit_props_names));
+		$$invalidate(40, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(39, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('importsSeek' in $$new_props) $$invalidate(13, importsSeek = $$new_props.importsSeek);
 		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
-		if ('tag' in $$new_props) $$invalidate(13, tag = $$new_props.tag);
-		if ('wrapperTag' in $$new_props) $$invalidate(14, wrapperTag = $$new_props.wrapperTag);
+		if ('tag' in $$new_props) $$invalidate(14, tag = $$new_props.tag);
+		if ('wrapperTag' in $$new_props) $$invalidate(15, wrapperTag = $$new_props.wrapperTag);
 		if ('vertical' in $$new_props) $$invalidate(1, vertical = $$new_props.vertical);
-		if ('$$scope' in $$new_props) $$invalidate(17, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(18, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[0] & /*swiperParams*/ 65536) {
+		if ($$self.$$.dirty[0] & /*swiperParams*/ 131072) {
 			$$invalidate(12, _needsNavigation = needsNavigation(swiperParams));
 		}
 
-		if ($$self.$$.dirty[0] & /*swiperParams*/ 65536) {
+		if ($$self.$$.dirty[0] & /*swiperParams*/ 131072) {
 			$$invalidate(11, _needsScrollbar = needsScrollbar(swiperParams));
 		}
 
-		if ($$self.$$.dirty[0] & /*swiperParams*/ 65536) {
+		if ($$self.$$.dirty[0] & /*swiperParams*/ 131072) {
 			$$invalidate(10, _needsPagination = needsPagination(swiperParams));
 		}
 	};
+
+	$$props = exclude_internal_props($$props);
 
 	return [
 		classes,
@@ -642,6 +647,7 @@ function instance($$self, $$props, $$invalidate) {
 		_needsPagination,
 		_needsScrollbar,
 		_needsNavigation,
+		importsSeek,
 		tag,
 		wrapperTag,
 		swiper,
@@ -667,11 +673,12 @@ class Swiper_1 extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
+				importsSeek: 13,
 				classes: 0,
-				tag: 13,
-				wrapperTag: 14,
+				tag: 14,
+				wrapperTag: 15,
 				vertical: 1,
-				swiper: 15
+				swiper: 16
 			},
 			null,
 			[-1, -1]
@@ -679,7 +686,7 @@ class Swiper_1 extends SvelteComponent {
 	}
 
 	get swiper() {
-		return this.$$.ctx[15];
+		return this.$$.ctx[16];
 	}
 }
 

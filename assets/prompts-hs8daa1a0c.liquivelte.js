@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, element, claim_element, children, detach, attr, insert_hydration, noop, getContext, onMount } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, element, claim_element, children, detach, attr, insert_hydration, noop, getContext, onMount, assign, exclude_internal_props } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { f7ready } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
 import './framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';
@@ -42,29 +42,45 @@ function create_fragment(ctx) {
 	};
 }
 
-function instance($$self) {
+function instance($$self, $$props, $$invalidate) {
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
+	let notification;
 
 	onMount(() => {
-		f7ready(() => {
-			console.log('f7 ready');
-		}); // notification = f7.notification.create({
-		//   title: 'Newsletter',
-		//   titleRightText: 'now',
-		//   subtitle: 'Subscribe to newsletter to get 20% off',
-	}); //   text: 'Tap on this to subscribe.',
-	//   closeTimeout: 3000,
-	// }); 
-	// setTimeout(() => {
+		f7ready(f7 => {
+			notification = f7.notification.create({
+				title: 'Newsletter',
+				titleRightText: 'now',
+				subtitle: 'Subscribe to newsletter to get 20% off',
+				text: 'Tap on this to subscribe.',
+				closeTimeout: 3000
+			});
 
-	return [];
+			setTimeout(
+				() => {
+					notification.open();
+				},
+				2000
+			);
+		});
+	});
+
+	$$self.$$set = $$new_props => {
+		$$invalidate(6, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(0, importsSeek = $$new_props.importsSeek);
+	};
+
+	$$props = exclude_internal_props($$props);
+	return [importsSeek];
 }
 
 class Prompts extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, {});
+		init(this, options, instance, create_fragment, safe_not_equal, { importsSeek: 0 });
 	}
 }
 
