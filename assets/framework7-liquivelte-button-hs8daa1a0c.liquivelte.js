@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, empty, insert_hydration, group_outros, transition_out, check_outros, transition_in, detach, compute_rest_props, getContext, createEventDispatcher, assign, exclude_internal_props, binding_callbacks, element, claim_element, children, set_attributes, toggle_class, action_destroyer, listen, get_spread_update, is_function, run_all, create_slot, space, claim_space, update_slot_base, get_all_dirty_from_scope, get_slot_changes, create_component, claim_component, mount_component, append_hydration, destroy_component, text, claim_text, set_data } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, empty, insert_hydration, group_outros, transition_out, check_outros, transition_in, detach, compute_rest_props, getContext, createEventDispatcher, assign, exclude_internal_props, binding_callbacks, element, claim_element, children, set_attributes, toggle_class, action_destroyer, listen, get_spread_update, is_function, run_all, create_slot, space, claim_space, update_slot_base, get_all_dirty_from_scope, get_slot_changes, create_component, claim_component, mount_component, append_hydration, destroy_component, text, claim_text, set_data } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import { createEmitter, extend, routerAttrs, isStringProp, restProps, actionsAttrs, classNames, colorClasses, routerClasses, actionsClasses, useIcon, useRouteProps, useTooltip } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Use_icon } from './framework7-liquivelte-use-icon-hs8daa1a0c.liquivelte.js';
@@ -87,7 +87,7 @@ function create_else_block_1(ctx) {
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
 			if_blocks[current_block_type_index].m(a, null);
-			/*a_binding*/ ctx[51](a);
+			/*a_binding*/ ctx[52](a);
 			current = true;
 
 			if (!mounted) {
@@ -183,14 +183,14 @@ function create_else_block_1(ctx) {
 		d(detaching) {
 			if (detaching) detach(a);
 			if_blocks[current_block_type_index].d();
-			/*a_binding*/ ctx[51](null);
+			/*a_binding*/ ctx[52](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (109:0) {#if tagName == 'button' }
+// (113:0) {#if tagName == 'button' }
 function create_if_block(ctx) {
 	let button;
 	let current_block_type_index;
@@ -273,7 +273,7 @@ function create_if_block(ctx) {
 			insert_hydration(target, button, anchor);
 			if_blocks[current_block_type_index].m(button, null);
 			if (button.autofocus) button.focus();
-			/*button_binding*/ ctx[50](button);
+			/*button_binding*/ ctx[51](button);
 			current = true;
 
 			if (!mounted) {
@@ -369,22 +369,22 @@ function create_if_block(ctx) {
 		d(detaching) {
 			if (detaching) detach(button);
 			if_blocks[current_block_type_index].d();
-			/*button_binding*/ ctx[50](null);
+			/*button_binding*/ ctx[51](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (215:4) {:else}
+// (219:4) {:else}
 function create_else_block_2(ctx) {
 	let t0;
 	let t1;
 	let current;
 	let if_block0 = /*icon*/ ctx[37] && create_if_block_10(ctx);
 	let if_block1 = /*text*/ ctx[1] != undefined && create_if_block_9(ctx);
-	const default_slot_template = /*#slots*/ ctx[49].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
+	const default_slot_template = /*#slots*/ ctx[50].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[49], null);
 
 	return {
 		c() {
@@ -451,15 +451,15 @@ function create_else_block_2(ctx) {
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[48], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[49], dirty, null),
 						null
 					);
 				}
@@ -486,7 +486,7 @@ function create_else_block_2(ctx) {
 	};
 }
 
-// (204:4) {#if preloader }
+// (208:4) {#if preloader }
 function create_if_block_6(ctx) {
 	let preloader_1;
 	let t0;
@@ -504,8 +504,8 @@ function create_if_block_6(ctx) {
 
 	let if_block0 = /*icon*/ ctx[37] && create_if_block_8(ctx);
 	let if_block1 = /*text*/ ctx[1] != undefined && create_if_block_7(ctx);
-	const default_slot_template = /*#slots*/ ctx[49].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
+	const default_slot_template = /*#slots*/ ctx[50].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[49], null);
 
 	return {
 		c() {
@@ -588,15 +588,15 @@ function create_if_block_6(ctx) {
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[48], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[49], dirty, null),
 						null
 					);
 				}
@@ -626,7 +626,7 @@ function create_if_block_6(ctx) {
 	};
 }
 
-// (216:6) {#if icon }
+// (220:6) {#if icon }
 function create_if_block_10(ctx) {
 	let useicon;
 	let current;
@@ -663,7 +663,7 @@ function create_if_block_10(ctx) {
 	};
 }
 
-// (219:6) {#if text != undefined }
+// (223:6) {#if text != undefined }
 function create_if_block_9(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[40].default(/*text*/ ctx[1], '') + "";
@@ -693,7 +693,7 @@ function create_if_block_9(ctx) {
 	};
 }
 
-// (207:8) {#if icon }
+// (211:8) {#if icon }
 function create_if_block_8(ctx) {
 	let useicon;
 	let current;
@@ -730,7 +730,7 @@ function create_if_block_8(ctx) {
 	};
 }
 
-// (210:8) {#if text != undefined }
+// (214:8) {#if text != undefined }
 function create_if_block_7(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[40].default(/*text*/ ctx[1], '') + "";
@@ -760,15 +760,15 @@ function create_if_block_7(ctx) {
 	};
 }
 
-// (157:4) {:else}
+// (161:4) {:else}
 function create_else_block(ctx) {
 	let t0;
 	let t1;
 	let current;
 	let if_block0 = /*icon*/ ctx[37] && create_if_block_5(ctx);
 	let if_block1 = /*text*/ ctx[1] != undefined && create_if_block_4(ctx);
-	const default_slot_template = /*#slots*/ ctx[49].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
+	const default_slot_template = /*#slots*/ ctx[50].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[49], null);
 
 	return {
 		c() {
@@ -835,15 +835,15 @@ function create_else_block(ctx) {
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[48], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[49], dirty, null),
 						null
 					);
 				}
@@ -870,7 +870,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (146:4) {#if preloader }
+// (150:4) {#if preloader }
 function create_if_block_1(ctx) {
 	let preloader_1;
 	let t0;
@@ -888,8 +888,8 @@ function create_if_block_1(ctx) {
 
 	let if_block0 = /*icon*/ ctx[37] && create_if_block_3(ctx);
 	let if_block1 = /*text*/ ctx[1] != undefined && create_if_block_2(ctx);
-	const default_slot_template = /*#slots*/ ctx[49].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
+	const default_slot_template = /*#slots*/ ctx[50].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[49], null);
 
 	return {
 		c() {
@@ -972,15 +972,15 @@ function create_if_block_1(ctx) {
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[48], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[49], dirty, null),
 						null
 					);
 				}
@@ -1010,7 +1010,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (158:6) {#if icon }
+// (162:6) {#if icon }
 function create_if_block_5(ctx) {
 	let useicon;
 	let current;
@@ -1047,7 +1047,7 @@ function create_if_block_5(ctx) {
 	};
 }
 
-// (161:6) {#if text != undefined }
+// (165:6) {#if text != undefined }
 function create_if_block_4(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[40].default(/*text*/ ctx[1], '') + "";
@@ -1077,7 +1077,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (149:8) {#if icon }
+// (153:8) {#if icon }
 function create_if_block_3(ctx) {
 	let useicon;
 	let current;
@@ -1114,7 +1114,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (152:8) {#if text != undefined }
+// (156:8) {#if text != undefined }
 function create_if_block_2(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[40].default(/*text*/ ctx[1], '') + "";
@@ -1224,13 +1224,15 @@ function instance($$self, $$props, $$invalidate) {
 	let icon;
 
 	const omit_props_names = [
-		"classes","text","tabLink","tabLinkActive","type","href","target","round","roundMd","roundIos","roundAurora","fill","fillMd","fillIos","fillAurora","large","largeMd","largeIos","largeAurora","small","smallMd","smallIos","smallAurora","raised","raisedMd","raisedIos","raisedAurora","outline","outlineMd","outlineIos","outlineAurora","active","disabled","tooltip","tooltipTrigger","routeProps","preloader","preloaderSize","preloaderColor","loading"
+		"importsSeek","classes","text","tabLink","tabLinkActive","type","href","target","round","roundMd","roundIos","roundAurora","fill","fillMd","fillIos","fillAurora","large","largeMd","largeIos","largeAurora","small","smallMd","smallIos","smallAurora","raised","raisedMd","raisedIos","raisedAurora","outline","outlineMd","outlineIos","outlineAurora","active","disabled","tooltip","tooltipTrigger","routeProps","preloader","preloaderSize","preloaderColor","loading"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let computedClasses = undefined;
@@ -1295,15 +1297,16 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(55, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
-		$$invalidate(56, $$restProps = compute_rest_props($$props, omit_props_names));
+		$$invalidate(57, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(58, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('importsSeek' in $$new_props) $$invalidate(42, importsSeek = $$new_props.importsSeek);
 		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
 		if ('text' in $$new_props) $$invalidate(1, text = $$new_props.text);
-		if ('tabLink' in $$new_props) $$invalidate(42, tabLink = $$new_props.tabLink);
-		if ('tabLinkActive' in $$new_props) $$invalidate(43, tabLinkActive = $$new_props.tabLinkActive);
-		if ('type' in $$new_props) $$invalidate(44, type = $$new_props.type);
-		if ('href' in $$new_props) $$invalidate(45, href = $$new_props.href);
-		if ('target' in $$new_props) $$invalidate(46, target = $$new_props.target);
+		if ('tabLink' in $$new_props) $$invalidate(43, tabLink = $$new_props.tabLink);
+		if ('tabLinkActive' in $$new_props) $$invalidate(44, tabLinkActive = $$new_props.tabLinkActive);
+		if ('type' in $$new_props) $$invalidate(45, type = $$new_props.type);
+		if ('href' in $$new_props) $$invalidate(46, href = $$new_props.href);
+		if ('target' in $$new_props) $$invalidate(47, target = $$new_props.target);
 		if ('round' in $$new_props) $$invalidate(2, round = $$new_props.round);
 		if ('roundMd' in $$new_props) $$invalidate(3, roundMd = $$new_props.roundMd);
 		if ('roundIos' in $$new_props) $$invalidate(4, roundIos = $$new_props.roundIos);
@@ -1337,12 +1340,12 @@ function instance($$self, $$props, $$invalidate) {
 		if ('preloaderSize' in $$new_props) $$invalidate(32, preloaderSize = $$new_props.preloaderSize);
 		if ('preloaderColor' in $$new_props) $$invalidate(33, preloaderColor = $$new_props.preloaderColor);
 		if ('loading' in $$new_props) $$invalidate(34, loading = $$new_props.loading);
-		if ('$$scope' in $$new_props) $$invalidate(48, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(49, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[1] & /*href*/ 16384) {
-			$$invalidate(47, hrefComputed = href === true ? '#' : href || undefined);
+		if ($$self.$$.dirty[1] & /*href*/ 32768) {
+			$$invalidate(48, hrefComputed = href === true ? '#' : href || undefined);
 		}
 
 		$$invalidate(39, attrs = extend(
@@ -1368,7 +1371,7 @@ function instance($$self, $$props, $$invalidate) {
 			actionsClasses($$props)
 		));
 
-		if ($$self.$$.dirty[1] & /*type*/ 8192) {
+		if ($$self.$$.dirty[1] & /*type*/ 16384) {
 			$$invalidate(38, tagName = type === 'submit' || type === 'reset' || type === 'button'
 			? 'button'
 			: 'a');
@@ -1422,6 +1425,7 @@ function instance($$self, $$props, $$invalidate) {
 		attrs,
 		liquid,
 		onClick,
+		importsSeek,
 		tabLink,
 		tabLinkActive,
 		type,
@@ -1446,13 +1450,14 @@ class Button extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
+				importsSeek: 42,
 				classes: 0,
 				text: 1,
-				tabLink: 42,
-				tabLinkActive: 43,
-				type: 44,
-				href: 45,
-				target: 46,
+				tabLink: 43,
+				tabLinkActive: 44,
+				type: 45,
+				href: 46,
+				target: 47,
 				round: 2,
 				roundMd: 3,
 				roundIos: 4,

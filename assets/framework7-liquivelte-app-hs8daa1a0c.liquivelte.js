@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, element, space, create_component, claim_element, children, claim_space, claim_component, detach, attr, insert_hydration, append_hydration, mount_component, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, transition_out, destroy_component, getContext, onMount, assign, exclude_internal_props, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, element, space, create_component, claim_element, children, claim_space, claim_component, detach, attr, insert_hydration, append_hydration, mount_component, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, transition_out, destroy_component, getContext, onMount, assign, exclude_internal_props, binding_callbacks } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { app, f7init, noUndefinedProps, classNames, colorClasses } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Routable_modals } from './framework7-liquivelte-routable-modals-hs8daa1a0c.liquivelte.js';
 
@@ -9,8 +9,8 @@ function create_fragment(ctx) {
 	let t;
 	let routablemodals;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[3].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[2], null);
+	const default_slot_template = /*#slots*/ ctx[4].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
 	routablemodals = new Routable_modals({});
 
 	return {
@@ -42,20 +42,20 @@ function create_fragment(ctx) {
 
 			append_hydration(div, t);
 			mount_component(routablemodals, div, null);
-			/*div_binding*/ ctx[4](div);
+			/*div_binding*/ ctx[5](div);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 4)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 8)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[2],
+						/*$$scope*/ ctx[3],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[2])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[2], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[3])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[3], dirty, null),
 						null
 					);
 				}
@@ -80,15 +80,17 @@ function create_fragment(ctx) {
 			if (detaching) detach(div);
 			if (default_slot) default_slot.d(detaching);
 			destroy_component(routablemodals);
-			/*div_binding*/ ctx[4](null);
+			/*div_binding*/ ctx[5](null);
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	let { classes = '' } = $$props;
 	let el;
 
@@ -119,9 +121,10 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(9, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(11, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(2, importsSeek = $$new_props.importsSeek);
 		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
-		if ('$$scope' in $$new_props) $$invalidate(2, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(3, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
@@ -129,13 +132,13 @@ function instance($$self, $$props, $$invalidate) {
 	};
 
 	$$props = exclude_internal_props($$props);
-	return [classes, el, $$scope, slots, div_binding];
+	return [classes, el, importsSeek, $$scope, slots, div_binding];
 }
 
 class App extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { classes: 0 });
+		init(this, options, instance, create_fragment, safe_not_equal, { importsSeek: 2, classes: 0 });
 	}
 }
 

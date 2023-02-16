@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_component, space, claim_component, claim_space, mount_component, insert_hydration, transition_in, transition_out, destroy_component, detach, getContext, empty, group_outros, check_outros, destroy_each, element, text, claim_element, children, claim_text, attr, append_hydration, noop, set_data, select_options } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_component, space, claim_component, claim_space, mount_component, insert_hydration, transition_in, transition_out, destroy_component, detach, getContext, assign, exclude_internal_props, empty, group_outros, check_outros, destroy_each, select_multiple_value, element, text, claim_element, children, claim_text, attr, append_hydration, noop, set_data, update_keyed_each, outro_and_destroy_block, add_render_callback, select_options, listen, run_all } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { View } from './framework7-liquivelte-view-hs8daa1a0c.liquivelte.js';
@@ -13,7 +13,7 @@ import { List } from './framework7-liquivelte-list-hs8daa1a0c.liquivelte.js';
 import { Navbar } from './framework7-liquivelte-navbar-hs8daa1a0c.liquivelte.js';
 import { Page } from './framework7-liquivelte-page-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
-import { Icon } from './header-hs39c6dc7d.liquivelte.js';
+import { Icon } from './header-hs09f16584.liquivelte.js';
 import './framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-login-screen-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-sheet-hs8daa1a0c.liquivelte.js';
@@ -34,6 +34,8 @@ import './framework7-liquivelte-params-list-hs8daa1a0c.liquivelte.js';
 import './store.js-hs6c336c77.liquivelte.js';
 import './framework7-liquivelte-accordion-content-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-block-title-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-col-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-row-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-stepper-hs8daa1a0c.liquivelte.js';
 import './framework7-liquivelte-appbar-hs8daa1a0c.liquivelte.js';
 
@@ -41,86 +43,87 @@ import './framework7-liquivelte-appbar-hs8daa1a0c.liquivelte.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[5] = list[i];
-	child_ctx[8] = i;
+	child_ctx[14] = list[i];
+	child_ctx[17] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[8] === 0,
-		index: /*index*/ child_ctx[8] + 1,
-		index0: /*index*/ child_ctx[8],
-		last: /*index*/ child_ctx[8] === /*collection*/ child_ctx[0].filters.length - 1,
-		rindex: /*collection*/ child_ctx[0].filters.length - /*index*/ child_ctx[8],
-		rindex0: /*collection*/ child_ctx[0].filters.length - /*index*/ child_ctx[8] - 1,
+		first: /*index*/ child_ctx[17] === 0,
+		index: /*index*/ child_ctx[17] + 1,
+		index0: /*index*/ child_ctx[17],
+		last: /*index*/ child_ctx[17] === /*collection*/ child_ctx[0].filters.length - 1,
+		rindex: /*collection*/ child_ctx[0].filters.length - /*index*/ child_ctx[17],
+		rindex0: /*collection*/ child_ctx[0].filters.length - /*index*/ child_ctx[17] - 1,
 		length: /*collection*/ child_ctx[0].filters.length
 	};
 
-	child_ctx[6] = constants_0;
+	child_ctx[15] = constants_0;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[9] = list[i];
-	child_ctx[8] = i;
+	child_ctx[18] = list[i];
+	child_ctx[17] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[8] === 0,
-		index: /*index*/ child_ctx[8] + 1,
-		index0: /*index*/ child_ctx[8],
-		last: /*index*/ child_ctx[8] === /*filter*/ child_ctx[5].active_values.length - 1,
-		rindex: /*filter*/ child_ctx[5].active_values.length - /*index*/ child_ctx[8],
-		rindex0: /*filter*/ child_ctx[5].active_values.length - /*index*/ child_ctx[8] - 1,
-		length: /*filter*/ child_ctx[5].active_values.length
+		first: /*index*/ child_ctx[17] === 0,
+		index: /*index*/ child_ctx[17] + 1,
+		index0: /*index*/ child_ctx[17],
+		last: /*index*/ child_ctx[17] === /*filter*/ child_ctx[14].active_values.length - 1,
+		rindex: /*filter*/ child_ctx[14].active_values.length - /*index*/ child_ctx[17],
+		rindex0: /*filter*/ child_ctx[14].active_values.length - /*index*/ child_ctx[17] - 1,
+		length: /*filter*/ child_ctx[14].active_values.length
 	};
 
-	child_ctx[6] = constants_0;
+	child_ctx[15] = constants_0;
 	return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[5] = list[i];
-	child_ctx[8] = i;
+	child_ctx[14] = list[i];
+	child_ctx[20] = list;
+	child_ctx[17] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[8] === 0,
-		index: /*index*/ child_ctx[8] + 1,
-		index0: /*index*/ child_ctx[8],
-		last: /*index*/ child_ctx[8] === /*collection*/ child_ctx[0].filters.length - 1,
-		rindex: /*collection*/ child_ctx[0].filters.length - /*index*/ child_ctx[8],
-		rindex0: /*collection*/ child_ctx[0].filters.length - /*index*/ child_ctx[8] - 1,
+		first: /*index*/ child_ctx[17] === 0,
+		index: /*index*/ child_ctx[17] + 1,
+		index0: /*index*/ child_ctx[17],
+		last: /*index*/ child_ctx[17] === /*collection*/ child_ctx[0].filters.length - 1,
+		rindex: /*collection*/ child_ctx[0].filters.length - /*index*/ child_ctx[17],
+		rindex0: /*collection*/ child_ctx[0].filters.length - /*index*/ child_ctx[17] - 1,
 		length: /*collection*/ child_ctx[0].filters.length
 	};
 
-	child_ctx[6] = constants_0;
+	child_ctx[15] = constants_0;
 	return child_ctx;
 }
 
 function get_each_context_3(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[9] = list[i];
-	child_ctx[8] = i;
+	child_ctx[18] = list[i];
+	child_ctx[17] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[8] === 0,
-		index: /*index*/ child_ctx[8] + 1,
-		index0: /*index*/ child_ctx[8],
-		last: /*index*/ child_ctx[8] === /*filter*/ child_ctx[5].values.length - 1,
-		rindex: /*filter*/ child_ctx[5].values.length - /*index*/ child_ctx[8],
-		rindex0: /*filter*/ child_ctx[5].values.length - /*index*/ child_ctx[8] - 1,
-		length: /*filter*/ child_ctx[5].values.length
+		first: /*index*/ child_ctx[17] === 0,
+		index: /*index*/ child_ctx[17] + 1,
+		index0: /*index*/ child_ctx[17],
+		last: /*index*/ child_ctx[17] === /*filter*/ child_ctx[14].values.length - 1,
+		rindex: /*filter*/ child_ctx[14].values.length - /*index*/ child_ctx[17],
+		rindex0: /*filter*/ child_ctx[14].values.length - /*index*/ child_ctx[17] - 1,
+		length: /*filter*/ child_ctx[14].values.length
 	};
 
-	child_ctx[6] = constants_0;
+	child_ctx[15] = constants_0;
 	return child_ctx;
 }
 
-// (29:2) <Button  panelOpen="#filters-panel" >
+// (79:2) <Button  panelOpen="#filters-panel" >
 function create_default_slot_8(ctx) {
 	let icon;
 	let t0;
 	let span;
-	let t1_value = /*liquid*/ ctx[1].t('products.facets.filter_button') + "";
+	let t1_value = /*liquid*/ ctx[3].t('products.facets.filter_button') + "";
 	let t1;
 	let current;
 
@@ -147,7 +150,7 @@ function create_default_slot_8(ctx) {
 		},
 		h() {
 			attr(span, "class", "ml-1");
-			attr(span, "data-translate", /*liquid*/ ctx[1].t('products.facets.filter_button'));
+			attr(span, "data-translate", /*liquid*/ ctx[3].t('products.facets.filter_button'));
 		},
 		m(target, anchor) {
 			mount_component(icon, target, anchor);
@@ -174,7 +177,7 @@ function create_default_slot_8(ctx) {
 	};
 }
 
-// (33:4) <Button   >
+// (83:4) <Button   >
 function create_default_slot_7(ctx) {
 	let span;
 	let t0;
@@ -231,7 +234,7 @@ function create_default_slot_7(ctx) {
 	};
 }
 
-// (28:0) <Navbar  >
+// (78:0) <Navbar  >
 function create_default_slot_6(ctx) {
 	let button0;
 	let t;
@@ -273,14 +276,14 @@ function create_default_slot_6(ctx) {
 		p(ctx, dirty) {
 			const button0_changes = {};
 
-			if (dirty & /*$$scope*/ 8192) {
+			if (dirty & /*$$scope*/ 4194304) {
 				button0_changes.$$scope = { dirty, ctx };
 			}
 
 			button0.$set(button0_changes);
 			const button1_changes = {};
 
-			if (dirty & /*$$scope*/ 8192) {
+			if (dirty & /*$$scope*/ 4194304) {
 				button1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -305,14 +308,14 @@ function create_default_slot_6(ctx) {
 	};
 }
 
-// (69:10) {:else}
+// (121:10) {:else}
 function create_else_block(ctx) {
 	let listitem;
 	let current;
 
 	listitem = new List_item({
 			props: {
-				title: /*filter*/ ctx[5].label,
+				title: /*filter*/ ctx[14].label,
 				smartSelect: true,
 				$$slots: { default: [create_default_slot_5] },
 				$$scope: { ctx }
@@ -332,9 +335,9 @@ function create_else_block(ctx) {
 		},
 		p(ctx, dirty) {
 			const listitem_changes = {};
-			if (dirty & /*collection*/ 1) listitem_changes.title = /*filter*/ ctx[5].label;
+			if (dirty & /*collection*/ 1) listitem_changes.title = /*filter*/ ctx[14].label;
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection*/ 4194305) {
 				listitem_changes.$$scope = { dirty, ctx };
 			}
 
@@ -355,16 +358,18 @@ function create_else_block(ctx) {
 	};
 }
 
-// (53:10) {#if filter.type == 'price_range' }
+// (103:10) {#if filter.type == 'price_range' }
 function create_if_block_3(ctx) {
 	let listinput;
 	let current;
 
 	listinput = new List_input({
 			props: {
-				label: /*filter*/ ctx[5].label,
 				input: false,
-				$$slots: { input: [create_input_slot] },
+				$$slots: {
+					input: [create_input_slot],
+					label: [create_label_slot]
+				},
 				$$scope: { ctx }
 			}
 		});
@@ -382,9 +387,8 @@ function create_if_block_3(ctx) {
 		},
 		p(ctx, dirty) {
 			const listinput_changes = {};
-			if (dirty & /*collection*/ 1) listinput_changes.label = /*filter*/ ctx[5].label;
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection, price_max, price_min*/ 4194311) {
 				listinput_changes.$$scope = { dirty, ctx };
 			}
 
@@ -405,10 +409,10 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (72:14) {#each  filter.values as value, index   }
+// (124:14) {#each  filter.values as value, index   }
 function create_each_block_3(ctx) {
 	let option;
-	let t_value = /*value*/ ctx[9].label + "";
+	let t_value = /*value*/ ctx[18].label + "";
 	let t;
 	let option_value_value;
 
@@ -426,7 +430,7 @@ function create_each_block_3(ctx) {
 			this.h();
 		},
 		h() {
-			option.__value = option_value_value = /*value*/ ctx[9].value;
+			option.__value = option_value_value = /*value*/ ctx[18].value;
 			option.value = option.__value;
 		},
 		m(target, anchor) {
@@ -434,9 +438,9 @@ function create_each_block_3(ctx) {
 			append_hydration(option, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*collection*/ 1 && t_value !== (t_value = /*value*/ ctx[9].label + "")) set_data(t, t_value);
+			if (dirty & /*collection*/ 1 && t_value !== (t_value = /*value*/ ctx[18].label + "")) set_data(t, t_value);
 
-			if (dirty & /*collection*/ 1 && option_value_value !== (option_value_value = /*value*/ ctx[9].value)) {
+			if (dirty & /*collection*/ 1 && option_value_value !== (option_value_value = /*value*/ ctx[18].value)) {
 				option.__value = option_value_value;
 				option.value = option.__value;
 			}
@@ -447,17 +451,26 @@ function create_each_block_3(ctx) {
 	};
 }
 
-// (70:10) <ListItem  title="{ filter.label }" smartSelect >
+// (122:10) <ListItem  title="{ filter.label }" smartSelect >
 function create_default_slot_5(ctx) {
 	let select;
 	let select_name_value;
-	let select_value_value;
 	let t;
-	let each_value_3 = /*filter*/ ctx[5].values;
+	let mounted;
+	let dispose;
+	let each_value_3 = /*filter*/ ctx[14].values;
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_3.length; i += 1) {
 		each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
+	}
+
+	function select_change_handler() {
+		/*select_change_handler*/ ctx[8].call(select, /*each_value_2*/ ctx[20], /*index*/ ctx[17]);
+	}
+
+	function change_handler(...args) {
+		return /*change_handler*/ ctx[9](/*filter*/ ctx[14], ...args);
 	}
 
 	return {
@@ -485,7 +498,8 @@ function create_default_slot_5(ctx) {
 		},
 		h() {
 			select.multiple = true;
-			attr(select, "name", select_name_value = /*filter*/ ctx[5].label);
+			attr(select, "name", select_name_value = /*filter*/ ctx[14].label);
+			if (/*filter*/ ctx[14].active_values_flat === void 0) add_render_callback(select_change_handler);
 		},
 		m(target, anchor) {
 			insert_hydration(target, select, anchor);
@@ -494,12 +508,23 @@ function create_default_slot_5(ctx) {
 				each_blocks[i].m(select, null);
 			}
 
-			select_options(select, /*filter*/ ctx[5].active_values.map(func));
+			select_options(select, /*filter*/ ctx[14].active_values_flat);
 			insert_hydration(target, t, anchor);
+
+			if (!mounted) {
+				dispose = [
+					listen(select, "change", select_change_handler),
+					listen(select, "change", change_handler)
+				];
+
+				mounted = true;
+			}
 		},
-		p(ctx, dirty) {
+		p(new_ctx, dirty) {
+			ctx = new_ctx;
+
 			if (dirty & /*collection*/ 1) {
-				each_value_3 = /*filter*/ ctx[5].values;
+				each_value_3 = /*filter*/ ctx[14].values;
 				let i;
 
 				for (i = 0; i < each_value_3.length; i += 1) {
@@ -521,37 +546,118 @@ function create_default_slot_5(ctx) {
 				each_blocks.length = each_value_3.length;
 			}
 
-			if (dirty & /*collection*/ 1 && select_name_value !== (select_name_value = /*filter*/ ctx[5].label)) {
+			if (dirty & /*collection*/ 1 && select_name_value !== (select_name_value = /*filter*/ ctx[14].label)) {
 				attr(select, "name", select_name_value);
 			}
 
-			if (dirty & /*collection*/ 1 && select_value_value !== (select_value_value = /*filter*/ ctx[5].active_values.map(func))) {
-				select_options(select, /*filter*/ ctx[5].active_values.map(func));
+			if (dirty & /*collection*/ 1) {
+				select_options(select, /*filter*/ ctx[14].active_values_flat);
 			}
 		},
 		d(detaching) {
 			if (detaching) detach(select);
 			destroy_each(each_blocks, detaching);
 			if (detaching) detach(t);
+			mounted = false;
+			run_all(dispose);
 		}
 	};
 }
 
-// (58:14) 
+// (107:12) 
+function create_label_slot(ctx) {
+	let div;
+	let span0;
+	let t0_value = /*filter*/ ctx[14].label + "";
+	let t0;
+	let t1;
+	let span1;
+	let t2_value = /*liquid*/ ctx[3].money(/*price_min*/ ctx[1]) + "";
+	let t2;
+	let t3;
+	let t4_value = /*liquid*/ ctx[3].money(/*price_max*/ ctx[2]) + "";
+	let t4;
+	let t5;
+
+	return {
+		c() {
+			div = element("div");
+			span0 = element("span");
+			t0 = text(t0_value);
+			t1 = space();
+			span1 = element("span");
+			t2 = text(t2_value);
+			t3 = text(" - $");
+			t4 = text(t4_value);
+			t5 = space();
+			this.h();
+		},
+		l(nodes) {
+			div = claim_element(nodes, "DIV", { slot: true, class: true });
+			var div_nodes = children(div);
+			span0 = claim_element(div_nodes, "SPAN", {});
+			var span0_nodes = children(span0);
+			t0 = claim_text(span0_nodes, t0_value);
+			span0_nodes.forEach(detach);
+			t1 = claim_space(div_nodes);
+			span1 = claim_element(div_nodes, "SPAN", {});
+			var span1_nodes = children(span1);
+			t2 = claim_text(span1_nodes, t2_value);
+			t3 = claim_text(span1_nodes, " - $");
+			t4 = claim_text(span1_nodes, t4_value);
+			span1_nodes.forEach(detach);
+			t5 = claim_space(div_nodes);
+			div_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div, "slot", "label");
+			attr(div, "class", "display-flex justify-content-space-between");
+		},
+		m(target, anchor) {
+			insert_hydration(target, div, anchor);
+			append_hydration(div, span0);
+			append_hydration(span0, t0);
+			append_hydration(div, t1);
+			append_hydration(div, span1);
+			append_hydration(span1, t2);
+			append_hydration(span1, t3);
+			append_hydration(span1, t4);
+			append_hydration(div, t5);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*collection*/ 1 && t0_value !== (t0_value = /*filter*/ ctx[14].label + "")) set_data(t0, t0_value);
+			if (dirty & /*price_min*/ 2 && t2_value !== (t2_value = /*liquid*/ ctx[3].money(/*price_min*/ ctx[1]) + "")) set_data(t2, t2_value);
+			if (dirty & /*price_max*/ 4 && t4_value !== (t4_value = /*liquid*/ ctx[3].money(/*price_max*/ ctx[2]) + "")) set_data(t4, t4_value);
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+		}
+	};
+}
+
+// (111:14) 
 function create_input_slot(ctx) {
 	let span;
 	let range;
 	let t;
 	let current;
 
+	function func(...args) {
+		return /*func*/ ctx[7](/*filter*/ ctx[14], ...args);
+	}
+
 	range = new Range({
 			props: {
 				min: 0,
-				max: /*filter*/ ctx[5].range_max,
-				step: 1,
-				value: [/*filter*/ ctx[5].min_value.value, /*filter*/ ctx[5].max_value.value],
+				max: /*filter*/ ctx[14].range_max,
+				step: 100,
+				value: [
+					/*filter*/ ctx[14].min_value.value,
+					/*filter*/ ctx[14].max_value.value || /*filter*/ ctx[14].range_max
+				],
 				dual: true,
-				onRangeChange: priceChange.bind(/*filter*/ ctx[5])
+				onRangeChange: func
 			}
 		});
 
@@ -579,11 +685,17 @@ function create_input_slot(ctx) {
 			append_hydration(span, t);
 			current = true;
 		},
-		p(ctx, dirty) {
+		p(new_ctx, dirty) {
+			ctx = new_ctx;
 			const range_changes = {};
-			if (dirty & /*collection*/ 1) range_changes.max = /*filter*/ ctx[5].range_max;
-			if (dirty & /*collection*/ 1) range_changes.value = [/*filter*/ ctx[5].min_value.value, /*filter*/ ctx[5].max_value.value];
-			if (dirty & /*collection*/ 1) range_changes.onRangeChange = priceChange.bind(/*filter*/ ctx[5]);
+			if (dirty & /*collection*/ 1) range_changes.max = /*filter*/ ctx[14].range_max;
+
+			if (dirty & /*collection*/ 1) range_changes.value = [
+				/*filter*/ ctx[14].min_value.value,
+				/*filter*/ ctx[14].max_value.value || /*filter*/ ctx[14].range_max
+			];
+
+			if (dirty & /*collection*/ 1) range_changes.onRangeChange = func;
 			range.$set(range_changes);
 		},
 		i(local) {
@@ -602,8 +714,9 @@ function create_input_slot(ctx) {
 	};
 }
 
-// (43:8) {#each  collection.filters as filter, index   }
-function create_each_block_2(ctx) {
+// (93:8) {#each  collection.filters as filter, index  (filter.label) }
+function create_each_block_2(key_1, ctx) {
+	let first;
 	let current_block_type_index;
 	let if_block;
 	let if_block_anchor;
@@ -612,7 +725,7 @@ function create_each_block_2(ctx) {
 	const if_blocks = [];
 
 	function select_block_type(ctx, dirty) {
-		if (/*filter*/ ctx[5].type == 'price_range') return 0;
+		if (/*filter*/ ctx[14].type == 'price_range') return 0;
 		return 1;
 	}
 
@@ -620,20 +733,31 @@ function create_each_block_2(ctx) {
 	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
 	return {
+		key: key_1,
+		first: null,
 		c() {
+			first = empty();
 			if_block.c();
 			if_block_anchor = empty();
+			this.h();
 		},
 		l(nodes) {
+			first = empty();
 			if_block.l(nodes);
 			if_block_anchor = empty();
+			this.h();
+		},
+		h() {
+			this.first = first;
 		},
 		m(target, anchor) {
+			insert_hydration(target, first, anchor);
 			if_blocks[current_block_type_index].m(target, anchor);
 			insert_hydration(target, if_block_anchor, anchor);
 			current = true;
 		},
-		p(ctx, dirty) {
+		p(new_ctx, dirty) {
+			ctx = new_ctx;
 			let previous_block_index = current_block_type_index;
 			current_block_type_index = select_block_type(ctx);
 
@@ -670,26 +794,27 @@ function create_each_block_2(ctx) {
 			current = false;
 		},
 		d(detaching) {
+			if (detaching) detach(first);
 			if_blocks[current_block_type_index].d(detaching);
 			if (detaching) detach(if_block_anchor);
 		}
 	};
 }
 
-// (42:6) <List  >
+// (92:6) <List  >
 function create_default_slot_4(ctx) {
+	let each_blocks = [];
+	let each_1_lookup = new Map();
 	let each_1_anchor;
 	let current;
 	let each_value_2 = /*collection*/ ctx[0].filters;
-	let each_blocks = [];
+	const get_key = ctx => /*filter*/ ctx[14].label;
 
 	for (let i = 0; i < each_value_2.length; i += 1) {
-		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+		let child_ctx = get_each_context_2(ctx, each_value_2, i);
+		let key = get_key(child_ctx);
+		each_1_lookup.set(key, each_blocks[i] = create_each_block_2(key, child_ctx));
 	}
-
-	const out = i => transition_out(each_blocks[i], 1, 1, () => {
-		each_blocks[i] = null;
-	});
 
 	return {
 		c() {
@@ -715,30 +840,10 @@ function create_default_slot_4(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*collection, priceChange*/ 1) {
+			if (dirty & /*collection, priceChange, liquid, price_max, price_min, filterChange*/ 31) {
 				each_value_2 = /*collection*/ ctx[0].filters;
-				let i;
-
-				for (i = 0; i < each_value_2.length; i += 1) {
-					const child_ctx = get_each_context_2(ctx, each_value_2, i);
-
-					if (each_blocks[i]) {
-						each_blocks[i].p(child_ctx, dirty);
-						transition_in(each_blocks[i], 1);
-					} else {
-						each_blocks[i] = create_each_block_2(child_ctx);
-						each_blocks[i].c();
-						transition_in(each_blocks[i], 1);
-						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
-					}
-				}
-
 				group_outros();
-
-				for (i = each_value_2.length; i < each_blocks.length; i += 1) {
-					out(i);
-				}
-
+				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value_2, each_1_lookup, each_1_anchor.parentNode, outro_and_destroy_block, create_each_block_2, each_1_anchor, get_each_context_2);
 				check_outros();
 			}
 		},
@@ -752,8 +857,6 @@ function create_default_slot_4(ctx) {
 			current = true;
 		},
 		o(local) {
-			each_blocks = each_blocks.filter(Boolean);
-
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				transition_out(each_blocks[i]);
 			}
@@ -761,13 +864,16 @@ function create_default_slot_4(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			destroy_each(each_blocks, detaching);
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].d(detaching);
+			}
+
 			if (detaching) detach(each_1_anchor);
 		}
 	};
 }
 
-// (41:4) <Page  >
+// (91:4) <Page  >
 function create_default_slot_3(ctx) {
 	let list;
 	let current;
@@ -793,7 +899,7 @@ function create_default_slot_3(ctx) {
 		p(ctx, dirty) {
 			const list_changes = {};
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection, price_max, price_min*/ 4194311) {
 				list_changes.$$scope = { dirty, ctx };
 			}
 
@@ -814,7 +920,7 @@ function create_default_slot_3(ctx) {
 	};
 }
 
-// (40:4) <View  init name="filters-view" stackPages="{true}" >
+// (90:4) <View  name="filters-view" stackPages="{true}" >
 function create_default_slot_2(ctx) {
 	let page;
 	let current;
@@ -840,7 +946,7 @@ function create_default_slot_2(ctx) {
 		p(ctx, dirty) {
 			const page_changes = {};
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection, price_max, price_min*/ 4194311) {
 				page_changes.$$scope = { dirty, ctx };
 			}
 
@@ -861,14 +967,13 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (39:0) <Panel  left cover id="filters-panel" >
+// (89:0) <Panel  left cover id="filters-panel" >
 function create_default_slot_1(ctx) {
 	let view;
 	let current;
 
 	view = new View({
 			props: {
-				init: true,
 				name: "filters-view",
 				stackPages: true,
 				$$slots: { default: [create_default_slot_2] },
@@ -890,7 +995,7 @@ function create_default_slot_1(ctx) {
 		p(ctx, dirty) {
 			const view_changes = {};
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection, price_max, price_min*/ 4194311) {
 				view_changes.$$scope = { dirty, ctx };
 			}
 
@@ -911,14 +1016,14 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (104:4) {#each  filter.active_values as value, index   }
+// (157:6) {#each  filter.active_values as value, index   }
 function create_each_block_1(ctx) {
 	let chip;
 	let current;
 
 	chip = new Chip({
 			props: {
-				text: /*value*/ ctx[9].label,
+				text: /*value*/ ctx[18].label,
 				deleteable: true,
 				onDelete: removeFilter
 			}
@@ -937,7 +1042,7 @@ function create_each_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			const chip_changes = {};
-			if (dirty & /*collection*/ 1) chip_changes.text = /*value*/ ctx[9].label;
+			if (dirty & /*collection*/ 1) chip_changes.text = /*value*/ ctx[18].label;
 			chip.$set(chip_changes);
 		},
 		i(local) {
@@ -955,13 +1060,13 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (116:6) {#if filter.type == 'price_range' }
+// (170:6) {#if filter.type == 'price_range' }
 function create_if_block(ctx) {
 	let t;
 	let if_block1_anchor;
 	let current;
-	let if_block0 = /*filter*/ ctx[5].max_value && create_if_block_2(ctx);
-	let if_block1 = /*filter*/ ctx[5].min_value && create_if_block_1(ctx);
+	let if_block0 = /*filter*/ ctx[14].max_value > 0 && create_if_block_2(ctx);
+	let if_block1 = /*filter*/ ctx[14].min_value > 0 && create_if_block_1(ctx);
 
 	return {
 		c() {
@@ -984,7 +1089,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*filter*/ ctx[5].max_value) {
+			if (/*filter*/ ctx[14].max_value > 0) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
@@ -1007,7 +1112,7 @@ function create_if_block(ctx) {
 				check_outros();
 			}
 
-			if (/*filter*/ ctx[5].min_value) {
+			if (/*filter*/ ctx[14].min_value > 0) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 
@@ -1050,7 +1155,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (117:8) {#if filter.max_value }
+// (171:8) {#if filter.max_value > 0 }
 function create_if_block_2(ctx) {
 	let chip;
 	let current;
@@ -1078,7 +1183,7 @@ function create_if_block_2(ctx) {
 		p(ctx, dirty) {
 			const chip_changes = {};
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection*/ 4194305) {
 				chip_changes.$$scope = { dirty, ctx };
 			}
 
@@ -1099,11 +1204,11 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (119:12) 
+// (173:12) 
 function create_text_slot_1(ctx) {
 	let span;
 	let t0;
-	let t1_value = /*liquid*/ ctx[1].money(/*filter*/ ctx[5].max_value.value) + "";
+	let t1_value = /*liquid*/ ctx[3].money(/*filter*/ ctx[14].max_value.value) + "";
 	let t1;
 
 	return {
@@ -1130,7 +1235,7 @@ function create_text_slot_1(ctx) {
 			append_hydration(span, t1);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*collection*/ 1 && t1_value !== (t1_value = /*liquid*/ ctx[1].money(/*filter*/ ctx[5].max_value.value) + "")) set_data(t1, t1_value);
+			if (dirty & /*collection*/ 1 && t1_value !== (t1_value = /*liquid*/ ctx[3].money(/*filter*/ ctx[14].max_value.value) + "")) set_data(t1, t1_value);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -1138,7 +1243,7 @@ function create_text_slot_1(ctx) {
 	};
 }
 
-// (122:8) {#if filter.min_value }
+// (176:8) {#if filter.min_value > 0 }
 function create_if_block_1(ctx) {
 	let chip;
 	let current;
@@ -1166,7 +1271,7 @@ function create_if_block_1(ctx) {
 		p(ctx, dirty) {
 			const chip_changes = {};
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection*/ 4194305) {
 				chip_changes.$$scope = { dirty, ctx };
 			}
 
@@ -1187,11 +1292,11 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (124:12) 
+// (178:12) 
 function create_text_slot(ctx) {
 	let span;
 	let t0;
-	let t1_value = /*liquid*/ ctx[1].money(/*filter*/ ctx[5].min_value.value) + "";
+	let t1_value = /*liquid*/ ctx[3].money(/*filter*/ ctx[14].min_value.value) + "";
 	let t1;
 
 	return {
@@ -1218,7 +1323,7 @@ function create_text_slot(ctx) {
 			append_hydration(span, t1);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*collection*/ 1 && t1_value !== (t1_value = /*liquid*/ ctx[1].money(/*filter*/ ctx[5].min_value.value) + "")) set_data(t1, t1_value);
+			if (dirty & /*collection*/ 1 && t1_value !== (t1_value = /*liquid*/ ctx[3].money(/*filter*/ ctx[14].min_value.value) + "")) set_data(t1, t1_value);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -1226,12 +1331,12 @@ function create_text_slot(ctx) {
 	};
 }
 
-// (94:2) {#each  collection.filters as filter, index   }
+// (146:2) {#each  collection.filters as filter, index   }
 function create_each_block(ctx) {
 	let t;
 	let if_block_anchor;
 	let current;
-	let each_value_1 = /*filter*/ ctx[5].active_values;
+	let each_value_1 = /*filter*/ ctx[14].active_values;
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_1.length; i += 1) {
@@ -1242,7 +1347,7 @@ function create_each_block(ctx) {
 		each_blocks[i] = null;
 	});
 
-	let if_block = /*filter*/ ctx[5].type == 'price_range' && create_if_block(ctx);
+	let if_block = /*filter*/ ctx[14].type == 'price_range' && create_if_block(ctx);
 
 	return {
 		c() {
@@ -1275,7 +1380,7 @@ function create_each_block(ctx) {
 		},
 		p(ctx, dirty) {
 			if (dirty & /*collection, removeFilter*/ 1) {
-				each_value_1 = /*filter*/ ctx[5].active_values;
+				each_value_1 = /*filter*/ ctx[14].active_values;
 				let i;
 
 				for (i = 0; i < each_value_1.length; i += 1) {
@@ -1301,7 +1406,7 @@ function create_each_block(ctx) {
 				check_outros();
 			}
 
-			if (/*filter*/ ctx[5].type == 'price_range') {
+			if (/*filter*/ ctx[14].type == 'price_range') {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
@@ -1353,7 +1458,7 @@ function create_each_block(ctx) {
 	};
 }
 
-// (93:0) <Block  >
+// (145:0) <Block  >
 function create_default_slot(ctx) {
 	let each_1_anchor;
 	let current;
@@ -1392,7 +1497,7 @@ function create_default_slot(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*removeFilter, liquid, collection*/ 3) {
+			if (dirty & /*removeFilter, liquid, collection*/ 9) {
 				each_value = /*collection*/ ctx[0].filters;
 				let i;
 
@@ -1502,21 +1607,21 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			const navbar_changes = {};
 
-			if (dirty & /*$$scope*/ 8192) {
+			if (dirty & /*$$scope*/ 4194304) {
 				navbar_changes.$$scope = { dirty, ctx };
 			}
 
 			navbar.$set(navbar_changes);
 			const panel_changes = {};
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection, price_max, price_min*/ 4194311) {
 				panel_changes.$$scope = { dirty, ctx };
 			}
 
 			panel.$set(panel_changes);
 			const block_changes = {};
 
-			if (dirty & /*$$scope, collection*/ 8193) {
+			if (dirty & /*$$scope, collection*/ 4194305) {
 				block_changes.$$scope = { dirty, ctx };
 			}
 
@@ -1545,38 +1650,123 @@ function create_fragment(ctx) {
 	};
 }
 
-function priceChange(e) {
-	console.log('price change ', e);
+function fc(e, t, r) {
+	const n = e.find(e => e === t);
+
+	return n || e.reduce((e, n) => {
+		let o = Math.abs(e - t), i = Math.abs(n - t);
+
+		return "higher" === r
+		? n > t && i <= o ? n : e
+		: "lower" === r ? n < t && i <= o ? n : e : void 0;
+	});
+}
+
+// $: filter_values = 
+// $: console.log('filters ', filters);
+function filterChange(e, filter) {
+	filter.inactive_values = filter.values.filter(e => !filter.active_values_flat.includes(e.value)).map(v => ({ ...v, active: false }));
+	filter.active_values = filter.values.filter(e => filter.active_values_flat.includes(e.value)).map(v => ({ ...v, active: true }));
+	const newURL = new URL(window.location.href);
+
+	if (filter.active_values.length) {
+		filter.active_values_flat.forEach(v => newURL.searchParams.append(filter.param_name, v));
+	} else {
+		newURL.searchParams.delete(filter.param_name);
+	}
+
+	console.log('filter change ', newURL.href);
 }
 
 function removeFilter() {
 	
 }
 
-const func = v => v.value;
-
 function instance($$self, $$props, $$invalidate) {
+	let { importsSeek = 'lower' } = $$props;
 	let themeImports = getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
+	const cic = window.cicR;
 	const liquid = cachedLiquid(lec);
 	const collection = {};
-	let filters = themeImports['filters'];
+	let { filters = themeImports['filters'].find(e => e.component_index == fc(themeImports['filters'].map(e => e.component_index), cic, importsSeek)).value } = $$props;
 	filters = JSON.parse(filters);
 	collection.filters = filters;
+	let price_min = 0;
+	let price_max = (filters.find(f => f.type == 'price_range') || {}).range_max;
 
-	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*filters*/ 4) {
-			console.log('filters ', filters);
+	for (let filter of filters) {
+		filter.active_values_flat = filter.active_values.map(e => e.value);
+	}
+
+	function priceChange([min, max], filter) {
+		filter.max_value = {
+			...filter.max_value,
+			active: max != filter.range_max ? true : false,
+			value: max
+		};
+
+		filter.min_value = {
+			...filter.min_value,
+			active: min ? true : false,
+			value: min
+		};
+
+		$$invalidate(1, price_min = min);
+		$$invalidate(2, price_max = max);
+		const newURL = new URL(window.location.href);
+
+		if (filter.max_value.value != filter.range_max) {
+			newURL.searchParams.append(filter.max_value.param_name, max);
+		} else {
+			newURL.searchParams.delete(filter.max_value.param_name);
 		}
+
+		if (filter.min_value.value > 0) {
+			newURL.searchParams.append(filter.min_value.param_name, max);
+		} else {
+			newURL.searchParams.delete(filter.min_value.param_name);
+		}
+
+		console.log('filter change ', newURL.href);
+	}
+
+	const func = (filter, e) => priceChange(e, filter);
+
+	function select_change_handler(each_value_2, index) {
+		each_value_2[index].active_values_flat = select_multiple_value(this);
+		$$invalidate(0, collection);
+	}
+
+	const change_handler = (filter, e) => filterChange(e, filter);
+
+	$$self.$$set = $$new_props => {
+		$$invalidate(13, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(6, importsSeek = $$new_props.importsSeek);
+		if ('filters' in $$new_props) $$invalidate(5, filters = $$new_props.filters);
 	};
 
-	return [collection, liquid, filters];
+	$$props = exclude_internal_props($$props);
+
+	return [
+		collection,
+		price_min,
+		price_max,
+		liquid,
+		priceChange,
+		filters,
+		importsSeek,
+		func,
+		select_change_handler,
+		change_handler
+	];
 }
 
 class Facets extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, {});
+		init(this, options, instance, create_fragment, safe_not_equal, { importsSeek: 6, filters: 5 });
 	}
 }
 
