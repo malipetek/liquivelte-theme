@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, assign, element, space, claim_element, children, detach, claim_space, attr, set_attributes, insert_hydration, append_hydration, listen, get_spread_update, noop, run_all, compute_rest_props, getContext, createEventDispatcher, onMount, onDestroy, exclude_internal_props, text, claim_text, set_data, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, assign, element, space, claim_element, children, detach, claim_space, attr, set_attributes, insert_hydration, append_hydration, listen, get_spread_update, noop, run_all, compute_rest_props, getContext, createEventDispatcher, onMount, onDestroy, exclude_internal_props, text, claim_text, set_data, binding_callbacks } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import { restProps, createEmitter, f7ready, app, noUndefinedProps, classNames, colorClasses } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 
@@ -116,7 +116,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (175:2) {#if !(input || buttonsOnly )}
+// (179:2) {#if !(input || buttonsOnly )}
 function create_if_block(ctx) {
 	let div;
 	let t_value = /*liquid*/ ctx[13].default(/*value*/ ctx[0], '') + "";
@@ -218,7 +218,7 @@ function create_fragment(ctx) {
 			if (if_block1) if_block1.m(div2, null);
 			append_hydration(div2, t2);
 			append_hydration(div2, div1);
-			/*div2_binding*/ ctx[49](div2);
+			/*div2_binding*/ ctx[50](div2);
 
 			if (!mounted) {
 				dispose = [
@@ -267,7 +267,7 @@ function create_fragment(ctx) {
 			if (detaching) detach(div2);
 			if (if_block0) if_block0.d();
 			if (if_block1) if_block1.d();
-			/*div2_binding*/ ctx[49](null);
+			/*div2_binding*/ ctx[50](null);
 			mounted = false;
 			run_all(dispose);
 		}
@@ -276,12 +276,14 @@ function create_fragment(ctx) {
 
 function instance_1($$self, $$props, $$invalidate) {
 	const omit_props_names = [
-		"classes","init","value","min","max","step","formatValue","name","inputId","input","inputType","inputReadonly","autorepeat","autorepeatDynamic","wraps","manualInputMode","decimalPoint","buttonsEndInputMode","disabled","buttonsOnly","round","roundMd","roundIos","roundAurora","fill","fillMd","fillIos","fillAurora","large","largeMd","largeIos","largeAurora","small","smallMd","smallIos","smallAurora","raised","raisedMd","raisedIos","raisedAurora","instance"
+		"importsSeek","classes","init","value","min","max","step","formatValue","name","inputId","input","inputType","inputReadonly","autorepeat","autorepeatDynamic","wraps","manualInputMode","decimalPoint","buttonsEndInputMode","disabled","buttonsOnly","round","roundMd","roundIos","roundAurora","fill","fillMd","fillIos","fillAurora","large","largeMd","largeIos","largeAurora","small","smallMd","smallIos","smallAurora","raised","raisedMd","raisedIos","raisedAurora","instance"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let computedClasses = undefined;
@@ -395,48 +397,49 @@ function instance_1($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(55, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(57, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(18, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('importsSeek' in $$new_props) $$invalidate(19, importsSeek = $$new_props.importsSeek);
 		if ('classes' in $$new_props) $$invalidate(1, classes = $$new_props.classes);
-		if ('init' in $$new_props) $$invalidate(19, init = $$new_props.init);
+		if ('init' in $$new_props) $$invalidate(20, init = $$new_props.init);
 		if ('value' in $$new_props) $$invalidate(0, value = $$new_props.value);
 		if ('min' in $$new_props) $$invalidate(2, min = $$new_props.min);
 		if ('max' in $$new_props) $$invalidate(3, max = $$new_props.max);
 		if ('step' in $$new_props) $$invalidate(4, step = $$new_props.step);
-		if ('formatValue' in $$new_props) $$invalidate(20, formatValue = $$new_props.formatValue);
+		if ('formatValue' in $$new_props) $$invalidate(21, formatValue = $$new_props.formatValue);
 		if ('name' in $$new_props) $$invalidate(5, name = $$new_props.name);
 		if ('inputId' in $$new_props) $$invalidate(6, inputId = $$new_props.inputId);
 		if ('input' in $$new_props) $$invalidate(7, input = $$new_props.input);
 		if ('inputType' in $$new_props) $$invalidate(8, inputType = $$new_props.inputType);
 		if ('inputReadonly' in $$new_props) $$invalidate(9, inputReadonly = $$new_props.inputReadonly);
-		if ('autorepeat' in $$new_props) $$invalidate(21, autorepeat = $$new_props.autorepeat);
-		if ('autorepeatDynamic' in $$new_props) $$invalidate(22, autorepeatDynamic = $$new_props.autorepeatDynamic);
-		if ('wraps' in $$new_props) $$invalidate(23, wraps = $$new_props.wraps);
-		if ('manualInputMode' in $$new_props) $$invalidate(24, manualInputMode = $$new_props.manualInputMode);
-		if ('decimalPoint' in $$new_props) $$invalidate(25, decimalPoint = $$new_props.decimalPoint);
-		if ('buttonsEndInputMode' in $$new_props) $$invalidate(26, buttonsEndInputMode = $$new_props.buttonsEndInputMode);
-		if ('disabled' in $$new_props) $$invalidate(27, disabled = $$new_props.disabled);
+		if ('autorepeat' in $$new_props) $$invalidate(22, autorepeat = $$new_props.autorepeat);
+		if ('autorepeatDynamic' in $$new_props) $$invalidate(23, autorepeatDynamic = $$new_props.autorepeatDynamic);
+		if ('wraps' in $$new_props) $$invalidate(24, wraps = $$new_props.wraps);
+		if ('manualInputMode' in $$new_props) $$invalidate(25, manualInputMode = $$new_props.manualInputMode);
+		if ('decimalPoint' in $$new_props) $$invalidate(26, decimalPoint = $$new_props.decimalPoint);
+		if ('buttonsEndInputMode' in $$new_props) $$invalidate(27, buttonsEndInputMode = $$new_props.buttonsEndInputMode);
+		if ('disabled' in $$new_props) $$invalidate(28, disabled = $$new_props.disabled);
 		if ('buttonsOnly' in $$new_props) $$invalidate(10, buttonsOnly = $$new_props.buttonsOnly);
-		if ('round' in $$new_props) $$invalidate(28, round = $$new_props.round);
-		if ('roundMd' in $$new_props) $$invalidate(29, roundMd = $$new_props.roundMd);
-		if ('roundIos' in $$new_props) $$invalidate(30, roundIos = $$new_props.roundIos);
-		if ('roundAurora' in $$new_props) $$invalidate(31, roundAurora = $$new_props.roundAurora);
-		if ('fill' in $$new_props) $$invalidate(32, fill = $$new_props.fill);
-		if ('fillMd' in $$new_props) $$invalidate(33, fillMd = $$new_props.fillMd);
-		if ('fillIos' in $$new_props) $$invalidate(34, fillIos = $$new_props.fillIos);
-		if ('fillAurora' in $$new_props) $$invalidate(35, fillAurora = $$new_props.fillAurora);
-		if ('large' in $$new_props) $$invalidate(36, large = $$new_props.large);
-		if ('largeMd' in $$new_props) $$invalidate(37, largeMd = $$new_props.largeMd);
-		if ('largeIos' in $$new_props) $$invalidate(38, largeIos = $$new_props.largeIos);
-		if ('largeAurora' in $$new_props) $$invalidate(39, largeAurora = $$new_props.largeAurora);
-		if ('small' in $$new_props) $$invalidate(40, small = $$new_props.small);
-		if ('smallMd' in $$new_props) $$invalidate(41, smallMd = $$new_props.smallMd);
-		if ('smallIos' in $$new_props) $$invalidate(42, smallIos = $$new_props.smallIos);
-		if ('smallAurora' in $$new_props) $$invalidate(43, smallAurora = $$new_props.smallAurora);
-		if ('raised' in $$new_props) $$invalidate(44, raised = $$new_props.raised);
-		if ('raisedMd' in $$new_props) $$invalidate(45, raisedMd = $$new_props.raisedMd);
-		if ('raisedIos' in $$new_props) $$invalidate(46, raisedIos = $$new_props.raisedIos);
-		if ('raisedAurora' in $$new_props) $$invalidate(47, raisedAurora = $$new_props.raisedAurora);
+		if ('round' in $$new_props) $$invalidate(29, round = $$new_props.round);
+		if ('roundMd' in $$new_props) $$invalidate(30, roundMd = $$new_props.roundMd);
+		if ('roundIos' in $$new_props) $$invalidate(31, roundIos = $$new_props.roundIos);
+		if ('roundAurora' in $$new_props) $$invalidate(32, roundAurora = $$new_props.roundAurora);
+		if ('fill' in $$new_props) $$invalidate(33, fill = $$new_props.fill);
+		if ('fillMd' in $$new_props) $$invalidate(34, fillMd = $$new_props.fillMd);
+		if ('fillIos' in $$new_props) $$invalidate(35, fillIos = $$new_props.fillIos);
+		if ('fillAurora' in $$new_props) $$invalidate(36, fillAurora = $$new_props.fillAurora);
+		if ('large' in $$new_props) $$invalidate(37, large = $$new_props.large);
+		if ('largeMd' in $$new_props) $$invalidate(38, largeMd = $$new_props.largeMd);
+		if ('largeIos' in $$new_props) $$invalidate(39, largeIos = $$new_props.largeIos);
+		if ('largeAurora' in $$new_props) $$invalidate(40, largeAurora = $$new_props.largeAurora);
+		if ('small' in $$new_props) $$invalidate(41, small = $$new_props.small);
+		if ('smallMd' in $$new_props) $$invalidate(42, smallMd = $$new_props.smallMd);
+		if ('smallIos' in $$new_props) $$invalidate(43, smallIos = $$new_props.smallIos);
+		if ('smallAurora' in $$new_props) $$invalidate(44, smallAurora = $$new_props.smallAurora);
+		if ('raised' in $$new_props) $$invalidate(45, raised = $$new_props.raised);
+		if ('raisedMd' in $$new_props) $$invalidate(46, raisedMd = $$new_props.raisedMd);
+		if ('raisedIos' in $$new_props) $$invalidate(47, raisedIos = $$new_props.raisedIos);
+		if ('raisedAurora' in $$new_props) $$invalidate(48, raisedAurora = $$new_props.raisedAurora);
 	};
 
 	$$self.$$.update = () => {
@@ -495,6 +498,7 @@ function instance_1($$self, $$props, $$invalidate) {
 		onMinusClick,
 		onPlusClick,
 		$$restProps,
+		importsSeek,
 		init,
 		formatValue,
 		autorepeat,
@@ -540,47 +544,48 @@ class Stepper extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
+				importsSeek: 19,
 				classes: 1,
-				init: 19,
+				init: 20,
 				value: 0,
 				min: 2,
 				max: 3,
 				step: 4,
-				formatValue: 20,
+				formatValue: 21,
 				name: 5,
 				inputId: 6,
 				input: 7,
 				inputType: 8,
 				inputReadonly: 9,
-				autorepeat: 21,
-				autorepeatDynamic: 22,
-				wraps: 23,
-				manualInputMode: 24,
-				decimalPoint: 25,
-				buttonsEndInputMode: 26,
-				disabled: 27,
+				autorepeat: 22,
+				autorepeatDynamic: 23,
+				wraps: 24,
+				manualInputMode: 25,
+				decimalPoint: 26,
+				buttonsEndInputMode: 27,
+				disabled: 28,
 				buttonsOnly: 10,
-				round: 28,
-				roundMd: 29,
-				roundIos: 30,
-				roundAurora: 31,
-				fill: 32,
-				fillMd: 33,
-				fillIos: 34,
-				fillAurora: 35,
-				large: 36,
-				largeMd: 37,
-				largeIos: 38,
-				largeAurora: 39,
-				small: 40,
-				smallMd: 41,
-				smallIos: 42,
-				smallAurora: 43,
-				raised: 44,
-				raisedMd: 45,
-				raisedIos: 46,
-				raisedAurora: 47,
-				instance: 48
+				round: 29,
+				roundMd: 30,
+				roundIos: 31,
+				roundAurora: 32,
+				fill: 33,
+				fillMd: 34,
+				fillIos: 35,
+				fillAurora: 36,
+				large: 37,
+				largeMd: 38,
+				largeIos: 39,
+				largeAurora: 40,
+				small: 41,
+				smallMd: 42,
+				smallIos: 43,
+				smallAurora: 44,
+				raised: 45,
+				raisedMd: 46,
+				raisedIos: 47,
+				raisedAurora: 48,
+				instance: 49
 			},
 			null,
 			[-1, -1]
@@ -588,7 +593,7 @@ class Stepper extends SvelteComponent {
 	}
 
 	get instance() {
-		return this.$$.ctx[48];
+		return this.$$.ctx[49];
 	}
 }
 

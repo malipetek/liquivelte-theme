@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, text, space, claim_element, children, claim_text, claim_space, detach, set_attributes, insert_hydration, append_hydration, action_destroyer, set_data, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, is_function, transition_in, transition_out, compute_rest_props, getContext, exclude_internal_props, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, text, space, claim_element, children, claim_text, claim_space, detach, set_attributes, insert_hydration, append_hydration, action_destroyer, set_data, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, is_function, transition_in, transition_out, compute_rest_props, getContext, exclude_internal_props, binding_callbacks } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import { restProps, useTooltip, useTheme, classNames, colorClasses } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 
@@ -14,8 +14,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[21].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[20], null);
+	const default_slot_template = /*#slots*/ ctx[22].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[21], null);
 
 	let i_levels = [
 		{ style: /*iconStyle*/ ctx[4] },
@@ -60,7 +60,7 @@ function create_fragment(ctx) {
 				default_slot.m(i, null);
 			}
 
-			/*i_binding*/ ctx[22](i);
+			/*i_binding*/ ctx[23](i);
 			current = true;
 
 			if (!mounted) {
@@ -76,15 +76,15 @@ function create_fragment(ctx) {
 			if ((!current || dirty & /*iconText*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[7].default(/*iconText*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 1048576)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 2097152)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[20],
+						/*$$scope*/ ctx[21],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[20])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[20], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[21])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[21], dirty, null),
 						null
 					);
 				}
@@ -113,7 +113,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(i);
 			if (default_slot) default_slot.d(detaching);
-			/*i_binding*/ ctx[22](null);
+			/*i_binding*/ ctx[23](null);
 			mounted = false;
 			dispose();
 		}
@@ -127,13 +127,15 @@ function instance($$self, $$props, $$invalidate) {
 	let iconStyle;
 
 	const omit_props_names = [
-		"style","classes","material","f7","icon","ios","aurora","md","tooltip","tooltipTrigger","size"
+		"importsSeek","style","classes","material","f7","icon","ios","aurora","md","tooltip","tooltipTrigger","size"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	let { style = undefined } = $$props;
 	let { classes = '' } = $$props;
@@ -149,7 +151,7 @@ function instance($$self, $$props, $$invalidate) {
 	let el;
 
 	let theme = useTheme(t => {
-		$$invalidate(17, theme = t);
+		$$invalidate(18, theme = t);
 	});
 
 	let themeIcon;
@@ -176,32 +178,33 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(27, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(29, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(8, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('style' in $$new_props) $$invalidate(9, style = $$new_props.style);
+		if ('importsSeek' in $$new_props) $$invalidate(9, importsSeek = $$new_props.importsSeek);
+		if ('style' in $$new_props) $$invalidate(10, style = $$new_props.style);
 		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
-		if ('material' in $$new_props) $$invalidate(10, material = $$new_props.material);
-		if ('f7' in $$new_props) $$invalidate(11, f7 = $$new_props.f7);
-		if ('icon' in $$new_props) $$invalidate(12, icon = $$new_props.icon);
-		if ('ios' in $$new_props) $$invalidate(13, ios = $$new_props.ios);
-		if ('aurora' in $$new_props) $$invalidate(14, aurora = $$new_props.aurora);
-		if ('md' in $$new_props) $$invalidate(15, md = $$new_props.md);
+		if ('material' in $$new_props) $$invalidate(11, material = $$new_props.material);
+		if ('f7' in $$new_props) $$invalidate(12, f7 = $$new_props.f7);
+		if ('icon' in $$new_props) $$invalidate(13, icon = $$new_props.icon);
+		if ('ios' in $$new_props) $$invalidate(14, ios = $$new_props.ios);
+		if ('aurora' in $$new_props) $$invalidate(15, aurora = $$new_props.aurora);
+		if ('md' in $$new_props) $$invalidate(16, md = $$new_props.md);
 		if ('tooltip' in $$new_props) $$invalidate(1, tooltip = $$new_props.tooltip);
 		if ('tooltipTrigger' in $$new_props) $$invalidate(2, tooltipTrigger = $$new_props.tooltipTrigger);
-		if ('size' in $$new_props) $$invalidate(16, size = $$new_props.size);
-		if ('$$scope' in $$new_props) $$invalidate(20, $$scope = $$new_props.$$scope);
+		if ('size' in $$new_props) $$invalidate(17, size = $$new_props.size);
+		if ('$$scope' in $$new_props) $$invalidate(21, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*theme, ios, md, aurora*/ 188416) {
+		if ($$self.$$.dirty & /*theme, ios, md, aurora*/ 376832) {
 			if (theme) {
-				if (theme.ios) $$invalidate(18, themeIcon = ios);
-				if (theme.md) $$invalidate(18, themeIcon = md);
-				if (theme.aurora) $$invalidate(18, themeIcon = aurora);
+				if (theme.ios) $$invalidate(19, themeIcon = ios);
+				if (theme.md) $$invalidate(19, themeIcon = md);
+				if (theme.aurora) $$invalidate(19, themeIcon = aurora);
 			}
 		}
 
-		if ($$self.$$.dirty & /*themeIcon, material, f7, icon*/ 269312) {
+		if ($$self.$$.dirty & /*themeIcon, material, f7, icon*/ 538624) {
 			if (themeIcon) {
 				const parts = themeIcon.split(':');
 				const prop = parts[0];
@@ -227,17 +230,17 @@ function instance($$self, $$props, $$invalidate) {
 
 		$$invalidate(6, iconClasses = classNames(classes, colorClasses($$props)));
 
-		if ($$self.$$.dirty & /*theme*/ 131072) {
+		if ($$self.$$.dirty & /*theme*/ 262144) {
 			$$invalidate(5, iconText = iconTextComputed(theme));
 		}
 
-		if ($$self.$$.dirty & /*size*/ 65536) {
-			$$invalidate(19, iconSize = typeof size === 'number' || parseFloat(size) === size * 1
+		if ($$self.$$.dirty & /*size*/ 131072) {
+			$$invalidate(20, iconSize = typeof size === 'number' || parseFloat(size) === size * 1
 			? `${size}px`
 			: size);
 		}
 
-		if ($$self.$$.dirty & /*style, iconSize*/ 524800) {
+		if ($$self.$$.dirty & /*style, iconSize*/ 1049600) {
 			$$invalidate(4, iconStyle = (style || '') + (iconSize
 			? `;font-size: ${iconSize}; width: ${iconSize}; height: ${iconSize}`.replace(';;', '')
 			: ''));
@@ -256,6 +259,7 @@ function instance($$self, $$props, $$invalidate) {
 		iconClasses,
 		liquid,
 		$$restProps,
+		importsSeek,
 		style,
 		material,
 		f7,
@@ -278,17 +282,18 @@ class Icon extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			style: 9,
+			importsSeek: 9,
+			style: 10,
 			classes: 0,
-			material: 10,
-			f7: 11,
-			icon: 12,
-			ios: 13,
-			aurora: 14,
-			md: 15,
+			material: 11,
+			f7: 12,
+			icon: 13,
+			ios: 14,
+			aurora: 15,
+			md: 16,
 			tooltip: 1,
 			tooltipTrigger: 2,
-			size: 16
+			size: 17
 		});
 	}
 }

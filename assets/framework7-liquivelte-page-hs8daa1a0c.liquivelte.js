@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, group_outros, transition_out, check_outros, transition_in, get_spread_update, compute_rest_props, getContext, createEventDispatcher, onMount, afterUpdate, onDestroy, exclude_internal_props, binding_callbacks, create_component, claim_component, mount_component, destroy_component } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, group_outros, transition_out, check_outros, transition_in, get_spread_update, compute_rest_props, getContext, createEventDispatcher, onMount, afterUpdate, onDestroy, exclude_internal_props, binding_callbacks, create_component, claim_component, mount_component, destroy_component } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { restProps, createEmitter, f7ready, app, classNames, colorClasses } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Page_content } from './framework7-liquivelte-page-content-hs8daa1a0c.liquivelte.js';
 
@@ -10,14 +10,14 @@ const get_static_slot_context = ctx => ({});
 const get_fixed_slot_changes = dirty => ({});
 const get_fixed_slot_context = ctx => ({});
 
-// (349:2) {:else}
+// (354:2) {:else}
 function create_else_block(ctx) {
 	let t;
 	let current;
-	const static_slot_template = /*#slots*/ ctx[46].static;
-	const static_slot = create_slot(static_slot_template, ctx, /*$$scope*/ ctx[48], get_static_slot_context_1);
-	const default_slot_template = /*#slots*/ ctx[46].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
+	const static_slot_template = /*#slots*/ ctx[47].static;
+	const static_slot = create_slot(static_slot_template, ctx, /*$$scope*/ ctx[49], get_static_slot_context_1);
+	const default_slot_template = /*#slots*/ ctx[47].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[49], null);
 
 	return {
 		c() {
@@ -45,30 +45,30 @@ function create_else_block(ctx) {
 		},
 		p(ctx, dirty) {
 			if (static_slot) {
-				if (static_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (static_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						static_slot,
 						static_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(static_slot_template, /*$$scope*/ ctx[48], dirty, get_static_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(static_slot_template, /*$$scope*/ ctx[49], dirty, get_static_slot_changes_1),
 						get_static_slot_context_1
 					);
 				}
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[48], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[49], dirty, null),
 						null
 					);
 				}
@@ -93,7 +93,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (323:2) {#if pageContent }
+// (328:2) {#if pageContent }
 function create_if_block(ctx) {
 	let pagecontent;
 	let current;
@@ -153,7 +153,7 @@ function create_if_block(ctx) {
 			if (dirty[0] & /*messagesContent*/ 16384) pagecontent_changes.messagesContent = /*messagesContent*/ ctx[14];
 			if (dirty[0] & /*loginScreen*/ 32768) pagecontent_changes.loginScreen = /*loginScreen*/ ctx[15];
 
-			if (dirty[1] & /*$$scope*/ 131072) {
+			if (dirty[1] & /*$$scope*/ 262144) {
 				pagecontent_changes.$$scope = { dirty, ctx };
 			}
 
@@ -174,14 +174,14 @@ function create_if_block(ctx) {
 	};
 }
 
-// (324:4) <PageContent        ptr="{ptr}"       ptrDistance="{ptrDistance}"       ptrPreloader="{ptrPreloader}"       ptrBottom="{ptrBottom}"       ptrMousewheel="{ptrMousewheel}"       infinite="{infinite}"       infiniteTop="{infiniteTop}"       infiniteDistance="{infiniteDistance}"       infinitePreloader="{infinitePreloader}"       hideBarsOnScroll="{hideBarsOnScroll}"       hideNavbarOnScroll="{hideNavbarOnScroll}"       hideToolbarOnScroll="{hideToolbarOnScroll}"       messagesContent="{messagesContent}"       loginScreen="{loginScreen}"       onPtrPullStart="{onPtrPullStart}"       onPtrPullMove="{onPtrPullMove}"       onPtrPullEnd="{onPtrPullEnd}"       onPtrRefresh="{onPtrRefresh}"       onPtrDone="{onPtrDone}"       onInfinite="{onInfinite}"      >
+// (329:4) <PageContent        ptr="{ptr}"       ptrDistance="{ptrDistance}"       ptrPreloader="{ptrPreloader}"       ptrBottom="{ptrBottom}"       ptrMousewheel="{ptrMousewheel}"       infinite="{infinite}"       infiniteTop="{infiniteTop}"       infiniteDistance="{infiniteDistance}"       infinitePreloader="{infinitePreloader}"       hideBarsOnScroll="{hideBarsOnScroll}"       hideNavbarOnScroll="{hideNavbarOnScroll}"       hideToolbarOnScroll="{hideToolbarOnScroll}"       messagesContent="{messagesContent}"       loginScreen="{loginScreen}"       onPtrPullStart="{onPtrPullStart}"       onPtrPullMove="{onPtrPullMove}"       onPtrPullEnd="{onPtrPullEnd}"       onPtrRefresh="{onPtrRefresh}"       onPtrDone="{onPtrDone}"       onInfinite="{onInfinite}"      >
 function create_default_slot(ctx) {
 	let t;
 	let current;
-	const static_slot_template = /*#slots*/ ctx[46].static;
-	const static_slot = create_slot(static_slot_template, ctx, /*$$scope*/ ctx[48], get_static_slot_context);
-	const default_slot_template = /*#slots*/ ctx[46].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[48], null);
+	const static_slot_template = /*#slots*/ ctx[47].static;
+	const static_slot = create_slot(static_slot_template, ctx, /*$$scope*/ ctx[49], get_static_slot_context);
+	const default_slot_template = /*#slots*/ ctx[47].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[49], null);
 
 	return {
 		c() {
@@ -209,30 +209,30 @@ function create_default_slot(ctx) {
 		},
 		p(ctx, dirty) {
 			if (static_slot) {
-				if (static_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (static_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						static_slot,
 						static_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(static_slot_template, /*$$scope*/ ctx[48], dirty, get_static_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(static_slot_template, /*$$scope*/ ctx[49], dirty, get_static_slot_changes),
 						get_static_slot_context
 					);
 				}
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[48], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[49], dirty, null),
 						null
 					);
 				}
@@ -264,8 +264,8 @@ function create_fragment(ctx) {
 	let if_block;
 	let div_class_value;
 	let current;
-	const fixed_slot_template = /*#slots*/ ctx[46].fixed;
-	const fixed_slot = create_slot(fixed_slot_template, ctx, /*$$scope*/ ctx[48], get_fixed_slot_context);
+	const fixed_slot_template = /*#slots*/ ctx[47].fixed;
+	const fixed_slot = create_slot(fixed_slot_template, ctx, /*$$scope*/ ctx[49], get_fixed_slot_context);
 	const if_block_creators = [create_if_block, create_else_block];
 	const if_blocks = [];
 
@@ -320,20 +320,20 @@ function create_fragment(ctx) {
 
 			append_hydration(div, t);
 			if_blocks[current_block_type_index].m(div, null);
-			/*div_binding*/ ctx[47](div);
+			/*div_binding*/ ctx[48](div);
 			current = true;
 		},
 		p(ctx, dirty) {
 			if (fixed_slot) {
-				if (fixed_slot.p && (!current || dirty[1] & /*$$scope*/ 131072)) {
+				if (fixed_slot.p && (!current || dirty[1] & /*$$scope*/ 262144)) {
 					update_slot_base(
 						fixed_slot,
 						fixed_slot_template,
 						ctx,
-						/*$$scope*/ ctx[48],
+						/*$$scope*/ ctx[49],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[48])
-						: get_slot_changes(fixed_slot_template, /*$$scope*/ ctx[48], dirty, get_fixed_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[49])
+						: get_slot_changes(fixed_slot_template, /*$$scope*/ ctx[49], dirty, get_fixed_slot_changes),
 						get_fixed_slot_context
 					);
 				}
@@ -386,7 +386,7 @@ function create_fragment(ctx) {
 			if (detaching) detach(div);
 			if (fixed_slot) fixed_slot.d(detaching);
 			if_blocks[current_block_type_index].d();
-			/*div_binding*/ ctx[47](null);
+			/*div_binding*/ ctx[48](null);
 		}
 	};
 }
@@ -396,13 +396,15 @@ function instance($$self, $$props, $$invalidate) {
 	let forceNavbarLarge;
 
 	const omit_props_names = [
-		"name","stacked","withSubnavbar","subnavbar","withNavbarLarge","navbarLarge","noNavbar","noToolbar","tabs","pageContent","noSwipeback","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","classes"
+		"importsSeek","name","stacked","withSubnavbar","subnavbar","withNavbarLarge","navbarLarge","noNavbar","noToolbar","tabs","pageContent","noSwipeback","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","classes"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let { name = undefined } = $$props;
 	let { stacked = undefined } = $$props;
@@ -481,13 +483,13 @@ function instance($$self, $$props, $$invalidate) {
 
 		if (typeof withSubnavbar === 'undefined' && typeof subnavbar === 'undefined') {
 			if (page.$navbarEl && page.$navbarEl.length && page.$navbarEl.find('.subnavbar').length || page.$el.children('.navbar').find('.subnavbar').length) {
-				$$invalidate(35, hasSubnavbar = true);
+				$$invalidate(36, hasSubnavbar = true);
 			}
 		}
 
 		if (typeof withNavbarLarge === 'undefined' && typeof navbarLarge === 'undefined') {
 			if (page.$navbarEl && page.$navbarEl.hasClass('navbar-large') || page.$el.children('.navbar-large').length) {
-				$$invalidate(36, hasNavbarLarge = true);
+				$$invalidate(37, hasNavbarLarge = true);
 			}
 		}
 
@@ -504,11 +506,11 @@ function instance($$self, $$props, $$invalidate) {
 
 		if (!page.swipeBack) {
 			if (page.from === 'next') {
-				$$invalidate(39, routerPositionClass = 'page-next');
+				$$invalidate(40, routerPositionClass = 'page-next');
 			}
 
 			if (page.from === 'previous') {
-				$$invalidate(39, routerPositionClass = 'page-previous');
+				$$invalidate(40, routerPositionClass = 'page-previous');
 			}
 		}
 
@@ -524,11 +526,11 @@ function instance($$self, $$props, $$invalidate) {
 		if (el !== page.el) return;
 
 		if (page.to === 'next') {
-			$$invalidate(39, routerPositionClass = 'page-next');
+			$$invalidate(40, routerPositionClass = 'page-next');
 		}
 
 		if (page.to === 'previous') {
-			$$invalidate(39, routerPositionClass = 'page-previous');
+			$$invalidate(40, routerPositionClass = 'page-previous');
 		}
 
 		emit('pageAfterOut', [page]);
@@ -536,7 +538,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	function onPageAfterIn(page) {
 		if (el !== page.el) return;
-		$$invalidate(39, routerPositionClass = 'page-current');
+		$$invalidate(40, routerPositionClass = 'page-current');
 		emit('pageAfterIn', [page]);
 	}
 
@@ -558,53 +560,53 @@ function instance($$self, $$props, $$invalidate) {
 	// Helper events
 	function onPageStack(pageEl) {
 		if (el !== pageEl) return;
-		$$invalidate(40, routerForceUnstack = false);
+		$$invalidate(41, routerForceUnstack = false);
 	}
 
 	function onPageUnstack(pageEl) {
 		if (el !== pageEl) return;
-		$$invalidate(40, routerForceUnstack = true);
+		$$invalidate(41, routerForceUnstack = true);
 	}
 
 	function onPagePosition(pageEl, position) {
 		if (el !== pageEl) return;
-		$$invalidate(39, routerPositionClass = `page-${position}`);
+		$$invalidate(40, routerPositionClass = `page-${position}`);
 	}
 
 	function onPageRole(pageEl, rolesData) {
 		if (el !== pageEl) return;
-		$$invalidate(41, routerPageRole = rolesData.role);
-		$$invalidate(42, routerPageRoleDetailRoot = rolesData.detailRoot);
+		$$invalidate(42, routerPageRole = rolesData.role);
+		$$invalidate(43, routerPageRoleDetailRoot = rolesData.detailRoot);
 	}
 
 	function onPageMasterStack(pageEl) {
 		if (el !== pageEl) return;
-		$$invalidate(43, routerPageMasterStack = true);
+		$$invalidate(44, routerPageMasterStack = true);
 	}
 
 	function onPageMasterUnstack(pageEl) {
 		if (el !== pageEl) return;
-		$$invalidate(43, routerPageMasterStack = false);
+		$$invalidate(44, routerPageMasterStack = false);
 	}
 
 	function onPageNavbarLargeCollapsed(pageEl) {
 		if (el !== pageEl) return;
-		$$invalidate(37, hasNavbarLargeCollapsed = true);
+		$$invalidate(38, hasNavbarLargeCollapsed = true);
 	}
 
 	function onPageNavbarLargeExpanded(pageEl) {
 		if (el !== pageEl) return;
-		$$invalidate(37, hasNavbarLargeCollapsed = false);
+		$$invalidate(38, hasNavbarLargeCollapsed = false);
 	}
 
 	function onCardOpened(cardEl, pageEl) {
 		if (el !== pageEl) return;
-		$$invalidate(38, hasCardExpandableOpened = true);
+		$$invalidate(39, hasCardExpandableOpened = true);
 	}
 
 	function onCardClose(cardEl, pageEl) {
 		if (el !== pageEl) return;
-		$$invalidate(38, hasCardExpandableOpened = false);
+		$$invalidate(39, hasCardExpandableOpened = false);
 	}
 
 	function onPageTabShow(pageEl) {
@@ -709,19 +711,20 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(76, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(78, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(25, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('importsSeek' in $$new_props) $$invalidate(26, importsSeek = $$new_props.importsSeek);
 		if ('name' in $$new_props) $$invalidate(0, name = $$new_props.name);
-		if ('stacked' in $$new_props) $$invalidate(26, stacked = $$new_props.stacked);
-		if ('withSubnavbar' in $$new_props) $$invalidate(27, withSubnavbar = $$new_props.withSubnavbar);
-		if ('subnavbar' in $$new_props) $$invalidate(28, subnavbar = $$new_props.subnavbar);
-		if ('withNavbarLarge' in $$new_props) $$invalidate(29, withNavbarLarge = $$new_props.withNavbarLarge);
-		if ('navbarLarge' in $$new_props) $$invalidate(30, navbarLarge = $$new_props.navbarLarge);
-		if ('noNavbar' in $$new_props) $$invalidate(31, noNavbar = $$new_props.noNavbar);
-		if ('noToolbar' in $$new_props) $$invalidate(32, noToolbar = $$new_props.noToolbar);
-		if ('tabs' in $$new_props) $$invalidate(33, tabs = $$new_props.tabs);
+		if ('stacked' in $$new_props) $$invalidate(27, stacked = $$new_props.stacked);
+		if ('withSubnavbar' in $$new_props) $$invalidate(28, withSubnavbar = $$new_props.withSubnavbar);
+		if ('subnavbar' in $$new_props) $$invalidate(29, subnavbar = $$new_props.subnavbar);
+		if ('withNavbarLarge' in $$new_props) $$invalidate(30, withNavbarLarge = $$new_props.withNavbarLarge);
+		if ('navbarLarge' in $$new_props) $$invalidate(31, navbarLarge = $$new_props.navbarLarge);
+		if ('noNavbar' in $$new_props) $$invalidate(32, noNavbar = $$new_props.noNavbar);
+		if ('noToolbar' in $$new_props) $$invalidate(33, noToolbar = $$new_props.noToolbar);
+		if ('tabs' in $$new_props) $$invalidate(34, tabs = $$new_props.tabs);
 		if ('pageContent' in $$new_props) $$invalidate(1, pageContent = $$new_props.pageContent);
-		if ('noSwipeback' in $$new_props) $$invalidate(34, noSwipeback = $$new_props.noSwipeback);
+		if ('noSwipeback' in $$new_props) $$invalidate(35, noSwipeback = $$new_props.noSwipeback);
 		if ('ptr' in $$new_props) $$invalidate(2, ptr = $$new_props.ptr);
 		if ('ptrDistance' in $$new_props) $$invalidate(3, ptrDistance = $$new_props.ptrDistance);
 		if ('ptrPreloader' in $$new_props) $$invalidate(4, ptrPreloader = $$new_props.ptrPreloader);
@@ -737,18 +740,18 @@ function instance($$self, $$props, $$invalidate) {
 		if ('messagesContent' in $$new_props) $$invalidate(14, messagesContent = $$new_props.messagesContent);
 		if ('loginScreen' in $$new_props) $$invalidate(15, loginScreen = $$new_props.loginScreen);
 		if ('classes' in $$new_props) $$invalidate(16, classes = $$new_props.classes);
-		if ('$$scope' in $$new_props) $$invalidate(48, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(49, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[0] & /*subnavbar, withSubnavbar*/ 402653184 | $$self.$$.dirty[1] & /*hasSubnavbar*/ 16) {
-			$$invalidate(45, forceSubnavbar = typeof subnavbar === 'undefined' && typeof withSubnavbar === 'undefined'
+		if ($$self.$$.dirty[0] & /*subnavbar, withSubnavbar*/ 805306368 | $$self.$$.dirty[1] & /*hasSubnavbar*/ 32) {
+			$$invalidate(46, forceSubnavbar = typeof subnavbar === 'undefined' && typeof withSubnavbar === 'undefined'
 			? hasSubnavbar
 			: false);
 		}
 
-		if ($$self.$$.dirty[0] & /*navbarLarge, withNavbarLarge*/ 1610612736 | $$self.$$.dirty[1] & /*hasNavbarLarge*/ 32) {
-			$$invalidate(44, forceNavbarLarge = typeof navbarLarge === 'undefined' && typeof withNavbarLarge === 'undefined'
+		if ($$self.$$.dirty[0] & /*withNavbarLarge*/ 1073741824 | $$self.$$.dirty[1] & /*navbarLarge, hasNavbarLarge*/ 65) {
+			$$invalidate(45, forceNavbarLarge = typeof navbarLarge === 'undefined' && typeof withNavbarLarge === 'undefined'
 			? hasNavbarLarge
 			: false);
 		}
@@ -805,6 +808,7 @@ function instance($$self, $$props, $$invalidate) {
 		onPtrDone,
 		onInfinite,
 		$$restProps,
+		importsSeek,
 		stacked,
 		withSubnavbar,
 		subnavbar,
@@ -842,17 +846,18 @@ class Page extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
+				importsSeek: 26,
 				name: 0,
-				stacked: 26,
-				withSubnavbar: 27,
-				subnavbar: 28,
-				withNavbarLarge: 29,
-				navbarLarge: 30,
-				noNavbar: 31,
-				noToolbar: 32,
-				tabs: 33,
+				stacked: 27,
+				withSubnavbar: 28,
+				subnavbar: 29,
+				withNavbarLarge: 30,
+				navbarLarge: 31,
+				noNavbar: 32,
+				noToolbar: 33,
+				tabs: 34,
 				pageContent: 1,
-				noSwipeback: 34,
+				noSwipeback: 35,
 				ptr: 2,
 				ptrDistance: 3,
 				ptrPreloader: 4,

@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, listen, action_destroyer, transition_in, group_outros, transition_out, check_outros, get_spread_update, is_function, run_all, compute_rest_props, compute_slots, getContext, createEventDispatcher, exclude_internal_props, create_slot, text, claim_text, attr, set_data, update_slot_base, get_all_dirty_from_scope, get_slot_changes, create_component, claim_component, mount_component, destroy_component, noop, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, listen, action_destroyer, transition_in, group_outros, transition_out, check_outros, get_spread_update, is_function, run_all, compute_rest_props, compute_slots, getContext, createEventDispatcher, exclude_internal_props, create_slot, text, claim_text, attr, set_data, update_slot_base, get_all_dirty_from_scope, get_slot_changes, create_component, claim_component, mount_component, destroy_component, noop, binding_callbacks } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import { restProps, useTooltip, createEmitter, classNames, colorClasses, useIcon } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Use_icon } from './framework7-liquivelte-use-icon-hs8daa1a0c.liquivelte.js';
@@ -9,7 +9,7 @@ const get_text_slot_context = ctx => ({});
 const get_media_slot_changes = dirty => ({});
 const get_media_slot_context = ctx => ({});
 
-// (76:2) {#if media || hasMediaSlots || icon }
+// (81:2) {#if media || hasMediaSlots || icon }
 function create_if_block_2(ctx) {
 	let div;
 	let t0;
@@ -19,8 +19,8 @@ function create_if_block_2(ctx) {
 	let div_class_value;
 	let current;
 	let if_block = /*icon*/ ctx[8] && create_if_block_3(ctx);
-	const media_slot_template = /*#slots*/ ctx[21].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[20], get_media_slot_context);
+	const media_slot_template = /*#slots*/ ctx[22].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[21], get_media_slot_context);
 
 	return {
 		c() {
@@ -86,15 +86,15 @@ function create_if_block_2(ctx) {
 			if ((!current || dirty & /*media*/ 2) && t1_value !== (t1_value = /*liquid*/ ctx[13].default(/*media*/ ctx[1], '') + "")) set_data(t1, t1_value);
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty & /*$$scope*/ 1048576)) {
+				if (media_slot.p && (!current || dirty & /*$$scope*/ 2097152)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[20],
+						/*$$scope*/ ctx[21],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[20])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[20], dirty, get_media_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[21])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[21], dirty, get_media_slot_changes),
 						get_media_slot_context
 					);
 				}
@@ -123,7 +123,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (78:6) {#if icon }
+// (83:6) {#if icon }
 function create_if_block_3(ctx) {
 	let useicon;
 	let current;
@@ -160,7 +160,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (85:2) {#if text || hasTextSlots || hasDefaultSlots }
+// (90:2) {#if text || hasTextSlots || hasDefaultSlots }
 function create_if_block_1(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[13].default(/*text*/ ctx[2], '') + "";
@@ -168,10 +168,10 @@ function create_if_block_1(ctx) {
 	let t1;
 	let t2;
 	let current;
-	const text_slot_template = /*#slots*/ ctx[21].text;
-	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[20], get_text_slot_context);
-	const default_slot_template = /*#slots*/ ctx[21].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[20], null);
+	const text_slot_template = /*#slots*/ ctx[22].text;
+	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[21], get_text_slot_context);
+	const default_slot_template = /*#slots*/ ctx[22].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[21], null);
 
 	return {
 		c() {
@@ -218,30 +218,30 @@ function create_if_block_1(ctx) {
 			if ((!current || dirty & /*text*/ 4) && t0_value !== (t0_value = /*liquid*/ ctx[13].default(/*text*/ ctx[2], '') + "")) set_data(t0, t0_value);
 
 			if (text_slot) {
-				if (text_slot.p && (!current || dirty & /*$$scope*/ 1048576)) {
+				if (text_slot.p && (!current || dirty & /*$$scope*/ 2097152)) {
 					update_slot_base(
 						text_slot,
 						text_slot_template,
 						ctx,
-						/*$$scope*/ ctx[20],
+						/*$$scope*/ ctx[21],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[20])
-						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[20], dirty, get_text_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[21])
+						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[21], dirty, get_text_slot_changes),
 						get_text_slot_context
 					);
 				}
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 1048576)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 2097152)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[20],
+						/*$$scope*/ ctx[21],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[20])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[20], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[21])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[21], dirty, null),
 						null
 					);
 				}
@@ -266,7 +266,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (92:2) {#if deleteable }
+// (97:2) {#if deleteable }
 function create_if_block(ctx) {
 	let a;
 	let mounted;
@@ -359,7 +359,7 @@ function create_fragment(ctx) {
 			if (if_block1) if_block1.m(div, null);
 			append_hydration(div, t1);
 			if (if_block2) if_block2.m(div, null);
-			/*div_binding*/ ctx[22](div);
+			/*div_binding*/ ctx[23](div);
 			current = true;
 
 			if (!mounted) {
@@ -460,7 +460,7 @@ function create_fragment(ctx) {
 			if (if_block0) if_block0.d();
 			if (if_block1) if_block1.d();
 			if (if_block2) if_block2.d();
-			/*div_binding*/ ctx[22](null);
+			/*div_binding*/ ctx[23](null);
 			mounted = false;
 			run_all(dispose);
 		}
@@ -475,14 +475,16 @@ function instance($$self, $$props, $$invalidate) {
 	let icon;
 
 	const omit_props_names = [
-		"classes","media","text","deleteable","mediaBgColor","mediaTextColor","outline","tooltip","tooltipTrigger"
+		"importsSeek","classes","media","text","deleteable","mediaBgColor","mediaTextColor","outline","tooltip","tooltipTrigger"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	const $$slots = compute_slots(slots);
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let computedClasses = undefined;
@@ -513,24 +515,25 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(26, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(28, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(16, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('importsSeek' in $$new_props) $$invalidate(17, importsSeek = $$new_props.importsSeek);
 		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
 		if ('media' in $$new_props) $$invalidate(1, media = $$new_props.media);
 		if ('text' in $$new_props) $$invalidate(2, text = $$new_props.text);
 		if ('deleteable' in $$new_props) $$invalidate(3, deleteable = $$new_props.deleteable);
-		if ('mediaBgColor' in $$new_props) $$invalidate(17, mediaBgColor = $$new_props.mediaBgColor);
-		if ('mediaTextColor' in $$new_props) $$invalidate(18, mediaTextColor = $$new_props.mediaTextColor);
-		if ('outline' in $$new_props) $$invalidate(19, outline = $$new_props.outline);
+		if ('mediaBgColor' in $$new_props) $$invalidate(18, mediaBgColor = $$new_props.mediaBgColor);
+		if ('mediaTextColor' in $$new_props) $$invalidate(19, mediaTextColor = $$new_props.mediaTextColor);
+		if ('outline' in $$new_props) $$invalidate(20, outline = $$new_props.outline);
 		if ('tooltip' in $$new_props) $$invalidate(4, tooltip = $$new_props.tooltip);
 		if ('tooltipTrigger' in $$new_props) $$invalidate(5, tooltipTrigger = $$new_props.tooltipTrigger);
-		if ('$$scope' in $$new_props) $$invalidate(20, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(21, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
 		$$invalidate(6, computedClasses = classNames(classes, { 'chip-outline': outline }, colorClasses($$props)));
 
-		if ($$self.$$.dirty & /*mediaTextColor, mediaBgColor*/ 393216) {
+		if ($$self.$$.dirty & /*mediaTextColor, mediaBgColor*/ 786432) {
 			$$invalidate(12, mediaClasses = classNames(mediaTextColor && `text-color-${mediaTextColor}`, mediaBgColor && `bg-color-${mediaBgColor}`));
 		}
 
@@ -565,6 +568,7 @@ function instance($$self, $$props, $$invalidate) {
 		onClick,
 		onDeleteClick,
 		$$restProps,
+		importsSeek,
 		mediaBgColor,
 		mediaTextColor,
 		outline,
@@ -579,13 +583,14 @@ class Chip extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
+			importsSeek: 17,
 			classes: 0,
 			media: 1,
 			text: 2,
 			deleteable: 3,
-			mediaBgColor: 17,
-			mediaTextColor: 18,
-			outline: 19,
+			mediaBgColor: 18,
+			mediaTextColor: 19,
+			outline: 20,
 			tooltip: 4,
 			tooltipTrigger: 5
 		});

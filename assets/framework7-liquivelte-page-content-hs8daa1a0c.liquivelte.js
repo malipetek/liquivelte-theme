@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, getContext, createEventDispatcher, onMount, onDestroy, exclude_internal_props, create_component, claim_component, attr, mount_component, destroy_component, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, getContext, createEventDispatcher, onMount, onDestroy, exclude_internal_props, create_component, claim_component, attr, mount_component, destroy_component, binding_callbacks } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { restProps, createEmitter, useTab, f7ready, app, classNames, colorClasses } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Preloader } from './framework7-liquivelte-preloader-hs8daa1a0c.liquivelte.js';
 
@@ -57,7 +57,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (138:2) {#if infinite && infiniteTop && infinitePreloader }
+// (143:2) {#if infinite && infiniteTop && infinitePreloader }
 function create_if_block_2(ctx) {
 	let preloader;
 	let current;
@@ -92,7 +92,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (142:2) {#if infinite && !infiniteTop && infinitePreloader }
+// (147:2) {#if infinite && infiniteTop != true && infinitePreloader }
 function create_if_block_1(ctx) {
 	let preloader;
 	let current;
@@ -127,7 +127,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (145:2) {#if ptr && ptrPreloader && ptrBottom }
+// (150:2) {#if ptr && ptrPreloader && ptrBottom }
 function create_if_block(ctx) {
 	let div1;
 	let preloader;
@@ -193,9 +193,9 @@ function create_fragment(ctx) {
 	let current;
 	let if_block0 = /*ptr*/ ctx[0] && /*ptrPreloader*/ ctx[2] && /*ptrBottom*/ ctx[3] == undefined && create_if_block_3();
 	let if_block1 = /*infinite*/ ctx[5] && /*infiniteTop*/ ctx[6] && /*infinitePreloader*/ ctx[8] && create_if_block_2();
-	const default_slot_template = /*#slots*/ ctx[21].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[20], null);
-	let if_block2 = /*infinite*/ ctx[5] && !/*infiniteTop*/ ctx[6] && /*infinitePreloader*/ ctx[8] && create_if_block_1();
+	const default_slot_template = /*#slots*/ ctx[22].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[21], null);
+	let if_block2 = /*infinite*/ ctx[5] && /*infiniteTop*/ ctx[6] != true && /*infinitePreloader*/ ctx[8] && create_if_block_1();
 	let if_block3 = /*ptr*/ ctx[0] && /*ptrPreloader*/ ctx[2] && /*ptrBottom*/ ctx[3] && create_if_block();
 
 	let div_levels = [
@@ -273,7 +273,7 @@ function create_fragment(ctx) {
 			if (if_block2) if_block2.m(div, null);
 			append_hydration(div, t3);
 			if (if_block3) if_block3.m(div, null);
-			/*div_binding*/ ctx[22](div);
+			/*div_binding*/ ctx[23](div);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -320,21 +320,21 @@ function create_fragment(ctx) {
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[0] & /*$$scope*/ 1048576)) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope*/ 2097152)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[20],
+						/*$$scope*/ ctx[21],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[20])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[20], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[21])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[21], dirty, null),
 						null
 					);
 				}
 			}
 
-			if (/*infinite*/ ctx[5] && !/*infiniteTop*/ ctx[6] && /*infinitePreloader*/ ctx[8]) {
+			if (/*infinite*/ ctx[5] && /*infiniteTop*/ ctx[6] != true && /*infinitePreloader*/ ctx[8]) {
 				if (if_block2) {
 					if (dirty[0] & /*infinite, infiniteTop, infinitePreloader*/ 352) {
 						transition_in(if_block2, 1);
@@ -414,7 +414,7 @@ function create_fragment(ctx) {
 			if (default_slot) default_slot.d(detaching);
 			if (if_block2) if_block2.d();
 			if (if_block3) if_block3.d();
-			/*div_binding*/ ctx[22](null);
+			/*div_binding*/ ctx[23](null);
 		}
 	};
 }
@@ -423,13 +423,15 @@ function instance($$self, $$props, $$invalidate) {
 	let pageContentClasses;
 
 	const omit_props_names = [
-		"tab","tabActive","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","classes"
+		"importsSeek","tab","tabActive","ptr","ptrDistance","ptrPreloader","ptrBottom","ptrMousewheel","infinite","infiniteTop","infiniteDistance","infinitePreloader","hideBarsOnScroll","hideNavbarOnScroll","hideToolbarOnScroll","messagesContent","loginScreen","classes"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let { tab = false } = $$props;
 	let { tabActive = false } = $$props;
@@ -530,10 +532,11 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(36, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(38, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(11, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('tab' in $$new_props) $$invalidate(12, tab = $$new_props.tab);
-		if ('tabActive' in $$new_props) $$invalidate(13, tabActive = $$new_props.tabActive);
+		if ('importsSeek' in $$new_props) $$invalidate(12, importsSeek = $$new_props.importsSeek);
+		if ('tab' in $$new_props) $$invalidate(13, tab = $$new_props.tab);
+		if ('tabActive' in $$new_props) $$invalidate(14, tabActive = $$new_props.tabActive);
 		if ('ptr' in $$new_props) $$invalidate(0, ptr = $$new_props.ptr);
 		if ('ptrDistance' in $$new_props) $$invalidate(1, ptrDistance = $$new_props.ptrDistance);
 		if ('ptrPreloader' in $$new_props) $$invalidate(2, ptrPreloader = $$new_props.ptrPreloader);
@@ -543,13 +546,13 @@ function instance($$self, $$props, $$invalidate) {
 		if ('infiniteTop' in $$new_props) $$invalidate(6, infiniteTop = $$new_props.infiniteTop);
 		if ('infiniteDistance' in $$new_props) $$invalidate(7, infiniteDistance = $$new_props.infiniteDistance);
 		if ('infinitePreloader' in $$new_props) $$invalidate(8, infinitePreloader = $$new_props.infinitePreloader);
-		if ('hideBarsOnScroll' in $$new_props) $$invalidate(14, hideBarsOnScroll = $$new_props.hideBarsOnScroll);
-		if ('hideNavbarOnScroll' in $$new_props) $$invalidate(15, hideNavbarOnScroll = $$new_props.hideNavbarOnScroll);
-		if ('hideToolbarOnScroll' in $$new_props) $$invalidate(16, hideToolbarOnScroll = $$new_props.hideToolbarOnScroll);
-		if ('messagesContent' in $$new_props) $$invalidate(17, messagesContent = $$new_props.messagesContent);
-		if ('loginScreen' in $$new_props) $$invalidate(18, loginScreen = $$new_props.loginScreen);
-		if ('classes' in $$new_props) $$invalidate(19, classes = $$new_props.classes);
-		if ('$$scope' in $$new_props) $$invalidate(20, $$scope = $$new_props.$$scope);
+		if ('hideBarsOnScroll' in $$new_props) $$invalidate(15, hideBarsOnScroll = $$new_props.hideBarsOnScroll);
+		if ('hideNavbarOnScroll' in $$new_props) $$invalidate(16, hideNavbarOnScroll = $$new_props.hideNavbarOnScroll);
+		if ('hideToolbarOnScroll' in $$new_props) $$invalidate(17, hideToolbarOnScroll = $$new_props.hideToolbarOnScroll);
+		if ('messagesContent' in $$new_props) $$invalidate(18, messagesContent = $$new_props.messagesContent);
+		if ('loginScreen' in $$new_props) $$invalidate(19, loginScreen = $$new_props.loginScreen);
+		if ('classes' in $$new_props) $$invalidate(20, classes = $$new_props.classes);
+		if ('$$scope' in $$new_props) $$invalidate(21, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
@@ -587,6 +590,7 @@ function instance($$self, $$props, $$invalidate) {
 		pageContentEl,
 		pageContentClasses,
 		$$restProps,
+		importsSeek,
 		tab,
 		tabActive,
 		hideBarsOnScroll,
@@ -612,8 +616,9 @@ class Page_content extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
-				tab: 12,
-				tabActive: 13,
+				importsSeek: 12,
+				tab: 13,
+				tabActive: 14,
 				ptr: 0,
 				ptrDistance: 1,
 				ptrPreloader: 2,
@@ -623,12 +628,12 @@ class Page_content extends SvelteComponent {
 				infiniteTop: 6,
 				infiniteDistance: 7,
 				infinitePreloader: 8,
-				hideBarsOnScroll: 14,
-				hideNavbarOnScroll: 15,
-				hideToolbarOnScroll: 16,
-				messagesContent: 17,
-				loginScreen: 18,
-				classes: 19
+				hideBarsOnScroll: 15,
+				hideNavbarOnScroll: 16,
+				hideToolbarOnScroll: 17,
+				messagesContent: 18,
+				loginScreen: 19,
+				classes: 20
 			},
 			null,
 			[-1, -1]

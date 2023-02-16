@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, transition_in, transition_out, compute_rest_props, getContext, exclude_internal_props, text, claim_text, set_data, attr } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, transition_in, transition_out, compute_rest_props, getContext, exclude_internal_props, text, claim_text, set_data, attr } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import { restProps, classNames, colorClasses } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 
@@ -27,7 +27,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (33:2) {#if typeof subtitle !== 'undefined'}
+// (37:2) {#if typeof subtitle !== 'undefined'}
 function create_if_block(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[3].default(/*subtitle*/ ctx[1], '') + "";
@@ -69,8 +69,8 @@ function create_fragment(ctx) {
 	let current;
 	let if_block0 = typeof /*title*/ ctx[0] !== 'undefined' && create_if_block_1(ctx);
 	let if_block1 = typeof /*subtitle*/ ctx[1] !== 'undefined' && create_if_block(ctx);
-	const default_slot_template = /*#slots*/ ctx[8].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[7], null);
+	const default_slot_template = /*#slots*/ ctx[9].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[8], null);
 	let div_levels = [{ class: /*computedClasses*/ ctx[2] }, restProps(/*$$restProps*/ ctx[4])];
 	let div_data = {};
 
@@ -143,15 +143,15 @@ function create_fragment(ctx) {
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 128)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 256)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[7],
+						/*$$scope*/ ctx[8],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[7])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[7], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[8])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[8], dirty, null),
 						null
 					);
 				}
@@ -181,11 +181,13 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	const omit_props_names = ["classes","title","subtitle","sliding"];
+	const omit_props_names = ["importsSeek","classes","title","subtitle","sliding"];
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	let computedClasses = undefined;
 	let { classes = '' } = $$props;
@@ -194,13 +196,14 @@ function instance($$self, $$props, $$invalidate) {
 	let { sliding = undefined } = $$props;
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(11, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(13, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(4, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('classes' in $$new_props) $$invalidate(5, classes = $$new_props.classes);
+		if ('importsSeek' in $$new_props) $$invalidate(5, importsSeek = $$new_props.importsSeek);
+		if ('classes' in $$new_props) $$invalidate(6, classes = $$new_props.classes);
 		if ('title' in $$new_props) $$invalidate(0, title = $$new_props.title);
 		if ('subtitle' in $$new_props) $$invalidate(1, subtitle = $$new_props.subtitle);
-		if ('sliding' in $$new_props) $$invalidate(6, sliding = $$new_props.sliding);
-		if ('$$scope' in $$new_props) $$invalidate(7, $$scope = $$new_props.$$scope);
+		if ('sliding' in $$new_props) $$invalidate(7, sliding = $$new_props.sliding);
+		if ('$$scope' in $$new_props) $$invalidate(8, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
@@ -215,6 +218,7 @@ function instance($$self, $$props, $$invalidate) {
 		computedClasses,
 		liquid,
 		$$restProps,
+		importsSeek,
 		classes,
 		sliding,
 		$$scope,
@@ -227,10 +231,11 @@ class Nav_title extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			classes: 5,
+			importsSeek: 5,
+			classes: 6,
 			title: 0,
 			subtitle: 1,
-			sliding: 6
+			sliding: 7
 		});
 	}
 }

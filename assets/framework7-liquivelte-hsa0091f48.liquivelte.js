@@ -1,4 +1,4 @@
-import { onMount, onDestroy, SvelteComponent, init, safe_not_equal, space, empty, claim_space, insert_hydration, transition_in, group_outros, transition_out, check_outros, detach, getContext, create_component, claim_component, mount_component, destroy_component, setContext, beforeUpdate } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { onMount, onDestroy, SvelteComponent, init, safe_not_equal, space, empty, claim_space, insert_hydration, transition_in, group_outros, transition_out, check_outros, detach, getContext, assign, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, setContext, beforeUpdate } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { Popup } from './framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';
 import { View } from './framework7-liquivelte-view-hs8daa1a0c.liquivelte.js';
 import { Login_screen } from './framework7-liquivelte-login-screen-hs8daa1a0c.liquivelte.js';
@@ -489,7 +489,7 @@ function create_if_block_4(ctx) {
 			const popup_changes = {};
 			if (dirty & /*url*/ 2) popup_changes["data-url"] = /*url*/ ctx[1];
 
-			if (dirty & /*$$scope, viewSelector, url*/ 518) {
+			if (dirty & /*$$scope, viewSelector, url*/ 4102) {
 				popup_changes.$$scope = { dirty, ctx };
 			}
 
@@ -510,7 +510,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (26:2) <Popup  className="popup-router-open-in" data-url={url} >
+// (30:2) <Popup  className="popup-router-open-in" data-url={url} >
 function create_default_slot_4(ctx) {
 	let view;
 	let current;
@@ -555,7 +555,7 @@ function create_default_slot_4(ctx) {
 	};
 }
 
-// (30:0) {#if openIn === 'loginScreen' }
+// (34:0) {#if openIn === 'loginScreen' }
 function create_if_block_3(ctx) {
 	let loginscreen;
 	let current;
@@ -584,7 +584,7 @@ function create_if_block_3(ctx) {
 			const loginscreen_changes = {};
 			if (dirty & /*url*/ 2) loginscreen_changes["data-url"] = /*url*/ ctx[1];
 
-			if (dirty & /*$$scope, viewSelector, url*/ 518) {
+			if (dirty & /*$$scope, viewSelector, url*/ 4102) {
 				loginscreen_changes.$$scope = { dirty, ctx };
 			}
 
@@ -605,7 +605,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (31:2) <LoginScreen  className="login-screen-router-open-in" data-url={url} >
+// (35:2) <LoginScreen  className="login-screen-router-open-in" data-url={url} >
 function create_default_slot_3(ctx) {
 	let view;
 	let current;
@@ -650,7 +650,7 @@ function create_default_slot_3(ctx) {
 	};
 }
 
-// (35:0) {#if openIn === 'sheet' }
+// (39:0) {#if openIn === 'sheet' }
 function create_if_block_2(ctx) {
 	let sheet;
 	let current;
@@ -679,7 +679,7 @@ function create_if_block_2(ctx) {
 			const sheet_changes = {};
 			if (dirty & /*url*/ 2) sheet_changes["data-url"] = /*url*/ ctx[1];
 
-			if (dirty & /*$$scope, viewSelector, url*/ 518) {
+			if (dirty & /*$$scope, viewSelector, url*/ 4102) {
 				sheet_changes.$$scope = { dirty, ctx };
 			}
 
@@ -700,7 +700,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (36:2) <Sheet  className="sheet-modal-router-open-in" data-url={url} >
+// (40:2) <Sheet  className="sheet-modal-router-open-in" data-url={url} >
 function create_default_slot_2(ctx) {
 	let view;
 	let current;
@@ -745,7 +745,7 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (40:0) {#if openIn === 'popover' }
+// (44:0) {#if openIn === 'popover' }
 function create_if_block_1(ctx) {
 	let popover;
 	let current;
@@ -776,7 +776,7 @@ function create_if_block_1(ctx) {
 			if (dirty & /*targetEl*/ 8) popover_changes.targetEl = /*targetEl*/ ctx[3];
 			if (dirty & /*url*/ 2) popover_changes["data-url"] = /*url*/ ctx[1];
 
-			if (dirty & /*$$scope, viewSelector, url*/ 518) {
+			if (dirty & /*$$scope, viewSelector, url*/ 4102) {
 				popover_changes.$$scope = { dirty, ctx };
 			}
 
@@ -797,7 +797,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (41:2) <Popover  className="popover-router-open-in" {targetEl} data-url={url} >
+// (45:2) <Popover  className="popover-router-open-in" {targetEl} data-url={url} >
 function create_default_slot_1(ctx) {
 	let view;
 	let current;
@@ -842,7 +842,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (45:0) {#if openIn.indexOf('panel') === 0 }
+// (49:0) {#if openIn.indexOf('panel') === 0 }
 function create_if_block(ctx) {
 	let panel;
 	let current;
@@ -875,7 +875,7 @@ function create_if_block(ctx) {
 			if (dirty & /*effect*/ 32) panel_changes.effect = /*effect*/ ctx[5];
 			if (dirty & /*url*/ 2) panel_changes["data-url"] = /*url*/ ctx[1];
 
-			if (dirty & /*$$scope, viewSelector, url*/ 518) {
+			if (dirty & /*$$scope, viewSelector, url*/ 4102) {
 				panel_changes.$$scope = { dirty, ctx };
 			}
 
@@ -896,7 +896,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (46:2) <Panel  {side} {effect} className="panel-router-open-in" data-url={url} >
+// (50:2) <Panel  {side} {effect} className="panel-router-open-in" data-url={url} >
 function create_default_slot(ctx) {
 	let view;
 	let current;
@@ -1144,8 +1144,10 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	let { openIn } = $$props;
 	let { url } = $$props;
 	let { viewSelector } = $$props;
@@ -1153,16 +1155,19 @@ function instance($$self, $$props, $$invalidate) {
 	let { side } = $$props;
 	let { effect } = $$props;
 
-	$$self.$$set = $$props => {
-		if ('openIn' in $$props) $$invalidate(0, openIn = $$props.openIn);
-		if ('url' in $$props) $$invalidate(1, url = $$props.url);
-		if ('viewSelector' in $$props) $$invalidate(2, viewSelector = $$props.viewSelector);
-		if ('targetEl' in $$props) $$invalidate(3, targetEl = $$props.targetEl);
-		if ('side' in $$props) $$invalidate(4, side = $$props.side);
-		if ('effect' in $$props) $$invalidate(5, effect = $$props.effect);
+	$$self.$$set = $$new_props => {
+		$$invalidate(11, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(6, importsSeek = $$new_props.importsSeek);
+		if ('openIn' in $$new_props) $$invalidate(0, openIn = $$new_props.openIn);
+		if ('url' in $$new_props) $$invalidate(1, url = $$new_props.url);
+		if ('viewSelector' in $$new_props) $$invalidate(2, viewSelector = $$new_props.viewSelector);
+		if ('targetEl' in $$new_props) $$invalidate(3, targetEl = $$new_props.targetEl);
+		if ('side' in $$new_props) $$invalidate(4, side = $$new_props.side);
+		if ('effect' in $$new_props) $$invalidate(5, effect = $$new_props.effect);
 	};
 
-	return [openIn, url, viewSelector, targetEl, side, effect];
+	$$props = exclude_internal_props($$props);
+	return [openIn, url, viewSelector, targetEl, side, effect, importsSeek];
 }
 
 class Router_open_in_component extends SvelteComponent {
@@ -1170,6 +1175,7 @@ class Router_open_in_component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
+			importsSeek: 6,
 			openIn: 0,
 			url: 1,
 			viewSelector: 2,
@@ -1289,6 +1295,7 @@ var componentsRouter = {
       viewRouter.setPages(viewRouter.pages);
     },
     removePage($pageEl) {
+      var _viewRouter$pages;
       if (!$pageEl) return;
       const router = this;
       let f7Page;
@@ -1313,7 +1320,7 @@ var componentsRouter = {
       }
       if (!pageEl) return;
       let pageComponentFound;
-      viewRouter.pages.forEach((page, index) => {
+      (_viewRouter$pages = viewRouter.pages) == null ? void 0 : _viewRouter$pages.forEach((page, index) => {
         if (page.el === pageEl) {
           pageComponentFound = true;
           viewRouter.pages.splice(index, 1);
@@ -1657,7 +1664,7 @@ const setReactiveContext = (name, getValue) => {
  *
  * Released under the MIT License
  *
- * Released on: January 5, 2023
+ * Released on: February 4, 2023
  */
 
 export { Framework7Svelte, actionsAttrs, actionsClasses, app, classNames, colorClasses, createEmitter, extend, f7, f7init, f7ready, getReactiveContext, getRouterId, getRouterInitialComponent, isStringProp, modalStateClasses, noUndefinedProps, restProps, routerAttrs, routerClasses, setReactiveContext, useIcon, useRouteProps, useSmartSelect, useTab, useTheme, useTooltip };

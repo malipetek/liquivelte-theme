@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, empty, insert_hydration, group_outros, transition_out, check_outros, transition_in, detach, compute_rest_props, compute_slots, getContext, createEventDispatcher, onMount, afterUpdate, onDestroy, assign, exclude_internal_props, binding_callbacks, create_slot, element, space, claim_element, children, claim_space, set_attributes, append_hydration, action_destroyer, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, is_function, text, claim_text, listen, set_data, run_all, attr, src_url_equal, create_component, claim_component, mount_component, destroy_component } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, empty, insert_hydration, group_outros, transition_out, check_outros, transition_in, detach, compute_rest_props, compute_slots, getContext, createEventDispatcher, onMount, afterUpdate, onDestroy, assign, exclude_internal_props, binding_callbacks, create_slot, element, space, claim_element, children, claim_space, set_attributes, append_hydration, action_destroyer, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, is_function, text, claim_text, listen, set_data, run_all, attr, src_url_equal, create_component, claim_component, mount_component, destroy_component } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import { createEmitter, getReactiveContext, useSmartSelect, f7ready, app, classNames, colorClasses, routerClasses, actionsClasses, isStringProp, routerAttrs, actionsAttrs, restProps, useTooltip, useRouteProps } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Badge } from './framework7-liquivelte-badge-hs8daa1a0c.liquivelte.js';
@@ -323,7 +323,7 @@ const get_content_start_slot_context = ctx => ({});
 const get_root_start_slot_changes = dirty => ({});
 const get_root_start_slot_context = ctx => ({});
 
-// (349:0) {:else}
+// (360:0) {:else}
 function create_else_block(ctx) {
 	let li;
 	let t0;
@@ -337,8 +337,8 @@ function create_else_block(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const root_start_slot_template = /*#slots*/ ctx[70]["root-start"];
-	const root_start_slot = create_slot(root_start_slot_template, ctx, /*$$scope*/ ctx[84], get_root_start_slot_context);
+	const root_start_slot_template = /*#slots*/ ctx[71]["root-start"];
+	const root_start_slot = create_slot(root_start_slot_template, ctx, /*$$scope*/ ctx[85], get_root_start_slot_context);
 	const if_block_creators = [create_if_block_4, create_if_block_67, create_else_block_7];
 	const if_blocks = [];
 
@@ -350,12 +350,12 @@ function create_else_block(ctx) {
 
 	current_block_type_index = select_block_type_1(ctx);
 	if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-	let if_block1 = /*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && !/*isSortableOpposite*/ ctx[44] && create_if_block_3();
+	let if_block1 = /*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && /*isSortableOpposite*/ ctx[44] != true && create_if_block_3();
 	let if_block2 = (/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_2(ctx);
-	const root_slot_template = /*#slots*/ ctx[70].root;
-	const root_slot = create_slot(root_slot_template, ctx, /*$$scope*/ ctx[84], get_root_slot_context);
-	const root_end_slot_template = /*#slots*/ ctx[70]["root-end"];
-	const root_end_slot = create_slot(root_end_slot_template, ctx, /*$$scope*/ ctx[84], get_root_end_slot_context);
+	const root_slot_template = /*#slots*/ ctx[71].root;
+	const root_slot = create_slot(root_slot_template, ctx, /*$$scope*/ ctx[85], get_root_slot_context);
+	const root_end_slot_template = /*#slots*/ ctx[71]["root-end"];
+	const root_end_slot = create_slot(root_end_slot_template, ctx, /*$$scope*/ ctx[85], get_root_end_slot_context);
 
 	let li_levels = [
 		{ class: /*liClasses*/ ctx[42] },
@@ -436,7 +436,7 @@ function create_else_block(ctx) {
 				root_end_slot.m(li, null);
 			}
 
-			/*li_binding_2*/ ctx[83](li);
+			/*li_binding_2*/ ctx[84](li);
 			current = true;
 
 			if (!mounted) {
@@ -450,15 +450,15 @@ function create_else_block(ctx) {
 		},
 		p(ctx, dirty) {
 			if (root_start_slot) {
-				if (root_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (root_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						root_start_slot,
 						root_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(root_start_slot_template, /*$$scope*/ ctx[84], dirty, get_root_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(root_start_slot_template, /*$$scope*/ ctx[85], dirty, get_root_start_slot_changes),
 						get_root_start_slot_context
 					);
 				}
@@ -490,7 +490,7 @@ function create_else_block(ctx) {
 				if_block0.m(li, t1);
 			}
 
-			if (/*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && !/*isSortableOpposite*/ ctx[44]) {
+			if (/*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && /*isSortableOpposite*/ ctx[44] != true) {
 				if (if_block1) ; else {
 					if_block1 = create_if_block_3();
 					if_block1.c();
@@ -525,30 +525,30 @@ function create_else_block(ctx) {
 			}
 
 			if (root_slot) {
-				if (root_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (root_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						root_slot,
 						root_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(root_slot_template, /*$$scope*/ ctx[84], dirty, get_root_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(root_slot_template, /*$$scope*/ ctx[85], dirty, get_root_slot_changes),
 						get_root_slot_context
 					);
 				}
 			}
 
 			if (root_end_slot) {
-				if (root_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (root_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						root_end_slot,
 						root_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(root_end_slot_template, /*$$scope*/ ctx[84], dirty, get_root_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(root_end_slot_template, /*$$scope*/ ctx[85], dirty, get_root_end_slot_changes),
 						get_root_end_slot_context
 					);
 				}
@@ -592,14 +592,14 @@ function create_else_block(ctx) {
 			if (if_block2) if_block2.d();
 			if (root_slot) root_slot.d(detaching);
 			if (root_end_slot) root_end_slot.d(detaching);
-			/*li_binding_2*/ ctx[83](null);
+			/*li_binding_2*/ ctx[84](null);
 			mounted = false;
 			dispose();
 		}
 	};
 }
 
-// (337:19) 
+// (348:19) 
 function create_if_block_1(ctx) {
 	let li;
 	let t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "";
@@ -609,8 +609,8 @@ function create_if_block_1(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	let li_levels = [
 		{ class: /*liClasses*/ ctx[42] },
@@ -659,7 +659,7 @@ function create_if_block_1(ctx) {
 				default_slot.m(li, null);
 			}
 
-			/*li_binding_1*/ ctx[72](li);
+			/*li_binding_1*/ ctx[73](li);
 			current = true;
 
 			if (!mounted) {
@@ -678,15 +678,15 @@ function create_if_block_1(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t0, t0_value);
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -717,14 +717,14 @@ function create_if_block_1(ctx) {
 		d(detaching) {
 			if (detaching) detach(li);
 			if (default_slot) default_slot.d(detaching);
-			/*li_binding_1*/ ctx[72](null);
+			/*li_binding_1*/ ctx[73](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (326:0) {#if divider || groupTitle }
+// (337:0) {#if divider || groupTitle }
 function create_if_block(ctx) {
 	let li;
 	let span;
@@ -732,8 +732,8 @@ function create_if_block(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 	const default_slot_or_fallback = default_slot || fallback_block(ctx);
 
 	let li_levels = [
@@ -782,7 +782,7 @@ function create_if_block(ctx) {
 				default_slot_or_fallback.m(span, null);
 			}
 
-			/*li_binding*/ ctx[71](li);
+			/*li_binding*/ ctx[72](li);
 			current = true;
 
 			if (!mounted) {
@@ -799,15 +799,15 @@ function create_if_block(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -842,14 +842,14 @@ function create_if_block(ctx) {
 		d(detaching) {
 			if (detaching) detach(li);
 			if (default_slot_or_fallback) default_slot_or_fallback.d(detaching);
-			/*li_binding*/ ctx[71](null);
+			/*li_binding*/ ctx[72](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (846:4) {:else}
+// (857:4) {:else}
 function create_else_block_7(ctx) {
 	let current_block_type_index;
 	let if_block;
@@ -923,7 +923,7 @@ function create_else_block_7(ctx) {
 	};
 }
 
-// (724:21) 
+// (735:21) 
 function create_if_block_67(ctx) {
 	let a;
 	let div1;
@@ -941,12 +941,12 @@ function create_if_block_67(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const content_start_slot_template = /*#slots*/ ctx[70]["content-start"];
-	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[84], get_content_start_slot_context_3);
+	const content_start_slot_template = /*#slots*/ ctx[71]["content-start"];
+	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[85], get_content_start_slot_context_3);
 	let if_block0 = /*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && /*isSortableOpposite*/ ctx[44] && create_if_block_87();
 	let if_block1 = /*hasMedia*/ ctx[37] && create_if_block_85(ctx);
-	const inner_start_slot_template = /*#slots*/ ctx[70]["inner-start"];
-	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_start_slot_context_3);
+	const inner_start_slot_template = /*#slots*/ ctx[71]["inner-start"];
+	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_start_slot_context_3);
 	const if_block_creators = [create_if_block_68, create_else_block_6];
 	const if_blocks = [];
 
@@ -957,12 +957,12 @@ function create_if_block_67(ctx) {
 
 	current_block_type_index = select_block_type_7(ctx);
 	if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-	const inner_end_slot_template = /*#slots*/ ctx[70]["inner-end"];
-	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_end_slot_context_3);
-	const content_slot_template = /*#slots*/ ctx[70].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[84], get_content_slot_context_3);
-	const content_end_slot_template = /*#slots*/ ctx[70]["content-end"];
-	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[84], get_content_end_slot_context_3);
+	const inner_end_slot_template = /*#slots*/ ctx[71]["inner-end"];
+	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_end_slot_context_3);
+	const content_slot_template = /*#slots*/ ctx[71].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[85], get_content_slot_context_3);
+	const content_end_slot_template = /*#slots*/ ctx[71]["content-end"];
+	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[85], get_content_end_slot_context_3);
 	let a_levels = [{ class: /*linkClasses*/ ctx[40] }, /*linkAttrs*/ ctx[39]];
 	let a_data = {};
 
@@ -1051,7 +1051,7 @@ function create_if_block_67(ctx) {
 				inner_end_slot.m(div0, null);
 			}
 
-			/*div0_binding_2*/ ctx[78](div0);
+			/*div0_binding_2*/ ctx[79](div0);
 			append_hydration(div1, t5);
 
 			if (content_slot) {
@@ -1064,7 +1064,7 @@ function create_if_block_67(ctx) {
 				content_end_slot.m(div1, null);
 			}
 
-			/*a_binding_1*/ ctx[79](a);
+			/*a_binding_1*/ ctx[80](a);
 			current = true;
 
 			if (!mounted) {
@@ -1078,15 +1078,15 @@ function create_if_block_67(ctx) {
 		},
 		p(ctx, dirty) {
 			if (content_start_slot) {
-				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_start_slot,
 						content_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[84], dirty, get_content_start_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[85], dirty, get_content_start_slot_changes_3),
 						get_content_start_slot_context_3
 					);
 				}
@@ -1127,15 +1127,15 @@ function create_if_block_67(ctx) {
 			}
 
 			if (inner_start_slot) {
-				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_start_slot,
 						inner_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_start_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_start_slot_changes_3),
 						get_inner_start_slot_context_3
 					);
 				}
@@ -1168,45 +1168,45 @@ function create_if_block_67(ctx) {
 			}
 
 			if (inner_end_slot) {
-				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_end_slot,
 						inner_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_end_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_end_slot_changes_3),
 						get_inner_end_slot_context_3
 					);
 				}
 			}
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[84], dirty, get_content_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[85], dirty, get_content_slot_changes_3),
 						get_content_slot_context_3
 					);
 				}
 			}
 
 			if (content_end_slot) {
-				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_end_slot,
 						content_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[84], dirty, get_content_end_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[85], dirty, get_content_end_slot_changes_3),
 						get_content_end_slot_context_3
 					);
 				}
@@ -1252,17 +1252,17 @@ function create_if_block_67(ctx) {
 			if (inner_start_slot) inner_start_slot.d(detaching);
 			if_blocks[current_block_type_index].d();
 			if (inner_end_slot) inner_end_slot.d(detaching);
-			/*div0_binding_2*/ ctx[78](null);
+			/*div0_binding_2*/ ctx[79](null);
 			if (content_slot) content_slot.d(detaching);
 			if (content_end_slot) content_end_slot.d(detaching);
-			/*a_binding_1*/ ctx[79](null);
+			/*a_binding_1*/ ctx[80](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (358:4) {#if swipeout }
+// (369:4) {#if swipeout }
 function create_if_block_4(ctx) {
 	let div;
 	let current_block_type_index;
@@ -1343,7 +1343,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (972:6) {:else}
+// (983:6) {:else}
 function create_else_block_9(ctx) {
 	let div1;
 	let t0;
@@ -1359,12 +1359,12 @@ function create_else_block_9(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const content_start_slot_template = /*#slots*/ ctx[70]["content-start"];
-	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[84], get_content_start_slot_context_5);
+	const content_start_slot_template = /*#slots*/ ctx[71]["content-start"];
+	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[85], get_content_start_slot_context_5);
 	let if_block0 = /*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && /*isSortableOpposite*/ ctx[44] && create_if_block_128();
 	let if_block1 = /*hasMedia*/ ctx[37] && create_if_block_126(ctx);
-	const inner_start_slot_template = /*#slots*/ ctx[70]["inner-start"];
-	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_start_slot_context_5);
+	const inner_start_slot_template = /*#slots*/ ctx[71]["inner-start"];
+	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_start_slot_context_5);
 	const if_block_creators = [create_if_block_109, create_else_block_10];
 	const if_blocks = [];
 
@@ -1375,12 +1375,12 @@ function create_else_block_9(ctx) {
 
 	current_block_type_index = select_block_type_10(ctx);
 	if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-	const inner_end_slot_template = /*#slots*/ ctx[70]["inner-end"];
-	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_end_slot_context_5);
-	const content_slot_template = /*#slots*/ ctx[70].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[84], get_content_slot_context_5);
-	const content_end_slot_template = /*#slots*/ ctx[70]["content-end"];
-	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[84], get_content_end_slot_context_5);
+	const inner_end_slot_template = /*#slots*/ ctx[71]["inner-end"];
+	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_end_slot_context_5);
+	const content_slot_template = /*#slots*/ ctx[71].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[85], get_content_slot_context_5);
+	const content_end_slot_template = /*#slots*/ ctx[71]["content-end"];
+	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[85], get_content_end_slot_context_5);
 
 	return {
 		c() {
@@ -1457,7 +1457,7 @@ function create_else_block_9(ctx) {
 				inner_end_slot.m(div0, null);
 			}
 
-			/*div0_binding_3*/ ctx[82](div0);
+			/*div0_binding_3*/ ctx[83](div0);
 			append_hydration(div1, t5);
 
 			if (content_slot) {
@@ -1479,15 +1479,15 @@ function create_else_block_9(ctx) {
 		},
 		p(ctx, dirty) {
 			if (content_start_slot) {
-				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_start_slot,
 						content_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[84], dirty, get_content_start_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[85], dirty, get_content_start_slot_changes_5),
 						get_content_start_slot_context_5
 					);
 				}
@@ -1528,15 +1528,15 @@ function create_else_block_9(ctx) {
 			}
 
 			if (inner_start_slot) {
-				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_start_slot,
 						inner_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_start_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_start_slot_changes_5),
 						get_inner_start_slot_context_5
 					);
 				}
@@ -1569,45 +1569,45 @@ function create_else_block_9(ctx) {
 			}
 
 			if (inner_end_slot) {
-				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_end_slot,
 						inner_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_end_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_end_slot_changes_5),
 						get_inner_end_slot_context_5
 					);
 				}
 			}
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[84], dirty, get_content_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[85], dirty, get_content_slot_changes_5),
 						get_content_slot_context_5
 					);
 				}
 			}
 
 			if (content_end_slot) {
-				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_end_slot,
 						content_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[84], dirty, get_content_end_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[85], dirty, get_content_end_slot_changes_5),
 						get_content_end_slot_context_5
 					);
 				}
@@ -1646,7 +1646,7 @@ function create_else_block_9(ctx) {
 			if (inner_start_slot) inner_start_slot.d(detaching);
 			if_blocks[current_block_type_index].d();
 			if (inner_end_slot) inner_end_slot.d(detaching);
-			/*div0_binding_3*/ ctx[82](null);
+			/*div0_binding_3*/ ctx[83](null);
 			if (content_slot) content_slot.d(detaching);
 			if (content_end_slot) content_end_slot.d(detaching);
 			mounted = false;
@@ -1655,7 +1655,7 @@ function create_else_block_9(ctx) {
 	};
 }
 
-// (848:6) {#if checkbox || radio }
+// (859:6) {#if checkbox || radio }
 function create_if_block_88(ctx) {
 	let label;
 	let t0;
@@ -1678,12 +1678,12 @@ function create_if_block_88(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const content_start_slot_template = /*#slots*/ ctx[70]["content-start"];
-	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[84], get_content_start_slot_context_4);
+	const content_start_slot_template = /*#slots*/ ctx[71]["content-start"];
+	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[85], get_content_start_slot_context_4);
 	let if_block0 = /*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && /*isSortableOpposite*/ ctx[44] && create_if_block_108();
 	let if_block1 = /*hasMedia*/ ctx[37] && create_if_block_106(ctx);
-	const inner_start_slot_template = /*#slots*/ ctx[70]["inner-start"];
-	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_start_slot_context_4);
+	const inner_start_slot_template = /*#slots*/ ctx[71]["inner-start"];
+	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_start_slot_context_4);
 	const if_block_creators = [create_if_block_89, create_else_block_8];
 	const if_blocks = [];
 
@@ -1694,12 +1694,12 @@ function create_if_block_88(ctx) {
 
 	current_block_type_index = select_block_type_9(ctx);
 	if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-	const inner_end_slot_template = /*#slots*/ ctx[70]["inner-end"];
-	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_end_slot_context_4);
-	const content_slot_template = /*#slots*/ ctx[70].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[84], get_content_slot_context_4);
-	const content_end_slot_template = /*#slots*/ ctx[70]["content-end"];
-	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[84], get_content_end_slot_context_4);
+	const inner_end_slot_template = /*#slots*/ ctx[71]["inner-end"];
+	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_end_slot_context_4);
+	const content_slot_template = /*#slots*/ ctx[71].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[85], get_content_slot_context_4);
+	const content_end_slot_template = /*#slots*/ ctx[71]["content-end"];
+	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[85], get_content_end_slot_context_4);
 
 	return {
 		c() {
@@ -1781,7 +1781,7 @@ function create_if_block_88(ctx) {
 			if (if_block0) if_block0.m(label, null);
 			append_hydration(label, t1);
 			append_hydration(label, input);
-			/*input_binding_1*/ ctx[80](input);
+			/*input_binding_1*/ ctx[81](input);
 			append_hydration(label, t2);
 			append_hydration(label, i);
 			append_hydration(label, t3);
@@ -1801,7 +1801,7 @@ function create_if_block_88(ctx) {
 				inner_end_slot.m(div, null);
 			}
 
-			/*div_binding_1*/ ctx[81](div);
+			/*div_binding_1*/ ctx[82](div);
 			append_hydration(label, t7);
 
 			if (content_slot) {
@@ -1827,15 +1827,15 @@ function create_if_block_88(ctx) {
 		},
 		p(ctx, dirty) {
 			if (content_start_slot) {
-				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_start_slot,
 						content_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[84], dirty, get_content_start_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[85], dirty, get_content_start_slot_changes_4),
 						get_content_start_slot_context_4
 					);
 				}
@@ -1910,15 +1910,15 @@ function create_if_block_88(ctx) {
 			}
 
 			if (inner_start_slot) {
-				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_start_slot,
 						inner_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_start_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_start_slot_changes_4),
 						get_inner_start_slot_context_4
 					);
 				}
@@ -1951,45 +1951,45 @@ function create_if_block_88(ctx) {
 			}
 
 			if (inner_end_slot) {
-				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_end_slot,
 						inner_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_end_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_end_slot_changes_4),
 						get_inner_end_slot_context_4
 					);
 				}
 			}
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[84], dirty, get_content_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[85], dirty, get_content_slot_changes_4),
 						get_content_slot_context_4
 					);
 				}
 			}
 
 			if (content_end_slot) {
-				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_end_slot,
 						content_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[84], dirty, get_content_end_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[85], dirty, get_content_end_slot_changes_4),
 						get_content_end_slot_context_4
 					);
 				}
@@ -2024,12 +2024,12 @@ function create_if_block_88(ctx) {
 			if (detaching) detach(label);
 			if (content_start_slot) content_start_slot.d(detaching);
 			if (if_block0) if_block0.d();
-			/*input_binding_1*/ ctx[80](null);
+			/*input_binding_1*/ ctx[81](null);
 			if (if_block1) if_block1.d();
 			if (inner_start_slot) inner_start_slot.d(detaching);
 			if_blocks[current_block_type_index].d();
 			if (inner_end_slot) inner_end_slot.d(detaching);
-			/*div_binding_1*/ ctx[81](null);
+			/*div_binding_1*/ ctx[82](null);
 			if (content_slot) content_slot.d(detaching);
 			if (content_end_slot) content_end_slot.d(detaching);
 			mounted = false;
@@ -2038,7 +2038,7 @@ function create_if_block_88(ctx) {
 	};
 }
 
-// (975:10) {#if isSortable && sortable != false && isSortableOpposite }
+// (986:10) {#if isSortable && sortable != false && isSortableOpposite }
 function create_if_block_128(ctx) {
 	let div;
 
@@ -2064,14 +2064,14 @@ function create_if_block_128(ctx) {
 	};
 }
 
-// (978:10) {#if hasMedia }
+// (989:10) {#if hasMedia }
 function create_if_block_126(ctx) {
 	let div;
 	let t;
 	let current;
 	let if_block = /*media*/ ctx[3] != undefined && create_if_block_127(ctx);
-	const media_slot_template = /*#slots*/ ctx[70].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[84], get_media_slot_context_5);
+	const media_slot_template = /*#slots*/ ctx[71].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[85], get_media_slot_context_5);
 
 	return {
 		c() {
@@ -2119,15 +2119,15 @@ function create_if_block_126(ctx) {
 			}
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[84], dirty, get_media_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[85], dirty, get_media_slot_changes_5),
 						get_media_slot_context_5
 					);
 				}
@@ -2150,7 +2150,7 @@ function create_if_block_126(ctx) {
 	};
 }
 
-// (980:14) {#if media != undefined }
+// (991:14) {#if media != undefined }
 function create_if_block_127(ctx) {
 	let img;
 	let img_src_value;
@@ -2181,7 +2181,7 @@ function create_if_block_127(ctx) {
 	};
 }
 
-// (1040:12) {:else}
+// (1051:12) {:else}
 function create_else_block_10(ctx) {
 	let t0;
 	let t1;
@@ -2190,14 +2190,14 @@ function create_else_block_10(ctx) {
 	let t4;
 	let if_block2_anchor;
 	let current;
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_11);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_11);
 	let if_block0 = (/*hasTitle*/ ctx[36] || /*hasHeader*/ ctx[35] || /*hasFooter*/ ctx[34]) && create_if_block_123(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_11);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_11);
 	let if_block1 = /*hasAfter*/ ctx[31] && create_if_block_120(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_11);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_11);
 	let if_block2 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_119(ctx);
 
 	return {
@@ -2257,15 +2257,15 @@ function create_else_block_10(ctx) {
 		},
 		p(ctx, dirty) {
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_11),
 						get_before_title_slot_context_11
 					);
 				}
@@ -2295,15 +2295,15 @@ function create_else_block_10(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_11),
 						get_after_title_slot_context_11
 					);
 				}
@@ -2333,15 +2333,15 @@ function create_else_block_10(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_11),
 						get_inner_slot_context_11
 					);
 				}
@@ -2406,7 +2406,7 @@ function create_else_block_10(ctx) {
 	};
 }
 
-// (988:12) {#if isMedia }
+// (999:12) {#if isMedia }
 function create_if_block_109(ctx) {
 	let t0;
 	let div;
@@ -2421,16 +2421,16 @@ function create_if_block_109(ctx) {
 	let if_block6_anchor;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_118(ctx);
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_10);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_10);
 	let if_block1 = /*hasTitle*/ ctx[36] && create_if_block_117(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_10);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_10);
 	let if_block2 = /*hasAfter*/ ctx[31] && create_if_block_114(ctx);
 	let if_block3 = /*hasSubtitle*/ ctx[33] && create_if_block_113(ctx);
 	let if_block4 = /*hasText*/ ctx[32] && create_if_block_112(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_10);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_10);
 	let if_block5 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_111(ctx);
 	let if_block6 = /*hasFooter*/ ctx[34] && create_if_block_110(ctx);
 
@@ -2549,15 +2549,15 @@ function create_if_block_109(ctx) {
 			}
 
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_10),
 						get_before_title_slot_context_10
 					);
 				}
@@ -2587,15 +2587,15 @@ function create_if_block_109(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_10),
 						get_after_title_slot_context_10
 					);
 				}
@@ -2671,15 +2671,15 @@ function create_if_block_109(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_10),
 						get_inner_slot_context_10
 					);
 				}
@@ -2781,7 +2781,7 @@ function create_if_block_109(ctx) {
 	};
 }
 
-// (1042:14) {#if hasTitle || hasHeader || hasFooter }
+// (1053:14) {#if hasTitle || hasHeader || hasFooter }
 function create_if_block_123(ctx) {
 	let div;
 	let t0;
@@ -2791,8 +2791,8 @@ function create_if_block_123(ctx) {
 	let t3;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_125(ctx);
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_11);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_11);
 	let if_block1 = /*hasFooter*/ ctx[34] && create_if_block_124(ctx);
 
 	return {
@@ -2865,15 +2865,15 @@ function create_if_block_123(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t1_value !== (t1_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t1, t1_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_11),
 						get_title_slot_context_11
 					);
 				}
@@ -2924,15 +2924,15 @@ function create_if_block_123(ctx) {
 	};
 }
 
-// (1044:18) {#if hasHeader }
+// (1055:18) {#if hasHeader }
 function create_if_block_125(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_11);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_11);
 
 	return {
 		c() {
@@ -2969,15 +2969,15 @@ function create_if_block_125(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_11),
 						get_header_slot_context_11
 					);
 				}
@@ -2999,15 +2999,15 @@ function create_if_block_125(ctx) {
 	};
 }
 
-// (1052:18) {#if hasFooter }
+// (1063:18) {#if hasFooter }
 function create_if_block_124(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_11);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_11);
 
 	return {
 		c() {
@@ -3044,15 +3044,15 @@ function create_if_block_124(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_11),
 						get_footer_slot_context_11
 					);
 				}
@@ -3074,7 +3074,7 @@ function create_if_block_124(ctx) {
 	};
 }
 
-// (1061:14) {#if hasAfter }
+// (1072:14) {#if hasAfter }
 function create_if_block_120(ctx) {
 	let div;
 	let t0;
@@ -3082,14 +3082,14 @@ function create_if_block_120(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_11);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_11);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_122(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_121(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_11);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_11);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_11);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_11);
 
 	return {
 		c() {
@@ -3150,15 +3150,15 @@ function create_if_block_120(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_11),
 						get_after_start_slot_context_11
 					);
 				}
@@ -3201,30 +3201,30 @@ function create_if_block_120(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_11),
 						get_after_slot_context_11
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_11),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_11),
 						get_after_end_slot_context_11
 					);
 				}
@@ -3256,7 +3256,7 @@ function create_if_block_120(ctx) {
 	};
 }
 
-// (1064:18) {#if after != undefined }
+// (1075:18) {#if after != undefined }
 function create_if_block_122(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -3286,7 +3286,7 @@ function create_if_block_122(ctx) {
 	};
 }
 
-// (1067:18) {#if badge != undefined }
+// (1078:18) {#if badge != undefined }
 function create_if_block_121(ctx) {
 	let badge_1;
 	let current;
@@ -3314,7 +3314,7 @@ function create_if_block_121(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -3335,7 +3335,7 @@ function create_if_block_121(ctx) {
 	};
 }
 
-// (1068:20) <Badge  color="{badgeColor}" >
+// (1079:20) <Badge  color="{badgeColor}" >
 function create_default_slot_11(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -3359,11 +3359,11 @@ function create_default_slot_11(ctx) {
 	};
 }
 
-// (1075:14) {#if !(swipeout || accordionItem) }
+// (1086:14) {#if !(swipeout || accordionItem )}
 function create_if_block_119(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -3381,15 +3381,15 @@ function create_if_block_119(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -3410,15 +3410,15 @@ function create_if_block_119(ctx) {
 	};
 }
 
-// (989:14) {#if hasHeader }
+// (1000:14) {#if hasHeader }
 function create_if_block_118(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_10);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_10);
 
 	return {
 		c() {
@@ -3455,15 +3455,15 @@ function create_if_block_118(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_10),
 						get_header_slot_context_10
 					);
 				}
@@ -3485,15 +3485,15 @@ function create_if_block_118(ctx) {
 	};
 }
 
-// (997:16) {#if hasTitle }
+// (1008:16) {#if hasTitle }
 function create_if_block_117(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_10);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_10);
 
 	return {
 		c() {
@@ -3530,15 +3530,15 @@ function create_if_block_117(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t0, t0_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_10),
 						get_title_slot_context_10
 					);
 				}
@@ -3560,7 +3560,7 @@ function create_if_block_117(ctx) {
 	};
 }
 
-// (1004:16) {#if hasAfter }
+// (1015:16) {#if hasAfter }
 function create_if_block_114(ctx) {
 	let div;
 	let t0;
@@ -3568,14 +3568,14 @@ function create_if_block_114(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_10);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_10);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_116(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_115(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_10);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_10);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_10);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_10);
 
 	return {
 		c() {
@@ -3636,15 +3636,15 @@ function create_if_block_114(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_10),
 						get_after_start_slot_context_10
 					);
 				}
@@ -3687,30 +3687,30 @@ function create_if_block_114(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_10),
 						get_after_slot_context_10
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_10),
 						get_after_end_slot_context_10
 					);
 				}
@@ -3742,7 +3742,7 @@ function create_if_block_114(ctx) {
 	};
 }
 
-// (1007:20) {#if after != undefined }
+// (1018:20) {#if after != undefined }
 function create_if_block_116(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -3772,7 +3772,7 @@ function create_if_block_116(ctx) {
 	};
 }
 
-// (1010:20) {#if badge != undefined }
+// (1021:20) {#if badge != undefined }
 function create_if_block_115(ctx) {
 	let badge_1;
 	let current;
@@ -3800,7 +3800,7 @@ function create_if_block_115(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -3821,7 +3821,7 @@ function create_if_block_115(ctx) {
 	};
 }
 
-// (1011:22) <Badge  color="{badgeColor}" >
+// (1022:22) <Badge  color="{badgeColor}" >
 function create_default_slot_10(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -3845,15 +3845,15 @@ function create_default_slot_10(ctx) {
 	};
 }
 
-// (1018:14) {#if hasSubtitle }
+// (1029:14) {#if hasSubtitle }
 function create_if_block_113(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const subtitle_slot_template = /*#slots*/ ctx[70].subtitle;
-	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[84], get_subtitle_slot_context_5);
+	const subtitle_slot_template = /*#slots*/ ctx[71].subtitle;
+	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[85], get_subtitle_slot_context_5);
 
 	return {
 		c() {
@@ -3890,15 +3890,15 @@ function create_if_block_113(ctx) {
 			if ((!current || dirty[0] & /*subtitle*/ 16) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "")) set_data(t0, t0_value);
 
 			if (subtitle_slot) {
-				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						subtitle_slot,
 						subtitle_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[84], dirty, get_subtitle_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[85], dirty, get_subtitle_slot_changes_5),
 						get_subtitle_slot_context_5
 					);
 				}
@@ -3920,15 +3920,15 @@ function create_if_block_113(ctx) {
 	};
 }
 
-// (1024:14) {#if hasText }
+// (1035:14) {#if hasText }
 function create_if_block_112(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const text_slot_template = /*#slots*/ ctx[70].text;
-	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[84], get_text_slot_context_5);
+	const text_slot_template = /*#slots*/ ctx[71].text;
+	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[85], get_text_slot_context_5);
 
 	return {
 		c() {
@@ -3965,15 +3965,15 @@ function create_if_block_112(ctx) {
 			if ((!current || dirty[0] & /*text*/ 4) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "")) set_data(t0, t0_value);
 
 			if (text_slot) {
-				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						text_slot,
 						text_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[84], dirty, get_text_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[85], dirty, get_text_slot_changes_5),
 						get_text_slot_context_5
 					);
 				}
@@ -3995,11 +3995,11 @@ function create_if_block_112(ctx) {
 	};
 }
 
-// (1031:14) {#if !(swipeout || accordionItem) }
+// (1042:14) {#if !(swipeout || accordionItem )}
 function create_if_block_111(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -4017,15 +4017,15 @@ function create_if_block_111(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -4046,15 +4046,15 @@ function create_if_block_111(ctx) {
 	};
 }
 
-// (1034:14) {#if hasFooter }
+// (1045:14) {#if hasFooter }
 function create_if_block_110(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_10);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_10);
 
 	return {
 		c() {
@@ -4091,15 +4091,15 @@ function create_if_block_110(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_10),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_10),
 						get_footer_slot_context_10
 					);
 				}
@@ -4121,7 +4121,7 @@ function create_if_block_110(ctx) {
 	};
 }
 
-// (851:10) {#if isSortable && sortable != false && isSortableOpposite }
+// (862:10) {#if isSortable && sortable != false && isSortableOpposite }
 function create_if_block_108(ctx) {
 	let div;
 
@@ -4147,14 +4147,14 @@ function create_if_block_108(ctx) {
 	};
 }
 
-// (866:10) {#if hasMedia }
+// (877:10) {#if hasMedia }
 function create_if_block_106(ctx) {
 	let div;
 	let t;
 	let current;
 	let if_block = /*media*/ ctx[3] != undefined && create_if_block_107(ctx);
-	const media_slot_template = /*#slots*/ ctx[70].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[84], get_media_slot_context_4);
+	const media_slot_template = /*#slots*/ ctx[71].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[85], get_media_slot_context_4);
 
 	return {
 		c() {
@@ -4202,15 +4202,15 @@ function create_if_block_106(ctx) {
 			}
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[84], dirty, get_media_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[85], dirty, get_media_slot_changes_4),
 						get_media_slot_context_4
 					);
 				}
@@ -4233,7 +4233,7 @@ function create_if_block_106(ctx) {
 	};
 }
 
-// (868:14) {#if media != undefined }
+// (879:14) {#if media != undefined }
 function create_if_block_107(ctx) {
 	let img;
 	let img_src_value;
@@ -4264,7 +4264,7 @@ function create_if_block_107(ctx) {
 	};
 }
 
-// (928:12) {:else}
+// (939:12) {:else}
 function create_else_block_8(ctx) {
 	let t0;
 	let t1;
@@ -4273,14 +4273,14 @@ function create_else_block_8(ctx) {
 	let t4;
 	let if_block2_anchor;
 	let current;
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_9);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_9);
 	let if_block0 = (/*hasTitle*/ ctx[36] || /*hasHeader*/ ctx[35] || /*hasFooter*/ ctx[34]) && create_if_block_103(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_9);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_9);
 	let if_block1 = /*hasAfter*/ ctx[31] && create_if_block_100(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_9);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_9);
 	let if_block2 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_99(ctx);
 
 	return {
@@ -4340,15 +4340,15 @@ function create_else_block_8(ctx) {
 		},
 		p(ctx, dirty) {
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_9),
 						get_before_title_slot_context_9
 					);
 				}
@@ -4378,15 +4378,15 @@ function create_else_block_8(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_9),
 						get_after_title_slot_context_9
 					);
 				}
@@ -4416,15 +4416,15 @@ function create_else_block_8(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_9),
 						get_inner_slot_context_9
 					);
 				}
@@ -4489,7 +4489,7 @@ function create_else_block_8(ctx) {
 	};
 }
 
-// (876:12) {#if isMedia }
+// (887:12) {#if isMedia }
 function create_if_block_89(ctx) {
 	let t0;
 	let div;
@@ -4504,16 +4504,16 @@ function create_if_block_89(ctx) {
 	let if_block6_anchor;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_98(ctx);
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_8);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_8);
 	let if_block1 = /*hasTitle*/ ctx[36] && create_if_block_97(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_8);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_8);
 	let if_block2 = /*hasAfter*/ ctx[31] && create_if_block_94(ctx);
 	let if_block3 = /*hasSubtitle*/ ctx[33] && create_if_block_93(ctx);
 	let if_block4 = /*hasText*/ ctx[32] && create_if_block_92(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_8);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_8);
 	let if_block5 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_91(ctx);
 	let if_block6 = /*hasFooter*/ ctx[34] && create_if_block_90(ctx);
 
@@ -4632,15 +4632,15 @@ function create_if_block_89(ctx) {
 			}
 
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_8),
 						get_before_title_slot_context_8
 					);
 				}
@@ -4670,15 +4670,15 @@ function create_if_block_89(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_8),
 						get_after_title_slot_context_8
 					);
 				}
@@ -4754,15 +4754,15 @@ function create_if_block_89(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_8),
 						get_inner_slot_context_8
 					);
 				}
@@ -4864,7 +4864,7 @@ function create_if_block_89(ctx) {
 	};
 }
 
-// (930:14) {#if hasTitle || hasHeader || hasFooter }
+// (941:14) {#if hasTitle || hasHeader || hasFooter }
 function create_if_block_103(ctx) {
 	let div;
 	let t0;
@@ -4874,8 +4874,8 @@ function create_if_block_103(ctx) {
 	let t3;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_105(ctx);
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_9);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_9);
 	let if_block1 = /*hasFooter*/ ctx[34] && create_if_block_104(ctx);
 
 	return {
@@ -4948,15 +4948,15 @@ function create_if_block_103(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t1_value !== (t1_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t1, t1_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_9),
 						get_title_slot_context_9
 					);
 				}
@@ -5007,15 +5007,15 @@ function create_if_block_103(ctx) {
 	};
 }
 
-// (932:18) {#if hasHeader }
+// (943:18) {#if hasHeader }
 function create_if_block_105(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_9);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_9);
 
 	return {
 		c() {
@@ -5052,15 +5052,15 @@ function create_if_block_105(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_9),
 						get_header_slot_context_9
 					);
 				}
@@ -5082,15 +5082,15 @@ function create_if_block_105(ctx) {
 	};
 }
 
-// (940:18) {#if hasFooter }
+// (951:18) {#if hasFooter }
 function create_if_block_104(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_9);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_9);
 
 	return {
 		c() {
@@ -5127,15 +5127,15 @@ function create_if_block_104(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_9),
 						get_footer_slot_context_9
 					);
 				}
@@ -5157,7 +5157,7 @@ function create_if_block_104(ctx) {
 	};
 }
 
-// (949:14) {#if hasAfter }
+// (960:14) {#if hasAfter }
 function create_if_block_100(ctx) {
 	let div;
 	let t0;
@@ -5165,14 +5165,14 @@ function create_if_block_100(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_9);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_9);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_102(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_101(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_9);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_9);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_9);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_9);
 
 	return {
 		c() {
@@ -5233,15 +5233,15 @@ function create_if_block_100(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_9),
 						get_after_start_slot_context_9
 					);
 				}
@@ -5284,30 +5284,30 @@ function create_if_block_100(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_9),
 						get_after_slot_context_9
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_9),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_9),
 						get_after_end_slot_context_9
 					);
 				}
@@ -5339,7 +5339,7 @@ function create_if_block_100(ctx) {
 	};
 }
 
-// (952:18) {#if after != undefined }
+// (963:18) {#if after != undefined }
 function create_if_block_102(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -5369,7 +5369,7 @@ function create_if_block_102(ctx) {
 	};
 }
 
-// (955:18) {#if badge != undefined }
+// (966:18) {#if badge != undefined }
 function create_if_block_101(ctx) {
 	let badge_1;
 	let current;
@@ -5397,7 +5397,7 @@ function create_if_block_101(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -5418,7 +5418,7 @@ function create_if_block_101(ctx) {
 	};
 }
 
-// (956:20) <Badge  color="{badgeColor}" >
+// (967:20) <Badge  color="{badgeColor}" >
 function create_default_slot_9(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -5442,11 +5442,11 @@ function create_default_slot_9(ctx) {
 	};
 }
 
-// (963:14) {#if !(swipeout || accordionItem) }
+// (974:14) {#if !(swipeout || accordionItem )}
 function create_if_block_99(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -5464,15 +5464,15 @@ function create_if_block_99(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -5493,15 +5493,15 @@ function create_if_block_99(ctx) {
 	};
 }
 
-// (877:14) {#if hasHeader }
+// (888:14) {#if hasHeader }
 function create_if_block_98(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_8);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_8);
 
 	return {
 		c() {
@@ -5538,15 +5538,15 @@ function create_if_block_98(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_8),
 						get_header_slot_context_8
 					);
 				}
@@ -5568,15 +5568,15 @@ function create_if_block_98(ctx) {
 	};
 }
 
-// (885:16) {#if hasTitle }
+// (896:16) {#if hasTitle }
 function create_if_block_97(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_8);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_8);
 
 	return {
 		c() {
@@ -5613,15 +5613,15 @@ function create_if_block_97(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t0, t0_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_8),
 						get_title_slot_context_8
 					);
 				}
@@ -5643,7 +5643,7 @@ function create_if_block_97(ctx) {
 	};
 }
 
-// (892:16) {#if hasAfter }
+// (903:16) {#if hasAfter }
 function create_if_block_94(ctx) {
 	let div;
 	let t0;
@@ -5651,14 +5651,14 @@ function create_if_block_94(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_8);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_8);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_96(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_95(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_8);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_8);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_8);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_8);
 
 	return {
 		c() {
@@ -5719,15 +5719,15 @@ function create_if_block_94(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_8),
 						get_after_start_slot_context_8
 					);
 				}
@@ -5770,30 +5770,30 @@ function create_if_block_94(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_8),
 						get_after_slot_context_8
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_8),
 						get_after_end_slot_context_8
 					);
 				}
@@ -5825,7 +5825,7 @@ function create_if_block_94(ctx) {
 	};
 }
 
-// (895:20) {#if after != undefined }
+// (906:20) {#if after != undefined }
 function create_if_block_96(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -5855,7 +5855,7 @@ function create_if_block_96(ctx) {
 	};
 }
 
-// (898:20) {#if badge != undefined }
+// (909:20) {#if badge != undefined }
 function create_if_block_95(ctx) {
 	let badge_1;
 	let current;
@@ -5883,7 +5883,7 @@ function create_if_block_95(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -5904,7 +5904,7 @@ function create_if_block_95(ctx) {
 	};
 }
 
-// (899:22) <Badge  color="{badgeColor}" >
+// (910:22) <Badge  color="{badgeColor}" >
 function create_default_slot_8(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -5928,15 +5928,15 @@ function create_default_slot_8(ctx) {
 	};
 }
 
-// (906:14) {#if hasSubtitle }
+// (917:14) {#if hasSubtitle }
 function create_if_block_93(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const subtitle_slot_template = /*#slots*/ ctx[70].subtitle;
-	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[84], get_subtitle_slot_context_4);
+	const subtitle_slot_template = /*#slots*/ ctx[71].subtitle;
+	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[85], get_subtitle_slot_context_4);
 
 	return {
 		c() {
@@ -5973,15 +5973,15 @@ function create_if_block_93(ctx) {
 			if ((!current || dirty[0] & /*subtitle*/ 16) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "")) set_data(t0, t0_value);
 
 			if (subtitle_slot) {
-				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						subtitle_slot,
 						subtitle_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[84], dirty, get_subtitle_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[85], dirty, get_subtitle_slot_changes_4),
 						get_subtitle_slot_context_4
 					);
 				}
@@ -6003,15 +6003,15 @@ function create_if_block_93(ctx) {
 	};
 }
 
-// (912:14) {#if hasText }
+// (923:14) {#if hasText }
 function create_if_block_92(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const text_slot_template = /*#slots*/ ctx[70].text;
-	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[84], get_text_slot_context_4);
+	const text_slot_template = /*#slots*/ ctx[71].text;
+	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[85], get_text_slot_context_4);
 
 	return {
 		c() {
@@ -6048,15 +6048,15 @@ function create_if_block_92(ctx) {
 			if ((!current || dirty[0] & /*text*/ 4) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "")) set_data(t0, t0_value);
 
 			if (text_slot) {
-				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						text_slot,
 						text_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[84], dirty, get_text_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[85], dirty, get_text_slot_changes_4),
 						get_text_slot_context_4
 					);
 				}
@@ -6078,11 +6078,11 @@ function create_if_block_92(ctx) {
 	};
 }
 
-// (919:14) {#if !(swipeout || accordionItem) }
+// (930:14) {#if !(swipeout || accordionItem )}
 function create_if_block_91(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -6100,15 +6100,15 @@ function create_if_block_91(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -6129,15 +6129,15 @@ function create_if_block_91(ctx) {
 	};
 }
 
-// (922:14) {#if hasFooter }
+// (933:14) {#if hasFooter }
 function create_if_block_90(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_8);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_8);
 
 	return {
 		c() {
@@ -6174,15 +6174,15 @@ function create_if_block_90(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_8),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_8),
 						get_footer_slot_context_8
 					);
 				}
@@ -6204,7 +6204,7 @@ function create_if_block_90(ctx) {
 	};
 }
 
-// (735:10) {#if isSortable && sortable != false && isSortableOpposite }
+// (746:10) {#if isSortable && sortable != false && isSortableOpposite }
 function create_if_block_87(ctx) {
 	let div;
 
@@ -6230,14 +6230,14 @@ function create_if_block_87(ctx) {
 	};
 }
 
-// (738:10) {#if hasMedia }
+// (749:10) {#if hasMedia }
 function create_if_block_85(ctx) {
 	let div;
 	let t;
 	let current;
 	let if_block = /*media*/ ctx[3] != undefined && create_if_block_86(ctx);
-	const media_slot_template = /*#slots*/ ctx[70].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[84], get_media_slot_context_3);
+	const media_slot_template = /*#slots*/ ctx[71].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[85], get_media_slot_context_3);
 
 	return {
 		c() {
@@ -6285,15 +6285,15 @@ function create_if_block_85(ctx) {
 			}
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[84], dirty, get_media_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[85], dirty, get_media_slot_changes_3),
 						get_media_slot_context_3
 					);
 				}
@@ -6316,7 +6316,7 @@ function create_if_block_85(ctx) {
 	};
 }
 
-// (740:14) {#if media != undefined }
+// (751:14) {#if media != undefined }
 function create_if_block_86(ctx) {
 	let img;
 	let img_src_value;
@@ -6347,7 +6347,7 @@ function create_if_block_86(ctx) {
 	};
 }
 
-// (800:12) {:else}
+// (811:12) {:else}
 function create_else_block_6(ctx) {
 	let t0;
 	let t1;
@@ -6356,14 +6356,14 @@ function create_else_block_6(ctx) {
 	let t4;
 	let if_block2_anchor;
 	let current;
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_7);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_7);
 	let if_block0 = (/*hasTitle*/ ctx[36] || /*hasHeader*/ ctx[35] || /*hasFooter*/ ctx[34]) && create_if_block_82(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_7);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_7);
 	let if_block1 = /*hasAfter*/ ctx[31] && create_if_block_79(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_7);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_7);
 	let if_block2 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_78(ctx);
 
 	return {
@@ -6423,15 +6423,15 @@ function create_else_block_6(ctx) {
 		},
 		p(ctx, dirty) {
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_7),
 						get_before_title_slot_context_7
 					);
 				}
@@ -6461,15 +6461,15 @@ function create_else_block_6(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_7),
 						get_after_title_slot_context_7
 					);
 				}
@@ -6499,15 +6499,15 @@ function create_else_block_6(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_7),
 						get_inner_slot_context_7
 					);
 				}
@@ -6572,7 +6572,7 @@ function create_else_block_6(ctx) {
 	};
 }
 
-// (748:12) {#if isMedia }
+// (759:12) {#if isMedia }
 function create_if_block_68(ctx) {
 	let t0;
 	let div;
@@ -6587,16 +6587,16 @@ function create_if_block_68(ctx) {
 	let if_block6_anchor;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_77(ctx);
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_6);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_6);
 	let if_block1 = /*hasTitle*/ ctx[36] && create_if_block_76(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_6);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_6);
 	let if_block2 = /*hasAfter*/ ctx[31] && create_if_block_73(ctx);
 	let if_block3 = /*hasSubtitle*/ ctx[33] && create_if_block_72(ctx);
 	let if_block4 = /*hasText*/ ctx[32] && create_if_block_71(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_6);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_6);
 	let if_block5 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_70(ctx);
 	let if_block6 = /*hasFooter*/ ctx[34] && create_if_block_69(ctx);
 
@@ -6715,15 +6715,15 @@ function create_if_block_68(ctx) {
 			}
 
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_6),
 						get_before_title_slot_context_6
 					);
 				}
@@ -6753,15 +6753,15 @@ function create_if_block_68(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_6),
 						get_after_title_slot_context_6
 					);
 				}
@@ -6837,15 +6837,15 @@ function create_if_block_68(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_6),
 						get_inner_slot_context_6
 					);
 				}
@@ -6947,7 +6947,7 @@ function create_if_block_68(ctx) {
 	};
 }
 
-// (802:14) {#if hasTitle || hasHeader || hasFooter }
+// (813:14) {#if hasTitle || hasHeader || hasFooter }
 function create_if_block_82(ctx) {
 	let div;
 	let t0;
@@ -6957,8 +6957,8 @@ function create_if_block_82(ctx) {
 	let t3;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_84(ctx);
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_7);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_7);
 	let if_block1 = /*hasFooter*/ ctx[34] && create_if_block_83(ctx);
 
 	return {
@@ -7031,15 +7031,15 @@ function create_if_block_82(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t1_value !== (t1_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t1, t1_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_7),
 						get_title_slot_context_7
 					);
 				}
@@ -7090,15 +7090,15 @@ function create_if_block_82(ctx) {
 	};
 }
 
-// (804:18) {#if hasHeader }
+// (815:18) {#if hasHeader }
 function create_if_block_84(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_7);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_7);
 
 	return {
 		c() {
@@ -7135,15 +7135,15 @@ function create_if_block_84(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_7),
 						get_header_slot_context_7
 					);
 				}
@@ -7165,15 +7165,15 @@ function create_if_block_84(ctx) {
 	};
 }
 
-// (812:18) {#if hasFooter }
+// (823:18) {#if hasFooter }
 function create_if_block_83(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_7);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_7);
 
 	return {
 		c() {
@@ -7210,15 +7210,15 @@ function create_if_block_83(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_7),
 						get_footer_slot_context_7
 					);
 				}
@@ -7240,7 +7240,7 @@ function create_if_block_83(ctx) {
 	};
 }
 
-// (821:14) {#if hasAfter }
+// (832:14) {#if hasAfter }
 function create_if_block_79(ctx) {
 	let div;
 	let t0;
@@ -7248,14 +7248,14 @@ function create_if_block_79(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_7);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_7);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_81(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_80(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_7);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_7);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_7);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_7);
 
 	return {
 		c() {
@@ -7316,15 +7316,15 @@ function create_if_block_79(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_7),
 						get_after_start_slot_context_7
 					);
 				}
@@ -7367,30 +7367,30 @@ function create_if_block_79(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_7),
 						get_after_slot_context_7
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_7),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_7),
 						get_after_end_slot_context_7
 					);
 				}
@@ -7422,7 +7422,7 @@ function create_if_block_79(ctx) {
 	};
 }
 
-// (824:18) {#if after != undefined }
+// (835:18) {#if after != undefined }
 function create_if_block_81(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -7452,7 +7452,7 @@ function create_if_block_81(ctx) {
 	};
 }
 
-// (827:18) {#if badge != undefined }
+// (838:18) {#if badge != undefined }
 function create_if_block_80(ctx) {
 	let badge_1;
 	let current;
@@ -7480,7 +7480,7 @@ function create_if_block_80(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -7501,7 +7501,7 @@ function create_if_block_80(ctx) {
 	};
 }
 
-// (828:20) <Badge  color="{badgeColor}" >
+// (839:20) <Badge  color="{badgeColor}" >
 function create_default_slot_7(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -7525,11 +7525,11 @@ function create_default_slot_7(ctx) {
 	};
 }
 
-// (835:14) {#if !(swipeout || accordionItem) }
+// (846:14) {#if !(swipeout || accordionItem )}
 function create_if_block_78(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -7547,15 +7547,15 @@ function create_if_block_78(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -7576,15 +7576,15 @@ function create_if_block_78(ctx) {
 	};
 }
 
-// (749:14) {#if hasHeader }
+// (760:14) {#if hasHeader }
 function create_if_block_77(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_6);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_6);
 
 	return {
 		c() {
@@ -7621,15 +7621,15 @@ function create_if_block_77(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_6),
 						get_header_slot_context_6
 					);
 				}
@@ -7651,15 +7651,15 @@ function create_if_block_77(ctx) {
 	};
 }
 
-// (757:16) {#if hasTitle }
+// (768:16) {#if hasTitle }
 function create_if_block_76(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_6);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_6);
 
 	return {
 		c() {
@@ -7696,15 +7696,15 @@ function create_if_block_76(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t0, t0_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_6),
 						get_title_slot_context_6
 					);
 				}
@@ -7726,7 +7726,7 @@ function create_if_block_76(ctx) {
 	};
 }
 
-// (764:16) {#if hasAfter }
+// (775:16) {#if hasAfter }
 function create_if_block_73(ctx) {
 	let div;
 	let t0;
@@ -7734,14 +7734,14 @@ function create_if_block_73(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_6);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_6);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_75(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_74(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_6);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_6);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_6);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_6);
 
 	return {
 		c() {
@@ -7802,15 +7802,15 @@ function create_if_block_73(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_6),
 						get_after_start_slot_context_6
 					);
 				}
@@ -7853,30 +7853,30 @@ function create_if_block_73(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_6),
 						get_after_slot_context_6
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_6),
 						get_after_end_slot_context_6
 					);
 				}
@@ -7908,7 +7908,7 @@ function create_if_block_73(ctx) {
 	};
 }
 
-// (767:20) {#if after != undefined }
+// (778:20) {#if after != undefined }
 function create_if_block_75(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -7938,7 +7938,7 @@ function create_if_block_75(ctx) {
 	};
 }
 
-// (770:20) {#if badge != undefined }
+// (781:20) {#if badge != undefined }
 function create_if_block_74(ctx) {
 	let badge_1;
 	let current;
@@ -7966,7 +7966,7 @@ function create_if_block_74(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -7987,7 +7987,7 @@ function create_if_block_74(ctx) {
 	};
 }
 
-// (771:22) <Badge  color="{badgeColor}" >
+// (782:22) <Badge  color="{badgeColor}" >
 function create_default_slot_6(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -8011,15 +8011,15 @@ function create_default_slot_6(ctx) {
 	};
 }
 
-// (778:14) {#if hasSubtitle }
+// (789:14) {#if hasSubtitle }
 function create_if_block_72(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const subtitle_slot_template = /*#slots*/ ctx[70].subtitle;
-	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[84], get_subtitle_slot_context_3);
+	const subtitle_slot_template = /*#slots*/ ctx[71].subtitle;
+	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[85], get_subtitle_slot_context_3);
 
 	return {
 		c() {
@@ -8056,15 +8056,15 @@ function create_if_block_72(ctx) {
 			if ((!current || dirty[0] & /*subtitle*/ 16) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "")) set_data(t0, t0_value);
 
 			if (subtitle_slot) {
-				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						subtitle_slot,
 						subtitle_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[84], dirty, get_subtitle_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[85], dirty, get_subtitle_slot_changes_3),
 						get_subtitle_slot_context_3
 					);
 				}
@@ -8086,15 +8086,15 @@ function create_if_block_72(ctx) {
 	};
 }
 
-// (784:14) {#if hasText }
+// (795:14) {#if hasText }
 function create_if_block_71(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const text_slot_template = /*#slots*/ ctx[70].text;
-	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[84], get_text_slot_context_3);
+	const text_slot_template = /*#slots*/ ctx[71].text;
+	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[85], get_text_slot_context_3);
 
 	return {
 		c() {
@@ -8131,15 +8131,15 @@ function create_if_block_71(ctx) {
 			if ((!current || dirty[0] & /*text*/ 4) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "")) set_data(t0, t0_value);
 
 			if (text_slot) {
-				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						text_slot,
 						text_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[84], dirty, get_text_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[85], dirty, get_text_slot_changes_3),
 						get_text_slot_context_3
 					);
 				}
@@ -8161,11 +8161,11 @@ function create_if_block_71(ctx) {
 	};
 }
 
-// (791:14) {#if !(swipeout || accordionItem) }
+// (802:14) {#if !(swipeout || accordionItem )}
 function create_if_block_70(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -8183,15 +8183,15 @@ function create_if_block_70(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -8212,15 +8212,15 @@ function create_if_block_70(ctx) {
 	};
 }
 
-// (794:14) {#if hasFooter }
+// (805:14) {#if hasFooter }
 function create_if_block_69(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_6);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_6);
 
 	return {
 		c() {
@@ -8257,15 +8257,15 @@ function create_if_block_69(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_6),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_6),
 						get_footer_slot_context_6
 					);
 				}
@@ -8287,7 +8287,7 @@ function create_if_block_69(ctx) {
 	};
 }
 
-// (482:8) {:else}
+// (493:8) {:else}
 function create_else_block_2(ctx) {
 	let current_block_type_index;
 	let if_block;
@@ -8361,7 +8361,7 @@ function create_else_block_2(ctx) {
 	};
 }
 
-// (360:8) {#if isLink }
+// (371:8) {#if isLink }
 function create_if_block_5(ctx) {
 	let a;
 	let div1;
@@ -8379,12 +8379,12 @@ function create_if_block_5(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const content_start_slot_template = /*#slots*/ ctx[70]["content-start"];
-	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[84], get_content_start_slot_context);
+	const content_start_slot_template = /*#slots*/ ctx[71]["content-start"];
+	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[85], get_content_start_slot_context);
 	let if_block0 = /*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && /*isSortableOpposite*/ ctx[44] && create_if_block_25();
 	let if_block1 = /*hasMedia*/ ctx[37] && create_if_block_23(ctx);
-	const inner_start_slot_template = /*#slots*/ ctx[70]["inner-start"];
-	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_start_slot_context);
+	const inner_start_slot_template = /*#slots*/ ctx[71]["inner-start"];
+	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_start_slot_context);
 	const if_block_creators = [create_if_block_6, create_else_block_1];
 	const if_blocks = [];
 
@@ -8395,12 +8395,12 @@ function create_if_block_5(ctx) {
 
 	current_block_type_index = select_block_type_3(ctx);
 	if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-	const inner_end_slot_template = /*#slots*/ ctx[70]["inner-end"];
-	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_end_slot_context);
-	const content_slot_template = /*#slots*/ ctx[70].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[84], get_content_slot_context);
-	const content_end_slot_template = /*#slots*/ ctx[70]["content-end"];
-	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[84], get_content_end_slot_context);
+	const inner_end_slot_template = /*#slots*/ ctx[71]["inner-end"];
+	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_end_slot_context);
+	const content_slot_template = /*#slots*/ ctx[71].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[85], get_content_slot_context);
+	const content_end_slot_template = /*#slots*/ ctx[71]["content-end"];
+	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[85], get_content_end_slot_context);
 	let a_levels = [{ class: /*linkClasses*/ ctx[40] }, /*linkAttrs*/ ctx[39]];
 	let a_data = {};
 
@@ -8489,7 +8489,7 @@ function create_if_block_5(ctx) {
 				inner_end_slot.m(div0, null);
 			}
 
-			/*div0_binding*/ ctx[73](div0);
+			/*div0_binding*/ ctx[74](div0);
 			append_hydration(div1, t5);
 
 			if (content_slot) {
@@ -8502,7 +8502,7 @@ function create_if_block_5(ctx) {
 				content_end_slot.m(div1, null);
 			}
 
-			/*a_binding*/ ctx[74](a);
+			/*a_binding*/ ctx[75](a);
 			current = true;
 
 			if (!mounted) {
@@ -8516,15 +8516,15 @@ function create_if_block_5(ctx) {
 		},
 		p(ctx, dirty) {
 			if (content_start_slot) {
-				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_start_slot,
 						content_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[84], dirty, get_content_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[85], dirty, get_content_start_slot_changes),
 						get_content_start_slot_context
 					);
 				}
@@ -8565,15 +8565,15 @@ function create_if_block_5(ctx) {
 			}
 
 			if (inner_start_slot) {
-				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_start_slot,
 						inner_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_start_slot_changes),
 						get_inner_start_slot_context
 					);
 				}
@@ -8606,45 +8606,45 @@ function create_if_block_5(ctx) {
 			}
 
 			if (inner_end_slot) {
-				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_end_slot,
 						inner_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_end_slot_changes),
 						get_inner_end_slot_context
 					);
 				}
 			}
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[84], dirty, get_content_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[85], dirty, get_content_slot_changes),
 						get_content_slot_context
 					);
 				}
 			}
 
 			if (content_end_slot) {
-				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_end_slot,
 						content_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[84], dirty, get_content_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[85], dirty, get_content_end_slot_changes),
 						get_content_end_slot_context
 					);
 				}
@@ -8690,17 +8690,17 @@ function create_if_block_5(ctx) {
 			if (inner_start_slot) inner_start_slot.d(detaching);
 			if_blocks[current_block_type_index].d();
 			if (inner_end_slot) inner_end_slot.d(detaching);
-			/*div0_binding*/ ctx[73](null);
+			/*div0_binding*/ ctx[74](null);
 			if (content_slot) content_slot.d(detaching);
 			if (content_end_slot) content_end_slot.d(detaching);
-			/*a_binding*/ ctx[74](null);
+			/*a_binding*/ ctx[75](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (608:10) {:else}
+// (619:10) {:else}
 function create_else_block_4(ctx) {
 	let div1;
 	let t0;
@@ -8716,12 +8716,12 @@ function create_else_block_4(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const content_start_slot_template = /*#slots*/ ctx[70]["content-start"];
-	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[84], get_content_start_slot_context_2);
+	const content_start_slot_template = /*#slots*/ ctx[71]["content-start"];
+	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[85], get_content_start_slot_context_2);
 	let if_block0 = /*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && /*isSortableOpposite*/ ctx[44] && create_if_block_66();
 	let if_block1 = /*hasMedia*/ ctx[37] && create_if_block_64(ctx);
-	const inner_start_slot_template = /*#slots*/ ctx[70]["inner-start"];
-	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_start_slot_context_2);
+	const inner_start_slot_template = /*#slots*/ ctx[71]["inner-start"];
+	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_start_slot_context_2);
 	const if_block_creators = [create_if_block_47, create_else_block_5];
 	const if_blocks = [];
 
@@ -8732,12 +8732,12 @@ function create_else_block_4(ctx) {
 
 	current_block_type_index = select_block_type_6(ctx);
 	if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-	const inner_end_slot_template = /*#slots*/ ctx[70]["inner-end"];
-	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_end_slot_context_2);
-	const content_slot_template = /*#slots*/ ctx[70].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[84], get_content_slot_context_2);
-	const content_end_slot_template = /*#slots*/ ctx[70]["content-end"];
-	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[84], get_content_end_slot_context_2);
+	const inner_end_slot_template = /*#slots*/ ctx[71]["inner-end"];
+	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_end_slot_context_2);
+	const content_slot_template = /*#slots*/ ctx[71].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[85], get_content_slot_context_2);
+	const content_end_slot_template = /*#slots*/ ctx[71]["content-end"];
+	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[85], get_content_end_slot_context_2);
 
 	return {
 		c() {
@@ -8814,7 +8814,7 @@ function create_else_block_4(ctx) {
 				inner_end_slot.m(div0, null);
 			}
 
-			/*div0_binding_1*/ ctx[77](div0);
+			/*div0_binding_1*/ ctx[78](div0);
 			append_hydration(div1, t5);
 
 			if (content_slot) {
@@ -8836,15 +8836,15 @@ function create_else_block_4(ctx) {
 		},
 		p(ctx, dirty) {
 			if (content_start_slot) {
-				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_start_slot,
 						content_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[84], dirty, get_content_start_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[85], dirty, get_content_start_slot_changes_2),
 						get_content_start_slot_context_2
 					);
 				}
@@ -8885,15 +8885,15 @@ function create_else_block_4(ctx) {
 			}
 
 			if (inner_start_slot) {
-				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_start_slot,
 						inner_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_start_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_start_slot_changes_2),
 						get_inner_start_slot_context_2
 					);
 				}
@@ -8926,45 +8926,45 @@ function create_else_block_4(ctx) {
 			}
 
 			if (inner_end_slot) {
-				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_end_slot,
 						inner_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_end_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_end_slot_changes_2),
 						get_inner_end_slot_context_2
 					);
 				}
 			}
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[84], dirty, get_content_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[85], dirty, get_content_slot_changes_2),
 						get_content_slot_context_2
 					);
 				}
 			}
 
 			if (content_end_slot) {
-				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_end_slot,
 						content_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[84], dirty, get_content_end_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[85], dirty, get_content_end_slot_changes_2),
 						get_content_end_slot_context_2
 					);
 				}
@@ -9003,7 +9003,7 @@ function create_else_block_4(ctx) {
 			if (inner_start_slot) inner_start_slot.d(detaching);
 			if_blocks[current_block_type_index].d();
 			if (inner_end_slot) inner_end_slot.d(detaching);
-			/*div0_binding_1*/ ctx[77](null);
+			/*div0_binding_1*/ ctx[78](null);
 			if (content_slot) content_slot.d(detaching);
 			if (content_end_slot) content_end_slot.d(detaching);
 			mounted = false;
@@ -9012,7 +9012,7 @@ function create_else_block_4(ctx) {
 	};
 }
 
-// (484:10) {#if checkbox || radio }
+// (495:10) {#if checkbox || radio }
 function create_if_block_26(ctx) {
 	let label;
 	let t0;
@@ -9035,12 +9035,12 @@ function create_if_block_26(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const content_start_slot_template = /*#slots*/ ctx[70]["content-start"];
-	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[84], get_content_start_slot_context_1);
+	const content_start_slot_template = /*#slots*/ ctx[71]["content-start"];
+	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[85], get_content_start_slot_context_1);
 	let if_block0 = /*isSortable*/ ctx[45] && /*sortable*/ ctx[15] != false && /*isSortableOpposite*/ ctx[44] && create_if_block_46();
 	let if_block1 = /*hasMedia*/ ctx[37] && create_if_block_44(ctx);
-	const inner_start_slot_template = /*#slots*/ ctx[70]["inner-start"];
-	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_start_slot_context_1);
+	const inner_start_slot_template = /*#slots*/ ctx[71]["inner-start"];
+	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_start_slot_context_1);
 	const if_block_creators = [create_if_block_27, create_else_block_3];
 	const if_blocks = [];
 
@@ -9051,12 +9051,12 @@ function create_if_block_26(ctx) {
 
 	current_block_type_index = select_block_type_5(ctx);
 	if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-	const inner_end_slot_template = /*#slots*/ ctx[70]["inner-end"];
-	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_end_slot_context_1);
-	const content_slot_template = /*#slots*/ ctx[70].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[84], get_content_slot_context_1);
-	const content_end_slot_template = /*#slots*/ ctx[70]["content-end"];
-	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[84], get_content_end_slot_context_1);
+	const inner_end_slot_template = /*#slots*/ ctx[71]["inner-end"];
+	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_end_slot_context_1);
+	const content_slot_template = /*#slots*/ ctx[71].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[85], get_content_slot_context_1);
+	const content_end_slot_template = /*#slots*/ ctx[71]["content-end"];
+	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[85], get_content_end_slot_context_1);
 
 	return {
 		c() {
@@ -9138,7 +9138,7 @@ function create_if_block_26(ctx) {
 			if (if_block0) if_block0.m(label, null);
 			append_hydration(label, t1);
 			append_hydration(label, input);
-			/*input_binding*/ ctx[75](input);
+			/*input_binding*/ ctx[76](input);
 			append_hydration(label, t2);
 			append_hydration(label, i);
 			append_hydration(label, t3);
@@ -9158,7 +9158,7 @@ function create_if_block_26(ctx) {
 				inner_end_slot.m(div, null);
 			}
 
-			/*div_binding*/ ctx[76](div);
+			/*div_binding*/ ctx[77](div);
 			append_hydration(label, t7);
 
 			if (content_slot) {
@@ -9184,15 +9184,15 @@ function create_if_block_26(ctx) {
 		},
 		p(ctx, dirty) {
 			if (content_start_slot) {
-				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_start_slot,
 						content_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[84], dirty, get_content_start_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[85], dirty, get_content_start_slot_changes_1),
 						get_content_start_slot_context_1
 					);
 				}
@@ -9267,15 +9267,15 @@ function create_if_block_26(ctx) {
 			}
 
 			if (inner_start_slot) {
-				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_start_slot,
 						inner_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_start_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_start_slot_changes_1),
 						get_inner_start_slot_context_1
 					);
 				}
@@ -9308,45 +9308,45 @@ function create_if_block_26(ctx) {
 			}
 
 			if (inner_end_slot) {
-				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_end_slot,
 						inner_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_end_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_end_slot_changes_1),
 						get_inner_end_slot_context_1
 					);
 				}
 			}
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[84], dirty, get_content_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[85], dirty, get_content_slot_changes_1),
 						get_content_slot_context_1
 					);
 				}
 			}
 
 			if (content_end_slot) {
-				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						content_end_slot,
 						content_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[84], dirty, get_content_end_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[85], dirty, get_content_end_slot_changes_1),
 						get_content_end_slot_context_1
 					);
 				}
@@ -9381,12 +9381,12 @@ function create_if_block_26(ctx) {
 			if (detaching) detach(label);
 			if (content_start_slot) content_start_slot.d(detaching);
 			if (if_block0) if_block0.d();
-			/*input_binding*/ ctx[75](null);
+			/*input_binding*/ ctx[76](null);
 			if (if_block1) if_block1.d();
 			if (inner_start_slot) inner_start_slot.d(detaching);
 			if_blocks[current_block_type_index].d();
 			if (inner_end_slot) inner_end_slot.d(detaching);
-			/*div_binding*/ ctx[76](null);
+			/*div_binding*/ ctx[77](null);
 			if (content_slot) content_slot.d(detaching);
 			if (content_end_slot) content_end_slot.d(detaching);
 			mounted = false;
@@ -9395,7 +9395,7 @@ function create_if_block_26(ctx) {
 	};
 }
 
-// (611:14) {#if isSortable && sortable != false && isSortableOpposite }
+// (622:14) {#if isSortable && sortable != false && isSortableOpposite }
 function create_if_block_66(ctx) {
 	let div;
 
@@ -9421,14 +9421,14 @@ function create_if_block_66(ctx) {
 	};
 }
 
-// (614:14) {#if hasMedia }
+// (625:14) {#if hasMedia }
 function create_if_block_64(ctx) {
 	let div;
 	let t;
 	let current;
 	let if_block = /*media*/ ctx[3] != undefined && create_if_block_65(ctx);
-	const media_slot_template = /*#slots*/ ctx[70].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[84], get_media_slot_context_2);
+	const media_slot_template = /*#slots*/ ctx[71].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[85], get_media_slot_context_2);
 
 	return {
 		c() {
@@ -9476,15 +9476,15 @@ function create_if_block_64(ctx) {
 			}
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[84], dirty, get_media_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[85], dirty, get_media_slot_changes_2),
 						get_media_slot_context_2
 					);
 				}
@@ -9507,7 +9507,7 @@ function create_if_block_64(ctx) {
 	};
 }
 
-// (616:18) {#if media != undefined }
+// (627:18) {#if media != undefined }
 function create_if_block_65(ctx) {
 	let img;
 	let img_src_value;
@@ -9538,7 +9538,7 @@ function create_if_block_65(ctx) {
 	};
 }
 
-// (676:16) {:else}
+// (687:16) {:else}
 function create_else_block_5(ctx) {
 	let t0;
 	let t1;
@@ -9547,14 +9547,14 @@ function create_else_block_5(ctx) {
 	let t4;
 	let if_block2_anchor;
 	let current;
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_5);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_5);
 	let if_block0 = (/*hasTitle*/ ctx[36] || /*hasHeader*/ ctx[35] || /*hasFooter*/ ctx[34]) && create_if_block_61(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_5);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_5);
 	let if_block1 = /*hasAfter*/ ctx[31] && create_if_block_58(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_5);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_5);
 	let if_block2 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_57(ctx);
 
 	return {
@@ -9614,15 +9614,15 @@ function create_else_block_5(ctx) {
 		},
 		p(ctx, dirty) {
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_5),
 						get_before_title_slot_context_5
 					);
 				}
@@ -9652,15 +9652,15 @@ function create_else_block_5(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_5),
 						get_after_title_slot_context_5
 					);
 				}
@@ -9690,15 +9690,15 @@ function create_else_block_5(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_5),
 						get_inner_slot_context_5
 					);
 				}
@@ -9763,7 +9763,7 @@ function create_else_block_5(ctx) {
 	};
 }
 
-// (624:16) {#if isMedia }
+// (635:16) {#if isMedia }
 function create_if_block_47(ctx) {
 	let t0;
 	let div;
@@ -9778,16 +9778,16 @@ function create_if_block_47(ctx) {
 	let if_block6_anchor;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_56(ctx);
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_4);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_4);
 	let if_block1 = /*hasTitle*/ ctx[36] && create_if_block_55(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_4);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_4);
 	let if_block2 = /*hasAfter*/ ctx[31] && create_if_block_52(ctx);
 	let if_block3 = /*hasSubtitle*/ ctx[33] && create_if_block_51(ctx);
 	let if_block4 = /*hasText*/ ctx[32] && create_if_block_50(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_4);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_4);
 	let if_block5 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_49(ctx);
 	let if_block6 = /*hasFooter*/ ctx[34] && create_if_block_48(ctx);
 
@@ -9906,15 +9906,15 @@ function create_if_block_47(ctx) {
 			}
 
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_4),
 						get_before_title_slot_context_4
 					);
 				}
@@ -9944,15 +9944,15 @@ function create_if_block_47(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_4),
 						get_after_title_slot_context_4
 					);
 				}
@@ -10028,15 +10028,15 @@ function create_if_block_47(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_4),
 						get_inner_slot_context_4
 					);
 				}
@@ -10138,7 +10138,7 @@ function create_if_block_47(ctx) {
 	};
 }
 
-// (678:18) {#if hasTitle || hasHeader || hasFooter }
+// (689:18) {#if hasTitle || hasHeader || hasFooter }
 function create_if_block_61(ctx) {
 	let div;
 	let t0;
@@ -10148,8 +10148,8 @@ function create_if_block_61(ctx) {
 	let t3;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_63(ctx);
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_5);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_5);
 	let if_block1 = /*hasFooter*/ ctx[34] && create_if_block_62(ctx);
 
 	return {
@@ -10222,15 +10222,15 @@ function create_if_block_61(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t1_value !== (t1_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t1, t1_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_5),
 						get_title_slot_context_5
 					);
 				}
@@ -10281,15 +10281,15 @@ function create_if_block_61(ctx) {
 	};
 }
 
-// (680:22) {#if hasHeader }
+// (691:22) {#if hasHeader }
 function create_if_block_63(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_5);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_5);
 
 	return {
 		c() {
@@ -10326,15 +10326,15 @@ function create_if_block_63(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_5),
 						get_header_slot_context_5
 					);
 				}
@@ -10356,15 +10356,15 @@ function create_if_block_63(ctx) {
 	};
 }
 
-// (688:22) {#if hasFooter }
+// (699:22) {#if hasFooter }
 function create_if_block_62(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_5);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_5);
 
 	return {
 		c() {
@@ -10401,15 +10401,15 @@ function create_if_block_62(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_5),
 						get_footer_slot_context_5
 					);
 				}
@@ -10431,7 +10431,7 @@ function create_if_block_62(ctx) {
 	};
 }
 
-// (697:18) {#if hasAfter }
+// (708:18) {#if hasAfter }
 function create_if_block_58(ctx) {
 	let div;
 	let t0;
@@ -10439,14 +10439,14 @@ function create_if_block_58(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_5);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_5);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_60(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_59(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_5);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_5);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_5);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_5);
 
 	return {
 		c() {
@@ -10507,15 +10507,15 @@ function create_if_block_58(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_5),
 						get_after_start_slot_context_5
 					);
 				}
@@ -10558,30 +10558,30 @@ function create_if_block_58(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_5),
 						get_after_slot_context_5
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_5),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_5),
 						get_after_end_slot_context_5
 					);
 				}
@@ -10613,7 +10613,7 @@ function create_if_block_58(ctx) {
 	};
 }
 
-// (700:22) {#if after != undefined }
+// (711:22) {#if after != undefined }
 function create_if_block_60(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -10643,7 +10643,7 @@ function create_if_block_60(ctx) {
 	};
 }
 
-// (703:22) {#if badge != undefined }
+// (714:22) {#if badge != undefined }
 function create_if_block_59(ctx) {
 	let badge_1;
 	let current;
@@ -10671,7 +10671,7 @@ function create_if_block_59(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -10692,7 +10692,7 @@ function create_if_block_59(ctx) {
 	};
 }
 
-// (704:24) <Badge  color="{badgeColor}" >
+// (715:24) <Badge  color="{badgeColor}" >
 function create_default_slot_5(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -10716,11 +10716,11 @@ function create_default_slot_5(ctx) {
 	};
 }
 
-// (711:18) {#if !(swipeout || accordionItem) }
+// (722:18) {#if !(swipeout || accordionItem )}
 function create_if_block_57(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -10738,15 +10738,15 @@ function create_if_block_57(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -10767,15 +10767,15 @@ function create_if_block_57(ctx) {
 	};
 }
 
-// (625:18) {#if hasHeader }
+// (636:18) {#if hasHeader }
 function create_if_block_56(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_4);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_4);
 
 	return {
 		c() {
@@ -10812,15 +10812,15 @@ function create_if_block_56(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_4),
 						get_header_slot_context_4
 					);
 				}
@@ -10842,15 +10842,15 @@ function create_if_block_56(ctx) {
 	};
 }
 
-// (633:20) {#if hasTitle }
+// (644:20) {#if hasTitle }
 function create_if_block_55(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_4);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_4);
 
 	return {
 		c() {
@@ -10887,15 +10887,15 @@ function create_if_block_55(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t0, t0_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_4),
 						get_title_slot_context_4
 					);
 				}
@@ -10917,7 +10917,7 @@ function create_if_block_55(ctx) {
 	};
 }
 
-// (640:20) {#if hasAfter }
+// (651:20) {#if hasAfter }
 function create_if_block_52(ctx) {
 	let div;
 	let t0;
@@ -10925,14 +10925,14 @@ function create_if_block_52(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_4);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_4);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_54(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_53(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_4);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_4);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_4);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_4);
 
 	return {
 		c() {
@@ -10993,15 +10993,15 @@ function create_if_block_52(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_4),
 						get_after_start_slot_context_4
 					);
 				}
@@ -11044,30 +11044,30 @@ function create_if_block_52(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_4),
 						get_after_slot_context_4
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_4),
 						get_after_end_slot_context_4
 					);
 				}
@@ -11099,7 +11099,7 @@ function create_if_block_52(ctx) {
 	};
 }
 
-// (643:24) {#if after != undefined }
+// (654:24) {#if after != undefined }
 function create_if_block_54(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -11129,7 +11129,7 @@ function create_if_block_54(ctx) {
 	};
 }
 
-// (646:24) {#if badge != undefined }
+// (657:24) {#if badge != undefined }
 function create_if_block_53(ctx) {
 	let badge_1;
 	let current;
@@ -11157,7 +11157,7 @@ function create_if_block_53(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -11178,7 +11178,7 @@ function create_if_block_53(ctx) {
 	};
 }
 
-// (647:26) <Badge  color="{badgeColor}" >
+// (658:26) <Badge  color="{badgeColor}" >
 function create_default_slot_4(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -11202,15 +11202,15 @@ function create_default_slot_4(ctx) {
 	};
 }
 
-// (654:18) {#if hasSubtitle }
+// (665:18) {#if hasSubtitle }
 function create_if_block_51(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const subtitle_slot_template = /*#slots*/ ctx[70].subtitle;
-	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[84], get_subtitle_slot_context_2);
+	const subtitle_slot_template = /*#slots*/ ctx[71].subtitle;
+	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[85], get_subtitle_slot_context_2);
 
 	return {
 		c() {
@@ -11247,15 +11247,15 @@ function create_if_block_51(ctx) {
 			if ((!current || dirty[0] & /*subtitle*/ 16) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "")) set_data(t0, t0_value);
 
 			if (subtitle_slot) {
-				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						subtitle_slot,
 						subtitle_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[84], dirty, get_subtitle_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[85], dirty, get_subtitle_slot_changes_2),
 						get_subtitle_slot_context_2
 					);
 				}
@@ -11277,15 +11277,15 @@ function create_if_block_51(ctx) {
 	};
 }
 
-// (660:18) {#if hasText }
+// (671:18) {#if hasText }
 function create_if_block_50(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const text_slot_template = /*#slots*/ ctx[70].text;
-	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[84], get_text_slot_context_2);
+	const text_slot_template = /*#slots*/ ctx[71].text;
+	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[85], get_text_slot_context_2);
 
 	return {
 		c() {
@@ -11322,15 +11322,15 @@ function create_if_block_50(ctx) {
 			if ((!current || dirty[0] & /*text*/ 4) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "")) set_data(t0, t0_value);
 
 			if (text_slot) {
-				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						text_slot,
 						text_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[84], dirty, get_text_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[85], dirty, get_text_slot_changes_2),
 						get_text_slot_context_2
 					);
 				}
@@ -11352,11 +11352,11 @@ function create_if_block_50(ctx) {
 	};
 }
 
-// (667:18) {#if !(swipeout || accordionItem) }
+// (678:18) {#if !(swipeout || accordionItem )}
 function create_if_block_49(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -11374,15 +11374,15 @@ function create_if_block_49(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -11403,15 +11403,15 @@ function create_if_block_49(ctx) {
 	};
 }
 
-// (670:18) {#if hasFooter }
+// (681:18) {#if hasFooter }
 function create_if_block_48(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_4);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_4);
 
 	return {
 		c() {
@@ -11448,15 +11448,15 @@ function create_if_block_48(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_4),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_4),
 						get_footer_slot_context_4
 					);
 				}
@@ -11478,7 +11478,7 @@ function create_if_block_48(ctx) {
 	};
 }
 
-// (487:14) {#if isSortable && sortable != false && isSortableOpposite }
+// (498:14) {#if isSortable && sortable != false && isSortableOpposite }
 function create_if_block_46(ctx) {
 	let div;
 
@@ -11504,14 +11504,14 @@ function create_if_block_46(ctx) {
 	};
 }
 
-// (502:14) {#if hasMedia }
+// (513:14) {#if hasMedia }
 function create_if_block_44(ctx) {
 	let div;
 	let t;
 	let current;
 	let if_block = /*media*/ ctx[3] != undefined && create_if_block_45(ctx);
-	const media_slot_template = /*#slots*/ ctx[70].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[84], get_media_slot_context_1);
+	const media_slot_template = /*#slots*/ ctx[71].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[85], get_media_slot_context_1);
 
 	return {
 		c() {
@@ -11559,15 +11559,15 @@ function create_if_block_44(ctx) {
 			}
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[84], dirty, get_media_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[85], dirty, get_media_slot_changes_1),
 						get_media_slot_context_1
 					);
 				}
@@ -11590,7 +11590,7 @@ function create_if_block_44(ctx) {
 	};
 }
 
-// (504:18) {#if media != undefined }
+// (515:18) {#if media != undefined }
 function create_if_block_45(ctx) {
 	let img;
 	let img_src_value;
@@ -11621,7 +11621,7 @@ function create_if_block_45(ctx) {
 	};
 }
 
-// (564:16) {:else}
+// (575:16) {:else}
 function create_else_block_3(ctx) {
 	let t0;
 	let t1;
@@ -11630,14 +11630,14 @@ function create_else_block_3(ctx) {
 	let t4;
 	let if_block2_anchor;
 	let current;
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_3);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_3);
 	let if_block0 = (/*hasTitle*/ ctx[36] || /*hasHeader*/ ctx[35] || /*hasFooter*/ ctx[34]) && create_if_block_41(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_3);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_3);
 	let if_block1 = /*hasAfter*/ ctx[31] && create_if_block_38(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_3);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_3);
 	let if_block2 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_37(ctx);
 
 	return {
@@ -11697,15 +11697,15 @@ function create_else_block_3(ctx) {
 		},
 		p(ctx, dirty) {
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_3),
 						get_before_title_slot_context_3
 					);
 				}
@@ -11735,15 +11735,15 @@ function create_else_block_3(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_3),
 						get_after_title_slot_context_3
 					);
 				}
@@ -11773,15 +11773,15 @@ function create_else_block_3(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_3),
 						get_inner_slot_context_3
 					);
 				}
@@ -11846,7 +11846,7 @@ function create_else_block_3(ctx) {
 	};
 }
 
-// (512:16) {#if isMedia }
+// (523:16) {#if isMedia }
 function create_if_block_27(ctx) {
 	let t0;
 	let div;
@@ -11861,16 +11861,16 @@ function create_if_block_27(ctx) {
 	let if_block6_anchor;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_36(ctx);
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_2);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_2);
 	let if_block1 = /*hasTitle*/ ctx[36] && create_if_block_35(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_2);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_2);
 	let if_block2 = /*hasAfter*/ ctx[31] && create_if_block_32(ctx);
 	let if_block3 = /*hasSubtitle*/ ctx[33] && create_if_block_31(ctx);
 	let if_block4 = /*hasText*/ ctx[32] && create_if_block_30(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_2);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_2);
 	let if_block5 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_29(ctx);
 	let if_block6 = /*hasFooter*/ ctx[34] && create_if_block_28(ctx);
 
@@ -11989,15 +11989,15 @@ function create_if_block_27(ctx) {
 			}
 
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_2),
 						get_before_title_slot_context_2
 					);
 				}
@@ -12027,15 +12027,15 @@ function create_if_block_27(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_2),
 						get_after_title_slot_context_2
 					);
 				}
@@ -12111,15 +12111,15 @@ function create_if_block_27(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_2),
 						get_inner_slot_context_2
 					);
 				}
@@ -12221,7 +12221,7 @@ function create_if_block_27(ctx) {
 	};
 }
 
-// (566:18) {#if hasTitle || hasHeader || hasFooter }
+// (577:18) {#if hasTitle || hasHeader || hasFooter }
 function create_if_block_41(ctx) {
 	let div;
 	let t0;
@@ -12231,8 +12231,8 @@ function create_if_block_41(ctx) {
 	let t3;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_43(ctx);
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_3);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_3);
 	let if_block1 = /*hasFooter*/ ctx[34] && create_if_block_42(ctx);
 
 	return {
@@ -12305,15 +12305,15 @@ function create_if_block_41(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t1_value !== (t1_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t1, t1_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_3),
 						get_title_slot_context_3
 					);
 				}
@@ -12364,15 +12364,15 @@ function create_if_block_41(ctx) {
 	};
 }
 
-// (568:22) {#if hasHeader }
+// (579:22) {#if hasHeader }
 function create_if_block_43(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_3);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_3);
 
 	return {
 		c() {
@@ -12409,15 +12409,15 @@ function create_if_block_43(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_3),
 						get_header_slot_context_3
 					);
 				}
@@ -12439,15 +12439,15 @@ function create_if_block_43(ctx) {
 	};
 }
 
-// (576:22) {#if hasFooter }
+// (587:22) {#if hasFooter }
 function create_if_block_42(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_3);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_3);
 
 	return {
 		c() {
@@ -12484,15 +12484,15 @@ function create_if_block_42(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_3),
 						get_footer_slot_context_3
 					);
 				}
@@ -12514,7 +12514,7 @@ function create_if_block_42(ctx) {
 	};
 }
 
-// (585:18) {#if hasAfter }
+// (596:18) {#if hasAfter }
 function create_if_block_38(ctx) {
 	let div;
 	let t0;
@@ -12522,14 +12522,14 @@ function create_if_block_38(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_3);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_3);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_40(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_39(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_3);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_3);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_3);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_3);
 
 	return {
 		c() {
@@ -12590,15 +12590,15 @@ function create_if_block_38(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_3),
 						get_after_start_slot_context_3
 					);
 				}
@@ -12641,30 +12641,30 @@ function create_if_block_38(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_3),
 						get_after_slot_context_3
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_3),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_3),
 						get_after_end_slot_context_3
 					);
 				}
@@ -12696,7 +12696,7 @@ function create_if_block_38(ctx) {
 	};
 }
 
-// (588:22) {#if after != undefined }
+// (599:22) {#if after != undefined }
 function create_if_block_40(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -12726,7 +12726,7 @@ function create_if_block_40(ctx) {
 	};
 }
 
-// (591:22) {#if badge != undefined }
+// (602:22) {#if badge != undefined }
 function create_if_block_39(ctx) {
 	let badge_1;
 	let current;
@@ -12754,7 +12754,7 @@ function create_if_block_39(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -12775,7 +12775,7 @@ function create_if_block_39(ctx) {
 	};
 }
 
-// (592:24) <Badge  color="{badgeColor}" >
+// (603:24) <Badge  color="{badgeColor}" >
 function create_default_slot_3(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -12799,11 +12799,11 @@ function create_default_slot_3(ctx) {
 	};
 }
 
-// (599:18) {#if !(swipeout || accordionItem )}
+// (610:18) {#if !(swipeout || accordionItem )}
 function create_if_block_37(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -12821,15 +12821,15 @@ function create_if_block_37(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -12850,15 +12850,15 @@ function create_if_block_37(ctx) {
 	};
 }
 
-// (513:18) {#if hasHeader }
+// (524:18) {#if hasHeader }
 function create_if_block_36(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_2);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_2);
 
 	return {
 		c() {
@@ -12895,15 +12895,15 @@ function create_if_block_36(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_2),
 						get_header_slot_context_2
 					);
 				}
@@ -12925,15 +12925,15 @@ function create_if_block_36(ctx) {
 	};
 }
 
-// (521:20) {#if hasTitle }
+// (532:20) {#if hasTitle }
 function create_if_block_35(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_2);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_2);
 
 	return {
 		c() {
@@ -12970,15 +12970,15 @@ function create_if_block_35(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t0, t0_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_2),
 						get_title_slot_context_2
 					);
 				}
@@ -13000,7 +13000,7 @@ function create_if_block_35(ctx) {
 	};
 }
 
-// (528:20) {#if hasAfter }
+// (539:20) {#if hasAfter }
 function create_if_block_32(ctx) {
 	let div;
 	let t0;
@@ -13008,14 +13008,14 @@ function create_if_block_32(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_2);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_2);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_34(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_33(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_2);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_2);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_2);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_2);
 
 	return {
 		c() {
@@ -13076,15 +13076,15 @@ function create_if_block_32(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_2),
 						get_after_start_slot_context_2
 					);
 				}
@@ -13127,30 +13127,30 @@ function create_if_block_32(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_2),
 						get_after_slot_context_2
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_2),
 						get_after_end_slot_context_2
 					);
 				}
@@ -13182,7 +13182,7 @@ function create_if_block_32(ctx) {
 	};
 }
 
-// (531:24) {#if after != undefined }
+// (542:24) {#if after != undefined }
 function create_if_block_34(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -13212,7 +13212,7 @@ function create_if_block_34(ctx) {
 	};
 }
 
-// (534:24) {#if badge != undefined }
+// (545:24) {#if badge != undefined }
 function create_if_block_33(ctx) {
 	let badge_1;
 	let current;
@@ -13240,7 +13240,7 @@ function create_if_block_33(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -13261,7 +13261,7 @@ function create_if_block_33(ctx) {
 	};
 }
 
-// (535:26) <Badge  color="{badgeColor}" >
+// (546:26) <Badge  color="{badgeColor}" >
 function create_default_slot_2(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -13285,15 +13285,15 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (542:18) {#if hasSubtitle }
+// (553:18) {#if hasSubtitle }
 function create_if_block_31(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const subtitle_slot_template = /*#slots*/ ctx[70].subtitle;
-	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[84], get_subtitle_slot_context_1);
+	const subtitle_slot_template = /*#slots*/ ctx[71].subtitle;
+	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[85], get_subtitle_slot_context_1);
 
 	return {
 		c() {
@@ -13330,15 +13330,15 @@ function create_if_block_31(ctx) {
 			if ((!current || dirty[0] & /*subtitle*/ 16) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "")) set_data(t0, t0_value);
 
 			if (subtitle_slot) {
-				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						subtitle_slot,
 						subtitle_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[84], dirty, get_subtitle_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[85], dirty, get_subtitle_slot_changes_1),
 						get_subtitle_slot_context_1
 					);
 				}
@@ -13360,15 +13360,15 @@ function create_if_block_31(ctx) {
 	};
 }
 
-// (548:18) {#if hasText }
+// (559:18) {#if hasText }
 function create_if_block_30(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const text_slot_template = /*#slots*/ ctx[70].text;
-	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[84], get_text_slot_context_1);
+	const text_slot_template = /*#slots*/ ctx[71].text;
+	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[85], get_text_slot_context_1);
 
 	return {
 		c() {
@@ -13405,15 +13405,15 @@ function create_if_block_30(ctx) {
 			if ((!current || dirty[0] & /*text*/ 4) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "")) set_data(t0, t0_value);
 
 			if (text_slot) {
-				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						text_slot,
 						text_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[84], dirty, get_text_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[85], dirty, get_text_slot_changes_1),
 						get_text_slot_context_1
 					);
 				}
@@ -13435,11 +13435,11 @@ function create_if_block_30(ctx) {
 	};
 }
 
-// (555:18) {#if !(swipeout || accordionItem) }
+// (566:18) {#if !(swipeout || accordionItem )}
 function create_if_block_29(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -13457,15 +13457,15 @@ function create_if_block_29(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -13486,15 +13486,15 @@ function create_if_block_29(ctx) {
 	};
 }
 
-// (558:18) {#if hasFooter }
+// (569:18) {#if hasFooter }
 function create_if_block_28(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_2);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_2);
 
 	return {
 		c() {
@@ -13531,15 +13531,15 @@ function create_if_block_28(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_2),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_2),
 						get_footer_slot_context_2
 					);
 				}
@@ -13561,7 +13561,7 @@ function create_if_block_28(ctx) {
 	};
 }
 
-// (371:14) {#if isSortable && sortable != false && isSortableOpposite }
+// (382:14) {#if isSortable && sortable != false && isSortableOpposite }
 function create_if_block_25(ctx) {
 	let div;
 
@@ -13587,14 +13587,14 @@ function create_if_block_25(ctx) {
 	};
 }
 
-// (374:14) {#if hasMedia }
+// (385:14) {#if hasMedia }
 function create_if_block_23(ctx) {
 	let div;
 	let t;
 	let current;
 	let if_block = /*media*/ ctx[3] != undefined && create_if_block_24(ctx);
-	const media_slot_template = /*#slots*/ ctx[70].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[84], get_media_slot_context);
+	const media_slot_template = /*#slots*/ ctx[71].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[85], get_media_slot_context);
 
 	return {
 		c() {
@@ -13642,15 +13642,15 @@ function create_if_block_23(ctx) {
 			}
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[84], dirty, get_media_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[85], dirty, get_media_slot_changes),
 						get_media_slot_context
 					);
 				}
@@ -13673,7 +13673,7 @@ function create_if_block_23(ctx) {
 	};
 }
 
-// (376:18) {#if media != undefined }
+// (387:18) {#if media != undefined }
 function create_if_block_24(ctx) {
 	let img;
 	let img_src_value;
@@ -13704,7 +13704,7 @@ function create_if_block_24(ctx) {
 	};
 }
 
-// (436:16) {:else}
+// (447:16) {:else}
 function create_else_block_1(ctx) {
 	let t0;
 	let t1;
@@ -13713,14 +13713,14 @@ function create_else_block_1(ctx) {
 	let t4;
 	let if_block2_anchor;
 	let current;
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context_1);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context_1);
 	let if_block0 = (/*hasTitle*/ ctx[36] || /*hasHeader*/ ctx[35] || /*hasFooter*/ ctx[34]) && create_if_block_20(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context_1);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context_1);
 	let if_block1 = /*hasAfter*/ ctx[31] && create_if_block_17(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context_1);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context_1);
 	let if_block2 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_16(ctx);
 
 	return {
@@ -13780,15 +13780,15 @@ function create_else_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes_1),
 						get_before_title_slot_context_1
 					);
 				}
@@ -13818,15 +13818,15 @@ function create_else_block_1(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes_1),
 						get_after_title_slot_context_1
 					);
 				}
@@ -13856,15 +13856,15 @@ function create_else_block_1(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes_1),
 						get_inner_slot_context_1
 					);
 				}
@@ -13929,7 +13929,7 @@ function create_else_block_1(ctx) {
 	};
 }
 
-// (384:16) {#if isMedia }
+// (395:16) {#if isMedia }
 function create_if_block_6(ctx) {
 	let t0;
 	let div;
@@ -13944,16 +13944,16 @@ function create_if_block_6(ctx) {
 	let if_block6_anchor;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_15(ctx);
-	const before_title_slot_template = /*#slots*/ ctx[70]["before-title"];
-	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[84], get_before_title_slot_context);
+	const before_title_slot_template = /*#slots*/ ctx[71]["before-title"];
+	const before_title_slot = create_slot(before_title_slot_template, ctx, /*$$scope*/ ctx[85], get_before_title_slot_context);
 	let if_block1 = /*hasTitle*/ ctx[36] && create_if_block_14(ctx);
-	const after_title_slot_template = /*#slots*/ ctx[70]["after-title"];
-	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[84], get_after_title_slot_context);
+	const after_title_slot_template = /*#slots*/ ctx[71]["after-title"];
+	const after_title_slot = create_slot(after_title_slot_template, ctx, /*$$scope*/ ctx[85], get_after_title_slot_context);
 	let if_block2 = /*hasAfter*/ ctx[31] && create_if_block_11(ctx);
 	let if_block3 = /*hasSubtitle*/ ctx[33] && create_if_block_10(ctx);
 	let if_block4 = /*hasText*/ ctx[32] && create_if_block_9(ctx);
-	const inner_slot_template = /*#slots*/ ctx[70].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[84], get_inner_slot_context);
+	const inner_slot_template = /*#slots*/ ctx[71].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[85], get_inner_slot_context);
 	let if_block5 = !(/*swipeout*/ ctx[14] || /*accordionItem*/ ctx[16]) && create_if_block_8(ctx);
 	let if_block6 = /*hasFooter*/ ctx[34] && create_if_block_7(ctx);
 
@@ -14072,15 +14072,15 @@ function create_if_block_6(ctx) {
 			}
 
 			if (before_title_slot) {
-				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (before_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						before_title_slot,
 						before_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[84], dirty, get_before_title_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(before_title_slot_template, /*$$scope*/ ctx[85], dirty, get_before_title_slot_changes),
 						get_before_title_slot_context
 					);
 				}
@@ -14110,15 +14110,15 @@ function create_if_block_6(ctx) {
 			}
 
 			if (after_title_slot) {
-				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_title_slot,
 						after_title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[84], dirty, get_after_title_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_title_slot_template, /*$$scope*/ ctx[85], dirty, get_after_title_slot_changes),
 						get_after_title_slot_context
 					);
 				}
@@ -14194,15 +14194,15 @@ function create_if_block_6(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[84], dirty, get_inner_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[85], dirty, get_inner_slot_changes),
 						get_inner_slot_context
 					);
 				}
@@ -14304,7 +14304,7 @@ function create_if_block_6(ctx) {
 	};
 }
 
-// (438:18) {#if hasTitle || hasHeader || hasFooter }
+// (449:18) {#if hasTitle || hasHeader || hasFooter }
 function create_if_block_20(ctx) {
 	let div;
 	let t0;
@@ -14314,8 +14314,8 @@ function create_if_block_20(ctx) {
 	let t3;
 	let current;
 	let if_block0 = /*hasHeader*/ ctx[35] && create_if_block_22(ctx);
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context_1);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context_1);
 	let if_block1 = /*hasFooter*/ ctx[34] && create_if_block_21(ctx);
 
 	return {
@@ -14388,15 +14388,15 @@ function create_if_block_20(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t1_value !== (t1_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t1, t1_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes_1),
 						get_title_slot_context_1
 					);
 				}
@@ -14447,15 +14447,15 @@ function create_if_block_20(ctx) {
 	};
 }
 
-// (440:22) {#if hasHeader }
+// (451:22) {#if hasHeader }
 function create_if_block_22(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context_1);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context_1);
 
 	return {
 		c() {
@@ -14492,15 +14492,15 @@ function create_if_block_22(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes_1),
 						get_header_slot_context_1
 					);
 				}
@@ -14522,15 +14522,15 @@ function create_if_block_22(ctx) {
 	};
 }
 
-// (448:22) {#if hasFooter }
+// (459:22) {#if hasFooter }
 function create_if_block_21(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context_1);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context_1);
 
 	return {
 		c() {
@@ -14567,15 +14567,15 @@ function create_if_block_21(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes_1),
 						get_footer_slot_context_1
 					);
 				}
@@ -14597,7 +14597,7 @@ function create_if_block_21(ctx) {
 	};
 }
 
-// (457:18) {#if hasAfter }
+// (468:18) {#if hasAfter }
 function create_if_block_17(ctx) {
 	let div;
 	let t0;
@@ -14605,14 +14605,14 @@ function create_if_block_17(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context_1);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context_1);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_19(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_18(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context_1);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context_1);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context_1);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context_1);
 
 	return {
 		c() {
@@ -14673,15 +14673,15 @@ function create_if_block_17(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes_1),
 						get_after_start_slot_context_1
 					);
 				}
@@ -14724,30 +14724,30 @@ function create_if_block_17(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes_1),
 						get_after_slot_context_1
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes_1),
 						get_after_end_slot_context_1
 					);
 				}
@@ -14779,7 +14779,7 @@ function create_if_block_17(ctx) {
 	};
 }
 
-// (460:22) {#if after != undefined }
+// (471:22) {#if after != undefined }
 function create_if_block_19(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -14809,7 +14809,7 @@ function create_if_block_19(ctx) {
 	};
 }
 
-// (463:22) {#if badge != undefined }
+// (474:22) {#if badge != undefined }
 function create_if_block_18(ctx) {
 	let badge_1;
 	let current;
@@ -14837,7 +14837,7 @@ function create_if_block_18(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -14858,7 +14858,7 @@ function create_if_block_18(ctx) {
 	};
 }
 
-// (464:24) <Badge  color="{badgeColor}" >
+// (475:24) <Badge  color="{badgeColor}" >
 function create_default_slot_1(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -14882,11 +14882,11 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (471:18) {#if !(swipeout || accordionItem) }
+// (482:18) {#if !(swipeout || accordionItem )}
 function create_if_block_16(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -14904,15 +14904,15 @@ function create_if_block_16(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -14933,15 +14933,15 @@ function create_if_block_16(ctx) {
 	};
 }
 
-// (385:18) {#if hasHeader }
+// (396:18) {#if hasHeader }
 function create_if_block_15(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[70].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[84], get_header_slot_context);
+	const header_slot_template = /*#slots*/ ctx[71].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[85], get_header_slot_context);
 
 	return {
 		c() {
@@ -14978,15 +14978,15 @@ function create_if_block_15(ctx) {
 			if ((!current || dirty[0] & /*header*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*header*/ ctx[5], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (header_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[84], dirty, get_header_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[85], dirty, get_header_slot_changes),
 						get_header_slot_context
 					);
 				}
@@ -15008,15 +15008,15 @@ function create_if_block_15(ctx) {
 	};
 }
 
-// (393:20) {#if hasTitle }
+// (404:20) {#if hasTitle }
 function create_if_block_14(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const title_slot_template = /*#slots*/ ctx[70].title;
-	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[84], get_title_slot_context);
+	const title_slot_template = /*#slots*/ ctx[71].title;
+	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[85], get_title_slot_context);
 
 	return {
 		c() {
@@ -15053,15 +15053,15 @@ function create_if_block_14(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "")) set_data(t0, t0_value);
 
 			if (title_slot) {
-				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (title_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						title_slot,
 						title_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[84], dirty, get_title_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(title_slot_template, /*$$scope*/ ctx[85], dirty, get_title_slot_changes),
 						get_title_slot_context
 					);
 				}
@@ -15083,7 +15083,7 @@ function create_if_block_14(ctx) {
 	};
 }
 
-// (400:20) {#if hasAfter }
+// (411:20) {#if hasAfter }
 function create_if_block_11(ctx) {
 	let div;
 	let t0;
@@ -15091,14 +15091,14 @@ function create_if_block_11(ctx) {
 	let t2;
 	let t3;
 	let current;
-	const after_start_slot_template = /*#slots*/ ctx[70]["after-start"];
-	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[84], get_after_start_slot_context);
+	const after_start_slot_template = /*#slots*/ ctx[71]["after-start"];
+	const after_start_slot = create_slot(after_start_slot_template, ctx, /*$$scope*/ ctx[85], get_after_start_slot_context);
 	let if_block0 = /*after*/ ctx[9] != undefined && create_if_block_13(ctx);
 	let if_block1 = /*badge*/ ctx[10] != undefined && create_if_block_12(ctx);
-	const after_slot_template = /*#slots*/ ctx[70].after;
-	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[84], get_after_slot_context);
-	const after_end_slot_template = /*#slots*/ ctx[70]["after-end"];
-	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[84], get_after_end_slot_context);
+	const after_slot_template = /*#slots*/ ctx[71].after;
+	const after_slot = create_slot(after_slot_template, ctx, /*$$scope*/ ctx[85], get_after_slot_context);
+	const after_end_slot_template = /*#slots*/ ctx[71]["after-end"];
+	const after_end_slot = create_slot(after_end_slot_template, ctx, /*$$scope*/ ctx[85], get_after_end_slot_context);
 
 	return {
 		c() {
@@ -15159,15 +15159,15 @@ function create_if_block_11(ctx) {
 		},
 		p(ctx, dirty) {
 			if (after_start_slot) {
-				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_start_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_start_slot,
 						after_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[84], dirty, get_after_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_start_slot_template, /*$$scope*/ ctx[85], dirty, get_after_start_slot_changes),
 						get_after_start_slot_context
 					);
 				}
@@ -15210,30 +15210,30 @@ function create_if_block_11(ctx) {
 			}
 
 			if (after_slot) {
-				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_slot,
 						after_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[84], dirty, get_after_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_slot_template, /*$$scope*/ ctx[85], dirty, get_after_slot_changes),
 						get_after_slot_context
 					);
 				}
 			}
 
 			if (after_end_slot) {
-				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (after_end_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						after_end_slot,
 						after_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[84], dirty, get_after_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(after_end_slot_template, /*$$scope*/ ctx[85], dirty, get_after_end_slot_changes),
 						get_after_end_slot_context
 					);
 				}
@@ -15265,7 +15265,7 @@ function create_if_block_11(ctx) {
 	};
 }
 
-// (403:24) {#if after != undefined }
+// (414:24) {#if after != undefined }
 function create_if_block_13(ctx) {
 	let span;
 	let t_value = /*liquid*/ ctx[46].default(/*after*/ ctx[9], '') + "";
@@ -15295,7 +15295,7 @@ function create_if_block_13(ctx) {
 	};
 }
 
-// (406:24) {#if badge != undefined }
+// (417:24) {#if badge != undefined }
 function create_if_block_12(ctx) {
 	let badge_1;
 	let current;
@@ -15323,7 +15323,7 @@ function create_if_block_12(ctx) {
 			const badge_1_changes = {};
 			if (dirty[0] & /*badgeColor*/ 2048) badge_1_changes.color = /*badgeColor*/ ctx[11];
 
-			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 4194304) {
+			if (dirty[0] & /*badge*/ 1024 | dirty[2] & /*$$scope*/ 8388608) {
 				badge_1_changes.$$scope = { dirty, ctx };
 			}
 
@@ -15344,7 +15344,7 @@ function create_if_block_12(ctx) {
 	};
 }
 
-// (407:26) <Badge  color="{badgeColor}" >
+// (418:26) <Badge  color="{badgeColor}" >
 function create_default_slot(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*badge*/ ctx[10], '') + "";
 	let t;
@@ -15368,15 +15368,15 @@ function create_default_slot(ctx) {
 	};
 }
 
-// (414:18) {#if hasSubtitle }
+// (425:18) {#if hasSubtitle }
 function create_if_block_10(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const subtitle_slot_template = /*#slots*/ ctx[70].subtitle;
-	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[84], get_subtitle_slot_context);
+	const subtitle_slot_template = /*#slots*/ ctx[71].subtitle;
+	const subtitle_slot = create_slot(subtitle_slot_template, ctx, /*$$scope*/ ctx[85], get_subtitle_slot_context);
 
 	return {
 		c() {
@@ -15413,15 +15413,15 @@ function create_if_block_10(ctx) {
 			if ((!current || dirty[0] & /*subtitle*/ 16) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*subtitle*/ ctx[4], '') + "")) set_data(t0, t0_value);
 
 			if (subtitle_slot) {
-				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (subtitle_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						subtitle_slot,
 						subtitle_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[84], dirty, get_subtitle_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(subtitle_slot_template, /*$$scope*/ ctx[85], dirty, get_subtitle_slot_changes),
 						get_subtitle_slot_context
 					);
 				}
@@ -15443,15 +15443,15 @@ function create_if_block_10(ctx) {
 	};
 }
 
-// (420:18) {#if hasText }
+// (431:18) {#if hasText }
 function create_if_block_9(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const text_slot_template = /*#slots*/ ctx[70].text;
-	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[84], get_text_slot_context);
+	const text_slot_template = /*#slots*/ ctx[71].text;
+	const text_slot = create_slot(text_slot_template, ctx, /*$$scope*/ ctx[85], get_text_slot_context);
 
 	return {
 		c() {
@@ -15488,15 +15488,15 @@ function create_if_block_9(ctx) {
 			if ((!current || dirty[0] & /*text*/ 4) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*text*/ ctx[2], '') + "")) set_data(t0, t0_value);
 
 			if (text_slot) {
-				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (text_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						text_slot,
 						text_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[84], dirty, get_text_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(text_slot_template, /*$$scope*/ ctx[85], dirty, get_text_slot_changes),
 						get_text_slot_context
 					);
 				}
@@ -15518,11 +15518,11 @@ function create_if_block_9(ctx) {
 	};
 }
 
-// (427:18) {#if !(swipeout || accordionItem) }
+// (438:18) {#if !(swipeout || accordionItem )}
 function create_if_block_8(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -15540,15 +15540,15 @@ function create_if_block_8(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -15569,15 +15569,15 @@ function create_if_block_8(ctx) {
 	};
 }
 
-// (430:18) {#if hasFooter }
+// (441:18) {#if hasFooter }
 function create_if_block_7(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[70].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[84], get_footer_slot_context);
+	const footer_slot_template = /*#slots*/ ctx[71].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[85], get_footer_slot_context);
 
 	return {
 		c() {
@@ -15614,15 +15614,15 @@ function create_if_block_7(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[46].default(/*footer*/ ctx[6], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (footer_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[84], dirty, get_footer_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[85], dirty, get_footer_slot_changes),
 						get_footer_slot_context
 					);
 				}
@@ -15644,7 +15644,7 @@ function create_if_block_7(ctx) {
 	};
 }
 
-// (1087:4) {#if isSortable && sortable != false && !isSortableOpposite }
+// (1098:4) {#if isSortable && sortable != false && isSortableOpposite != true }
 function create_if_block_3(ctx) {
 	let div;
 
@@ -15670,11 +15670,11 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (1090:4) {#if swipeout || accordionItem }
+// (1101:4) {#if swipeout || accordionItem }
 function create_if_block_2(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[70].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[84], null);
+	const default_slot_template = /*#slots*/ ctx[71].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[85], null);
 
 	return {
 		c() {
@@ -15692,15 +15692,15 @@ function create_if_block_2(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 4194304)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 8388608)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[84],
+						/*$$scope*/ ctx[85],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[84])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[84], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[85])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[85], dirty, null),
 						null
 					);
 				}
@@ -15721,7 +15721,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (335:16) { liquid.default(title, '') }
+// (346:16) { liquid.default(title, '') }
 function fallback_block(ctx) {
 	let t_value = /*liquid*/ ctx[46].default(/*title*/ ctx[1], '') + "";
 	let t;
@@ -15838,14 +15838,16 @@ function instance($$self, $$props, $$invalidate) {
 	let hasAfter;
 
 	const omit_props_names = [
-		"classes","title","text","media","subtitle","header","footer","tooltip","tooltipTrigger","link","tabLink","tabLinkActive","selected","href","target","after","badge","badgeColor","mediaItem","mediaList","divider","groupTitle","swipeout","swipeoutOpened","sortable","sortableOpposite","accordionItem","accordionItemOpened","smartSelect","smartSelectParams","noChevron","chevronCenter","checkbox","radio","radioIcon","checked","indeterminate","name","value","readonly","required","disabled","virtualListIndex","routeProps","smartSelectInstance"
+		"importsSeek","classes","title","text","media","subtitle","header","footer","tooltip","tooltipTrigger","link","tabLink","tabLinkActive","selected","href","target","after","badge","badgeColor","mediaItem","mediaList","divider","groupTitle","swipeout","swipeoutOpened","sortable","sortableOpposite","accordionItem","accordionItemOpened","smartSelect","smartSelectParams","noChevron","chevronCenter","checkbox","radio","radioIcon","checked","indeterminate","name","value","readonly","required","disabled","virtualListIndex","routeProps","smartSelectInstance"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	const $$slots = compute_slots(slots);
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let { classes = '' } = $$props;
@@ -15903,7 +15905,7 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	let ListContext = getReactiveContext('ListContext', value => {
-		$$invalidate(69, ListContext = value || {});
+		$$invalidate(70, ListContext = value || {});
 	}) || {};
 
 	/* eslint-enable no-undef */
@@ -15925,6 +15927,13 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	function onClick(event) {
+		// if(!$$props.external && $$props.main) {
+		//   console.log('main link clicked');
+		//   event.preventDefault();
+		//   event.stopImmediatePropagation();
+		//   app.f7.views.main.router.navigate({ url: href || link });
+		// }
+		// else
 		if (event.target.tagName.toLowerCase() !== 'input') {
 			emit('click', event);
 		}
@@ -16174,9 +16183,10 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(108, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(110, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(49, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('classes' in $$new_props) $$invalidate(50, classes = $$new_props.classes);
+		if ('importsSeek' in $$new_props) $$invalidate(50, importsSeek = $$new_props.importsSeek);
+		if ('classes' in $$new_props) $$invalidate(51, classes = $$new_props.classes);
 		if ('title' in $$new_props) $$invalidate(1, title = $$new_props.title);
 		if ('text' in $$new_props) $$invalidate(2, text = $$new_props.text);
 		if ('media' in $$new_props) $$invalidate(3, media = $$new_props.media);
@@ -16185,34 +16195,34 @@ function instance($$self, $$props, $$invalidate) {
 		if ('footer' in $$new_props) $$invalidate(6, footer = $$new_props.footer);
 		if ('tooltip' in $$new_props) $$invalidate(7, tooltip = $$new_props.tooltip);
 		if ('tooltipTrigger' in $$new_props) $$invalidate(8, tooltipTrigger = $$new_props.tooltipTrigger);
-		if ('link' in $$new_props) $$invalidate(51, link = $$new_props.link);
-		if ('tabLink' in $$new_props) $$invalidate(52, tabLink = $$new_props.tabLink);
-		if ('tabLinkActive' in $$new_props) $$invalidate(53, tabLinkActive = $$new_props.tabLinkActive);
-		if ('selected' in $$new_props) $$invalidate(54, selected = $$new_props.selected);
-		if ('href' in $$new_props) $$invalidate(55, href = $$new_props.href);
-		if ('target' in $$new_props) $$invalidate(56, target = $$new_props.target);
+		if ('link' in $$new_props) $$invalidate(52, link = $$new_props.link);
+		if ('tabLink' in $$new_props) $$invalidate(53, tabLink = $$new_props.tabLink);
+		if ('tabLinkActive' in $$new_props) $$invalidate(54, tabLinkActive = $$new_props.tabLinkActive);
+		if ('selected' in $$new_props) $$invalidate(55, selected = $$new_props.selected);
+		if ('href' in $$new_props) $$invalidate(56, href = $$new_props.href);
+		if ('target' in $$new_props) $$invalidate(57, target = $$new_props.target);
 		if ('after' in $$new_props) $$invalidate(9, after = $$new_props.after);
 		if ('badge' in $$new_props) $$invalidate(10, badge = $$new_props.badge);
 		if ('badgeColor' in $$new_props) $$invalidate(11, badgeColor = $$new_props.badgeColor);
-		if ('mediaItem' in $$new_props) $$invalidate(57, mediaItem = $$new_props.mediaItem);
-		if ('mediaList' in $$new_props) $$invalidate(58, mediaList = $$new_props.mediaList);
+		if ('mediaItem' in $$new_props) $$invalidate(58, mediaItem = $$new_props.mediaItem);
+		if ('mediaList' in $$new_props) $$invalidate(59, mediaList = $$new_props.mediaList);
 		if ('divider' in $$new_props) $$invalidate(12, divider = $$new_props.divider);
 		if ('groupTitle' in $$new_props) $$invalidate(13, groupTitle = $$new_props.groupTitle);
 		if ('swipeout' in $$new_props) $$invalidate(14, swipeout = $$new_props.swipeout);
-		if ('swipeoutOpened' in $$new_props) $$invalidate(59, swipeoutOpened = $$new_props.swipeoutOpened);
+		if ('swipeoutOpened' in $$new_props) $$invalidate(60, swipeoutOpened = $$new_props.swipeoutOpened);
 		if ('sortable' in $$new_props) $$invalidate(15, sortable = $$new_props.sortable);
-		if ('sortableOpposite' in $$new_props) $$invalidate(60, sortableOpposite = $$new_props.sortableOpposite);
+		if ('sortableOpposite' in $$new_props) $$invalidate(61, sortableOpposite = $$new_props.sortableOpposite);
 		if ('accordionItem' in $$new_props) $$invalidate(16, accordionItem = $$new_props.accordionItem);
-		if ('accordionItemOpened' in $$new_props) $$invalidate(61, accordionItemOpened = $$new_props.accordionItemOpened);
-		if ('smartSelect' in $$new_props) $$invalidate(62, smartSelect = $$new_props.smartSelect);
-		if ('smartSelectParams' in $$new_props) $$invalidate(63, smartSelectParams = $$new_props.smartSelectParams);
-		if ('noChevron' in $$new_props) $$invalidate(64, noChevron = $$new_props.noChevron);
-		if ('chevronCenter' in $$new_props) $$invalidate(65, chevronCenter = $$new_props.chevronCenter);
+		if ('accordionItemOpened' in $$new_props) $$invalidate(62, accordionItemOpened = $$new_props.accordionItemOpened);
+		if ('smartSelect' in $$new_props) $$invalidate(63, smartSelect = $$new_props.smartSelect);
+		if ('smartSelectParams' in $$new_props) $$invalidate(64, smartSelectParams = $$new_props.smartSelectParams);
+		if ('noChevron' in $$new_props) $$invalidate(65, noChevron = $$new_props.noChevron);
+		if ('chevronCenter' in $$new_props) $$invalidate(66, chevronCenter = $$new_props.chevronCenter);
 		if ('checkbox' in $$new_props) $$invalidate(17, checkbox = $$new_props.checkbox);
 		if ('radio' in $$new_props) $$invalidate(18, radio = $$new_props.radio);
-		if ('radioIcon' in $$new_props) $$invalidate(66, radioIcon = $$new_props.radioIcon);
+		if ('radioIcon' in $$new_props) $$invalidate(67, radioIcon = $$new_props.radioIcon);
 		if ('checked' in $$new_props) $$invalidate(0, checked = $$new_props.checked);
-		if ('indeterminate' in $$new_props) $$invalidate(67, indeterminate = $$new_props.indeterminate);
+		if ('indeterminate' in $$new_props) $$invalidate(68, indeterminate = $$new_props.indeterminate);
 		if ('name' in $$new_props) $$invalidate(19, name = $$new_props.name);
 		if ('value' in $$new_props) $$invalidate(20, value = $$new_props.value);
 		if ('readonly' in $$new_props) $$invalidate(21, readonly = $$new_props.readonly);
@@ -16220,25 +16230,25 @@ function instance($$self, $$props, $$invalidate) {
 		if ('disabled' in $$new_props) $$invalidate(23, disabled = $$new_props.disabled);
 		if ('virtualListIndex' in $$new_props) $$invalidate(24, virtualListIndex = $$new_props.virtualListIndex);
 		if ('routeProps' in $$new_props) $$invalidate(25, routeProps = $$new_props.routeProps);
-		if ('$$scope' in $$new_props) $$invalidate(84, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(85, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[1] & /*mediaList, mediaItem*/ 201326592 | $$self.$$.dirty[2] & /*ListContext*/ 128) {
+		if ($$self.$$.dirty[1] & /*mediaList, mediaItem*/ 402653184 | $$self.$$.dirty[2] & /*ListContext*/ 256) {
 			$$invalidate(26, isMedia = mediaList || mediaItem || ListContext.listIsMedia);
 		}
 
-		if ($$self.$$.dirty[0] & /*sortable*/ 32768 | $$self.$$.dirty[2] & /*ListContext*/ 128) {
+		if ($$self.$$.dirty[0] & /*sortable*/ 32768 | $$self.$$.dirty[2] & /*ListContext*/ 256) {
 			$$invalidate(45, isSortable = sortable === true || sortable === false
 			? sortable
 			: ListContext.listIsSortable);
 		}
 
-		if ($$self.$$.dirty[1] & /*sortableOpposite*/ 536870912 | $$self.$$.dirty[2] & /*ListContext*/ 128) {
+		if ($$self.$$.dirty[1] & /*sortableOpposite*/ 1073741824 | $$self.$$.dirty[2] & /*ListContext*/ 256) {
 			$$invalidate(44, isSortableOpposite = sortableOpposite || ListContext.listIsSortableOpposite);
 		}
 
-		if ($$self.$$.dirty[2] & /*ListContext*/ 128) {
+		if ($$self.$$.dirty[2] & /*ListContext*/ 256) {
 			$$invalidate(43, isSimple = ListContext.listIsSimple);
 		}
 
@@ -16291,7 +16301,7 @@ function instance($$self, $$props, $$invalidate) {
 			...actionsAttrs($$props)
 		});
 
-		if ($$self.$$.dirty[0] & /*accordionItem*/ 65536 | $$self.$$.dirty[1] & /*link, href*/ 17825792 | $$self.$$.dirty[2] & /*smartSelect*/ 1) {
+		if ($$self.$$.dirty[0] & /*accordionItem*/ 65536 | $$self.$$.dirty[1] & /*link, href*/ 35651584 | $$self.$$.dirty[2] & /*smartSelect*/ 2) {
 			$$invalidate(38, isLink = link || href || smartSelect || accordionItem);
 		}
 
@@ -16324,7 +16334,7 @@ function instance($$self, $$props, $$invalidate) {
 			$$invalidate(31, hasAfter = after !== undefined || badge !== undefined || $$slots.after);
 		}
 
-		if ($$self.$$.dirty[1] & /*swipeoutOpened*/ 268435456) {
+		if ($$self.$$.dirty[1] & /*swipeoutOpened*/ 536870912) {
 			watchSwipeoutOpened(swipeoutOpened);
 		}
 	};
@@ -16382,6 +16392,7 @@ function instance($$self, $$props, $$invalidate) {
 		onClick,
 		onChange,
 		$$restProps,
+		importsSeek,
 		classes,
 		link,
 		tabLink,
@@ -16431,7 +16442,8 @@ class List_item extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
-				classes: 50,
+				importsSeek: 50,
+				classes: 51,
 				title: 1,
 				text: 2,
 				media: 3,
@@ -16440,34 +16452,34 @@ class List_item extends SvelteComponent {
 				footer: 6,
 				tooltip: 7,
 				tooltipTrigger: 8,
-				link: 51,
-				tabLink: 52,
-				tabLinkActive: 53,
-				selected: 54,
-				href: 55,
-				target: 56,
+				link: 52,
+				tabLink: 53,
+				tabLinkActive: 54,
+				selected: 55,
+				href: 56,
+				target: 57,
 				after: 9,
 				badge: 10,
 				badgeColor: 11,
-				mediaItem: 57,
-				mediaList: 58,
+				mediaItem: 58,
+				mediaList: 59,
 				divider: 12,
 				groupTitle: 13,
 				swipeout: 14,
-				swipeoutOpened: 59,
+				swipeoutOpened: 60,
 				sortable: 15,
-				sortableOpposite: 60,
+				sortableOpposite: 61,
 				accordionItem: 16,
-				accordionItemOpened: 61,
-				smartSelect: 62,
-				smartSelectParams: 63,
-				noChevron: 64,
-				chevronCenter: 65,
+				accordionItemOpened: 62,
+				smartSelect: 63,
+				smartSelectParams: 64,
+				noChevron: 65,
+				chevronCenter: 66,
 				checkbox: 17,
 				radio: 18,
-				radioIcon: 66,
+				radioIcon: 67,
 				checked: 0,
-				indeterminate: 67,
+				indeterminate: 68,
 				name: 19,
 				value: 20,
 				readonly: 21,
@@ -16475,7 +16487,7 @@ class List_item extends SvelteComponent {
 				disabled: 23,
 				virtualListIndex: 24,
 				routeProps: 25,
-				smartSelectInstance: 68
+				smartSelectInstance: 69
 			},
 			null,
 			[-1, -1, -1, -1]
@@ -16483,7 +16495,7 @@ class List_item extends SvelteComponent {
 	}
 
 	get smartSelectInstance() {
-		return this.$$.ctx[68];
+		return this.$$.ctx[69];
 	}
 }
 

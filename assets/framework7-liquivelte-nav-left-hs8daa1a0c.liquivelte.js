@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, getContext, createEventDispatcher, exclude_internal_props, create_component, claim_component, mount_component, destroy_component } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, getContext, createEventDispatcher, exclude_internal_props, create_component, claim_component, mount_component, destroy_component } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { restProps, createEmitter, useTheme, classNames, colorClasses } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Link } from './framework7-liquivelte-link-hs8daa1a0c.liquivelte.js';
 
@@ -59,8 +59,8 @@ function create_fragment(ctx) {
 	let t;
 	let current;
 	let if_block = /*backLink*/ ctx[0] && create_if_block(ctx);
-	const default_slot_template = /*#slots*/ ctx[13].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[12], null);
+	const default_slot_template = /*#slots*/ ctx[14].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[13], null);
 	let div_levels = [{ class: /*computedClasses*/ ctx[3] }, restProps(/*$$restProps*/ ctx[6])];
 	let div_data = {};
 
@@ -124,15 +124,15 @@ function create_fragment(ctx) {
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 4096)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 8192)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[12],
+						/*$$scope*/ ctx[13],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[12])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[12], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[13])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[13], dirty, null),
 						null
 					);
 				}
@@ -167,13 +167,15 @@ function instance($$self, $$props, $$invalidate) {
 	let backLinkText;
 
 	const omit_props_names = [
-		"classes","backLink","backLinkUrl","backLinkForce","backLinkShowText","sliding"
+		"importsSeek","classes","backLink","backLinkUrl","backLinkForce","backLinkShowText","sliding"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let computedClasses = undefined;
 	let { classes = '' } = $$props;
@@ -184,7 +186,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { sliding = undefined } = $$props;
 
 	let theme = useTheme(t => {
-		$$invalidate(10, theme = t);
+		$$invalidate(11, theme = t);
 	});
 
 	function onBackClick() {
@@ -193,29 +195,30 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(18, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(20, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(6, $$restProps = compute_rest_props($$props, omit_props_names));
-		if ('classes' in $$new_props) $$invalidate(7, classes = $$new_props.classes);
+		if ('importsSeek' in $$new_props) $$invalidate(7, importsSeek = $$new_props.importsSeek);
+		if ('classes' in $$new_props) $$invalidate(8, classes = $$new_props.classes);
 		if ('backLink' in $$new_props) $$invalidate(0, backLink = $$new_props.backLink);
 		if ('backLinkUrl' in $$new_props) $$invalidate(1, backLinkUrl = $$new_props.backLinkUrl);
 		if ('backLinkForce' in $$new_props) $$invalidate(2, backLinkForce = $$new_props.backLinkForce);
-		if ('backLinkShowText' in $$new_props) $$invalidate(8, backLinkShowText = $$new_props.backLinkShowText);
-		if ('sliding' in $$new_props) $$invalidate(9, sliding = $$new_props.sliding);
-		if ('$$scope' in $$new_props) $$invalidate(12, $$scope = $$new_props.$$scope);
+		if ('backLinkShowText' in $$new_props) $$invalidate(9, backLinkShowText = $$new_props.backLinkShowText);
+		if ('sliding' in $$new_props) $$invalidate(10, sliding = $$new_props.sliding);
+		if ('$$scope' in $$new_props) $$invalidate(13, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
 		$$invalidate(3, computedClasses = classNames(classes, 'left', { sliding }, colorClasses($$props)));
 
-		if ($$self.$$.dirty & /*backLinkShowText*/ 256) {
-			$$invalidate(11, needBackLinkText = backLinkShowText);
+		if ($$self.$$.dirty & /*backLinkShowText*/ 512) {
+			$$invalidate(12, needBackLinkText = backLinkShowText);
 		}
 
-		if ($$self.$$.dirty & /*needBackLinkText, theme*/ 3072) {
-			if (typeof needBackLinkText === 'undefined') $$invalidate(11, needBackLinkText = theme && !theme.md);
+		if ($$self.$$.dirty & /*needBackLinkText, theme*/ 6144) {
+			if (typeof needBackLinkText === 'undefined') $$invalidate(12, needBackLinkText = theme && !theme.md);
 		}
 
-		if ($$self.$$.dirty & /*backLink, needBackLinkText*/ 2049) {
+		if ($$self.$$.dirty & /*backLink, needBackLinkText*/ 4097) {
 			$$invalidate(4, backLinkText = backLink !== true && needBackLinkText
 			? backLink
 			: undefined);
@@ -232,6 +235,7 @@ function instance($$self, $$props, $$invalidate) {
 		backLinkText,
 		onBackClick,
 		$$restProps,
+		importsSeek,
 		classes,
 		backLinkShowText,
 		sliding,
@@ -247,12 +251,13 @@ class Nav_left extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			classes: 7,
+			importsSeek: 7,
+			classes: 8,
 			backLink: 0,
 			backLinkUrl: 1,
 			backLinkForce: 2,
-			backLinkShowText: 8,
-			sliding: 9
+			backLinkShowText: 9,
+			sliding: 10
 		});
 	}
 }
