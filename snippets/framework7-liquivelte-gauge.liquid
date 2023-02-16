@@ -41,52 +41,52 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'type'
+	if lv_propName == 'type' and type == blank
 		assign type = lv_propValue
 	endif
-	if lv_propName == 'value'
+	if lv_propName == 'value' and value == blank
 		assign value = lv_propValue
 	endif
-	if lv_propName == 'size'
+	if lv_propName == 'size' and size == blank
 		assign size = lv_propValue
 	endif
-	if lv_propName == 'bgColor'
+	if lv_propName == 'bgColor' and bgColor == blank
 		assign bgColor = lv_propValue
 	endif
-	if lv_propName == 'borderBgColor'
+	if lv_propName == 'borderBgColor' and borderBgColor == blank
 		assign borderBgColor = lv_propValue
 	endif
-	if lv_propName == 'borderColor'
+	if lv_propName == 'borderColor' and borderColor == blank
 		assign borderColor = lv_propValue
 	endif
-	if lv_propName == 'borderWidth'
+	if lv_propName == 'borderWidth' and borderWidth == blank
 		assign borderWidth = lv_propValue
 	endif
-	if lv_propName == 'valueText'
+	if lv_propName == 'valueText' and valueText == blank
 		assign valueText = lv_propValue
 	endif
-	if lv_propName == 'valueTextColor'
+	if lv_propName == 'valueTextColor' and valueTextColor == blank
 		assign valueTextColor = lv_propValue
 	endif
-	if lv_propName == 'valueFontSize'
+	if lv_propName == 'valueFontSize' and valueFontSize == blank
 		assign valueFontSize = lv_propValue
 	endif
-	if lv_propName == 'valueFontWeight'
+	if lv_propName == 'valueFontWeight' and valueFontWeight == blank
 		assign valueFontWeight = lv_propValue
 	endif
-	if lv_propName == 'labelText'
+	if lv_propName == 'labelText' and labelText == blank
 		assign labelText = lv_propValue
 	endif
-	if lv_propName == 'labelTextColor'
+	if lv_propName == 'labelTextColor' and labelTextColor == blank
 		assign labelTextColor = lv_propValue
 	endif
-	if lv_propName == 'labelFontSize'
+	if lv_propName == 'labelFontSize' and labelFontSize == blank
 		assign labelFontSize = lv_propValue
 	endif
-	if lv_propName == 'labelFontWeight'
+	if lv_propName == 'labelFontWeight' and labelFontWeight == blank
 		assign labelFontWeight = lv_propValue
 	endif
 	endfor
@@ -107,6 +107,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component gauge" data-liquivelte-component-name="gauge.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -195,11 +199,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-gauge"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -221,7 +231,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -271,7 +289,9 @@
 			assign slot_default_framework7-liquivelte_gauge = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

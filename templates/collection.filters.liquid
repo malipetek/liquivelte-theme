@@ -1,0 +1,130 @@
+{% layout none %}
+{% liquid 
+  assign filters = '['
+  assign filter_keys = 'false_value,label,param_name,range_max,true_value,type,url_to_remove' | split: ','
+  assign values_keys = 'active,count,label,param_name,url_to_add,url_to_remove,value' | split: ','
+  for filter in collection.filters
+    assign filters = filters | append: '{'
+
+    assign filters = filters | append: '"' | append: 'active_values' | append: '": ' | append: "["
+    for value in filter.active_values
+      assign filters = filters | append: '{'
+
+      for key in values_keys
+
+        assign val = value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '}'
+      unless forloop.last
+        assign filters = filters | append: ','
+      endunless
+
+    endfor
+
+    assign filters = filters | append: '],'
+    
+    assign filters = filters | append: '"' | append: 'inactive_values' | append: '": ' | append: "["
+    for value in filter.inactive_values
+      assign filters = filters | append: '{'
+
+      for key in values_keys
+
+        assign val = value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '}'
+      unless forloop.last
+        assign filters = filters | append: ','
+      endunless
+
+    endfor
+
+    assign filters = filters | append: '],'
+    
+    assign filters = filters | append: '"' | append: 'values' | append: '": ' | append: "["
+    for value in filter.values
+      assign filters = filters | append: '{'
+
+      for key in values_keys
+
+        assign val = value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '}'
+      unless forloop.last
+        assign filters = filters | append: ','
+      endunless
+
+    endfor
+
+    assign filters = filters | append: '],'
+
+    assign filters = filters | append: '"' | append: 'max_value' | append: '": ' | append: "{"
+
+      for key in values_keys
+
+        assign val = filter.max_value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '},'
+   
+      assign filters = filters | append: '"' | append: 'min_value' | append: '": ' | append: "{"
+
+      for key in values_keys
+
+        assign val = filter.min_value[key] | json
+        assign filters = filters | append: '"' | append: key | append: '": ' | append: val
+
+        
+        unless forloop.last
+          assign filters = filters | append: ','
+        endunless
+      endfor
+    
+      assign filters = filters | append: '},'
+
+    for key in filter_keys
+      assign value = filter[key] | json
+      assign filters = filters | append: '"' | append: key | append: '": ' | append: value
+      
+      unless forloop.last
+        assign filters = filters | append: ','
+      endunless
+    endfor
+      
+    assign filters = filters | append: '}'
+    unless forloop.last
+      assign filters = filters | append: ','
+    endunless
+  endfor
+  assign filters = filters | append: ']'
+%}
+
+{ 
+  "products": {{ filters }}
+}

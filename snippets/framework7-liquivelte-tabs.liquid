@@ -30,19 +30,19 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'animated'
+	if lv_propName == 'animated' and animated == blank
 		assign animated = lv_propValue
 	endif
-	if lv_propName == 'swipeable'
+	if lv_propName == 'swipeable' and swipeable == blank
 		assign swipeable = lv_propValue
 	endif
-	if lv_propName == 'routable'
+	if lv_propName == 'routable' and routable == blank
 		assign routable = lv_propValue
 	endif
-	if lv_propName == 'swiperParams'
+	if lv_propName == 'swiperParams' and swiperParams == blank
 		assign swiperParams = lv_propValue
 	endif
 	endfor
@@ -63,6 +63,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component tabs" data-liquivelte-component-name="tabs.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -88,11 +92,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-tabs"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -114,7 +124,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -153,7 +171,9 @@
 			assign slot_default_framework7-liquivelte_tabs = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

@@ -35,34 +35,34 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'text'
+	if lv_propName == 'text' and text == blank
 		assign text = lv_propValue
 	endif
-	if lv_propName == 'iconOnly'
+	if lv_propName == 'iconOnly' and iconOnly == blank
 		assign iconOnly = lv_propValue
 	endif
-	if lv_propName == 'href'
+	if lv_propName == 'href' and href == blank
 		assign href = lv_propValue
 	endif
-	if lv_propName == 'link'
+	if lv_propName == 'link' and link == blank
 		assign link = lv_propValue
 	endif
-	if lv_propName == 'target'
+	if lv_propName == 'target' and target == blank
 		assign target = lv_propValue
 	endif
-	if lv_propName == 'dropdown'
+	if lv_propName == 'dropdown' and dropdown == blank
 		assign dropdown = lv_propValue
 	endif
-	if lv_propName == 'tooltip'
+	if lv_propName == 'tooltip' and tooltip == blank
 		assign tooltip = lv_propValue
 	endif
-	if lv_propName == 'tooltipTrigger'
+	if lv_propName == 'tooltipTrigger' and tooltipTrigger == blank
 		assign tooltipTrigger = lv_propValue
 	endif
-	if lv_propName == 'routeProps'
+	if lv_propName == 'routeProps' and routeProps == blank
 		assign routeProps = lv_propValue
 	endif
 	endfor
@@ -89,6 +89,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component menu-item" data-liquivelte-component-name="menu-item.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -113,7 +117,7 @@
 {% endcomment %}
 {% capture props_UseIcon %}{icon}-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'use-icon' %}
-{% include modulename, liquivelte: true, props: props_UseIcon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_UseIcon, sub_include: true, basename: ''  %}
 {% assign props = '' %}
         {% endif %}
         
@@ -149,7 +153,7 @@
 {% endcomment %}
 {% capture props_UseIcon %}{icon}-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'use-icon' %}
-{% include modulename, liquivelte: true, props: props_UseIcon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_UseIcon, sub_include: true, basename: ''  %}
 {% assign props = '' %}
         {% endif %}
         
@@ -169,11 +173,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-menu-item"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -195,7 +205,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -241,7 +259,9 @@
 			assign slot_text_framework7-liquivelte_menu-item = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

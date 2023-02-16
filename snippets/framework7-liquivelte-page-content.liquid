@@ -42,55 +42,55 @@
 	
 	endfor
 	endif
-	if lv_propName == 'tab'
+	if lv_propName == 'tab' and tab == blank
 		assign tab = lv_propValue
 	endif
-	if lv_propName == 'tabActive'
+	if lv_propName == 'tabActive' and tabActive == blank
 		assign tabActive = lv_propValue
 	endif
-	if lv_propName == 'ptr'
+	if lv_propName == 'ptr' and ptr == blank
 		assign ptr = lv_propValue
 	endif
-	if lv_propName == 'ptrDistance'
+	if lv_propName == 'ptrDistance' and ptrDistance == blank
 		assign ptrDistance = lv_propValue
 	endif
-	if lv_propName == 'ptrPreloader'
+	if lv_propName == 'ptrPreloader' and ptrPreloader == blank
 		assign ptrPreloader = lv_propValue
 	endif
-	if lv_propName == 'ptrBottom'
+	if lv_propName == 'ptrBottom' and ptrBottom == blank
 		assign ptrBottom = lv_propValue
 	endif
-	if lv_propName == 'ptrMousewheel'
+	if lv_propName == 'ptrMousewheel' and ptrMousewheel == blank
 		assign ptrMousewheel = lv_propValue
 	endif
-	if lv_propName == 'infinite'
+	if lv_propName == 'infinite' and infinite == blank
 		assign infinite = lv_propValue
 	endif
-	if lv_propName == 'infiniteTop'
+	if lv_propName == 'infiniteTop' and infiniteTop == blank
 		assign infiniteTop = lv_propValue
 	endif
-	if lv_propName == 'infiniteDistance'
+	if lv_propName == 'infiniteDistance' and infiniteDistance == blank
 		assign infiniteDistance = lv_propValue
 	endif
-	if lv_propName == 'infinitePreloader'
+	if lv_propName == 'infinitePreloader' and infinitePreloader == blank
 		assign infinitePreloader = lv_propValue
 	endif
-	if lv_propName == 'hideBarsOnScroll'
+	if lv_propName == 'hideBarsOnScroll' and hideBarsOnScroll == blank
 		assign hideBarsOnScroll = lv_propValue
 	endif
-	if lv_propName == 'hideNavbarOnScroll'
+	if lv_propName == 'hideNavbarOnScroll' and hideNavbarOnScroll == blank
 		assign hideNavbarOnScroll = lv_propValue
 	endif
-	if lv_propName == 'hideToolbarOnScroll'
+	if lv_propName == 'hideToolbarOnScroll' and hideToolbarOnScroll == blank
 		assign hideToolbarOnScroll = lv_propValue
 	endif
-	if lv_propName == 'messagesContent'
+	if lv_propName == 'messagesContent' and messagesContent == blank
 		assign messagesContent = lv_propValue
 	endif
-	if lv_propName == 'loginScreen'
+	if lv_propName == 'loginScreen' and loginScreen == blank
 		assign loginScreen = lv_propValue
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
 	endfor
@@ -111,8 +111,28 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component page-content" data-liquivelte-component-name="page-content.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
-	
+	{% liquid
+  assign tab = false
+  assign tabActive = false
+  assign ptr = false
+  assign ptrPreloader = true
+  assign ptrBottom = false
+  assign ptrMousewheel = false
+  assign infinite = false
+  assign infiniteTop = false
+  assign infinitePreloader = true
+  assign hideBarsOnScroll = false
+  assign hideNavbarOnScroll = false
+  assign hideToolbarOnScroll = false
+  assign messagesContent = false
+  assign loginScreen = false
+  %}
+
 
 <div
   class="page-content {{ pageContentClasses }}"
@@ -131,7 +151,7 @@
 {% endcomment %}
 {% capture props_Preloader %}{% endcapture %}
 {% assign modulename = basename | append: 'preloader' %}
-{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: ''  %}
 {% assign props = '' %}
       <div class="ptr-arrow" />
     </div>
@@ -144,7 +164,7 @@
 {% endcomment %}
 {% capture props_Preloader %}class-kvsp-infinite-scroll-preloader{% endcapture %}
 {% assign modulename = basename | append: 'preloader' %}
-{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: ''  %}
 {% assign props = '' %}
   {% endif %}
   
@@ -152,7 +172,7 @@
 			{{- slot_default_framework7-liquivelte_page-content -}}
 		{%- endif -%}
 	
-  {% if infinite and !infiniteTop and infinitePreloader %}
+  {% if infinite and infiniteTop != true and infinitePreloader %}
     
 {% comment %}
   kvsp stands for "key value separator"
@@ -160,7 +180,7 @@
 {% endcomment %}
 {% capture props_Preloader %}class-kvsp-infinite-scroll-preloader{% endcapture %}
 {% assign modulename = basename | append: 'preloader' %}
-{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: ''  %}
 {% assign props = '' %}
   {% endif %}
   {% if ptr and ptrPreloader and ptrBottom %}
@@ -172,7 +192,7 @@
 {% endcomment %}
 {% capture props_Preloader %}{% endcapture %}
 {% assign modulename = basename | append: 'preloader' %}
-{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Preloader, sub_include: true, basename: ''  %}
 {% assign props = '' %}
       <div class="ptr-arrow" />
     </div>
@@ -181,11 +201,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-page-content"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -207,7 +233,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -258,7 +292,9 @@
 			assign slot_default_framework7-liquivelte_page-content = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

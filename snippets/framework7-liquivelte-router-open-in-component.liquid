@@ -31,22 +31,22 @@
 	
 	endfor
 	endif
-	if lv_propName == 'openIn'
+	if lv_propName == 'openIn' and openIn == blank
 		assign openIn = lv_propValue
 	endif
-	if lv_propName == 'url'
+	if lv_propName == 'url' and url == blank
 		assign url = lv_propValue
 	endif
-	if lv_propName == 'viewSelector'
+	if lv_propName == 'viewSelector' and viewSelector == blank
 		assign viewSelector = lv_propValue
 	endif
-	if lv_propName == 'targetEl'
+	if lv_propName == 'targetEl' and targetEl == blank
 		assign targetEl = lv_propValue
 	endif
-	if lv_propName == 'side'
+	if lv_propName == 'side' and side == blank
 		assign side = lv_propValue
 	endif
-	if lv_propName == 'effect'
+	if lv_propName == 'effect' and effect == blank
 		assign effect = lv_propValue
 	endif
 	endfor
@@ -67,6 +67,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component router-open-in-component" data-liquivelte-component-name="router-open-in-component.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -82,8 +86,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Popup %}className-kvsp-popup-router-open-in-prsp-data-url-kvsp-{url}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Popup -%}
+
+{%- capture slot_content_def_Popup -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
   kvsp stands for "key value separator"
@@ -91,12 +97,14 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_View %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp-1-prsp-ignoreOpenIn-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'view' %}
-{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: ''  %}
 {% assign props = '' %}
-  {%- endcapture -%}
-{% assign slot_content_Popup = slot_content_Popup | append: '-scs-' | append: 'popup' | append: '-scvs-' | append: slot_content_def_Popup %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'popup' %}
-{% include modulename, liquivelte: true, props: props_Popup, sub_include: true, slot_contents: slot_content_Popup, basename: '' %}
+{% assign slot_content_Popup = slot_content_Popup | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Popup %}
+{% include modulename, liquivelte: true, props: props_Popup, sub_include: true, slot_contents: slot_content_Popup, basename: ''  %}
 {% assign slot_content_Popup = '' %}
 {% assign props = '' %}
 {% endif %}
@@ -112,8 +120,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_LoginScreen %}className-kvsp-login-screen-router-open-in-prsp-data-url-kvsp-{url}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_LoginScreen -%}
+
+{%- capture slot_content_def_LoginScreen -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
   kvsp stands for "key value separator"
@@ -121,12 +131,14 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_View %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp-1-prsp-ignoreOpenIn-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'view' %}
-{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: ''  %}
 {% assign props = '' %}
-  {%- endcapture -%}
-{% assign slot_content_LoginScreen = slot_content_LoginScreen | append: '-scs-' | append: 'login-screen' | append: '-scvs-' | append: slot_content_def_LoginScreen %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'login-screen' %}
-{% include modulename, liquivelte: true, props: props_LoginScreen, sub_include: true, slot_contents: slot_content_LoginScreen, basename: '' %}
+{% assign slot_content_LoginScreen = slot_content_LoginScreen | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_LoginScreen %}
+{% include modulename, liquivelte: true, props: props_LoginScreen, sub_include: true, slot_contents: slot_content_LoginScreen, basename: ''  %}
 {% assign slot_content_LoginScreen = '' %}
 {% assign props = '' %}
 {% endif %}
@@ -142,8 +154,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Sheet %}className-kvsp-sheet-modal-router-open-in-prsp-data-url-kvsp-{url}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Sheet -%}
+
+{%- capture slot_content_def_Sheet -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
   kvsp stands for "key value separator"
@@ -151,12 +165,14 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_View %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp-1-prsp-ignoreOpenIn-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'view' %}
-{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: ''  %}
 {% assign props = '' %}
-  {%- endcapture -%}
-{% assign slot_content_Sheet = slot_content_Sheet | append: '-scs-' | append: 'sheet' | append: '-scvs-' | append: slot_content_def_Sheet %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'sheet' %}
-{% include modulename, liquivelte: true, props: props_Sheet, sub_include: true, slot_contents: slot_content_Sheet, basename: '' %}
+{% assign slot_content_Sheet = slot_content_Sheet | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Sheet %}
+{% include modulename, liquivelte: true, props: props_Sheet, sub_include: true, slot_contents: slot_content_Sheet, basename: ''  %}
 {% assign slot_content_Sheet = '' %}
 {% assign props = '' %}
 {% endif %}
@@ -172,8 +188,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Popover %}className-kvsp-popover-router-open-in-prsp-{targetEl}-kvsp-1-prsp-data-url-kvsp-{url}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Popover -%}
+
+{%- capture slot_content_def_Popover -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
   kvsp stands for "key value separator"
@@ -181,12 +199,14 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_View %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp-1-prsp-ignoreOpenIn-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'view' %}
-{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: ''  %}
 {% assign props = '' %}
-  {%- endcapture -%}
-{% assign slot_content_Popover = slot_content_Popover | append: '-scs-' | append: 'popover' | append: '-scvs-' | append: slot_content_def_Popover %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'popover' %}
-{% include modulename, liquivelte: true, props: props_Popover, sub_include: true, slot_contents: slot_content_Popover, basename: '' %}
+{% assign slot_content_Popover = slot_content_Popover | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Popover %}
+{% include modulename, liquivelte: true, props: props_Popover, sub_include: true, slot_contents: slot_content_Popover, basename: ''  %}
 {% assign slot_content_Popover = '' %}
 {% assign props = '' %}
 {% endif %}
@@ -202,8 +222,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Panel %}{side}-kvsp-1-prsp-{effect}-kvsp-1-prsp-className-kvsp-panel-router-open-in-prsp-data-url-kvsp-{url}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Panel -%}
+
+{%- capture slot_content_def_Panel -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
   kvsp stands for "key value separator"
@@ -211,23 +233,31 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_View %}linksView-kvsp-{viewSelector}-prsp-{url}-kvsp-1-prsp-ignoreOpenIn-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'view' %}
-{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_View, sub_include: true, basename: ''  %}
 {% assign props = '' %}
-  {%- endcapture -%}
-{% assign slot_content_Panel = slot_content_Panel | append: '-scs-' | append: 'panel' | append: '-scvs-' | append: slot_content_def_Panel %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'panel' %}
-{% include modulename, liquivelte: true, props: props_Panel, sub_include: true, slot_contents: slot_content_Panel, basename: '' %}
+{% assign slot_content_Panel = slot_content_Panel | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Panel %}
+{% include modulename, liquivelte: true, props: props_Panel, sub_include: true, slot_contents: slot_content_Panel, basename: ''  %}
 {% assign slot_content_Panel = '' %}
 {% assign props = '' %}
 {% endif %}
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-router-open-in-component"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -249,7 +279,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -289,7 +327,9 @@ smns stands for "slot module name separator"
 			assign slot_default_framework7-liquivelte_router-open-in-component = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

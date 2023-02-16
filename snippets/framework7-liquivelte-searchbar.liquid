@@ -59,106 +59,106 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'noShadow'
+	if lv_propName == 'noShadow' and noShadow == blank
 		assign noShadow = lv_propValue
 	endif
-	if lv_propName == 'noHairline'
+	if lv_propName == 'noHairline' and noHairline == blank
 		assign noHairline = lv_propValue
 	endif
-	if lv_propName == 'form'
+	if lv_propName == 'form' and form == blank
 		assign form = lv_propValue
 	endif
-	if lv_propName == 'placeholder'
+	if lv_propName == 'placeholder' and placeholder == blank
 		assign placeholder = lv_propValue
 	endif
-	if lv_propName == 'autocomplete'
+	if lv_propName == 'autocomplete' and autocomplete == blank
 		assign autocomplete = lv_propValue
 	endif
-	if lv_propName == 'autocorrect'
+	if lv_propName == 'autocorrect' and autocorrect == blank
 		assign autocorrect = lv_propValue
 	endif
-	if lv_propName == 'autocapitalize'
+	if lv_propName == 'autocapitalize' and autocapitalize == blank
 		assign autocapitalize = lv_propValue
 	endif
-	if lv_propName == 'spellcheck'
+	if lv_propName == 'spellcheck' and spellcheck == blank
 		assign spellcheck = lv_propValue
 	endif
-	if lv_propName == 'disableButton'
+	if lv_propName == 'disableButton' and disableButton == blank
 		assign disableButton = lv_propValue
 	endif
-	if lv_propName == 'disableButtonText'
+	if lv_propName == 'disableButtonText' and disableButtonText == blank
 		assign disableButtonText = lv_propValue
 	endif
-	if lv_propName == 'clearButton'
+	if lv_propName == 'clearButton' and clearButton == blank
 		assign clearButton = lv_propValue
 	endif
-	if lv_propName == 'value'
+	if lv_propName == 'value' and value == blank
 		assign value = lv_propValue
 	endif
-	if lv_propName == 'inputEvents'
+	if lv_propName == 'inputEvents' and inputEvents == blank
 		assign inputEvents = lv_propValue
 	endif
-	if lv_propName == 'expandable'
+	if lv_propName == 'expandable' and expandable == blank
 		assign expandable = lv_propValue
 	endif
-	if lv_propName == 'inline'
+	if lv_propName == 'inline' and inline == blank
 		assign inline = lv_propValue
 	endif
-	if lv_propName == 'searchContainer'
+	if lv_propName == 'searchContainer' and searchContainer == blank
 		assign searchContainer = lv_propValue
 	endif
-	if lv_propName == 'searchIn'
+	if lv_propName == 'searchIn' and searchIn == blank
 		assign searchIn = lv_propValue
 	endif
-	if lv_propName == 'searchItem'
+	if lv_propName == 'searchItem' and searchItem == blank
 		assign searchItem = lv_propValue
 	endif
-	if lv_propName == 'searchGroup'
+	if lv_propName == 'searchGroup' and searchGroup == blank
 		assign searchGroup = lv_propValue
 	endif
-	if lv_propName == 'searchGroupTitle'
+	if lv_propName == 'searchGroupTitle' and searchGroupTitle == blank
 		assign searchGroupTitle = lv_propValue
 	endif
-	if lv_propName == 'foundEl'
+	if lv_propName == 'foundEl' and foundEl == blank
 		assign foundEl = lv_propValue
 	endif
-	if lv_propName == 'notFoundEl'
+	if lv_propName == 'notFoundEl' and notFoundEl == blank
 		assign notFoundEl = lv_propValue
 	endif
-	if lv_propName == 'backdrop'
+	if lv_propName == 'backdrop' and backdrop == blank
 		assign backdrop = lv_propValue
 	endif
-	if lv_propName == 'backdropEl'
+	if lv_propName == 'backdropEl' and backdropEl == blank
 		assign backdropEl = lv_propValue
 	endif
-	if lv_propName == 'hideOnEnableEl'
+	if lv_propName == 'hideOnEnableEl' and hideOnEnableEl == blank
 		assign hideOnEnableEl = lv_propValue
 	endif
-	if lv_propName == 'hideOnSearchEl'
+	if lv_propName == 'hideOnSearchEl' and hideOnSearchEl == blank
 		assign hideOnSearchEl = lv_propValue
 	endif
-	if lv_propName == 'ignore'
+	if lv_propName == 'ignore' and ignore == blank
 		assign ignore = lv_propValue
 	endif
-	if lv_propName == 'customSearch'
+	if lv_propName == 'customSearch' and customSearch == blank
 		assign customSearch = lv_propValue
 	endif
-	if lv_propName == 'removeDiacritics'
+	if lv_propName == 'removeDiacritics' and removeDiacritics == blank
 		assign removeDiacritics = lv_propValue
 	endif
-	if lv_propName == 'hideDividers'
+	if lv_propName == 'hideDividers' and hideDividers == blank
 		assign hideDividers = lv_propValue
 	endif
-	if lv_propName == 'hideGroups'
+	if lv_propName == 'hideGroups' and hideGroups == blank
 		assign hideGroups = lv_propValue
 	endif
-	if lv_propName == 'init'
+	if lv_propName == 'init' and init == blank
 		assign init = lv_propValue
 	endif
-	if lv_propName == 'f7Slot'
+	if lv_propName == 'f7Slot' and f7Slot == blank
 		assign f7Slot = lv_propValue
 	endif
 	endfor
@@ -179,10 +179,14 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component searchbar" data-liquivelte-component-name="searchbar.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
-{#if form}
+{% if form %}
   
     
 		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
@@ -202,31 +206,30 @@
 		{%- endif -%}
 	
         <input
-          value={typeof value === 'undefined' ? '' : value}
-          {placeholder}
-          {autocomplete}
-          {autocorrect}
-          {autocapitalize}
-          {spellcheck}
+          value="{{ value | default: '' }}" liquivelte-value-cache="default§{{value | escape -}}, {{''}}§{{value| default: ''  }}"
+          placeholder="{{ placeholder | default: '' }}" liquivelte-value-cache="default§{{placeholder | escape -}}, {{''}}§{{placeholder| default: ''  }}"
+          autocomplete="{autocomplete}"
+          autocorrect="{autocorrect}"
+          autocapitalize="{autocapitalize}"
+          spellcheck="{spellcheck}"
           type="search"
-          on:input={onInput}
-          on:change={onChange}
-          on:focus={onFocus}
-          on:blur={onBlur}
+          on:input="{onInput}"
+          on:change="{onChange}"
+          on:focus="{onFocus}"
+          on:blur="{onBlur}"
         />
         <i class="searchbar-icon" />
-        {#if clearButton}<span on:click={onClearButtonClick} class="input-clear-button" />{/if}
+        {% if clearButton %}<span on:click="{onClearButtonClick}" class="input-clear-button" ></span>{% endif %}
         
 		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
 			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	
       </div>
-      {#if disableButton}
-        <span on:click={onDisableButtonClick} class="searchbar-disable-button"
-          >{disableButtonText}</span
-        >
-      {/if}
+      {% if disableButton %}
+        <span on:click="{onDisableButtonClick}" class="searchbar-disable-button"
+          >{{ disableButtonText }}</span>
+      {% endif %}
       
 		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
 			{{- slot_default_framework7-liquivelte_searchbar -}}
@@ -244,8 +247,8 @@
 		{%- endif -%}
 	
   </form>
-{:else}
-  <div bind:this={el} class={computedClasses} data-f7-slot={f7Slot} {...restProps($$restProps)}>
+{% else %}
+  <div bind:this="{el}" class="searchbar {{ classes }} {{ computedClasses }}" data-f7-slot="{f7Slot}" {...restProps($$restProps)}>
     
 		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
 			{{- slot_default_framework7-liquivelte_searchbar -}}
@@ -264,31 +267,30 @@
 		{%- endif -%}
 	
         <input
-          value={typeof value === 'undefined' ? '' : value}
-          {placeholder}
-          {autocomplete}
-          {autocorrect}
-          {autocapitalize}
-          {spellcheck}
+          value="{{ value | default: '' }}" liquivelte-value-cache="default§{{value | escape -}}, {{''}}§{{value| default: ''  }}"
+          placeholder="{{ placeholder | default: '' }}" liquivelte-value-cache="default§{{placeholder | escape -}}, {{''}}§{{placeholder| default: ''  }}"
+          autocomplete="{autocomplete}"
+          autocorrect="{autocorrect}"
+          autocapitalize="{autocapitalize}"
+          spellcheck="{spellcheck}"
           type="search"
-          on:input={onInput}
-          on:change={onChange}
-          on:focus={onFocus}
-          on:blur={onBlur}
+          on:input="{onInput}"
+          on:change="{onChange}"
+          on:focus="{onFocus}"
+          on:blur="{onBlur}"
         />
         <i class="searchbar-icon" />
-        {#if clearButton}<span on:click={onClearButtonClick} class="input-clear-button" />{/if}
+        {% if clearButton %}<span on:click="{onClearButtonClick}" class="input-clear-button" ></span>{% endif %}
         
 		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
 			{{- slot_default_framework7-liquivelte_searchbar -}}
 		{%- endif -%}
 	
       </div>
-      {#if disableButton}
-        <span on:click={onDisableButtonClick} class="searchbar-disable-button"
-          >{disableButtonText}</span
-        >
-      {/if}
+      {% if disableButton %}
+        <span on:click="{onDisableButtonClick}" class="searchbar-disable-button"
+          >{{ disableButtonText }}</span>
+      {% endif %}
       
 		{%- if slot_default_framework7-liquivelte_searchbar != blank -%}
 			{{- slot_default_framework7-liquivelte_searchbar -}}
@@ -306,15 +308,21 @@
 		{%- endif -%}
 	
   </div>
-{/if}
+{% endif %}
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-searchbar"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -336,7 +344,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -404,7 +420,9 @@
 			assign slot_default_framework7-liquivelte_searchbar = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

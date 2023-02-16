@@ -32,25 +32,25 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'noGap'
+	if lv_propName == 'noGap' and noGap == blank
 		assign noGap = lv_propValue
 	endif
-	if lv_propName == 'tag'
+	if lv_propName == 'tag' and tag == blank
 		assign tag = lv_propValue
 	endif
-	if lv_propName == 'resizable'
+	if lv_propName == 'resizable' and resizable == blank
 		assign resizable = lv_propValue
 	endif
-	if lv_propName == 'resizableFixed'
+	if lv_propName == 'resizableFixed' and resizableFixed == blank
 		assign resizableFixed = lv_propValue
 	endif
-	if lv_propName == 'resizableAbsolute'
+	if lv_propName == 'resizableAbsolute' and resizableAbsolute == blank
 		assign resizableAbsolute = lv_propValue
 	endif
-	if lv_propName == 'resizableHandler'
+	if lv_propName == 'resizableHandler' and resizableHandler == blank
 		assign resizableHandler = lv_propValue
 	endif
 	endfor
@@ -71,36 +71,91 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component row" data-liquivelte-component-name="row.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
-	
+	{% liquid
+assign noGap = false
+assign tag = 'div'
+assign resizable = false
+assign resizableFixed = false
+assign resizableAbsolute = false
+assign resizableHandler = true
+%}
 
-{#if tag === 'div'}
-  <div class={computedClasses} bind:this={el} on:click={onClick} {...restProps($$restProps)}>
+
+{% if tag == 'div' %}
+  
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if noGap != blank
+	assign dynamic_classes = dynamic_classes | append: ' no-gap'
+	endif
+	  if resizableFixed != blank
+	assign dynamic_classes = dynamic_classes | append: ' resizable-fixed'
+	endif
+	  if resizableAbsolute != blank
+	assign dynamic_classes = dynamic_classes | append: ' resizable-absolute'
+	endif
+	-%}
+	<div  class="row {{ classes }} {{ computedClasses }}{{ dynamic_classes }}"
+       
+       
+       
+        bind:this="{el}"
+        on:click="{onClick}"
+        {...restProps($$restProps)}>
     
 		{%- if slot_default_framework7-liquivelte_row != blank -%}
 			{{- slot_default_framework7-liquivelte_row -}}
 		{%- endif -%}
 	
-    {#if resizable && resizableHandler}<span class="resize-handler" />{/if}
+    {% if resizable and resizableHandler %}<span class="resize-handler" ></span>{% endif %}
   </div>
-{:else if tag === 'p'}
-  <p class={computedClasses} bind:this={el} on:click={onClick} {...restProps($$restProps)}>
+{% elsif tag == 'p' %}
+  
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if noGap != blank
+	assign dynamic_classes = dynamic_classes | append: ' no-gap'
+	endif
+	  if resizableFixed != blank
+	assign dynamic_classes = dynamic_classes | append: ' resizable-fixed'
+	endif
+	  if resizableAbsolute != blank
+	assign dynamic_classes = dynamic_classes | append: ' resizable-absolute'
+	endif
+	-%}
+	<p  class="row {{ classes }} {{ computedClasses }}{{ dynamic_classes }}"
+       
+       
+       
+        bind:this="{el}"
+        on:click="{onClick}" >
     
 		{%- if slot_default_framework7-liquivelte_row != blank -%}
 			{{- slot_default_framework7-liquivelte_row -}}
 		{%- endif -%}
 	
-    {#if resizable && resizableHandler}<span class="resize-handler" />{/if}
+    {% if resizable and resizableHandler %}<span class="resize-handler" ></span>{% endif %}
   </p>
-{/if}
+{% endif %}
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-row"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -122,7 +177,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -163,7 +226,9 @@
 			assign slot_default_framework7-liquivelte_row = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

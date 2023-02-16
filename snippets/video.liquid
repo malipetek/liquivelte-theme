@@ -30,19 +30,19 @@
 	
 	endfor
 	endif
-	if lv_propName == 'keptFor'
+	if lv_propName == 'keptFor' and keptFor == blank
 		assign keptFor = lv_propValue
 	endif
-	if lv_propName == 'keepFor'
+	if lv_propName == 'keepFor' and keepFor == blank
 		assign keepFor = lv_propValue
 	endif
-	if lv_propName == 'scrollY'
+	if lv_propName == 'scrollY' and scrollY == blank
 		assign scrollY = lv_propValue
 	endif
-	if lv_propName == 'anim_style'
+	if lv_propName == 'anim_style' and anim_style == blank
 		assign anim_style = lv_propValue
 	endif
-	if lv_propName == 'block'
+	if lv_propName == 'block' and block == blank
 		assign block = lv_propValue
 	endif
 	endfor
@@ -63,6 +63,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component video svelte-jqn7s3" data-liquivelte-component-name="video.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid
     assign blob_src = '#'
@@ -81,22 +85,33 @@
   bind:this="{video}"
   bind:duration="{duration}"
   on:seeked="{() => seeked = true}"
+  poster="{{ block.settings.video.preview_image | image_url: width: 400 }}" liquivelte-value-cache="image_url§{{block.settings.video.preview_image | escape -}}, {{width}}, {{400}}§{{block.settings.video.preview_image| image_url: width: 400  }}"
   preload="metadata"
-  data-src="{{ block.settings.source | file_url }}" liquivelte-value-cache="file_url§{{block.settings.source | escape -}}§{{block.settings.source| file_url  }}"
-  src="{{ block.settings.source | file_url }}" liquivelte-value-cache="file_url§{{block.settings.source | escape -}}§{{block.settings.source| file_url  }}" 
+  loading="lazy"
   playsinline
   muted
-  ></video>
+  >
+  {% for source in block.settings.video.sources %}
+    {% assign index = forloop.index0 %}
+    <source src="{{ source.url }}" type="{{ source.mime_type }}" />
+  {% endfor %}
+  </video>
 
 
 
 	
 						
-						
-	<script type="text/noscript"  class="instance-data svelte-jqn7s3">{
+		
+	<script type="text/noscript"  class="instance-data svelte-jqn7s3">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "video"
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-jqn7s3">(() => {
@@ -118,7 +133,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -157,7 +180,9 @@
 			assign slot_default_video = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

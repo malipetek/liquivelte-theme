@@ -34,31 +34,31 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'media'
+	if lv_propName == 'media' and media == blank
 		assign media = lv_propValue
 	endif
-	if lv_propName == 'text'
+	if lv_propName == 'text' and text == blank
 		assign text = lv_propValue
 	endif
-	if lv_propName == 'deleteable'
+	if lv_propName == 'deleteable' and deleteable == blank
 		assign deleteable = lv_propValue
 	endif
-	if lv_propName == 'mediaBgColor'
+	if lv_propName == 'mediaBgColor' and mediaBgColor == blank
 		assign mediaBgColor = lv_propValue
 	endif
-	if lv_propName == 'mediaTextColor'
+	if lv_propName == 'mediaTextColor' and mediaTextColor == blank
 		assign mediaTextColor = lv_propValue
 	endif
-	if lv_propName == 'outline'
+	if lv_propName == 'outline' and outline == blank
 		assign outline = lv_propValue
 	endif
-	if lv_propName == 'tooltip'
+	if lv_propName == 'tooltip' and tooltip == blank
 		assign tooltip = lv_propValue
 	endif
-	if lv_propName == 'tooltipTrigger'
+	if lv_propName == 'tooltipTrigger' and tooltipTrigger == blank
 		assign tooltipTrigger = lv_propValue
 	endif
 	endfor
@@ -85,8 +85,23 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component chip" data-liquivelte-component-name="chip.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
-	
+	{% liquid
+  if slot_media_framework7-liquivelte_chip != blank
+    assign hasMediaSlots = true
+  endif
+  if slot_text_framework7-liquivelte_chip != blank
+    assign hasTextSlots = true
+  endif
+  if slot_default_framework7-liquivelte_chip != blank
+    assign hasDefaultSlots = true
+  endif
+%}
+
 
 <!-- svelte-ignore a11y-missing-attribute -->
 <!-- svelte-ignore a11y-missing-content -->
@@ -107,7 +122,7 @@
 {% endcomment %}
 {% capture props_UseIcon %}{icon}-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'use-icon' %}
-{% include modulename, liquivelte: true, props: props_UseIcon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_UseIcon, sub_include: true, basename: ''  %}
 {% assign props = '' %}
       {% endif %}
       {{ media | default: '' }}
@@ -138,11 +153,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-chip"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -164,7 +185,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -209,7 +238,9 @@
 			assign slot_text_framework7-liquivelte_chip = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

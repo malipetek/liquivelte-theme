@@ -44,61 +44,61 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'tabbar'
+	if lv_propName == 'tabbar' and tabbar == blank
 		assign tabbar = lv_propValue
 	endif
-	if lv_propName == 'labels'
+	if lv_propName == 'labels' and labels == blank
 		assign labels = lv_propValue
 	endif
-	if lv_propName == 'scrollable'
+	if lv_propName == 'scrollable' and scrollable == blank
 		assign scrollable = lv_propValue
 	endif
-	if lv_propName == 'hidden'
+	if lv_propName == 'hidden' and hidden == blank
 		assign hidden = lv_propValue
 	endif
-	if lv_propName == 'noShadow'
+	if lv_propName == 'noShadow' and noShadow == blank
 		assign noShadow = lv_propValue
 	endif
-	if lv_propName == 'noHairline'
+	if lv_propName == 'noHairline' and noHairline == blank
 		assign noHairline = lv_propValue
 	endif
-	if lv_propName == 'noBorder'
+	if lv_propName == 'noBorder' and noBorder == blank
 		assign noBorder = lv_propValue
 	endif
-	if lv_propName == 'position'
+	if lv_propName == 'position' and position == blank
 		assign position = lv_propValue
 	endif
-	if lv_propName == 'topMd'
+	if lv_propName == 'topMd' and topMd == blank
 		assign topMd = lv_propValue
 	endif
-	if lv_propName == 'topIos'
+	if lv_propName == 'topIos' and topIos == blank
 		assign topIos = lv_propValue
 	endif
-	if lv_propName == 'topAurora'
+	if lv_propName == 'topAurora' and topAurora == blank
 		assign topAurora = lv_propValue
 	endif
-	if lv_propName == 'top'
+	if lv_propName == 'top' and top == blank
 		assign top = lv_propValue
 	endif
-	if lv_propName == 'bottomMd'
+	if lv_propName == 'bottomMd' and bottomMd == blank
 		assign bottomMd = lv_propValue
 	endif
-	if lv_propName == 'bottomIos'
+	if lv_propName == 'bottomIos' and bottomIos == blank
 		assign bottomIos = lv_propValue
 	endif
-	if lv_propName == 'bottomAurora'
+	if lv_propName == 'bottomAurora' and bottomAurora == blank
 		assign bottomAurora = lv_propValue
 	endif
-	if lv_propName == 'bottom'
+	if lv_propName == 'bottom' and bottom == blank
 		assign bottom = lv_propValue
 	endif
-	if lv_propName == 'inner'
+	if lv_propName == 'inner' and inner == blank
 		assign inner = lv_propValue
 	endif
-	if lv_propName == 'f7Slot'
+	if lv_propName == 'f7Slot' and f7Slot == blank
 		assign f7Slot = lv_propValue
 	endif
 	endfor
@@ -125,16 +125,34 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component toolbar" data-liquivelte-component-name="toolbar.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
-	
+	{% liquid
+  assign tabbar = false
+  assign labels = false
+  assign scrollable = false
+  assign hidden = false
+  assign noShadow = false
+  assign noHairline = false
+  assign noBorder = false
+  assign inner = true
+%}
 
-<div bind:this={el} class={computedClasses} data-f7-slot={f7Slot} {...restProps($$restProps)}>
+
+<div
+  bind:this="{el}"
+  class="toolbar {{ classes }} {{ computedClasses }}"
+  data-f7-slot="{f7Slot}"
+  {...restProps($$restProps)}>
   
 	{%- if slot_before-inner_framework7-liquivelte_toolbar != blank -%}
 		{{- slot_before-inner_framework7-liquivelte_toolbar -}}
 	{%- endif -%}
 
-  {#if inner}
+  {% if inner %}
     <div class="toolbar-inner">
       
 		{%- if slot_default_framework7-liquivelte_toolbar != blank -%}
@@ -142,13 +160,13 @@
 		{%- endif -%}
 	
     </div>
-  {:else}
+  {% else %}
     
 		{%- if slot_default_framework7-liquivelte_toolbar != blank -%}
 			{{- slot_default_framework7-liquivelte_toolbar -}}
 		{%- endif -%}
 	
-  {/if}
+  {% endif %}
   
 	{%- if slot_after-inner_framework7-liquivelte_toolbar != blank -%}
 		{{- slot_after-inner_framework7-liquivelte_toolbar -}}
@@ -158,11 +176,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-toolbar"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -184,7 +208,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -239,7 +271,9 @@
 			assign slot_after-inner_framework7-liquivelte_toolbar = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

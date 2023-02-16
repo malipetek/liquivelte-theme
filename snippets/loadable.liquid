@@ -30,19 +30,19 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'width'
+	if lv_propName == 'width' and width == blank
 		assign width = lv_propValue
 	endif
-	if lv_propName == 'loading_'
+	if lv_propName == 'loading_' and loading_ == blank
 		assign loading_ = lv_propValue
 	endif
-	if lv_propName == 'centered'
+	if lv_propName == 'centered' and centered == blank
 		assign centered = lv_propValue
 	endif
-	if lv_propName == 'wrap'
+	if lv_propName == 'wrap' and wrap == blank
 		assign wrap = lv_propValue
 	endif
 	endfor
@@ -63,8 +63,15 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component loadable svelte-79z3ol" data-liquivelte-component-name="loadable.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
-	
+	{% liquid 
+  assign _loading = false
+  %}
+
 <div  class="{{ classes }} svelte-79z3ol">
   
 	{%- liquid 
@@ -74,7 +81,7 @@
 	endif
 	-%}
 	<div  class="relative {{ dynamic_classes }} svelte-79z3ol">  
-    {% if loading_ %}
+    {% if loading_ == true %}
       
 {% comment %}
   kvsp stands for "key value separator"
@@ -82,7 +89,7 @@
 {% endcomment %}
 {% capture props_Icon %}name-kvsp-icon-spinner-prsp-width-kvsp-{{ width }}{% endcapture %}
 {% assign modulename = basename | append: 'icon' %}
-{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: '' , width:  width  %}
 {% assign props = '' %}
     {% else %}
       
@@ -97,11 +104,17 @@
 
 	
 						
-						
-	<script type="text/noscript"  class="instance-data svelte-79z3ol">{
+		
+	<script type="text/noscript"  class="instance-data svelte-79z3ol">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "loadable"
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-79z3ol">(() => {
@@ -123,7 +136,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -162,7 +183,9 @@
 			assign slot_default_loadable = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

@@ -34,31 +34,31 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'morphTo'
+	if lv_propName == 'morphTo' and morphTo == blank
 		assign morphTo = lv_propValue
 	endif
-	if lv_propName == 'href'
+	if lv_propName == 'href' and href == blank
 		assign href = lv_propValue
 	endif
-	if lv_propName == 'target'
+	if lv_propName == 'target' and target == blank
 		assign target = lv_propValue
 	endif
-	if lv_propName == 'text'
+	if lv_propName == 'text' and text == blank
 		assign text = lv_propValue
 	endif
-	if lv_propName == 'position'
+	if lv_propName == 'position' and position == blank
 		assign position = lv_propValue
 	endif
-	if lv_propName == 'tooltip'
+	if lv_propName == 'tooltip' and tooltip == blank
 		assign tooltip = lv_propValue
 	endif
-	if lv_propName == 'tooltipTrigger'
+	if lv_propName == 'tooltipTrigger' and tooltipTrigger == blank
 		assign tooltipTrigger = lv_propValue
 	endif
-	if lv_propName == 'f7Slot'
+	if lv_propName == 'f7Slot' and f7Slot == blank
 		assign f7Slot = lv_propValue
 	endif
 	endfor
@@ -88,6 +88,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component fab" data-liquivelte-component-name="fab.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -134,11 +138,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-fab"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -160,7 +170,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -206,7 +224,9 @@
 			assign slot_root_framework7-liquivelte_fab = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

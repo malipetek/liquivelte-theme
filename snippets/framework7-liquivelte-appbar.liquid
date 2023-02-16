@@ -31,22 +31,22 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'noShadow'
+	if lv_propName == 'noShadow' and noShadow == blank
 		assign noShadow = lv_propValue
 	endif
-	if lv_propName == 'noHairline'
+	if lv_propName == 'noHairline' and noHairline == blank
 		assign noHairline = lv_propValue
 	endif
-	if lv_propName == 'inner'
+	if lv_propName == 'inner' and inner == blank
 		assign inner = lv_propValue
 	endif
-	if lv_propName == 'innerClass'
+	if lv_propName == 'innerClass' and innerClass == blank
 		assign innerClass = lv_propValue
 	endif
-	if lv_propName == 'innerClassName'
+	if lv_propName == 'innerClassName' and innerClassName == blank
 		assign innerClassName = lv_propValue
 	endif
 	endfor
@@ -73,6 +73,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component appbar" data-liquivelte-component-name="appbar.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{%- liquid
     assign inner = true
@@ -109,11 +113,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-appbar"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -135,7 +145,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -177,7 +195,9 @@
 			assign slot_after-inner_framework7-liquivelte_appbar = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

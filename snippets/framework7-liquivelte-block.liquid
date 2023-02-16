@@ -42,55 +42,55 @@
 	
 	endfor
 	endif
-	if lv_propName == 'inset'
+	if lv_propName == 'inset' and inset == blank
 		assign inset = lv_propValue
 	endif
-	if lv_propName == 'xsmallInset'
+	if lv_propName == 'xsmallInset' and xsmallInset == blank
 		assign xsmallInset = lv_propValue
 	endif
-	if lv_propName == 'smallInset'
+	if lv_propName == 'smallInset' and smallInset == blank
 		assign smallInset = lv_propValue
 	endif
-	if lv_propName == 'mediumInset'
+	if lv_propName == 'mediumInset' and mediumInset == blank
 		assign mediumInset = lv_propValue
 	endif
-	if lv_propName == 'largeInset'
+	if lv_propName == 'largeInset' and largeInset == blank
 		assign largeInset = lv_propValue
 	endif
-	if lv_propName == 'xlargeInset'
+	if lv_propName == 'xlargeInset' and xlargeInset == blank
 		assign xlargeInset = lv_propValue
 	endif
-	if lv_propName == 'strong'
+	if lv_propName == 'strong' and strong == blank
 		assign strong = lv_propValue
 	endif
-	if lv_propName == 'tabs'
+	if lv_propName == 'tabs' and tabs == blank
 		assign tabs = lv_propValue
 	endif
-	if lv_propName == 'tab'
+	if lv_propName == 'tab' and tab == blank
 		assign tab = lv_propValue
 	endif
-	if lv_propName == 'tabActive'
+	if lv_propName == 'tabActive' and tabActive == blank
 		assign tabActive = lv_propValue
 	endif
-	if lv_propName == 'accordionList'
+	if lv_propName == 'accordionList' and accordionList == blank
 		assign accordionList = lv_propValue
 	endif
-	if lv_propName == 'accordionOpposite'
+	if lv_propName == 'accordionOpposite' and accordionOpposite == blank
 		assign accordionOpposite = lv_propValue
 	endif
-	if lv_propName == 'noHairlines'
+	if lv_propName == 'noHairlines' and noHairlines == blank
 		assign noHairlines = lv_propValue
 	endif
-	if lv_propName == 'noHairlinesMd'
+	if lv_propName == 'noHairlinesMd' and noHairlinesMd == blank
 		assign noHairlinesMd = lv_propValue
 	endif
-	if lv_propName == 'noHairlinesIos'
+	if lv_propName == 'noHairlinesIos' and noHairlinesIos == blank
 		assign noHairlinesIos = lv_propValue
 	endif
-	if lv_propName == 'noHairlinesAurora'
+	if lv_propName == 'noHairlinesAurora' and noHairlinesAurora == blank
 		assign noHairlinesAurora = lv_propValue
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
 	endfor
@@ -111,6 +111,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component block" data-liquivelte-component-name="block.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -194,11 +198,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-block"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -220,7 +230,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -271,7 +289,9 @@
 			assign slot_default_framework7-liquivelte_block = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

@@ -16,6 +16,11 @@
           css: "{{ 'collection-section.liquivelte.css' | asset_url }}"
         });
         
+        liquivelteSections.set('contact-form', {
+          js: "{{ 'contact-form.liquivelte.js' | asset_url }}",
+          css: "{{ 'contact-form.liquivelte.css' | asset_url }}"
+        });
+        
         liquivelteSections.set('exploding-gallery', {
           js: "{{ 'exploding-gallery.liquivelte.js' | asset_url }}",
           css: "{{ 'exploding-gallery.liquivelte.css' | asset_url }}"
@@ -24,6 +29,11 @@
         liquivelteSections.set('facets', {
           js: "{{ 'facets.liquivelte.js' | asset_url }}",
           css: "{{ 'facets.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('footer', {
+          js: "{{ 'footer.liquivelte.js' | asset_url }}",
+          css: "{{ 'footer.liquivelte.css' | asset_url }}"
         });
         
         liquivelteSections.set('header', {
@@ -44,6 +54,11 @@
         liquivelteSections.set('main-cart', {
           js: "{{ 'main-cart.liquivelte.js' | asset_url }}",
           css: "{{ 'main-cart.liquivelte.css' | asset_url }}"
+        });
+        
+        liquivelteSections.set('main-page', {
+          js: "{{ 'main-page.liquivelte.js' | asset_url }}",
+          css: "{{ 'main-page.liquivelte.css' | asset_url }}"
         });
         
         liquivelteSections.set('main-product', {
@@ -92,6 +107,7 @@
         cssFile.href = entry.css;
         document.head.appendChild(cssFile); 
         
+        window.cicR = 0;
         wrapper.svelteComponent = new liquivelteComponent.default({
           target: wrapper,
           hydrate: true,

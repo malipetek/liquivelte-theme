@@ -43,58 +43,58 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'backLink'
+	if lv_propName == 'backLink' and backLink == blank
 		assign backLink = lv_propValue
 	endif
-	if lv_propName == 'backLinkUrl'
+	if lv_propName == 'backLinkUrl' and backLinkUrl == blank
 		assign backLinkUrl = lv_propValue
 	endif
-	if lv_propName == 'backLinkForce'
+	if lv_propName == 'backLinkForce' and backLinkForce == blank
 		assign backLinkForce = lv_propValue
 	endif
-	if lv_propName == 'backLinkShowText'
+	if lv_propName == 'backLinkShowText' and backLinkShowText == blank
 		assign backLinkShowText = lv_propValue
 	endif
-	if lv_propName == 'sliding'
+	if lv_propName == 'sliding' and sliding == blank
 		assign sliding = lv_propValue
 	endif
-	if lv_propName == 'title'
+	if lv_propName == 'title' and title == blank
 		assign title = lv_propValue
 	endif
-	if lv_propName == 'subtitle'
+	if lv_propName == 'subtitle' and subtitle == blank
 		assign subtitle = lv_propValue
 	endif
-	if lv_propName == 'hidden'
+	if lv_propName == 'hidden' and hidden == blank
 		assign hidden = lv_propValue
 	endif
-	if lv_propName == 'noShadow'
+	if lv_propName == 'noShadow' and noShadow == blank
 		assign noShadow = lv_propValue
 	endif
-	if lv_propName == 'noHairline'
+	if lv_propName == 'noHairline' and noHairline == blank
 		assign noHairline = lv_propValue
 	endif
-	if lv_propName == 'innerClass'
+	if lv_propName == 'innerClass' and innerClass == blank
 		assign innerClass = lv_propValue
 	endif
-	if lv_propName == 'innerClassName'
+	if lv_propName == 'innerClassName' and innerClassName == blank
 		assign innerClassName = lv_propValue
 	endif
-	if lv_propName == 'large'
+	if lv_propName == 'large' and large == blank
 		assign large = lv_propValue
 	endif
-	if lv_propName == 'largeTransparent'
+	if lv_propName == 'largeTransparent' and largeTransparent == blank
 		assign largeTransparent = lv_propValue
 	endif
-	if lv_propName == 'transparent'
+	if lv_propName == 'transparent' and transparent == blank
 		assign transparent = lv_propValue
 	endif
-	if lv_propName == 'titleLarge'
+	if lv_propName == 'titleLarge' and titleLarge == blank
 		assign titleLarge = lv_propValue
 	endif
-	if lv_propName == 'f7Slot'
+	if lv_propName == 'f7Slot' and f7Slot == blank
 		assign f7Slot = lv_propValue
 	endif
 	endfor
@@ -139,10 +139,14 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component navbar" data-liquivelte-component-name="navbar.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
-<div class="navbar {{ classes }}" bind:this="{el}" data-f7-slot="{f7Slot}" {...restProps($$restProps)}>
+<div class="navbar {{ classes }} {{ computedClasses }}" bind:this="{el}" data-f7-slot="{f7Slot}" {...restProps($$restProps)}>
   <div class="navbar-bg" ></div>
   
 	{%- if slot_before-inner_framework7-liquivelte_navbar != blank -%}
@@ -162,8 +166,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_NavLeft %}{backLink}-kvsp-1-prsp-{backLinkUrl}-kvsp-1-prsp-{backLinkForce}-kvsp-1-prsp-{backLinkShowText}-kvsp-1-prsp-{onBackClick}-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_NavLeft -%}
+
+{%- capture slot_content_def_NavLeft -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         
 	{%- if slot_nav-left_framework7-liquivelte_navbar != blank -%}
 		{{- slot_nav-left_framework7-liquivelte_navbar -}}
@@ -174,10 +180,12 @@ smns stands for "slot module name separator"
 		{{- slot_left_framework7-liquivelte_navbar -}}
 	{%- endif -%}
 
-      {%- endcapture -%}
-{% assign slot_content_NavLeft = slot_content_NavLeft | append: '-scs-' | append: 'nav-left' | append: '-scvs-' | append: slot_content_def_NavLeft %}
+      {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'nav-left' %}
-{% include modulename, liquivelte: true, props: props_NavLeft, sub_include: true, slot_contents: slot_content_NavLeft, basename: '' %}
+{% assign slot_content_NavLeft = slot_content_NavLeft | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_NavLeft %}
+{% include modulename, liquivelte: true, props: props_NavLeft, sub_include: true, slot_contents: slot_content_NavLeft, basename: ''  %}
 {% assign slot_content_NavLeft = '' %}
 {% assign props = '' %}
     {% endif %}
@@ -193,17 +201,21 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_NavTitle %}{title}-kvsp-1-prsp-{subtitle}-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_NavTitle -%}
+
+{%- capture slot_content_def_NavTitle -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         
 	{%- if slot_title_framework7-liquivelte_navbar != blank -%}
 		{{- slot_title_framework7-liquivelte_navbar -}}
 	{%- endif -%}
 
-      {%- endcapture -%}
-{% assign slot_content_NavTitle = slot_content_NavTitle | append: '-scs-' | append: 'nav-title' | append: '-scvs-' | append: slot_content_def_NavTitle %}
+      {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'nav-title' %}
-{% include modulename, liquivelte: true, props: props_NavTitle, sub_include: true, slot_contents: slot_content_NavTitle, basename: '' %}
+{% assign slot_content_NavTitle = slot_content_NavTitle | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_NavTitle %}
+{% include modulename, liquivelte: true, props: props_NavTitle, sub_include: true, slot_contents: slot_content_NavTitle, basename: ''  %}
 {% assign slot_content_NavTitle = '' %}
 {% assign props = '' %}
     {% endif %}
@@ -219,8 +231,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_NavRight %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_NavRight -%}
+
+{%- capture slot_content_def_NavRight -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         
 	{%- if slot_nav-right_framework7-liquivelte_navbar != blank -%}
 		{{- slot_nav-right_framework7-liquivelte_navbar -}}
@@ -231,10 +245,12 @@ smns stands for "slot module name separator"
 		{{- slot_right_framework7-liquivelte_navbar -}}
 	{%- endif -%}
 
-      {%- endcapture -%}
-{% assign slot_content_NavRight = slot_content_NavRight | append: '-scs-' | append: 'nav-right' | append: '-scvs-' | append: slot_content_def_NavRight %}
+      {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'nav-right' %}
-{% include modulename, liquivelte: true, props: props_NavRight, sub_include: true, slot_contents: slot_content_NavRight, basename: '' %}
+{% assign slot_content_NavRight = slot_content_NavRight | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_NavRight %}
+{% include modulename, liquivelte: true, props: props_NavRight, sub_include: true, slot_contents: slot_content_NavRight, basename: ''  %}
 {% assign slot_content_NavRight = '' %}
 {% assign props = '' %}
     {% endif %}
@@ -265,11 +281,17 @@ smns stands for "slot module name separator"
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-navbar"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -291,7 +313,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -351,7 +381,9 @@ smns stands for "slot module name separator"
 			assign slot_after-inner_framework7-liquivelte_navbar = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

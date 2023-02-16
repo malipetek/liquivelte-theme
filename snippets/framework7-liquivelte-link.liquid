@@ -41,52 +41,52 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'noLinkClass'
+	if lv_propName == 'noLinkClass' and noLinkClass == blank
 		assign noLinkClass = lv_propValue
 	endif
-	if lv_propName == 'text'
+	if lv_propName == 'text' and text == blank
 		assign text = lv_propValue
 	endif
-	if lv_propName == 'tabLink'
+	if lv_propName == 'tabLink' and tabLink == blank
 		assign tabLink = lv_propValue
 	endif
-	if lv_propName == 'tabLinkActive'
+	if lv_propName == 'tabLinkActive' and tabLinkActive == blank
 		assign tabLinkActive = lv_propValue
 	endif
-	if lv_propName == 'tabbarLabel'
+	if lv_propName == 'tabbarLabel' and tabbarLabel == blank
 		assign tabbarLabel = lv_propValue
 	endif
-	if lv_propName == 'iconOnly'
+	if lv_propName == 'iconOnly' and iconOnly == blank
 		assign iconOnly = lv_propValue
 	endif
-	if lv_propName == 'badge'
+	if lv_propName == 'badge' and badge == blank
 		assign badge = lv_propValue
 	endif
-	if lv_propName == 'badgeColor'
+	if lv_propName == 'badgeColor' and badgeColor == blank
 		assign badgeColor = lv_propValue
 	endif
-	if lv_propName == 'href'
+	if lv_propName == 'href' and href == blank
 		assign href = lv_propValue
 	endif
-	if lv_propName == 'target'
+	if lv_propName == 'target' and target == blank
 		assign target = lv_propValue
 	endif
-	if lv_propName == 'tooltip'
+	if lv_propName == 'tooltip' and tooltip == blank
 		assign tooltip = lv_propValue
 	endif
-	if lv_propName == 'tooltipTrigger'
+	if lv_propName == 'tooltipTrigger' and tooltipTrigger == blank
 		assign tooltipTrigger = lv_propValue
 	endif
-	if lv_propName == 'routeProps'
+	if lv_propName == 'routeProps' and routeProps == blank
 		assign routeProps = lv_propValue
 	endif
-	if lv_propName == 'smartSelect'
+	if lv_propName == 'smartSelect' and smartSelect == blank
 		assign smartSelect = lv_propValue
 	endif
-	if lv_propName == 'smartSelectParams'
+	if lv_propName == 'smartSelectParams' and smartSelectParams == blank
 		assign smartSelectParams = lv_propValue
 	endif
 	endfor
@@ -107,13 +107,30 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component link" data-liquivelte-component-name="link.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
-	
+	{% liquid
+  unless noLinkClass or isTabbarLabel
+    assign hasLinkClass = true
+  endunless
+%}
+
 
 <!-- svelte-ignore a11y-missing-attribute -->
-<a
+
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if hasLinkClass != blank
+	assign dynamic_classes = dynamic_classes | append: ' link'
+	endif
+	-%}
+	<a 
   bind:this="{el}"
-  class="{{ classes }} {{ computedClasses }}"
+  class="{{ classes }} {{ computedClasses }}{{ dynamic_classes }}"
+ 
   on:click="{onClick}"
   href="{{ href }}"
   {...attrs}
@@ -128,7 +145,7 @@
 {% endcomment %}
 {% capture props_UseIcon %}icon-kvsp-{{ icon }}{% endcapture %}
 {% assign modulename = basename | append: 'use-icon' %}
-{% include modulename, liquivelte: true, props: props_UseIcon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_UseIcon, sub_include: true, basename: '' , icon:  icon  %}
 {% assign props = '' %}
   {% endif %}
   
@@ -157,11 +174,15 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}color-kvsp-{{ badgeColor }}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Badge -%}{{ badge | default: '' }}{%- endcapture -%}
-{% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
+
+{%- capture slot_content_def_Badge -%}{% assign component_include_depth = component_include_depth | plus: 1 %}{{ badge | default: '' }}{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'badge' %}
-{% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
+{% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Badge %}
+{% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' , color:  badgeColor  %}
 {% assign slot_content_Badge = '' %}
 {% assign props = '' %}{% endif %}
     </span>
@@ -170,11 +191,17 @@ smns stands for "slot module name separator"
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-link"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -196,7 +223,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -246,7 +281,9 @@ smns stands for "slot module name separator"
 			assign slot_default_framework7-liquivelte_link = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

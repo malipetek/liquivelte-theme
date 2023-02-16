@@ -31,22 +31,22 @@
 	
 	endfor
 	endif
-	if lv_propName == 'id'
+	if lv_propName == 'id' and id == blank
 		assign id = lv_propValue
 	endif
-	if lv_propName == 'style'
+	if lv_propName == 'style' and style == blank
 		assign style = lv_propValue
 	endif
-	if lv_propName == 'init'
+	if lv_propName == 'init' and init == blank
 		assign init = lv_propValue
 	endif
-	if lv_propName == 'url'
+	if lv_propName == 'url' and url == blank
 		assign url = lv_propValue
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'main'
+	if lv_propName == 'main' and main == blank
 		assign main = lv_propValue
 	endif
 	endfor
@@ -67,6 +67,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component view" data-liquivelte-component-name="view.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -88,7 +92,7 @@
 			{{- slot_default_framework7-liquivelte_view -}}
 		{%- endif -%}
 	
-  {% for page in pages %}
+  {% for page in viewpages %}
     {% assign index = forloop.index0 %}
     
 {% comment %}
@@ -101,8 +105,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_RouterContextProvider %}route-kvsp-{page.props.f7route}-prsp-router-kvsp-{page.props.f7router}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_RouterContextProvider -%}
+
+{%- capture slot_content_def_RouterContextProvider -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {% if initialized %}
         <svelte:component this={page.component} {...page.props} />
       {% else %}
@@ -112,10 +118,12 @@ smns stands for "slot module name separator"
 		{%- endif -%}
 	
       {% endif %}
-    {%- endcapture -%}
-{% assign slot_content_RouterContextProvider = slot_content_RouterContextProvider | append: '-scs-' | append: 'router-context-provider' | append: '-scvs-' | append: slot_content_def_RouterContextProvider %}
+    {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'router-context-provider' %}
-{% include modulename, liquivelte: true, props: props_RouterContextProvider, sub_include: true, slot_contents: slot_content_RouterContextProvider, basename: '' %}
+{% assign slot_content_RouterContextProvider = slot_content_RouterContextProvider | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_RouterContextProvider %}
+{% include modulename, liquivelte: true, props: props_RouterContextProvider, sub_include: true, slot_contents: slot_content_RouterContextProvider, basename: ''  %}
 {% assign slot_content_RouterContextProvider = '' %}
 {% assign props = '' %}
   {% endfor %}
@@ -123,11 +131,17 @@ smns stands for "slot module name separator"
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-view"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -149,7 +163,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -189,7 +211,9 @@ smns stands for "slot module name separator"
 			assign slot_default_framework7-liquivelte_view = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

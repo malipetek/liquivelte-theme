@@ -25,6 +25,9 @@
 	
 	endfor
 	endif
+	if lv_propName == 'imbalance' and imbalance == blank
+		assign imbalance = lv_propValue
+	endif
 	endfor
 	-%}
 	
@@ -43,10 +46,15 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component exploding-gallery svelte-12dbek" data-liquivelte-component-name="exploding-gallery.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid
   assign imbalance = 10
-%}
+  assign keepFor = 900
+  %}
  
 
 <div  class="exp-gallery-container svelte-12dbek" bind:this="{container}"           
@@ -68,7 +76,7 @@
         {% endfor %}
     </div>
   </div> 
-  <div  class="exp-gallery-placeholder svelte-12dbek" style="height: { stageHeight + keepFor }px">&nbsp;</div>
+  <div  class="exp-gallery-placeholder svelte-12dbek" style="height: {{ stageHeight | plus: keepFor }}px">&nbsp;</div>
 </div> 
 
 
@@ -125,9 +133,10 @@
       assign setting_key_with_quotes = setting | json
       assign block_json = block_json | append: setting_key_with_quotes | append: ":"
 
-      if block.settings[setting].aspect_ratio
+      if block.settings[setting].aspect_ratio and block.settings[setting].src
         assign block_json = block_json | append: '{'
-        assign block_json = block_json | append: '"width": ' | append: block.settings[setting].width | append: ','
+        assign width = block.settings[setting].width | json
+        assign block_json = block_json | append: '"width": ' | append: width | append: ','
         assign block_json = block_json | append: '"aspect_ratio": ' | append: block.settings[setting].aspect_ratio | append: ','
         assign src_with_quotes = block.settings[setting].src | json
         assign block_json = block_json | append: '"src": ' | append: src_with_quotes
@@ -153,11 +162,17 @@
     endunless
   endfor
   assign section_blocks_json = section_blocks_json | append: ']'
-%}					
-	<script type="text/noscript"  class="instance-data svelte-12dbek">{
+%}	
+	<script type="text/noscript"  class="instance-data svelte-12dbek">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"imbalance" : {{ imbalance | json }}
 	,
 	"sectionƒƒsettings": {{ section.settings | json }} , "sectionƒƒblocks": {{ section_blocks_json }}
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "exploding-gallery"
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-12dbek">(() => {
@@ -179,7 +194,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -213,7 +236,9 @@
 			assign slot_default_exploding-gallery = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

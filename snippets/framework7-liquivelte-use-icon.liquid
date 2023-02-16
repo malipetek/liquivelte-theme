@@ -26,7 +26,7 @@
 	
 	endfor
 	endif
-	if lv_propName == 'icon'
+	if lv_propName == 'icon' and icon == blank
 		assign icon = lv_propValue
 	endif
 	endfor
@@ -47,6 +47,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component use-icon" data-liquivelte-component-name="use-icon.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -61,8 +65,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Icon %}{...icon.props}-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Icon -%}
+
+{%- capture slot_content_def_Icon -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
   {#if icon.badge}
     
 {% comment %}
@@ -75,28 +81,40 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Badge %}{...icon.badge.props}-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Badge -%}{icon.badge.content}{%- endcapture -%}
-{% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: 'badge' | append: '-scvs-' | append: slot_content_def_Badge %}
+
+{%- capture slot_content_def_Badge -%}{% assign component_include_depth = component_include_depth | plus: 1 %}{icon.badge.content}{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'badge' %}
-{% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' %}
+{% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Badge %}
+{% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: ''  %}
 {% assign slot_content_Badge = '' %}
 {% assign props = '' %}
   {/if}
-{%- endcapture -%}
-{% assign slot_content_Icon = slot_content_Icon | append: '-scs-' | append: 'icon' | append: '-scvs-' | append: slot_content_def_Icon %}
+{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'icon' %}
-{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, slot_contents: slot_content_Icon, basename: '' %}
+{% assign slot_content_Icon = slot_content_Icon | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Icon %}
+{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, slot_contents: slot_content_Icon, basename: ''  %}
 {% assign slot_content_Icon = '' %}
 {% assign props = '' %}
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-use-icon"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -118,7 +136,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -153,7 +179,9 @@ smns stands for "slot module name separator"
 			assign slot_default_framework7-liquivelte_use-icon = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	
