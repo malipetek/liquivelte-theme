@@ -1,6 +1,5 @@
-import './index.icon-hs8daa1a0c.liquivelte.js';
+import './index.icon-hs212208bb.liquivelte.js';
 
-const initializeObservers = () => {
+const initializeObservers = (doc) => {
      };
   document.addEventListener('DOMContentLoaded', () => initializeObservers());
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));

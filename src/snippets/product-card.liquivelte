@@ -5,16 +5,22 @@
   if cartItem
     assign quantity = cartItem.quantity
   endif
+  assign initialRender = true
 %}
 <script>
-  import { Card, CardHeader, CardContent, CardFooter, Link, Button, Badge } from 'framework7-liquivelte';
+  import { Card, CardHeader, CardContent, CardFooter, Link, Button, Badge, Chip, Block } from 'framework7-liquivelte';
   import { cartStore } from '../scripts/store.module.js';
   import VerticalStepper from './vertical-stepper.liquivelte';
+  import Image from './image.liquivelte';
   import Loadable from './loadable.liquivelte';
   import Icon from './icon.liquivelte';
-    
+  import { srcset } from '../scripts/utils.js';
+  export let initialRender;
+
   export let product;
+
   let expandableOpened = false;
+  let imageElement;
 
   function expandedToggle() {
     expandableOpened = !expandableOpened;
@@ -33,40 +39,52 @@
 	}
   
   $: quantity = cartItem?.quantity || 0;
+  $: console.log('product ', initialRender);
 </script>
 
-  <Card classes="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}">
-    <Loadable classes="absolute -right-[10px] -top-[10px] z-10" centered>
-      <VerticalStepper small
-                      disabled="{{- !product.available -}}" 
-                      bind:value="{{- quantity -}}"  
-                      onChange="{ quantityChange.bind(cartItem) }"
-                      onClick="{addToCart}" >
-      </VerticalStepper>
-    </Loadable>
-    <CardHeader
-    classes="no-border"
-    valign="bottom"
-    >
+<Card classes="card-header-pic" swipeToClose hideToolbarOnOpen hideNavbarOnOpen bind:expandableOpened="{expandableOpened}">
+  <Loadable classes="absolute -right-[10px] -top-[10px] z-10" centered>
+    <VerticalStepper small
+    disabled="{{- !product.available -}}" 
+    bind:value="{{- quantity -}}"  
+    onChange="{ quantityChange.bind(cartItem) }"
+    onClick="{addToCart}" ></VerticalStepper>
+  </Loadable>
+  <CardHeader
+  classes="no-border"
+  valign="bottom"
+  >
     <Link href="/products/{{- product.handle -}}">
-    <img src="{{- product.media[0] | image_url: width: 300 -}}" 
-    width="300"
-    style="aspect-ratio: {{- product.media[0].aspect_ratio -}}" />
-    </Link>
+      {% if initialRender == false %}
+        <img 
+          bind:this="{imageElement}"
+          srcset="{srcset({ liquid, source: product.media[0], sizes: '300@fixed'})}" 
+          sizes="300px"
+          src="{product.media[0].src}" alt="{product.media[0].alt}" 
+        />
+      {% else %}
+        <Image source="{{- product.featured_image -}}" 
+        style="aspect-ratio: {{- product.featured_image.aspect_ratio -}}" 
+        sizes="300@fixed"
+        />
+      {% endif %}
+    </Link> 
   </CardHeader>
   <CardContent>
-  <div class="text-theme">
-   {{- product.price | money -}}
+  <h3 class="text-lg">
+    {{- product.title -}}
+  </h3>
+  <div class="text-theme text-base">
+    {{- product.price | money -}}
   </div> 
-    <h3>
-      {{- product.title -}}
-    </h3>
   </CardContent>
   
-      <CardFooter>
-        <Link> Add to Wishlist </Link>
-      </CardFooter>
-  </Card>
+  <CardFooter>
+    <Link>
+      Details
+    </Link>
+  </CardFooter>
+</Card>
 <style>
    .card-header-pic .card-header {
     background-size: cover;

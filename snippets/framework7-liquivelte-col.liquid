@@ -37,40 +37,40 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'tag'
+	if lv_propName == 'tag' and tag == blank
 		assign tag = lv_propValue
 	endif
-	if lv_propName == 'width'
+	if lv_propName == 'width' and width == blank
 		assign width = lv_propValue
 	endif
-	if lv_propName == 'xsmall'
+	if lv_propName == 'xsmall' and xsmall == blank
 		assign xsmall = lv_propValue
 	endif
-	if lv_propName == 'small'
+	if lv_propName == 'small' and small == blank
 		assign small = lv_propValue
 	endif
-	if lv_propName == 'medium'
+	if lv_propName == 'medium' and medium == blank
 		assign medium = lv_propValue
 	endif
-	if lv_propName == 'large'
+	if lv_propName == 'large' and large == blank
 		assign large = lv_propValue
 	endif
-	if lv_propName == 'xlarge'
+	if lv_propName == 'xlarge' and xlarge == blank
 		assign xlarge = lv_propValue
 	endif
-	if lv_propName == 'resizable'
+	if lv_propName == 'resizable' and resizable == blank
 		assign resizable = lv_propValue
 	endif
-	if lv_propName == 'resizableFixed'
+	if lv_propName == 'resizableFixed' and resizableFixed == blank
 		assign resizableFixed = lv_propValue
 	endif
-	if lv_propName == 'resizableAbsolute'
+	if lv_propName == 'resizableAbsolute' and resizableAbsolute == blank
 		assign resizableAbsolute = lv_propValue
 	endif
-	if lv_propName == 'resizableHandler'
+	if lv_propName == 'resizableHandler' and resizableHandler == blank
 		assign resizableHandler = lv_propValue
 	endif
 	endfor
@@ -91,8 +91,20 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component col" data-liquivelte-component-name="col.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
-	
+	{% liquid
+  assign tag = 'div'
+  assign width = 'auto'
+  assign resizable = false
+  assign resizableFixed = false
+  assign resizableAbsolute = false
+  assign resizableHandler = true
+%}
+
 
 {% if tag == 'div' %}
   
@@ -143,7 +155,7 @@
 			{{- slot_default_framework7-liquivelte_col -}}
 		{%- endif -%}
 	
-    {% if resizable && resizableHandler %}<span class="resize-handler" />{% endif %}
+    {% if resizable and resizableHandler %}<span class="resize-handler" />{% endif %}
   </div>
 {% elsif tag == 'span' %}
   
@@ -194,17 +206,23 @@
 			{{- slot_default_framework7-liquivelte_col -}}
 		{%- endif -%}
 	
-    {% if resizable && resizableHandler %} <span class="resize-handler" /> {% endif %}
+    {% if resizable and resizableHandler %} <span class="resize-handler" /> {% endif %}
   </span>
 {% endif %}
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-col"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -226,7 +244,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -272,7 +298,9 @@
 			assign slot_default_framework7-liquivelte_col = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

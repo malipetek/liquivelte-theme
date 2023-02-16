@@ -25,6 +25,9 @@
 	
 	endfor
 	endif
+	if lv_propName == 'filters' and filters == blank
+		assign filters = lv_propValue
+	endif
 	endfor
 	-%}
 	
@@ -43,6 +46,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component facets" data-liquivelte-component-name="facets.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid 
   assign filters = '['
@@ -181,8 +188,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Navbar %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Navbar -%}
+
+{%- capture slot_content_def_Navbar -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
   
 {% comment %}
 kvsp stands for "key value separator"
@@ -194,8 +203,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Button %}panelOpen-kvsp-#filters-panel{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Button -%}  
+
+{%- capture slot_content_def_Button -%}{% assign component_include_depth = component_include_depth | plus: 1 %}  
     
 {% comment %}
   kvsp stands for "key value separator"
@@ -203,13 +214,15 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Icon %}name-kvsp-icon-filter-prsp-width-kvsp-20{% endcapture %}
 {% assign modulename = basename | append: 'icon' %}
-{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: ''  %}
 {% assign props = '' %} 
     <span class="ml-1" data-translate="{{ 'products.facets.filter_button' | t }}" liquivelte-value-cache="t§{{'products.facets.filter_button' | escape -}}§{{'products.facets.filter_button'| t  }}"> {{ 'products.facets.filter_button' | t }} </span> 
-  {%- endcapture -%}
-{% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: 'framework7-liquivelte-button' | append: '-scvs-' | append: slot_content_def_Button %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-button' %}
-{% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Button %}
+{% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Button = '' %}
 {% assign props = '' %}
     
@@ -223,8 +236,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Button %}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Button -%}  
+
+{%- capture slot_content_def_Button -%}{% assign component_include_depth = component_include_depth | plus: 1 %}  
     <span class="mr-1"> Sort </span>
     
 {% comment %}
@@ -233,18 +248,22 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Icon %}name-kvsp-icon-chevron-down-prsp-width-kvsp-17{% endcapture %}
 {% assign modulename = basename | append: 'icon' %}
-{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: ''  %}
 {% assign props = '' %} 
-  {%- endcapture -%}
-{% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: 'framework7-liquivelte-button' | append: '-scvs-' | append: slot_content_def_Button %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-button' %}
-{% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Button %}
+{% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Button = '' %}
 {% assign props = '' %}
-{%- endcapture -%}
-{% assign slot_content_Navbar = slot_content_Navbar | append: '-scs-' | append: 'framework7-liquivelte-navbar' | append: '-scvs-' | append: slot_content_def_Navbar %}
+{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-navbar' %}
-{% include modulename, liquivelte: true, props: props_Navbar, sub_include: true, slot_contents: slot_content_Navbar, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Navbar = slot_content_Navbar | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Navbar %}
+{% include modulename, liquivelte: true, props: props_Navbar, sub_include: true, slot_contents: slot_content_Navbar, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Navbar = '' %}
 {% assign props = '' %}
 
@@ -259,21 +278,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Panel %}left-kvsp-1-prsp-cover-kvsp-1-prsp-id-kvsp-filters-panel{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_Panel_input -%}<span slot="input">
-                 
-{% comment %}
-  kvsp stands for "key value separator"
-  prsp stands for "props separator"
-{% endcomment %}
-{% capture props_Range %}min-kvsp-{0}-prsp-max-kvsp-{filter.range_max}-prsp-step-kvsp-{1}-prsp-value-kvsp-{[filter.min_value.value, filter.max_value.value]}-prsp-dual-kvsp-{true}-prsp-onRangeChange-kvsp-{priceChange.bind(filter)}{% endcapture %}
-{% assign modulename = basename | append: 'framework7-liquivelte-range' %}
-{% include modulename, liquivelte: true, props: props_Range, sub_include: true, basename: 'framework7-liquivelte-' %}
-{% assign props = '' %}
-              </span>{%- endcapture -%}
-{% assign slot_content_Panel = slot_content_Panel | append: '-scs-' | append: 'framework7-liquivelte-panel' | append: '-smns-' | append: 'input' | append: '-scvs-' | append: slot_content_Panel_input %}
 
-{%- capture slot_content_def_Panel -%}
+{%- capture slot_content_def_Panel -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
 kvsp stands for "key value separator"
@@ -284,9 +292,11 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props_View %}init-kvsp-1-prsp-name-kvsp-filters-view-prsp-stackPages-kvsp-{true}{% endcapture %}
+{% capture props_View %}name-kvsp-filters-view-prsp-stackPages-kvsp-{true}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_View -%}
+
+{%- capture slot_content_def_View -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
 kvsp stands for "key value separator"
@@ -298,8 +308,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Page %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Page -%}
+
+{%- capture slot_content_def_Page -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       
 {% comment %}
 kvsp stands for "key value separator"
@@ -311,9 +323,11 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_List %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_List -%}
-        {% for filter in collection.filters %}
+
+{%- capture slot_content_def_List -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+        {% for filter in collection.filters  %}
     {% assign index = forloop.index0 %}
           {% if filter.type == 'price_range' %}
             
@@ -326,14 +340,37 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props_ListInput %}label-kvsp-{{ filter.label }}-prsp-input-kvsp-{false}{% endcapture %}
+{% capture props_ListInput %}input-kvsp-{false}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_ListInput -%} 
-              
-            {%- endcapture -%}
-{% assign slot_content_ListInput = slot_content_ListInput | append: '-scs-' | append: 'framework7-liquivelte-list-input' | append: '-scvs-' | append: slot_content_def_ListInput %}
+
+{%- capture slot_content_ListInput_input -%}{% assign component_include_depth = component_include_depth | plus: 1 %}<span slot="input">
+                 
+              </span>{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{% assign slot_content_ListInput = slot_content_ListInput | append: '-scs-' | append: 'framework7-liquivelte-list-input' | append: '-smns-' | append: 'input' | append: '-scvs-' | append: slot_content_ListInput_input %}
+
+{%- capture slot_content_def_ListInput -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+            <div slot="label" class="display-flex justify-content-space-between">
+              <span>{{ filter.label }}</span>
+              <span>{{ price_min | money }} - ${{ price_max | money }}</span>
+            </div>
+              <span slot="input">
+                 
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props_Range %}min-kvsp-{0}-prsp-max-kvsp-{filter.range_max}-prsp-step-kvsp-{100}-prsp-value-kvsp-{[filter.min_value.value, filter.max_value.value || filter.range_max]}-prsp-dual-kvsp-{true}-prsp-onRangeChange-kvsp-{function(e) { priceUpdate(e, filter) } }-prsp-onRangeChanged-kvsp-{function(e) { priceChange(e, filter) } }{% endcapture %}
+{% assign modulename = basename | append: 'framework7-liquivelte-range' %}
+{% include modulename, liquivelte: true, props: props_Range, sub_include: true, basename: 'framework7-liquivelte-'  %}
+{% assign props = '' %}
+              </span>
+            {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-list-input' %}
-{% include modulename, liquivelte: true, props: props_ListInput, sub_include: true, slot_contents: slot_content_ListInput, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_ListInput = slot_content_ListInput | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_ListInput %}
+{% include modulename, liquivelte: true, props: props_ListInput, sub_include: true, slot_contents: slot_content_ListInput, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_ListInput = '' %}
 {% assign props = '' %}
           {% else %}
@@ -348,44 +385,56 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_ListItem %}title-kvsp-{{ filter.label }}-prsp-smartSelect-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_ListItem -%}
-            <select multiple name="{{ filter.label }}" value="{ filter.active_values.map(v _afeq__afct_ v.value) }">
+
+{%- capture slot_content_def_ListItem -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+            <select multiple name="{{ filter.label }}" bind:value="{ filter.active_values_flat }" on:change="{e _afeq__afct_ filterChange(e, filter)}" >
               {% for value in filter.values %}
     {% assign index = forloop.index0 %}
                 <option value="{{ value.value }}">{{ value.label }}</option>
               {% endfor %}
             </select>
-          {%- endcapture -%}
-{% assign slot_content_ListItem = slot_content_ListItem | append: '-scs-' | append: 'framework7-liquivelte-list-item' | append: '-scvs-' | append: slot_content_def_ListItem %}
+          {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-list-item' %}
-{% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, slot_contents: slot_content_ListItem, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_ListItem = slot_content_ListItem | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_ListItem %}
+{% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, slot_contents: slot_content_ListItem, basename: 'framework7-liquivelte-' , title:  filter.label  %}
 {% assign slot_content_ListItem = '' %}
 {% assign props = '' %}
           {% endif %}
         {% endfor %}
-      {%- endcapture -%}
-{% assign slot_content_List = slot_content_List | append: '-scs-' | append: 'framework7-liquivelte-list' | append: '-scvs-' | append: slot_content_def_List %}
+      {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-list' %}
-{% include modulename, liquivelte: true, props: props_List, sub_include: true, slot_contents: slot_content_List, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_List = slot_content_List | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_List %}
+{% include modulename, liquivelte: true, props: props_List, sub_include: true, slot_contents: slot_content_List, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_List = '' %}
 {% assign props = '' %}
-    {%- endcapture -%}
-{% assign slot_content_Page = slot_content_Page | append: '-scs-' | append: 'framework7-liquivelte-page' | append: '-scvs-' | append: slot_content_def_Page %}
+    {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-page' %}
-{% include modulename, liquivelte: true, props: props_Page, sub_include: true, slot_contents: slot_content_Page, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Page = slot_content_Page | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Page %}
+{% include modulename, liquivelte: true, props: props_Page, sub_include: true, slot_contents: slot_content_Page, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Page = '' %}
 {% assign props = '' %}
-  {%- endcapture -%}
-{% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-scvs-' | append: slot_content_def_View %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-view' %}
-{% include modulename, liquivelte: true, props: props_View, sub_include: true, slot_contents: slot_content_View, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_View = slot_content_View | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_View %}
+{% include modulename, liquivelte: true, props: props_View, sub_include: true, slot_contents: slot_content_View, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_View = '' %}
 {% assign props = '' %}
-{%- endcapture -%}
-{% assign slot_content_Panel = slot_content_Panel | append: '-scs-' | append: 'framework7-liquivelte-panel' | append: '-scvs-' | append: slot_content_def_Panel %}
+{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-panel' %}
-{% include modulename, liquivelte: true, props: props_Panel, sub_include: true, slot_contents: slot_content_Panel, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Panel = slot_content_Panel | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Panel %}
+{% include modulename, liquivelte: true, props: props_Panel, sub_include: true, slot_contents: slot_content_Panel, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Panel = '' %}
 {% assign props = '' %}
 
@@ -400,30 +449,28 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Block %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_Block_text -%}<span slot="text">Max {{ filter.max_value.value | money }}</span>{%- endcapture -%}
-{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: 'framework7-liquivelte-block' | append: '-smns-' | append: 'text' | append: '-scvs-' | append: slot_content_Block_text %}
 
-{%- capture slot_content_Block_text -%}<span slot="text">Min {{ filter.min_value.value | money }}</span>{%- endcapture -%}
-{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: 'framework7-liquivelte-block' | append: '-smns-' | append: 'text' | append: '-scvs-' | append: slot_content_Block_text %}
-
-{%- capture slot_content_def_Block -%}
-  {% for filter in collection.filters %}
+{%- capture slot_content_def_Block -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+  {% for filter in collection.filters  %}
     {% assign index = forloop.index0 %}
-    {% for value in filter.active_values %}
+
+      {% for value in filter.active_values %}
     {% assign index = forloop.index0 %}
-      
+        
 {% comment %}
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props_Chip %}text-kvsp-{{ value.label }}-prsp-deleteable-kvsp-1-prsp-onDelete-kvsp-{removeFilter}{% endcapture %}
+{% capture props_Chip %}text-kvsp-{{ value.label }}-prsp-deleteable-kvsp-1-prsp-onDelete-kvsp-{function() { removeFilter(value, filter) } }{% endcapture %}
 {% assign modulename = basename | append: 'framework7-liquivelte-chip' %}
-{% include modulename, liquivelte: true, props: props_Chip, sub_include: true, basename: 'framework7-liquivelte-' %}
+{% include modulename, liquivelte: true, props: props_Chip, sub_include: true, basename: 'framework7-liquivelte-' , text:  value.label  %}
 {% assign props = '' %}
       {% endfor %}
+
       {% if filter.type == 'price_range' %}
-        {% if filter.max_value %}
+        {% if filter.min_value.value > 0 %}
           
 {% comment %}
 kvsp stands for "key value separator"
@@ -434,18 +481,25 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props_Chip %}deleteable-kvsp-1-prsp-onDelete-kvsp-{removeFilter}{% endcapture %}
+{% capture props_Chip %}deleteable-kvsp-1-prsp-onDelete-kvsp-{function() { removeFilter(filter.min_value, filter) } }{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Chip -%}
+
+{%- capture slot_content_Chip_text -%}{% assign component_include_depth = component_include_depth | plus: 1 %}<span slot="text">Min {{ filter.min_value.value | money }}</span>{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{% assign slot_content_Chip = slot_content_Chip | append: '-scs-' | append: 'framework7-liquivelte-chip' | append: '-smns-' | append: 'text' | append: '-scvs-' | append: slot_content_Chip_text %}
+
+{%- capture slot_content_def_Chip -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
             
-          {%- endcapture -%}
-{% assign slot_content_Chip = slot_content_Chip | append: '-scs-' | append: 'framework7-liquivelte-chip' | append: '-scvs-' | append: slot_content_def_Chip %}
+          {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-chip' %}
-{% include modulename, liquivelte: true, props: props_Chip, sub_include: true, slot_contents: slot_content_Chip, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Chip = slot_content_Chip | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Chip %}
+{% include modulename, liquivelte: true, props: props_Chip, sub_include: true, slot_contents: slot_content_Chip, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Chip = '' %}
 {% assign props = '' %}
         {% endif %}
-        {% if filter.min_value %}
+        {% if filter.max_value.value < filter.range_max %}
           
 {% comment %}
 kvsp stands for "key value separator"
@@ -456,23 +510,33 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props_Chip %}deleteable-kvsp-1-prsp-onDelete-kvsp-{removeFilter}{% endcapture %}
+{% capture props_Chip %}deleteable-kvsp-1-prsp-onDelete-kvsp-{function() { removeFilter(filter.max_value, filter) } }{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Chip -%}
+
+{%- capture slot_content_Chip_text -%}{% assign component_include_depth = component_include_depth | plus: 1 %}<span slot="text" >Max {{ filter.max_value.value | money }}</span>{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{% assign slot_content_Chip = slot_content_Chip | append: '-scs-' | append: 'framework7-liquivelte-chip' | append: '-smns-' | append: 'text' | append: '-scvs-' | append: slot_content_Chip_text %}
+
+{%- capture slot_content_def_Chip -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
             
-          {%- endcapture -%}
-{% assign slot_content_Chip = slot_content_Chip | append: '-scs-' | append: 'framework7-liquivelte-chip' | append: '-scvs-' | append: slot_content_def_Chip %}
+          {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-chip' %}
-{% include modulename, liquivelte: true, props: props_Chip, sub_include: true, slot_contents: slot_content_Chip, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Chip = slot_content_Chip | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Chip %}
+{% include modulename, liquivelte: true, props: props_Chip, sub_include: true, slot_contents: slot_content_Chip, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Chip = '' %}
 {% assign props = '' %}
         {% endif %}
     {% endif %}
+
   {% endfor %}
-{%- endcapture -%}
-{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: 'framework7-liquivelte-block' | append: '-scvs-' | append: slot_content_def_Block %}
+{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-block' %}
-{% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Block %}
+{% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Block = '' %}
 {% assign props = '' %}
 {% schema %}{
@@ -486,11 +550,17 @@ smns stands for "slot module name separator"
 }{% endschema %}
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"filters" : {{ filters | json }}
 	
 	
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "facets"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -512,7 +582,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -546,7 +624,9 @@ smns stands for "slot module name separator"
 			assign slot_default_facets = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

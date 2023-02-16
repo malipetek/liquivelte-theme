@@ -12,16 +12,16 @@
 {% if value != 0 %}
   <Stepper classes="vertical " onChange="{onChange}" value="{{- value -}}" small></Stepper>
 {% else %}
-  <Button  
-      onClick="{onClick}"
-      large
-      raised
-      outline
-      disabled="{{- disabled -}}" 
-      classes="bg-white"
-      >
-    <Icon name="icon-plus" width="20" ></Icon>
-  </Button>
+    <Button  
+        onClick="{onClick}"
+        large
+        raised
+        outline
+        disabled="{{- disabled -}}" 
+        classes="bg-themebg"
+        >
+      <Icon name="icon-plus" width="20" ></Icon>
+    </Button>
 {% endif %}
 
 <style global lang="postcss">

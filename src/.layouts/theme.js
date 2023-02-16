@@ -11,7 +11,7 @@
   /* {% comment %} DO NOT REMOVE THIS LINE {% endcomment %} */
   // include template module
 
-   const initializeObservers = () => {
+   const initializeObservers = (doc) => {
     
   Array.from(doc.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
@@ -26,7 +26,8 @@
           wrapper.svelteComponent = new (await import("../sections/prompts/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
@@ -46,7 +47,29 @@
           wrapper.svelteComponent = new (await import("../sections/header/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
+          });
+        }
+      })();
+    });
+  });
+  
+  Array.from(doc.querySelectorAll('.liquivelte-component.footer')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if(entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import("../sections/footer.liquivelte")).default({
+            target: wrapper,
+            hydrate: true,
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
@@ -66,7 +89,8 @@
           wrapper.svelteComponent = new (await import("../snippets/app-wrapper.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
@@ -74,5 +98,4 @@
   });
    };
   document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
   

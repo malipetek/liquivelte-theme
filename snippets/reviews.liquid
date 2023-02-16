@@ -25,6 +25,15 @@
 	
 	endfor
 	endif
+	if lv_propName == 'review_stars' and review_stars == blank
+		assign review_stars = lv_propValue
+	endif
+	if lv_propName == 'score' and score == blank
+		assign score = lv_propValue
+	endif
+	if lv_propName == 'reviews_count' and reviews_count == blank
+		assign reviews_count = lv_propValue
+	endif
 	endfor
 	-%}
 	
@@ -43,6 +52,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component reviews" data-liquivelte-component-name="reviews.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid 
   assign review_stars = '12345' | split: ''
@@ -82,11 +95,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"review_stars" : {{ review_stars | json }} , "score" : {{ score | json }} , "reviews_count" : {{ reviews_count | json }}
 	
 	
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "reviews"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -108,7 +127,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -142,7 +169,9 @@
 			assign slot_default_reviews = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

@@ -65,12 +65,16 @@ const seekCb = 1;
   bind:this="{video}"
   bind:duration="{duration}"
   on:seeked="{() => seeked = true}"
+  poster="{{- block.settings.video.preview_image | image_url: width: 400 -}}"
   preload="metadata"
-  data-src="{{- block.settings.source | file_url -}}"
-  src="{{- block.settings.source | file_url -}}" 
+  loading="lazy"
   playsinline
   muted
-  ></video>
+  >
+  {% for source in block.settings.video.sources %}
+    <source src="{{- source.url -}}" type="{{- source.mime_type -}}" />
+  {% endfor %}
+  </video>
 
 <style lang="postcss">
   .video {
@@ -89,9 +93,9 @@ const seekCb = 1;
   "type": "video",
   "settings": [
     {
-      "type": "text",
-      "id": "source",
-      "label": "Video Source From Files"
+    "type": "video",
+    "id": "video",
+    "label": "A Shopify-hosted video"
     },
     {
       "type": "range",

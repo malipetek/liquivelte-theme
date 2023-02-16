@@ -22,6 +22,7 @@ const onIntersect = (el, callback) => {
           wrapper.svelteComponent = new (await import('./slider-general-hs1a3a229b.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
+            props: { resetCicR: true },
             context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
@@ -42,6 +43,7 @@ const onIntersect = (el, callback) => {
           wrapper.svelteComponent = new (await import('./product-carousel-hs743bee3c.liquivelte.js').then(function (n) { return n.index; })).default({
             target: wrapper,
             hydrate: true,
+            props: { resetCicR: true },
             context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
@@ -62,6 +64,7 @@ const onIntersect = (el, callback) => {
           wrapper.svelteComponent = new (await import('./product-comparison-hs1a3a229b.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
+            props: { resetCicR: true },
             context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
@@ -82,6 +85,7 @@ const onIntersect = (el, callback) => {
           wrapper.svelteComponent = new (await import('./scroll-animation-hs38fc9140.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
+            props: { resetCicR: true },
             context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
@@ -102,6 +106,7 @@ const onIntersect = (el, callback) => {
           wrapper.svelteComponent = new (await import('./exploding-gallery-hs8daa1a0c.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
+            props: { resetCicR: true },
             context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
@@ -110,4 +115,3 @@ const onIntersect = (el, callback) => {
   });
   };
   document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));

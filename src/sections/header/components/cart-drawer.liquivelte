@@ -1,4 +1,5 @@
 {% liquid 
+	assign initialized = false
 	assign min_amounts = '{'
 	for item in cart.items
 		assign min_amount = item.product.metafields.custom['min-amount'] | default: 0
@@ -11,29 +12,44 @@
 %}
 <script>
   import cart from 'theme/cart';
-  import { Button, Block, BlockTitle, View, Page, List, ListItem, Stepper } from 'framework7-liquivelte'; 
+  import { Button, Block, BlockTitle, View, Page, List, ListItem, Stepper, Row, Col } from 'framework7-liquivelte'; 
   import Loadable from '../../../snippets/loadable.liquivelte';
 	import QuantityBox from '../../../snippets/quantity-box.liquivelte';
   import { cartStore, cartOpen } from '../../../scripts/store.module.js';
-
+	let initialized = false;
 	import min_amounts from 'theme';
+	import { onMount } from 'svelte';
 	// const min_amounts_data = JSON.parse(min_amounts);
 
 	function quantityChange(event) {
 		cartStore.setQuantity(this.id, +event.target.value); 
 	}
- 
-	cartStore.set(cart);
+	
+	onMount(() => {
+		cartStore.set(cart);
+		
+		cartStore.subscribe(payload => {
+			cart = payload;
+		});
+		initialized = true;
+	});
   </script>
-  <View classes="cart-drawer">
-    <Page>
+  
+
+<div class="cart-drawer" 
+			class:hidden="{{- initialized == false -}}">
 			<Block>
 				<BlockTitle>
 					Cart
 				</BlockTitle>
 			</Block>
 			<List >
-				{% for item in $cartStore.items (item.id) %}
+				{% if cart.items.size == 0 %}
+					<p data-t="{{- 'sections.cart.empty' | t -}}">
+						{{- 'sections.cart.empty' | t -}}
+					</p>
+				{% endif %}
+				{% for item in cart.items (item.id) %}
 					<ListItem classes="h-[120px]">
 						<div slot="header" class="text-xl mb-4">{{- item.product_title -}}</div>
 						<div slot="after" class="ml-2"> {{- item.price | money -}} </div>
@@ -44,7 +60,7 @@
 						</div>
 						<div slot="media">
 							{% if item.image %}
-								<img src="{{- item.image | image_url: width: 120 -}}" width="80" />
+								<img src="{{- item.image | image_url: width: 120 -}}" width="80" loading="lazy" />
 							{% endif %}
 						</div>
 						<div slot="footer" class="ml-2">
@@ -59,18 +75,40 @@
 				{% endfor %}
 			</List>
 			<Block classes="cart-drawer-bottom">
-					<div class="cart-drawer-subtotal">
-						<span class="text-gray text-base float-left" data-t="{{- 'general.cart.subtotal' | t -}}"> {{- 'general.cart.subtotal' | t -}} </span> 
-						<span cart-drawer-subtotal-text class="float-right text-black text-lg ">{{- cart.items_subtotal_price | money -}}</span>
-					</div>
-					<div class="cart-drawer-taxes-notice text-base text-black float-left"> Taxes and shipping calculated at checkout </div>
-					<button on:click="{() => submit() }" class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-						 Checkout 
-					</button>
-					<a class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/cart"> View Cart </a>
+				 <Row noGap>
+					 <Col>
+						<span class="text-base float-left" data-t="{{- 'sections.cart.subtotal' | t -}}"> {{- 'sections.cart.subtotal' | t -}} </span> 
+					</Col>
+					<Col>
+						<span cart-drawer-subtotal-text class="float-right text-lg ">{{- cart.items_subtotal_price | money -}}</span>
+					</Col>
+				</Row>
+				<Row>
+					<div class="cart-drawer-taxes-notice text-base float-left"> Taxes and shipping calculated at checkout </div>
+				</Row>
+				<Block >
+					<Button fill large classes="mt-10 ">
+							<span data-t="{{- 'sections.cart.checkout' | t -}}">
+								{{- 'sections.cart.checkout' | t -}}
+							</span>
+					</Button>
+				</Block>
+				<Block>
+					<Button fill>
+						<span data-t="{{- 'sections.cart.save_as_wishlist' | t -}}">
+							{{- 'sections.cart.save_as_wishlist' | t -}}
+						</span>
+					</Button>
+				</Block>
+				<Block>
+					<Button>
+						<span data-t="{{- 'sections.cart.share' | t -}}">
+							{{- 'sections.cart.share' | t -}}
+						</span>
+					</Button>
+				</Block>
 			</Block>
-    </Page>
-  </View>
+</div>
 
 	<style lang="postcss">
 	.cart-drawer {

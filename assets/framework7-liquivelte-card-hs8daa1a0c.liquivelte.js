@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, compute_slots, getContext, createEventDispatcher, onMount, onDestroy, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, text, claim_text, set_data, binding_callbacks } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, assign, element, space, claim_element, children, claim_space, detach, set_attributes, insert_hydration, append_hydration, transition_in, group_outros, transition_out, check_outros, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, compute_rest_props, compute_slots, getContext, createEventDispatcher, onMount, onDestroy, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, text, claim_text, set_data, binding_callbacks } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import { restProps, createEmitter, f7ready, app, classNames, colorClasses } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Card_header } from './framework7-liquivelte-card-header-hs8daa1a0c.liquivelte.js';
@@ -13,7 +13,7 @@ const get_content_slot_context = ctx => ({});
 const get_header_slot_changes = dirty => ({});
 const get_header_slot_context = ctx => ({});
 
-// (158:2) {#if title != undefined || hasHeaderSlots }
+// (162:2) {#if title != undefined || hasHeaderSlots }
 function create_if_block_2(ctx) {
 	let cardheader;
 	let current;
@@ -39,7 +39,7 @@ function create_if_block_2(ctx) {
 		p(ctx, dirty) {
 			const cardheader_changes = {};
 
-			if (dirty[0] & /*$$scope, title*/ 536870914) {
+			if (dirty[0] & /*$$scope, title*/ 1073741826) {
 				cardheader_changes.$$scope = { dirty, ctx };
 			}
 
@@ -60,14 +60,14 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (159:4) <CardHeader  >
+// (163:4) <CardHeader  >
 function create_default_slot_2(ctx) {
 	let t0_value = /*liquid*/ ctx[19].default(/*title*/ ctx[1], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const header_slot_template = /*#slots*/ ctx[27].header;
-	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[29], get_header_slot_context);
+	const header_slot_template = /*#slots*/ ctx[28].header;
+	const header_slot = create_slot(header_slot_template, ctx, /*$$scope*/ ctx[30], get_header_slot_context);
 
 	return {
 		c() {
@@ -94,15 +94,15 @@ function create_default_slot_2(ctx) {
 			if ((!current || dirty[0] & /*title*/ 2) && t0_value !== (t0_value = /*liquid*/ ctx[19].default(/*title*/ ctx[1], '') + "")) set_data(t0, t0_value);
 
 			if (header_slot) {
-				if (header_slot.p && (!current || dirty[0] & /*$$scope*/ 536870912)) {
+				if (header_slot.p && (!current || dirty[0] & /*$$scope*/ 1073741824)) {
 					update_slot_base(
 						header_slot,
 						header_slot_template,
 						ctx,
-						/*$$scope*/ ctx[29],
+						/*$$scope*/ ctx[30],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[29])
-						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[29], dirty, get_header_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[30])
+						: get_slot_changes(header_slot_template, /*$$scope*/ ctx[30], dirty, get_header_slot_changes),
 						get_header_slot_context
 					);
 				}
@@ -125,7 +125,7 @@ function create_default_slot_2(ctx) {
 	};
 }
 
-// (164:2) {#if content != undefined || hasContentSlots }
+// (168:2) {#if content != undefined || hasContentSlots }
 function create_if_block_1(ctx) {
 	let cardcontent;
 	let current;
@@ -153,7 +153,7 @@ function create_if_block_1(ctx) {
 			const cardcontent_changes = {};
 			if (dirty[0] & /*padding*/ 8192) cardcontent_changes.padding = /*padding*/ ctx[13];
 
-			if (dirty[0] & /*$$scope, content*/ 536870916) {
+			if (dirty[0] & /*$$scope, content*/ 1073741828) {
 				cardcontent_changes.$$scope = { dirty, ctx };
 			}
 
@@ -174,14 +174,14 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (165:4) <CardContent  {padding} >
+// (169:4) <CardContent  {padding} >
 function create_default_slot_1(ctx) {
 	let t0_value = /*liquid*/ ctx[19].default(/*content*/ ctx[2], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const content_slot_template = /*#slots*/ ctx[27].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[29], get_content_slot_context);
+	const content_slot_template = /*#slots*/ ctx[28].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[30], get_content_slot_context);
 
 	return {
 		c() {
@@ -208,15 +208,15 @@ function create_default_slot_1(ctx) {
 			if ((!current || dirty[0] & /*content*/ 4) && t0_value !== (t0_value = /*liquid*/ ctx[19].default(/*content*/ ctx[2], '') + "")) set_data(t0, t0_value);
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[0] & /*$$scope*/ 536870912)) {
+				if (content_slot.p && (!current || dirty[0] & /*$$scope*/ 1073741824)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[29],
+						/*$$scope*/ ctx[30],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[29])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[29], dirty, get_content_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[30])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[30], dirty, get_content_slot_changes),
 						get_content_slot_context
 					);
 				}
@@ -239,7 +239,7 @@ function create_default_slot_1(ctx) {
 	};
 }
 
-// (170:2) {#if footer != undefined || hasFooterSlots }
+// (174:2) {#if footer != undefined || hasFooterSlots }
 function create_if_block(ctx) {
 	let cardfooter;
 	let current;
@@ -265,7 +265,7 @@ function create_if_block(ctx) {
 		p(ctx, dirty) {
 			const cardfooter_changes = {};
 
-			if (dirty[0] & /*$$scope, footer*/ 536870920) {
+			if (dirty[0] & /*$$scope, footer*/ 1073741832) {
 				cardfooter_changes.$$scope = { dirty, ctx };
 			}
 
@@ -286,14 +286,14 @@ function create_if_block(ctx) {
 	};
 }
 
-// (171:4) <CardFooter  >
+// (175:4) <CardFooter  >
 function create_default_slot(ctx) {
 	let t0_value = /*liquid*/ ctx[19].default(/*footer*/ ctx[3], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const footer_slot_template = /*#slots*/ ctx[27].footer;
-	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[29], get_footer_slot_context);
+	const footer_slot_template = /*#slots*/ ctx[28].footer;
+	const footer_slot = create_slot(footer_slot_template, ctx, /*$$scope*/ ctx[30], get_footer_slot_context);
 
 	return {
 		c() {
@@ -320,15 +320,15 @@ function create_default_slot(ctx) {
 			if ((!current || dirty[0] & /*footer*/ 8) && t0_value !== (t0_value = /*liquid*/ ctx[19].default(/*footer*/ ctx[3], '') + "")) set_data(t0, t0_value);
 
 			if (footer_slot) {
-				if (footer_slot.p && (!current || dirty[0] & /*$$scope*/ 536870912)) {
+				if (footer_slot.p && (!current || dirty[0] & /*$$scope*/ 1073741824)) {
 					update_slot_base(
 						footer_slot,
 						footer_slot_template,
 						ctx,
-						/*$$scope*/ ctx[29],
+						/*$$scope*/ ctx[30],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[29])
-						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[29], dirty, get_footer_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[30])
+						: get_slot_changes(footer_slot_template, /*$$scope*/ ctx[30], dirty, get_footer_slot_changes),
 						get_footer_slot_context
 					);
 				}
@@ -368,8 +368,8 @@ function create_fragment(ctx) {
 	let if_block0 = (/*title*/ ctx[1] != undefined || /*hasHeaderSlots*/ ctx[18]) && create_if_block_2(ctx);
 	let if_block1 = (/*content*/ ctx[2] != undefined || /*hasContentSlots*/ ctx[17]) && create_if_block_1(ctx);
 	let if_block2 = (/*footer*/ ctx[3] != undefined || /*hasFooterSlots*/ ctx[16]) && create_if_block(ctx);
-	const default_slot_template = /*#slots*/ ctx[27].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[29], null);
+	const default_slot_template = /*#slots*/ ctx[28].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[30], null);
 
 	let div_levels = [
 		{
@@ -478,7 +478,7 @@ function create_fragment(ctx) {
 				default_slot.m(div, null);
 			}
 
-			/*div_binding*/ ctx[28](div);
+			/*div_binding*/ ctx[29](div);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -552,15 +552,15 @@ function create_fragment(ctx) {
 			}
 
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[0] & /*$$scope*/ 536870912)) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope*/ 1073741824)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[29],
+						/*$$scope*/ ctx[30],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[29])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[29], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[30])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[30], dirty, null),
 						null
 					);
 				}
@@ -629,7 +629,7 @@ function create_fragment(ctx) {
 			if (if_block1) if_block1.d();
 			if (if_block2) if_block2.d();
 			if (default_slot) default_slot.d(detaching);
-			/*div_binding*/ ctx[28](null);
+			/*div_binding*/ ctx[29](null);
 		}
 	};
 }
@@ -640,14 +640,16 @@ function instance($$self, $$props, $$invalidate) {
 	let hasFooterSlots;
 
 	const omit_props_names = [
-		"classes","title","content","footer","outline","expandable","expandableAnimateWidth","expandableOpened","animate","hideNavbarOnOpen","hideToolbarOnOpen","hideStatusbarOnOpen","scrollableEl","swipeToClose","closeByBackdropClick","backdrop","backdropEl","noShadow","noBorder","padding"
+		"importsSeek","classes","title","content","footer","outline","expandable","expandableAnimateWidth","expandableOpened","animate","hideNavbarOnOpen","hideToolbarOnOpen","hideStatusbarOnOpen","scrollableEl","swipeToClose","closeByBackdropClick","backdrop","backdropEl","noShadow","noBorder","padding"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	const $$slots = compute_slots(slots);
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let computedClasses = undefined;
@@ -758,15 +760,16 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(43, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(45, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(20, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('importsSeek' in $$new_props) $$invalidate(22, importsSeek = $$new_props.importsSeek);
 		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
 		if ('title' in $$new_props) $$invalidate(1, title = $$new_props.title);
 		if ('content' in $$new_props) $$invalidate(2, content = $$new_props.content);
 		if ('footer' in $$new_props) $$invalidate(3, footer = $$new_props.footer);
-		if ('outline' in $$new_props) $$invalidate(22, outline = $$new_props.outline);
-		if ('expandable' in $$new_props) $$invalidate(23, expandable = $$new_props.expandable);
-		if ('expandableAnimateWidth' in $$new_props) $$invalidate(24, expandableAnimateWidth = $$new_props.expandableAnimateWidth);
+		if ('outline' in $$new_props) $$invalidate(23, outline = $$new_props.outline);
+		if ('expandable' in $$new_props) $$invalidate(24, expandable = $$new_props.expandable);
+		if ('expandableAnimateWidth' in $$new_props) $$invalidate(25, expandableAnimateWidth = $$new_props.expandableAnimateWidth);
 		if ('expandableOpened' in $$new_props) $$invalidate(21, expandableOpened = $$new_props.expandableOpened);
 		if ('animate' in $$new_props) $$invalidate(4, animate = $$new_props.animate);
 		if ('hideNavbarOnOpen' in $$new_props) $$invalidate(5, hideNavbarOnOpen = $$new_props.hideNavbarOnOpen);
@@ -777,10 +780,10 @@ function instance($$self, $$props, $$invalidate) {
 		if ('closeByBackdropClick' in $$new_props) $$invalidate(10, closeByBackdropClick = $$new_props.closeByBackdropClick);
 		if ('backdrop' in $$new_props) $$invalidate(11, backdrop = $$new_props.backdrop);
 		if ('backdropEl' in $$new_props) $$invalidate(12, backdropEl = $$new_props.backdropEl);
-		if ('noShadow' in $$new_props) $$invalidate(25, noShadow = $$new_props.noShadow);
-		if ('noBorder' in $$new_props) $$invalidate(26, noBorder = $$new_props.noBorder);
+		if ('noShadow' in $$new_props) $$invalidate(26, noShadow = $$new_props.noShadow);
+		if ('noBorder' in $$new_props) $$invalidate(27, noBorder = $$new_props.noBorder);
 		if ('padding' in $$new_props) $$invalidate(13, padding = $$new_props.padding);
-		if ('$$scope' in $$new_props) $$invalidate(29, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(30, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
@@ -829,6 +832,7 @@ function instance($$self, $$props, $$invalidate) {
 		liquid,
 		$$restProps,
 		expandableOpened,
+		importsSeek,
 		outline,
 		expandable,
 		expandableAnimateWidth,
@@ -851,13 +855,14 @@ class Card extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
+				importsSeek: 22,
 				classes: 0,
 				title: 1,
 				content: 2,
 				footer: 3,
-				outline: 22,
-				expandable: 23,
-				expandableAnimateWidth: 24,
+				outline: 23,
+				expandable: 24,
+				expandableAnimateWidth: 25,
 				expandableOpened: 21,
 				animate: 4,
 				hideNavbarOnOpen: 5,
@@ -868,8 +873,8 @@ class Card extends SvelteComponent {
 				closeByBackdropClick: 10,
 				backdrop: 11,
 				backdropEl: 12,
-				noShadow: 25,
-				noBorder: 26,
+				noShadow: 26,
+				noBorder: 27,
 				padding: 13
 			},
 			null,

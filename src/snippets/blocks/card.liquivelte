@@ -1,0 +1,102 @@
+<script>
+import settings from 'theme';
+export let left;
+export let top;
+export let width;
+export let height;
+</script>
+<style>
+  .card {
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    left: var(--left);
+    top: var(--left);
+    width: 50%;
+    height: 50%;
+  }
+</style>
+<div class="card" style="--left: {{- settings.card_left -}}%; --top: {{- settings.card_top -}}%; --width: {{- width -}}; --height: {{- height -}}; --left: {{- left -}}">
+  <slot />
+</div>
+{% schema %}
+  {
+    "name": "Card",
+    "settings": [
+    {
+      "type": "select",
+      "options": [
+        {
+          "label": "Regular",
+          "value": "regular"
+        },
+        {
+          "label": "Round",
+          "value": "round"
+        },
+        {
+          "label": "Transparent",
+          "value": "transparent"
+        }
+      ],
+      "id": "style",
+      "label": "Card Style"
+    },
+    {
+      "id": "card_top",
+      "label": "Card Top",
+      "default": 50,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "id": "card_left",
+      "label": "Card Left",
+      "default": 50,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "id": "card_width",
+      "label": "Card Width",
+      "default": 50,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "id": "card_height",
+      "label": "Card Height",
+      "default": 50,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "text",
+      "id": "card_title",
+      "label": "Card Title"
+    },
+    {
+      "type": "text",
+      "id": "card_subtitle",
+      "label": "Card Sub Title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_content",
+      "label": "Card Content"
+    }]
+  }
+{% endschema %}

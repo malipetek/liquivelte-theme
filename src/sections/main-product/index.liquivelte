@@ -20,9 +20,9 @@
   
   let checked_size = product.options_with_values[0].values[0];
   $: product = {...product, selected_or_first_available_variant: product.variants.find(v => JSTRFY(v.options) == JSTRFY(selected_options.slice(1))) };
-  $: console.log('product ', product);
-  $: console.log('selected_options ', selected_options);
-  $: console.log('checked_size ', product.selected_or_first_available_variant);
+  // $: console.log('product ', product);
+  // $: console.log('selected_options ', selected_options);
+  // $: console.log('checked_size ', product.selected_or_first_available_variant);
 
 
 </script>
@@ -33,7 +33,7 @@
 
 <Breadcrumbs />
 
-<div class="bg-white">
+<div class="">
   <div class="pt-6">
     <!-- Product info -->
     <div class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">

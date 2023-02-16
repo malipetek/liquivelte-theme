@@ -27,10 +27,10 @@
 	
 	endfor
 	endif
-	if lv_propName == 'block'
+	if lv_propName == 'block' and block == blank
 		assign block = lv_propValue
 	endif
-	if lv_propName == 'anim_style'
+	if lv_propName == 'anim_style' and anim_style == blank
 		assign anim_style = lv_propValue
 	endif
 	endfor
@@ -51,6 +51,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component shape" data-liquivelte-component-name="shape.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -65,8 +69,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Positionable %}block-kvsp-{{ block }}-prsp-anim_style-kvsp-{{ anim_style }}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Positionable -%}
+
+{%- capture slot_content_def_Positionable -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
   {% if block.settings.shape == 'square' %}
     <div class="square text-red-50">
       {{ block.settings.content }}
@@ -90,20 +96,28 @@ smns stands for "slot module name separator"
     </p>
     </div>
   {% endif %}
-{%- endcapture -%}
-{% assign slot_content_Positionable = slot_content_Positionable | append: '-scs-' | append: 'positionable' | append: '-scvs-' | append: slot_content_def_Positionable %}
+{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'positionable' %}
-{% include modulename, liquivelte: true, props: props_Positionable, sub_include: true, slot_contents: slot_content_Positionable, basename: '' %}
+{% assign slot_content_Positionable = slot_content_Positionable | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Positionable %}
+{% include modulename, liquivelte: true, props: props_Positionable, sub_include: true, slot_contents: slot_content_Positionable, basename: '' , block:  block  , anim_style:  anim_style  %}
 {% assign slot_content_Positionable = '' %}
 {% assign props = '' %}
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "shape"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -125,7 +139,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -161,7 +183,9 @@ smns stands for "slot module name separator"
 			assign slot_default_shape = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

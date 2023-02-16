@@ -44,61 +44,61 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'text'
+	if lv_propName == 'text' and text == blank
 		assign text = lv_propValue
 	endif
-	if lv_propName == 'htmlText'
+	if lv_propName == 'htmlText' and htmlText == blank
 		assign htmlText = lv_propValue
 	endif
-	if lv_propName == 'name'
+	if lv_propName == 'name' and name == blank
 		assign name = lv_propValue
 	endif
-	if lv_propName == 'avatar'
+	if lv_propName == 'avatar' and avatar == blank
 		assign avatar = lv_propValue
 	endif
-	if lv_propName == 'type'
+	if lv_propName == 'type' and type == blank
 		assign type = lv_propValue
 	endif
-	if lv_propName == 'image'
+	if lv_propName == 'image' and image == blank
 		assign image = lv_propValue
 	endif
-	if lv_propName == 'header'
+	if lv_propName == 'header' and header == blank
 		assign header = lv_propValue
 	endif
-	if lv_propName == 'footer'
+	if lv_propName == 'footer' and footer == blank
 		assign footer = lv_propValue
 	endif
-	if lv_propName == 'textHeader'
+	if lv_propName == 'textHeader' and textHeader == blank
 		assign textHeader = lv_propValue
 	endif
-	if lv_propName == 'textFooter'
+	if lv_propName == 'textFooter' and textFooter == blank
 		assign textFooter = lv_propValue
 	endif
-	if lv_propName == 'first'
+	if lv_propName == 'first' and first == blank
 		assign first = lv_propValue
 	endif
-	if lv_propName == 'last'
+	if lv_propName == 'last' and last == blank
 		assign last = lv_propValue
 	endif
-	if lv_propName == 'tail'
+	if lv_propName == 'tail' and tail == blank
 		assign tail = lv_propValue
 	endif
-	if lv_propName == 'sameName'
+	if lv_propName == 'sameName' and sameName == blank
 		assign sameName = lv_propValue
 	endif
-	if lv_propName == 'sameHeader'
+	if lv_propName == 'sameHeader' and sameHeader == blank
 		assign sameHeader = lv_propValue
 	endif
-	if lv_propName == 'sameFooter'
+	if lv_propName == 'sameFooter' and sameFooter == blank
 		assign sameFooter = lv_propValue
 	endif
-	if lv_propName == 'sameAvatar'
+	if lv_propName == 'sameAvatar' and sameAvatar == blank
 		assign sameAvatar = lv_propValue
 	endif
-	if lv_propName == 'typing'
+	if lv_propName == 'typing' and typing == blank
 		assign typing = lv_propValue
 	endif
 	endfor
@@ -161,6 +161,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component message" data-liquivelte-component-name="message.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -302,11 +306,17 @@
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-message"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -328,7 +338,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -395,7 +413,9 @@
 			assign slot_end_framework7-liquivelte_message = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

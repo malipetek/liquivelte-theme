@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, empty, insert_hydration, group_outros, transition_out, check_outros, transition_in, detach, compute_rest_props, compute_slots, getContext, createEventDispatcher, onMount, afterUpdate, onDestroy, assign, exclude_internal_props, binding_callbacks, create_slot, element, space, claim_element, children, claim_space, attr, set_attributes, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, src_url_equal, text, claim_text, set_data, listen, noop, run_all, create_component, claim_component, mount_component, get_spread_object, destroy_component, select_option } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, empty, insert_hydration, group_outros, transition_out, check_outros, transition_in, detach, compute_rest_props, compute_slots, getContext, createEventDispatcher, onMount, afterUpdate, onDestroy, assign, exclude_internal_props, binding_callbacks, create_slot, element, space, claim_element, children, claim_space, attr, set_attributes, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, get_spread_update, src_url_equal, text, claim_text, set_data, listen, noop, run_all, create_component, claim_component, mount_component, get_spread_object, destroy_component, select_option } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
 import { createEmitter, getReactiveContext, f7ready, app, classNames, colorClasses, extend, restProps } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Text_editor } from './framework7-liquivelte-text-editor-hs8daa1a0c.liquivelte.js';
@@ -55,7 +55,7 @@ const get_content_start_slot_context = ctx => ({});
 const get_root_start_slot_changes = dirty => ({});
 const get_root_start_slot_context = ctx => ({});
 
-// (584:0) {:else}
+// (588:0) {:else}
 function create_else_block_1(ctx) {
 	let div2;
 	let t0;
@@ -75,27 +75,27 @@ function create_else_block_1(ctx) {
 	let t11;
 	let t12;
 	let current;
-	const content_start_slot_template = /*#slots*/ ctx[77]["content-start"];
-	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[76], get_content_start_slot_context_1);
+	const content_start_slot_template = /*#slots*/ ctx[78]["content-start"];
+	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[77], get_content_start_slot_context_1);
 	let if_block0 = /*isSortable*/ ctx[51] && /*isSortableOpposite*/ ctx[50] && create_if_block_23();
 	let if_block1 = (/*media*/ ctx[2] || /*hasMediaSlots*/ ctx[48]) && create_if_block_21(ctx);
-	const inner_start_slot_template = /*#slots*/ ctx[77]["inner-start"];
-	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[76], get_inner_start_slot_context_1);
+	const inner_start_slot_template = /*#slots*/ ctx[78]["inner-start"];
+	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[77], get_inner_start_slot_context_1);
 	let if_block2 = (/*label*/ ctx[37] != undefined || /*hasLabelSlots*/ ctx[47]) && create_if_block_20(ctx);
 	let if_block3 = /*input*/ ctx[4] && create_if_block_16(ctx);
-	const input_slot_template = /*#slots*/ ctx[77].input;
-	const input_slot = create_slot(input_slot_template, ctx, /*$$scope*/ ctx[76], get_input_slot_context_1);
+	const input_slot_template = /*#slots*/ ctx[78].input;
+	const input_slot = create_slot(input_slot_template, ctx, /*$$scope*/ ctx[77], get_input_slot_context_1);
 	let if_block4 = /*hasErrorMessage*/ ctx[39] && /*errorMessageForce*/ ctx[35] && create_if_block_15(ctx);
 	let if_block5 = /*clearButton*/ ctx[33] && create_if_block_14();
 	let if_block6 = (/*info*/ ctx[36] != undefined || /*hasInfoSlots*/ ctx[40]) && create_if_block_13(ctx);
-	const inner_slot_template = /*#slots*/ ctx[77].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[76], get_inner_slot_context_1);
-	const inner_end_slot_template = /*#slots*/ ctx[77]["inner-end"];
-	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[76], get_inner_end_slot_context_1);
-	const content_slot_template = /*#slots*/ ctx[77].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[76], get_content_slot_context_1);
-	const content_end_slot_template = /*#slots*/ ctx[77]["content-end"];
-	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[76], get_content_end_slot_context_1);
+	const inner_slot_template = /*#slots*/ ctx[78].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[77], get_inner_slot_context_1);
+	const inner_end_slot_template = /*#slots*/ ctx[78]["inner-end"];
+	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[77], get_inner_end_slot_context_1);
+	const content_slot_template = /*#slots*/ ctx[78].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[77], get_content_slot_context_1);
+	const content_end_slot_template = /*#slots*/ ctx[78]["content-end"];
+	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[77], get_content_end_slot_context_1);
 	let div2_levels = [{ class: /*itemContentClasses*/ ctx[45] }, restProps(/*$$restProps*/ ctx[57])];
 	let div2_data = {};
 
@@ -244,15 +244,15 @@ function create_else_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			if (content_start_slot) {
-				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						content_start_slot,
 						content_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[76], dirty, get_content_start_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[77], dirty, get_content_start_slot_changes_1),
 						get_content_start_slot_context_1
 					);
 				}
@@ -293,15 +293,15 @@ function create_else_block_1(ctx) {
 			}
 
 			if (inner_start_slot) {
-				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						inner_start_slot,
 						inner_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[76], dirty, get_inner_start_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[77], dirty, get_inner_start_slot_changes_1),
 						get_inner_start_slot_context_1
 					);
 				}
@@ -354,15 +354,15 @@ function create_else_block_1(ctx) {
 			}
 
 			if (input_slot) {
-				if (input_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (input_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						input_slot,
 						input_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(input_slot_template, /*$$scope*/ ctx[76], dirty, get_input_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(input_slot_template, /*$$scope*/ ctx[77], dirty, get_input_slot_changes_1),
 						get_input_slot_context_1
 					);
 				}
@@ -430,60 +430,60 @@ function create_else_block_1(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[76], dirty, get_inner_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[77], dirty, get_inner_slot_changes_1),
 						get_inner_slot_context_1
 					);
 				}
 			}
 
 			if (inner_end_slot) {
-				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						inner_end_slot,
 						inner_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[76], dirty, get_inner_end_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[77], dirty, get_inner_end_slot_changes_1),
 						get_inner_end_slot_context_1
 					);
 				}
 			}
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[76], dirty, get_content_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[77], dirty, get_content_slot_changes_1),
 						get_content_slot_context_1
 					);
 				}
 			}
 
 			if (content_end_slot) {
-				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						content_end_slot,
 						content_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[76], dirty, get_content_end_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[77], dirty, get_content_end_slot_changes_1),
 						get_content_end_slot_context_1
 					);
 				}
@@ -545,7 +545,7 @@ function create_else_block_1(ctx) {
 	};
 }
 
-// (380:0) {#if wrap }
+// (384:0) {#if wrap }
 function create_if_block(ctx) {
 	let li;
 	let t0;
@@ -571,34 +571,34 @@ function create_if_block(ctx) {
 	let t15;
 	let t16;
 	let current;
-	const root_start_slot_template = /*#slots*/ ctx[77]["root-start"];
-	const root_start_slot = create_slot(root_start_slot_template, ctx, /*$$scope*/ ctx[76], get_root_start_slot_context);
-	const content_start_slot_template = /*#slots*/ ctx[77]["content-start"];
-	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[76], get_content_start_slot_context);
+	const root_start_slot_template = /*#slots*/ ctx[78]["root-start"];
+	const root_start_slot = create_slot(root_start_slot_template, ctx, /*$$scope*/ ctx[77], get_root_start_slot_context);
+	const content_start_slot_template = /*#slots*/ ctx[78]["content-start"];
+	const content_start_slot = create_slot(content_start_slot_template, ctx, /*$$scope*/ ctx[77], get_content_start_slot_context);
 	let if_block0 = /*isSortable*/ ctx[51] && /*isSortableOpposite*/ ctx[50] && create_if_block_12();
 	let if_block1 = (/*media*/ ctx[2] || /*hasMediaSlots*/ ctx[48]) && create_if_block_10(ctx);
-	const inner_start_slot_template = /*#slots*/ ctx[77]["inner-start"];
-	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[76], get_inner_start_slot_context);
+	const inner_start_slot_template = /*#slots*/ ctx[78]["inner-start"];
+	const inner_start_slot = create_slot(inner_start_slot_template, ctx, /*$$scope*/ ctx[77], get_inner_start_slot_context);
 	let if_block2 = (/*label*/ ctx[37] != undefined || /*hasLabelSlots*/ ctx[47]) && create_if_block_9(ctx);
 	let if_block3 = /*input*/ ctx[4] && create_if_block_5(ctx);
-	const input_slot_template = /*#slots*/ ctx[77].input;
-	const input_slot = create_slot(input_slot_template, ctx, /*$$scope*/ ctx[76], get_input_slot_context);
+	const input_slot_template = /*#slots*/ ctx[78].input;
+	const input_slot = create_slot(input_slot_template, ctx, /*$$scope*/ ctx[77], get_input_slot_context);
 	let if_block4 = /*hasErrorMessage*/ ctx[39] && /*errorMessageForce*/ ctx[35] && create_if_block_4(ctx);
 	let if_block5 = /*clearButton*/ ctx[33] && create_if_block_3();
 	let if_block6 = (/*info*/ ctx[36] != undefined || /*hasInfoSlots*/ ctx[40]) && create_if_block_2(ctx);
-	const inner_slot_template = /*#slots*/ ctx[77].inner;
-	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[76], get_inner_slot_context);
-	const inner_end_slot_template = /*#slots*/ ctx[77]["inner-end"];
-	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[76], get_inner_end_slot_context);
-	const content_slot_template = /*#slots*/ ctx[77].content;
-	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[76], get_content_slot_context);
-	const content_end_slot_template = /*#slots*/ ctx[77]["content-end"];
-	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[76], get_content_end_slot_context);
+	const inner_slot_template = /*#slots*/ ctx[78].inner;
+	const inner_slot = create_slot(inner_slot_template, ctx, /*$$scope*/ ctx[77], get_inner_slot_context);
+	const inner_end_slot_template = /*#slots*/ ctx[78]["inner-end"];
+	const inner_end_slot = create_slot(inner_end_slot_template, ctx, /*$$scope*/ ctx[77], get_inner_end_slot_context);
+	const content_slot_template = /*#slots*/ ctx[78].content;
+	const content_slot = create_slot(content_slot_template, ctx, /*$$scope*/ ctx[77], get_content_slot_context);
+	const content_end_slot_template = /*#slots*/ ctx[78]["content-end"];
+	const content_end_slot = create_slot(content_end_slot_template, ctx, /*$$scope*/ ctx[77], get_content_end_slot_context);
 	let if_block7 = /*isSortable*/ ctx[51] && /*isSortableOpposite*/ ctx[50] == undefined && create_if_block_1();
-	const root_slot_template = /*#slots*/ ctx[77].root;
-	const root_slot = create_slot(root_slot_template, ctx, /*$$scope*/ ctx[76], get_root_slot_context);
-	const root_end_slot_template = /*#slots*/ ctx[77]["root-end"];
-	const root_end_slot = create_slot(root_end_slot_template, ctx, /*$$scope*/ ctx[76], get_root_end_slot_context);
+	const root_slot_template = /*#slots*/ ctx[78].root;
+	const root_slot = create_slot(root_slot_template, ctx, /*$$scope*/ ctx[77], get_root_slot_context);
+	const root_end_slot_template = /*#slots*/ ctx[78]["root-end"];
+	const root_end_slot = create_slot(root_end_slot_template, ctx, /*$$scope*/ ctx[77], get_root_end_slot_context);
 	let li_levels = [{ class: /*classes*/ ctx[0] }, restProps(/*$$restProps*/ ctx[57])];
 	let li_data = {};
 
@@ -789,30 +789,30 @@ function create_if_block(ctx) {
 		},
 		p(ctx, dirty) {
 			if (root_start_slot) {
-				if (root_start_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (root_start_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						root_start_slot,
 						root_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(root_start_slot_template, /*$$scope*/ ctx[76], dirty, get_root_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(root_start_slot_template, /*$$scope*/ ctx[77], dirty, get_root_start_slot_changes),
 						get_root_start_slot_context
 					);
 				}
 			}
 
 			if (content_start_slot) {
-				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (content_start_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						content_start_slot,
 						content_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[76], dirty, get_content_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(content_start_slot_template, /*$$scope*/ ctx[77], dirty, get_content_start_slot_changes),
 						get_content_start_slot_context
 					);
 				}
@@ -853,15 +853,15 @@ function create_if_block(ctx) {
 			}
 
 			if (inner_start_slot) {
-				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (inner_start_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						inner_start_slot,
 						inner_start_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[76], dirty, get_inner_start_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(inner_start_slot_template, /*$$scope*/ ctx[77], dirty, get_inner_start_slot_changes),
 						get_inner_start_slot_context
 					);
 				}
@@ -914,15 +914,15 @@ function create_if_block(ctx) {
 			}
 
 			if (input_slot) {
-				if (input_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (input_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						input_slot,
 						input_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(input_slot_template, /*$$scope*/ ctx[76], dirty, get_input_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(input_slot_template, /*$$scope*/ ctx[77], dirty, get_input_slot_changes),
 						get_input_slot_context
 					);
 				}
@@ -990,60 +990,60 @@ function create_if_block(ctx) {
 			}
 
 			if (inner_slot) {
-				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (inner_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						inner_slot,
 						inner_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[76], dirty, get_inner_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(inner_slot_template, /*$$scope*/ ctx[77], dirty, get_inner_slot_changes),
 						get_inner_slot_context
 					);
 				}
 			}
 
 			if (inner_end_slot) {
-				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (inner_end_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						inner_end_slot,
 						inner_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[76], dirty, get_inner_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(inner_end_slot_template, /*$$scope*/ ctx[77], dirty, get_inner_end_slot_changes),
 						get_inner_end_slot_context
 					);
 				}
 			}
 
 			if (content_slot) {
-				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (content_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						content_slot,
 						content_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[76], dirty, get_content_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(content_slot_template, /*$$scope*/ ctx[77], dirty, get_content_slot_changes),
 						get_content_slot_context
 					);
 				}
 			}
 
 			if (content_end_slot) {
-				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (content_end_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						content_end_slot,
 						content_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[76], dirty, get_content_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(content_end_slot_template, /*$$scope*/ ctx[77], dirty, get_content_end_slot_changes),
 						get_content_end_slot_context
 					);
 				}
@@ -1065,30 +1065,30 @@ function create_if_block(ctx) {
 			}
 
 			if (root_slot) {
-				if (root_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (root_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						root_slot,
 						root_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(root_slot_template, /*$$scope*/ ctx[76], dirty, get_root_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(root_slot_template, /*$$scope*/ ctx[77], dirty, get_root_slot_changes),
 						get_root_slot_context
 					);
 				}
 			}
 
 			if (root_end_slot) {
-				if (root_end_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (root_end_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						root_end_slot,
 						root_end_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(root_end_slot_template, /*$$scope*/ ctx[76], dirty, get_root_end_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(root_end_slot_template, /*$$scope*/ ctx[77], dirty, get_root_end_slot_changes),
 						get_root_end_slot_context
 					);
 				}
@@ -1160,7 +1160,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (587:4) {#if isSortable && isSortableOpposite }
+// (591:4) {#if isSortable && isSortableOpposite }
 function create_if_block_23(ctx) {
 	let div;
 
@@ -1186,14 +1186,14 @@ function create_if_block_23(ctx) {
 	};
 }
 
-// (591:4) {#if media || hasMediaSlots }
+// (595:4) {#if media || hasMediaSlots }
 function create_if_block_21(ctx) {
 	let div;
 	let t;
 	let current;
 	let if_block = /*media*/ ctx[2] != undefined && create_if_block_22(ctx);
-	const media_slot_template = /*#slots*/ ctx[77].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[76], get_media_slot_context_1);
+	const media_slot_template = /*#slots*/ ctx[78].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[77], get_media_slot_context_1);
 
 	return {
 		c() {
@@ -1241,15 +1241,15 @@ function create_if_block_21(ctx) {
 			}
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[76], dirty, get_media_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[77], dirty, get_media_slot_changes_1),
 						get_media_slot_context_1
 					);
 				}
@@ -1272,7 +1272,7 @@ function create_if_block_21(ctx) {
 	};
 }
 
-// (593:8) {#if media != undefined }
+// (597:8) {#if media != undefined }
 function create_if_block_22(ctx) {
 	let img;
 	let img_src_value;
@@ -1303,7 +1303,7 @@ function create_if_block_22(ctx) {
 	};
 }
 
-// (599:6) {#if label != undefined || hasLabelSlots }
+// (603:6) {#if label != undefined || hasLabelSlots }
 function create_if_block_20(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[52].default(/*label*/ ctx[37], '') + "";
@@ -1311,8 +1311,8 @@ function create_if_block_20(ctx) {
 	let t1;
 	let div_class_value;
 	let current;
-	const label_slot_template = /*#slots*/ ctx[77].label;
-	const label_slot = create_slot(label_slot_template, ctx, /*$$scope*/ ctx[76], get_label_slot_context_1);
+	const label_slot_template = /*#slots*/ ctx[78].label;
+	const label_slot = create_slot(label_slot_template, ctx, /*$$scope*/ ctx[77], get_label_slot_context_1);
 
 	return {
 		c() {
@@ -1349,15 +1349,15 @@ function create_if_block_20(ctx) {
 			if ((!current || dirty[1] & /*label*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[52].default(/*label*/ ctx[37], '') + "")) set_data(t0, t0_value);
 
 			if (label_slot) {
-				if (label_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (label_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						label_slot,
 						label_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(label_slot_template, /*$$scope*/ ctx[76], dirty, get_label_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(label_slot_template, /*$$scope*/ ctx[77], dirty, get_label_slot_changes_1),
 						get_label_slot_context_1
 					);
 				}
@@ -1383,7 +1383,7 @@ function create_if_block_20(ctx) {
 	};
 }
 
-// (606:8) {#if input }
+// (610:8) {#if input }
 function create_if_block_16(ctx) {
 	let current_block_type_index;
 	let if_block;
@@ -1466,7 +1466,7 @@ function create_if_block_16(ctx) {
 	};
 }
 
-// (709:10) {:else}
+// (713:10) {:else}
 function create_else_block_2(ctx) {
 	let input_1;
 	let input_1_validate_value;
@@ -1565,7 +1565,7 @@ function create_else_block_2(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, input_1, anchor);
-			/*input_1_binding_1*/ ctx[83](input_1);
+			/*input_1_binding_1*/ ctx[84](input_1);
 			if (/*autofocus*/ ctx[19]) input_1.focus();
 
 			if (!mounted) {
@@ -1718,14 +1718,14 @@ function create_else_block_2(ctx) {
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(input_1);
-			/*input_1_binding_1*/ ctx[83](null);
+			/*input_1_binding_1*/ ctx[84](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (698:41) 
+// (702:41) 
 function create_if_block_19(ctx) {
 	let texteditor;
 	let current;
@@ -1799,7 +1799,7 @@ function create_if_block_19(ctx) {
 	};
 }
 
-// (653:39) 
+// (657:39) 
 function create_if_block_18(ctx) {
 	let textarea;
 	let textarea_validate_value;
@@ -1894,7 +1894,7 @@ function create_if_block_18(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, textarea, anchor);
-			/*textarea_binding_1*/ ctx[82](textarea);
+			/*textarea_binding_1*/ ctx[83](textarea);
 			if (/*autofocus*/ ctx[19]) textarea.focus();
 
 			if (!mounted) {
@@ -2041,14 +2041,14 @@ function create_if_block_18(ctx) {
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(textarea);
-			/*textarea_binding_1*/ ctx[82](null);
+			/*textarea_binding_1*/ ctx[83](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (607:10) {#if type == 'select' }
+// (611:10) {#if type == 'select' }
 function create_if_block_17(ctx) {
 	let select;
 	let select_validate_value;
@@ -2058,8 +2058,8 @@ function create_if_block_17(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[77].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[76], null);
+	const default_slot_template = /*#slots*/ ctx[78].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[77], null);
 
 	return {
 		c() {
@@ -2152,7 +2152,7 @@ function create_if_block_17(ctx) {
 			}
 
 			select_option(select, /*inputValue*/ ctx[49]);
-			/*select_binding_1*/ ctx[81](select);
+			/*select_binding_1*/ ctx[82](select);
 			current = true;
 			if (/*autofocus*/ ctx[19]) select.focus();
 
@@ -2169,15 +2169,15 @@ function create_if_block_17(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[76], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[77], dirty, null),
 						null
 					);
 				}
@@ -2319,22 +2319,22 @@ function create_if_block_17(ctx) {
 		d(detaching) {
 			if (detaching) detach(select);
 			if (default_slot) default_slot.d(detaching);
-			/*select_binding_1*/ ctx[81](null);
+			/*select_binding_1*/ ctx[82](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (760:8) {#if hasErrorMessage && errorMessageForce }
+// (764:8) {#if hasErrorMessage && errorMessageForce }
 function create_if_block_15(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[52].default(/*errorMessage*/ ctx[34], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const error_message_slot_template = /*#slots*/ ctx[77]["error-message"];
-	const error_message_slot = create_slot(error_message_slot_template, ctx, /*$$scope*/ ctx[76], get_error_message_slot_context_1);
+	const error_message_slot_template = /*#slots*/ ctx[78]["error-message"];
+	const error_message_slot = create_slot(error_message_slot_template, ctx, /*$$scope*/ ctx[77], get_error_message_slot_context_1);
 
 	return {
 		c() {
@@ -2371,15 +2371,15 @@ function create_if_block_15(ctx) {
 			if ((!current || dirty[1] & /*errorMessage*/ 8) && t0_value !== (t0_value = /*liquid*/ ctx[52].default(/*errorMessage*/ ctx[34], '') + "")) set_data(t0, t0_value);
 
 			if (error_message_slot) {
-				if (error_message_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (error_message_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						error_message_slot,
 						error_message_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(error_message_slot_template, /*$$scope*/ ctx[76], dirty, get_error_message_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(error_message_slot_template, /*$$scope*/ ctx[77], dirty, get_error_message_slot_changes_1),
 						get_error_message_slot_context_1
 					);
 				}
@@ -2401,7 +2401,7 @@ function create_if_block_15(ctx) {
 	};
 }
 
-// (766:8) {#if clearButton }
+// (770:8) {#if clearButton }
 function create_if_block_14(ctx) {
 	let span;
 
@@ -2427,15 +2427,15 @@ function create_if_block_14(ctx) {
 	};
 }
 
-// (767:8) {#if info != undefined || hasInfoSlots }
+// (771:8) {#if info != undefined || hasInfoSlots }
 function create_if_block_13(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[52].default(/*info*/ ctx[36], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const info_slot_template = /*#slots*/ ctx[77].info;
-	const info_slot = create_slot(info_slot_template, ctx, /*$$scope*/ ctx[76], get_info_slot_context_1);
+	const info_slot_template = /*#slots*/ ctx[78].info;
+	const info_slot = create_slot(info_slot_template, ctx, /*$$scope*/ ctx[77], get_info_slot_context_1);
 
 	return {
 		c() {
@@ -2472,15 +2472,15 @@ function create_if_block_13(ctx) {
 			if ((!current || dirty[1] & /*info*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[52].default(/*info*/ ctx[36], '') + "")) set_data(t0, t0_value);
 
 			if (info_slot) {
-				if (info_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (info_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						info_slot,
 						info_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(info_slot_template, /*$$scope*/ ctx[76], dirty, get_info_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(info_slot_template, /*$$scope*/ ctx[77], dirty, get_info_slot_changes_1),
 						get_info_slot_context_1
 					);
 				}
@@ -2502,7 +2502,7 @@ function create_if_block_13(ctx) {
 	};
 }
 
-// (385:6) {#if isSortable && isSortableOpposite }
+// (389:6) {#if isSortable && isSortableOpposite }
 function create_if_block_12(ctx) {
 	let div;
 
@@ -2528,14 +2528,14 @@ function create_if_block_12(ctx) {
 	};
 }
 
-// (389:6) {#if media || hasMediaSlots }
+// (393:6) {#if media || hasMediaSlots }
 function create_if_block_10(ctx) {
 	let div;
 	let t;
 	let current;
 	let if_block = /*media*/ ctx[2] != undefined && create_if_block_11(ctx);
-	const media_slot_template = /*#slots*/ ctx[77].media;
-	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[76], get_media_slot_context);
+	const media_slot_template = /*#slots*/ ctx[78].media;
+	const media_slot = create_slot(media_slot_template, ctx, /*$$scope*/ ctx[77], get_media_slot_context);
 
 	return {
 		c() {
@@ -2583,15 +2583,15 @@ function create_if_block_10(ctx) {
 			}
 
 			if (media_slot) {
-				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (media_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						media_slot,
 						media_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[76], dirty, get_media_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(media_slot_template, /*$$scope*/ ctx[77], dirty, get_media_slot_changes),
 						get_media_slot_context
 					);
 				}
@@ -2614,7 +2614,7 @@ function create_if_block_10(ctx) {
 	};
 }
 
-// (391:10) {#if media != undefined }
+// (395:10) {#if media != undefined }
 function create_if_block_11(ctx) {
 	let img;
 	let img_src_value;
@@ -2645,7 +2645,7 @@ function create_if_block_11(ctx) {
 	};
 }
 
-// (397:8) {#if label != undefined || hasLabelSlots }
+// (401:8) {#if label != undefined || hasLabelSlots }
 function create_if_block_9(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[52].default(/*label*/ ctx[37], '') + "";
@@ -2653,8 +2653,8 @@ function create_if_block_9(ctx) {
 	let t1;
 	let div_class_value;
 	let current;
-	const label_slot_template = /*#slots*/ ctx[77].label;
-	const label_slot = create_slot(label_slot_template, ctx, /*$$scope*/ ctx[76], get_label_slot_context);
+	const label_slot_template = /*#slots*/ ctx[78].label;
+	const label_slot = create_slot(label_slot_template, ctx, /*$$scope*/ ctx[77], get_label_slot_context);
 
 	return {
 		c() {
@@ -2691,15 +2691,15 @@ function create_if_block_9(ctx) {
 			if ((!current || dirty[1] & /*label*/ 64) && t0_value !== (t0_value = /*liquid*/ ctx[52].default(/*label*/ ctx[37], '') + "")) set_data(t0, t0_value);
 
 			if (label_slot) {
-				if (label_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (label_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						label_slot,
 						label_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(label_slot_template, /*$$scope*/ ctx[76], dirty, get_label_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(label_slot_template, /*$$scope*/ ctx[77], dirty, get_label_slot_changes),
 						get_label_slot_context
 					);
 				}
@@ -2725,7 +2725,7 @@ function create_if_block_9(ctx) {
 	};
 }
 
-// (404:10) {#if input }
+// (408:10) {#if input }
 function create_if_block_5(ctx) {
 	let current_block_type_index;
 	let if_block;
@@ -2801,7 +2801,7 @@ function create_if_block_5(ctx) {
 	};
 }
 
-// (507:12) {:else}
+// (511:12) {:else}
 function create_else_block(ctx) {
 	let input_1;
 	let input_1_validate_value;
@@ -2900,7 +2900,7 @@ function create_else_block(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, input_1, anchor);
-			/*input_1_binding*/ ctx[80](input_1);
+			/*input_1_binding*/ ctx[81](input_1);
 			if (/*autofocus*/ ctx[19]) input_1.focus();
 
 			if (!mounted) {
@@ -3053,14 +3053,14 @@ function create_else_block(ctx) {
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(input_1);
-			/*input_1_binding*/ ctx[80](null);
+			/*input_1_binding*/ ctx[81](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (496:43) 
+// (500:43) 
 function create_if_block_8(ctx) {
 	let texteditor;
 	let current;
@@ -3134,7 +3134,7 @@ function create_if_block_8(ctx) {
 	};
 }
 
-// (451:41) 
+// (455:41) 
 function create_if_block_7(ctx) {
 	let textarea;
 	let textarea_validate_value;
@@ -3229,7 +3229,7 @@ function create_if_block_7(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, textarea, anchor);
-			/*textarea_binding*/ ctx[79](textarea);
+			/*textarea_binding*/ ctx[80](textarea);
 			if (/*autofocus*/ ctx[19]) textarea.focus();
 
 			if (!mounted) {
@@ -3376,14 +3376,14 @@ function create_if_block_7(ctx) {
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(textarea);
-			/*textarea_binding*/ ctx[79](null);
+			/*textarea_binding*/ ctx[80](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (405:12) {#if type == 'select' }
+// (409:12) {#if type == 'select' }
 function create_if_block_6(ctx) {
 	let select;
 	let select_validate_value;
@@ -3393,8 +3393,8 @@ function create_if_block_6(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[77].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[76], null);
+	const default_slot_template = /*#slots*/ ctx[78].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[77], null);
 
 	return {
 		c() {
@@ -3487,7 +3487,7 @@ function create_if_block_6(ctx) {
 			}
 
 			select_option(select, /*inputValue*/ ctx[49]);
-			/*select_binding*/ ctx[78](select);
+			/*select_binding*/ ctx[79](select);
 			current = true;
 			if (/*autofocus*/ ctx[19]) select.focus();
 
@@ -3504,15 +3504,15 @@ function create_if_block_6(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[76], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[77], dirty, null),
 						null
 					);
 				}
@@ -3654,22 +3654,22 @@ function create_if_block_6(ctx) {
 		d(detaching) {
 			if (detaching) detach(select);
 			if (default_slot) default_slot.d(detaching);
-			/*select_binding*/ ctx[78](null);
+			/*select_binding*/ ctx[79](null);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
 
-// (558:10) {#if hasErrorMessage && errorMessageForce }
+// (562:10) {#if hasErrorMessage && errorMessageForce }
 function create_if_block_4(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[52].default(/*errorMessage*/ ctx[34], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const error_message_slot_template = /*#slots*/ ctx[77]["error-message"];
-	const error_message_slot = create_slot(error_message_slot_template, ctx, /*$$scope*/ ctx[76], get_error_message_slot_context);
+	const error_message_slot_template = /*#slots*/ ctx[78]["error-message"];
+	const error_message_slot = create_slot(error_message_slot_template, ctx, /*$$scope*/ ctx[77], get_error_message_slot_context);
 
 	return {
 		c() {
@@ -3706,15 +3706,15 @@ function create_if_block_4(ctx) {
 			if ((!current || dirty[1] & /*errorMessage*/ 8) && t0_value !== (t0_value = /*liquid*/ ctx[52].default(/*errorMessage*/ ctx[34], '') + "")) set_data(t0, t0_value);
 
 			if (error_message_slot) {
-				if (error_message_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (error_message_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						error_message_slot,
 						error_message_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(error_message_slot_template, /*$$scope*/ ctx[76], dirty, get_error_message_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(error_message_slot_template, /*$$scope*/ ctx[77], dirty, get_error_message_slot_changes),
 						get_error_message_slot_context
 					);
 				}
@@ -3736,7 +3736,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (564:10) {#if clearButton }
+// (568:10) {#if clearButton }
 function create_if_block_3(ctx) {
 	let span;
 
@@ -3762,15 +3762,15 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (565:10) {#if info != undefined || hasInfoSlots }
+// (569:10) {#if info != undefined || hasInfoSlots }
 function create_if_block_2(ctx) {
 	let div;
 	let t0_value = /*liquid*/ ctx[52].default(/*info*/ ctx[36], '') + "";
 	let t0;
 	let t1;
 	let current;
-	const info_slot_template = /*#slots*/ ctx[77].info;
-	const info_slot = create_slot(info_slot_template, ctx, /*$$scope*/ ctx[76], get_info_slot_context);
+	const info_slot_template = /*#slots*/ ctx[78].info;
+	const info_slot = create_slot(info_slot_template, ctx, /*$$scope*/ ctx[77], get_info_slot_context);
 
 	return {
 		c() {
@@ -3807,15 +3807,15 @@ function create_if_block_2(ctx) {
 			if ((!current || dirty[1] & /*info*/ 32) && t0_value !== (t0_value = /*liquid*/ ctx[52].default(/*info*/ ctx[36], '') + "")) set_data(t0, t0_value);
 
 			if (info_slot) {
-				if (info_slot.p && (!current || dirty[2] & /*$$scope*/ 16384)) {
+				if (info_slot.p && (!current || dirty[2] & /*$$scope*/ 32768)) {
 					update_slot_base(
 						info_slot,
 						info_slot_template,
 						ctx,
-						/*$$scope*/ ctx[76],
+						/*$$scope*/ ctx[77],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[76])
-						: get_slot_changes(info_slot_template, /*$$scope*/ ctx[76], dirty, get_info_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[77])
+						: get_slot_changes(info_slot_template, /*$$scope*/ ctx[77], dirty, get_info_slot_changes),
 						get_info_slot_context
 					);
 				}
@@ -3837,7 +3837,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (578:4) {#if isSortable && isSortableOpposite == undefined }
+// (582:4) {#if isSortable && isSortableOpposite == undefined }
 function create_if_block_1(ctx) {
 	let div;
 
@@ -3952,14 +3952,16 @@ function instance($$self, $$props, $$invalidate) {
 	let inputWrapClasses;
 
 	const omit_props_names = [
-		"classes","sortable","sortableOpposite","media","dropdown","wrap","input","type","name","value","inputmode","readonly","required","disabled","placeholder","inputId","size","accept","autocomplete","autocorrect","autocapitalize","spellcheck","autofocus","autosave","max","min","step","maxlength","minlength","multiple","inputStyle","pattern","validate","validateOnBlur","onValidate","tabindex","resizable","clearButton","noFormStoreData","noStoreData","ignoreStoreData","errorMessage","errorMessageForce","info","outline","label","inlineLabel","floatingLabel","calendarParams","colorPickerParams","textEditorParams","calendarInstance","colorPickerInstance"
+		"importsSeek","classes","sortable","sortableOpposite","media","dropdown","wrap","input","type","name","value","inputmode","readonly","required","disabled","placeholder","inputId","size","accept","autocomplete","autocorrect","autocapitalize","spellcheck","autofocus","autosave","max","min","step","maxlength","minlength","multiple","inputStyle","pattern","validate","validateOnBlur","onValidate","tabindex","resizable","clearButton","noFormStoreData","noStoreData","ignoreStoreData","errorMessage","errorMessageForce","info","outline","label","inlineLabel","floatingLabel","calendarParams","colorPickerParams","textEditorParams","calendarInstance","colorPickerInstance"
 	];
 
 	let $$restProps = compute_rest_props($$props, omit_props_names);
 	let { $$slots: slots = {}, $$scope } = $$props;
 	const $$slots = compute_slots(slots);
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	const emit = createEmitter(createEventDispatcher, $$props);
 	let { classes = '' } = $$props;
@@ -4032,7 +4034,7 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	let ListContext = getReactiveContext('ListContext', newValue => {
-		$$invalidate(74, ListContext = newValue || {});
+		$$invalidate(75, ListContext = newValue || {});
 	}) || {};
 
 	function domValue() {
@@ -4061,13 +4063,13 @@ function instance($$self, $$props, $$invalidate) {
 			if (onValidate) onValidate(false);
 
 			if (inputInvalid !== true) {
-				$$invalidate(73, inputInvalid = true);
+				$$invalidate(74, inputInvalid = true);
 			}
 		} else {
 			if (onValidate) onValidate(true);
 
 			if (inputInvalid !== false) {
-				$$invalidate(73, inputInvalid = false);
+				$$invalidate(74, inputInvalid = false);
 			}
 		}
 	}
@@ -4133,7 +4135,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	function onFocus(...args) {
 		emit('focus', [...args]);
-		$$invalidate(72, inputFocused = true);
+		$$invalidate(73, inputFocused = true);
 	}
 
 	function onBlur(...args) {
@@ -4143,7 +4145,7 @@ function instance($$self, $$props, $$invalidate) {
 			validateInput();
 		}
 
-		$$invalidate(72, inputFocused = false);
+		$$invalidate(73, inputFocused = false);
 	}
 
 	function onChange(...args) {
@@ -4302,13 +4304,14 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(103, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(105, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
 		$$invalidate(57, $$restProps = compute_rest_props($$props, omit_props_names));
+		if ('importsSeek' in $$new_props) $$invalidate(58, importsSeek = $$new_props.importsSeek);
 		if ('classes' in $$new_props) $$invalidate(0, classes = $$new_props.classes);
-		if ('sortable' in $$new_props) $$invalidate(58, sortable = $$new_props.sortable);
-		if ('sortableOpposite' in $$new_props) $$invalidate(59, sortableOpposite = $$new_props.sortableOpposite);
+		if ('sortable' in $$new_props) $$invalidate(59, sortable = $$new_props.sortable);
+		if ('sortableOpposite' in $$new_props) $$invalidate(60, sortableOpposite = $$new_props.sortableOpposite);
 		if ('media' in $$new_props) $$invalidate(2, media = $$new_props.media);
-		if ('dropdown' in $$new_props) $$invalidate(60, dropdown = $$new_props.dropdown);
+		if ('dropdown' in $$new_props) $$invalidate(61, dropdown = $$new_props.dropdown);
 		if ('wrap' in $$new_props) $$invalidate(3, wrap = $$new_props.wrap);
 		if ('input' in $$new_props) $$invalidate(4, input = $$new_props.input);
 		if ('type' in $$new_props) $$invalidate(5, type = $$new_props.type);
@@ -4338,34 +4341,34 @@ function instance($$self, $$props, $$invalidate) {
 		if ('pattern' in $$new_props) $$invalidate(28, pattern = $$new_props.pattern);
 		if ('validate' in $$new_props) $$invalidate(29, validate = $$new_props.validate);
 		if ('validateOnBlur' in $$new_props) $$invalidate(30, validateOnBlur = $$new_props.validateOnBlur);
-		if ('onValidate' in $$new_props) $$invalidate(61, onValidate = $$new_props.onValidate);
+		if ('onValidate' in $$new_props) $$invalidate(62, onValidate = $$new_props.onValidate);
 		if ('tabindex' in $$new_props) $$invalidate(31, tabindex = $$new_props.tabindex);
 		if ('resizable' in $$new_props) $$invalidate(32, resizable = $$new_props.resizable);
 		if ('clearButton' in $$new_props) $$invalidate(33, clearButton = $$new_props.clearButton);
-		if ('noFormStoreData' in $$new_props) $$invalidate(62, noFormStoreData = $$new_props.noFormStoreData);
-		if ('noStoreData' in $$new_props) $$invalidate(63, noStoreData = $$new_props.noStoreData);
-		if ('ignoreStoreData' in $$new_props) $$invalidate(64, ignoreStoreData = $$new_props.ignoreStoreData);
+		if ('noFormStoreData' in $$new_props) $$invalidate(63, noFormStoreData = $$new_props.noFormStoreData);
+		if ('noStoreData' in $$new_props) $$invalidate(64, noStoreData = $$new_props.noStoreData);
+		if ('ignoreStoreData' in $$new_props) $$invalidate(65, ignoreStoreData = $$new_props.ignoreStoreData);
 		if ('errorMessage' in $$new_props) $$invalidate(34, errorMessage = $$new_props.errorMessage);
 		if ('errorMessageForce' in $$new_props) $$invalidate(35, errorMessageForce = $$new_props.errorMessageForce);
 		if ('info' in $$new_props) $$invalidate(36, info = $$new_props.info);
-		if ('outline' in $$new_props) $$invalidate(65, outline = $$new_props.outline);
+		if ('outline' in $$new_props) $$invalidate(66, outline = $$new_props.outline);
 		if ('label' in $$new_props) $$invalidate(37, label = $$new_props.label);
-		if ('inlineLabel' in $$new_props) $$invalidate(66, inlineLabel = $$new_props.inlineLabel);
-		if ('floatingLabel' in $$new_props) $$invalidate(67, floatingLabel = $$new_props.floatingLabel);
-		if ('calendarParams' in $$new_props) $$invalidate(68, calendarParams = $$new_props.calendarParams);
-		if ('colorPickerParams' in $$new_props) $$invalidate(69, colorPickerParams = $$new_props.colorPickerParams);
+		if ('inlineLabel' in $$new_props) $$invalidate(67, inlineLabel = $$new_props.inlineLabel);
+		if ('floatingLabel' in $$new_props) $$invalidate(68, floatingLabel = $$new_props.floatingLabel);
+		if ('calendarParams' in $$new_props) $$invalidate(69, calendarParams = $$new_props.calendarParams);
+		if ('colorPickerParams' in $$new_props) $$invalidate(70, colorPickerParams = $$new_props.colorPickerParams);
 		if ('textEditorParams' in $$new_props) $$invalidate(38, textEditorParams = $$new_props.textEditorParams);
-		if ('$$scope' in $$new_props) $$invalidate(76, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(77, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[1] & /*sortable*/ 134217728 | $$self.$$.dirty[2] & /*ListContext*/ 4096) {
+		if ($$self.$$.dirty[1] & /*sortable*/ 268435456 | $$self.$$.dirty[2] & /*ListContext*/ 8192) {
 			$$invalidate(51, isSortable = sortable === true || sortable === false
 			? sortable
 			: ListContext.listIsSortable);
 		}
 
-		if ($$self.$$.dirty[1] & /*sortableOpposite*/ 268435456 | $$self.$$.dirty[2] & /*ListContext*/ 4096) {
+		if ($$self.$$.dirty[1] & /*sortableOpposite*/ 536870912 | $$self.$$.dirty[2] & /*ListContext*/ 8192) {
 			$$invalidate(50, isSortableOpposite = sortableOpposite || ListContext.listIsSortableOpposite);
 		}
 
@@ -4373,11 +4376,11 @@ function instance($$self, $$props, $$invalidate) {
 			watchValue();
 		}
 
-		if ($$self.$$.dirty[2] & /*colorPickerParams*/ 128) {
+		if ($$self.$$.dirty[2] & /*colorPickerParams*/ 256) {
 			watchColorPickerParams();
 		}
 
-		if ($$self.$$.dirty[2] & /*calendarParams*/ 64) {
+		if ($$self.$$.dirty[2] & /*calendarParams*/ 128) {
 			watchCalendarParams();
 		}
 
@@ -4404,11 +4407,11 @@ function instance($$self, $$props, $$invalidate) {
 			})());
 		}
 
-		if ($$self.$$.dirty[1] & /*errorMessage*/ 8 | $$self.$$.dirty[2] & /*hasErrorSlots*/ 8192) {
+		if ($$self.$$.dirty[1] & /*errorMessage*/ 8 | $$self.$$.dirty[2] & /*hasErrorSlots*/ 16384) {
 			$$invalidate(39, hasErrorMessage = !!errorMessage || hasErrorSlots);
 		}
 
-		if ($$self.$$.dirty[1] & /*inputType, resizable, errorMessage, errorMessageForce*/ 1050 | $$self.$$.dirty[2] & /*noFormStoreData, noStoreData, ignoreStoreData, inputInvalid, inputFocused*/ 3079) {
+		if ($$self.$$.dirty[1] & /*inputType, resizable, errorMessage, errorMessageForce*/ 1050 | $$self.$$.dirty[2] & /*noFormStoreData, noStoreData, ignoreStoreData, inputInvalid, inputFocused*/ 6158) {
 			$$invalidate(46, inputClasses = classNames({
 				resizable: inputType === 'textarea' && resizable,
 				'no-store-data': noFormStoreData || noStoreData || ignoreStoreData,
@@ -4430,11 +4433,11 @@ function instance($$self, $$props, $$invalidate) {
 			'item-input-invalid': hasErrorMessage && errorMessageForce || inputInvalid
 		}));
 
-		if ($$self.$$.dirty[2] & /*floatingLabel*/ 32) {
+		if ($$self.$$.dirty[2] & /*floatingLabel*/ 64) {
 			$$invalidate(44, labelClasses = classNames({ 'item-floating-label': floatingLabel }));
 		}
 
-		if ($$self.$$.dirty[0] & /*type*/ 32 | $$self.$$.dirty[1] & /*dropdown*/ 536870912) {
+		if ($$self.$$.dirty[0] & /*type*/ 32 | $$self.$$.dirty[1] & /*dropdown*/ 1073741824) {
 			$$invalidate(43, inputWrapClasses = classNames({
 				'input-dropdown': dropdown === 'auto' ? type === 'select' : dropdown
 			}));
@@ -4442,7 +4445,7 @@ function instance($$self, $$props, $$invalidate) {
 	};
 
 	$$invalidate(40, hasInfoSlots = $$slots.info);
-	$$invalidate(75, hasErrorSlots = $$slots['error-message']);
+	$$invalidate(76, hasErrorSlots = $$slots['error-message']);
 	$$invalidate(48, hasMediaSlots = $$slots.media);
 	$$invalidate(47, hasLabelSlots = $$slots.label);
 	$$props = exclude_internal_props($$props);
@@ -4506,6 +4509,7 @@ function instance($$self, $$props, $$invalidate) {
 		onBlur,
 		onChange,
 		$$restProps,
+		importsSeek,
 		sortable,
 		sortableOpposite,
 		dropdown,
@@ -4546,11 +4550,12 @@ class List_input extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
+				importsSeek: 58,
 				classes: 0,
-				sortable: 58,
-				sortableOpposite: 59,
+				sortable: 59,
+				sortableOpposite: 60,
 				media: 2,
-				dropdown: 60,
+				dropdown: 61,
 				wrap: 3,
 				input: 4,
 				type: 5,
@@ -4580,25 +4585,25 @@ class List_input extends SvelteComponent {
 				pattern: 28,
 				validate: 29,
 				validateOnBlur: 30,
-				onValidate: 61,
+				onValidate: 62,
 				tabindex: 31,
 				resizable: 32,
 				clearButton: 33,
-				noFormStoreData: 62,
-				noStoreData: 63,
-				ignoreStoreData: 64,
+				noFormStoreData: 63,
+				noStoreData: 64,
+				ignoreStoreData: 65,
 				errorMessage: 34,
 				errorMessageForce: 35,
 				info: 36,
-				outline: 65,
+				outline: 66,
 				label: 37,
-				inlineLabel: 66,
-				floatingLabel: 67,
-				calendarParams: 68,
-				colorPickerParams: 69,
+				inlineLabel: 67,
+				floatingLabel: 68,
+				calendarParams: 69,
+				colorPickerParams: 70,
 				textEditorParams: 38,
-				calendarInstance: 70,
-				colorPickerInstance: 71
+				calendarInstance: 71,
+				colorPickerInstance: 72
 			},
 			null,
 			[-1, -1, -1, -1]
@@ -4606,11 +4611,11 @@ class List_input extends SvelteComponent {
 	}
 
 	get calendarInstance() {
-		return this.$$.ctx[70];
+		return this.$$.ctx[71];
 	}
 
 	get colorPickerInstance() {
-		return this.$$.ctx[71];
+		return this.$$.ctx[72];
 	}
 }
 

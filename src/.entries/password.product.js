@@ -9,11 +9,10 @@
   };
   
   /* {% comment %} DO NOT REMOVE THIS LINE {% endcomment %} */
-  import "../.templates/product.js";
+  import "../.templates/product.custom.js";
   
 
-   const initializeObservers = () => {
+   const initializeObservers = (doc) => {
      };
   document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
   

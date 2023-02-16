@@ -55,94 +55,94 @@
 	
 	endfor
 	endif
-	if lv_propName == 'init'
+	if lv_propName == 'init' and init == blank
 		assign init = lv_propValue
 	endif
-	if lv_propName == 'params'
+	if lv_propName == 'params' and params == blank
 		assign params = lv_propValue
 	endif
-	if lv_propName == 'photos'
+	if lv_propName == 'photos' and photos == blank
 		assign photos = lv_propValue
 	endif
-	if lv_propName == 'exposition'
+	if lv_propName == 'exposition' and exposition == blank
 		assign exposition = lv_propValue
 	endif
-	if lv_propName == 'expositionHideCaptions'
+	if lv_propName == 'expositionHideCaptions' and expositionHideCaptions == blank
 		assign expositionHideCaptions = lv_propValue
 	endif
-	if lv_propName == 'type'
+	if lv_propName == 'type' and type == blank
 		assign type = lv_propValue
 	endif
-	if lv_propName == 'navbar'
+	if lv_propName == 'navbar' and navbar == blank
 		assign navbar = lv_propValue
 	endif
-	if lv_propName == 'toolbar'
+	if lv_propName == 'toolbar' and toolbar == blank
 		assign toolbar = lv_propValue
 	endif
-	if lv_propName == 'theme'
+	if lv_propName == 'theme' and theme == blank
 		assign theme = lv_propValue
 	endif
-	if lv_propName == 'captionsTheme'
+	if lv_propName == 'captionsTheme' and captionsTheme == blank
 		assign captionsTheme = lv_propValue
 	endif
-	if lv_propName == 'iconsColor'
+	if lv_propName == 'iconsColor' and iconsColor == blank
 		assign iconsColor = lv_propValue
 	endif
-	if lv_propName == 'swipeToClose'
+	if lv_propName == 'swipeToClose' and swipeToClose == blank
 		assign swipeToClose = lv_propValue
 	endif
-	if lv_propName == 'pageBackLinkText'
+	if lv_propName == 'pageBackLinkText' and pageBackLinkText == blank
 		assign pageBackLinkText = lv_propValue
 	endif
-	if lv_propName == 'popupCloseLinkText'
+	if lv_propName == 'popupCloseLinkText' and popupCloseLinkText == blank
 		assign popupCloseLinkText = lv_propValue
 	endif
-	if lv_propName == 'navbarOfText'
+	if lv_propName == 'navbarOfText' and navbarOfText == blank
 		assign navbarOfText = lv_propValue
 	endif
-	if lv_propName == 'navbarShowCount'
+	if lv_propName == 'navbarShowCount' and navbarShowCount == blank
 		assign navbarShowCount = lv_propValue
 	endif
-	if lv_propName == 'swiper'
+	if lv_propName == 'swiper' and swiper == blank
 		assign swiper = lv_propValue
 	endif
-	if lv_propName == 'url'
+	if lv_propName == 'url' and url == blank
 		assign url = lv_propValue
 	endif
-	if lv_propName == 'routableModals'
+	if lv_propName == 'routableModals' and routableModals == blank
 		assign routableModals = lv_propValue
 	endif
-	if lv_propName == 'virtualSlides'
+	if lv_propName == 'virtualSlides' and virtualSlides == blank
 		assign virtualSlides = lv_propValue
 	endif
-	if lv_propName == 'view'
+	if lv_propName == 'view' and view == blank
 		assign view = lv_propValue
 	endif
-	if lv_propName == 'renderNavbar'
+	if lv_propName == 'renderNavbar' and renderNavbar == blank
 		assign renderNavbar = lv_propValue
 	endif
-	if lv_propName == 'renderToolbar'
+	if lv_propName == 'renderToolbar' and renderToolbar == blank
 		assign renderToolbar = lv_propValue
 	endif
-	if lv_propName == 'renderCaption'
+	if lv_propName == 'renderCaption' and renderCaption == blank
 		assign renderCaption = lv_propValue
 	endif
-	if lv_propName == 'renderObject'
+	if lv_propName == 'renderObject' and renderObject == blank
 		assign renderObject = lv_propValue
 	endif
-	if lv_propName == 'renderLazyPhoto'
+	if lv_propName == 'renderLazyPhoto' and renderLazyPhoto == blank
 		assign renderLazyPhoto = lv_propValue
 	endif
-	if lv_propName == 'renderPhoto'
+	if lv_propName == 'renderPhoto' and renderPhoto == blank
 		assign renderPhoto = lv_propValue
 	endif
-	if lv_propName == 'renderPage'
+	if lv_propName == 'renderPage' and renderPage == blank
 		assign renderPage = lv_propValue
 	endif
-	if lv_propName == 'renderPopup'
+	if lv_propName == 'renderPopup' and renderPopup == blank
 		assign renderPopup = lv_propValue
 	endif
-	if lv_propName == 'renderStandalone'
+	if lv_propName == 'renderStandalone' and renderStandalone == blank
 		assign renderStandalone = lv_propValue
 	endif
 	endfor
@@ -163,16 +163,26 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component photo-browser" data-liquivelte-component-name="photo-browser.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-photo-browser"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -194,7 +204,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -258,7 +276,9 @@
 			assign slot_default_framework7-liquivelte_photo-browser = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

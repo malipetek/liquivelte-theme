@@ -1,35 +1,54 @@
 <script>
     import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
     import { FreeMode, Mousewheel } from 'swiper';
-    import SliderImage from './blocks/slider-image.liquivelte';
+    import Image from '../../snippets/image.liquivelte';
+    import ImageWithCard from './blocks/image-with-card.liquivelte';
+    import './blocks/slider-image.schema.json';
     const section = {};
     import section.settings from 'theme';
     import section.blocks from 'theme';
     
     let container;
 
-    console.log('general slider section ', section);
-    console.log('general slider section.blocks ', section.blocks);
+    // console.log('general slider section.blocks ', section.blocks);
 </script>
 
 <div class="relative" bind:this="{container}">
   {% if section.settings.flush_with_header %}
     <div class="flush-shadow"></div>
   {% endif %}
+
   <Swiper freemode="{ { enabled: true, sticky: true } }" 
           mousewheel="{ { forceToAxis: true, sensitivity: 1.5 } }"
-          modules="{[FreeMode, Mousewheel]}" >
+          modules="{[FreeMode, Mousewheel]}" 
+          preloadImages="{false}"
+        >
     {% for block in section.blocks %}
-    {% if block.type == 'image' %}
+      {% if block.type == 'image' %}
         <SwiperSlide >
-          <SliderImage block="{{- block -}}"></SliderImage>
+          {% if forloop.index == 1 %}
+          <Image 
+            source="{{- block.settings.image -}}" 
+            sizes="100vw@fixed"
+            loading="eager"
+            ></Image>
+          {% else %}
+            <Image 
+              source="{{- block.settings.image -}}" 
+              sizes="100vw@fixed"
+              loading="lazy"
+              ></Image>
+          {% endif %}
         </SwiperSlide>
-        {% endif %}
+      
+      {% elsif block.type == 'image-card' %}
+        <SwiperSlide >
+          <ImageWithCard block="{{- block -}}" forloop="{{- forloop -}}"></ImageWithCard>
+        </SwiperSlide>
+      {% endif %}
     {% endfor %} 
   </Swiper>
-</div>
-
-{% include 'flush-header' %}
+</div> 
 
 <style global>
     :root {

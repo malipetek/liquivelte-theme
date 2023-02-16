@@ -25,6 +25,12 @@
 	
 	endfor
 	endif
+	if lv_propName == 'cart' and cart == blank
+		assign cart = lv_propValue
+	endif
+	if lv_propName == 'min_amounts' and min_amounts == blank
+		assign min_amounts = lv_propValue
+	endif
 	endfor
 	-%}
 	
@@ -42,7 +48,11 @@
 				endfor
 				-%}
 	{%- unless sub_include -%} 
-	<div  class="liquivelte-component main-cart svelte-1xfe2ed" data-liquivelte-component-name="main-cart.liquivelte">
+	<div  class="liquivelte-component main-cart svelte-mfox2i" data-liquivelte-component-name="main-cart.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid 
   assign cart_action = 'Open'
@@ -69,7 +79,7 @@
 	assign dynamic_classes = dynamic_classes | append: ' hidden'
 	endif
 	-%}
-	<div cart-drawer-backdrop  class="w-full h-full inset-0 fixed z-9{{ dynamic_classes }} svelte-1xfe2ed"
+	<div cart-drawer-backdrop  class="w-full h-full inset-0 fixed z-9{{ dynamic_classes }} svelte-mfox2i"
  
 	on:click="{closeCart}"></div>
  
@@ -81,7 +91,7 @@
 	endif
 	-%}
 	<div id="cart-drawer" 
-		 class="block fixed top-0 bg-white p-16 h-full z-10 -right-full transition-all duration-300 max-w-full{{ dynamic_classes }} svelte-1xfe2ed"
+		 class="block fixed top-0 bg-white p-16 h-full z-10 -right-full transition-all duration-300 max-w-full{{ dynamic_classes }} svelte-mfox2i"
 		use:swipe 
 		on:swipe="{handleSwipe}"
 		on:swipeStart="{handleSwipeStart}"
@@ -90,28 +100,28 @@
 		transition:fly="{ { x: 440 } }" 
 		bind:this="{drawerNode}"
 		bind:clientWidth="{drawerWidth}">	
-	<!-- <div  class="right-0 svelte-1xfe2ed"> </div> -->
+	<!-- <div  class="right-0 svelte-mfox2i"> </div> -->
 	
 	<input type="text" hidden name="checkout" value="Checkout" />
-	<div  class="cart-drawer-inner svelte-1xfe2ed">
-	<div  class="cart-drawer-inner-up svelte-1xfe2ed"> 
-		<div  class="cart-drawer-title text-gray f-14 uppercase svelte-1xfe2ed"> 
+	<div  class="cart-drawer-inner svelte-mfox2i">
+	<div  class="cart-drawer-inner-up svelte-mfox2i"> 
+		<div  class="cart-drawer-title text-gray f-14 uppercase svelte-mfox2i"> 
 			<span> Shopping Cart </span>
-			<span  class="float-right close pointer svelte-1xfe2ed" on:click="{closeCart}"> </span>
+			<span  class="float-right close pointer svelte-mfox2i" on:click="{closeCart}"> </span>
 		</div>
-		<div  class="spacer svelte-1xfe2ed"></div> 
-			<div  class="cart-drawer-items svelte-1xfe2ed"> 
+		<div  class="spacer svelte-mfox2i"></div> 
+			<div  class="cart-drawer-items svelte-mfox2i"> 
 				{% for item in cart.items %}
     {% assign index = forloop.index0 %}
-					<div data-id="{{ item.id }}"  class="cart-item w-full flex mb-10 svelte-1xfe2ed" transition:scale="{ { duration: 300, easing: quintInOut } }">
-						<img src="{{ item.image | img_url: '120x' }}" liquivelte-value-cache="img_url§{{item.image | escape -}}, {{'120x'}}§{{item.image| img_url: '120x'  }}" alt="cart item product image"  class="flex-grow-0 mr-2 w-32 svelte-1xfe2ed" />
-						<div  class="cart-item-content svelte-1xfe2ed">
-							<div  class="cart-item-content__up svelte-1xfe2ed"> 
-								<span  class="cart-item-title text-lg svelte-1xfe2ed"> {{ item.product_title }} </span>
-								<div  class="cart-item-options svelte-1xfe2ed">
+					<div data-id="{{ item.id }}"  class="cart-item w-full flex mb-10 svelte-mfox2i" transition:scale="{ { duration: 300, easing: quintInOut } }">
+						<img src="{{ item.image | img_url: '120x' }}" liquivelte-value-cache="img_url§{{item.image | escape -}}, {{'120x'}}§{{item.image| img_url: '120x'  }}" alt="cart item product image"  class="flex-grow-0 mr-2 w-32 svelte-mfox2i" />
+						<div  class="cart-item-content svelte-mfox2i">
+							<div  class="cart-item-content__up svelte-mfox2i"> 
+								<span  class="cart-item-title text-lg svelte-mfox2i"> {{ item.product_title }} </span>
+								<div  class="cart-item-options svelte-mfox2i">
 									{% for option in item.variant_options %}
     {% assign index = forloop.index0 %}
-									<span  class="text-gray-500 text-base line-item-option svelte-1xfe2ed"> {{ option }} </span> <br>
+									<span  class="text-gray-500 text-base line-item-option svelte-mfox2i"> {{ option }} </span> <br>
 									{% endfor %}
 								</div>
 							</div>
@@ -126,8 +136,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Loadable %}loading-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Loadable -%} 
+
+{%- capture slot_content_def_Loadable -%}{% assign component_include_depth = component_include_depth | plus: 1 %} 
 								
 {% comment %}
   kvsp stands for "key value separator"
@@ -135,16 +147,18 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_QuantityBox %}minimum-kvsp-{min_amounts_data[item.id]}-prsp-quantity-kvsp-{item.quantity}-prsp-qtychange-kvsp-{quantityChange.bind(item)}{% endcapture %}
 {% assign modulename = basename | append: 'quantity-box' %}
-{% include modulename, liquivelte: true, props: props_QuantityBox, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_QuantityBox, sub_include: true, basename: ''  %}
 {% assign props = '' %} 
-							{%- endcapture -%}
-{% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_def_Loadable %}
+							{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'loadable' %}
-{% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: '' %}
+{% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Loadable %}
+{% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: ''  %}
 {% assign slot_content_Loadable = '' %}
 {% assign props = '' %}
 						</div>
-						<div  class="cart-item-right svelte-1xfe2ed">
+						<div  class="cart-item-right svelte-mfox2i">
 							
 {% comment %}
 kvsp stands for "key value separator"
@@ -156,42 +170,46 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Loadable %}loading-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Loadable -%} 
-								<div  class="pointer svelte-1xfe2ed" on:click="{() _afeq__afct_ updateLineItem(item.id, 0) }"> 
+
+{%- capture slot_content_def_Loadable -%}{% assign component_include_depth = component_include_depth | plus: 1 %} 
+								<div  class="pointer svelte-mfox2i" on:click="{() _afeq__afct_ updateLineItem(item.id, 0) }"> 
 {% comment %}
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
 {% capture props_Icon %}name-kvsp-icon-garbage-prsp-color-kvsp-#a6a6a6{% endcapture %}
 {% assign modulename = basename | append: 'icon' %}
-{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: ''  %}
 {% assign props = '' %} </div>
-							{%- endcapture -%}
-{% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_def_Loadable %}
+							{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'loadable' %}
-{% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: '' %}
+{% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Loadable %}
+{% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: ''  %}
 {% assign slot_content_Loadable = '' %}
 {% assign props = '' %}
-							<div  class="cart-item-price text-black text-xl svelte-1xfe2ed"> {{ item.price | money }} </div>
+							<div  class="cart-item-price text-black text-xl svelte-mfox2i"> {{ item.price | money }} </div>
 						</div> 
 					</div>
 				{% endfor %}
 			</div>
-				<div  class="cart-drawer-bottom svelte-1xfe2ed">
-					<div  class="cart-drawer-subtotal svelte-1xfe2ed">
-						<span  class="text-gray text-base float-left svelte-1xfe2ed" data-t="{{ 'general.cart.subtotal' | t }}" liquivelte-value-cache="t§{{'general.cart.subtotal' | escape -}}§{{'general.cart.subtotal'| t  }}"> {{ 'general.cart.subtotal' | t }} </span> 
-						<span cart-drawer-subtotal-text  class="float-right text-black text-lg  svelte-1xfe2ed">{{ cart.items_subtotal_price | money }}</span>
+				<div  class="cart-drawer-bottom svelte-mfox2i">
+					<div  class="cart-drawer-subtotal svelte-mfox2i">
+						<span  class="text-gray text-base float-left svelte-mfox2i" data-t="{{ 'general.cart.subtotal' | t }}" liquivelte-value-cache="t§{{'general.cart.subtotal' | escape -}}§{{'general.cart.subtotal'| t  }}"> {{ 'general.cart.subtotal' | t }} </span> 
+						<span cart-drawer-subtotal-text  class="float-right text-black text-lg  svelte-mfox2i">{{ cart.items_subtotal_price | money }}</span>
 					</div>
-					<div  class="cart-drawer-taxes-notice text-base text-black float-left svelte-1xfe2ed"> Taxes and shipping calculated at checkout </div>
-					<button on:click="{() _afeq__afct_ submit() }"  class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-1xfe2ed">
+					<div  class="cart-drawer-taxes-notice text-base text-black float-left svelte-mfox2i"> Taxes and shipping calculated at checkout </div>
+					<button on:click="{() _afeq__afct_ submit() }"  class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-mfox2i">
 						 Checkout 
 					</button>
-					<a  class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-1xfe2ed" href="/cart"> View Cart </a>
+					<a  class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-mfox2i" href="/cart"> View Cart </a>
 				</div>
 				<div>
 					Loading {{ loading }}
-						<button  class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-1xfe2ed" type="button" on:click="{() _afeq__afct_ loading = !loading}"> Toggle </button>
+						<button  class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-mfox2i" type="button" on:click="{() _afeq__afct_ loading = !loading}"> Toggle </button>
 				</div>
 			</div>
 		</div>
@@ -265,14 +283,20 @@ smns stands for "slot module name separator"
 
   assign cart_json = cart_json | append: '}' 
 -%}					
-						
-	<script type="text/noscript"  class="instance-data svelte-1xfe2ed">{
+		
+	<script type="text/noscript"  class="instance-data svelte-mfox2i">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"cart": {{ cart_json }}, "min_amounts" : {{ min_amounts | json }}
 	
 	
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "main-cart"
 	}</script>
 	
-	<script  class="liquivelte-prop-script svelte-1xfe2ed">(() => {
+	<script  class="liquivelte-prop-script svelte-mfox2i">(() => {
 	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
 	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
 	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}
@@ -291,7 +315,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -325,7 +357,9 @@ smns stands for "slot module name separator"
 			assign slot_default_main-cart = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

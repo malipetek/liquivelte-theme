@@ -1,18 +1,18 @@
-import { Framework7, Panel, Popup, Stepper, Accordion, Menu, SmartSelect, Range } from './range-hs7ec72bc9.liquivelte.js';
-import { Framework7Svelte } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
-import './liquivelte-svelte-hs532e1aa9.liquivelte.js';
-import './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
-import './collection-hs8daa1a0c.liquivelte.js';
-import './htm.js-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-view-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-router-context-provider-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-login-screen-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-sheet-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-popover-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-panel-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';
-import './framework7-liquivelte-params-list-hs8daa1a0c.liquivelte.js';
+import { Framework7, Panel, Popup, Popover, Stepper, Accordion, Menu, SmartSelect, Range, Notification, Searchbar } from './searchbar-hs0c484586.liquivelte.js';
+import { Framework7Svelte } from './framework7-liquivelte-hs7cccafc5.liquivelte.js';
+import './liquivelte-svelte-hs75fa7249.liquivelte.js';
+import './framework7-liquivelte-get-params-hsf7b0a459.liquivelte.js';
+import './collection.custom-hseeaca1c2.liquivelte.js';
+import './htm.js-hs6a35606f.liquivelte.js';
+import './framework7-liquivelte-popup-hsb6d11cdb.liquivelte.js';
+import './framework7-liquivelte-view-hsd7ca4772.liquivelte.js';
+import './framework7-liquivelte-router-context-provider-hs6ce7143b.liquivelte.js';
+import './framework7-liquivelte-login-screen-hse2891b0e.liquivelte.js';
+import './framework7-liquivelte-sheet-hs1878d772.liquivelte.js';
+import './framework7-liquivelte-popover-hs5f0433a4.liquivelte.js';
+import './framework7-liquivelte-panel-hs631fa697.liquivelte.js';
+import './framework7-liquivelte-utils-hs84a9c325.liquivelte.js';
+import './framework7-liquivelte-params-list-hse5f5b7fb.liquivelte.js';
 
 console.log('custom entry');
 
@@ -21,11 +21,14 @@ Framework7.use([
   Framework7Svelte,
   Panel,
   Popup,
+  Popover,
   Stepper,
   Accordion,
   Menu,
   SmartSelect,
-  Range
+  Range,
+  Notification,
+  Searchbar
 ]);
 
 const onIntersect = (el, callback) => {
@@ -38,9 +41,9 @@ const onIntersect = (el, callback) => {
 };
   
 
-document.addEventListener('DOMContentLoaded', () => {
+const initializeObservers = (doc) => {
 
-  Array.from(document.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -50,17 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
       (async () => {
         if (entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./prompts-hs8daa1a0c.liquivelte.js')).default({
+          wrapper.svelteComponent = new (await import('./prompts-hs907a679a.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
     });
   });
 
-  Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -70,17 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
       (async () => {
         if (entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./header-hs39c6dc7d.liquivelte.js').then(function (n) { return n.index; })).default({
+          wrapper.svelteComponent = new (await import('./header-hsbcd51f53.liquivelte.js').then(function (n) { return n.index; })).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
     });
   });
 
-  Array.from(document.querySelectorAll('.liquivelte-component.app-wrapper')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.app-wrapper')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -90,14 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
       (async () => {
         if (entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./app-wrapper-hs8daa1a0c.liquivelte.js')).default({
+          wrapper.svelteComponent = new (await import('./app-wrapper-hs294f929d.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
     });
   });
-
-});
+};
+document.addEventListener('DOMContentLoaded', () => initializeObservers(document));

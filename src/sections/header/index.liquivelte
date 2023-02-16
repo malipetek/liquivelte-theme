@@ -22,7 +22,23 @@
     if link.links
       assign menu_json = menu_json | append: ',"links": ['
       for link_2 in link.links
-        assign menu_json = menu_json | append: '{ "url": "' | append: link_2.url | append: '", "title": "' | append: link_2.title | append: '"}' 
+        assign menu_json = menu_json | append: '{ "url": "' | append: link_2.url | append: '", "title": "' | append: link_2.title | append: '"' 
+        
+        if link_2.links
+          assign menu_json = menu_json | append: ',"links": ['
+          for link_3 in link_2.links
+            assign menu_json = menu_json | append: '{ "url": "' | append: link_3.url | append: '", "title": "' | append: link_3.title | append: '"}' 
+            
+            
+            unless forloop.last
+              assign menu_json = menu_json | append: ','
+            endunless
+          endfor
+          assign menu_json = menu_json | append: ']'
+        endif
+        
+        assign menu_json = menu_json | append: '}' 
+
         unless forloop.last
           assign menu_json = menu_json | append: ','
         endunless
@@ -40,6 +56,7 @@
 
 %}
 <script>
+  import { onMount } from 'svelte';
   import { cartStore, cartOpen } from '../../scripts/store.module.js';
   import cart from 'theme';
   import shop from 'theme';
@@ -49,16 +66,17 @@
   import menu_json from 'theme';
   section.settings.menu = JSON.parse(menu_json);
   import Navigation from './components/navigation.liquivelte';
+  import MobileNavigation from './components/mobile-navigation.liquivelte';
   import PredictiveSearch from './components/predictive-search.liquivelte';
   import CartDrawer from './components/cart-drawer.liquivelte';
   import Logo from './components/logo.liquivelte';
   import DetailsModal from '../../snippets/details-modal.liquivelte';
-  import { Appbar, Panel, Button, Link, Badge, Block, View, Page, Popup } from 'framework7-liquivelte'; 
+  import { Appbar, Panel, Button, Link, Badge, Block, View, Page, Popup, Searchbar, Navbar, Subnavbar } from 'framework7-liquivelte'; 
   import Icon from "../../snippets/icon.liquivelte";
   import settings from 'theme'; 
 
   import logo_html from 'theme';
-  console.log('settings ', settings); 
+  // console.log('settings ', settings); 
   
   import routes from 'theme';
   import request from 'theme';
@@ -66,7 +84,8 @@
   import account_url from 'theme';
   import account_text from 'theme';
 
-  console.log('section header ', section);
+  let initialized = false;
+  // console.log('section header ', section);
   console.log('section.settings.menu ', section.settings.menu);
 
   cartStore.subscribe(state => {
@@ -74,49 +93,39 @@
       cart = state;
     }
   });
+
+  onMount(() => initialized = true);
 </script>
 
-<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-  <symbol id="icon-search" viewbox="0 0 18 19" fill="none">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.03 11.68A5.784 5.784 0 112.85 3.5a5.784 5.784 0 018.18 8.18zm.26 1.12a6.78 6.78 0 11.72-.7l5.4 5.4a.5.5 0 11-.71.7l-5.41-5.4z" fill="currentColor"/>
-  </symbol>
-
-  <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
-    <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
-  </symbol>
-</svg>
-
   <Panel resizable left reveal swipe swipeOnlyClose="{true}"  >
-    <View name="sidebar">
-      <Page>
-        <Navigation links="{{- section.settings.menu.links -}}"></Navigation>
-      </Page>
-    </View>
+    <Page>
+      <MobileNavigation links="{{- section.settings.menu.links -}}"></MobileNavigation>
+    </Page>
   </Panel>
-  <Panel classes="cart-popup" resizable right reveal swipe swipeOnlyClose="{true}"  >
-    <View name="cart">
-      <Page>
-        <CartDrawer />
-      </Page>
-    </View>
-  </Panel>
+  <Popup classes="cart-popup" swipe swipeToClose >
+    <Page>
+      <CartDrawer />
+    </Page>
+  </Popup>
   <header> 
     <Appbar>
-      <div class="left pt-[10px] pl-[10px]">
-        <Button small panelToggle="left" classes="display-flex" >
-          <Icon name="icon-hamburger" width="25" />
-        </Button>
+      <div class="left pl-[10px]">
+        <div class="md:hidden">
+          <Button small panelToggle="left" classes="display-flex" >
+            <Icon name="icon-hamburger" width="25" />
+          </Button>
+        </div>
+        <div class="hidden md:flex ">
+            <Navigation links="{{- section.settings.menu.links -}}" ></Navigation>
+        </div>
       </div>
       <div class="center">
         <Logo />
       </div>
-      <div class="right pt-[10px] pr-[10px]">
-        <Link small panelToggle="right" classes="display-flex" >
+      <div class="right pr-[10px]">
+        <Link small searchbarEnable=".searchbar" classes="display-flex" >
           <div class="icon relative">
-            <Icon name="icon-cart" width="30" />
-            {% if cart.items %}
-              <Badge color="red"> {{- cart.items.size -}} </Badge>
-            {% endif %}
+            <Icon name="icon-search" width="28" />
           </div>
         </Link>
       </div>
@@ -132,7 +141,6 @@
 {% if request.page_type == 'index' %}
   {% include 'application-ld', type: 'shop2' %}
 {% endif %}
-
 
 <style global lang="postcss">
   :root {

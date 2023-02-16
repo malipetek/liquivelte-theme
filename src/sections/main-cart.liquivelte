@@ -36,7 +36,7 @@
 	let drawerNode;
 	let loading = false;
 
-  console.log('cart store ', $cartStore);
+  // console.log('cart store ', $cartStore);
   $cartOpen = false;
   $: cart_action = !$cartOpen ? 'Open' : 'Close';
   

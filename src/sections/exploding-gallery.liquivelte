@@ -1,6 +1,7 @@
 {% liquid
   assign imbalance = 10
-%}
+  assign keepFor = 900
+  %}
 <script>
 let container, stage;
 let scrollY = 0;
@@ -97,7 +98,7 @@ $: widthVariables = itemWidths.map((width, index) => `--item-${index}-width: ${w
 $: heightVariables = itemHeights.map((height, index) => `--item-${index}-height: ${height}px`);
 
 onMount(() => {
-  document.querySelector('.page-content').addEventListener('scroll', e => {
+  document.querySelector('.mainview .page-content').addEventListener('scroll', e => {
     scrollY = e.target.scrollTop
   });
 });
@@ -123,7 +124,7 @@ onMount(() => {
         {% endfor %}
     </div>
   </div> 
-  <div class="exp-gallery-placeholder" style="height: { stageHeight + keepFor }px">&nbsp;</div>
+  <div class="exp-gallery-placeholder" style="height: {{- stageHeight | plus: keepFor -}}px">&nbsp;</div>
 </div> 
 
 <style>

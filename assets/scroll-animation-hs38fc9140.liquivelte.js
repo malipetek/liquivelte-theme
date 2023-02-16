@@ -1,5 +1,8 @@
-import { SvelteComponent, init, safe_not_equal, element, claim_element, children, detach, attr, src_url_equal, add_render_callback, toggle_class, insert_hydration, listen, noop, run_all, getContext, onMount, binding_callbacks, text, claim_text, append_hydration, set_data, create_slot, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, transition_out, create_component, claim_component, mount_component, destroy_component, empty, svg_element, space, claim_svg_element, claim_space, set_style, check_outros, destroy_each, group_outros, HtmlTagHydration, claim_html_tag, bind, add_flush_callback } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, element, claim_element, children, detach, attr, src_url_equal, add_render_callback, toggle_class, insert_hydration, listen, noop, run_all, getContext, onMount, assign, exclude_internal_props, binding_callbacks, text, claim_text, append_hydration, set_data, create_slot, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, transition_out, create_component, claim_component, mount_component, destroy_component, empty, svg_element, space, claim_svg_element, claim_space, set_style, check_outros, destroy_each, group_outros, HtmlTagHydration, claim_html_tag, bind, add_flush_callback } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
+import './framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-params-list-hs8daa1a0c.liquivelte.js';
 
 var debounce, throttle;
 
@@ -107,17 +110,17 @@ function create_fragment$4(ctx) {
 			if (!src_url_equal(video_1.src, video_1_src_value = /*liquid*/ ctx[5].file_url(/*block*/ ctx[1].settings.source))) attr(video_1, "src", video_1_src_value);
 			video_1.playsInline = true;
 			video_1.muted = true;
-			if (/*duration*/ ctx[3] === void 0) add_render_callback(() => /*video_1_durationchange_handler*/ ctx[10].call(video_1));
+			if (/*duration*/ ctx[3] === void 0) add_render_callback(() => /*video_1_durationchange_handler*/ ctx[11].call(video_1));
 			toggle_class(video_1, "bg-video", /*block*/ ctx[1].settings.is_bg);
 		},
 		m(target, anchor) {
 			insert_hydration(target, video_1, anchor);
-			/*video_1_binding*/ ctx[9](video_1);
+			/*video_1_binding*/ ctx[10](video_1);
 
 			if (!mounted) {
 				dispose = [
-					listen(video_1, "durationchange", /*video_1_durationchange_handler*/ ctx[10]),
-					listen(video_1, "seeked", /*seeked_handler*/ ctx[11])
+					listen(video_1, "durationchange", /*video_1_durationchange_handler*/ ctx[11]),
+					listen(video_1, "seeked", /*seeked_handler*/ ctx[12])
 				];
 
 				mounted = true;
@@ -144,7 +147,7 @@ function create_fragment$4(ctx) {
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(video_1);
-			/*video_1_binding*/ ctx[9](null);
+			/*video_1_binding*/ ctx[10](null);
 			mounted = false;
 			run_all(dispose);
 		}
@@ -160,8 +163,10 @@ function create_fragment$4(ctx) {
 const progressDelta = 0.3;
 
 function instance$4($$self, $$props, $$invalidate) {
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	let { keptFor } = $$props;
 	let { keepFor } = $$props;
@@ -216,13 +221,17 @@ function instance$4($$self, $$props, $$invalidate) {
 
 	const seeked_handler = () => $$invalidate(4, seeked = true);
 
-	$$self.$$set = $$props => {
-		if ('keptFor' in $$props) $$invalidate(6, keptFor = $$props.keptFor);
-		if ('keepFor' in $$props) $$invalidate(7, keepFor = $$props.keepFor);
-		if ('scrollY' in $$props) $$invalidate(8, scrollY = $$props.scrollY);
-		if ('anim_style' in $$props) $$invalidate(0, anim_style = $$props.anim_style);
-		if ('block' in $$props) $$invalidate(1, block = $$props.block);
+	$$self.$$set = $$new_props => {
+		$$invalidate(18, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(6, importsSeek = $$new_props.importsSeek);
+		if ('keptFor' in $$new_props) $$invalidate(7, keptFor = $$new_props.keptFor);
+		if ('keepFor' in $$new_props) $$invalidate(8, keepFor = $$new_props.keepFor);
+		if ('scrollY' in $$new_props) $$invalidate(9, scrollY = $$new_props.scrollY);
+		if ('anim_style' in $$new_props) $$invalidate(0, anim_style = $$new_props.anim_style);
+		if ('block' in $$new_props) $$invalidate(1, block = $$new_props.block);
 	};
+
+	$$props = exclude_internal_props($$props);
 
 	return [
 		anim_style,
@@ -231,6 +240,7 @@ function instance$4($$self, $$props, $$invalidate) {
 		duration,
 		seeked,
 		liquid,
+		importsSeek,
 		keptFor,
 		keepFor,
 		scrollY,
@@ -245,9 +255,10 @@ class Video extends SvelteComponent {
 		super();
 
 		init(this, options, instance$4, create_fragment$4, safe_not_equal, {
-			keptFor: 6,
-			keepFor: 7,
-			scrollY: 8,
+			importsSeek: 6,
+			keptFor: 7,
+			keepFor: 8,
+			scrollY: 9,
 			anim_style: 0,
 			block: 1
 		});
@@ -258,7 +269,7 @@ class Video extends SvelteComponent {
 
 function create_fragment$3(ctx) {
 	let div;
-	let t_value = /*block*/ ctx[1].settings.content + "";
+	let t_value = /*block*/ ctx[5].settings.content + "";
 	let t;
 	let div_style_value;
 
@@ -277,16 +288,16 @@ function create_fragment$3(ctx) {
 		},
 		h() {
 			attr(div, "class", " svelte-e2nbez");
-			attr(div, "style", div_style_value = "top:" + /*title_top*/ ctx[3] + "%; left:" + /*left*/ ctx[2] + "%; font-size: " + /*font_size*/ ctx[4] + "em; " + /*anim_style*/ ctx[0] + "; font-weight: " + /*bold*/ ctx[5]);
+			attr(div, "style", div_style_value = "top:" + /*title_top*/ ctx[1] + "%; left:" + /*left*/ ctx[0] + "%; font-size: " + /*font_size*/ ctx[2] + "em; " + /*anim_style*/ ctx[4] + "; font-weight: " + /*bold*/ ctx[3]);
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
 			append_hydration(div, t);
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*block*/ 2 && t_value !== (t_value = /*block*/ ctx[1].settings.content + "")) set_data(t, t_value);
+			if (dirty & /*block*/ 32 && t_value !== (t_value = /*block*/ ctx[5].settings.content + "")) set_data(t, t_value);
 
-			if (dirty & /*anim_style*/ 1 && div_style_value !== (div_style_value = "top:" + /*title_top*/ ctx[3] + "%; left:" + /*left*/ ctx[2] + "%; font-size: " + /*font_size*/ ctx[4] + "em; " + /*anim_style*/ ctx[0] + "; font-weight: " + /*bold*/ ctx[5])) {
+			if (dirty & /*title_top, left, font_size, anim_style, bold*/ 31 && div_style_value !== (div_style_value = "top:" + /*title_top*/ ctx[1] + "%; left:" + /*left*/ ctx[0] + "%; font-size: " + /*font_size*/ ctx[2] + "em; " + /*anim_style*/ ctx[4] + "; font-weight: " + /*bold*/ ctx[3])) {
 				attr(div, "style", div_style_value);
 			}
 		},
@@ -298,29 +309,82 @@ function create_fragment$3(ctx) {
 	};
 }
 
+function fc$1(e, t, r) {
+	const n = e.find(e => e === t);
+
+	return n || e.reduce((e, n) => {
+		let o = Math.abs(e - t), i = Math.abs(n - t);
+
+		return "higher" === r
+		? n > t && i <= o ? n : e
+		: "lower" === r ? n < t && i <= o ? n : e : void 0;
+	});
+}
+
 function instance$3($$self, $$props, $$invalidate) {
+	let { importsSeek = 'lower' } = $$props;
 	let themeImports = getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
+	const cic = window.cicR;
 	let block = {};
-	block.settings = themeImports['blockƒƒsettings'];
-	let left = themeImports['left'];
-	let title_top = themeImports['title_top'];
-	let font_size = themeImports['font_size'];
-	themeImports['color'];
-	let bold = themeImports['bold'];
+	let { blockƒƒsettings } = $$props;
+
+	try {
+		block = block || {};
+	} catch(e) {
+		
+	} /*whatever*/
+
+	block.settings = themeImports['blockƒƒsettings'].find(e => e.component_index == fc$1(themeImports['blockƒƒsettings'].map(e => e.component_index), cic, importsSeek)).value;
+	let { left = themeImports['left'].find(e => e.component_index == fc$1(themeImports['left'].map(e => e.component_index), cic, importsSeek)).value } = $$props;
+	let { title_top = themeImports['title_top'].find(e => e.component_index == fc$1(themeImports['title_top'].map(e => e.component_index), cic, importsSeek)).value } = $$props;
+	let { font_size = themeImports['font_size'].find(e => e.component_index == fc$1(themeImports['font_size'].map(e => e.component_index), cic, importsSeek)).value } = $$props;
+	let { color = themeImports['color'].find(e => e.component_index == fc$1(themeImports['color'].map(e => e.component_index), cic, importsSeek)).value } = $$props;
+	let { bold = themeImports['bold'].find(e => e.component_index == fc$1(themeImports['bold'].map(e => e.component_index), cic, importsSeek)).value } = $$props;
 	let { anim_style } = $$props;
 
-	$$self.$$set = $$props => {
-		if ('anim_style' in $$props) $$invalidate(0, anim_style = $$props.anim_style);
+	$$self.$$set = $$new_props => {
+		$$invalidate(13, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(6, importsSeek = $$new_props.importsSeek);
+		if ('blockƒƒsettings' in $$new_props) $$invalidate(7, blockƒƒsettings = $$new_props.blockƒƒsettings);
+		if ('left' in $$new_props) $$invalidate(0, left = $$new_props.left);
+		if ('title_top' in $$new_props) $$invalidate(1, title_top = $$new_props.title_top);
+		if ('font_size' in $$new_props) $$invalidate(2, font_size = $$new_props.font_size);
+		if ('color' in $$new_props) $$invalidate(8, color = $$new_props.color);
+		if ('bold' in $$new_props) $$invalidate(3, bold = $$new_props.bold);
+		if ('anim_style' in $$new_props) $$invalidate(4, anim_style = $$new_props.anim_style);
 	};
 
-	return [anim_style, block, left, title_top, font_size, bold];
+	$$props = exclude_internal_props($$props);
+
+	return [
+		left,
+		title_top,
+		font_size,
+		bold,
+		anim_style,
+		block,
+		importsSeek,
+		blockƒƒsettings,
+		color
+	];
 }
 
 class Title extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance$3, create_fragment$3, safe_not_equal, { anim_style: 0 });
+
+		init(this, options, instance$3, create_fragment$3, safe_not_equal, {
+			importsSeek: 6,
+			blockƒƒsettings: 7,
+			left: 0,
+			title_top: 1,
+			font_size: 2,
+			color: 8,
+			bold: 3,
+			anim_style: 4
+		});
 	}
 }
 
@@ -330,8 +394,8 @@ function create_fragment$2(ctx) {
 	let div;
 	let div_style_value;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[3].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[2], null);
+	const default_slot_template = /*#slots*/ ctx[4].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
 
 	return {
 		c() {
@@ -361,15 +425,15 @@ function create_fragment$2(ctx) {
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 4)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 8)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[2],
+						/*$$scope*/ ctx[3],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[2])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[2], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[3])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[3], dirty, null),
 						null
 					);
 				}
@@ -397,24 +461,29 @@ function create_fragment$2(ctx) {
 
 function instance$2($$self, $$props, $$invalidate) {
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	let { block } = $$props;
 	let { anim_style } = $$props;
 
-	$$self.$$set = $$props => {
-		if ('block' in $$props) $$invalidate(0, block = $$props.block);
-		if ('anim_style' in $$props) $$invalidate(1, anim_style = $$props.anim_style);
-		if ('$$scope' in $$props) $$invalidate(2, $$scope = $$props.$$scope);
+	$$self.$$set = $$new_props => {
+		$$invalidate(9, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(2, importsSeek = $$new_props.importsSeek);
+		if ('block' in $$new_props) $$invalidate(0, block = $$new_props.block);
+		if ('anim_style' in $$new_props) $$invalidate(1, anim_style = $$new_props.anim_style);
+		if ('$$scope' in $$new_props) $$invalidate(3, $$scope = $$new_props.$$scope);
 	};
 
-	return [block, anim_style, $$scope, slots];
+	$$props = exclude_internal_props($$props);
+	return [block, anim_style, importsSeek, $$scope, slots];
 }
 
 class Positionable extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance$2, create_fragment$2, safe_not_equal, { block: 0, anim_style: 1 });
+		init(this, options, instance$2, create_fragment$2, safe_not_equal, { importsSeek: 2, block: 0, anim_style: 1 });
 	}
 }
 
@@ -498,7 +567,7 @@ function create_if_block_2$1(ctx) {
 	};
 }
 
-// (23:47) 
+// (27:47) 
 function create_if_block_1$1(ctx) {
 	let div;
 	let t_value = /*block*/ ctx[0].settings.content + "";
@@ -533,7 +602,7 @@ function create_if_block_1$1(ctx) {
 	};
 }
 
-// (19:2) {#if block.settings.shape == 'square' }
+// (23:2) {#if block.settings.shape == 'square' }
 function create_if_block$1(ctx) {
 	let div;
 	let t_value = /*block*/ ctx[0].settings.content + "";
@@ -568,7 +637,7 @@ function create_if_block$1(ctx) {
 	};
 }
 
-// (18:0) <Positionable  block="{ block }" anim_style="{ anim_style }"  >
+// (22:0) <Positionable  block="{ block }" anim_style="{ anim_style }"  >
 function create_default_slot(ctx) {
 	let if_block_anchor;
 
@@ -646,7 +715,7 @@ function create_fragment$1(ctx) {
 			if (dirty & /*block*/ 1) positionable_changes.block = /*block*/ ctx[0];
 			if (dirty & /*anim_style*/ 2) positionable_changes.anim_style = /*anim_style*/ ctx[1];
 
-			if (dirty & /*$$scope, block*/ 33) {
+			if (dirty & /*$$scope, block*/ 257) {
 				positionable_changes.$$scope = { dirty, ctx };
 			}
 
@@ -668,24 +737,29 @@ function create_fragment$1(ctx) {
 }
 
 function instance$1($$self, $$props, $$invalidate) {
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	const liquid = cachedLiquid(lec);
 	let { block = {} } = $$props;
 	let { anim_style } = $$props;
 
-	$$self.$$set = $$props => {
-		if ('block' in $$props) $$invalidate(0, block = $$props.block);
-		if ('anim_style' in $$props) $$invalidate(1, anim_style = $$props.anim_style);
+	$$self.$$set = $$new_props => {
+		$$invalidate(7, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(3, importsSeek = $$new_props.importsSeek);
+		if ('block' in $$new_props) $$invalidate(0, block = $$new_props.block);
+		if ('anim_style' in $$new_props) $$invalidate(1, anim_style = $$new_props.anim_style);
 	};
 
-	return [block, anim_style, liquid];
+	$$props = exclude_internal_props($$props);
+	return [block, anim_style, liquid, importsSeek];
 }
 
 class Shape extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance$1, create_fragment$1, safe_not_equal, { block: 0, anim_style: 1 });
+		init(this, options, instance$1, create_fragment$1, safe_not_equal, { importsSeek: 3, block: 0, anim_style: 1 });
 	}
 }
 
@@ -693,31 +767,31 @@ class Shape extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[32] = list[i];
-	child_ctx[35] = i;
+	child_ctx[37] = list[i];
+	child_ctx[40] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[35] === 0,
-		index: /*index*/ child_ctx[35] + 1,
-		index0: /*index*/ child_ctx[35],
-		last: /*index*/ child_ctx[35] === /*section*/ child_ctx[3].blocks.length - 1,
-		rindex: /*section*/ child_ctx[3].blocks.length - /*index*/ child_ctx[35],
-		rindex0: /*section*/ child_ctx[3].blocks.length - /*index*/ child_ctx[35] - 1,
+		first: /*index*/ child_ctx[40] === 0,
+		index: /*index*/ child_ctx[40] + 1,
+		index0: /*index*/ child_ctx[40],
+		last: /*index*/ child_ctx[40] === /*section*/ child_ctx[3].blocks.length - 1,
+		rindex: /*section*/ child_ctx[3].blocks.length - /*index*/ child_ctx[40],
+		rindex0: /*section*/ child_ctx[3].blocks.length - /*index*/ child_ctx[40] - 1,
 		length: /*section*/ child_ctx[3].blocks.length
 	};
 
-	child_ctx[33] = constants_0;
+	child_ctx[38] = constants_0;
 	return child_ctx;
 }
 
-// (137:8) {#if block.type == 'title' }
+// (145:8) {#if block.type == 'title' }
 function create_if_block_4(ctx) {
 	let title;
 	let current;
 
 	title = new Title({
 			props: {
-				anim_style: /*block*/ ctx[32].settings.anim_style
+				anim_style: /*block*/ ctx[37].settings.anim_style
 			}
 		});
 
@@ -734,7 +808,7 @@ function create_if_block_4(ctx) {
 		},
 		p(ctx, dirty) {
 			const title_changes = {};
-			if (dirty[0] & /*section*/ 8) title_changes.anim_style = /*block*/ ctx[32].settings.anim_style;
+			if (dirty[0] & /*section*/ 8) title_changes.anim_style = /*block*/ ctx[37].settings.anim_style;
 			title.$set(title_changes);
 		},
 		i(local) {
@@ -752,7 +826,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (141:8) {#if block.type == 'image' }
+// (149:8) {#if block.type == 'image' }
 function create_if_block_3(ctx) {
 	let img;
 	let img_src_value;
@@ -768,14 +842,14 @@ function create_if_block_3(ctx) {
 		},
 		h() {
 			attr(img, "loading", "lazy");
-			if (!src_url_equal(img.src, img_src_value = /*block*/ ctx[32].settings.image)) attr(img, "src", img_src_value);
+			if (!src_url_equal(img.src, img_src_value = /*block*/ ctx[37].settings.image)) attr(img, "src", img_src_value);
 			attr(img, "class", "svelte-strz53");
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*section*/ 8 && !src_url_equal(img.src, img_src_value = /*block*/ ctx[32].settings.image)) {
+			if (dirty[0] & /*section*/ 8 && !src_url_equal(img.src, img_src_value = /*block*/ ctx[37].settings.image)) {
 				attr(img, "src", img_src_value);
 			}
 		},
@@ -785,10 +859,10 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (145:8) {#if block.type == 'text' }
+// (153:8) {#if block.type == 'text' }
 function create_if_block_2(ctx) {
 	let html_tag;
-	let raw_value = (/*block*/ ctx[32].settings.content || '') + "";
+	let raw_value = (/*block*/ ctx[37].settings.content || '') + "";
 	let html_anchor;
 
 	return {
@@ -810,7 +884,7 @@ function create_if_block_2(ctx) {
 			insert_hydration(target, html_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*section*/ 8 && raw_value !== (raw_value = (/*block*/ ctx[32].settings.content || '') + "")) html_tag.p(raw_value);
+			if (dirty[0] & /*section*/ 8 && raw_value !== (raw_value = (/*block*/ ctx[37].settings.content || '') + "")) html_tag.p(raw_value);
 		},
 		d(detaching) {
 			if (detaching) detach(html_anchor);
@@ -819,20 +893,20 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (149:8) {#if block.type == 'video' }
+// (157:8) {#if block.type == 'video' }
 function create_if_block_1(ctx) {
 	let scrollvideo;
 	let updating_keptFor;
 	let current;
 
 	function scrollvideo_keptFor_binding(value) {
-		/*scrollvideo_keptFor_binding*/ ctx[15](value);
+		/*scrollvideo_keptFor_binding*/ ctx[19](value);
 	}
 
 	let scrollvideo_props = {
-		block: /*block*/ ctx[32],
+		block: /*block*/ ctx[37],
 		keepFor: /*keepFor*/ ctx[8],
-		anim_style: /*block*/ ctx[32].settings.anim_style
+		anim_style: /*block*/ ctx[37].settings.anim_style
 	};
 
 	if (/*keptFor*/ ctx[2] !== void 0) {
@@ -855,8 +929,8 @@ function create_if_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			const scrollvideo_changes = {};
-			if (dirty[0] & /*section*/ 8) scrollvideo_changes.block = /*block*/ ctx[32];
-			if (dirty[0] & /*section*/ 8) scrollvideo_changes.anim_style = /*block*/ ctx[32].settings.anim_style;
+			if (dirty[0] & /*section*/ 8) scrollvideo_changes.block = /*block*/ ctx[37];
+			if (dirty[0] & /*section*/ 8) scrollvideo_changes.anim_style = /*block*/ ctx[37].settings.anim_style;
 
 			if (!updating_keptFor && dirty[0] & /*keptFor*/ 4) {
 				updating_keptFor = true;
@@ -881,15 +955,15 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (153:8) {#if block.type == 'shape' }
+// (161:8) {#if block.type == 'shape' }
 function create_if_block(ctx) {
 	let shape;
 	let current;
 
 	shape = new Shape({
 			props: {
-				block: /*block*/ ctx[32],
-				anim_style: /*block*/ ctx[32].settings.anim_style
+				block: /*block*/ ctx[37],
+				anim_style: /*block*/ ctx[37].settings.anim_style
 			}
 		});
 
@@ -906,8 +980,8 @@ function create_if_block(ctx) {
 		},
 		p(ctx, dirty) {
 			const shape_changes = {};
-			if (dirty[0] & /*section*/ 8) shape_changes.block = /*block*/ ctx[32];
-			if (dirty[0] & /*section*/ 8) shape_changes.anim_style = /*block*/ ctx[32].settings.anim_style;
+			if (dirty[0] & /*section*/ 8) shape_changes.block = /*block*/ ctx[37];
+			if (dirty[0] & /*section*/ 8) shape_changes.anim_style = /*block*/ ctx[37].settings.anim_style;
 			shape.$set(shape_changes);
 		},
 		i(local) {
@@ -925,7 +999,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (126:6) {#each  section.blocks as block, index   }
+// (134:6) {#each  section.blocks as block, index   }
 function create_each_block(ctx) {
 	let t0;
 	let t1;
@@ -933,11 +1007,11 @@ function create_each_block(ctx) {
 	let t3;
 	let if_block4_anchor;
 	let current;
-	let if_block0 = /*block*/ ctx[32].type == 'title' && create_if_block_4(ctx);
-	let if_block1 = /*block*/ ctx[32].type == 'image' && create_if_block_3(ctx);
-	let if_block2 = /*block*/ ctx[32].type == 'text' && create_if_block_2(ctx);
-	let if_block3 = /*block*/ ctx[32].type == 'video' && create_if_block_1(ctx);
-	let if_block4 = /*block*/ ctx[32].type == 'shape' && create_if_block(ctx);
+	let if_block0 = /*block*/ ctx[37].type == 'title' && create_if_block_4(ctx);
+	let if_block1 = /*block*/ ctx[37].type == 'image' && create_if_block_3(ctx);
+	let if_block2 = /*block*/ ctx[37].type == 'text' && create_if_block_2(ctx);
+	let if_block3 = /*block*/ ctx[37].type == 'video' && create_if_block_1(ctx);
+	let if_block4 = /*block*/ ctx[37].type == 'shape' && create_if_block(ctx);
 
 	return {
 		c() {
@@ -978,7 +1052,7 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*block*/ ctx[32].type == 'title') {
+			if (/*block*/ ctx[37].type == 'title') {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
@@ -1001,7 +1075,7 @@ function create_each_block(ctx) {
 				check_outros();
 			}
 
-			if (/*block*/ ctx[32].type == 'image') {
+			if (/*block*/ ctx[37].type == 'image') {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 				} else {
@@ -1014,7 +1088,7 @@ function create_each_block(ctx) {
 				if_block1 = null;
 			}
 
-			if (/*block*/ ctx[32].type == 'text') {
+			if (/*block*/ ctx[37].type == 'text') {
 				if (if_block2) {
 					if_block2.p(ctx, dirty);
 				} else {
@@ -1027,7 +1101,7 @@ function create_each_block(ctx) {
 				if_block2 = null;
 			}
 
-			if (/*block*/ ctx[32].type == 'video') {
+			if (/*block*/ ctx[37].type == 'video') {
 				if (if_block3) {
 					if_block3.p(ctx, dirty);
 
@@ -1050,7 +1124,7 @@ function create_each_block(ctx) {
 				check_outros();
 			}
 
-			if (/*block*/ ctx[32].type == 'shape') {
+			if (/*block*/ ctx[37].type == 'shape') {
 				if (if_block4) {
 					if_block4.p(ctx, dirty);
 
@@ -1175,11 +1249,11 @@ function create_fragment(ctx) {
 				each_blocks[i].m(div0, null);
 			}
 
-			/*div0_binding*/ ctx[16](div0);
+			/*div0_binding*/ ctx[20](div0);
 			append_hydration(div3, t0);
 			append_hydration(div3, div2);
 			append_hydration(div2, t1);
-			/*div3_binding*/ ctx[17](div3);
+			/*div3_binding*/ ctx[21](div3);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -1239,21 +1313,52 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(div3);
 			destroy_each(each_blocks, detaching);
-			/*div0_binding*/ ctx[16](null);
-			/*div3_binding*/ ctx[17](null);
+			/*div0_binding*/ ctx[20](null);
+			/*div3_binding*/ ctx[21](null);
 		}
 	};
+}
+
+function fc(e, t, r) {
+	const n = e.find(e => e === t);
+
+	return n || e.reduce((e, n) => {
+		let o = Math.abs(e - t), i = Math.abs(n - t);
+
+		return "higher" === r
+		? n > t && i <= o ? n : e
+		: "lower" === r ? n < t && i <= o ? n : e : void 0;
+	});
 }
 
 function instance($$self, $$props, $$invalidate) {
 	let widthVariables;
 	let heightVariables;
+	let { importsSeek = 'lower' } = $$props;
 	let themeImports = getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
+	const cic = window.cicR;
 	const section = {};
-	section.settings = themeImports['sectionƒƒsettings'];
-	section.blocks = themeImports['sectionƒƒblocks'];
-	let animations = themeImports['animations'];
+	let { sectionƒƒsettings } = $$props;
+
+	try {
+		section = section || {};
+	} catch(e) {
+		
+	} /*whatever*/
+
+	section.settings = themeImports['sectionƒƒsettings'].find(e => e.component_index == fc(themeImports['sectionƒƒsettings'].map(e => e.component_index), cic, importsSeek)).value;
+	let { sectionƒƒblocks } = $$props;
+
+	try {
+		section = section || {};
+	} catch(e) {
+		
+	} /*whatever*/
+
+	section.blocks = themeImports['sectionƒƒblocks'].find(e => e.component_index == fc(themeImports['sectionƒƒblocks'].map(e => e.component_index), cic, importsSeek)).value;
+	let { animations = themeImports['animations'].find(e => e.component_index == fc(themeImports['animations'].map(e => e.component_index), cic, importsSeek)).value } = $$props;
 	console.log('section blocks 1', animations, section.blocks);
 
 	section.blocks = section.blocks.map(block => ({
@@ -1281,7 +1386,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	onMount(() => {
 		document.querySelector('.page-content').addEventListener('scroll', e => {
-			$$invalidate(9, scrollY = e.target.scrollTop);
+			$$invalidate(13, scrollY = e.target.scrollTop);
 		});
 	});
 
@@ -1289,7 +1394,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	function scrollvideo_keptFor_binding(value) {
 		keptFor = value;
-		((((((($$invalidate(2, keptFor), $$invalidate(0, container)), $$invalidate(1, stage)), $$invalidate(9, scrollY)), $$invalidate(11, isTopped)), $$invalidate(8, keepFor)), $$invalidate(12, cachedHeight)), $$invalidate(13, progressPercent));
+		((((((($$invalidate(2, keptFor), $$invalidate(0, container)), $$invalidate(1, stage)), $$invalidate(13, scrollY)), $$invalidate(15, isTopped)), $$invalidate(8, keepFor)), $$invalidate(16, cachedHeight)), $$invalidate(17, progressPercent));
 	}
 
 	function div0_binding($$value) {
@@ -1306,8 +1411,16 @@ function instance($$self, $$props, $$invalidate) {
 		});
 	}
 
+	$$self.$$set = $$new_props => {
+		$$invalidate(36, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(9, importsSeek = $$new_props.importsSeek);
+		if ('sectionƒƒsettings' in $$new_props) $$invalidate(10, sectionƒƒsettings = $$new_props.sectionƒƒsettings);
+		if ('sectionƒƒblocks' in $$new_props) $$invalidate(11, sectionƒƒblocks = $$new_props.sectionƒƒblocks);
+		if ('animations' in $$new_props) $$invalidate(12, animations = $$new_props.animations);
+	};
+
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[0] & /*container, stage, scrollY, isTopped, keptFor, cachedHeight, progressPercent*/ 14855) {
+		if ($$self.$$.dirty[0] & /*container, stage, scrollY, isTopped, keptFor, cachedHeight, progressPercent*/ 237575) {
 			// [
 			//   {
 			//     from: 52,
@@ -1334,16 +1447,16 @@ function instance($$self, $$props, $$invalidate) {
 			//   }
 			// ];
 			if (container && stage) {
-				(container.offsetTop, $$invalidate(10, height = container.clientHeight), container.offsetTop < scrollY + window.innerHeight, container.offsetTop - (scrollY + window.innerHeight), $$invalidate(11, isTopped = container.offsetTop - scrollY < 0), $$invalidate(12, cachedHeight = isTopped ? cachedHeight : container.clientHeight), $$invalidate(2, keptFor = Math.abs(container.offsetTop - scrollY)), container.offsetTop - scrollY < 0 && keepFor > keptFor
+				(container.offsetTop, $$invalidate(14, height = container.clientHeight), container.offsetTop < scrollY + window.innerHeight, container.offsetTop - (scrollY + window.innerHeight), $$invalidate(15, isTopped = container.offsetTop - scrollY < 0), $$invalidate(16, cachedHeight = isTopped ? cachedHeight : container.clientHeight), $$invalidate(2, keptFor = Math.abs(container.offsetTop - scrollY)), container.offsetTop - scrollY < 0 && keepFor > keptFor
 				? keptFor
-				: isTopped ? keepFor : 0, $$invalidate(13, progressPercent = (scrollY + window.innerHeight - container.offsetTop) / (container.clientHeight + window.innerHeight) * 100), $$invalidate(13, progressPercent = progressPercent > 0 ? progressPercent : 0));
+				: isTopped ? keepFor : 0, $$invalidate(17, progressPercent = (scrollY + window.innerHeight - container.offsetTop) / (container.clientHeight + window.innerHeight) * 100), $$invalidate(17, progressPercent = progressPercent > 0 ? progressPercent : 0));
 
-				$$invalidate(14, progress = progressPercent);
+				$$invalidate(18, progress = progressPercent);
 				$$invalidate(4, stageHeight = stage.clientHeight);
 			}
 		}
 
-		if ($$self.$$.dirty[0] & /*container, scrollY*/ 513) {
+		if ($$self.$$.dirty[0] & /*container, scrollY*/ 8193) {
 			// $: if(scrollY && container && seeked) {
 			//   seeked = false;
 			//   top = container.offsetTop; 
@@ -1357,7 +1470,7 @@ function instance($$self, $$props, $$invalidate) {
 			} // console.log('keptFor index ', keptFor);
 		}
 
-		if ($$self.$$.dirty[0] & /*progress*/ 16384) {
+		if ($$self.$$.dirty[0] & /*animations, progress*/ 266240) {
 			$$invalidate(5, animationVariables = animations.map(animation => {
 				let animationProgress = (progress - animation.from) / (animation.to - animation.from);
 				let value = animation.valueFrom + (animation.valueTo - animation.valueFrom) * animationProgress;
@@ -1375,6 +1488,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$invalidate(7, widthVariables = itemWidths.map((width, index) => `--item-${index}-width: ${width}px`));
 	$$invalidate(6, heightVariables = itemHeights.map((height, index) => `--item-${index}-height: ${height}px`));
+	$$props = exclude_internal_props($$props);
 
 	return [
 		container,
@@ -1386,6 +1500,10 @@ function instance($$self, $$props, $$invalidate) {
 		heightVariables,
 		widthVariables,
 		keepFor,
+		importsSeek,
+		sectionƒƒsettings,
+		sectionƒƒblocks,
+		animations,
 		scrollY,
 		height,
 		isTopped,
@@ -1401,7 +1519,22 @@ function instance($$self, $$props, $$invalidate) {
 class Scroll_animation extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, {}, null, [-1, -1]);
+
+		init(
+			this,
+			options,
+			instance,
+			create_fragment,
+			safe_not_equal,
+			{
+				importsSeek: 9,
+				sectionƒƒsettings: 10,
+				sectionƒƒblocks: 11,
+				animations: 12
+			},
+			null,
+			[-1, -1]
+		);
 	}
 }
 

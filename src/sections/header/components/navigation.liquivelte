@@ -1,24 +1,49 @@
 <script>
   export let links;
-  import { f7, List, ListItem, AccordionContent } from 'framework7-liquivelte';
+  const section = {settings: {menu: {}}};
+  section.settings.menu.links = links;
+  import { f7, f7ready, Link, Popover, List, ListItem } from 'framework7-liquivelte';
+  import { onMount } from 'svelte';
+
   $: mainview = f7?.views?.main;
 
-  $: console.log('mainview ', mainview);
+  // $: console.log('mainview ', mainview);
+
+  onMount(() => {
+    f7ready((f7) => {
+      window.f7 = f7;
+      mainview = f7.views.main;
+    });
+  });
 </script>
-<List accordionList>
-  {% for lnk in links %}
-    {% if lnk.links and lnk.links.size %}
-    <ListItem accordionItem title="{{- lnk.title -}}" >
-      {% if lnk.links and lnk.links.size %}
-      <AccordionContent>
-        <svelte:self links="{lnk.links}" />  
-      </AccordionContent>
-      {% endif %}
-    </ListItem>
-    {% else %}
-      {@debug mainview}
-    <ListItem accordionItem="{false}" title="{{- lnk.title -}}" routeProps="{ { view: mainview } }" link="{lnk.url}"></ListItem>
+  {% for lnk in section.settings.menu.links %}
+    {% if lnk.links and lnk.links.size > 0 %}
+    <Link classes="mr-5"
+      text="{{- lnk.title -}}" 
+      popoverOpen=".menu-popover-{ forloop.index }"
+      />
+      <Popover classes="menu-popover-{forloop.index}">
+        <List>
+          <ListItem title="{{- lnk.title -}}" link="{{- lnk.url -}}" />
+          {% if lnk.links and lnk.links.size > 0 %}
+            {% for lnk2 in lnk.links %}
+            <ListItem title="{{- lnk2.title -}}" link="{{- lnk2.url -}}" />
+            {% if lnk2.links and lnk2.links.size > 0 %}
+              <li>
+                <ul>
+                  {% for lnk3 in lnk2.links %}
+                    <ListItem title="{{- lnk3.title -}}" link="{{- lnk3.url -}}" />
+                  {% endfor %}
+                  </ul>
+                </li>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </List>
+      </Popover>
+     {% else %}
+        <Link classes="mr-5" href="{{- lnk.url -}}" 
+              text="{{- lnk.title -}}" 
+              />
     {% endif %}
   {% endfor %}
-</List>
-

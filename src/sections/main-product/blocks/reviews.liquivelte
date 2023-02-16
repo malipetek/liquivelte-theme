@@ -8,7 +8,7 @@
   import score from 'theme'; 
   import reviews_count from 'theme';
 
-  console.log('review_stars ', review_stars);
+  // console.log('review_stars ', review_stars);
 </script>
 <!-- Reviews -->
  <div class="mt-6">

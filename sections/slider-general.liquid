@@ -43,6 +43,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component slider-general svelte-bchtdm" data-liquivelte-component-name="slider-general">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -50,6 +54,7 @@
   {% if section.settings.flush_with_header %}
     <div  class="flush-shadow svelte-bchtdm"></div>
   {% endif %}
+
   
 {% comment %}
 kvsp stands for "key value separator"
@@ -60,12 +65,14 @@ scs stands for "slot component separator"
 scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
-{% capture props_Swiper %}freemode-kvsp-{ { enabled: true, sticky: true } }-prsp-mousewheel-kvsp-{ { forceToAxis: true, sensitivity: 1.5 } }-prsp-modules-kvsp-{[FreeMode, Mousewheel]}{% endcapture %}
+{% capture props_Swiper %}freemode-kvsp-{ { enabled: true, sticky: true } }-prsp-mousewheel-kvsp-{ { forceToAxis: true, sensitivity: 1.5 } }-prsp-modules-kvsp-{[FreeMode, Mousewheel]}-prsp-preloadImages-kvsp-{false}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Swiper -%}
+
+{%- capture slot_content_def_Swiper -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     {% for block in section.blocks %}
     {% assign index = forloop.index0 %}
-    {% if block.type == 'image' %}
+      {% if block.type == 'image' %}
         
 {% comment %}
 kvsp stands for "key value separator"
@@ -77,43 +84,84 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_SwiperSlide %}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_SwiperSlide -%}
+
+{%- capture slot_content_def_SwiperSlide -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+          {% if forloop.index == 1 %}
           
 {% comment %}
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props_SliderImage %}block-kvsp-{{ block }}{% endcapture %}
-{% assign modulename = basename | append: 'slider-image' %}
-{% include modulename, liquivelte: true, props: props_SliderImage, sub_include: true, basename: '' %}
+{% capture props_Image %}source-kvsp-{{ block.settings.image }}-prsp-sizes-kvsp-100vw@fixed-prsp-loading-kvsp-eager{% endcapture %}
+{% assign modulename = basename | append: 'image' %}
+{% include modulename, liquivelte: true, props: props_Image, sub_include: true, basename: '' , source:  block.settings.image  %}
 {% assign props = '' %}
-        {%- endcapture -%}
-{% assign slot_content_SwiperSlide = slot_content_SwiperSlide | append: '-scs-' | append: 'framework7-liquivelte-swiper-slide' | append: '-scvs-' | append: slot_content_def_SwiperSlide %}
+          {% else %}
+            
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props_Image %}source-kvsp-{{ block.settings.image }}-prsp-sizes-kvsp-100vw@fixed-prsp-loading-kvsp-lazy{% endcapture %}
+{% assign modulename = basename | append: 'image' %}
+{% include modulename, liquivelte: true, props: props_Image, sub_include: true, basename: '' , source:  block.settings.image  %}
+{% assign props = '' %}
+          {% endif %}
+        {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper-slide' %}
-{% include modulename, liquivelte: true, props: props_SwiperSlide, sub_include: true, slot_contents: slot_content_SwiperSlide, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_SwiperSlide = slot_content_SwiperSlide | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_SwiperSlide %}
+{% include modulename, liquivelte: true, props: props_SwiperSlide, sub_include: true, slot_contents: slot_content_SwiperSlide, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_SwiperSlide = '' %}
 {% assign props = '' %}
-        {% endif %}
+      
+      {% elsif block.type == 'image-card' %}
+        
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_SwiperSlide %}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_SwiperSlide -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+          
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props_ImageWithCard %}block-kvsp-{{ block }}-prsp-forloop-kvsp-{{ forloop }}{% endcapture %}
+{% assign modulename = basename | append: 'image-with-card' %}
+{% include modulename, liquivelte: true, props: props_ImageWithCard, sub_include: true, basename: '' , block:  block  , forloop:  forloop  %}
+{% assign props = '' %}
+        {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-swiper-slide' %}
+{% assign slot_content_SwiperSlide = slot_content_SwiperSlide | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_SwiperSlide %}
+{% include modulename, liquivelte: true, props: props_SwiperSlide, sub_include: true, slot_contents: slot_content_SwiperSlide, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_SwiperSlide = '' %}
+{% assign props = '' %}
+      {% endif %}
     {% endfor %} 
-  {%- endcapture -%}
-{% assign slot_content_Swiper = slot_content_Swiper | append: '-scs-' | append: 'framework7-liquivelte-swiper' | append: '-scvs-' | append: slot_content_def_Swiper %}
+  {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper' %}
-{% include modulename, liquivelte: true, props: props_Swiper, sub_include: true, slot_contents: slot_content_Swiper, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Swiper = slot_content_Swiper | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Swiper %}
+{% include modulename, liquivelte: true, props: props_Swiper, sub_include: true, slot_contents: slot_content_Swiper, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Swiper = '' %}
 {% assign props = '' %}
-</div>
-
-
-    {% include 'flush-header'  %}
-    {%- capture rawinclude -%}{% include 'flush-header'  %}{%- endcapture -%}
-  <script liquivelte-keep liquivelte-eval>
-  window.liquivelte_rawincludes = window.liquivelte_rawincludes || {};
-  window.liquivelte_rawincludes['rawinclude_673107d4'] = [...(window.liquivelte_rawincludes['rawinclude_673107d4'] || []),`{{ rawinclude | escape | strip_newlines }}`];
-  if(document.currentScript){
-    document.currentScript.remove();
-  }</script>
-  {%- assign rawinclude = '' -%}
+</div> 
 
 
 
@@ -140,6 +188,99 @@ smns stands for "slot module name separator"
     }
   ],
   "blocks": [
+    {
+      "name": "Slider Image & Card",
+      "type": "image-card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Swiper with Card"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Card"
+        },
+        {
+          "type": "select",
+          "options": [
+            {
+              "label": "Regular",
+              "value": "regular"
+            },
+            {
+              "label": "Round",
+              "value": "round"
+            },
+            {
+              "label": "Transparent",
+              "value": "transparent"
+            }
+          ],
+          "id": "style",
+          "label": "Card Style"
+        },
+        {
+          "id": "card_top",
+          "label": "Card Top",
+          "default": 50,
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%"
+        },
+        {
+          "id": "card_left",
+          "label": "Card Left",
+          "default": 50,
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%"
+        },
+        {
+          "id": "card_width",
+          "label": "Card Width",
+          "default": 50,
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%"
+        },
+        {
+          "id": "card_height",
+          "label": "Card Height",
+          "default": 50,
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title"
+        },
+        {
+          "type": "text",
+          "id": "card_subtitle",
+          "label": "Card Sub Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "card_content",
+          "label": "Card Content"
+        }
+      ]
+    },
     {
       "name": "Slider Image",
       "type": "image",
@@ -176,9 +317,10 @@ smns stands for "slot module name separator"
       assign setting_key_with_quotes = setting | json
       assign block_json = block_json | append: setting_key_with_quotes | append: ":"
 
-      if block.settings[setting].aspect_ratio
+      if block.settings[setting].aspect_ratio and block.settings[setting].src
         assign block_json = block_json | append: '{'
-        assign block_json = block_json | append: '"width": ' | append: block.settings[setting].width | append: ','
+        assign width = block.settings[setting].width | json
+        assign block_json = block_json | append: '"width": ' | append: width | append: ','
         assign block_json = block_json | append: '"aspect_ratio": ' | append: block.settings[setting].aspect_ratio | append: ','
         assign src_with_quotes = block.settings[setting].src | json
         assign block_json = block_json | append: '"src": ' | append: src_with_quotes
@@ -204,11 +346,17 @@ smns stands for "slot module name separator"
     endunless
   endfor
   assign section_blocks_json = section_blocks_json | append: ']'
-%}					
-	<script type="text/noscript"  class="instance-data svelte-bchtdm">{
+%}	
+	<script type="text/noscript"  class="instance-data svelte-bchtdm">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	"sectionƒƒsettings": {{ section.settings | json }} , "sectionƒƒblocks": {{ section_blocks_json }}
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "index"
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-bchtdm">(() => {
@@ -230,22 +378,21 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
 	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
 	}
 	
-	
-	try{
-	wrapper.svelteProps["rawinclude_673107d4"] = [...(wrapper.svelteProps["rawinclude_673107d4"] || []), ...window.liquivelte_rawincludes['rawinclude_673107d4'].map(e => htmlDecode(e)) ];
-	} catch (e) {
-	const err = 'Could not grab liquid include, because it is not present in the liquid context please check for rawinclude_673107d4 in the slider-general.liquid file.';
-	console.error(err);
-	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
-	}
-
 	
 
 	// liquid expression cache
@@ -273,7 +420,9 @@ smns stands for "slot module name separator"
 			assign slot_default_index = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

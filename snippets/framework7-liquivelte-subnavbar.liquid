@@ -30,19 +30,19 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'sliding'
+	if lv_propName == 'sliding' and sliding == blank
 		assign sliding = lv_propValue
 	endif
-	if lv_propName == 'title'
+	if lv_propName == 'title' and title == blank
 		assign title = lv_propValue
 	endif
-	if lv_propName == 'inner'
+	if lv_propName == 'inner' and inner == blank
 		assign inner = lv_propValue
 	endif
-	if lv_propName == 'f7Slot'
+	if lv_propName == 'f7Slot' and f7Slot == blank
 		assign f7Slot = lv_propValue
 	endif
 	endfor
@@ -63,37 +63,47 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component subnavbar" data-liquivelte-component-name="subnavbar.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
-<div class={computedClasses} data-f7-slot={f7Slot} {...restProps($$restProps)}>
-  {#if inner}
+<div class="subnavbar {{ classes }} {{ computedClasses }}" data-f7-slot="{f7Slot}" {...restProps($$restProps)}>
+  {% if inner %}
     <div class="subnavbar-inner">
-      {#if title}
-        <div class="subnavbar-title">{title}</div>
-      {/if}
+      {% if title %}
+        <div class="subnavbar-title">{{ title }}</div>
+      {% endif %}
       
 		{%- if slot_default_framework7-liquivelte_subnavbar != blank -%}
 			{{- slot_default_framework7-liquivelte_subnavbar -}}
 		{%- endif -%}
 	
     </div>
-  {:else}
+  {% else %}
     
 		{%- if slot_default_framework7-liquivelte_subnavbar != blank -%}
 			{{- slot_default_framework7-liquivelte_subnavbar -}}
 		{%- endif -%}
 	
-  {/if}
+  {% endif %}
 </div>
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-subnavbar"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -115,7 +125,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -154,7 +172,9 @@
 			assign slot_default_framework7-liquivelte_subnavbar = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

@@ -17,9 +17,8 @@
   import collection_title from 'theme';
   import section.settings from 'theme';
   import products from 'theme';
-  
-  console.log(' ==> products ', products);
-  
+import { onMount } from 'svelte';
+
   const slidesPerView = 3;
   const breakpoints = {
 				"640": {
@@ -32,10 +31,10 @@
 					slidesPerView: 4,
 				},
 				"1280": {
-					slidesPerView: 6,
+					slidesPerView: 4,
 				},
 				"1536": {
-					slidesPerView: 8,
+					slidesPerView: 4,
 				}
 			}
 </script>
@@ -76,10 +75,10 @@
       --slides-per-view: 4;
      }
     @include xl {
-      --slides-per-view: 6;
+      --slides-per-view: 4;
     }
     @include xxl {
-      --slides-per-view: 8;
+      --slides-per-view: 4;
     }
   }
   

@@ -25,6 +25,9 @@
 	
 	endfor
 	endif
+	if lv_propName == 'icons' and icons == blank
+		assign icons = lv_propValue
+	endif
 	endfor
 	-%}
 	
@@ -43,6 +46,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component icons-gallery svelte-87m1e3" data-liquivelte-component-name="icons-gallery.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 {% liquid 
@@ -64,7 +71,7 @@
 {% endcomment %}
 {% capture props_Icon %}name-kvsp-{{ icon }}{% endcapture %}
 {% assign modulename = basename | append: 'icon' %}
-{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Icon, sub_include: true, basename: '' , name:  icon  %}
 {% assign props = '' %}
     </div>
   </div>
@@ -73,11 +80,17 @@
 
 	
 						
-						
-	<script type="text/noscript"  class="instance-data svelte-87m1e3">{
+		
+	<script type="text/noscript"  class="instance-data svelte-87m1e3">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"icons" : {{ icons | json }}
 	
 	
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "icons-gallery"
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-87m1e3">(() => {
@@ -99,7 +112,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -133,7 +154,9 @@
 			assign slot_default_icons-gallery = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

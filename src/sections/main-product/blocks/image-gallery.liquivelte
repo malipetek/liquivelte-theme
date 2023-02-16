@@ -17,21 +17,20 @@ let thumbnailSpaceBetween = 10;
 let gallery_images = [];
 let firstImageHeight = 0;
 
-  $: console.log('thumbnailsSwiper is set to ', thumbsSwiper);
-  $: console.log('gallery_images[0] ', gallery_images[0]);
+  // $: console.log('thumbnailsSwiper is set to ', thumbsSwiper);
+  // $: console.log('gallery_images[0] ', gallery_images[0]);
 
   $: if(gallery_images[0]) {
     if(gallery_images[0].complete) {
       firstImageHeight = gallery_images[0].naturalHeight;
     } else {
       gallery_images[0].addEventListener('load', () => {
-        console.log('image loaded');
         firstImageHeight = gallery_images[0].naturalHeight;
       });
     }
   }
 
-  $: console.log('firstImageHeight ', firstImageHeight);
+  // $: console.log('firstImageHeight ', firstImageHeight);
   // store Thumbs swiper instance
   let thumbsSwiper = null;
 

@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add workbox-window
+  /usr/local/bin/node /usr/local/bin/yarn add --dev npm-run-all
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/usr/local/go/bin:/Library/Apple/usr/bin
@@ -14,8 +14,12 @@ Platform:
   darwin arm64
 
 Trace: 
-  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+  SyntaxError: /Users/malipetek/Documents/Documents/Projects/LIQUVELTE/LIQUIVELTE TEST/package.json: Unexpected token , in JSON at position 321
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -25,7 +29,10 @@ npm manifest:
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "build:sw": "workbox injectManifest workbox.config.js"
+      "build:sw": "workbox injectManifest workbox.config.js",
+      "dev": "",
+      "shopify theme dev --store=liquivelte.myshopify.com -e --host=localhost",
+      "": "ssl-proxy --source 9393 --target 9292"
     },
     "author": "m.ali petek",
     "license": "ISC",
@@ -36,12 +43,16 @@ npm manifest:
       "framework7-liquivelte": "../framework7-liquivelte/packages/liquivelte",
       "scrollmagic": "^2.0.8",
       "svelte": "^3.48.0",
+      "swiper": "^8.4.5",
       "tailwindcss": "^3.1.8",
       "tailwindcss-capsize": "^3.0.2",
       "tn-capitalize": "^1.1.3",
       "workbox-cli": "^6.5.4",
       "workbox-precaching": "^6.5.4",
-      "workbox-sw": "^6.5.4"
+      "workbox-routing": "^6.5.4",
+      "workbox-strategies": "^6.5.4",
+      "workbox-sw": "^6.5.4",
+      "workbox-window": "^6.5.4"
     },
     "devDependencies": {
       "svelte-grommet-icons": "^0.2.0"
@@ -3283,7 +3294,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.53.1.tgz#db9d7df7a8f570e8e22547444c149208b1914442"
     integrity sha512-Q4/hHkktZogGhN5iqxqSi9sjEVoe/NbIxX4hXEHoasTxj+TxEQVAq66LnDMdAZxjmsodkoI5F3slqsS68U7FNw==
   
-  swiper@^8.1.4:
+  swiper@^8.1.4, swiper@^8.4.5:
     version "8.4.5"
     resolved "https://registry.yarnpkg.com/swiper/-/swiper-8.4.5.tgz#149ca81f67393d3f33abddd0f968fc37e99980b5"
     integrity sha512-zveyEFBBv4q1sVkbJHnuH4xCtarKieavJ4SxP0QEHvdpPLJRuD7j/Xg38IVVLbp7Db6qrPsLUePvxohYx39Agw==
@@ -3727,14 +3738,14 @@ Lockfile:
       workbox-routing "6.5.4"
       workbox-strategies "6.5.4"
   
-  workbox-routing@6.5.4:
+  workbox-routing@6.5.4, workbox-routing@^6.5.4:
     version "6.5.4"
     resolved "https://registry.yarnpkg.com/workbox-routing/-/workbox-routing-6.5.4.tgz#6a7fbbd23f4ac801038d9a0298bc907ee26fe3da"
     integrity sha512-apQswLsbrrOsBUWtr9Lf80F+P1sHnQdYodRo32SjiByYi36IDyL2r7BH1lJtFX8fwNHDa1QOVY74WKLLS6o5Pg==
     dependencies:
       workbox-core "6.5.4"
   
-  workbox-strategies@6.5.4:
+  workbox-strategies@6.5.4, workbox-strategies@^6.5.4:
     version "6.5.4"
     resolved "https://registry.yarnpkg.com/workbox-strategies/-/workbox-strategies-6.5.4.tgz#4edda035b3c010fc7f6152918370699334cd204d"
     integrity sha512-DEtsxhx0LIYWkJBTQolRxG4EI0setTJkqR4m7r4YpBdxtWJH1Mbg01Cj8ZjNOO8etqfA3IZaOPHUxCs8cBsKLw==
@@ -3754,7 +3765,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-6.5.4.tgz#d93e9c67924dd153a61367a4656ff4d2ae2ed736"
     integrity sha512-vo2RQo7DILVRoH5LjGqw3nphavEjK4Qk+FenXeUsknKn14eCNedHOXWbmnvP4ipKhlE35pvJ4yl4YYf6YsJArA==
   
-  workbox-window@6.5.4:
+  workbox-window@6.5.4, workbox-window@^6.5.4:
     version "6.5.4"
     resolved "https://registry.yarnpkg.com/workbox-window/-/workbox-window-6.5.4.tgz#d991bc0a94dff3c2dbb6b84558cff155ca878e91"
     integrity sha512-HnLZJDwYBE+hpG25AQBO8RUWBJRaCsI9ksQJEp3aCOFCaG5kqaToAYXFRAHxzRluM2cQbGzdQF5rjKPWPA1fug==

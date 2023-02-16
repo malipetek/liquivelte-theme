@@ -1,25 +1,41 @@
-
+<script context="module">
+  let initialRender = true;
+</script>
 <script>
   import collection from 'theme';
   import collection.products from 'theme';
 
   import { f7ready } from 'framework7-liquivelte';
-  import { onMount } from 'svelte';
+  import { onMount, afterUpdate } from 'svelte';
 
   import ProductCard from '../snippets/product-card.liquivelte';
   import { Panel, Page, View, Views, Block, Button, Link, List, ListItem, ListInput, Swiper, SwiperSlide, Navbar, Range } from 'framework7-liquivelte';
-
   
   onMount(() => {
     f7ready((f7) => {
-      console.log('f7 ready', f7);
-      window.f7 = f7;
+      window.f7 = f7; 
+      document.addEventListener('filters-changed', async (e) => {
+        console.log('filters event received', e);
+        const { urlToFetch } = (e.detail || {});
+        if(urlToFetch) {
+          urlToFetch.searchParams.set('view', 'data');
+          const response = await fetch(urlToFetch);
+          const data = await response.json();
+          collection.products = data.products;
+        }
+      });
     });
+  }); 
+
+  afterUpdate(() => {
+    initialRender = false;
   });
+
 </script>
 
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-  {% for product in collection.products %}
-      <ProductCard product="{{- product -}}"></ProductCard>
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+  {% for product in collection.products (product.id) %}
+      <ProductCard initialRender="{initialRender}" product="{{- product -}}"></ProductCard>
   {% endfor %}
 </div>

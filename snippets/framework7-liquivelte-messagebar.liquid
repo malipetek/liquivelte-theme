@@ -43,58 +43,58 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'sheetVisible'
+	if lv_propName == 'sheetVisible' and sheetVisible == blank
 		assign sheetVisible = lv_propValue
 	endif
-	if lv_propName == 'attachmentsVisible'
+	if lv_propName == 'attachmentsVisible' and attachmentsVisible == blank
 		assign attachmentsVisible = lv_propValue
 	endif
-	if lv_propName == 'top'
+	if lv_propName == 'top' and top == blank
 		assign top = lv_propValue
 	endif
-	if lv_propName == 'resizable'
+	if lv_propName == 'resizable' and resizable == blank
 		assign resizable = lv_propValue
 	endif
-	if lv_propName == 'bottomOffset'
+	if lv_propName == 'bottomOffset' and bottomOffset == blank
 		assign bottomOffset = lv_propValue
 	endif
-	if lv_propName == 'topOffset'
+	if lv_propName == 'topOffset' and topOffset == blank
 		assign topOffset = lv_propValue
 	endif
-	if lv_propName == 'maxHeight'
+	if lv_propName == 'maxHeight' and maxHeight == blank
 		assign maxHeight = lv_propValue
 	endif
-	if lv_propName == 'resizePage'
+	if lv_propName == 'resizePage' and resizePage == blank
 		assign resizePage = lv_propValue
 	endif
-	if lv_propName == 'sendLink'
+	if lv_propName == 'sendLink' and sendLink == blank
 		assign sendLink = lv_propValue
 	endif
-	if lv_propName == 'value'
+	if lv_propName == 'value' and value == blank
 		assign value = lv_propValue
 	endif
-	if lv_propName == 'disabled'
+	if lv_propName == 'disabled' and disabled == blank
 		assign disabled = lv_propValue
 	endif
-	if lv_propName == 'readonly'
+	if lv_propName == 'readonly' and readonly == blank
 		assign readonly = lv_propValue
 	endif
-	if lv_propName == 'textareaId'
+	if lv_propName == 'textareaId' and textareaId == blank
 		assign textareaId = lv_propValue
 	endif
-	if lv_propName == 'name'
+	if lv_propName == 'name' and name == blank
 		assign name = lv_propValue
 	endif
-	if lv_propName == 'placeholder'
+	if lv_propName == 'placeholder' and placeholder == blank
 		assign placeholder = lv_propValue
 	endif
-	if lv_propName == 'init'
+	if lv_propName == 'init' and init == blank
 		assign init = lv_propValue
 	endif
-	if lv_propName == 'f7Slot'
+	if lv_propName == 'f7Slot' and f7Slot == blank
 		assign f7Slot = lv_propValue
 	endif
 	endfor
@@ -115,6 +115,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component messagebar" data-liquivelte-component-name="messagebar.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -143,7 +147,7 @@
 {% endcomment %}
 {% capture props_Input %}id-kvsp-{textareaId}-prsp-type-kvsp-textarea-prsp-wrap-kvsp-{false}-prsp-{placeholder}-kvsp-1-prsp-{disabled}-kvsp-1-prsp-{name}-kvsp-1-prsp-{readonly}-kvsp-1-prsp-{resizable}-kvsp-1-prsp-value-kvsp-{typeof value === 'undefined' ? '' : value}-prsp-input-kvsp-{onInput}-prsp-change-kvsp-{onChange}-prsp-focus-kvsp-{onFocus}-prsp-blur-kvsp-{onBlur}{% endcapture %}
 {% assign modulename = basename | append: 'input' %}
-{% include modulename, liquivelte: true, props: props_Input, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_Input, sub_include: true, basename: ''  %}
 {% assign props = '' %}
       
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
@@ -163,18 +167,22 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Link %}{onClick}-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Link -%}
+
+{%- capture slot_content_def_Link -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
 			{{- slot_default_framework7-liquivelte_messagebar -}}
 		{%- endif -%}
 	
         {sendLink}
-      {%- endcapture -%}
-{% assign slot_content_Link = slot_content_Link | append: '-scs-' | append: 'link' | append: '-scvs-' | append: slot_content_def_Link %}
+      {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'link' %}
-{% include modulename, liquivelte: true, props: props_Link, sub_include: true, slot_contents: slot_content_Link, basename: '' %}
+{% assign slot_content_Link = slot_content_Link | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Link %}
+{% include modulename, liquivelte: true, props: props_Link, sub_include: true, slot_contents: slot_content_Link, basename: ''  %}
 {% assign slot_content_Link = '' %}
 {% assign props = '' %}
     {/if}
@@ -198,11 +206,17 @@ smns stands for "slot module name separator"
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-messagebar"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -224,7 +238,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -276,7 +298,9 @@ smns stands for "slot module name separator"
 			assign slot_default_framework7-liquivelte_messagebar = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

@@ -13,7 +13,7 @@ onMount(() => {
   input = container.querySelector('input[type="search"]');
   predictiveSearchResults = container.querySelector('[data-predictive-search]');
   setupEventListeners();
-  console.log('predictive search enabled');
+  // console.log('predictive search enabled');
 });
 
  function setupEventListeners() {

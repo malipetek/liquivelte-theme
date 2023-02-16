@@ -11,9 +11,8 @@ module.exports = {
         'gray-dark': '#273444',
         'gray': '#8492a6',
         'gray-light': '#d3dce6',
-        red: {
-          50: 'var(--colors-red-50)'
-        }
+        "theme": "var(--f7-theme-color)",
+        "themebg": "var(--f7-card-bg-color)"
       },
       fontMetrics: {
         sans: {

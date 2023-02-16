@@ -1,13 +1,38 @@
 <script>
-  import { App, View, Page } from 'framework7-liquivelte';
+  import { f7, f7ready, App, View, Page, Toolbar, Link, Badge, Searchbar, Navbar } from 'framework7-liquivelte';
+  import Icon from './icon.liquivelte';
   import { onMount, beforeUpdate, afterUpdate } from 'svelte';
+  import SearchNavbar from '../components/SearchNavbar.svelte';
+  function log(...e) {
+    console.log('%c liquivelte %c message ', 'background-color: #fe3f00; border-radius: 4px 0 0 4px; padding: 1px 4px', 'background-color: black; color: white; border-radius: 0 4px 4px 0; padding: 1px 4px', ...e);
+  }
+  import { cartStore, cartOpen } from '../scripts/store.module.js';
+  import cart from 'theme';
+
+  cartStore.subscribe(state => {
+    if(state) {
+      cart = state;
+    } 
+  });
   // import { Workbox } from 'workbox-window';
   const request = {};
   import request.path from 'theme';
 
-  console.log('request ', request);
+  // console.log('request ', request);
   let live_slot_cache = new Map;
   let firstRun = true;
+  let initialized = false;
+  let searchClosed = true;
+  let dynamicPageElements = [];
+
+  function searchBarStatusChange(e) {
+    const searchbar = e.detail[0];
+    if(searchbar.enabled){
+      searchClosed = false;
+    } else {
+      searchClosed = true;
+    }
+  }
   beforeUpdate(() => {
     if(firstRun) {
       firstRun = false;
@@ -21,6 +46,43 @@
       });
     } 
 
+    onMount(() => {
+      initialized = true;
+      f7ready(() => {
+        f7.views.main.on('pageMounted', ({route, pageEl}) => {
+          log('page is mounting', route.path, route.params, route.query);
+          // console.log('page mounted ', pageData);
+        });
+        f7.views.main.on('pageBeforeIn', async ({route, pageEl}) => {
+          log('page pageBeforeIn', route.path, route.params, route.query);
+          await setCurrentPage({route});
+
+          Shopify.designMode = true;
+          [...pageEl.querySelectorAll('[liquivelte-eval], .liquivelte-prop-script')].forEach(element => {
+            window.propScriptForDesignMode = element;
+            eval(element.textContent);
+          });
+          Shopify.designMode = false;
+          document.dispatchEvent(new CustomEvent('router-page-loaded', { 
+            detail: {
+              path: route.path,
+              page: pageEl
+            }
+          }));
+
+          dynamicPageElements.forEach(el => pageEl.append(el));
+          dynamicPageElements = [];
+        });
+        f7.views.main.on('pageBeforeOut', ({route, pageEl, ...rest}) => {
+          log('page pageBeforeOut', route, rest);
+          dynamicPageElements = [...pageEl.children].filter(el => {
+            return !el.matches('.page-content');
+          });
+          // setCurrentPage({route});
+        });
+        
+      });
+    });
     // if(!live_slot_cache.has('[liveslot]')) {
     //   ls_cache = document.querySelector('.liveslot');
       
@@ -35,6 +97,7 @@
 
   function persistingchild(node, slotname) {
     if(node.children[0] !== live_slot_cache.get(slotname)) {
+      console.log('replacing child', live_slot_cache.get(slotname), node.children[0]);
       node.replaceChild(live_slot_cache.get(slotname), node.children[0]);
     }
   }
@@ -47,38 +110,103 @@
   //     wb.register();
   //   }
   // })
+ 
+const route_to_source = (path) => {
+  const entries = [
+    {
+      regexp: '/products',
+      source: 'theme.product.liquivelte'
+    },
+    {
+      regexp: '/collections',
+      source: 'theme.collection.liquivelte'
+    },
+    {
+      regexp: '/pages',
+      source: 'theme.page.liquivelte'
+    },
+    {
+      regexp: '/',
+      source: 'theme.index.liquivelte'
+    },
+  ];
+  const entry = (entries.find(entry => {
+    return (new RegExp(entry.regexp, 'i')).test(path);
+  }) || {});
+  return entry.source;
+}
+async function setCurrentPage({ route, JSname, CSSname }) {
+  const source = route ? route_to_source(route.path) : 'unknown_source';
+
+  JSname = JSname || `${source}.js`;
+  CSSname = CSSname || `${source}.css`;
+
+  const scriptEntry = liquivelte_main_scripts_registry.get(JSname);
+      if(!scriptEntry.loaded) {
+        // does not export anything
+        await import(scriptEntry.src.split('?')[0]);
+        liquivelte_main_scripts_registry.set(JSname, { loaded: true });
+      }
+      
+      const styleEntry = liquivelte_main_styles_registry.get(CSSname);
+      if(!styleEntry.node) {
+        const linkNode = document.createElement('link');
+        linkNode.rel = 'stylesheet';
+        linkNode.href = styleEntry.href;
+        liquivelte_main_styles_registry.set(CSSname, {...styleEntry, node: linkNode });
+        styleEntry.node = linkNode;
+      }
+
+      document.head.appendChild(styleEntry.node);
+      liquivelte_main_styles_registry.set(CSSname, { ...styleEntry, loaded: true });
+      styleEntry.node.addEventListener('load', () => {
+        console.log('style loaded ', styleEntry.node.href);
+        [...liquivelte_main_styles_registry].forEach(([key, entry]) => {
+          if(key !== CSSname && entry.loaded && entry.node?.isConnected) {
+            entry.node.remove();
+            liquivelte_main_styles_registry.set(key, { ...entry, loaded: false });
+          }
+        });
+      });
+}
+const ROUTER_CACHE = new Map;
+
 const clientSideRouter = ({ app, to, resolve }, ...rest) => {
       const { path } = to;
+      
+      let contentPromise;
+      if(ROUTER_CACHE.has(path)) {
+        contentPromise = (async () => ROUTER_CACHE.get(path))();
+      } else {
+        contentPromise = fetch(path)
+        .then(res => res.text())
+      }
 
-      app.views.main.on('pageMounted', ({pageEl}) => {
-        Shopify.designMode = true;
-        [...pageEl.querySelectorAll('[liquivelte-eval], .liquivelte-prop-script')].forEach(element => {
-          window.propScriptForDesignMode = element;
-          eval(element.textContent);
-        });
-        Shopify.designMode = false;
-        document.dispatchEvent(new CustomEvent('view-loaded', { 
-          detail: { 
-            document: pageEl
-          }
-        }));
-        app.views.main.router.updateCurrentUrl(path);
-        // console.log('page mounted ', pageData);
-      });
-      fetch(path)
-      .then(res => res.text())
+      contentPromise
       .then(async content => {
+        if(!ROUTER_CACHE.has(path)) {
+          ROUTER_CACHE.set(path, content);
+        }
         const template = document.createElement('template');
         template.innerHTML = content;
         const fragment = template.content;
         const pageJS = fragment.querySelector('script[src*="liquivelte.js"]');
         const pageCSS = fragment.querySelector('link[href*="liquivelte.css"]');
-
-        const JSsrc = new URL(pageJS.src).pathname;
         
-        await import(JSsrc);
+        let [JSsrc] = pageJS.src.split('?');
+        let [CSSsrc] = pageCSS.href.split('?');
+        try { 
+          JSsrc = new URL(pageJS.src).pathname;
+          CSSsrc = new URL(pageCSS.href).pathname;
+        } catch(err) {
+          // will fail in safari
+        }
+        const JSname = JSsrc.replace(/^.*\/assets\//, '');
+        const CSSname = CSSsrc.replace(/^.*\/assets\//, '');
 
-        document.head.appendChild(pageCSS);
+        const cssEntry = liquivelte_main_styles_registry.get(CSSname);
+        liquivelte_main_styles_registry.set(CSSname, { ...cssEntry, href: CSSsrc, node: pageCSS });
+        
         resolve({content});
       });
     
@@ -87,7 +215,14 @@ const clientSideRouter = ({ app, to, resolve }, ...rest) => {
     path: '/(products|collections|pages)/:handle',
     async: clientSideRouter,
     options: {
-      transition: 'f7-circle',
+      transition: 'f7-dive',
+    },
+  },
+  {
+    path: '/',
+    async: clientSideRouter,
+    options: {
+      transition: 'f7-dive',
     },
   }];
 
@@ -102,23 +237,179 @@ const clientSideRouter = ({ app, to, resolve }, ...rest) => {
   .text-theme {
         color: var(--f7-theme-color);
   }
+  :root {
+        --f7-theme-color: #4caf50;
+  }
+
+.router-transition-custom-circle-forward,
+.router-transition-custom-circle-backward {
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120vmax;
+    height: 120vmax;
+    margin-left: -60vmax;
+    margin-top: -60vmax;
+    border-radius: 50%;
+    border-width: 60vmax;
+    border-color: var(--f7-page-bg-color);
+    transform: scale(0);
+    z-index: 100;
+  }
+}
+.router-transition-custom-circle-forward {
+  &:after {
+    transform: scale(0);
+    border-radius: 50%;
+    border-style: solid;
+    border-color: var(--f7-page-bg-color);
+    animation: custom-circle-circle-in-1 400ms forwards, custom-circle-circle-in-2 400ms forwards 400ms;
+  }
+  .page-next {
+    animation: custom-circle-next-to-current 300ms forwards;
+    animation-delay: 300ms;
+    z-index: 99;
+  }
+}
+.router-transition-custom-circle-backward {
+  &:after {
+    animation: custom-circle-circle-out 300ms forwards;
+    animation-delay: 350ms;
+  }
+  .page-current {
+    animation: custom-circle-current-to-next 700ms forwards;
+    z-index: 150;
+  }
+}
+@keyframes custom-circle-circle-in-1 {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes custom-circle-circle-in-2 {
+  from {
+    border-width: 60vmax;
+  }
+  to {
+    border-width: 0vmax;
+  }
+}
+@keyframes custom-circle-circle-out {
+  from {
+    transform: scale(1);
+    border-radius: 0%;
+  }
+  50% {
+    border-radius: 50%;
+  }
+  to {
+    transform: scale(0);
+    border-radius: 50%;
+  }
+}
+@keyframes custom-circle-next-to-current {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes custom-circle-current-to-next {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  34% {
+    transform: scale(1.035);
+    opacity: 1;
+  }
+  57% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+.cart-icon {
+  position: fixed;
+    padding: 20px;
+    border: 1px solid var(--f7-toolbar-border-color,var(--f7-bars-border-color));
+    border-radius: 55%;
+    z-index: 5000;
+    background: var(--f7-dialog-button-text-color);
+    top: -10px;
+}
+
+.toolbar-bottom {
+    position: fixed;
+    bottom: 0;
+    /* calc(var(--f7-toolbar-height) + var(--f7-safe-area-bottom)); */
+}
+/* .toolbar-top {
+    position: fixed;
+    z-index: 6000;
+    top: calc(var(--f7-appbar-app-offset) + var(--f7-toolbar-height));
+    transform: translateY(-100%) !important;
+    transition: transform .2s ease-in-out;
+}
+.toolbar-top.toolbar-hidden {
+    transform: translateY(-200%) !important;
+} */
+.main-page .page-content {
+  padding-top: calc(var(--f7-page-toolbar-top-offset,0px) + var(--f7-page-subnavbar-offset,0px) + var(--f7-page-searchbar-offset,0px) + var(--f7-page-content-extra-padding-top,0px));
+}
 </style>
-<App theme="ios" name="My App" id="com.demoapp.test" routes="{routes}" viewMainClass="mainview">
-  <div use:persistingchild="{"header"}" >
+<App theme="auto" 
+  autoDarkMode="{true}"  
+  iosTranslucentBars="{false}" iosTranslucentModals="{false}" 
+  name="My App" 
+  id="com.demoapp.test" 
+  routes="{routes}" 
+  viewMainClass="mainview"
+  >
+  <div class="appbar" use:persistingchild="{'header'}" >
     <div liveslot="header" >
       <slot name="header" />
     </div>
   </div>
-  <View main classes="mainview" browserHistoryInitialMatch="{true}" loadInitialPage="{false}" data-url="{{- request.path -}}" browserHistory="{true}" browserHistorySeparator="{""}">
-    <Page name="main">
-      <div use:persistingchild="{"main"}" >
+  <View main classes="mainview" browserHistoryInitialMatch="{true}" loadInitialPage="{false}" data-url="{{- request.path -}}" browserHistory="{true}" browserHistorySeparator="{""}" preloadPreviousPage="{false}">
+    <Page name="main" classes="main-page">
+      <div use:persistingchild="{'main'}" >
         <div liveslot="main" >
           <slot />
         </div>
       </div>
+      <SearchNavbar 
+        bind:searchClosed="{searchClosed}"
+        searchBarStatusChange="{searchBarStatusChange}" 
+        />
     </Page>
   </View>
-  <div use:persistingchild="{"footer"}" >
+  <Toolbar position="{'bottom'}" classes="z-[5500] toolbar-bottom">
+    <Link > 
+      <Icon name="giftbox" width="25" color="green" />
+    </Link>
+    <Link small popupOpen=".cart-popup" classes="display-flex z-[601] w-[72px]" >
+      <div class="icon cart-icon">
+        <Icon name="icon-cart" width="30" color="white" />
+        {% if cart.items %}
+          <Badge color="green"> {{- cart.items.size -}} </Badge>
+        {% endif %} 
+      </div>
+    </Link>
+    <Link > 
+      <Icon name="icon-account" />
+    </Link>
+  </Toolbar>
+  <div use:persistingchild="{'footer'}" >
     <div liveslot="footer" >
       <slot name="footer" />
     </div>

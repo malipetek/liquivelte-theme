@@ -12,8 +12,7 @@
   import "../.templates/index.icon.js";
   
 
-   const initializeObservers = () => {
+   const initializeObservers = (doc) => {
      };
   document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
   

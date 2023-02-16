@@ -1,0 +1,32 @@
+<script>
+  export let links;
+  import { f7, f7ready, List, ListItem, AccordionContent } from 'framework7-liquivelte';
+  import { onMount } from 'svelte';
+
+  $: mainview = f7?.views?.main;
+
+  // $: console.log('mainview ', mainview);
+
+  onMount(() => {
+    f7ready((f7) => {
+      window.f7 = f7;
+      mainview = f7.views.main;
+    });
+  });
+</script>
+<List accordionList>
+  {% for lnk in links %}
+    {% if lnk.links and lnk.links.size %}
+    <ListItem accordionItem title="{{- lnk.title -}}" >
+      {% if lnk.links and lnk.links.size %}
+      <AccordionContent>
+        <svelte:self links="{lnk.links}" />  
+      </AccordionContent>
+      {% endif %}
+    </ListItem>
+    {% else %}
+    <ListItem accordionItem="{false}" title="{{- lnk.title -}}" view="{ mainview }" link="{lnk.url}" main></ListItem>
+    {% endif %}
+  {% endfor %}
+</List>
+

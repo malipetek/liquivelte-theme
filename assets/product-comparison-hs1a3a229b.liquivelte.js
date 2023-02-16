@@ -1,6 +1,45 @@
-import { commonjsGlobal, internal, SvelteComponent, init, safe_not_equal, element, text, space, claim_element, children, claim_text, detach, claim_space, attr, insert_hydration, append_hydration, set_data, transition_in, check_outros, transition_out, destroy_each, getContext, empty, group_outros, select_value, set_style, add_render_callback, create_bidirectional_transition, cubicInOut, fade, src_url_equal, select_option, listen } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { commonjsGlobal, internal, SvelteComponent, init, safe_not_equal, element, text, space, claim_element, children, claim_text, detach, claim_space, attr, insert_hydration, append_hydration, set_data, transition_in, check_outros, transition_out, destroy_each, getContext, assign, exclude_internal_props, empty, group_outros, select_value, set_style, add_render_callback, create_bidirectional_transition, cubicInOut, fade, src_url_equal, select_option, listen } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { cachedLiquid } from './liquivelte-liquid-hs8daa1a0c.liquivelte.js';
-import { cartStore } from './store.js-hs6c336c77.liquivelte.js';
+import { cartStore } from './store.js-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-get-params-hs6b273664.liquivelte.js';
+import './framework7-liquivelte-utils-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-params-list-hs8daa1a0c.liquivelte.js';
+import './product-carousel-hs1341d979.liquivelte.js';
+import './framework7-liquivelte-hsa0091f48.liquivelte.js';
+import './framework7-liquivelte-popup-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-view-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-router-context-provider-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-login-screen-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-sheet-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-popover-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-panel-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-block-title-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-block-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-swiper-slide-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-swiper-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-mount-swiper-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-get-changed-params-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-update-swiper-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-card-content-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-card-footer-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-card-header-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-card-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-link-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-use-icon-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-icon-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-badge-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-button-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-preloader-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-stepper-hs8daa1a0c.liquivelte.js';
+import './header-hs09f16584.liquivelte.js';
+import './framework7-liquivelte-list-item-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-list-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-accordion-content-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-col-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-row-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-appbar-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-page-hs8daa1a0c.liquivelte.js';
+import './framework7-liquivelte-page-content-hs8daa1a0c.liquivelte.js';
 
 var outin = {};
 
@@ -186,62 +225,62 @@ exports["default"] = outin;
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
-	child_ctx[10] = i;
+	child_ctx[12] = list[i];
+	child_ctx[15] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[10] === 0,
-		index: /*index*/ child_ctx[10] + 1,
-		index0: /*index*/ child_ctx[10],
-		last: /*index*/ child_ctx[10] === /*section*/ child_ctx[0].blocks.length - 1,
-		rindex: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[10],
-		rindex0: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[10] - 1,
+		first: /*index*/ child_ctx[15] === 0,
+		index: /*index*/ child_ctx[15] + 1,
+		index0: /*index*/ child_ctx[15],
+		last: /*index*/ child_ctx[15] === /*section*/ child_ctx[0].blocks.length - 1,
+		rindex: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[15],
+		rindex0: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[15] - 1,
 		length: /*section*/ child_ctx[0].blocks.length
 	};
 
-	child_ctx[8] = constants_0;
+	child_ctx[13] = constants_0;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
-	child_ctx[10] = i;
+	child_ctx[12] = list[i];
+	child_ctx[15] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[10] === 0,
-		index: /*index*/ child_ctx[10] + 1,
-		index0: /*index*/ child_ctx[10],
-		last: /*index*/ child_ctx[10] === /*section*/ child_ctx[0].blocks.length - 1,
-		rindex: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[10],
-		rindex0: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[10] - 1,
+		first: /*index*/ child_ctx[15] === 0,
+		index: /*index*/ child_ctx[15] + 1,
+		index0: /*index*/ child_ctx[15],
+		last: /*index*/ child_ctx[15] === /*section*/ child_ctx[0].blocks.length - 1,
+		rindex: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[15],
+		rindex0: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[15] - 1,
 		length: /*section*/ child_ctx[0].blocks.length
 	};
 
-	child_ctx[8] = constants_0;
+	child_ctx[13] = constants_0;
 	return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
-	child_ctx[10] = i;
+	child_ctx[12] = list[i];
+	child_ctx[15] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[10] === 0,
-		index: /*index*/ child_ctx[10] + 1,
-		index0: /*index*/ child_ctx[10],
-		last: /*index*/ child_ctx[10] === /*section*/ child_ctx[0].blocks.length - 1,
-		rindex: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[10],
-		rindex0: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[10] - 1,
+		first: /*index*/ child_ctx[15] === 0,
+		index: /*index*/ child_ctx[15] + 1,
+		index0: /*index*/ child_ctx[15],
+		last: /*index*/ child_ctx[15] === /*section*/ child_ctx[0].blocks.length - 1,
+		rindex: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[15],
+		rindex0: /*section*/ child_ctx[0].blocks.length - /*index*/ child_ctx[15] - 1,
 		length: /*section*/ child_ctx[0].blocks.length
 	};
 
-	child_ctx[8] = constants_0;
+	child_ctx[13] = constants_0;
 	return child_ctx;
 }
 
-// (72:6) {#if current_block == forloop.index }
+// (80:6) {#if current_block == forloop.index }
 function create_if_block_1(ctx) {
 	let div;
 	let div_transition;
@@ -259,7 +298,7 @@ function create_if_block_1(ctx) {
 		},
 		h() {
 			attr(div, "class", "backplate svelte-2hua15");
-			set_style(div, "background-color", /*block*/ ctx[7].settings.bg_color);
+			set_style(div, "background-color", /*block*/ ctx[12].settings.bg_color);
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -269,7 +308,7 @@ function create_if_block_1(ctx) {
 			ctx = new_ctx;
 
 			if (!current || dirty & /*section*/ 1) {
-				set_style(div, "background-color", /*block*/ ctx[7].settings.bg_color);
+				set_style(div, "background-color", /*block*/ ctx[12].settings.bg_color);
 			}
 		},
 		i(local) {
@@ -294,11 +333,11 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (62:4) {#each  section.blocks as block, index   }
+// (70:4) {#each  section.blocks as block, index   }
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 	let current;
-	let if_block = /*current_block*/ ctx[1] == /*forloop*/ ctx[8].index && create_if_block_1(ctx);
+	let if_block = /*current_block*/ ctx[1] == /*forloop*/ ctx[13].index && create_if_block_1(ctx);
 
 	return {
 		c() {
@@ -315,7 +354,7 @@ function create_each_block_2(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*current_block*/ ctx[1] == /*forloop*/ ctx[8].index) {
+			if (/*current_block*/ ctx[1] == /*forloop*/ ctx[13].index) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
@@ -354,7 +393,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (89:4) {#if current_block == forloop.index }
+// (97:4) {#if current_block == forloop.index }
 function create_if_block(ctx) {
 	let div26;
 	let div25;
@@ -370,43 +409,43 @@ function create_if_block(ctx) {
 	let div3;
 	let div1;
 	let span0;
-	let t2_value = /*block*/ ctx[7].settings.product_1_param_1_value + "";
+	let t2_value = /*block*/ ctx[12].settings.product_1_param_1_value + "";
 	let t2;
 	let span0_transition;
 	let t3;
-	let t4_value = /*block*/ ctx[7].settings.product_1_param_1_unit + "";
+	let t4_value = /*block*/ ctx[12].settings.product_1_param_1_unit + "";
 	let t4;
 	let t5;
 	let div2;
-	let t6_value = /*block*/ ctx[7].settings.param_1 + "";
+	let t6_value = /*block*/ ctx[12].settings.param_1 + "";
 	let t6;
 	let t7;
 	let div6;
 	let div4;
 	let span1;
-	let t8_value = /*block*/ ctx[7].settings.product_1_param_2_value + "";
+	let t8_value = /*block*/ ctx[12].settings.product_1_param_2_value + "";
 	let t8;
 	let span1_transition;
 	let t9;
-	let t10_value = /*block*/ ctx[7].settings.product_1_param_2_unit + "";
+	let t10_value = /*block*/ ctx[12].settings.product_1_param_2_unit + "";
 	let t10;
 	let t11;
 	let div5;
-	let t12_value = /*block*/ ctx[7].settings.param_2 + "";
+	let t12_value = /*block*/ ctx[12].settings.param_2 + "";
 	let t12;
 	let t13;
 	let div9;
 	let div7;
 	let span2;
-	let t14_value = /*block*/ ctx[7].settings.product_1_param_3_value + "";
+	let t14_value = /*block*/ ctx[12].settings.product_1_param_3_value + "";
 	let t14;
 	let span2_transition;
 	let t15;
-	let t16_value = /*block*/ ctx[7].settings.product_1_param_3_unit + "";
+	let t16_value = /*block*/ ctx[12].settings.product_1_param_3_unit + "";
 	let t16;
 	let t17;
 	let div8;
-	let t18_value = /*block*/ ctx[7].settings.param_3 + "";
+	let t18_value = /*block*/ ctx[12].settings.param_3 + "";
 	let t18;
 	let t19;
 	let div24;
@@ -417,49 +456,49 @@ function create_if_block(ctx) {
 	let t20;
 	let div23;
 	let div13;
-	let t21_value = /*block*/ ctx[7].settings.product_title_2 + "";
+	let t21_value = /*block*/ ctx[12].settings.product_title_2 + "";
 	let t21;
 	let t22;
 	let div16;
 	let div14;
 	let span3;
-	let t23_value = /*block*/ ctx[7].settings.product_2_param_1_value + "";
+	let t23_value = /*block*/ ctx[12].settings.product_2_param_1_value + "";
 	let t23;
 	let span3_transition;
 	let t24;
-	let t25_value = /*block*/ ctx[7].settings.product_2_param_1_unit + "";
+	let t25_value = /*block*/ ctx[12].settings.product_2_param_1_unit + "";
 	let t25;
 	let t26;
 	let div15;
-	let t27_value = /*block*/ ctx[7].settings.param_1 + "";
+	let t27_value = /*block*/ ctx[12].settings.param_1 + "";
 	let t27;
 	let t28;
 	let div19;
 	let div17;
 	let span4;
-	let t29_value = /*block*/ ctx[7].settings.product_2_param_2_value + "";
+	let t29_value = /*block*/ ctx[12].settings.product_2_param_2_value + "";
 	let t29;
 	let span4_transition;
 	let t30;
-	let t31_value = /*block*/ ctx[7].settings.product_2_param_2_unit + "";
+	let t31_value = /*block*/ ctx[12].settings.product_2_param_2_unit + "";
 	let t31;
 	let t32;
 	let div18;
-	let t33_value = /*block*/ ctx[7].settings.param_2 + "";
+	let t33_value = /*block*/ ctx[12].settings.param_2 + "";
 	let t33;
 	let t34;
 	let div22;
 	let div20;
 	let span5;
-	let t35_value = /*block*/ ctx[7].settings.product_2_param_3_value + "";
+	let t35_value = /*block*/ ctx[12].settings.product_2_param_3_value + "";
 	let t35;
 	let span5_transition;
 	let t36;
-	let t37_value = /*block*/ ctx[7].settings.product_2_param_3_unit + "";
+	let t37_value = /*block*/ ctx[12].settings.product_2_param_3_unit + "";
 	let t37;
 	let t38;
 	let div21;
-	let t39_value = /*block*/ ctx[7].settings.param_3 + "";
+	let t39_value = /*block*/ ctx[12].settings.param_3 + "";
 	let t39;
 	let t40;
 	let div26_transition;
@@ -731,13 +770,13 @@ function create_if_block(ctx) {
 		h() {
 			attr(img0, "class", " svelte-2hua15");
 			attr(img0, "loading", "eager");
-			if (!src_url_equal(img0.src, img0_src_value = /*liquid*/ ctx[2].img_url(/*block*/ ctx[7].settings.product_image_1, '300x'))) attr(img0, "src", img0_src_value);
+			if (!src_url_equal(img0.src, img0_src_value = /*liquid*/ ctx[2].img_url(/*block*/ ctx[12].settings.product_image_1, '300x'))) attr(img0, "src", img0_src_value);
 			attr(img0, "width", 300);
-			attr(img0, "height", img0_height_value = /*liquid*/ ctx[2].divided_by(300, /*block*/ ctx[7].settings.product_image_1.aspect_ratio));
+			attr(img0, "height", img0_height_value = /*liquid*/ ctx[2].divided_by(300, /*block*/ ctx[12].settings.product_image_1.aspect_ratio));
 			attr(div0, "class", "product-image image-1 svelte-2hua15");
-			set_style(div0, "--ratio", /*block*/ ctx[7].settings.product_image_1.aspect_ratio);
+			set_style(div0, "--ratio", /*block*/ ctx[12].settings.product_image_1.aspect_ratio);
 			attr(select, "class", "product-title svelte-2hua15");
-			if (/*current_block*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[3].call(select));
+			if (/*current_block*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[6].call(select));
 			attr(span0, "class", "svelte-2hua15");
 			attr(div1, "class", "param-values svelte-2hua15");
 			attr(div2, "class", "param-name svelte-2hua15");
@@ -754,11 +793,11 @@ function create_if_block(ctx) {
 			attr(div11, "class", "comparison-item svelte-2hua15");
 			attr(img1, "class", " svelte-2hua15");
 			attr(img1, "loading", "eager");
-			if (!src_url_equal(img1.src, img1_src_value = /*liquid*/ ctx[2].img_url(/*block*/ ctx[7].settings.product_image_2, '300x'))) attr(img1, "src", img1_src_value);
+			if (!src_url_equal(img1.src, img1_src_value = /*liquid*/ ctx[2].img_url(/*block*/ ctx[12].settings.product_image_2, '300x'))) attr(img1, "src", img1_src_value);
 			attr(img1, "width", 300);
-			attr(img1, "height", img1_height_value = /*liquid*/ ctx[2].divided_by(300, /*block*/ ctx[7].settings.product_image_2.aspect_ratio));
+			attr(img1, "height", img1_height_value = /*liquid*/ ctx[2].divided_by(300, /*block*/ ctx[12].settings.product_image_2.aspect_ratio));
 			attr(div12, "class", "product-image image-2 svelte-2hua15");
-			set_style(div12, "--ratio", /*block*/ ctx[7].settings.product_image_1.aspect_ratio);
+			set_style(div12, "--ratio", /*block*/ ctx[12].settings.product_image_1.aspect_ratio);
 			attr(div13, "class", "product-title svelte-2hua15");
 			attr(span3, "class", "svelte-2hua15");
 			attr(div14, "class", "param-values svelte-2hua15");
@@ -865,23 +904,23 @@ function create_if_block(ctx) {
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(select, "change", /*select_change_handler*/ ctx[3]);
+				dispose = listen(select, "change", /*select_change_handler*/ ctx[6]);
 				mounted = true;
 			}
 		},
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
 
-			if (!current || dirty & /*section*/ 1 && !src_url_equal(img0.src, img0_src_value = /*liquid*/ ctx[2].img_url(/*block*/ ctx[7].settings.product_image_1, '300x'))) {
+			if (!current || dirty & /*section*/ 1 && !src_url_equal(img0.src, img0_src_value = /*liquid*/ ctx[2].img_url(/*block*/ ctx[12].settings.product_image_1, '300x'))) {
 				attr(img0, "src", img0_src_value);
 			}
 
-			if (!current || dirty & /*section*/ 1 && img0_height_value !== (img0_height_value = /*liquid*/ ctx[2].divided_by(300, /*block*/ ctx[7].settings.product_image_1.aspect_ratio))) {
+			if (!current || dirty & /*section*/ 1 && img0_height_value !== (img0_height_value = /*liquid*/ ctx[2].divided_by(300, /*block*/ ctx[12].settings.product_image_1.aspect_ratio))) {
 				attr(img0, "height", img0_height_value);
 			}
 
 			if (!current || dirty & /*section*/ 1) {
-				set_style(div0, "--ratio", /*block*/ ctx[7].settings.product_image_1.aspect_ratio);
+				set_style(div0, "--ratio", /*block*/ ctx[12].settings.product_image_1.aspect_ratio);
 			}
 
 			if (dirty & /*section*/ 1) {
@@ -911,38 +950,38 @@ function create_if_block(ctx) {
 				select_option(select, /*current_block*/ ctx[1]);
 			}
 
-			if ((!current || dirty & /*section*/ 1) && t2_value !== (t2_value = /*block*/ ctx[7].settings.product_1_param_1_value + "")) set_data(t2, t2_value);
-			if ((!current || dirty & /*section*/ 1) && t4_value !== (t4_value = /*block*/ ctx[7].settings.product_1_param_1_unit + "")) set_data(t4, t4_value);
-			if ((!current || dirty & /*section*/ 1) && t6_value !== (t6_value = /*block*/ ctx[7].settings.param_1 + "")) set_data(t6, t6_value);
-			if ((!current || dirty & /*section*/ 1) && t8_value !== (t8_value = /*block*/ ctx[7].settings.product_1_param_2_value + "")) set_data(t8, t8_value);
-			if ((!current || dirty & /*section*/ 1) && t10_value !== (t10_value = /*block*/ ctx[7].settings.product_1_param_2_unit + "")) set_data(t10, t10_value);
-			if ((!current || dirty & /*section*/ 1) && t12_value !== (t12_value = /*block*/ ctx[7].settings.param_2 + "")) set_data(t12, t12_value);
-			if ((!current || dirty & /*section*/ 1) && t14_value !== (t14_value = /*block*/ ctx[7].settings.product_1_param_3_value + "")) set_data(t14, t14_value);
-			if ((!current || dirty & /*section*/ 1) && t16_value !== (t16_value = /*block*/ ctx[7].settings.product_1_param_3_unit + "")) set_data(t16, t16_value);
-			if ((!current || dirty & /*section*/ 1) && t18_value !== (t18_value = /*block*/ ctx[7].settings.param_3 + "")) set_data(t18, t18_value);
+			if ((!current || dirty & /*section*/ 1) && t2_value !== (t2_value = /*block*/ ctx[12].settings.product_1_param_1_value + "")) set_data(t2, t2_value);
+			if ((!current || dirty & /*section*/ 1) && t4_value !== (t4_value = /*block*/ ctx[12].settings.product_1_param_1_unit + "")) set_data(t4, t4_value);
+			if ((!current || dirty & /*section*/ 1) && t6_value !== (t6_value = /*block*/ ctx[12].settings.param_1 + "")) set_data(t6, t6_value);
+			if ((!current || dirty & /*section*/ 1) && t8_value !== (t8_value = /*block*/ ctx[12].settings.product_1_param_2_value + "")) set_data(t8, t8_value);
+			if ((!current || dirty & /*section*/ 1) && t10_value !== (t10_value = /*block*/ ctx[12].settings.product_1_param_2_unit + "")) set_data(t10, t10_value);
+			if ((!current || dirty & /*section*/ 1) && t12_value !== (t12_value = /*block*/ ctx[12].settings.param_2 + "")) set_data(t12, t12_value);
+			if ((!current || dirty & /*section*/ 1) && t14_value !== (t14_value = /*block*/ ctx[12].settings.product_1_param_3_value + "")) set_data(t14, t14_value);
+			if ((!current || dirty & /*section*/ 1) && t16_value !== (t16_value = /*block*/ ctx[12].settings.product_1_param_3_unit + "")) set_data(t16, t16_value);
+			if ((!current || dirty & /*section*/ 1) && t18_value !== (t18_value = /*block*/ ctx[12].settings.param_3 + "")) set_data(t18, t18_value);
 
-			if (!current || dirty & /*section*/ 1 && !src_url_equal(img1.src, img1_src_value = /*liquid*/ ctx[2].img_url(/*block*/ ctx[7].settings.product_image_2, '300x'))) {
+			if (!current || dirty & /*section*/ 1 && !src_url_equal(img1.src, img1_src_value = /*liquid*/ ctx[2].img_url(/*block*/ ctx[12].settings.product_image_2, '300x'))) {
 				attr(img1, "src", img1_src_value);
 			}
 
-			if (!current || dirty & /*section*/ 1 && img1_height_value !== (img1_height_value = /*liquid*/ ctx[2].divided_by(300, /*block*/ ctx[7].settings.product_image_2.aspect_ratio))) {
+			if (!current || dirty & /*section*/ 1 && img1_height_value !== (img1_height_value = /*liquid*/ ctx[2].divided_by(300, /*block*/ ctx[12].settings.product_image_2.aspect_ratio))) {
 				attr(img1, "height", img1_height_value);
 			}
 
 			if (!current || dirty & /*section*/ 1) {
-				set_style(div12, "--ratio", /*block*/ ctx[7].settings.product_image_1.aspect_ratio);
+				set_style(div12, "--ratio", /*block*/ ctx[12].settings.product_image_1.aspect_ratio);
 			}
 
-			if ((!current || dirty & /*section*/ 1) && t21_value !== (t21_value = /*block*/ ctx[7].settings.product_title_2 + "")) set_data(t21, t21_value);
-			if ((!current || dirty & /*section*/ 1) && t23_value !== (t23_value = /*block*/ ctx[7].settings.product_2_param_1_value + "")) set_data(t23, t23_value);
-			if ((!current || dirty & /*section*/ 1) && t25_value !== (t25_value = /*block*/ ctx[7].settings.product_2_param_1_unit + "")) set_data(t25, t25_value);
-			if ((!current || dirty & /*section*/ 1) && t27_value !== (t27_value = /*block*/ ctx[7].settings.param_1 + "")) set_data(t27, t27_value);
-			if ((!current || dirty & /*section*/ 1) && t29_value !== (t29_value = /*block*/ ctx[7].settings.product_2_param_2_value + "")) set_data(t29, t29_value);
-			if ((!current || dirty & /*section*/ 1) && t31_value !== (t31_value = /*block*/ ctx[7].settings.product_2_param_2_unit + "")) set_data(t31, t31_value);
-			if ((!current || dirty & /*section*/ 1) && t33_value !== (t33_value = /*block*/ ctx[7].settings.param_2 + "")) set_data(t33, t33_value);
-			if ((!current || dirty & /*section*/ 1) && t35_value !== (t35_value = /*block*/ ctx[7].settings.product_2_param_3_value + "")) set_data(t35, t35_value);
-			if ((!current || dirty & /*section*/ 1) && t37_value !== (t37_value = /*block*/ ctx[7].settings.product_2_param_3_unit + "")) set_data(t37, t37_value);
-			if ((!current || dirty & /*section*/ 1) && t39_value !== (t39_value = /*block*/ ctx[7].settings.param_3 + "")) set_data(t39, t39_value);
+			if ((!current || dirty & /*section*/ 1) && t21_value !== (t21_value = /*block*/ ctx[12].settings.product_title_2 + "")) set_data(t21, t21_value);
+			if ((!current || dirty & /*section*/ 1) && t23_value !== (t23_value = /*block*/ ctx[12].settings.product_2_param_1_value + "")) set_data(t23, t23_value);
+			if ((!current || dirty & /*section*/ 1) && t25_value !== (t25_value = /*block*/ ctx[12].settings.product_2_param_1_unit + "")) set_data(t25, t25_value);
+			if ((!current || dirty & /*section*/ 1) && t27_value !== (t27_value = /*block*/ ctx[12].settings.param_1 + "")) set_data(t27, t27_value);
+			if ((!current || dirty & /*section*/ 1) && t29_value !== (t29_value = /*block*/ ctx[12].settings.product_2_param_2_value + "")) set_data(t29, t29_value);
+			if ((!current || dirty & /*section*/ 1) && t31_value !== (t31_value = /*block*/ ctx[12].settings.product_2_param_2_unit + "")) set_data(t31, t31_value);
+			if ((!current || dirty & /*section*/ 1) && t33_value !== (t33_value = /*block*/ ctx[12].settings.param_2 + "")) set_data(t33, t33_value);
+			if ((!current || dirty & /*section*/ 1) && t35_value !== (t35_value = /*block*/ ctx[12].settings.product_2_param_3_value + "")) set_data(t35, t35_value);
+			if ((!current || dirty & /*section*/ 1) && t37_value !== (t37_value = /*block*/ ctx[12].settings.product_2_param_3_unit + "")) set_data(t37, t37_value);
+			if ((!current || dirty & /*section*/ 1) && t39_value !== (t39_value = /*block*/ ctx[12].settings.param_3 + "")) set_data(t39, t39_value);
 		},
 		i(local) {
 			if (current) return;
@@ -1017,10 +1056,10 @@ function create_if_block(ctx) {
 	};
 }
 
-// (103:14) {#each  section.blocks as block, index   }
+// (111:14) {#each  section.blocks as block, index   }
 function create_each_block_1(ctx) {
 	let option;
-	let t0_value = /*block*/ ctx[7].settings.product_title_1 + "";
+	let t0_value = /*block*/ ctx[12].settings.product_title_1 + "";
 	let t0;
 	let t1;
 	let option_value_value;
@@ -1041,7 +1080,7 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			option.__value = option_value_value = /*forloop*/ ctx[8].index;
+			option.__value = option_value_value = /*forloop*/ ctx[13].index;
 			option.value = option.__value;
 			attr(option, "class", "svelte-2hua15");
 		},
@@ -1051,9 +1090,9 @@ function create_each_block_1(ctx) {
 			append_hydration(option, t1);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*section*/ 1 && t0_value !== (t0_value = /*block*/ ctx[7].settings.product_title_1 + "")) set_data(t0, t0_value);
+			if (dirty & /*section*/ 1 && t0_value !== (t0_value = /*block*/ ctx[12].settings.product_title_1 + "")) set_data(t0, t0_value);
 
-			if (dirty & /*section*/ 1 && option_value_value !== (option_value_value = /*forloop*/ ctx[8].index)) {
+			if (dirty & /*section*/ 1 && option_value_value !== (option_value_value = /*forloop*/ ctx[13].index)) {
 				option.__value = option_value_value;
 				option.value = option.__value;
 			}
@@ -1064,11 +1103,11 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (79:2) {#each  section.blocks as block, index   }
+// (87:2) {#each  section.blocks as block, index   }
 function create_each_block(ctx) {
 	let if_block_anchor;
 	let current;
-	let if_block = /*current_block*/ ctx[1] == /*forloop*/ ctx[8].index && create_if_block(ctx);
+	let if_block = /*current_block*/ ctx[1] == /*forloop*/ ctx[13].index && create_if_block(ctx);
 
 	return {
 		c() {
@@ -1085,7 +1124,7 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*current_block*/ ctx[1] == /*forloop*/ ctx[8].index) {
+			if (/*current_block*/ ctx[1] == /*forloop*/ ctx[13].index) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
@@ -1334,6 +1373,18 @@ function create_fragment(ctx) {
 	};
 }
 
+function fc(e, t, r) {
+	const n = e.find(e => e === t);
+
+	return n || e.reduce((e, n) => {
+		let o = Math.abs(e - t), i = Math.abs(n - t);
+
+		return "higher" === r
+		? n > t && i <= o ? n : e
+		: "lower" === r ? n < t && i <= o ? n : e : void 0;
+	});
+}
+
 function incrementor(node, { speed = 2, delay = 400 }) {
 	const valid = node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
 
@@ -1356,8 +1407,11 @@ function incrementor(node, { speed = 2, delay = 400 }) {
 }
 
 function instance($$self, $$props, $$invalidate) {
+	let { importsSeek = 'lower' } = $$props;
 	let themeImports = getContext('svelteProps') || {};
 	let lec = getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
+	const cic = window.cicR;
 	const liquid = cachedLiquid(lec);
 
 	cartStore.subscribe(cartStore => {
@@ -1365,8 +1419,24 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	let section = {};
-	section.settings = themeImports['sectionƒƒsettings'];
-	section.blocks = themeImports['sectionƒƒblocks'];
+	let { sectionƒƒsettings } = $$props;
+
+	try {
+		section = section || {};
+	} catch(e) {
+		
+	} /*whatever*/
+
+	section.settings = themeImports['sectionƒƒsettings'].find(e => e.component_index == fc(themeImports['sectionƒƒsettings'].map(e => e.component_index), cic, importsSeek)).value;
+	let { sectionƒƒblocks } = $$props;
+
+	try {
+		section = section || {};
+	} catch(e) {
+		
+	} /*whatever*/
+
+	section.blocks = themeImports['sectionƒƒblocks'].find(e => e.component_index == fc(themeImports['sectionƒƒblocks'].map(e => e.component_index), cic, importsSeek)).value;
 	console.log('section ', section);
 	console.log('section blocks', section.blocks);
 
@@ -1378,13 +1448,35 @@ function instance($$self, $$props, $$invalidate) {
 		$$invalidate(0, section);
 	}
 
-	return [section, current_block, liquid, select_change_handler];
+	$$self.$$set = $$new_props => {
+		$$invalidate(11, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(3, importsSeek = $$new_props.importsSeek);
+		if ('sectionƒƒsettings' in $$new_props) $$invalidate(4, sectionƒƒsettings = $$new_props.sectionƒƒsettings);
+		if ('sectionƒƒblocks' in $$new_props) $$invalidate(5, sectionƒƒblocks = $$new_props.sectionƒƒblocks);
+	};
+
+	$$props = exclude_internal_props($$props);
+
+	return [
+		section,
+		current_block,
+		liquid,
+		importsSeek,
+		sectionƒƒsettings,
+		sectionƒƒblocks,
+		select_change_handler
+	];
 }
 
 class Product_comparison extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, {});
+
+		init(this, options, instance, create_fragment, safe_not_equal, {
+			importsSeek: 3,
+			sectionƒƒsettings: 4,
+			sectionƒƒblocks: 5
+		});
 	}
 }
 

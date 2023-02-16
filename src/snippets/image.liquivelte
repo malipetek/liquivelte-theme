@@ -1,26 +1,180 @@
+{%- liquid
+  assign pageurl = content_for_header| split:'"pageurl":"' | last | split:'"' | first 
+  assign urlparams = pageurl | split: '?' | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' | split: '&' 
+
+  for param in urlparams    
+    assign key = param | split: '=' | first 
+    assign value = param | split: '=' | last 
+    if key == 'sizetest' 
+      assign image_test_mode = true 
+    endif 
+  endfor 
+-%}
+
+
+{% liquid
+  assign default_sizes = '320@320, 640@640, 768@768, 960@960, 1024@1024, 1280@1280, 1440@1440, 1536@1536, 1920@1920' 
+  if sizes contains '%' or sizes contains 'vw' 
+    assign image_sizes = default_sizes | replace: ' ', '' | split: ',' 
+  else 
+    assign image_sizes = sizes | replace: ' ', '' | split: ',' 
+  endif 
+
+  assign aspect_ratio = source.aspect_ratio | default: 1
+  if source.aspect_ratio > 0 and aspect_ratio == blank
+    assign aspect_ratio = source.aspect_ratio
+  elsif aspect_ratio == blank
+    assign aspect_ratio = 1 
+  endif
+%}
+{% liquid
+      assign srcset = '' 
+      for size in image_sizes 
+
+      unless size contains '@' 
+        assign _size = size
+        assign size = _size | append: '@' | append: _size 
+      endunless 
+      assign img_width = size | split: '@' | first 
+        
+      assign img_width_x2 = img_width | times: 2 
+      assign img_width_x3 = img_width | times: 3 
+      assign img_width_x = img_width | append: 'x' 
+      assign img_width_x_x2 = img_width_x2 | append: 'x' 
+      assign img_width_x_x3 = img_width_x3 | append: 'x'
+    
+      if source.aspect_ratio > 0 and aspect_ratio == blank
+        assign aspect_ratio = source.aspect_ratio
+      elsif aspect_ratio == blank
+        assign aspect_ratio = 1 
+      endif 
+      
+      if image_test_mode 
+        assign srcset = srcset | append: 'https://via.placeholder.com/' | append: img_width_x 
+          if square == true
+            assign srcset = srcset | append: img_width
+          else 
+          assign a = img_width | divided_by: aspect_ratio | ceil
+          assign srcset = srcset | append: a | append: img_width  
+          endif 
+          assign srcset = srcset | append: ' w,'
+        assign srcset = srcset | append: 'https://via.placeholder.com/' | append: img_width_x_x2 
+          if square == true
+            assign srcset = srcset | append: img_width_x2
+          else 
+          assign a = img_width_x2 | divided_by: aspect_ratio | ceil
+          assign srcset = srcset | append: a | append: img_width_x2  
+          endif 
+          assign srcset = srcset | append: ' w,'
+        assign srcset = srcset | append: 'https://via.placeholder.com/' | append: img_width_x_x3 
+          if square == true
+            assign srcset = srcset | append: img_width_x3
+          else 
+          assign a = img_width_x3 | divided_by: aspect_ratio | ceil
+          assign srcset = srcset | append: a | append: img_width_x3  
+          endif 
+          assign srcset = srcset | append: ' w'
+      else 
+        if square == true 
+          assign a = source | image_url: width: img_width_x, height: img_width_x 
+          assign srcset = srcset | append: a | append: ' ' | append: img_width | append: 'w, '
+          assign a = source | image_url: width: img_width_x2, height: img_width_x2 
+          assign srcset = srcset | append: a | append: ' ' | append: img_width_x2 | append: 'w, '
+          assign a = source | image_url: width: img_width_x3, height: img_width_x3 
+          assign srcset = srcset | append: a | append: ' ' | append: img_width_x3 | append: 'w '
+        else 
+          assign a = source | image_url: width: img_width
+          assign srcset = srcset | append: a | append: ' ' | append: img_width | append: 'w, '
+          assign a = source | image_url: width: img_width_x2
+          assign srcset = srcset | append: a | append: ' ' | append: img_width_x2 | append: 'w, '
+          assign a = source | image_url: width: img_width_x3
+          assign srcset = srcset | append: a | append: ' ' | append: img_width_x3 | append: 'w '
+        endif 
+      endif 
+      unless forloop.last 
+        assign srcset = srcset | append: ',' 
+      endunless 
+    endfor 
+%}
+ 
+{% liquid
+      assign srcset_sizes = ''
+      assign prev_viewport_size_with_unit = '' 
+      for size in sizes 
+      unless size contains '@'
+          unless size contains 'vw' or size contains 'px' or size contains '%'
+            assign default_size = size | append: 'px' 
+          else
+            assign default_size = size
+          endunless 
+          assign prev_viewport_size_with_unit_plus_1 = prev_viewport_size_with_unit | plus: 1
+          assign srcset_sizes = srcset_sizes | append: '@media(min-width: ' | append: prev_viewport_size_with_unit_plus_1 | append: 'px' | append: ') ' | append: default_size
+          unless forloop.last
+            assign srcset_sizes = srcset_sizes | append: ', '
+          endunless
+          continue
+        endunless
+      
+        assign img_width = size | split: '@' | first 
+        assign viewport_size = size | split: '@' | last 
+  
+        unless viewport_size contains 'vw' or viewport_size contains 'px' or viewport_size contains '%'
+          assign viewport_size_with_unit = viewport_size | append: 'px' 
+        endunless 
+      
+        unless img_width contains 'vw' or img_width contains 'px' or img_width contains '%'
+          assign img_width_with_unit = img_width | append: 'px' 
+        else
+          assign img_width_with_unit = img_width 
+        endunless 
+      
+        if viewport_size == 'fixed' 
+          assign srcset_sizes = srcset_sizes | append: img_width_with_unit
+        else 
+        assign srcset_sizes = srcset_sizes | append: '@media '
+        if prev_viewport_size_with_unit != blank 
+          assign srcset_sizes = srcset_sizes | append: '(min-width: ' | append: prev_viewport_size_with_unit | append: ') and '
+        endif 
+        assign srcset_sizes = srcset_sizes | append: '(max-width: ' | append: viewport_size_with_unit | append: ') ' | append: img_width_with_unit
+        assign prev_viewport_size_with_unit = viewport_size_with_unit 
+      endif 
+      unless forloop.last 
+        assign srcset_sizes = srcset_sizes | append: ',' 
+      endunless 
+    endfor 
+%}
+{% liquid 
+  assign alt = alt | default: source.alt
+%}
 
 <script>
 export let src;
-export let aspect_ratio;
-export let sizes;
 export let classes;
-let srcset = false;
+export let loading = 'lazy';
+import alt from 'theme';
+import lazy from 'theme';
+import aspect_ratio from 'theme';
+import sizes from 'theme';
+import srcset from 'theme';
+import srcset_sizes from 'theme';
+const source = { src: null };
+import source.width from 'theme';
+import source.aspect_ratio from 'theme';
+import source.alt from 'theme';
+
+console.log('image cicR', cicR);
 </script>
-{% if srcset %}
   <img
     srcset="{{- srcset -}}"
-    sizes="{{- sizes -}}"
+    sizes="{{- srcset_sizes -}}"
     class="{{- classes -}}"
-    src="{{- src -}}"
+    src="{{- source | image_url: width: 2500 -}}"
     alt="{{- alt | escape -}}"
-    width="{{- imageUrl.width -}}"
-    height="{{- imageUrl.width | divided_by: aspect_ratio | ceil -}}"
-  >
-{% else %}
-<img
-  class="{{- classes -}}"
-  src="{{- src -}}"
-  alt="{{- alt | escape -}}"
->
-{% endif %}
+    width="{{- source.width -}}"
+    height="{{- source.width | divided_by: aspect_ratio | ceil -}}"
+    loading="{{- loading -}}"
+  />
+
+
+
 

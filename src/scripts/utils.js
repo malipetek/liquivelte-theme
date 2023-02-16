@@ -514,3 +514,41 @@ Shopify.CountryProvinceSelector.prototype = {
     }
   }
 };
+
+export function srcset({ source, sizes, square, liquid }) {
+  const image_test_mode = (new URL(window.location.href)).searchParams.has('sizetest');
+  const default_sizes = '320@320, 640@640, 768@768, 960@960, 1024@1024, 1280@1280, 1440@1440, 1536@1536, 1920@1920';
+  sizes = sizes.indexOf('%') > -1 || sizes.indexOf('vw') > -1 ? default_sizes.replace(/ /g, '').split(',') : sizes.replace(/ /g, '').split(',');
+  const aspect_ratio = source.aspect_ratio || (source.aspect_ratio > 0 ? source.aspect_ratio : 1);
+
+  let srcset = '';
+  for (const size of sizes) {
+    const [img_width, _] = size.split('@');
+    const img_width_x2 = img_width * 2;
+    const img_width_x3 = img_width * 3;
+
+    if (image_test_mode) {
+      srcset += `https://via.placeholder.com/${img_width}x${square ? img_width : Math.ceil(img_width / aspect_ratio)}w,`;
+      srcset += `https://via.placeholder.com/${img_width_x2}x${square ? img_width_x2 : Math.ceil(img_width_x2 / aspect_ratio)}w,`;
+      srcset += `https://via.placeholder.com/${img_width_x3}x${square ? img_width_x3 : Math.ceil(img_width_x3 / aspect_ratio)}w`;
+    } else {
+      if (square) {
+        srcset += `${liquid.image_url(source, { width: img_width, height: img_width })} ${img_width}w, `;
+        srcset += `${liquid.image_url(source, { width: img_width_x2, height: img_width_x2 })} ${img_width_x2}w, `;
+        srcset += `${liquid.image_url(source, { width: img_width_x3, height: img_width_x3 })} ${img_width_x3}w `;
+      } else {
+        if (square === true) {
+          srcset += `${liquid.image_url(source, { width: `${img_width} x`, height: `${img_width} x` })} ${img_width}w, `;
+          srcset += `${liquid.image_url(source, { width: `${img_width_x2} x`, height: `${img_width_x2} x` })} ${img_width_x2}w, `;
+          srcset += `${liquid.image_url(source, { width: `${img_width_x3} x`, height: `${img_width_x3} x` })} ${img_width_x3}w`;
+        } else {
+          srcset += `${liquid.image_url(source, { width: img_width, height: Math.ceil(img_width / aspect_ratio) })} ${img_width}w, `;
+          srcset += `${liquid.image_url(source, { width: img_width_x2, height: Math.ceil(img_width_x2 / aspect_ratio) })} ${img_width_x2}w, `;
+          srcset += `${liquid.image_url(source, { width: img_width_x3, height: Math.ceil(img_width_x3 / aspect_ratio) })} ${img_width_x3}w`;
+        }
+      }
+    }
+  }
+
+  return srcset;
+}

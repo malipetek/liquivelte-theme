@@ -27,11 +27,14 @@
 	
 	endfor
 	endif
-	if lv_propName == 'quantity'
+	if lv_propName == 'quantity' and quantity == blank
 		assign quantity = lv_propValue
 	endif
-	if lv_propName == 'minimum'
+	if lv_propName == 'minimum' and minimum == blank
 		assign minimum = lv_propValue
+	endif
+	if lv_propName == 'inputWidth' and inputWidth == blank
+		assign inputWidth = lv_propValue
 	endif
 	endfor
 	-%}
@@ -51,6 +54,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component quantity-box svelte-csza1i" data-liquivelte-component-name="quantity-box.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid 
     assign inputWidth = 'var(--box-size)'
@@ -66,11 +73,17 @@
 
 	
 						
-						
-	<script type="text/noscript"  class="instance-data svelte-csza1i">{
+		
+	<script type="text/noscript"  class="instance-data svelte-csza1i">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"inputWidth" : {{ inputWidth | json }}
 	
 	
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "quantity-box"
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-csza1i">(() => {
@@ -92,7 +105,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -128,7 +149,9 @@
 			assign slot_default_quantity-box = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

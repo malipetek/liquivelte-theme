@@ -51,82 +51,82 @@
 	
 	endfor
 	endif
-	if lv_propName == 'name'
+	if lv_propName == 'name' and name == blank
 		assign name = lv_propValue
 	endif
-	if lv_propName == 'stacked'
+	if lv_propName == 'stacked' and stacked == blank
 		assign stacked = lv_propValue
 	endif
-	if lv_propName == 'withSubnavbar'
+	if lv_propName == 'withSubnavbar' and withSubnavbar == blank
 		assign withSubnavbar = lv_propValue
 	endif
-	if lv_propName == 'subnavbar'
+	if lv_propName == 'subnavbar' and subnavbar == blank
 		assign subnavbar = lv_propValue
 	endif
-	if lv_propName == 'withNavbarLarge'
+	if lv_propName == 'withNavbarLarge' and withNavbarLarge == blank
 		assign withNavbarLarge = lv_propValue
 	endif
-	if lv_propName == 'navbarLarge'
+	if lv_propName == 'navbarLarge' and navbarLarge == blank
 		assign navbarLarge = lv_propValue
 	endif
-	if lv_propName == 'noNavbar'
+	if lv_propName == 'noNavbar' and noNavbar == blank
 		assign noNavbar = lv_propValue
 	endif
-	if lv_propName == 'noToolbar'
+	if lv_propName == 'noToolbar' and noToolbar == blank
 		assign noToolbar = lv_propValue
 	endif
-	if lv_propName == 'tabs'
+	if lv_propName == 'tabs' and tabs == blank
 		assign tabs = lv_propValue
 	endif
-	if lv_propName == 'pageContent'
+	if lv_propName == 'pageContent' and pageContent == blank
 		assign pageContent = lv_propValue
 	endif
-	if lv_propName == 'noSwipeback'
+	if lv_propName == 'noSwipeback' and noSwipeback == blank
 		assign noSwipeback = lv_propValue
 	endif
-	if lv_propName == 'ptr'
+	if lv_propName == 'ptr' and ptr == blank
 		assign ptr = lv_propValue
 	endif
-	if lv_propName == 'ptrDistance'
+	if lv_propName == 'ptrDistance' and ptrDistance == blank
 		assign ptrDistance = lv_propValue
 	endif
-	if lv_propName == 'ptrPreloader'
+	if lv_propName == 'ptrPreloader' and ptrPreloader == blank
 		assign ptrPreloader = lv_propValue
 	endif
-	if lv_propName == 'ptrBottom'
+	if lv_propName == 'ptrBottom' and ptrBottom == blank
 		assign ptrBottom = lv_propValue
 	endif
-	if lv_propName == 'ptrMousewheel'
+	if lv_propName == 'ptrMousewheel' and ptrMousewheel == blank
 		assign ptrMousewheel = lv_propValue
 	endif
-	if lv_propName == 'infinite'
+	if lv_propName == 'infinite' and infinite == blank
 		assign infinite = lv_propValue
 	endif
-	if lv_propName == 'infiniteTop'
+	if lv_propName == 'infiniteTop' and infiniteTop == blank
 		assign infiniteTop = lv_propValue
 	endif
-	if lv_propName == 'infiniteDistance'
+	if lv_propName == 'infiniteDistance' and infiniteDistance == blank
 		assign infiniteDistance = lv_propValue
 	endif
-	if lv_propName == 'infinitePreloader'
+	if lv_propName == 'infinitePreloader' and infinitePreloader == blank
 		assign infinitePreloader = lv_propValue
 	endif
-	if lv_propName == 'hideBarsOnScroll'
+	if lv_propName == 'hideBarsOnScroll' and hideBarsOnScroll == blank
 		assign hideBarsOnScroll = lv_propValue
 	endif
-	if lv_propName == 'hideNavbarOnScroll'
+	if lv_propName == 'hideNavbarOnScroll' and hideNavbarOnScroll == blank
 		assign hideNavbarOnScroll = lv_propValue
 	endif
-	if lv_propName == 'hideToolbarOnScroll'
+	if lv_propName == 'hideToolbarOnScroll' and hideToolbarOnScroll == blank
 		assign hideToolbarOnScroll = lv_propValue
 	endif
-	if lv_propName == 'messagesContent'
+	if lv_propName == 'messagesContent' and messagesContent == blank
 		assign messagesContent = lv_propValue
 	endif
-	if lv_propName == 'loginScreen'
+	if lv_propName == 'loginScreen' and loginScreen == blank
 		assign loginScreen = lv_propValue
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
 	endfor
@@ -156,8 +156,16 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component page" data-liquivelte-component-name="page.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
-	
+	{% liquid
+  assign pageContent = true
+  assign infinitePreloader = true
+%}
+
 
 <div bind:this="{el}" class="page {{ classes }} {{ computedClasses }}" data-name="{name}" {...restProps($$restProps)}>
   
@@ -177,8 +185,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_PageContent %}ptr-kvsp-{ptr}-prsp-ptrDistance-kvsp-{ptrDistance}-prsp-ptrPreloader-kvsp-{ptrPreloader}-prsp-ptrBottom-kvsp-{ptrBottom}-prsp-ptrMousewheel-kvsp-{ptrMousewheel}-prsp-infinite-kvsp-{infinite}-prsp-infiniteTop-kvsp-{infiniteTop}-prsp-infiniteDistance-kvsp-{infiniteDistance}-prsp-infinitePreloader-kvsp-{infinitePreloader}-prsp-hideBarsOnScroll-kvsp-{hideBarsOnScroll}-prsp-hideNavbarOnScroll-kvsp-{hideNavbarOnScroll}-prsp-hideToolbarOnScroll-kvsp-{hideToolbarOnScroll}-prsp-messagesContent-kvsp-{messagesContent}-prsp-loginScreen-kvsp-{loginScreen}-prsp-onPtrPullStart-kvsp-{onPtrPullStart}-prsp-onPtrPullMove-kvsp-{onPtrPullMove}-prsp-onPtrPullEnd-kvsp-{onPtrPullEnd}-prsp-onPtrRefresh-kvsp-{onPtrRefresh}-prsp-onPtrDone-kvsp-{onPtrDone}-prsp-onInfinite-kvsp-{onInfinite}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_PageContent -%}
+
+{%- capture slot_content_def_PageContent -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       
 	{%- if slot_static_framework7-liquivelte_page != blank -%}
 		{{- slot_static_framework7-liquivelte_page -}}
@@ -189,10 +199,12 @@ smns stands for "slot module name separator"
 			{{- slot_default_framework7-liquivelte_page -}}
 		{%- endif -%}
 	
-    {%- endcapture -%}
-{% assign slot_content_PageContent = slot_content_PageContent | append: '-scs-' | append: 'page-content' | append: '-scvs-' | append: slot_content_def_PageContent %}
+    {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'page-content' %}
-{% include modulename, liquivelte: true, props: props_PageContent, sub_include: true, slot_contents: slot_content_PageContent, basename: '' %}
+{% assign slot_content_PageContent = slot_content_PageContent | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_PageContent %}
+{% include modulename, liquivelte: true, props: props_PageContent, sub_include: true, slot_contents: slot_content_PageContent, basename: ''  %}
 {% assign slot_content_PageContent = '' %}
 {% assign props = '' %}
   {% else %}
@@ -211,11 +223,17 @@ smns stands for "slot module name separator"
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-page"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -237,7 +255,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -300,7 +326,9 @@ smns stands for "slot module name separator"
 			assign slot_static_framework7-liquivelte_page = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

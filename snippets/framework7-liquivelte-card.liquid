@@ -45,64 +45,64 @@
 	
 	endfor
 	endif
-	if lv_propName == 'classes'
+	if lv_propName == 'classes' and classes == blank
 		assign classes = lv_propValue
 	endif
-	if lv_propName == 'title'
+	if lv_propName == 'title' and title == blank
 		assign title = lv_propValue
 	endif
-	if lv_propName == 'content'
+	if lv_propName == 'content' and content == blank
 		assign content = lv_propValue
 	endif
-	if lv_propName == 'footer'
+	if lv_propName == 'footer' and footer == blank
 		assign footer = lv_propValue
 	endif
-	if lv_propName == 'outline'
+	if lv_propName == 'outline' and outline == blank
 		assign outline = lv_propValue
 	endif
-	if lv_propName == 'expandable'
+	if lv_propName == 'expandable' and expandable == blank
 		assign expandable = lv_propValue
 	endif
-	if lv_propName == 'expandableAnimateWidth'
+	if lv_propName == 'expandableAnimateWidth' and expandableAnimateWidth == blank
 		assign expandableAnimateWidth = lv_propValue
 	endif
-	if lv_propName == 'expandableOpened'
+	if lv_propName == 'expandableOpened' and expandableOpened == blank
 		assign expandableOpened = lv_propValue
 	endif
-	if lv_propName == 'animate'
+	if lv_propName == 'animate' and animate == blank
 		assign animate = lv_propValue
 	endif
-	if lv_propName == 'hideNavbarOnOpen'
+	if lv_propName == 'hideNavbarOnOpen' and hideNavbarOnOpen == blank
 		assign hideNavbarOnOpen = lv_propValue
 	endif
-	if lv_propName == 'hideToolbarOnOpen'
+	if lv_propName == 'hideToolbarOnOpen' and hideToolbarOnOpen == blank
 		assign hideToolbarOnOpen = lv_propValue
 	endif
-	if lv_propName == 'hideStatusbarOnOpen'
+	if lv_propName == 'hideStatusbarOnOpen' and hideStatusbarOnOpen == blank
 		assign hideStatusbarOnOpen = lv_propValue
 	endif
-	if lv_propName == 'scrollableEl'
+	if lv_propName == 'scrollableEl' and scrollableEl == blank
 		assign scrollableEl = lv_propValue
 	endif
-	if lv_propName == 'swipeToClose'
+	if lv_propName == 'swipeToClose' and swipeToClose == blank
 		assign swipeToClose = lv_propValue
 	endif
-	if lv_propName == 'closeByBackdropClick'
+	if lv_propName == 'closeByBackdropClick' and closeByBackdropClick == blank
 		assign closeByBackdropClick = lv_propValue
 	endif
-	if lv_propName == 'backdrop'
+	if lv_propName == 'backdrop' and backdrop == blank
 		assign backdrop = lv_propValue
 	endif
-	if lv_propName == 'backdropEl'
+	if lv_propName == 'backdropEl' and backdropEl == blank
 		assign backdropEl = lv_propValue
 	endif
-	if lv_propName == 'noShadow'
+	if lv_propName == 'noShadow' and noShadow == blank
 		assign noShadow = lv_propValue
 	endif
-	if lv_propName == 'noBorder'
+	if lv_propName == 'noBorder' and noBorder == blank
 		assign noBorder = lv_propValue
 	endif
-	if lv_propName == 'padding'
+	if lv_propName == 'padding' and padding == blank
 		assign padding = lv_propValue
 	endif
 	endfor
@@ -132,6 +132,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component card" data-liquivelte-component-name="card.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
@@ -169,18 +173,22 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_CardHeader %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_CardHeader -%}
+
+{%- capture slot_content_def_CardHeader -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {{ title | default: '' }}
       
 	{%- if slot_header_framework7-liquivelte_card != blank -%}
 		{{- slot_header_framework7-liquivelte_card -}}
 	{%- endif -%}
 
-    {%- endcapture -%}
-{% assign slot_content_CardHeader = slot_content_CardHeader | append: '-scs-' | append: 'card-header' | append: '-scvs-' | append: slot_content_def_CardHeader %}
+    {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'card-header' %}
-{% include modulename, liquivelte: true, props: props_CardHeader, sub_include: true, slot_contents: slot_content_CardHeader, basename: '' %}
+{% assign slot_content_CardHeader = slot_content_CardHeader | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_CardHeader %}
+{% include modulename, liquivelte: true, props: props_CardHeader, sub_include: true, slot_contents: slot_content_CardHeader, basename: ''  %}
 {% assign slot_content_CardHeader = '' %}
 {% assign props = '' %}
   {% endif %}
@@ -196,18 +204,22 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_CardContent %}{padding}-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_CardContent -%}
+
+{%- capture slot_content_def_CardContent -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {{ content | default: '' }}
       
 	{%- if slot_content_framework7-liquivelte_card != blank -%}
 		{{- slot_content_framework7-liquivelte_card -}}
 	{%- endif -%}
 
-    {%- endcapture -%}
-{% assign slot_content_CardContent = slot_content_CardContent | append: '-scs-' | append: 'card-content' | append: '-scvs-' | append: slot_content_def_CardContent %}
+    {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'card-content' %}
-{% include modulename, liquivelte: true, props: props_CardContent, sub_include: true, slot_contents: slot_content_CardContent, basename: '' %}
+{% assign slot_content_CardContent = slot_content_CardContent | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_CardContent %}
+{% include modulename, liquivelte: true, props: props_CardContent, sub_include: true, slot_contents: slot_content_CardContent, basename: ''  %}
 {% assign slot_content_CardContent = '' %}
 {% assign props = '' %}
   {% endif %}
@@ -223,18 +235,22 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_CardFooter %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_CardFooter -%}
+
+{%- capture slot_content_def_CardFooter -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {{ footer | default: '' }}
       
 	{%- if slot_footer_framework7-liquivelte_card != blank -%}
 		{{- slot_footer_framework7-liquivelte_card -}}
 	{%- endif -%}
 
-    {%- endcapture -%}
-{% assign slot_content_CardFooter = slot_content_CardFooter | append: '-scs-' | append: 'card-footer' | append: '-scvs-' | append: slot_content_def_CardFooter %}
+    {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'card-footer' %}
-{% include modulename, liquivelte: true, props: props_CardFooter, sub_include: true, slot_contents: slot_content_CardFooter, basename: '' %}
+{% assign slot_content_CardFooter = slot_content_CardFooter | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_CardFooter %}
+{% include modulename, liquivelte: true, props: props_CardFooter, sub_include: true, slot_contents: slot_content_CardFooter, basename: ''  %}
 {% assign slot_content_CardFooter = '' %}
 {% assign props = '' %}
   {% endif %}
@@ -247,11 +263,17 @@ smns stands for "slot module name separator"
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	
+		
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "framework7-liquivelte-card"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -273,7 +295,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -330,7 +360,9 @@ smns stands for "slot module name separator"
 			assign slot_footer_framework7-liquivelte_card = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

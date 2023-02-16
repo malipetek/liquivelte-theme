@@ -1,6 +1,5 @@
-import './product-hs8daa1a0c.liquivelte.js';
+import './product.custom-hsce22007e.liquivelte.js';
 
-const initializeObservers = () => {
+const initializeObservers = (doc) => {
      };
   document.addEventListener('DOMContentLoaded', () => initializeObservers());
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));

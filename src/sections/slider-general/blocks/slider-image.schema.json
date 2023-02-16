@@ -1,0 +1,15 @@
+{
+  "name": "Slider Image",
+  "type": "image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Swiper"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    }
+  ]
+}

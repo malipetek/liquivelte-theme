@@ -43,6 +43,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component collection-section" data-liquivelte-component-name="collection-section.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid 
   assign a = 1
@@ -254,9 +258,10 @@
       assign setting_key_with_quotes = setting | json
       assign block_json = block_json | append: setting_key_with_quotes | append: ":"
 
-      if block.settings[setting].aspect_ratio
+      if block.settings[setting].aspect_ratio and block.settings[setting].src
         assign block_json = block_json | append: '{'
-        assign block_json = block_json | append: '"width": ' | append: block.settings[setting].width | append: ','
+        assign width = block.settings[setting].width | json
+        assign block_json = block_json | append: '"width": ' | append: width | append: ','
         assign block_json = block_json | append: '"aspect_ratio": ' | append: block.settings[setting].aspect_ratio | append: ','
         assign src_with_quotes = block.settings[setting].src | json
         assign block_json = block_json | append: '"src": ' | append: src_with_quotes
@@ -282,11 +287,17 @@
     endunless
   endfor
   assign section_blocks_json = section_blocks_json | append: ']'
-%}					
-	<script type="text/noscript" class="instance-data">{
+%}	
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	
 	
 	"sectionƒƒsettings": {{ section.settings | json }} , "sectionƒƒblocks": {{ section_blocks_json }}
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "collection-section"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -308,7 +319,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -342,7 +361,9 @@
 			assign slot_default_collection-section = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

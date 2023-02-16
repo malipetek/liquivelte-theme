@@ -26,8 +26,23 @@
 	
 	endfor
 	endif
-	if lv_propName == 'anim_style'
+	if lv_propName == 'anim_style' and anim_style == blank
 		assign anim_style = lv_propValue
+	endif
+	if lv_propName == 'left' and left == blank
+		assign left = lv_propValue
+	endif
+	if lv_propName == 'title_top' and title_top == blank
+		assign title_top = lv_propValue
+	endif
+	if lv_propName == 'font_size' and font_size == blank
+		assign font_size = lv_propValue
+	endif
+	if lv_propName == 'color' and color == blank
+		assign color = lv_propValue
+	endif
+	if lv_propName == 'bold' and bold == blank
+		assign bold = lv_propValue
 	endif
 	endfor
 	-%}
@@ -47,6 +62,10 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component title svelte-e2nbez" data-liquivelte-component-name="title.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid 
   assign left = block.settings.left
@@ -69,11 +88,17 @@
 
 	
 						
-						
-	<script type="text/noscript"  class="instance-data svelte-e2nbez">{
+		
+	<script type="text/noscript"  class="instance-data svelte-e2nbez">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"left" : {{ left | json }} , "title_top" : {{ title_top | json }} , "font_size" : {{ font_size | json }} , "color" : {{ color | json }} , "bold" : {{ bold | json }}
 	,
 	"blockƒƒsettings": {{ block.settings | json }}
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "title"
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-e2nbez">(() => {
@@ -95,7 +120,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -130,7 +163,9 @@
 			assign slot_default_title = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

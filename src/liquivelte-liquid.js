@@ -103,7 +103,7 @@ export default (liquid_expression_cache = {}) => ({
         if (!isValidHttpUrl(input)) {
             input = `https://cdn.shopify.com/s/files/1/0621/4444/6683/${input}`;
         }
-        return input.replace(/\.([^\.]+)($|\?)/, `_${width}x${height}.$1?`);
+        return input.replace(/\.([^\.]+)($|\?)/, `.$1?width=${width}`);
     },
     file_url: (input) => {
         if (liquid_expression_cache['file_url'] && liquid_expression_cache['file_url'].has(`${input}`)) {
@@ -147,6 +147,7 @@ export default (liquid_expression_cache = {}) => ({
     scale: (input, scale) => {
         return input.replace(/\.([^\.]+)[$\?]/, `@${scale}x.$1?`);
     },
+    ceil: (input) => Math.ceil(input),
     handleize,
     json: (input) => JSON.stringify(input),
     date: x => x,

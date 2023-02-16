@@ -21,7 +21,7 @@ import Shape from './blocks/shape.liquivelte';
 import './animation.schema.json'; 
 import { onMount } from 'svelte';
 
-let keepFor = section.settings.animation_duration / 100 * window.innerHeight;
+let keepFor = section.settings.animation_duration / 200 * window.innerHeight;
 console.log('section settings ', section.settings, keepFor);
 
 let top = 0;
@@ -85,7 +85,7 @@ $: if(container && stage) {
 }
 
 onMount(() => {
-  document.querySelector('.page-content').addEventListener('scroll', e => {
+  document.querySelector('.mainview .page-content').addEventListener('scroll', e => {
     scrollY = e.target.scrollTop
   });
 });

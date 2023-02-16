@@ -1,0 +1,18 @@
+<script>
+  export let text = '';
+  export let type = 'h1';
+</script>
+
+{% if type == 'h1' %}
+  <h1> {{- text | html -}} </h1>
+{% elsif type == 'h2' %}
+  <h2> {{- text | html -}} </h2>
+{% elsif type == 'h3' %}
+  <h3> {{- text | html -}} </h3>
+{% elsif type == 'h4' %}
+  <h4> {{- text | html -}} </h4>
+{% elsif type == 'h5' %}
+  <h5> {{- text | html -}} </h5>
+{% elsif type == 'h6' %}
+  <h6> {{- text | html -}} </h6>
+{% endif %}

@@ -1,5 +1,44 @@
+{% comment %} 
+**************************************************
+*********** This is what f7 does *****************
+**************************************************
+const android = ua.match(/(Android);?[\s\/]+([\d.]+)?/); // eslint-disable-line
+let ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+const ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
+const iphone = !ipad && ua.match(/(iPhone\sOS|iOS|iPhone;\sCPU\sOS)\s([\d_]+)/);
+const ie = ua.indexOf('MSIE ') >= 0 || ua.indexOf('Trident/') >= 0;
+const edge = ua.indexOf('Edge/') >= 0;
+const firefox = ua.indexOf('Gecko/') >= 0 && ua.indexOf('Firefox/') >= 0;
+const windows = platform === 'Win32';
+const electron = ua.toLowerCase().indexOf('electron') >= 0;
+const nwjs = typeof nw !== 'undefined' && typeof process !== 'undefined' && typeof process.versions !== 'undefined' && typeof process.versions.nw !== 'undefined';
+let macos = platform === 'MacIntel';
+  
+{% endcomment %}
+{% liquid 
+  assign isIos = false
+  assign isAndroid = false
+  assign isElse = false
+  if user_agent contains 'android'
+    assign isAndroid = true
+  elsif user_agent contains 'iOS'
+    assign isIos = true
+  else
+    assign isElse = true
+  endif
+
+  assign f7_classes = 'md'
+  if isAndroid
+    assign f7_classes = f7_classes | append: ' device-android'
+  elsif isIos
+    assign f7_classes = f7_classes | append: ' ios'
+  elsif isElse
+    assign f7_classes = f7_classes | append: ' device-desktop'
+  endif
+%}
+
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}">
+<html class="no-js {{ f7_classes }}" lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,13 +88,10 @@ window.partytown = {
     {% render 'meta-tags' %}
 
 <!-- liquivelte includes -->
-      {% assign templatesWithLiquivelte = 'collection,index.icon,index,product' | split: ',' %}
+      {% assign templatesWithLiquivelte = 'collection,index.icon,index,page.contact,page,product' | split: ',' %}
       {% assign template_with_suffix_and_directory = template %}
       {% if template.directory %}
         {% assign template_with_suffix_and_directory = template.directory | append: '-' | append: template_with_suffix_and_directory %}
-        {% endif %}
-        {% if template.suffix != blank %}
-        {% assign template_with_suffix_and_directory = template_with_suffix_and_directory | append: '.' | template.suffix %}
       {% endif %}
       {% if templatesWithLiquivelte contains template_with_suffix_and_directory %}
         {% assign liquivelte_js_source = 'theme.' | append: template_with_suffix_and_directory | append: '.liquivelte.js' %}
@@ -65,8 +101,38 @@ window.partytown = {
         <link rel="stylesheet" rel="preload" as="style" href="{{ liquivelte_css_source | asset_url }}" />
       {% endif %}
 
-      {% include 'liquivelte-criticals' with template: template_with_suffix_and_directory %}
-      
+      {% assign critical_identifier = 'theme' | append: template_with_suffix_and_directory %}
+      {% include 'liquivelte-criticals' with template: critical_identifier %}
+      <script>
+        window.addEventListener('load', () => {
+          document.querySelector('style[critical-css]').remove();
+        });
+        window.liquivelte_main_scripts_registry = new Map([
+          {% for template in templatesWithLiquivelte %}
+          ['{{ 'theme.' | append: template | append: '.liquivelte.js' }}', { 
+            loaded: false,
+            src: '{{ 'theme.' | append: template | append: '.liquivelte.js' | asset_url }}'
+          }],
+          {% endfor %}
+          ['{{liquivelte_js_source}}', { 
+            loaded: true,
+            src: '{{- liquivelte_js_source | asset_url -}}'
+          } ],
+        ]);
+        window.liquivelte_main_styles_registry = new Map([
+          {% for template in templatesWithLiquivelte %}
+          ['{{ 'theme.' | append: template | append: '.liquivelte.css' }}', { 
+            loaded: false, 
+            href: '{{ 'theme.' | append: template | append: '.liquivelte.css' | asset_url }}'
+          }],
+          {% endfor %}
+          ['{{liquivelte_css_source}}', { 
+            loaded: true,
+            href: '{{liquivelte_css_source | asset_url }}',
+            node: document.querySelector('[href*="{{ liquivelte_css_source }}"]') 
+          } ],
+        ]);
+      </script>
       {% if request.design_mode %}
         <script type="module" src="{{ 'liquivelte-sections-loader.js' | asset_url }}" defer="defer"></script>
       {% endif %}
@@ -211,8 +277,6 @@ window.partytown = {
         --variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
         --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
       
-        --f7-theme-color: #4caf50;
-        --f7-appbar-height: 60px;
       }
 
       *,
@@ -223,8 +287,8 @@ window.partytown = {
 
       html {
         box-sizing: border-box;
-        /* font-size: calc(var(--font-body-scale) * 62.5%); */
-        font-size: 12px;
+        font-size: calc(var(--font-body-scale) * 62.5%);
+        /* font-size: 12px; */
         height: 100%;
       }
 
@@ -260,6 +324,7 @@ window.partytown = {
       panel[right], panel[left] {
         display: none;
       }
+
     {% endstyle %}
       
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -269,8 +334,7 @@ window.partytown = {
     </script>
   </head>
 
-  <body class="ios">
-
+  <body class="">
     {% capture header_slot_content %}
     {% section 'prompts' %}
     {% section 'header' %}

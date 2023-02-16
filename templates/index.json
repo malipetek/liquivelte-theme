@@ -3,6 +3,20 @@
     "b1d8d94c-2e32-4b36-9431-d26978893a9a": {
       "type": "slider-general",
       "blocks": {
+        "f61ac017-5575-488d-a0e9-37f94cf8b511": {
+          "type": "image-card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alfa-lifestyle-lady-sitting_2048x2048_1b63725b-78e4-47a2-9235-4d7a3fa08603.jpg",
+            "style": "transparent",
+            "card_top": 33,
+            "card_left": 42,
+            "card_width": 64,
+            "card_height": 50,
+            "card_title": "Title",
+            "card_subtitle": "Subtitle",
+            "card_content": "Hello <a href=\"\/products\/4mm-5mm-6mm-y-wrench\" title=\"4mm 5mm 6mm Y-Wrench\">Click on this<\/a> . <strong>bold<\/strong>"
+          }
+        },
         "2b267d2a-9e23-431f-b4ec-6db9f36e52d8": {
           "type": "image",
           "settings": {
@@ -20,12 +34,43 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/alfa-lifestyle-lady_2048x2048_c50ad39b-5ddf-413c-8384-ee4eb66e7adb.jpg"
           }
+        },
+        "ca960e5f-3ac9-45a9-833b-ea13e9d7cacf": {
+          "type": "image-card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Unknown-5.jpg",
+            "style": "regular",
+            "card_top": 50,
+            "card_left": 50,
+            "card_width": 50,
+            "card_height": 50,
+            "card_title": "",
+            "card_subtitle": "",
+            "card_content": ""
+          }
+        },
+        "61d85233-542c-4eec-9ec2-ce77e615a0d7": {
+          "type": "image-card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/KAR_20130428-3052_2048x2048_66242638-8769-4b04-92df-a5e3cb2c9d19.jpg",
+            "style": "regular",
+            "card_top": 50,
+            "card_left": 50,
+            "card_width": 50,
+            "card_height": 50,
+            "card_title": "",
+            "card_subtitle": "",
+            "card_content": ""
+          }
         }
       },
       "block_order": [
+        "f61ac017-5575-488d-a0e9-37f94cf8b511",
         "2b267d2a-9e23-431f-b4ec-6db9f36e52d8",
         "dc91269b-087a-42b8-b714-987bdbce39b9",
-        "7a9d81e3-b02c-4525-87a7-3138408a312d"
+        "7a9d81e3-b02c-4525-87a7-3138408a312d",
+        "ca960e5f-3ac9-45a9-833b-ea13e9d7cacf",
+        "61d85233-542c-4eec-9ec2-ce77e615a0d7"
       ],
       "settings": {
         "flush_with_header": true,
@@ -34,26 +79,66 @@
     },
     "f55fd9df-34e5-4a6a-ad16-040620edc061": {
       "type": "product-carousel",
+      "disabled": true,
       "settings": {
-        "collection": "bikes",
+        "collection": "bicycles",
         "layout": "regular",
         "title_size": "normal"
       }
     },
-    "4538c27b-ee63-47b8-b76f-3ac556f013c3": {
-      "type": "product-carousel",
+    "exploding-gallery": {
+      "type": "exploding-gallery",
+      "blocks": {
+        "a853409f-e207-4ec2-a40d-4711428bb2c4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Golf_Demos_1_2048x2048_f8d3bff5-1780-4b9c-a509-7bb77ba31645.jpg"
+          }
+        },
+        "de17155e-34ea-43b8-ae37-39d6bd157df8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alfa-lifestyle_2048x2048_885f6940-4cae-4178-8622-5f181b7b4bc8.jpg"
+          }
+        },
+        "91efe66c-a198-4e17-94c7-5416b1be7545": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Unknown.png"
+          }
+        },
+        "1fd0d8f2-2495-42bf-a199-6a30bbdb9019": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Unknown-19.jpg"
+          }
+        },
+        "0eaf3eb1-5472-4a1a-bad4-69dbd1e03c6e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/KAR_20130707-4298_2048x2048_e21c6d05-cab8-471c-abd4-e0844478f0a0.jpg"
+          }
+        },
+        "51618fbc-7934-4a9f-803a-e27ed4ac177d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alfa-lifestyle-lady_2048x2048_c50ad39b-5ddf-413c-8384-ee4eb66e7adb.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "a853409f-e207-4ec2-a40d-4711428bb2c4",
+        "de17155e-34ea-43b8-ae37-39d6bd157df8",
+        "91efe66c-a198-4e17-94c7-5416b1be7545",
+        "1fd0d8f2-2495-42bf-a199-6a30bbdb9019",
+        "0eaf3eb1-5472-4a1a-bad4-69dbd1e03c6e",
+        "51618fbc-7934-4a9f-803a-e27ed4ac177d"
+      ],
       "settings": {
-        "collection": "bars",
-        "layout": "regular",
-        "title_size": "normal"
-      }
-    },
-    "0e2c63ca-e4c9-482b-a157-73272dd89ee8": {
-      "type": "product-carousel",
-      "settings": {
-        "collection": "glowes",
-        "layout": "regular",
-        "title_size": "normal"
+        "title": "",
+        "subtitle": "",
+        "footnote": "",
+        "newsetting": ""
       }
     },
     "product-comparison": {
@@ -124,14 +209,31 @@
         "newsetting": ""
       }
     },
+    "4538c27b-ee63-47b8-b76f-3ac556f013c3": {
+      "type": "product-carousel",
+      "disabled": true,
+      "settings": {
+        "collection": "clothes",
+        "layout": "regular",
+        "title_size": "normal"
+      }
+    },
+    "ec1b5854-83ce-444d-98d7-59146e5f9b0e": {
+      "type": "product-carousel",
+      "disabled": true,
+      "settings": {
+        "collection": "phone-accessories",
+        "layout": "regular",
+        "title_size": "normal"
+      }
+    },
     "scroll-anim": {
       "type": "scroll-animation",
-      "disabled": true,
       "blocks": {
         "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c": {
           "type": "video",
           "settings": {
-            "source": "MACPRO_MAIN_DESKTOP.mp4",
+            "video": "shopify:\/\/files\/videos\/macpro.mp4",
             "trim": 1,
             "is_bg": true,
             "id": ""
@@ -145,70 +247,23 @@
         "animation_duration": 500
       }
     },
-    "exploding-gallery": {
-      "type": "exploding-gallery",
-      "disabled": true,
-      "blocks": {
-        "a853409f-e207-4ec2-a40d-4711428bb2c4": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Golf_Demos_1_2048x2048_f8d3bff5-1780-4b9c-a509-7bb77ba31645.jpg"
-          }
-        },
-        "de17155e-34ea-43b8-ae37-39d6bd157df8": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/alfa-lifestyle_2048x2048_885f6940-4cae-4178-8622-5f181b7b4bc8.jpg"
-          }
-        },
-        "91efe66c-a198-4e17-94c7-5416b1be7545": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Unknown.png"
-          }
-        },
-        "1fd0d8f2-2495-42bf-a199-6a30bbdb9019": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Unknown-19.jpg"
-          }
-        },
-        "0eaf3eb1-5472-4a1a-bad4-69dbd1e03c6e": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/KAR_20130707-4298_2048x2048_e21c6d05-cab8-471c-abd4-e0844478f0a0.jpg"
-          }
-        },
-        "51618fbc-7934-4a9f-803a-e27ed4ac177d": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/alfa-lifestyle-lady_2048x2048_c50ad39b-5ddf-413c-8384-ee4eb66e7adb.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "a853409f-e207-4ec2-a40d-4711428bb2c4",
-        "de17155e-34ea-43b8-ae37-39d6bd157df8",
-        "91efe66c-a198-4e17-94c7-5416b1be7545",
-        "1fd0d8f2-2495-42bf-a199-6a30bbdb9019",
-        "0eaf3eb1-5472-4a1a-bad4-69dbd1e03c6e",
-        "51618fbc-7934-4a9f-803a-e27ed4ac177d"
-      ],
+    "0e2c63ca-e4c9-482b-a157-73272dd89ee8": {
+      "type": "product-carousel",
       "settings": {
-        "title": "",
-        "subtitle": "",
-        "footnote": "",
-        "newsetting": ""
+        "collection": "hats",
+        "layout": "regular",
+        "title_size": "normal"
       }
     }
   },
   "order": [
     "b1d8d94c-2e32-4b36-9431-d26978893a9a",
     "f55fd9df-34e5-4a6a-ad16-040620edc061",
-    "4538c27b-ee63-47b8-b76f-3ac556f013c3",
-    "0e2c63ca-e4c9-482b-a157-73272dd89ee8",
+    "exploding-gallery",
     "product-comparison",
+    "4538c27b-ee63-47b8-b76f-3ac556f013c3",
+    "ec1b5854-83ce-444d-98d7-59146e5f9b0e",
     "scroll-anim",
-    "exploding-gallery"
+    "0e2c63ca-e4c9-482b-a157-73272dd89ee8"
   ]
 }

@@ -5,15 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:sw": "workbox injectManifest workbox.config.js"
+    "build:sw": "workbox injectManifest workbox.config.js",
+    "dev": "run-p dev:*",
+    "dev:shopify": "shopify theme dev --store=liquivelte.myshopify.com -e --host=localhost --live-reload=off",
+    "verbose": "shopify theme dev --store=liquivelte.myshopify.com -e --host=localhost --verbose",
+    "dev:ssl": "ssl-proxy --source 9393 --target 9292"
   },
   "author": "m.ali petek",
   "license": "ISC",
   "dependencies": {
     "@mertasan/tailwindcss-variables": "^2.5.0",
     "@tsconfig/svelte": "^3.0.0",
+    "console-log-colors": "^0.3.3",
+    "debounce-promise": "^3.1.2",
     "framework7": "../framework7-liquivelte/packages/core",
     "framework7-liquivelte": "../framework7-liquivelte/packages/liquivelte",
+    "framework7-svelte": "^7.1.5",
     "scrollmagic": "^2.0.8",
     "svelte": "^3.48.0",
     "swiper": "^8.4.5",
@@ -28,6 +35,7 @@
     "workbox-window": "^6.5.4"
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
     "svelte-grommet-icons": "^0.2.0"
   }
 }

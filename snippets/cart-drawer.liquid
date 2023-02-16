@@ -25,6 +25,12 @@
 	
 	endfor
 	endif
+	if lv_propName == 'cart' and cart == blank
+		assign cart = lv_propValue
+	endif
+	if lv_propName == 'min_amounts' and min_amounts == blank
+		assign min_amounts = lv_propValue
+	endif
 	endfor
 	-%}
 	
@@ -43,8 +49,13 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div  class="liquivelte-component cart-drawer svelte-2fnp2n" data-liquivelte-component-name="cart-drawer.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	{% liquid 
+	assign initialized = false
 	assign min_amounts = '{'
 	for item in cart.items
 		assign min_amount = item.product.metafields.custom['min-amount'] | default: 0
@@ -57,84 +68,15 @@
 %}
 
   
-{% comment %}
-kvsp stands for "key value separator"
-prsp stands for "props separator"
-{% endcomment %}
-{% comment %}
-scs stands for "slot component separator"
-scvs stands for "slot component value separator"
-smns stands for "slot module name separator"
-{% endcomment %}
-{% capture props_View %}classes-kvsp-cart-drawer{% endcapture %}
 
-{%- capture slot_content_View_header -%}<div slot="header"  class="text-xl mb-4 svelte-2fnp2n">{{ item.product_title }}</div>{%- endcapture -%}
-{% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-smns-' | append: 'header' | append: '-scvs-' | append: slot_content_View_header %}
 
-{%- capture slot_content_View_after -%}<div slot="after"  class="ml-2 svelte-2fnp2n"> {{ item.price | money }} </div>{%- endcapture -%}
-{% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-smns-' | append: 'after' | append: '-scvs-' | append: slot_content_View_after %}
-
-{%- capture slot_content_View_text -%}<div slot="text"  class="cart-item-options svelte-2fnp2n">
-							{% for option in item.variant_options %}
-    {% assign index = forloop.index0 %}
-							<span  class="text-gray-500k text-base line-item-option svelte-2fnp2n"> {{ option }} </span> <br>
-							{% endfor %}
-						</div>{%- endcapture -%}
-{% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-smns-' | append: 'text' | append: '-scvs-' | append: slot_content_View_text %}
-
-{%- capture slot_content_View_media -%}<div slot="media">
-							{% if item.image %}
-								<img src="{{ item.image | image_url: width: 120 }}" liquivelte-value-cache="image_url§{{item.image | escape -}}, {{width}}, {{120}}§{{item.image| image_url: width: 120  }}" width="80" />
-							{% endif %}
-						</div>{%- endcapture -%}
-{% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-smns-' | append: 'media' | append: '-scvs-' | append: slot_content_View_media %}
-
-{%- capture slot_content_View_footer -%}<div slot="footer"  class="ml-2 svelte-2fnp2n">
-							
-{% comment %}
-kvsp stands for "key value separator"
-prsp stands for "props separator"
-{% endcomment %}
-{% comment %}
-scs stands for "slot component separator"
-scvs stands for "slot component value separator"
-smns stands for "slot module name separator"
-{% endcomment %}
-{% capture props_Loadable %}{% endcapture %}
-
-{%- capture slot_content_def_Loadable -%} 
-								
-{% comment %}
-  kvsp stands for "key value separator"
-  prsp stands for "props separator"
-{% endcomment %}
-{% capture props_Stepper %}raised-kvsp-1-prsp-onChange-kvsp-{ quantityChange.bind(item) }-prsp-value-kvsp-{item.quantity}{% endcapture %}
-{% assign modulename = basename | append: 'framework7-liquivelte-stepper' %}
-{% include modulename, liquivelte: true, props: props_Stepper, sub_include: true, basename: 'framework7-liquivelte-' %}
-{% assign props = '' %}
-							{%- endcapture -%}
-{% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: 'loadable' | append: '-scvs-' | append: slot_content_def_Loadable %}
-{% assign modulename = basename | append: 'loadable' %}
-{% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: '' %}
-{% assign slot_content_Loadable = '' %}
-{% assign props = '' %}
-						</div>{%- endcapture -%}
-{% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-smns-' | append: 'footer' | append: '-scvs-' | append: slot_content_View_footer %}
-
-{%- capture slot_content_def_View -%}
-    
-{% comment %}
-kvsp stands for "key value separator"
-prsp stands for "props separator"
-{% endcomment %}
-{% comment %}
-scs stands for "slot component separator"
-scvs stands for "slot component value separator"
-smns stands for "slot module name separator"
-{% endcomment %}
-{% capture props_Page %}undefined-kvsp-1{% endcapture %}
-
-{%- capture slot_content_def_Page -%}
+	{%- liquid 
+	assign dynamic_classes = ''
+	  if initialized == false 
+	assign dynamic_classes = dynamic_classes | append: ' hidden'
+	endif
+	-%}
+	<div  class="cart-drawer{{ dynamic_classes }} svelte-2fnp2n">
 			
 {% comment %}
 kvsp stands for "key value separator"
@@ -146,8 +88,10 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Block %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Block -%}
+
+{%- capture slot_content_def_Block -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
 				
 {% comment %}
 kvsp stands for "key value separator"
@@ -159,19 +103,25 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_BlockTitle %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_BlockTitle -%}
+
+{%- capture slot_content_def_BlockTitle -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
 					Cart
-				{%- endcapture -%}
-{% assign slot_content_BlockTitle = slot_content_BlockTitle | append: '-scs-' | append: 'framework7-liquivelte-block-title' | append: '-scvs-' | append: slot_content_def_BlockTitle %}
+				{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-block-title' %}
-{% include modulename, liquivelte: true, props: props_BlockTitle, sub_include: true, slot_contents: slot_content_BlockTitle, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_BlockTitle = slot_content_BlockTitle | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_BlockTitle %}
+{% include modulename, liquivelte: true, props: props_BlockTitle, sub_include: true, slot_contents: slot_content_BlockTitle, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_BlockTitle = '' %}
 {% assign props = '' %}
-			{%- endcapture -%}
-{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: 'framework7-liquivelte-block' | append: '-scvs-' | append: slot_content_def_Block %}
+			{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-block' %}
-{% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Block %}
+{% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Block = '' %}
 {% assign props = '' %}
 			
@@ -185,9 +135,16 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_List %}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_List -%}
-				{% for item in $cartStore.items  %}
+
+{%- capture slot_content_def_List -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+				{% if cart.items.size == 0 %}
+					<p data-t="{{ 'sections.cart.empty' | t }}" liquivelte-value-cache="t§{{'sections.cart.empty' | escape -}}§{{'sections.cart.empty'| t  }}">
+						{{ 'sections.cart.empty' | t }}
+					</p>
+				{% endif %}
+				{% for item in cart.items  %}
     {% assign index = forloop.index0 %}
 					
 {% comment %}
@@ -200,24 +157,72 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_ListItem %}classes-kvsp-h-[120px]{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_ListItem -%}
-						
-						
-						
-						
-						
-					{%- endcapture -%}
-{% assign slot_content_ListItem = slot_content_ListItem | append: '-scs-' | append: 'framework7-liquivelte-list-item' | append: '-scvs-' | append: slot_content_def_ListItem %}
+
+{%- capture slot_content_def_ListItem -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+						<div slot="header"  class="text-xl mb-4 svelte-2fnp2n">{{ item.product_title }}</div>
+						<div slot="after"  class="ml-2 svelte-2fnp2n"> {{ item.price | money }} </div>
+						<div slot="text"  class="cart-item-options svelte-2fnp2n">
+							{% for option in item.variant_options %}
+    {% assign index = forloop.index0 %}
+							<span  class="text-gray-500k text-base line-item-option svelte-2fnp2n"> {{ option }} </span> <br>
+							{% endfor %}
+						</div>
+						<div slot="media">
+							{% if item.image %}
+								<img src="{{ item.image | image_url: width: 120 }}" liquivelte-value-cache="image_url§{{item.image | escape -}}, {{width}}, {{120}}§{{item.image| image_url: width: 120  }}" width="80" loading="lazy" />
+							{% endif %}
+						</div>
+						<div slot="footer"  class="ml-2 svelte-2fnp2n">
+							
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Loadable %}{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Loadable -%}{% assign component_include_depth = component_include_depth | plus: 1 %} 
+								
+{% comment %}
+  kvsp stands for "key value separator"
+  prsp stands for "props separator"
+{% endcomment %}
+{% capture props_Stepper %}raised-kvsp-1-prsp-onChange-kvsp-{ quantityChange.bind(item) }-prsp-value-kvsp-{item.quantity}{% endcapture %}
+{% assign modulename = basename | append: 'framework7-liquivelte-stepper' %}
+{% include modulename, liquivelte: true, props: props_Stepper, sub_include: true, basename: 'framework7-liquivelte-'  %}
+{% assign props = '' %}
+							{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'loadable' %}
+{% assign slot_content_Loadable = slot_content_Loadable | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Loadable %}
+{% include modulename, liquivelte: true, props: props_Loadable, sub_include: true, slot_contents: slot_content_Loadable, basename: ''  %}
+{% assign slot_content_Loadable = '' %}
+{% assign props = '' %}
+						</div>
+					{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-list-item' %}
-{% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, slot_contents: slot_content_ListItem, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_ListItem = slot_content_ListItem | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_ListItem %}
+{% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, slot_contents: slot_content_ListItem, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_ListItem = '' %}
 {% assign props = '' %}
 				{% endfor %}
-			{%- endcapture -%}
-{% assign slot_content_List = slot_content_List | append: '-scs-' | append: 'framework7-liquivelte-list' | append: '-scvs-' | append: slot_content_def_List %}
+			{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-list' %}
-{% include modulename, liquivelte: true, props: props_List, sub_include: true, slot_contents: slot_content_List, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_List = slot_content_List | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_List %}
+{% include modulename, liquivelte: true, props: props_List, sub_include: true, slot_contents: slot_content_List, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_List = '' %}
 {% assign props = '' %}
 			
@@ -231,35 +236,240 @@ scvs stands for "slot component value separator"
 smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Block %}classes-kvsp-cart-drawer-bottom{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
 
-{%- capture slot_content_def_Block -%}
-					<div  class="cart-drawer-subtotal svelte-2fnp2n">
-						<span  class="text-gray text-base float-left svelte-2fnp2n" data-t="{{ 'general.cart.subtotal' | t }}" liquivelte-value-cache="t§{{'general.cart.subtotal' | escape -}}§{{'general.cart.subtotal'| t  }}"> {{ 'general.cart.subtotal' | t }} </span> 
-						<span cart-drawer-subtotal-text  class="float-right text-black text-lg  svelte-2fnp2n">{{ cart.items_subtotal_price | money }}</span>
-					</div>
-					<div  class="cart-drawer-taxes-notice text-base text-black float-left svelte-2fnp2n"> Taxes and shipping calculated at checkout </div>
-					<button on:click="{() _afeq__afct_ submit() }"  class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-2fnp2n">
-						 Checkout 
-					</button>
-					<a  class="mt-10 w-full bg-gray-300 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-black hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 svelte-2fnp2n" href="/cart"> View Cart </a>
-			{%- endcapture -%}
-{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: 'framework7-liquivelte-block' | append: '-scvs-' | append: slot_content_def_Block %}
+
+{%- capture slot_content_def_Block -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+				 
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Row %}noGap-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Row -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+					 
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Col %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Col -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+						<span  class="text-base float-left svelte-2fnp2n" data-t="{{ 'sections.cart.subtotal' | t }}" liquivelte-value-cache="t§{{'sections.cart.subtotal' | escape -}}§{{'sections.cart.subtotal'| t  }}"> {{ 'sections.cart.subtotal' | t }} </span> 
+					{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-col' %}
+{% assign slot_content_Col = slot_content_Col | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Col %}
+{% include modulename, liquivelte: true, props: props_Col, sub_include: true, slot_contents: slot_content_Col, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Col = '' %}
+{% assign props = '' %}
+					
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Col %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Col -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+						<span cart-drawer-subtotal-text  class="float-right text-lg  svelte-2fnp2n">{{ cart.items_subtotal_price | money }}</span>
+					{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-col' %}
+{% assign slot_content_Col = slot_content_Col | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Col %}
+{% include modulename, liquivelte: true, props: props_Col, sub_include: true, slot_contents: slot_content_Col, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Col = '' %}
+{% assign props = '' %}
+				{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-row' %}
+{% assign slot_content_Row = slot_content_Row | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Row %}
+{% include modulename, liquivelte: true, props: props_Row, sub_include: true, slot_contents: slot_content_Row, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Row = '' %}
+{% assign props = '' %}
+				
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Row %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Row -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+					<div  class="cart-drawer-taxes-notice text-base float-left svelte-2fnp2n"> Taxes and shipping calculated at checkout </div>
+				{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-row' %}
+{% assign slot_content_Row = slot_content_Row | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Row %}
+{% include modulename, liquivelte: true, props: props_Row, sub_include: true, slot_contents: slot_content_Row, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Row = '' %}
+{% assign props = '' %}
+				<Block >
+					
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Button %}fill-kvsp-1-prsp-large-kvsp-1-prsp-classes-kvsp-mt-10 {% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Button -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+							<span data-t="{{ 'sections.cart.checkout' | t }}" liquivelte-value-cache="t§{{'sections.cart.checkout' | escape -}}§{{'sections.cart.checkout'| t  }}">
+								{{ 'sections.cart.checkout' | t }}
+							</span>
+					{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-button' %}
+{% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Button %}
+{% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Button = '' %}
+{% assign props = '' %}
+				{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
 {% assign modulename = basename | append: 'framework7-liquivelte-block' %}
-{% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-' %}
+{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Block %}
+{% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-'  %}
 {% assign slot_content_Block = '' %}
 {% assign props = '' %}
-    {%- endcapture -%}
-{% assign slot_content_Page = slot_content_Page | append: '-scs-' | append: 'framework7-liquivelte-page' | append: '-scvs-' | append: slot_content_def_Page %}
-{% assign modulename = basename | append: 'framework7-liquivelte-page' %}
-{% include modulename, liquivelte: true, props: props_Page, sub_include: true, slot_contents: slot_content_Page, basename: 'framework7-liquivelte-' %}
-{% assign slot_content_Page = '' %}
+				
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Block %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Block -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+					
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Button %}fill-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Button -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+						<span data-t="{{ 'sections.cart.save_as_wishlist' | t }}" liquivelte-value-cache="t§{{'sections.cart.save_as_wishlist' | escape -}}§{{'sections.cart.save_as_wishlist'| t  }}">
+							{{ 'sections.cart.save_as_wishlist' | t }}
+						</span>
+					{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-button' %}
+{% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Button %}
+{% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Button = '' %}
 {% assign props = '' %}
-  {%- endcapture -%}
-{% assign slot_content_View = slot_content_View | append: '-scs-' | append: 'framework7-liquivelte-view' | append: '-scvs-' | append: slot_content_def_View %}
-{% assign modulename = basename | append: 'framework7-liquivelte-view' %}
-{% include modulename, liquivelte: true, props: props_View, sub_include: true, slot_contents: slot_content_View, basename: 'framework7-liquivelte-' %}
-{% assign slot_content_View = '' %}
+				{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-block' %}
+{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Block %}
+{% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Block = '' %}
 {% assign props = '' %}
+				
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Block %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Block -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+					
+{% comment %}
+kvsp stands for "key value separator"
+prsp stands for "props separator"
+{% endcomment %}
+{% comment %}
+scs stands for "slot component separator"
+scvs stands for "slot component value separator"
+smns stands for "slot module name separator"
+{% endcomment %}
+{% capture props_Button %}undefined-kvsp-1{% endcapture %}
+{%- assign component_include_count_before_slots = component_include_count -%}
+
+
+{%- capture slot_content_def_Button -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
+						<span data-t="{{ 'sections.cart.share' | t }}" liquivelte-value-cache="t§{{'sections.cart.share' | escape -}}§{{'sections.cart.share'| t  }}">
+							{{ 'sections.cart.share' | t }}
+						</span>
+					{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-button' %}
+{% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Button %}
+{% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Button = '' %}
+{% assign props = '' %}
+				{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
+{%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
+
+{% assign modulename = basename | append: 'framework7-liquivelte-block' %}
+{% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Block %}
+{% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-'  %}
+{% assign slot_content_Block = '' %}
+{% assign props = '' %}
+			</Block>
+</div>
 
 	
 	
@@ -318,11 +528,17 @@ smns stands for "slot module name separator"
 
   assign cart_json = cart_json | append: '}' 
 -%}					
-						
-	<script type="text/noscript"  class="instance-data svelte-2fnp2n">{
+		
+	<script type="text/noscript"  class="instance-data svelte-2fnp2n">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"cart": {{ cart_json }}, "min_amounts" : {{ min_amounts | json }}
 	
 	
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "cart-drawer"
 	}</script>
 	
 	<script  class="liquivelte-prop-script svelte-2fnp2n">(() => {
@@ -344,7 +560,15 @@ smns stands for "slot module name separator"
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -378,7 +602,9 @@ smns stands for "slot module name separator"
 			assign slot_default_cart-drawer = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

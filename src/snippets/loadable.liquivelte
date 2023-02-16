@@ -1,3 +1,6 @@
+{% liquid 
+  assign _loading = false
+  %}
 <script>
   import Icon from './icon.liquivelte';
   import { loading } from '../scripts/store.module.js';
@@ -16,7 +19,7 @@
       class:justify-center="{{- centered -}}"
       class:align-center="{{- centered -}}"
       >  
-    {% if loading_ %}
+    {% if loading_ == true %}
       <Icon name="icon-spinner" width="{{- width -}}" />
     {% else %}
       <slot />

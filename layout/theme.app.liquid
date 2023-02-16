@@ -31,13 +31,10 @@
   
       <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
   <!-- liquivelte includes -->
-      {% assign templatesWithLiquivelte = 'collection,index.icon,index,product' | split: ',' %}
+      {% assign templatesWithLiquivelte = 'collection,index.icon,index,page.contact,page,product' | split: ',' %}
       {% assign template_with_suffix_and_directory = template %}
       {% if template.directory %}
         {% assign template_with_suffix_and_directory = template.directory | append: '-' | append: template_with_suffix_and_directory %}
-        {% endif %}
-        {% if template.suffix != blank %}
-        {% assign template_with_suffix_and_directory = template_with_suffix_and_directory | append: '.' | template.suffix %}
       {% endif %}
       {% if templatesWithLiquivelte contains template_with_suffix_and_directory %}
         {% assign liquivelte_js_source = 'theme.app.' | append: template_with_suffix_and_directory | append: '.liquivelte.js' %}
@@ -47,8 +44,38 @@
         <link rel="stylesheet" rel="preload" as="style" href="{{ liquivelte_css_source | asset_url }}" />
       {% endif %}
 
-      {% include 'liquivelte-criticals' with template: template_with_suffix_and_directory %}
-      
+      {% assign critical_identifier = 'theme.app' | append: template_with_suffix_and_directory %}
+      {% include 'liquivelte-criticals' with template: critical_identifier %}
+      <script>
+        window.addEventListener('load', () => {
+          document.querySelector('style[critical-css]').remove();
+        });
+        window.liquivelte_main_scripts_registry = new Map([
+          {% for template in templatesWithLiquivelte %}
+          ['{{ 'theme.app.' | append: template | append: '.liquivelte.js' }}', { 
+            loaded: false,
+            src: '{{ 'theme.app.' | append: template | append: '.liquivelte.js' | asset_url }}'
+          }],
+          {% endfor %}
+          ['{{liquivelte_js_source}}', { 
+            loaded: true,
+            src: '{{- liquivelte_js_source | asset_url -}}'
+          } ],
+        ]);
+        window.liquivelte_main_styles_registry = new Map([
+          {% for template in templatesWithLiquivelte %}
+          ['{{ 'theme.app.' | append: template | append: '.liquivelte.css' }}', { 
+            loaded: false, 
+            href: '{{ 'theme.app.' | append: template | append: '.liquivelte.css' | asset_url }}'
+          }],
+          {% endfor %}
+          ['{{liquivelte_css_source}}', { 
+            loaded: true,
+            href: '{{liquivelte_css_source | asset_url }}',
+            node: document.querySelector('[href*="{{ liquivelte_css_source }}"]') 
+          } ],
+        ]);
+      </script>
       {% if request.design_mode %}
         <script type="module" src="{{ 'liquivelte-sections-loader.js' | asset_url }}" defer="defer"></script>
       {% endif %}

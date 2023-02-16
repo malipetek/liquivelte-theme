@@ -22,6 +22,7 @@ const onIntersect = (el, callback) => {
           wrapper.svelteComponent = new (await import('./collection-banner-hs8daa1a0c.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
+            props: { resetCicR: true },
             context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
@@ -42,6 +43,7 @@ const onIntersect = (el, callback) => {
           wrapper.svelteComponent = new (await import('./facets-hs8daa1a0c.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
+            props: { resetCicR: true },
             context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
@@ -62,6 +64,7 @@ const onIntersect = (el, callback) => {
           wrapper.svelteComponent = new (await import('./collection-product-grid-hs8daa1a0c.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
+            props: { resetCicR: true },
             context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
           });
         }
@@ -70,4 +73,3 @@ const onIntersect = (el, callback) => {
   });
   };
   document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));

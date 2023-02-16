@@ -124,6 +124,7 @@
   assign filters = filters | append: ']'
 %}
 <script>
+  import debounce from 'debounce-promise';
   import { Panel, Page, View, Views, Block, Button, Chip, Link, List, ListItem, ListInput, Swiper, SwiperSlide, Navbar, Range } from 'framework7-liquivelte';
   import Icon from '../snippets/icon.liquivelte';
   const collection = {};
@@ -131,14 +132,94 @@
   filters = JSON.parse(filters);
   collection.filters = filters;
 
-  $: console.log('filters ', filters);
+  let urlToFetch = new URL(window.location.href);
+  const _setUrl = async (e) => {
+    urlToFetch = e
+    document.dispatchEvent(new CustomEvent('filters-changed', {detail: { urlToFetch: e }}));
+  };
+  const setUrl = debounce(_setUrl, 500);
 
-  function priceChange(e) {
-    console.log('price change ', e);
+  $: console.log('filter ', filters);
 
+  let price_min = 0;
+  let price_max = (filters.find(f => f.type == 'price_range') || {}).range_max;
+
+  for (let filter of filters) {
+    filter.active_values_flat = filter.active_values.map(e => e.value);
+    if(filter.type == 'price_range') {
+      if(filter.max_value.value === null) {
+        filter.max_value.value = filter.range_max;
+      }
+    }
   }
-  function removeFilter() {
 
+  // $: filter_values = 
+  // $: console.log('filters ', filters);
+  function filterChange(e, filter) {
+
+    filter.inactive_values = filter.values
+    .filter(e => !filter.active_values_flat.includes(e.value))
+    .map(v => ({...v, active: false }));
+
+    filter.active_values = filter.values
+    .filter(e => filter.active_values_flat.includes(e.value))
+    .map(v => ({...v, active: true }));
+    
+    const newURL = new URL(urlToFetch.href);
+
+    newURL.searchParams.delete(filter.param_name);
+    if(filter.active_values.length) {
+      filter.active_values_flat.forEach(v => newURL.searchParams.append(filter.param_name, v));
+    }
+
+    if(newURL.href != urlToFetch.href) {
+      setUrl(newURL);
+    }
+
+    console.log('filter change ', newURL.href);
+  }
+  function priceChange([min, max], filter) {
+    collection.filters = collection.filters.map(f => {
+      if(f !== filter) return f;
+      return {
+      ...filter,
+      max_value: {...filter.max_value, active: max != filter.range_max ? true : false, value: max },
+      min_value: {...filter.min_value, active: min ? true : false, value: min }
+      }
+    });
+        
+    const newURL = new URL(urlToFetch.href);
+    
+    if(filter.max_value.value != filter.range_max) { 
+      newURL.searchParams.set(filter.max_value.param_name, (max/100).toFixed(2));
+    } else {
+      newURL.searchParams.delete(filter.max_value.param_name);
+    }
+
+    if(filter.min_value.value > 0) { 
+      newURL.searchParams.set(filter.min_value.param_name, (min/100).toFixed(2));
+    } else {
+      newURL.searchParams.delete(filter.min_value.param_name);
+    }
+    
+    if(newURL.href != urlToFetch.href) {
+      setUrl(newURL);
+    }
+    
+    console.log('price filter change ', filter, newURL.href);
+  }
+
+  function priceUpdate([min, max], filter) {
+    price_min = min;
+    price_max = max;
+  }
+  
+  function removeFilter(value, filter) {
+    if(filter.type == 'price_range') {
+      console.log(value, filter);
+    }
+
+    filter.active_values_flat = filter.active_values_flat.filter(v => v !== value.value);
   }
 </script>
 <Navbar>
@@ -153,29 +234,33 @@
 </Navbar>
 
 <Panel left cover id="filters-panel">
-    <View init name="filters-view" stackPages="{true}">
+    <View name="filters-view" stackPages="{true}">
     <Page>
       <List>
-        {% for filter in collection.filters %}
+        {% for filter in collection.filters (filter.label) %}
           {% if filter.type == 'price_range' %}
             <ListInput
-              label="{{- filter.label -}}"
               input="{false}"
-            > 
+            >
+            <div slot="label" class="display-flex justify-content-space-between">
+              <span>{{- filter.label -}}</span>
+              <span>{{- price_min | money -}} - ${{- price_max | money -}}</span>
+            </div>
               <span slot="input">
                  <Range
                     min="{0}"
                     max="{filter.range_max}"
-                    step="{1}"
-                    value="{[filter.min_value.value, filter.max_value.value]}"
+                    step="{100}"
+                    value="{[filter.min_value.value, filter.max_value.value || filter.range_max]}"
                     dual="{true}"
-                    onRangeChange="{priceChange.bind(filter)}"
+                    onRangeChange="{function(e) { priceUpdate(e, filter) } }"
+                    onRangeChanged="{function(e) { priceChange(e, filter) } }"
                   ></Range>
               </span>
             </ListInput>
           {% else %}
           <ListItem title="{{- filter.label -}}" smartSelect>
-            <select multiple name="{{- filter.label -}}" value="{ filter.active_values.map(v => v.value) }">
+            <select multiple name="{{- filter.label -}}" bind:value="{ filter.active_values_flat }" on:change="{e => filterChange(e, filter)}" >
               {% for value in filter.values %}
                 <option value="{{- value.value -}}">{{- value.label -}}</option>
               {% endfor %}
@@ -189,22 +274,25 @@
 </Panel>
 
 <Block>
-  {% for filter in collection.filters %}
-    {% for value in filter.active_values %}
-      <Chip text="{{- value.label -}}" deleteable onDelete={removeFilter} ></Chip>
+  {% for filter in collection.filters (filter.label) %}
+
+      {% for value in filter.active_values %}
+        <Chip text="{{- value.label -}}" deleteable onDelete="{function() { removeFilter(value, filter) } }" ></Chip>
       {% endfor %}
+
       {% if filter.type == 'price_range' %}
-        {% if filter.max_value %}
-          <Chip deleteable onDelete={removeFilter} >
-            <span slot="text">Max {{- filter.max_value.value | money -}}</span>
-          </Chip>
-        {% endif %}
-        {% if filter.min_value %}
-          <Chip deleteable onDelete={removeFilter} >
+        {% if filter.min_value.value > 0 %}
+          <Chip deleteable onDelete="{function() { removeFilter(filter.min_value, filter) } }" >
             <span slot="text">Min {{- filter.min_value.value | money -}}</span>
           </Chip>
         {% endif %}
+        {% if filter.max_value.value < filter.range_max %}
+          <Chip deleteable onDelete="{function() { removeFilter(filter.max_value, filter) } }" >
+            <span slot="text" >Max {{- filter.max_value.value | money -}}</span>
+          </Chip>
+        {% endif %}
     {% endif %}
+
   {% endfor %}
 </Block>
 {% schema %}

@@ -11,8 +11,7 @@
   /* {% comment %} DO NOT REMOVE THIS LINE {% endcomment %} */
   // include template module
 
-   const initializeObservers = () => {
+   const initializeObservers = (doc) => {
      };
   document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
-  document.addEventListener('view-loaded', event => initializeObservers(event.detail.document));
   

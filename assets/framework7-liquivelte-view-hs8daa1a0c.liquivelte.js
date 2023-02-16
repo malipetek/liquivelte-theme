@@ -1,4 +1,4 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, element, space, claim_element, children, claim_space, detach, attr, toggle_class, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, group_outros, check_outros, transition_out, destroy_each, getContext, createEventDispatcher, onMount, tick, afterUpdate, onDestroy, assign, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, binding_callbacks, empty, get_spread_update, get_spread_object } from './liquivelte-svelte-hs532e1aa9.liquivelte.js';
+import { SvelteComponent, init, safe_not_equal, create_slot, element, space, claim_element, children, claim_space, detach, attr, toggle_class, insert_hydration, append_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, group_outros, check_outros, transition_out, destroy_each, getContext, createEventDispatcher, onMount, tick, afterUpdate, onDestroy, assign, exclude_internal_props, create_component, claim_component, mount_component, destroy_component, binding_callbacks, empty, get_spread_update, get_spread_object } from './liquivelte-svelte-hs035d430e.liquivelte.js';
 import { createEmitter, app, noUndefinedProps, getRouterInitialComponent, useTab, f7ready, classNames, colorClasses, getRouterId } from './framework7-liquivelte-hsa0091f48.liquivelte.js';
 import { Router_context_provider } from './framework7-liquivelte-router-context-provider-hs8daa1a0c.liquivelte.js';
 
@@ -6,39 +6,39 @@ import { Router_context_provider } from './framework7-liquivelte-router-context-
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[35] = list[i];
-	child_ctx[38] = i;
+	child_ctx[37] = list[i];
+	child_ctx[40] = i;
 
 	const constants_0 = {
-		first: /*index*/ child_ctx[38] === 0,
-		index: /*index*/ child_ctx[38] + 1,
-		index0: /*index*/ child_ctx[38],
-		last: /*index*/ child_ctx[38] === /*pages*/ child_ctx[8].length - 1,
-		rindex: /*pages*/ child_ctx[8].length - /*index*/ child_ctx[38],
-		rindex0: /*pages*/ child_ctx[8].length - /*index*/ child_ctx[38] - 1,
-		length: /*pages*/ child_ctx[8].length
+		first: /*index*/ child_ctx[40] === 0,
+		index: /*index*/ child_ctx[40] + 1,
+		index0: /*index*/ child_ctx[40],
+		last: /*index*/ child_ctx[40] === /*viewpages*/ child_ctx[8].length - 1,
+		rindex: /*viewpages*/ child_ctx[8].length - /*index*/ child_ctx[40],
+		rindex0: /*viewpages*/ child_ctx[8].length - /*index*/ child_ctx[40] - 1,
+		length: /*viewpages*/ child_ctx[8].length
 	};
 
-	child_ctx[36] = constants_0;
+	child_ctx[38] = constants_0;
 	return child_ctx;
 }
 
-const get_default_slot_spread_changes_1 = dirty => dirty[0] & /*pages*/ 256;
+const get_default_slot_spread_changes_1 = dirty => dirty[0] & /*viewpages*/ 256;
 const get_default_slot_changes_1 = dirty => ({});
-const get_default_slot_context_1 = ctx => ({ .../*page*/ ctx[35].props });
-const get_default_slot_spread_changes = dirty => dirty[0] & /*pages*/ 256;
+const get_default_slot_context_1 = ctx => ({ .../*page*/ ctx[37].props });
+const get_default_slot_spread_changes = dirty => dirty[0] & /*viewpages*/ 256;
 const get_default_slot_changes = dirty => ({ view: dirty[0] & /*f7View*/ 64 });
 
 const get_default_slot_context = ctx => ({
 	view: /*f7View*/ ctx[6],
-	.../*page*/ ctx[35].props
+	.../*page*/ ctx[37].props
 });
 
-// (223:6) {:else}
+// (227:6) {:else}
 function create_else_block(ctx) {
 	let current;
-	const default_slot_template = /*#slots*/ ctx[12].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[14], get_default_slot_context_1);
+	const default_slot_template = /*#slots*/ ctx[13].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[15], get_default_slot_context_1);
 
 	return {
 		c() {
@@ -56,15 +56,15 @@ function create_else_block(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[0] & /*$$scope, pages*/ 16640)) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope, viewpages*/ 33024)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[14],
+						/*$$scope*/ ctx[15],
 						get_default_slot_spread_changes_1(dirty) || !current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[14])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[14], dirty, get_default_slot_changes_1),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[15])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[15], dirty, get_default_slot_changes_1),
 						get_default_slot_context_1
 					);
 				}
@@ -85,13 +85,13 @@ function create_else_block(ctx) {
 	};
 }
 
-// (221:6) {#if initialized }
+// (225:6) {#if initialized }
 function create_if_block(ctx) {
 	let switch_instance;
 	let switch_instance_anchor;
 	let current;
-	const switch_instance_spread_levels = [/*page*/ ctx[35].props];
-	var switch_value = /*page*/ ctx[35].component;
+	const switch_instance_spread_levels = [/*page*/ ctx[37].props];
+	var switch_value = /*page*/ ctx[37].component;
 
 	function switch_props(ctx) {
 		let switch_instance_props = {};
@@ -125,11 +125,11 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			const switch_instance_changes = (dirty[0] & /*pages*/ 256)
-			? get_spread_update(switch_instance_spread_levels, [get_spread_object(/*page*/ ctx[35].props)])
+			const switch_instance_changes = (dirty[0] & /*viewpages*/ 256)
+			? get_spread_update(switch_instance_spread_levels, [get_spread_object(/*page*/ ctx[37].props)])
 			: {};
 
-			if (switch_value !== (switch_value = /*page*/ ctx[35].component)) {
+			if (switch_value !== (switch_value = /*page*/ ctx[37].component)) {
 				if (switch_instance) {
 					group_outros();
 					const old_component = switch_instance;
@@ -169,7 +169,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (220:4) <RouterContextProvider  route="{page.props.f7route}" router="{page.props.f7router}" >
+// (224:4) <RouterContextProvider  route="{page.props.f7route}" router="{page.props.f7router}" >
 function create_default_slot(ctx) {
 	let current_block_type_index;
 	let if_block;
@@ -243,15 +243,15 @@ function create_default_slot(ctx) {
 	};
 }
 
-// (210:2) {#each  pages as page, index   }
+// (214:2) {#each  viewpages as page, index   }
 function create_each_block(ctx) {
 	let routercontextprovider;
 	let current;
 
 	routercontextprovider = new Router_context_provider({
 			props: {
-				route: /*page*/ ctx[35].props.f7route,
-				router: /*page*/ ctx[35].props.f7router,
+				route: /*page*/ ctx[37].props.f7route,
+				router: /*page*/ ctx[37].props.f7router,
 				$$slots: { default: [create_default_slot] },
 				$$scope: { ctx }
 			}
@@ -270,10 +270,10 @@ function create_each_block(ctx) {
 		},
 		p(ctx, dirty) {
 			const routercontextprovider_changes = {};
-			if (dirty[0] & /*pages*/ 256) routercontextprovider_changes.route = /*page*/ ctx[35].props.f7route;
-			if (dirty[0] & /*pages*/ 256) routercontextprovider_changes.router = /*page*/ ctx[35].props.f7router;
+			if (dirty[0] & /*viewpages*/ 256) routercontextprovider_changes.route = /*page*/ ctx[37].props.f7route;
+			if (dirty[0] & /*viewpages*/ 256) routercontextprovider_changes.router = /*page*/ ctx[37].props.f7router;
 
-			if (dirty[0] & /*$$scope, pages, initialized*/ 16768) {
+			if (dirty[0] & /*$$scope, viewpages, initialized*/ 33152) {
 				routercontextprovider_changes.$$scope = { dirty, ctx };
 			}
 
@@ -299,9 +299,9 @@ function create_fragment(ctx) {
 	let t;
 	let div_class_value;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[12].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[14], get_default_slot_context);
-	let each_value = /*pages*/ ctx[8];
+	const default_slot_template = /*#slots*/ ctx[13].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[15], get_default_slot_context);
+	let each_value = /*viewpages*/ ctx[8];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -356,27 +356,27 @@ function create_fragment(ctx) {
 				each_blocks[i].m(div, null);
 			}
 
-			/*div_binding*/ ctx[13](div);
+			/*div_binding*/ ctx[14](div);
 			current = true;
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[0] & /*$$scope, f7View, pages*/ 16704)) {
+				if (default_slot.p && (!current || dirty[0] & /*$$scope, f7View, viewpages*/ 33088)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[14],
+						/*$$scope*/ ctx[15],
 						get_default_slot_spread_changes(dirty) || !current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[14])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[14], dirty, get_default_slot_changes),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[15])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[15], dirty, get_default_slot_changes),
 						get_default_slot_context
 					);
 				}
 			}
 
-			if (dirty[0] & /*pages, initialized, $$scope*/ 16768) {
-				each_value = /*pages*/ ctx[8];
+			if (dirty[0] & /*viewpages, initialized, $$scope*/ 33152) {
+				each_value = /*viewpages*/ ctx[8];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -442,15 +442,17 @@ function create_fragment(ctx) {
 			if (detaching) detach(div);
 			if (default_slot) default_slot.d(detaching);
 			destroy_each(each_blocks, detaching);
-			/*div_binding*/ ctx[13](null);
+			/*div_binding*/ ctx[14](null);
 		}
 	};
 }
 
 function instance_1($$self, $$props, $$invalidate) {
 	let { $$slots: slots = {}, $$scope } = $$props;
+	let { importsSeek = 'lower' } = $$props;
 	getContext('svelteProps') || {};
 	getContext('lec') || {};
+	(() => window.cicR = $$props.resetCicR ? 1 : window.cicR + 1)();
 	let { id = undefined } = $$props;
 	let { style = undefined } = $$props;
 	let { init = true } = $$props;
@@ -507,7 +509,7 @@ function instance_1($$self, $$props, $$invalidate) {
 		}
 	}
 
-	let pages = initialPage ? [initialPage] : [];
+	let viewpages = initialPage ? [initialPage] : [];
 
 	function onResize(view, width) {
 		emit('viewResize', [width]);
@@ -541,11 +543,11 @@ function instance_1($$self, $$props, $$invalidate) {
 		f7ready(() => {
 			if (f7View) {
 				routerData.el = el;
-				routerData.pages = pages;
+				routerData.pages = viewpages;
 
 				routerData.setPages = newPages => {
 					tick().then(() => {
-						$$invalidate(8, pages = newPages);
+						$$invalidate(8, viewpages = newPages);
 					});
 				};
 
@@ -583,11 +585,11 @@ function instance_1($$self, $$props, $$invalidate) {
 				routerData = {
 					el,
 					routerId,
-					pages,
+					viewpages,
 					instance: f7View,
 					setPages(newPages) {
 						tick().then(() => {
-							$$invalidate(8, pages = newPages);
+							$$invalidate(8, viewpages = newPages);
 						});
 					}
 				};
@@ -643,14 +645,15 @@ function instance_1($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$new_props => {
-		$$invalidate(34, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		$$invalidate(36, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+		if ('importsSeek' in $$new_props) $$invalidate(9, importsSeek = $$new_props.importsSeek);
 		if ('id' in $$new_props) $$invalidate(0, id = $$new_props.id);
 		if ('style' in $$new_props) $$invalidate(1, style = $$new_props.style);
-		if ('init' in $$new_props) $$invalidate(9, init = $$new_props.init);
-		if ('url' in $$new_props) $$invalidate(10, url = $$new_props.url);
+		if ('init' in $$new_props) $$invalidate(10, init = $$new_props.init);
+		if ('url' in $$new_props) $$invalidate(11, url = $$new_props.url);
 		if ('classes' in $$new_props) $$invalidate(2, classes = $$new_props.classes);
 		if ('main' in $$new_props) $$invalidate(3, main = $$new_props.main);
-		if ('$$scope' in $$new_props) $$invalidate(14, $$scope = $$new_props.$$scope);
+		if ('$$scope' in $$new_props) $$invalidate(15, $$scope = $$new_props.$$scope);
 	};
 
 	$$self.$$.update = () => {
@@ -668,7 +671,8 @@ function instance_1($$self, $$props, $$invalidate) {
 		el,
 		f7View,
 		initialized,
-		pages,
+		viewpages,
+		importsSeek,
 		init,
 		url,
 		instance,
@@ -689,13 +693,14 @@ class View extends SvelteComponent {
 			create_fragment,
 			safe_not_equal,
 			{
+				importsSeek: 9,
 				id: 0,
 				style: 1,
-				init: 9,
-				url: 10,
+				init: 10,
+				url: 11,
 				classes: 2,
 				main: 3,
-				instance: 11
+				instance: 12
 			},
 			null,
 			[-1, -1]
@@ -703,7 +708,7 @@ class View extends SvelteComponent {
 	}
 
 	get instance() {
-		return this.$$.ctx[11];
+		return this.$$.ctx[12];
 	}
 }
 

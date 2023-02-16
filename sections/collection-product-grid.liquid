@@ -25,6 +25,9 @@
 	
 	endfor
 	endif
+	if lv_propName == 'collection' and collection == blank
+		assign collection = lv_propValue
+	endif
 	endfor
 	-%}
 	
@@ -43,32 +46,43 @@
 				-%}
 	{%- unless sub_include -%} 
 	<div class="liquivelte-component collection-product-grid" data-liquivelte-component-name="collection-product-grid.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
 	{%- endunless -%}
 	
 
 
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-  {% for product in collection.products %}
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+  {% for product in collection.products  %}
     {% assign index = forloop.index0 %}
       
 {% comment %}
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props_ProductCard %}product-kvsp-{{ product }}{% endcapture %}
+{% capture props_ProductCard %}initialRender-kvsp-{initialRender}-prsp-product-kvsp-{{ product }}{% endcapture %}
 {% assign modulename = basename | append: 'product-card' %}
-{% include modulename, liquivelte: true, props: props_ProductCard, sub_include: true, basename: '' %}
+{% include modulename, liquivelte: true, props: props_ProductCard, sub_include: true, basename: '' , product:  product  %}
 {% assign props = '' %}
   {% endfor %}
 </div>
 
 	
 						
-						
-	<script type="text/noscript" class="instance-data">{
+		
+	<script type="text/noscript" class="instance-data" >
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
 	"collection" : {{ collection | json }}
 	,
 	"collectionƒƒproducts": {{ collection.products | json }}
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "collection-product-grid"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {
@@ -90,7 +104,15 @@
 	// console.log('wrapper', wrapper);
 	// console.log('parsing props for svelte component');
 	try{
-	wrapper.svelteProps = { ...(wrapper.svelteProps || {}), ...(JSONparse(propScript.previousElementSibling.textContent)) };
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
 	} catch (e) {
 	const err = 'There was an error';
 	console.error('there was an error parsing props json', e);
@@ -124,7 +146,9 @@
 			assign slot_default_collection-product-grid = null
 			
 			-%}
+	
 	{%- unless sub_include -%} 
 	</div>
+	{% assign component_include_count = 0 %}
 	{%- endunless -%}
 	

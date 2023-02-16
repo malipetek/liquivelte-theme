@@ -3,11 +3,14 @@ console.log('custom entry');
   import Framework7 from 'framework7';
   import Panel from 'framework7/components/panel';
   import Popup from 'framework7/components/popup';
+  import Popover from 'framework7/components/popover';
   import Stepper from 'framework7/components/stepper';
   import Accordion from 'framework7/components/accordion';
   import Menu from 'framework7/components/menu';
   import SmartSelect from 'framework7/components/smart-select';
   import Range from 'framework7/components/range';
+  import Notification from 'framework7/components/notification';
+  import Searchbar from 'framework7/components/searchbar';
 
   // Import F7-Svelte Plugin
   import f7liquivelte from 'framework7-liquivelte';
@@ -17,11 +20,14 @@ Framework7.use([
   f7liquivelte,
   Panel,
   Popup,
+  Popover,
   Stepper,
   Accordion,
   Menu,
   SmartSelect,
-  Range
+  Range,
+  Notification,
+  Searchbar
 ]);
 
 const onIntersect = (el, callback) => {
@@ -34,12 +40,12 @@ const onIntersect = (el, callback) => {
 };
 
 /* {% comment %} DO NOT REMOVE THIS LINE {% endcomment %} */
-import "../.templates/product.js";
+import "../.templates/product.custom.js";
   
 
-document.addEventListener('DOMContentLoaded', () => {
+const initializeObservers = (doc) => {
 
-  Array.from(document.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.prompts')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -52,14 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
           wrapper.svelteComponent = new (await import("../sections/prompts/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
     });
   });
 
-  Array.from(document.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.header')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -72,14 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
           wrapper.svelteComponent = new (await import("../sections/header/index.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
     });
   });
 
-  Array.from(document.querySelectorAll('.liquivelte-component.app-wrapper')).forEach(wrapper => {
+  Array.from(doc.querySelectorAll('.liquivelte-component.app-wrapper')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
     let liquid_expression_cache = wrapper.liquid_expression_cache;
@@ -92,11 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
           wrapper.svelteComponent = new (await import("../snippets/app-wrapper.liquivelte")).default({
             target: wrapper,
             hydrate: true,
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache], ['component_include_count', 0]])
           });
         }
       })();
     });
   });
-
-});
+};
+document.addEventListener('DOMContentLoaded', () => initializeObservers(document));
