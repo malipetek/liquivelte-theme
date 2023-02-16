@@ -1,4 +1,4 @@
-import './index.custom-hs8cbfeb6a.liquivelte.js';
+import './page.contact-hs36e5aae9.liquivelte.js';
 
 const onIntersect = (el, callback) => {
     const observer = new IntersectionObserver(callback, {
