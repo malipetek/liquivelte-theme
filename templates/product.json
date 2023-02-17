@@ -107,60 +107,6 @@
         "padding_bottom": 12
       }
     },
-    "419664f3-28ed-48ed-86f2-e822a78816ce": {
-      "type": "perfect-fit-product",
-      "blocks": {
-        "a0fb8cbe-67a2-4778-895f-68fb94314e13": {
-          "type": "blockContent",
-          "settings": {
-            "two_col_img_l": "shopify:\/\/shop_images\/lightweight_6a90a9c0-726e-4390-a352-0efbfa489e6f.png",
-            "sub_title": "Lightweight",
-            "content": "Designed with lightweight European fabrics, perfect for life on the go."
-          }
-        },
-        "4130f623-6894-407c-a55f-74194c75e099": {
-          "type": "blockContent",
-          "settings": {
-            "two_col_img_l": "shopify:\/\/shop_images\/perfect-fit.webp",
-            "sub_title": "Perfect Fit",
-            "content": "Our clothing is designed to fit any body type, find your perfect look!"
-          }
-        },
-        "3b0874f1-d38e-4751-8185-b5eafa6246ea": {
-          "type": "blockContent",
-          "settings": {
-            "two_col_img_l": "shopify:\/\/shop_images\/free-delivery_490a6599-088b-47ed-8082-b2abeafa9303.png",
-            "sub_title": "Free Delivery",
-            "content": "Free delivery on all orders over $100"
-          }
-        },
-        "3f00455d-84ef-44a0-ba79-29fe87defb81": {
-          "type": "blockContent",
-          "settings": {
-            "two_col_img_l": "shopify:\/\/shop_images\/sustainability.webp",
-            "sub_title": "Sustainability",
-            "content": "Designed with a life time of wear in mind, we are proud to offer a Lifetime Guarantee on all products."
-          }
-        }
-      },
-      "block_order": [
-        "a0fb8cbe-67a2-4778-895f-68fb94314e13",
-        "4130f623-6894-407c-a55f-74194c75e099",
-        "3b0874f1-d38e-4751-8185-b5eafa6246ea",
-        "3f00455d-84ef-44a0-ba79-29fe87defb81"
-      ],
-      "settings": {
-        "background_color": "light-gray",
-        "section_spacing_y": "both-y",
-        "section_spacing_x": "both-x",
-        "container": false,
-        "section_title": "",
-        "button_label": "",
-        "button_link": "",
-        "page": "shipping-returns-pdp-rebuild",
-        "page_materials": "materials-care"
-      }
-    },
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
