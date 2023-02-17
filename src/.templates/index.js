@@ -52,6 +52,27 @@
     });
   });
   
+  Array.from(doc.querySelectorAll('.liquivelte-component.exploding-gallery')).forEach(wrapper => {
+    let svelteProps = wrapper.svelteProps;
+    let rawIncludes = wrapper.rawIncludes;
+    let liquid_expression_cache = wrapper.liquid_expression_cache;
+    wrapper.module_loaded = true;
+    let initialized = false;
+    onIntersect(wrapper, ([entry]) => {
+      (async () => {
+        if(entry.isIntersecting && !initialized) {
+          initialized = true;
+          wrapper.svelteComponent = new (await import("../sections/exploding-gallery.liquivelte")).default({
+            target: wrapper,
+            hydrate: true,
+            props: { resetCicR: true },
+            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
+          });
+        }
+      })();
+    });
+  });
+  
   Array.from(doc.querySelectorAll('.liquivelte-component.product-comparison')).forEach(wrapper => {
     let svelteProps = wrapper.svelteProps;
     let rawIncludes = wrapper.rawIncludes;
@@ -84,27 +105,6 @@
         if(entry.isIntersecting && !initialized) {
           initialized = true;
           wrapper.svelteComponent = new (await import("../sections/scroll-animation/index.liquivelte")).default({
-            target: wrapper,
-            hydrate: true,
-            props: { resetCicR: true },
-            context: new Map([['svelteProps', svelteProps], ['rawIncludes', rawIncludes], ['lec', liquid_expression_cache]])
-          });
-        }
-      })();
-    });
-  });
-  
-  Array.from(doc.querySelectorAll('.liquivelte-component.exploding-gallery')).forEach(wrapper => {
-    let svelteProps = wrapper.svelteProps;
-    let rawIncludes = wrapper.rawIncludes;
-    let liquid_expression_cache = wrapper.liquid_expression_cache;
-    wrapper.module_loaded = true;
-    let initialized = false;
-    onIntersect(wrapper, ([entry]) => {
-      (async () => {
-        if(entry.isIntersecting && !initialized) {
-          initialized = true;
-          wrapper.svelteComponent = new (await import("../sections/exploding-gallery.liquivelte")).default({
             target: wrapper,
             hydrate: true,
             props: { resetCicR: true },
