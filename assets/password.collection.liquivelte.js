@@ -1,4 +1,4 @@
-import './collection.custom-hseeaca1c2.liquivelte.js';
+import './collection.custom-hs303fe17f.liquivelte.js';
 
 const initializeObservers = (doc) => {
      };

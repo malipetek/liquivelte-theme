@@ -51,7 +51,7 @@
 				endfor
 				-%}
 	{%- unless sub_include -%} 
-	<div  class="liquivelte-component app-wrapper svelte-15nwoa5" data-liquivelte-component-name="app-wrapper.liquivelte">
+	<div  class="liquivelte-component app-wrapper svelte-83gu0m" data-liquivelte-component-name="app-wrapper.liquivelte">
 		{% assign component_include_count_slot_offset = 0 %}
 		{% assign component_include_count = 0 %}
 		{% assign component_include_depth = 0 %}
@@ -76,7 +76,7 @@ smns stands for "slot module name separator"
 
 
 {%- capture slot_content_def_App -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
-  <div  class="appbar svelte-15nwoa5" use:persistingchild="{'header'}">
+  <div  class="appbar svelte-83gu0m" use:persistingchild="{'header'}">
     <div liveslot="header">
       
 	{%- if slot_header_app-wrapper != blank -%}
@@ -205,7 +205,7 @@ smns stands for "slot module name separator"
 
 
 {%- capture slot_content_def_Link -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
-      <div  class="icon cart-icon svelte-15nwoa5">
+      <div  class="icon cart-icon svelte-83gu0m">
         
 {% comment %}
   kvsp stands for "key value separator"
@@ -362,7 +362,7 @@ smns stands for "slot module name separator"
   assign cart_json = cart_json | append: '}' 
 -%}					
 		
-	<script type="text/noscript"  class="instance-data svelte-15nwoa5">
+	<script type="text/noscript"  class="instance-data svelte-83gu0m">
 		{% assign component_include_count = component_include_count | plus: 1 %}
 		{
 	"cart": {{ cart_json }}
@@ -374,7 +374,7 @@ smns stands for "slot module name separator"
 		"component_name": "app-wrapper"
 	}</script>
 	
-	<script  class="liquivelte-prop-script svelte-15nwoa5">(() => {
+	<script  class="liquivelte-prop-script svelte-83gu0m">(() => {
 	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
 	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
 	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}

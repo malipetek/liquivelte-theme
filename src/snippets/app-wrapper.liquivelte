@@ -53,7 +53,9 @@
           log('page is mounting', route.path, route.params, route.query);
           // console.log('page mounted ', pageData);
         });
+
         f7.views.main.on('pageBeforeIn', async ({route, pageEl}) => {
+          f7.progressbar.hide();
           log('page pageBeforeIn', route.path, route.params, route.query);
           await setCurrentPage({route});
 
@@ -172,6 +174,7 @@ async function setCurrentPage({ route, JSname, CSSname }) {
 const ROUTER_CACHE = new Map;
 
 const clientSideRouter = ({ app, to, resolve }, ...rest) => {
+  console.log('rest ->', rest);
       const { path } = to;
       
       let contentPromise;
@@ -181,6 +184,8 @@ const clientSideRouter = ({ app, to, resolve }, ...rest) => {
         contentPromise = fetch(path)
         .then(res => res.text())
       }
+
+      f7.progressbar.show(f7.theme === 'md' ? 'yellow' : 'blue');
 
       contentPromise
       .then(async content => {
@@ -230,9 +235,9 @@ const clientSideRouter = ({ app, to, resolve }, ...rest) => {
 
 
 <style global lang="postcss">
+  @import "tailwindcss/base.css";
   @import "framework7/framework7-bundle.min.css";
-  @tailwind base;
-  @tailwind utilities;  
+  @tailwind utilities;
 
   .text-theme {
         color: var(--f7-theme-color);

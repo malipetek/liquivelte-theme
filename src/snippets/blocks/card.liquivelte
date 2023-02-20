@@ -1,9 +1,21 @@
+{% liquid 
+  assign card_classes = ''
+  if settings.card_vertical == 'center'
+    assign card_classes = card_classes | append: ' flex flex-col justify-center'
+  elsif settings.card_vertical == 'bottom'
+    assign card_classes = card_classes | append: ' flex flex-col justify-end'
+  elsif settings.card_vertical == 'even'
+    assign card_classes = card_classes | append: ' flex flex-col justify-between'
+  endif
+%}
 <script>
 import settings from 'theme';
+console.log('settings card ', settings);
 export let left;
 export let top;
 export let width;
 export let height;
+import card_classes from 'theme';
 </script>
 <style>
   .card {
@@ -11,19 +23,45 @@ export let height;
     background-color: rgba(255,255,255,0.5);
     transform: translate(-50%, -50%);
     margin: 0;
-    left: var(--left);
-    top: var(--left);
-    width: 50%;
-    height: 50%;
+    left: var(--left, 50%);
+    top: var(--top, 50%);
+    width: var(--width, 50%);
+    height: var(--height, 50%);
+    padding: var(--f7-card-header-padding-vertical) var(--f7-card-header-padding-horizontal);
   }
+  @media (max-width: 640px) {
+    .card {
+      position: absolute;
+      background-color: rgba(255,255,255,0.5);
+      transform: translate(-50%, -50%);
+      margin: 0;
+      left: var(--left_mobile, 50%);
+      top: var(--top_mobile, 50%);
+      width: var(--width_mobile, 50%);
+      height: var(--height_mobile, 50%);
+    }
+  }
+
+  :global(.dark) .card {
+    background-color: rgba(0,0,0,0.5);
+  }
+  
 </style>
-<div class="card" style="--left: {{- settings.card_left -}}%; --top: {{- settings.card_top -}}%; --width: {{- width -}}; --height: {{- height -}}; --left: {{- left -}}">
+<div class="card {{- card_classes -}}" 
+      style="--left: {{- settings.card_left -}}%;
+            --top: {{- settings.card_top -}}%;
+            --width: {{- settings.card_width -}}%;
+            --height: {{- settings.card_height -}}%; 
+            --left_mobile: {{- settings.card_left_mobile -}}%; 
+            --top_mobile: {{- settings.card_top_mobile -}}%;
+            --width_mobile: {{- settings.card_width_mobile -}}%;
+            --height_mobile: {{- settings.card_height_mobile -}}%;">
   <slot />
 </div>
 {% schema %}
-  {
-    "name": "Card",
-    "settings": [
+{
+  "name": "Card",
+  "settings": [
     {
       "type": "select",
       "options": [
@@ -40,7 +78,7 @@ export let height;
           "value": "transparent"
         }
       ],
-      "id": "style",
+      "id": "card_style",
       "label": "Card Style"
     },
     {
@@ -84,6 +122,46 @@ export let height;
       "unit": "%"
     },
     {
+      "id": "card_top_mobile",
+      "label": "Card Top Mobile",
+      "default": 50,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "id": "card_left_mobile",
+      "label": "Card Left Mobile",
+      "default": 50,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "id": "card_width_mobile",
+      "label": "Card Width Mobile",
+      "default": 50,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "id": "card_height_mobile",
+      "label": "Card Height Mobile",
+      "default": 50,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
       "type": "text",
       "id": "card_title",
       "label": "Card Title"
@@ -97,6 +175,35 @@ export let height;
       "type": "inline_richtext",
       "id": "card_content",
       "label": "Card Content"
-    }]
-  }
+    },
+    {
+      "type": "header",
+      "content": "Align Card Content"
+    },
+    {
+      "id": "card_vertical",
+      "type": "select",
+      "options": [
+        {
+          "label": "Default (top)",
+          "value": "default"
+        },
+        {
+          "label": "Center",
+          "value": "center"
+        },
+        {
+          "label": "To Bottom",
+          "value": "bottom"
+        },
+        {
+          "label": "Spread Evenly",
+          "value": "even"
+        }
+      ],
+      "label": "Vertical Alignment",
+      "default": "default"
+    }
+  ]
+}
 {% endschema %}

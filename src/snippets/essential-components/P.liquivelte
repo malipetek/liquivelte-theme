@@ -1,0 +1,109 @@
+{% liquid 
+  if block.settings
+    assign settings = block.settings
+  else
+    assign settings = section.settings
+  endif
+%}
+<script>
+  export let text = '';
+  import settings from 'theme';
+</script>
+
+<style>
+  p {
+    font-size: var(--font-size);
+  }
+
+  p {
+    --f7-text-color: rgba(var(--color), 0.87);
+    color: var(--f7-text-color);
+    text-align: var(--text-align);
+  }
+  
+  :global(.dark) p {
+    --f7-text-color: rgba(var(--color-dark), 0.87);
+    color: var(--f7-text-color);
+  }
+  @media (max-width: 640px) {
+    p {
+    font-size: var(--font-size-mobile);
+    }
+  }
+</style>
+<p class="" style="--font-size: {{- settings.p_font_size -}}{{- settings.p_font_unit -}}; 
+          --font-size-mobile: {{- settings.p_font_size_mobile -}}{{- settings.p_font_unit -}}; 
+          --color: {{- settings.p_color | color_to_rgb | split: '(' | last | split: ')' | first -}};
+          --color-dark: {{- settings.p_color_dark | color_to_rgb | split: '(' | last | split: ')' | first -}}; 
+          --text-align: {{- settings.p_text_align -}}"
+    >
+  {% if text != blank %}
+    {{- text | html -}} 
+  {% endif %}
+  <slot />
+</p>
+
+{% schema %}
+{
+  "name": "Paragraph",
+  "settings": [
+    {
+      "type": "number",
+      "id": "p_font_size",
+      "label": "Font Size",
+      "default": 32
+    },
+    {
+      "type": "number",
+      "id": "p_font_size_mobile",
+      "label": "Font Size Mobile",
+      "default": 24
+    },
+    {
+      "type": "text",
+      "id": "p_font_unit",
+      "label": "Font Size Unit",
+      "default": "px",
+      "info": "You can give CSS units (pt, px, em etc.)"
+    },
+    {
+      "type": "color",
+      "id": "p_color",
+      "label": "Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "p_color_dark",
+      "label": "Color Dark",
+      "default": "#fff",
+      "info": "Color to be used when user prefers dark theme"
+    },
+    {
+      "type": "checkbox",
+      "id": "p_bold",
+      "label": "Bold"
+    },
+    {
+      "type": "select",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Center",
+          "value": "center"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "id": "p_text_align",
+      "label": "Text Align",
+      "default": "left"
+    }
+  ]
+}
+{% endschema %}

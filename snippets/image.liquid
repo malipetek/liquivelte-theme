@@ -66,13 +66,13 @@
 					assign lv_name = module_and_slotname | split: '-smns-' | last
 					assign lv_value = content_and_value | split: '-scvs-' | last
 					
-					if lv_module == 'image'
+					if lv_module == 'Image'
 						assign slot_default_image = lv_value | strip
 					endif
 				endfor
 				-%}
 	{%- unless sub_include -%} 
-	<div class="liquivelte-component image" data-liquivelte-component-name="image.liquivelte">
+	<div class="liquivelte-component Image" data-liquivelte-component-name="Image.liquivelte">
 		{% assign component_include_count_slot_offset = 0 %}
 		{% assign component_include_count = 0 %}
 		{% assign component_include_depth = 0 %}
@@ -255,7 +255,7 @@
 		,
 		"forloop_index": {{ forloop.index0 | default: 0 | json }},
 		"component_index": {{ component_include_count | plus: component_include_depth }},
-		"component_name": "image"
+		"component_name": "Image"
 	}</script>
 	
 	<script class="liquivelte-prop-script">(() => {

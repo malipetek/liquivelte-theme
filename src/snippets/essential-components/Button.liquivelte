@@ -1,0 +1,88 @@
+{% liquid 
+  assign button_classes = ''
+  if block.settings
+    assign settings = block.settings
+  else
+    assign settings = section.settings
+  endif
+  
+  if settings.button_style == 'filled'
+    assign filled = true
+  else
+    assign filled = false
+  endif
+  if settings.button_style == 'outlined'
+    assign outlined = true
+  else
+    assign outlined = false
+  endif
+  if settings.button_fullwidth
+    assign inline = false
+  else
+    assign button_classes = button_classes | append: ' inline-block'
+    assign inline = true
+  endif
+%}
+<script>
+  import { Button } from 'framework7-liquivelte';
+  import settings from 'theme';
+  import filled from 'theme';
+  import outlined from 'theme';
+  import button_classes from 'theme';
+
+  console.log('button classes ', button_classes);
+  
+  export let href;
+</script>
+<Button href="{{- href -}}" 
+        large="{{- settings.button_isbig -}}"
+        raised="{{- settings.button_israised -}}"
+        fill="{{- filled -}}" 
+        outline="{{- outlined -}}"
+        classes="{{- button_classes -}}"
+        >
+  <slot />
+</Button>
+{% schema %}
+{
+  "name": "Button",
+  "settings": [
+    {
+      "id": "button_style",
+      "type": "select",
+      "options": [
+        {
+          "label": "Regular",
+          "value": "regular"
+        },
+        {
+          "label": "Filled",
+          "value": "filled"
+        },
+        {
+          "label": "Outlined",
+          "value": "outlined"
+        }
+      ],
+      "label": "Button Style",
+      "default": "filled"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_isbig",
+      "label": "Button is Big"
+    },
+    {
+      "id": "button_israised",
+      "label": "Button Elevated",
+      "type": "checkbox"
+    },
+    {
+      "id": "button_fullwidth",
+      "type": "checkbox",
+      "label": "Full Width",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

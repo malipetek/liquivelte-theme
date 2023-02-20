@@ -16,6 +16,7 @@
   "dependencies": {
     "@mertasan/tailwindcss-variables": "^2.5.0",
     "@tsconfig/svelte": "^3.0.0",
+    "color": "^4.2.3",
     "console-log-colors": "^0.3.3",
     "debounce-promise": "^3.1.2",
     "framework7": "../framework7-liquivelte/packages/core",

@@ -1,8 +1,12 @@
 <script>
 export let block;
 export let forloop;
-import Image from '../../../snippets/image.liquivelte';
+import Image from '../../../snippets/essential-components/Image.liquivelte';
 import Card from '../../../snippets/blocks/card.liquivelte';
+import ButtonGroup from '../../../snippets/blocks/button-group.liquivelte';
+import H from '../../../snippets/essential-components/H.liquivelte';
+import P from '../../../snippets/essential-components/P.liquivelte';
+import Button from '../../../snippets/essential-components/Button.liquivelte';
 import { onMount, tick } from 'svelte';
 
 onMount(() => {
@@ -13,14 +17,8 @@ console.log('block w/ card', block);
 </script>
 
 <style>
-  .card {
-    position: absolute;
-    background-color: rgba(255,255,255,0.5);
-    transform: translate(-50%, -50%);
-    margin: 0;
-  }
-  :global(.dark) .card {
-    background-color: rgba(0,0,0,0.5);
+  .button.inline-block:nth-child(2), .button.inline-block:nth-child(3) {
+    margin-left: var(--f7-card-margin-horizontal); 
   }
 </style>
 <div class="relative" >
@@ -37,12 +35,21 @@ console.log('block w/ card', block);
     loading="lazy"
     ></Image>
 {% endif %}
-  <Card settings="{{- block.settings -}}"></Card>
-  <div class="card" style="top: {{- block.settings.card_top -}}%; left: {{- block.settings.card_left -}}%; width: {{- block.settings.card_width -}}%; height: {{- block.settings.card_height -}}%">
-      <h2> {{- block.settings.card_title | html -}} </h2>
-      <h3> {{- block.settings.card_subtitle | html -}} </h3>
-      <p> {{- block.settings.card_content | html -}} </p>
-  </div>
+  <Card settings="{{- block.settings -}}">
+    <div>
+      <H type="h1"> {{- block.settings.card_title | html -}} </H>
+      <H type="h2"> {{- block.settings.card_subtitle | html -}} </H>
+      <P> {{- block.settings.card_content | html -}} </P>
+    </div>
+    <ButtonGroup >
+      {% if block.settings.cta_url %}
+        <Button classes="" href="{{- block.settings.cta_url -}}">{{- block.settings.cta_text -}}</Button>
+      {% endif %}
+      {% if block.settings.cta_url_2 %}
+        <Button classes="" href="{{- block.settings.cta_url_2 -}}">{{- block.settings.cta_text_2 -}}</Button>
+      {% endif %}
+    </ButtonGroup>
+  </Card>
 </div>
 
 {% schema %}
@@ -58,6 +65,32 @@ console.log('block w/ card', block);
       "id": "image",
       "type": "image_picker",
       "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Shop",
+      "type": "text"
+    },
+    {
+      "id": "cta_url",
+      "label": "CTA Url",
+      "type": "url"
+    },
+    {
+      "id": "cta_text_2",
+      "label": "CTA Second Button Text",
+      "default": "Shop",
+      "type": "text"
+    },
+    {
+      "id": "cta_url_2",
+      "label": "CTA Second Url",
+      "type": "url"
     }
   ]
 }

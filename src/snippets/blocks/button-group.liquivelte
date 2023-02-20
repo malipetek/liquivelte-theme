@@ -1,0 +1,83 @@
+{% liquid 
+  assign button_group_classes = ''
+  if settings.button_group_horizontal == 'center'
+    assign button_group_classes = button_group_classes | append: ' flex justify-center'
+  elsif settings.button_group_horizontal == 'right'
+    assign button_group_classes = button_group_classes | append: ' flex justify-end'
+  elsif settings.button_group_horizontal == 'sides'
+    assign button_group_classes = button_group_classes | append: ' flex justify-between'
+  elsif settings.button_group_horizontal == 'even'
+    assign button_group_classes = button_group_classes | append: ' flex justify-evenly'
+  endif
+%}
+<script>
+  import button_group_classes from 'theme';
+  import settings from 'theme';
+</script>
+<style>
+  div {
+    margin-bottom: var(--buttons-margin-bottom);
+  }
+</style>
+<div class="flex {{- button_group_classes -}}" 
+      style="--button-spacing: {{- settings.button_spacing -}}px;
+            --buttons-margin-bottom: {{- settings.button_group_margin_bottom -}}px;"
+        >
+  <slot />
+</div>
+
+{% schema %}
+{
+  "name": "Button group",
+  "settings": [
+    {
+      "id": "button_group_horizontal",
+      "type": "select",
+      "options": [
+        {
+          "label": "Default (left)",
+          "value": "default"
+        },
+        {
+          "label": "Center",
+          "value": "center"
+        },
+        {
+          "label": "To Right",
+          "value": "right"
+        },
+        {
+          "label": "Spread to Sides",
+          "value": "sides"
+        },
+        {
+          "label": "Spread Evenly",
+          "value": "even"
+        }
+      ],
+      "label": "Horizontal Alignment",
+      "default": "default"
+    },
+    {
+      "type": "range",
+      "default": 10,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "id": "button_spacing",
+      "label": "Space Between Buttons",
+      "unit": "px"
+    },
+    {
+      "default": 1,
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "id": "button_group_margin_bottom",
+      "label": "Button Offset to Bottom",
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,29 @@
+{
+  "settings": [
+    {
+      "type": "number",
+      "id": "font_size",
+      "label": "Font Size",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "font_unit",
+      "label": "Font Size Unit",
+      "default": "px",
+      "info": "You can give CSS units (pt, px, em etc.)"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color",
+      "default": "#fff"
+    },
+    {
+      "type": "checkbox",
+      "id": "bold",
+      "label": "Bold",
+      "default": false
+    }
+  ]
+}

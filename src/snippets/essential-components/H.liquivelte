@@ -1,0 +1,199 @@
+{% liquid 
+  if block.settings
+    assign settings = block.settings
+  else
+    assign settings = section.settings
+  endif
+%}
+<script>
+  export let text = '';
+  export let type = 'h1';
+  import settings from 'theme';
+</script>
+
+<style>
+  h1 {
+    font-size: var(--font-size);
+  }
+  h2 {
+    font-size: calc(var(--font-size) * 0.75);
+  }
+  h3 {
+    font-size: calc(var(--font-size) * 0.585);
+  }
+  h4 {
+    font-size: calc(var(--font-size) * 0.5);
+  }
+  h5 {
+    font-size: calc(var(--font-size) * 0.415);
+  }
+  h6 {
+    font-size: calc(var(--font-size) * 0.335);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    --f7-text-color: rgba(var(--color), 0.87);
+    color: var(--f7-text-color);
+    text-align: var(--text-align);
+  }
+  :global(.dark) h1,
+  :global(.dark) h2,
+  :global(.dark) h3,
+  :global(.dark) h4,
+  :global(.dark) h5,
+  :global(.dark) h6 {
+    --f7-text-color: rgba(var(--color-dark), 0.87);
+    color: var(--f7-text-color);
+  }
+  @media (max-width: 640px) {
+    h1 {
+    font-size: var(--font-size-mobile);
+    }
+    h2 {
+      font-size: calc(var(--font-size-mobile) * 0.75);
+    }
+    h3 {
+      font-size: calc(var(--font-size-mobile) * 0.585);
+    }
+    h4 {
+      font-size: calc(var(--font-size-mobile) * 0.5);
+    }
+    h5 {
+      font-size: calc(var(--font-size-mobile) * 0.415);
+    }
+    h6 {
+      font-size: calc(var(--font-size-mobile) * 0.335);
+    }
+  }
+</style>
+{% if type == 'h1' %}
+  <h1 class="" style="--font-size: {{- settings.font_size -}}{{- settings.font_unit -}}; 
+                      --font-size-mobile: {{- settings.font_size_mobile -}}{{- settings.font_unit -}}; 
+                      --color: {{- settings.color | color_to_rgb | split: '(' | last | split: ')' | first -}};
+                      --color-dark: {{- settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first -}}; 
+                      --text-align: {{- settings.text_align -}}"> 
+    {% if text != blank %}
+    {{- text | html -}} 
+    {% endif %}
+    <slot />
+  </h1>
+{% elsif type == 'h2' %}
+  <h2 class=""style="--font-size: {{- settings.font_size -}}{{- settings.font_unit -}}; 
+                      --font-size-mobile: {{- settings.font_size_mobile -}}{{- settings.font_unit -}}; 
+                      --color: {{- settings.color | color_to_rgb | split: '(' | last | split: ')' | first -}};
+                      --color-dark: {{- settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first -}}; 
+                      --text-align: {{- settings.text_align -}}"> 
+    {% if text != blank %}
+    {{- text | html -}} 
+    {% endif %}
+    <slot />
+  </h2>
+{% elsif type == 'h3' %}
+  <h3 class="" style="--font-size: {{- settings.font_size -}}{{- settings.font_unit -}}; 
+                      --font-size-mobile: {{- settings.font_size_mobile -}}{{- settings.font_unit -}}; 
+                      --color: {{- settings.color | color_to_rgb | split: '(' | last | split: ')' | first -}};
+                      --color-dark: {{- settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first -}}; 
+                      --text-align: {{- settings.text_align -}}"> 
+    {% if text != blank %}
+    {{- text | html -}} 
+    {% endif %}
+    <slot />
+  </h3>
+{% elsif type == 'h4' %}
+  <h4 class="" style="--font-size: {{- settings.font_size -}}{{- settings.font_unit -}}; 
+                      --font-size-mobile: {{- settings.font_size_mobile -}}{{- settings.font_unit -}}; 
+                      --color: {{- settings.color | color_to_rgb | split: '(' | last | split: ')' | first -}};
+                      --color-dark: {{- settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first -}}; 
+                      --text-align: {{- settings.text_align -}}"> 
+    {% if text != blank %}
+    {{- text | html -}} 
+    {% endif %}
+    <slot />
+  </h4>
+{% elsif type == 'h5' %}
+  <h5 class="" style="--font-size: {{- settings.font_size -}}{{- settings.font_unit -}}; 
+                      --font-size-mobile: {{- settings.font_size_mobile -}}{{- settings.font_unit -}}; 
+                      --color: {{- settings.color | color_to_rgb | split: '(' | last | split: ')' | first -}};
+                      --color-dark: {{- settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first -}}; 
+                      --text-align: {{- settings.text_align -}}"> 
+    {% if text != blank %}
+    {{- text | html -}} 
+    {% endif %}
+    <slot />
+  </h5>
+{% elsif type == 'h6' %}
+  <h6 class="" style="--font-size: {{- settings.font_size -}}{{- settings.font_unit -}}; 
+                      --font-size-mobile: {{- settings.font_size_mobile -}}{{- settings.font_unit -}}; 
+                      --color: {{- settings.color | color_to_rgb | split: '(' | last | split: ')' | first -}};
+                      --color-dark: {{- settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first -}}; 
+                      --text-align: {{- settings.text_align -}}"> 
+    {% if text != blank %}
+    {{- text | html -}} 
+    {% endif %}
+    <slot />
+  </h6>
+{% endif %}
+
+{% schema %}
+{
+  "name": "heading",
+  "settings": [
+    {
+      "type": "number",
+      "id": "font_size",
+      "label": "Font Size",
+      "default": 32
+    },
+    {
+      "type": "number",
+      "id": "font_size_mobile",
+      "label": "Font Size Mobile",
+      "default": 24
+    },
+    {
+      "type": "text",
+      "id": "font_unit",
+      "label": "Font Size Unit",
+      "default": "px",
+      "info": "You can give CSS units (pt, px, em etc.)"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "color_dark",
+      "label": "Color Dark",
+      "default": "#fff",
+      "info": "Color to be used when user prefers dark theme"
+    },
+    {
+      "type": "checkbox",
+      "id": "bold",
+      "label": "Bold"
+    },
+    {
+      "type": "select",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Center",
+          "value": "center"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "id": "text_align",
+      "label": "Text Align",
+      "default": "left"
+    }
+  ]
+}
+{% endschema %}

@@ -126,7 +126,7 @@ smns stands for "slot module name separator"
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props_ListItem %}accordionItem-kvsp-{false}-prsp-title-kvsp-{{ lnk.title }}-prsp-view-kvsp-{ mainview }-prsp-link-kvsp-{lnk.url}-prsp-main-kvsp-1{% endcapture %}
+{% capture props_ListItem %}accordionItem-kvsp-{false}-prsp-title-kvsp-{{ lnk.title }}-prsp-view-kvsp-{ mainview }-prsp-link-kvsp-{lnk.url}-prsp-main-kvsp-1-prsp-panelClose-kvsp-1{% endcapture %}
 {% assign modulename = basename | append: 'framework7-liquivelte-list-item' %}
 {% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, basename: 'framework7-liquivelte-' , title:  lnk.title  %}
 {% assign props = '' %}

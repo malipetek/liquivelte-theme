@@ -1,0 +1,248 @@
+	{%- liquid
+			
+			
+			assign text = null
+			assign type = null
+			-%}
+	{%- liquid
+	assign lv_props_arr = props | split: '-prsp-'
+	for lv_prop in lv_props_arr
+	assign lv_prop_and_value = lv_prop | split: '-kvsp-'
+	assign lv_propName = lv_prop_and_value | first
+	if lv_prop_and_value.size > 1
+		assign lv_propValue = lv_prop_and_value | last | remove: '"'
+	else
+		assign lv_propValue = ''	
+	endif
+	if lv_propValue == '0'
+		assign lv_propValue = lv_propValue | times: 1
+	endif
+	if lv_propValue contains '{' and lv_propValue contains '}'
+	assign lv_propValue = lv_propValue | remove: '{' | remove: '}'
+	assign lv_propValueArr = lv_propValue | split: ','
+	for lv_entry in lv_propValueArr
+	assign lv_key = lv_entry | split: ':' | first | strip | remove: '"'
+	assign lv_value = lv_entry | split: ':' | last | strip | remove: '"'
+	assign composite_key = lv_propName | append: '_' | append: lv_key
+	
+	endfor
+	endif
+	if lv_propName == 'text' and text == blank
+		assign text = lv_propValue
+	endif
+	if lv_propName == 'type' and type == blank
+		assign type = lv_propValue
+	endif
+	if lv_propName == 'settings' and settings == blank
+		assign settings = lv_propValue
+	endif
+	endfor
+	-%}
+	
+			{%- liquid
+				assign slot_contents_and_values = slot_contents | split: '-scs-'
+				for content_and_value in slot_contents_and_values
+					assign module_and_slotname = content_and_value | split: '-scvs-' | first
+					assign lv_module = module_and_slotname | split: '-smns-' | first
+					assign lv_name = module_and_slotname | split: '-smns-' | last
+					assign lv_value = content_and_value | split: '-scvs-' | last
+					
+					if lv_module == 'H'
+						assign slot_default_h = lv_value | strip
+					endif
+				endfor
+				-%}
+	{%- unless sub_include -%} 
+	<div  class="liquivelte-component H svelte-xv4tdb" data-liquivelte-component-name="H.liquivelte">
+		{% assign component_include_count_slot_offset = 0 %}
+		{% assign component_include_count = 0 %}
+		{% assign component_include_depth = 0 %}
+		<script> window.cicR = 0; </script>
+	{%- endunless -%}
+	{% liquid 
+  if block.settings
+    assign settings = block.settings
+  else
+    assign settings = section.settings
+  endif
+%}
+
+
+
+{% if type == 'h1' %}
+  <h1  class=" svelte-xv4tdb" style="--font-size: {{ settings.font_size }}{{ settings.font_unit }}; 
+                      --font-size-mobile: {{ settings.font_size_mobile }}{{ settings.font_unit }}; 
+                      --color: {{ settings.color | color_to_rgb | split: '(' | last | split: ')' | first }};
+                      --color-dark: {{ settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first }}; 
+                      --text-align: {{ settings.text_align }}"> 
+    {% if text != blank %}
+    {{ text | html }} 
+    {% endif %}
+    
+		{%- if slot_default_h != blank -%}
+			{{- slot_default_h -}}
+		{%- endif -%}
+	
+  </h1>
+{% elsif type == 'h2' %}
+  <h2  class=" svelte-xv4tdb"style="--font-size: {{ settings.font_size }}{{ settings.font_unit }}; 
+                      --font-size-mobile: {{ settings.font_size_mobile }}{{ settings.font_unit }}; 
+                      --color: {{ settings.color | color_to_rgb | split: '(' | last | split: ')' | first }};
+                      --color-dark: {{ settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first }}; 
+                      --text-align: {{ settings.text_align }}"> 
+    {% if text != blank %}
+    {{ text | html }} 
+    {% endif %}
+    
+		{%- if slot_default_h != blank -%}
+			{{- slot_default_h -}}
+		{%- endif -%}
+	
+  </h2>
+{% elsif type == 'h3' %}
+  <h3  class=" svelte-xv4tdb" style="--font-size: {{ settings.font_size }}{{ settings.font_unit }}; 
+                      --font-size-mobile: {{ settings.font_size_mobile }}{{ settings.font_unit }}; 
+                      --color: {{ settings.color | color_to_rgb | split: '(' | last | split: ')' | first }};
+                      --color-dark: {{ settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first }}; 
+                      --text-align: {{ settings.text_align }}"> 
+    {% if text != blank %}
+    {{ text | html }} 
+    {% endif %}
+    
+		{%- if slot_default_h != blank -%}
+			{{- slot_default_h -}}
+		{%- endif -%}
+	
+  </h3>
+{% elsif type == 'h4' %}
+  <h4  class=" svelte-xv4tdb" style="--font-size: {{ settings.font_size }}{{ settings.font_unit }}; 
+                      --font-size-mobile: {{ settings.font_size_mobile }}{{ settings.font_unit }}; 
+                      --color: {{ settings.color | color_to_rgb | split: '(' | last | split: ')' | first }};
+                      --color-dark: {{ settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first }}; 
+                      --text-align: {{ settings.text_align }}"> 
+    {% if text != blank %}
+    {{ text | html }} 
+    {% endif %}
+    
+		{%- if slot_default_h != blank -%}
+			{{- slot_default_h -}}
+		{%- endif -%}
+	
+  </h4>
+{% elsif type == 'h5' %}
+  <h5  class=" svelte-xv4tdb" style="--font-size: {{ settings.font_size }}{{ settings.font_unit }}; 
+                      --font-size-mobile: {{ settings.font_size_mobile }}{{ settings.font_unit }}; 
+                      --color: {{ settings.color | color_to_rgb | split: '(' | last | split: ')' | first }};
+                      --color-dark: {{ settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first }}; 
+                      --text-align: {{ settings.text_align }}"> 
+    {% if text != blank %}
+    {{ text | html }} 
+    {% endif %}
+    
+		{%- if slot_default_h != blank -%}
+			{{- slot_default_h -}}
+		{%- endif -%}
+	
+  </h5>
+{% elsif type == 'h6' %}
+  <h6  class=" svelte-xv4tdb" style="--font-size: {{ settings.font_size }}{{ settings.font_unit }}; 
+                      --font-size-mobile: {{ settings.font_size_mobile }}{{ settings.font_unit }}; 
+                      --color: {{ settings.color | color_to_rgb | split: '(' | last | split: ')' | first }};
+                      --color-dark: {{ settings.color_dark | color_to_rgb | split: '(' | last | split: ')' | first }}; 
+                      --text-align: {{ settings.text_align }}"> 
+    {% if text != blank %}
+    {{ text | html }} 
+    {% endif %}
+    
+		{%- if slot_default_h != blank -%}
+			{{- slot_default_h -}}
+		{%- endif -%}
+	
+  </h6>
+{% endif %}
+
+
+	
+						
+		
+	<script type="text/noscript"  class="instance-data svelte-xv4tdb">
+		{% assign component_include_count = component_include_count | plus: 1 %}
+		{
+	"settings" : {{ settings | json }}
+	
+	
+		,
+		"forloop_index": {{ forloop.index0 | default: 0 | json }},
+		"component_index": {{ component_include_count | plus: component_include_depth }},
+		"component_name": "H"
+	}</script>
+	
+	<script  class="liquivelte-prop-script svelte-xv4tdb">(() => {
+	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
+	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
+	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}
+	function htmlDecode(input) {
+	var doc = new DOMParser().parseFromString(input, "text/html");
+	return doc.documentElement.textContent;
+	}
+	function componentWrapper(el) {
+	if(el.classList.contains('liquivelte-component')) {
+	return el;
+	} else {
+	return componentWrapper(el.parentElement);
+	}
+	}
+	var wrapper = componentWrapper(propScript.parentElement);
+	// console.log('wrapper', wrapper);
+	// console.log('parsing props for svelte component');
+	try{
+		const themeImports = (JSONparse(propScript.previousElementSibling.textContent));
+		wrapper.svelteProps = wrapper.svelteProps || {};
+		Object.keys(themeImports).forEach(key => {
+			if(key == 'forloop_index' || key == 'component_index' || key == 'component_name') return;
+			wrapper.svelteProps[key] = [
+				...(wrapper.svelteProps[key] || []),
+				{ forloop_index: themeImports.index, component_index: themeImports.component_index, component_name: themeImports.component_name, value: themeImports[key] }
+			];
+		});
+	} catch (e) {
+	const err = 'There was an error';
+	console.error('there was an error parsing props json', e);
+	wrapper.svelteProps = { ...wrapper.svelteProps, error: (wrapper.svelteProps.error || '') + err};
+	}
+	
+	
+
+	// liquid expression cache
+	[...wrapper.querySelectorAll('[liquivelte-value-cache]')].forEach(el => {
+	let [filter, args, value] = el.getAttribute('liquivelte-value-cache').split('§');
+	args = args.split(', ');
+	args[0] = args[0].replace(/^"|\\|"$/g, '');
+	wrapper.liquid_expression_cache = wrapper.liquid_expression_cache || {};
+	wrapper.liquid_expression_cache[filter] = wrapper.liquid_expression_cache[filter] || new Map;
+	wrapper.liquid_expression_cache[filter].set(`${args.join(',')}`, value);
+	});
+
+	if(propScript){
+	propScript.remove();
+	}
+	if(propScript.previousElementSibling) {
+	propScript.previousElementSibling.remove();
+	}
+	})();</script>
+	{%- liquid
+			
+			
+			assign text = null
+			assign type = null
+			-%}
+	{%- liquid 
+			assign slot_default_h = null
+			
+			-%}
+	
+	{%- unless sub_include -%} 
+	</div>
+	{% assign component_include_count = 0 %}
+	{%- endunless -%}
+	

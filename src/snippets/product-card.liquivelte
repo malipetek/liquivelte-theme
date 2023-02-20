@@ -11,7 +11,7 @@
   import { Card, CardHeader, CardContent, CardFooter, Link, Button, Badge, Chip, Block } from 'framework7-liquivelte';
   import { cartStore } from '../scripts/store.module.js';
   import VerticalStepper from './vertical-stepper.liquivelte';
-  import Image from './image.liquivelte';
+  import Image from './essential-components/Image.liquivelte';
   import Loadable from './loadable.liquivelte';
   import Icon from './icon.liquivelte';
   import { srcset } from '../scripts/utils.js';

@@ -24,15 +24,15 @@
       />
       <Popover classes="menu-popover-{forloop.index}">
         <List>
-          <ListItem title="{{- lnk.title -}}" link="{{- lnk.url -}}" />
+          <ListItem title="{{- lnk.title -}}" link="{{- lnk.url -}}" popoverClose />
           {% if lnk.links and lnk.links.size > 0 %}
             {% for lnk2 in lnk.links %}
-            <ListItem title="{{- lnk2.title -}}" link="{{- lnk2.url -}}" />
+            <ListItem title="{{- lnk2.title -}}" link="{{- lnk2.url -}}" popoverClose />
             {% if lnk2.links and lnk2.links.size > 0 %}
               <li>
                 <ul>
                   {% for lnk3 in lnk2.links %}
-                    <ListItem title="{{- lnk3.title -}}" link="{{- lnk3.url -}}" />
+                    <ListItem title="{{- lnk3.title -}}" link="{{- lnk3.url -}}" popoverClose />
                   {% endfor %}
                   </ul>
                 </li>

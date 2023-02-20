@@ -158,9 +158,6 @@
 	</form>
 </div>
 <style global lang="postcss">
-	@tailwind base;
-	@tailwind utilities;
-
 	.cart-drawer-items {
 		max-height: 50vh;
 		margin-right: -30px;

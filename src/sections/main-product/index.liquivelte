@@ -27,7 +27,6 @@
 
 </script>
 <style lang="postcss" global>
-    @tailwind base;
     @tailwind utilities;
 </style> 
 

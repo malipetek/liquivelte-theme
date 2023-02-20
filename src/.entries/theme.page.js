@@ -11,6 +11,7 @@ console.log('custom entry');
   import Range from 'framework7/components/range';
   import Notification from 'framework7/components/notification';
   import Searchbar from 'framework7/components/searchbar';
+  import Progressbar from 'framework7/components/progressbar';
 
   // Import F7-Svelte Plugin
   import f7liquivelte from 'framework7-liquivelte';
@@ -27,7 +28,8 @@ Framework7.use([
   SmartSelect,
   Range,
   Notification,
-  Searchbar
+  Searchbar,
+  Progressbar
 ]);
 
 const onIntersect = (el, callback) => {

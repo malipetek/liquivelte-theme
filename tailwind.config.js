@@ -16,11 +16,11 @@ module.exports = {
       },
       fontMetrics: {
         sans: {
-            capHeight: 2048,
-            ascent: 2728,
-            descent: -680,
-            lineGap: 0,
-            unitsPerEm: 2816,
+          capHeight: 2048,
+          ascent: 2728,
+          descent: -680,
+          lineGap: 0,
+          unitsPerEm: 2816,
         },
       },
     }
@@ -40,6 +40,15 @@ module.exports = {
       }
     }
   },
+  safelist: [
+    "inline-block",
+    "flex",
+    "flex-col",
+    "justify-center",
+    "justify-end",
+    "justify-between",
+    "justify-evenly"
+  ],
   content: {
     files: ['src/**/*'],
     extract: {

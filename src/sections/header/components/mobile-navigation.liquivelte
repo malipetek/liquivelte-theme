@@ -25,7 +25,7 @@
       {% endif %}
     </ListItem>
     {% else %}
-    <ListItem accordionItem="{false}" title="{{- lnk.title -}}" view="{ mainview }" link="{lnk.url}" main></ListItem>
+    <ListItem accordionItem="{false}" title="{{- lnk.title -}}" view="{ mainview }" link="{lnk.url}" main panelClose></ListItem>
     {% endif %}
   {% endfor %}
 </List>

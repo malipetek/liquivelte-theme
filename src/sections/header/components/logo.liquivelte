@@ -11,7 +11,7 @@ import shop.name from 'theme';
 import logo_height from 'theme';
 import logo_width from 'theme';
 import logo_alt from 'theme';
-import  Image from '../../../snippets/image.liquivelte';
+import Image from '../../../snippets/essential-components/Image.liquivelte';
 
 </script>
 {% if section.settings.logo != blank %}

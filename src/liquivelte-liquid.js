@@ -1,3 +1,4 @@
+import Color from 'color';
 const num = (n) => {
     if (n.aspect_ratio) {
         n = n.aspect_ratio;
@@ -156,5 +157,14 @@ export default (liquid_expression_cache = {}) => ({
             return liquid_expression_cache['t'].get(`${input}`);
         }
         return `Could not get translation`;
+    },
+    color_to_rgb: (color) => {
+        return Color(color).rgb().toString();
+    },
+    color_lighten: (color, amount) => {
+        return Color(color).lighten(amount / 100).toString();
+    },
+    color_darken: (color, amount) => {
+        return Color(color).darken(amount / 100).toString();
     }
 });

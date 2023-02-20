@@ -1,7 +1,7 @@
 <script>
     import { Page, Navbar, BlockTitle, Block, Swiper, SwiperSlide } from 'framework7-liquivelte';
     import { FreeMode, Mousewheel } from 'swiper';
-    import Image from '../../snippets/image.liquivelte';
+    import Image from '../../snippets/essential-components/Image.liquivelte';
     import ImageWithCard from './blocks/image-with-card.liquivelte';
     import './blocks/slider-image.schema.json';
     const section = {};
