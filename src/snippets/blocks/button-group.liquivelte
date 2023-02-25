@@ -28,7 +28,7 @@
 
 {% schema %}
 {
-  "name": "Button group",
+  "name": "🔲 🔲 🔲 Button group",
   "settings": [
     {
       "id": "button_group_horizontal",

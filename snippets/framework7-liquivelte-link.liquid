@@ -176,10 +176,8 @@ smns stands for "slot module name separator"
 {% capture props_Badge %}color-kvsp-{{ badgeColor }}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Badge -%}{% assign component_include_depth = component_include_depth | plus: 1 %}{{ badge | default: '' }}{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'badge' %}
 {% assign slot_content_Badge = slot_content_Badge | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Badge %}
 {% include modulename, liquivelte: true, props: props_Badge, sub_include: true, slot_contents: slot_content_Badge, basename: '' , color:  badgeColor  %}

@@ -16,10 +16,8 @@ onMount(() => {
 console.log('block w/ card', block);
 </script>
 
-<style>
-  .button.inline-block:nth-child(2), .button.inline-block:nth-child(3) {
-    margin-left: var(--f7-card-margin-horizontal); 
-  }
+<style lang="postcss">
+  
 </style>
 <div class="relative" >
 {% if forloop.index == 1 %}

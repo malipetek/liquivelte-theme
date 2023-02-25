@@ -135,7 +135,7 @@
 
 {% schema %}
 {
-  "name": "heading",
+  "name": "✏️ Heading",
   "settings": [
     {
       "type": "number",

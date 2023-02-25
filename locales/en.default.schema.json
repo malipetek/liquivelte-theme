@@ -811,6 +811,9 @@
         "enable_sticky_header": {
           "label": "Enable sticky header",
           "info": "Header shows on the screen as customers scroll up."
+        },
+        "menu_type_desktop": {
+          "label": "Desktop Menu"
         }
       }
     },
@@ -2421,7 +2424,22 @@
     },
     "all": {
       "colors": {
-        "label": "Color Label"
+        "label": "Color Label",
+        "accent_2": {
+          "label": "Accent 2"
+        },
+        "accent_1": {
+          "label": "Accent 1"
+        },
+        "background_1": {
+          "label": "Background 1"
+        },
+        "background_2": {
+          "label": "Background 2"
+        },
+        "inverse": {
+          "label": "Invert"
+        }
       }
     }
   }

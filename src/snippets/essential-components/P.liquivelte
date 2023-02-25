@@ -45,7 +45,7 @@
 
 {% schema %}
 {
-  "name": "Paragraph",
+  "name": "📜 Paragraph",
   "settings": [
     {
       "type": "number",

@@ -169,7 +169,6 @@ smns stands for "slot module name separator"
 {% capture props_Link %}{onClick}-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Link -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         
 		{%- if slot_default_framework7-liquivelte_messagebar != blank -%}
@@ -179,7 +178,6 @@ smns stands for "slot module name separator"
         {sendLink}
       {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'link' %}
 {% assign slot_content_Link = slot_content_Link | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Link %}
 {% include modulename, liquivelte: true, props: props_Link, sub_include: true, slot_contents: slot_content_Link, basename: ''  %}

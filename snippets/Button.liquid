@@ -103,7 +103,6 @@ smns stands for "slot module name separator"
 {% capture props_Button %}href-kvsp-{{ href }}-prsp-large-kvsp-{{ settings.button_isbig }}-prsp-raised-kvsp-{{ settings.button_israised }}-prsp-fill-kvsp-{{ filled }}-prsp-outline-kvsp-{{ outlined }}-prsp-classes-kvsp-{{ button_classes }}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Button -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
   
 		{%- if slot_default_button != blank -%}
@@ -112,7 +111,6 @@ smns stands for "slot module name separator"
 	
 {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-button' %}
 {% assign slot_content_Button = slot_content_Button | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Button %}
 {% include modulename, liquivelte: true, props: props_Button, sub_include: true, slot_contents: slot_content_Button, basename: 'framework7-liquivelte-' , href:  href  , large:  settings.button_isbig  , raised:  settings.button_israised  , fill:  filled  , outline:  outlined  , classes:  button_classes  %}

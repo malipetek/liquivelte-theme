@@ -60,7 +60,7 @@ import card_classes from 'theme';
 </div>
 {% schema %}
 {
-  "name": "Card",
+  "name": "⬜️ Card",
   "settings": [
     {
       "type": "select",
@@ -114,12 +114,13 @@ import card_classes from 'theme';
     {
       "id": "card_height",
       "label": "Card Height",
-      "default": 50,
+      "default": 0,
       "type": "range",
       "min": 0,
       "max": 100,
       "step": 1,
-      "unit": "%"
+      "unit": "%",
+      "info": "0 is auto"
     },
     {
       "id": "card_top_mobile",
@@ -154,12 +155,13 @@ import card_classes from 'theme';
     {
       "id": "card_height_mobile",
       "label": "Card Height Mobile",
-      "default": 50,
+      "default": 0,
       "type": "range",
       "min": 0,
       "max": 100,
       "step": 1,
-      "unit": "%"
+      "unit": "%",
+      "info": "0 is auto"
     },
     {
       "type": "text",

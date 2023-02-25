@@ -48,7 +48,7 @@
 				endfor
 				-%}
 	{%- unless sub_include -%} 
-	<div  class="liquivelte-component image-gallery svelte-q6htwq" data-liquivelte-component-name="image-gallery.liquivelte">
+	<div  class="liquivelte-component image-gallery svelte-12nb1di" data-liquivelte-component-name="image-gallery.liquivelte">
 		{% assign component_include_count_slot_offset = 0 %}
 		{% assign component_include_count = 0 %}
 		{% assign component_include_depth = 0 %}
@@ -82,7 +82,7 @@
     min-height: 300px;
     "
      class="mt-6 w-2xl max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 flex lg:grid 
-      justify-items-center lg:gap-8 image-gallery overflow-hidden relative{{ dynamic_classes }} svelte-q6htwq">
+      justify-items-center lg:gap-8 image-gallery overflow-hidden relative{{ dynamic_classes }} svelte-12nb1di">
         
 	{%- liquid 
 	assign dynamic_classes = ''
@@ -93,7 +93,7 @@
 	assign dynamic_classes = dynamic_classes | append: ' uninitialized'
 	endif
 	-%}
-	<div  class="thumbs-wrapper hidden lg:block{{ dynamic_classes }} svelte-q6htwq"
+	<div  class="thumbs-wrapper hidden lg:block{{ dynamic_classes }} svelte-12nb1di"
          
          
           style="
@@ -113,7 +113,6 @@ smns stands for "slot module name separator"
 {% capture props_Swiper %}classes-kvsp-thumbs-swiper max-w-full-prsp-slidesPerView-kvsp-{thumbnailsPerView}-prsp-spaceBetween-kvsp-{thumbnailSpaceBetween}-prsp-direction-kvsp-vertical-prsp-vertical-kvsp-1-prsp-freemode-kvsp-{ { enabled: true, sticky: true } }-prsp-mousewheel-kvsp-{ { forceToAxis: true, sensitivity: 1 } }-prsp-modules-kvsp-{[FreeMode, Mousewheel, Thumbs]}-prsp-swiper-kvsp-{setThumbsSwiper}-prsp-watchSlidesProgress-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Swiper -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
           {% for image in product.images %}
     {% assign index = forloop.index0 %}
@@ -130,12 +129,10 @@ smns stands for "slot module name separator"
 {% capture props_SwiperSlide %}classes-kvsp-aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_SwiperSlide -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
-              <img src="{{ image | image_url: width: 100 }}" liquivelte-value-cache="image_url§{{image | escape -}}, {{width}}, {{100}}§{{image| image_url: width: 100  }}" alt="{{ image.alt }}"  class=" svelte-q6htwq">
+              <img src="{{ image | image_url: width: 100 }}" liquivelte-value-cache="image_url§{{image | escape -}}, {{width}}, {{100}}§{{image| image_url: width: 100  }}" alt="{{ image.alt }}"  class=" svelte-12nb1di">
             {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper-slide' %}
 {% assign slot_content_SwiperSlide = slot_content_SwiperSlide | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_SwiperSlide %}
 {% include modulename, liquivelte: true, props: props_SwiperSlide, sub_include: true, slot_contents: slot_content_SwiperSlide, basename: 'framework7-liquivelte-'  %}
@@ -144,7 +141,6 @@ smns stands for "slot module name separator"
           {% endfor %}
           {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper' %}
 {% assign slot_content_Swiper = slot_content_Swiper | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Swiper %}
 {% include modulename, liquivelte: true, props: props_Swiper, sub_include: true, slot_contents: slot_content_Swiper, basename: 'framework7-liquivelte-'  %}
@@ -164,7 +160,6 @@ smns stands for "slot module name separator"
 {% capture props_Swiper %}classes-kvsp-product-gallery max-w-full-prsp-loop-kvsp-{true}-prsp-slidesPerView-kvsp-{1}-prsp-thumbs-kvsp-{ { swiper: thumbsSwiper } }-prsp-freemode-kvsp-{ { enabled: true, sticky: true } }-prsp-mousewheel-kvsp-{ { forceToAxis: true, sensitivity: 1 } }-prsp-modules-kvsp-{[FreeMode, Mousewheel, Thumbs]}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Swiper -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {% for image in product.images %}
     {% assign index = forloop.index0 %}
@@ -181,13 +176,11 @@ smns stands for "slot module name separator"
 {% capture props_SwiperSlide %}classes-kvsp-sm:rounded-lg sm:overflow-hidden{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_SwiperSlide -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
           <img bind:this="{gallery_images[index]}" src="{{ image | image_url: width: 500 }}" liquivelte-value-cache="image_url§{{image | escape -}}, {{width}}, {{500}}§{{image| image_url: width: 500  }}" alt="{{ image.alt }}" 
-           class="w-full object-center object-cover svelte-q6htwq">
+           class="w-full object-center object-cover svelte-12nb1di">
         {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper-slide' %}
 {% assign slot_content_SwiperSlide = slot_content_SwiperSlide | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_SwiperSlide %}
 {% include modulename, liquivelte: true, props: props_SwiperSlide, sub_include: true, slot_contents: slot_content_SwiperSlide, basename: 'framework7-liquivelte-'  %}
@@ -196,7 +189,6 @@ smns stands for "slot module name separator"
       {% endfor %}
       {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper' %}
 {% assign slot_content_Swiper = slot_content_Swiper | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Swiper %}
 {% include modulename, liquivelte: true, props: props_Swiper, sub_include: true, slot_contents: slot_content_Swiper, basename: 'framework7-liquivelte-'  %}
@@ -204,11 +196,11 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
   </div>
   <!-- Image gallery -->
-  <!-- <div  class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8 svelte-q6htwq">
+  <!-- <div  class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8 svelte-12nb1di">
     {% for image in product.images %}
     {% assign index = forloop.index0 %}
-      <div  class="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4 svelte-q6htwq">
-        <img src="{{ image | img_url: '500x' }}" liquivelte-value-cache="img_url§{{image | escape -}}, {{'500x'}}§{{image| img_url: '500x'  }}" alt="{{ image.alt }}"  class="w-full h-full object-center object-cover svelte-q6htwq">
+      <div  class="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4 svelte-12nb1di">
+        <img src="{{ image | img_url: '500x' }}" liquivelte-value-cache="img_url§{{image | escape -}}, {{'500x'}}§{{image| img_url: '500x'  }}" alt="{{ image.alt }}"  class="w-full h-full object-center object-cover svelte-12nb1di">
       </div>
     {% endfor %}
   </div> -->
@@ -217,7 +209,7 @@ smns stands for "slot module name separator"
 	
 						
 		
-	<script type="text/noscript"  class="instance-data svelte-q6htwq">
+	<script type="text/noscript"  class="instance-data svelte-12nb1di">
 		{% assign component_include_count = component_include_count | plus: 1 %}
 		{
 	"product" : {{ product | json }} , "first_image_ratio" : {{ first_image_ratio | json }}
@@ -229,7 +221,7 @@ smns stands for "slot module name separator"
 		"component_name": "image-gallery"
 	}</script>
 	
-	<script  class="liquivelte-prop-script svelte-q6htwq">(() => {
+	<script  class="liquivelte-prop-script svelte-12nb1di">(() => {
 	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
 	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
 	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}

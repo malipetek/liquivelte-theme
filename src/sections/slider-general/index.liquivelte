@@ -63,11 +63,15 @@
       pointer-events: none;
     }
 
+  .button.inline-block:nth-child(2), .button.inline-block:nth-child(3) {
+    margin-left: var(--button-spacing, 10px);
+  }
+
 </style>
 
 {% schema %}
 {
-  "name": "Slider General",
+  "name": "🏞🏞🏞  Slider General",
   "tag": "section",
   "class": "product-section spaced-section",
   "settings": [

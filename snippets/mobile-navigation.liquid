@@ -66,7 +66,6 @@ smns stands for "slot module name separator"
 {% capture props_List %}accordionList-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_List -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
   {% for lnk in links %}
     {% assign index = forloop.index0 %}
@@ -84,7 +83,6 @@ smns stands for "slot module name separator"
 {% capture props_ListItem %}accordionItem-kvsp-1-prsp-title-kvsp-{{ lnk.title }}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_ListItem -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {% if lnk.links and lnk.links.size %}
       
@@ -100,12 +98,10 @@ smns stands for "slot module name separator"
 {% capture props_AccordionContent %}undefined-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_AccordionContent -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         <svelte:self links="{lnk.links}" />  
       {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-accordion-content' %}
 {% assign slot_content_AccordionContent = slot_content_AccordionContent | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_AccordionContent %}
 {% include modulename, liquivelte: true, props: props_AccordionContent, sub_include: true, slot_contents: slot_content_AccordionContent, basename: 'framework7-liquivelte-'  %}
@@ -114,7 +110,6 @@ smns stands for "slot module name separator"
       {% endif %}
     {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-list-item' %}
 {% assign slot_content_ListItem = slot_content_ListItem | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_ListItem %}
 {% include modulename, liquivelte: true, props: props_ListItem, sub_include: true, slot_contents: slot_content_ListItem, basename: 'framework7-liquivelte-' , title:  lnk.title  %}
@@ -134,7 +129,6 @@ smns stands for "slot module name separator"
   {% endfor %}
 {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-list' %}
 {% assign slot_content_List = slot_content_List | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_List %}
 {% include modulename, liquivelte: true, props: props_List, sub_include: true, slot_contents: slot_content_List, basename: 'framework7-liquivelte-'  %}

@@ -175,7 +175,6 @@ smns stands for "slot module name separator"
 {% capture props_CardHeader %}undefined-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_CardHeader -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {{ title | default: '' }}
       
@@ -185,7 +184,6 @@ smns stands for "slot module name separator"
 
     {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'card-header' %}
 {% assign slot_content_CardHeader = slot_content_CardHeader | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_CardHeader %}
 {% include modulename, liquivelte: true, props: props_CardHeader, sub_include: true, slot_contents: slot_content_CardHeader, basename: ''  %}
@@ -206,7 +204,6 @@ smns stands for "slot module name separator"
 {% capture props_CardContent %}{padding}-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_CardContent -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {{ content | default: '' }}
       
@@ -216,7 +213,6 @@ smns stands for "slot module name separator"
 
     {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'card-content' %}
 {% assign slot_content_CardContent = slot_content_CardContent | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_CardContent %}
 {% include modulename, liquivelte: true, props: props_CardContent, sub_include: true, slot_contents: slot_content_CardContent, basename: ''  %}
@@ -237,7 +233,6 @@ smns stands for "slot module name separator"
 {% capture props_CardFooter %}undefined-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_CardFooter -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       {{ footer | default: '' }}
       
@@ -247,7 +242,6 @@ smns stands for "slot module name separator"
 
     {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'card-footer' %}
 {% assign slot_content_CardFooter = slot_content_CardFooter | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_CardFooter %}
 {% include modulename, liquivelte: true, props: props_CardFooter, sub_include: true, slot_contents: slot_content_CardFooter, basename: ''  %}
