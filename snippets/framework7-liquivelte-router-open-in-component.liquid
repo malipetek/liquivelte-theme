@@ -88,7 +88,6 @@ smns stands for "slot module name separator"
 {% capture props_Popup %}className-kvsp-popup-router-open-in-prsp-data-url-kvsp-{url}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Popup -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
@@ -101,7 +100,6 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
   {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'popup' %}
 {% assign slot_content_Popup = slot_content_Popup | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Popup %}
 {% include modulename, liquivelte: true, props: props_Popup, sub_include: true, slot_contents: slot_content_Popup, basename: ''  %}
@@ -122,7 +120,6 @@ smns stands for "slot module name separator"
 {% capture props_LoginScreen %}className-kvsp-login-screen-router-open-in-prsp-data-url-kvsp-{url}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_LoginScreen -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
@@ -135,7 +132,6 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
   {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'login-screen' %}
 {% assign slot_content_LoginScreen = slot_content_LoginScreen | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_LoginScreen %}
 {% include modulename, liquivelte: true, props: props_LoginScreen, sub_include: true, slot_contents: slot_content_LoginScreen, basename: ''  %}
@@ -156,7 +152,6 @@ smns stands for "slot module name separator"
 {% capture props_Sheet %}className-kvsp-sheet-modal-router-open-in-prsp-data-url-kvsp-{url}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Sheet -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
@@ -169,7 +164,6 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
   {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'sheet' %}
 {% assign slot_content_Sheet = slot_content_Sheet | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Sheet %}
 {% include modulename, liquivelte: true, props: props_Sheet, sub_include: true, slot_contents: slot_content_Sheet, basename: ''  %}
@@ -190,7 +184,6 @@ smns stands for "slot module name separator"
 {% capture props_Popover %}className-kvsp-popover-router-open-in-prsp-{targetEl}-kvsp-1-prsp-data-url-kvsp-{url}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Popover -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
@@ -203,7 +196,6 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
   {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'popover' %}
 {% assign slot_content_Popover = slot_content_Popover | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Popover %}
 {% include modulename, liquivelte: true, props: props_Popover, sub_include: true, slot_contents: slot_content_Popover, basename: ''  %}
@@ -224,7 +216,6 @@ smns stands for "slot module name separator"
 {% capture props_Panel %}{side}-kvsp-1-prsp-{effect}-kvsp-1-prsp-className-kvsp-panel-router-open-in-prsp-data-url-kvsp-{url}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Panel -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     
 {% comment %}
@@ -237,7 +228,6 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
   {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'panel' %}
 {% assign slot_content_Panel = slot_content_Panel | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Panel %}
 {% include modulename, liquivelte: true, props: props_Panel, sub_include: true, slot_contents: slot_content_Panel, basename: ''  %}

@@ -42,7 +42,7 @@
 				endfor
 				-%}
 	{%- unless sub_include -%} 
-	<div  class="liquivelte-component slider-general svelte-7s9bvi" data-liquivelte-component-name="slider-general">
+	<div  class="liquivelte-component slider-general svelte-1w37k1j" data-liquivelte-component-name="slider-general">
 		{% assign component_include_count_slot_offset = 0 %}
 		{% assign component_include_count = 0 %}
 		{% assign component_include_depth = 0 %}
@@ -50,9 +50,9 @@
 	{%- endunless -%}
 	
 
-<div  class="relative svelte-7s9bvi" bind:this="{container}">
+<div  class="relative svelte-1w37k1j" bind:this="{container}">
   {% if section.settings.flush_with_header %}
-    <div  class="flush-shadow svelte-7s9bvi"></div>
+    <div  class="flush-shadow svelte-1w37k1j"></div>
   {% endif %}
 
   
@@ -67,7 +67,6 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_Swiper %}freemode-kvsp-{ { enabled: true, sticky: true } }-prsp-mousewheel-kvsp-{ { forceToAxis: true, sensitivity: 1.5 } }-prsp-modules-kvsp-{[FreeMode, Mousewheel]}-prsp-preloadImages-kvsp-{false}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
-
 
 {%- capture slot_content_def_Swiper -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     {% for block in section.blocks %}
@@ -85,7 +84,6 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_SwiperSlide %}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
-
 
 {%- capture slot_content_def_SwiperSlide -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
           {% if forloop.index == 1 %}
@@ -111,7 +109,6 @@ smns stands for "slot module name separator"
           {% endif %}
         {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper-slide' %}
 {% assign slot_content_SwiperSlide = slot_content_SwiperSlide | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_SwiperSlide %}
 {% include modulename, liquivelte: true, props: props_SwiperSlide, sub_include: true, slot_contents: slot_content_SwiperSlide, basename: 'framework7-liquivelte-'  %}
@@ -132,7 +129,6 @@ smns stands for "slot module name separator"
 {% capture props_SwiperSlide %}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_SwiperSlide -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
           
 {% comment %}
@@ -145,7 +141,6 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
         {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper-slide' %}
 {% assign slot_content_SwiperSlide = slot_content_SwiperSlide | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_SwiperSlide %}
 {% include modulename, liquivelte: true, props: props_SwiperSlide, sub_include: true, slot_contents: slot_content_SwiperSlide, basename: 'framework7-liquivelte-'  %}
@@ -155,7 +150,6 @@ smns stands for "slot module name separator"
     {% endfor %} 
   {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper' %}
 {% assign slot_content_Swiper = slot_content_Swiper | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Swiper %}
 {% include modulename, liquivelte: true, props: props_Swiper, sub_include: true, slot_contents: slot_content_Swiper, basename: 'framework7-liquivelte-'  %}
@@ -166,7 +160,7 @@ smns stands for "slot module name separator"
 
 
 {% schema %}{
-  "name": "Slider General",
+  "name": "🏞🏞🏞  Slider General",
   "tag": "section",
   "class": "product-section spaced-section",
   "settings": [
@@ -229,7 +223,7 @@ smns stands for "slot module name separator"
         },
         {
           "type": "header",
-          "content": "Card"
+          "content": "⬜️ Card"
         },
         {
           "type": "select",
@@ -283,12 +277,13 @@ smns stands for "slot module name separator"
         {
           "id": "card_height",
           "label": "Card Height",
-          "default": 50,
+          "default": 0,
           "type": "range",
           "min": 0,
           "max": 100,
           "step": 1,
-          "unit": "%"
+          "unit": "%",
+          "info": "0 is auto"
         },
         {
           "id": "card_top_mobile",
@@ -323,12 +318,13 @@ smns stands for "slot module name separator"
         {
           "id": "card_height_mobile",
           "label": "Card Height Mobile",
-          "default": 50,
+          "default": 0,
           "type": "range",
           "min": 0,
           "max": 100,
           "step": 1,
-          "unit": "%"
+          "unit": "%",
+          "info": "0 is auto"
         },
         {
           "type": "text",
@@ -375,7 +371,7 @@ smns stands for "slot module name separator"
         },
         {
           "type": "header",
-          "content": "Button group"
+          "content": "🔲 🔲 🔲 Button group"
         },
         {
           "id": "button_group_horizontal",
@@ -427,7 +423,7 @@ smns stands for "slot module name separator"
         },
         {
           "type": "header",
-          "content": "heading"
+          "content": "✏️ Heading"
         },
         {
           "type": "number",
@@ -488,7 +484,7 @@ smns stands for "slot module name separator"
         },
         {
           "type": "header",
-          "content": "Paragraph"
+          "content": "📜 Paragraph"
         },
         {
           "type": "number",
@@ -549,7 +545,7 @@ smns stands for "slot module name separator"
         },
         {
           "type": "header",
-          "content": "Button"
+          "content": "🔲 Button"
         },
         {
           "id": "button_style",
@@ -655,7 +651,7 @@ smns stands for "slot module name separator"
   endfor
   assign section_blocks_json = section_blocks_json | append: ']'
 %}	
-	<script type="text/noscript"  class="instance-data svelte-7s9bvi">
+	<script type="text/noscript"  class="instance-data svelte-1w37k1j">
 		{% assign component_include_count = component_include_count | plus: 1 %}
 		{
 	
@@ -667,7 +663,7 @@ smns stands for "slot module name separator"
 		"component_name": "index"
 	}</script>
 	
-	<script  class="liquivelte-prop-script svelte-7s9bvi">(() => {
+	<script  class="liquivelte-prop-script svelte-1w37k1j">(() => {
 	var propScript = Shopify.designMode && window.propScriptForDesignMode ? window.propScriptForDesignMode : document.currentScript;
 	function parseProps(e){const s={};let t={bracketsOpened:0,get open(){return this.bracketsOpened>0},set open(e){!0===e?this.bracketsOpened=this.bracketsOpened+1:!1===e&&(this.bracketsOpened=this.bracketsOpened-1)}},a=` ${e} `.split(""),r=!1,c=!1,n=!1,p=!1,o="",b="";for(let e=0;e<a.length;e++){const k=a[e];switch(!0){case" "===k:p||t.open||(c=!1),!n||p||t.open||(n=!1);break;case"{"===k:t.open=!0,n||(c=!0);break;case"}"===k:t.open=!1;break;case'"'===k:p=!p;break;case"="===k:c&&(c=!1,n=!0,r=!0);break;case/[^\s]/.test(k):n||(c=!0)}!c||n||r?c||!n||r?c||n||(o&&(s[o]=b.replace(/^"/,"").replace(/"$/,"")),b="",o=""):b+=k:o+=k,r=!1}return Object.keys(s).map((e=>{if(/\{\s*\.\.\.(\w+)\s*\}/.test(e)){const[,t]=e.match(/\{\s*\.\.\.(\w+)\s*\}/);s.spread=t,delete s[e]}})),s}
 	function JSONparse(n){try{return JSON.parse(n)}catch(t){try{const e=parseInt(t.message.match(/position\s+(\d+)/)[1],10),s=n.slice(0,e+1).split("\n"),i=s.length,l=n.split("\n"),r=s[s.length-1].length-1,c=l.slice(0,i).join("\n")+"\n"+new Array(r).fill(" ").join("")+"👆\n"+l.slice(i).join("\n");return console.log(c),{}}catch(n){throw t}}}

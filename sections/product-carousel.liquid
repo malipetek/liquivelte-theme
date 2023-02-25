@@ -80,7 +80,6 @@ smns stands for "slot module name separator"
 {% capture props_Block %}classes-kvsp-product-carousel{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Block -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
 
 {% comment %}
@@ -95,10 +94,8 @@ smns stands for "slot module name separator"
 {% capture props_BlockTitle %}undefined-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_BlockTitle -%}{% assign component_include_depth = component_include_depth | plus: 1 %}{{ collection_title }}{%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-block-title' %}
 {% assign slot_content_BlockTitle = slot_content_BlockTitle | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_BlockTitle %}
 {% include modulename, liquivelte: true, props: props_BlockTitle, sub_include: true, slot_contents: slot_content_BlockTitle, basename: 'framework7-liquivelte-'  %}
@@ -117,7 +114,6 @@ smns stands for "slot module name separator"
 {% capture props_Swiper %}modules-kvsp-{[FreeMode, Mousewheel, Pagination]}-prsp-freemode-kvsp-{ { enabled: true, sticky: true } }-prsp-pagination-kvsp-{true}-prsp-mousewheel-kvsp-{ { enabled: true, forceToAxis: true, sensitivity: 1.5 } }-prsp-breakpoints-kvsp-{breakpoints}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Swiper -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
     {% for product in products %}
     {% assign index = forloop.index0 %}
@@ -134,7 +130,6 @@ smns stands for "slot module name separator"
 {% capture props_SwiperSlide %}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_SwiperSlide -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       
 {% comment %}
@@ -147,7 +142,6 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
     {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper-slide' %}
 {% assign slot_content_SwiperSlide = slot_content_SwiperSlide | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_SwiperSlide %}
 {% include modulename, liquivelte: true, props: props_SwiperSlide, sub_include: true, slot_contents: slot_content_SwiperSlide, basename: 'framework7-liquivelte-'  %}
@@ -156,7 +150,6 @@ smns stands for "slot module name separator"
     {% endfor %} 
   {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-swiper' %}
 {% assign slot_content_Swiper = slot_content_Swiper | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Swiper %}
 {% include modulename, liquivelte: true, props: props_Swiper, sub_include: true, slot_contents: slot_content_Swiper, basename: 'framework7-liquivelte-'  %}
@@ -164,7 +157,6 @@ smns stands for "slot module name separator"
 {% assign props = '' %}
 {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'framework7-liquivelte-block' %}
 {% assign slot_content_Block = slot_content_Block | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Block %}
 {% include modulename, liquivelte: true, props: props_Block, sub_include: true, slot_contents: slot_content_Block, basename: 'framework7-liquivelte-'  %}

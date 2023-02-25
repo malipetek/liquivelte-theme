@@ -187,7 +187,6 @@ smns stands for "slot module name separator"
 {% capture props_PageContent %}ptr-kvsp-{ptr}-prsp-ptrDistance-kvsp-{ptrDistance}-prsp-ptrPreloader-kvsp-{ptrPreloader}-prsp-ptrBottom-kvsp-{ptrBottom}-prsp-ptrMousewheel-kvsp-{ptrMousewheel}-prsp-infinite-kvsp-{infinite}-prsp-infiniteTop-kvsp-{infiniteTop}-prsp-infiniteDistance-kvsp-{infiniteDistance}-prsp-infinitePreloader-kvsp-{infinitePreloader}-prsp-hideBarsOnScroll-kvsp-{hideBarsOnScroll}-prsp-hideNavbarOnScroll-kvsp-{hideNavbarOnScroll}-prsp-hideToolbarOnScroll-kvsp-{hideToolbarOnScroll}-prsp-messagesContent-kvsp-{messagesContent}-prsp-loginScreen-kvsp-{loginScreen}-prsp-onPtrPullStart-kvsp-{onPtrPullStart}-prsp-onPtrPullMove-kvsp-{onPtrPullMove}-prsp-onPtrPullEnd-kvsp-{onPtrPullEnd}-prsp-onPtrRefresh-kvsp-{onPtrRefresh}-prsp-onPtrDone-kvsp-{onPtrDone}-prsp-onInfinite-kvsp-{onInfinite}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_PageContent -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
       
 	{%- if slot_static_framework7-liquivelte_page != blank -%}
@@ -201,7 +200,6 @@ smns stands for "slot module name separator"
 	
     {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'page-content' %}
 {% assign slot_content_PageContent = slot_content_PageContent | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_PageContent %}
 {% include modulename, liquivelte: true, props: props_PageContent, sub_include: true, slot_contents: slot_content_PageContent, basename: ''  %}

@@ -45,7 +45,7 @@
 </Button>
 {% schema %}
 {
-  "name": "Button",
+  "name": "🔲 Button",
   "settings": [
     {
       "id": "button_style",

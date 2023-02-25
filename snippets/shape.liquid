@@ -71,7 +71,6 @@ smns stands for "slot module name separator"
 {% capture props_Positionable %}block-kvsp-{{ block }}-prsp-anim_style-kvsp-{{ anim_style }}{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_Positionable -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
   {% if block.settings.shape == 'square' %}
     <div class="square text-red-50">
@@ -98,7 +97,6 @@ smns stands for "slot module name separator"
   {% endif %}
 {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'positionable' %}
 {% assign slot_content_Positionable = slot_content_Positionable | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_Positionable %}
 {% include modulename, liquivelte: true, props: props_Positionable, sub_include: true, slot_contents: slot_content_Positionable, basename: '' , block:  block  , anim_style:  anim_style  %}

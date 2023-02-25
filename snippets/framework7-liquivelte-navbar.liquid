@@ -168,7 +168,6 @@ smns stands for "slot module name separator"
 {% capture props_NavLeft %}{backLink}-kvsp-1-prsp-{backLinkUrl}-kvsp-1-prsp-{backLinkForce}-kvsp-1-prsp-{backLinkShowText}-kvsp-1-prsp-{onBackClick}-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_NavLeft -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         
 	{%- if slot_nav-left_framework7-liquivelte_navbar != blank -%}
@@ -182,7 +181,6 @@ smns stands for "slot module name separator"
 
       {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'nav-left' %}
 {% assign slot_content_NavLeft = slot_content_NavLeft | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_NavLeft %}
 {% include modulename, liquivelte: true, props: props_NavLeft, sub_include: true, slot_contents: slot_content_NavLeft, basename: ''  %}
@@ -203,7 +201,6 @@ smns stands for "slot module name separator"
 {% capture props_NavTitle %}{title}-kvsp-1-prsp-{subtitle}-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_NavTitle -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         
 	{%- if slot_title_framework7-liquivelte_navbar != blank -%}
@@ -212,7 +209,6 @@ smns stands for "slot module name separator"
 
       {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'nav-title' %}
 {% assign slot_content_NavTitle = slot_content_NavTitle | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_NavTitle %}
 {% include modulename, liquivelte: true, props: props_NavTitle, sub_include: true, slot_contents: slot_content_NavTitle, basename: ''  %}
@@ -233,7 +229,6 @@ smns stands for "slot module name separator"
 {% capture props_NavRight %}undefined-kvsp-1{% endcapture %}
 {%- assign component_include_count_before_slots = component_include_count -%}
 
-
 {%- capture slot_content_def_NavRight -%}{% assign component_include_depth = component_include_depth | plus: 1 %}
         
 	{%- if slot_nav-right_framework7-liquivelte_navbar != blank -%}
@@ -247,7 +242,6 @@ smns stands for "slot module name separator"
 
       {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
-
 {% assign modulename = basename | append: 'nav-right' %}
 {% assign slot_content_NavRight = slot_content_NavRight | append: '-scs-' | append: modulename | append: '-scvs-' | append: slot_content_def_NavRight %}
 {% include modulename, liquivelte: true, props: props_NavRight, sub_include: true, slot_contents: slot_content_NavRight, basename: ''  %}

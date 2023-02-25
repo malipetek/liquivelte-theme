@@ -1,4 +1,4 @@
-import './page.contact-hsbf955c0a.liquivelte.js';
+import './page.contact-hs752ab8df.liquivelte.js';
 
 const onIntersect = (el, callback) => {
     const observer = new IntersectionObserver(callback, {
@@ -22,7 +22,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./header-hs625ca8e2.liquivelte.js').then(function (n) { return n.index; })).default({
+          wrapper.svelteComponent = new (await import('./header-hs7f598b85.liquivelte.js').then(function (n) { return n.index; })).default({
             target: wrapper,
             hydrate: true,
             props: { resetCicR: true },
@@ -43,7 +43,7 @@ const onIntersect = (el, callback) => {
       (async () => {
         if(entry.isIntersecting && !initialized) {
           initialized = true;
-          wrapper.svelteComponent = new (await import('./footer-hs79eaf6ab.liquivelte.js')).default({
+          wrapper.svelteComponent = new (await import('./footer-hsf74173e2.liquivelte.js')).default({
             target: wrapper,
             hydrate: true,
             props: { resetCicR: true },
