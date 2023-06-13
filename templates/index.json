@@ -299,7 +299,6 @@
     },
     "4538c27b-ee63-47b8-b76f-3ac556f013c3": {
       "type": "product-carousel",
-      "disabled": true,
       "settings": {
         "collection": "clothes",
         "layout": "regular",
