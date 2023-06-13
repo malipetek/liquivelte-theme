@@ -169,7 +169,6 @@
     },
     "f55fd9df-34e5-4a6a-ad16-040620edc061": {
       "type": "product-carousel",
-      "disabled": true,
       "settings": {
         "collection": "bicycles",
         "layout": "regular",
@@ -178,7 +177,6 @@
     },
     "exploding-gallery": {
       "type": "exploding-gallery",
-      "disabled": true,
       "blocks": {
         "a853409f-e207-4ec2-a40d-4711428bb2c4": {
           "type": "image",
@@ -234,7 +232,6 @@
     },
     "product-comparison": {
       "type": "product-comparison",
-      "disabled": true,
       "blocks": {
         "6c1ead59-4127-4080-bc64-c8c5d658407b": {
           "type": "comparison",
@@ -320,7 +317,6 @@
     },
     "scroll-anim": {
       "type": "scroll-animation",
-      "disabled": true,
       "blocks": {
         "1f2b47d7-2e95-4bc4-ba0a-d71a85c7a25c": {
           "type": "video",
