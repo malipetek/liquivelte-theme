@@ -102,7 +102,10 @@
         "settings": {
           "menu": "main-menu",
           "logo": "shopify:\/\/shop_images\/liquivelte-icon.png",
-          "logo_width": 90
+          "logo_width": 90,
+          "items-left": "nav",
+          "items-middle": "logo",
+          "items-right": "search"
         }
       },
       "main-password-header": {
@@ -135,6 +138,12 @@
     "blocks": {
       "13768625480086291342": {
         "type": "shopify:\/\/apps\/forms\/blocks\/forms\/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "184223490869430548": {
+        "type": "shopify:\/\/apps\/abimagedev2\/blocks\/app-embed\/b154df7d-38ac-41dc-92ad-43c2df4034e5",
         "disabled": false,
         "settings": {
         }
