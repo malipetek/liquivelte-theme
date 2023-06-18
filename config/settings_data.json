@@ -144,7 +144,7 @@
       },
       "184223490869430548": {
         "type": "shopify:\/\/apps\/abimagedev2\/blocks\/app-embed\/b154df7d-38ac-41dc-92ad-43c2df4034e5",
-        "disabled": true,
+        "disabled": false,
         "settings": {
         }
       }
