@@ -102,7 +102,7 @@ smns stands for "slot module name separator"
 {% endcomment %}
 {% capture props_VerticalStepper %}small-kvsp-1-prsp-disabled-kvsp-{%- unless product.available -%}1{%- endunless -%}-prsp-value-kvsp-{{ quantity }}-prsp-onChange-kvsp-{ quantityChange.bind(cartItem) }-prsp-onClick-kvsp-{addToCart}{% endcapture %}
 {% assign modulename = basename | append: 'vertical-stepper' %}
-{% include modulename, liquivelte: true, props: props_VerticalStepper, sub_include: true, basename: '' , disabled:  !product.available  , bind:value:  quantity  %}
+{% include modulename, liquivelte: true, props: props_VerticalStepper, sub_include: true, basename: '', disabled: product.available, bind: value %}
 {% assign props = '' %}
   {%- endcapture -%}{% assign component_include_depth = component_include_depth | minus: 1 %}
 {%- assign component_include_count_slot_offset = component_include_count | minus: component_include_count_before_slots -%}
@@ -334,4 +334,15 @@ smns stands for "slot module name separator"
 	</div>
 	{% assign component_include_count = 0 %}
 	{%- endunless -%}
-	
+	{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include modulename, liquivelte: true, props: props_VerticalStepper, sub_include:
+    true, basename: '' , disabled:  !product.available  , bind:value:  quantity  %}"
+  to: "{% include modulename, liquivelte: true, props: props_VerticalStepper, sub_include:
+    true, basename: '', disabled: product.available, bind: value %}"
+  position: 3930..4077
+{%- endcomment -%}

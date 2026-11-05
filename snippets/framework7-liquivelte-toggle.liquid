@@ -90,7 +90,7 @@
   bind:this={el}
   class="{computedClasses} {classes}"
   {...restProps($$restProps)}
-  use:useTooltip={{ tooltip, tooltipTrigger }}
+  use:useTooltip={{ tooltip }}
 >
   <input
     bind:this={inputEl}
@@ -195,4 +195,13 @@
 	</div>
 	{% assign component_include_count = 0 %}
 	{%- endunless -%}
-	
+	{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ tooltip, tooltipTrigger }}"
+  to: "{{ tooltip }}"
+  position: 2921..2934
+{%- endcomment -%}

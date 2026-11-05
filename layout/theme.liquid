@@ -102,7 +102,7 @@ window.partytown = {
       {% endif %}
 
       {% assign critical_identifier = 'theme' | append: template_with_suffix_and_directory %}
-      {% include 'liquivelte-criticals' with template: critical_identifier %}
+      {% include 'liquivelte-criticals' with template, template: critical_identifier %}
       <script>
         window.liquivelte_main_scripts_registry = new Map([
           {% for template in templatesWithLiquivelte %}
@@ -350,7 +350,7 @@ window.partytown = {
     {% assign slot_contents_App_Wrapper = slot_contents_App_Wrapper | append: '-scs-' | append: 'app-wrapper' | append: '-smns-' | append: 'footer' | append: '-scvs-' | append: footer_slot_content %}
     {% assign slot_contents_App_Wrapper = slot_contents_App_Wrapper | append: '-scs-' | append: 'app-wrapper' | append: '-scvs-' | append: default_slot_content %}
 
-    {% include 'app-wrapper' with liquivelte: true, slot_contents: slot_contents_App_Wrapper %}
+    {% include 'app-wrapper' with liquivelte, liquivelte: true, slot_contents: slot_contents_App_Wrapper %}
 
     {% comment %} {% section 'announcement-bar' %} {% endcomment %}    
 
@@ -401,3 +401,19 @@ window.partytown = {
     </style>
   </body>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'liquivelte-criticals' with template: critical_identifier %}"
+  to: "{% include 'liquivelte-criticals' with template, template: critical_identifier
+    %}"
+  position: 4443..4524
+- from: "{% include 'app-wrapper' with liquivelte: true, slot_contents: slot_contents_App_Wrapper
+    %}"
+  to: "{% include 'app-wrapper' with liquivelte, liquivelte: true, slot_contents:
+    slot_contents_App_Wrapper %}"
+  position: 18529..18632
+{% endcomment %}

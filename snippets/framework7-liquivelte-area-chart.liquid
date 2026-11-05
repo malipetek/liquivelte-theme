@@ -142,7 +142,7 @@
       {% for label in axisLabels %}
     {% assign index = forloop.index0 %}
         <span>
-          {% if visibleLegends.includes(label) %}<span>{formatAxisLabel(label)}</span>{% endif %}
+          {% if visibleLegends.includes.label %}<span>{formatAxisLabel(label)}</span>{% endif %}
         </span>
       {% endfor %}
     </div>
@@ -274,4 +274,13 @@
 	</div>
 	{% assign component_include_count = 0 %}
 	{%- endunless -%}
-	
+	{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if visibleLegends.includes(label) %}"
+  to: "{% if visibleLegends.includes.label %}"
+  position: 4667..4705
+{%- endcomment -%}

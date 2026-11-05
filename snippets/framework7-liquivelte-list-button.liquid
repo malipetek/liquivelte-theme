@@ -100,7 +100,7 @@
   {...restProps($$restProps)}
   bind:this={el}
   use:useRouteProps={routeProps}
-  use:useTooltip={{ tooltip, tooltipTrigger }}
+  use:useTooltip={{ tooltip }}
 >
   <a class={computedClasses} {...attrs} on:click={onClick}>
     {{ title | default: '' }}
@@ -205,4 +205,13 @@
 	</div>
 	{% assign component_include_count = 0 %}
 	{%- endunless -%}
-	
+	{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ tooltip, tooltipTrigger }}"
+  to: "{{ tooltip }}"
+  position: 3265..3278
+{%- endcomment -%}

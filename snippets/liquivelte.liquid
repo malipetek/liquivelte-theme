@@ -1,4 +1,14 @@
  {% comment %}
     Liquivelte: please do not modify.
 {% endcomment %}
-{% include module with svelte_enum: included_times %}
+{% include module with svelte_enum, svelte_enum: included_times %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include module with svelte_enum: included_times %}"
+  to: "{% include module with svelte_enum, svelte_enum: included_times %}"
+  position: 70..136
+{% endcomment %}

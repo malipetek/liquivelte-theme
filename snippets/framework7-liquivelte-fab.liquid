@@ -113,7 +113,7 @@
 			{{- slot_default_framework7-liquivelte_fab -}}
 		{%- endif -%}
 	
-    {% if text != blank || hasTextSlots %}
+    {% if text != blank %}
       <div class="fab-text" bind:this="{textEl}">
         {{ text | default: '' }}
         
@@ -229,4 +229,13 @@
 	</div>
 	{% assign component_include_count = 0 %}
 	{%- endunless -%}
-	
+	{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if text != blank || hasTextSlots %}"
+  to: "{% if text != blank %}"
+  position: 3674..3696
+{%- endcomment -%}

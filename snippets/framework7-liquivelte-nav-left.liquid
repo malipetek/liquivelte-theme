@@ -81,7 +81,7 @@
   kvsp stands for "key value separator"
   prsp stands for "props separator"
 {% endcomment %}
-{% capture props_Link %}href-kvsp-{backLinkUrl || '#'}-prsp-back-kvsp-1-prsp-icon-kvsp-icon-back-prsp-force-kvsp-{backLinkForce || undefined}-prsp-class-kvsp-{%- unless {!backLinkText ? 'icon-only' : undefined} -%}1{%- endunless -%}-prsp-text-kvsp-{backLinkText}-prsp-onClick-kvsp-{onBackClick}{% endcapture %}
+{% capture props_Link %}href-kvsp-{backLinkUrl || '#'}-prsp-back-kvsp-1-prsp-icon-kvsp-icon-back-prsp-force-kvsp-{backLinkForce || undefined}-prsp-class-kvsp-{%- unless backLinkText -%}1{%- endunless -%}-prsp-text-kvsp-{backLinkText}-prsp-onClick-kvsp-{onBackClick}{% endcapture %}
 {% assign modulename = basename | append: 'link' %}
 {% include modulename, liquivelte: true, props: props_Link, sub_include: true, basename: ''  %}
 {% assign props = '' %}
@@ -180,4 +180,13 @@
 	</div>
 	{% assign component_include_count = 0 %}
 	{%- endunless -%}
-	
+	{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- unless {!backLinkText ? 'icon-only' : undefined} -%}"
+  to: "{%- unless backLinkText -%}"
+  position: 2899..2926
+{%- endcomment -%}

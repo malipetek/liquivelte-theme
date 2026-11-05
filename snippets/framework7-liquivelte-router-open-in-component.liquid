@@ -74,7 +74,7 @@
 	{%- endunless -%}
 	
 
-{% if openIn === 'popup' %}
+{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component line 77): Unknown operator ===' }}{% elsif false %}
   
 {% comment %}
 kvsp stands for "key value separator"
@@ -106,7 +106,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Popup = '' %}
 {% assign props = '' %}
 {% endif %}
-{% if openIn === 'loginScreen' %}
+{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component line 109): Unknown operator ===' }}{% elsif false %}
   
 {% comment %}
 kvsp stands for "key value separator"
@@ -138,7 +138,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_LoginScreen = '' %}
 {% assign props = '' %}
 {% endif %}
-{% if openIn === 'sheet' %}
+{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component line 141): Unknown operator ===' }}{% elsif false %}
   
 {% comment %}
 kvsp stands for "key value separator"
@@ -170,7 +170,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Sheet = '' %}
 {% assign props = '' %}
 {% endif %}
-{% if openIn === 'popover' %}
+{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component line 173): Unknown operator ===' }}{% elsif false %}
   
 {% comment %}
 kvsp stands for "key value separator"
@@ -202,7 +202,7 @@ smns stands for "slot module name separator"
 {% assign slot_content_Popover = '' %}
 {% assign props = '' %}
 {% endif %}
-{% if openIn.indexOf('panel') === 0 %}
+{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component line 205): Unknown operator ===' }}{% elsif false %}
   
 {% comment %}
 kvsp stands for "key value separator"
@@ -322,4 +322,30 @@ smns stands for "slot module name separator"
 	</div>
 	{% assign component_include_count = 0 %}
 	{%- endunless -%}
-	
+	{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if openIn === 'popup' %}"
+  to: "{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component
+    line 77): Unknown operator ===' }}{% elsif false %}"
+  position: 2526..2664
+- from: "{% if openIn === 'loginScreen' %}"
+  to: "{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component
+    line 109): Unknown operator ===' }}{% elsif false %}"
+  position: 4246..4385
+- from: "{% if openIn === 'sheet' %}"
+  to: "{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component
+    line 141): Unknown operator ===' }}{% elsif false %}"
+  position: 6029..6168
+- from: "{% if openIn === 'popover' %}"
+  to: "{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component
+    line 173): Unknown operator ===' }}{% elsif false %}"
+  position: 7756..7895
+- from: "{% if openIn.indexOf('panel') === 0 %}"
+  to: "{% if true %}{{ 'Liquid error (snippets/framework7-liquivelte-router-open-in-component
+    line 205): Unknown operator ===' }}{% elsif false %}"
+  position: 9520..9659
+{%- endcomment -%}

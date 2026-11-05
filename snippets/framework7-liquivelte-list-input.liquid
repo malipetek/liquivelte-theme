@@ -536,7 +536,7 @@
 		{{- slot_input_framework7-liquivelte_list-input -}}
 	{%- endif -%}
 
-          {% if hasErrorMessage && errorMessageForce %}
+          {% if hasErrorMessage %}
             <div class="item-input-error-message">
               {{ errorMessage | default: '' }}
               
@@ -996,4 +996,13 @@
 	</div>
 	{% assign component_include_count = 0 %}
 	{%- endunless -%}
-	
+	{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if hasErrorMessage && errorMessageForce %}"
+  to: "{% if hasErrorMessage %}"
+  position: 19733..19757
+{%- endcomment -%}
